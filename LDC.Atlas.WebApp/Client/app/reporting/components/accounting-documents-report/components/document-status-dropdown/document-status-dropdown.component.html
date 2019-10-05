@@ -1,0 +1,15 @@
+<div [formGroup]="formGroup">
+    <atlas-contextual-search-multiple-autocomplete-select #documentStatusDropdownComponent
+                                                          [options]="documentStatus"
+                                                          [selectedOptions]="[]"
+                                                          [allOptionsElement]="allTransDocStatusOption"
+                                                          [allSelected]="allDocumentStatusSelected"
+                                                          displayCode="true"
+                                                          valueProperty="enumEntityId"
+                                                          codeProperty="enumEntityValue"
+                                                          placeholder="Document Status"
+                                                          placeholderFilter="Document Status"
+                                                          elementName="Document Status"
+                                                          (selectionChangedEvent)="onDocumentStatusChanged($event)">
+    </atlas-contextual-search-multiple-autocomplete-select>
+</div>

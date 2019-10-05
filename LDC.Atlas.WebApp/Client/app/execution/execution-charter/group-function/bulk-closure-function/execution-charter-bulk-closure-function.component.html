@@ -1,0 +1,98 @@
+<div class="main-container">
+    <mat-horizontal-stepper [linear]
+                            (selectionChange)="onChangeStepAction($event)"
+                            #stepper>
+        <ng-template matStepperIcon="edit">
+            <mat-icon>check</mat-icon>
+        </ng-template>
+        <mat-step>
+            <ng-template matStepLabel>Charters to Close</ng-template>
+            <atlas-charter-selection-bulk-closure #chartersSelected
+                                                  (charterSelected)="onCharterSelected($event)">
+            </atlas-charter-selection-bulk-closure>
+            <div fxLayout="row "
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="row "
+                     fxLayoutAlign="start ">
+                    <button (click)="onCharterSelectionDiscardButtonClicked()"
+                            mat-button>
+                        DISCARD
+                    </button>
+                    <button (click)="onCharterSelectionPreviousButtonClicked()"
+                            mat-button>
+                        PREVIOUS
+                    </button>
+                </div>
+                <div fxLayout="column "
+                     fxLayoutAlign="start ">
+                    <div fxLayout="row "
+                         fxLayoutAlign="end start ">
+                        <button mat-raised-button
+                                (click)="onCharterSelectionNextButtonClicked()"
+                                [disabled]="isChartersNextDisabled">
+                            NEXT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+
+        <mat-step>
+            <ng-template matStepLabel>Details</ng-template>
+            <atlas-charter-bulk-closure-matrix #charterBulkClosureMatrix
+                                               *ngIf="step > 1"
+                                               [(charterDetailsMatrix)]="chartersForBulkClosure"
+                                               (chartersClose)="onCharterClose($event)"
+                                               (closeCharterGridReady)="onCharterCloseGridReady($event)"
+                                               [chartersLength]="chartersLength">
+            </atlas-charter-bulk-closure-matrix>
+            <br />
+            <div fxLayout="row "
+                 [style.display]="isCharterCloseGridReady ? 'block' : 'none'"
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="row "
+                     fxLayoutAlign="start ">
+                    <button (click)="onClosureMatrixDiscardButtonClicked()"
+                            mat-button>
+                        DISCARD
+                    </button>
+                    <button mat-button
+                            (click)="onClosureMatrixPreviousButtonClicked()">
+                        PREVIOUS
+                    </button>
+                </div>
+                <div fxLayout="column "
+                     fxLayoutAlign="start ">
+                    <div fxLayout="row "
+                         fxLayoutAlign="end start ">
+                        <button mat-raised-button
+                                (click)="onBulkClosureConfirmButtonClicked()"
+                                [disabled]="isCharterConfirmClosureDisabled">
+                            CONFIRM CHARTER CLOSURE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Summary</ng-template>
+            <atlas-charter-bulk-closure-summary #charterBulkClosureSummary></atlas-charter-bulk-closure-summary>
+            <div fxLayout="row "
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="column "
+                     fxLayoutAlign="start ">
+                    <div fxLayout="row "
+                         fxLayoutAlign="end start ">
+                        <button mat-raised-button
+                                (click)="onFinishButtonClicked()">
+                            FINISH
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

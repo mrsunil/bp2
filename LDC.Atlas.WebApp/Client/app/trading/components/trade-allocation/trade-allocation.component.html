@@ -1,0 +1,25 @@
+<div class="main-container">
+    <form [formGroup]="allocationFormGroup">
+        <atlas-header-allocation-form-component #headerAllocationComponent></atlas-header-allocation-form-component>
+        <atlas-allocation-table-form-component #allocationDetailsComponent
+                                               (validateWarningMessages)="validateWarningMessages($event)"
+                                               (disableAllocateButton)="disableAllocateButton($event)"
+                                               (contractRowSelected)="contractRowSelected($event)"
+                                               (counterpartyForContractRowSelected)="counterpartyForContractRowSelected($event)">
+        </atlas-allocation-table-form-component>
+        <atlas-warning-allocation-form-component #warningAllocationComponent
+                                                 (restrictionRemoveClick)="restrictionRemoveClick($event)">
+        </atlas-warning-allocation-form-component>
+
+        <atlas-shipping-allocation-form-component #shippingAllocationComponent
+                                                  (isShippingFormInvalid)="disableAllocationButton($event)">
+        </atlas-shipping-allocation-form-component>
+
+        <atlas-floating-action-button [fabTitle]="fabTitle"
+                                      [fabType]="fabType"
+                                      [fabActions]="fabMenuActions"
+                                      [isParentLoaded]="isLoaded"
+                                      (fabActionClicked)="onFabActionClicked($event)">
+        </atlas-floating-action-button>
+    </form>
+</div>

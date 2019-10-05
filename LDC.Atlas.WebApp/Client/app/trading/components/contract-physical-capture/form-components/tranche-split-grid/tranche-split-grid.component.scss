@@ -1,0 +1,21 @@
+.atr-grid-option {
+    height: 500px;
+}
+
+:host ::ng-deep atlas-list-and-search {
+    &.children-section-height {
+        height: calc(100vh - 120px - 120px - 40px - 49px - 48px - 56px); // minus the height of the other elements in the screen
+
+
+        .list-and-search-grid-card {
+            height: inherit;
+            min-height: 230px;
+            max-height: calc(100vh - 120px);
+
+            .ag-grid-div-container {
+                height: calc(100% - 60px);
+                width: 100%;
+            }
+        }
+    }
+}

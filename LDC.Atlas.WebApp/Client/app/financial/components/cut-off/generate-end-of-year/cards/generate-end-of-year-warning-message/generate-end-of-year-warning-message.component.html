@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>YEP Generated documents </h1>
+<mat-dialog-content>
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         *ngIf="isLoading"
+         class="loading">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+    <div fxLayout="column">
+        <div>
+            <div fxLayout="row">
+            </div>
+            <mat-divider></mat-divider>
+            <div class="info"
+                 fxLayout="row">
+
+                <div>
+                    <p><B>Documents</B> </p>
+                    <div *ngFor="let document of documentsGenerated">
+                        <h3>{{document.reportName}}</h3>
+                        <mat-divider></mat-divider>
+                        <mat-chip-list class="chip-list">
+                            <mat-chip selected
+                                      disabled
+                                      *ngFor="let response of document.yearEndProcessResponses">
+                                {{response.documentReference}}
+                            </mat-chip>
+                        </mat-chip-list>
+                        <mat-divider></mat-divider>
+                    </div>
+                    <B>have been generated</B>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+
+    <span class="fill-space"></span>
+    <button mat-button
+            (click)="onOkButtonClicked()">CLOSE</button>
+
+</mat-dialog-actions>

@@ -1,0 +1,106 @@
+<form [formGroup]="washoutInvoiceFormGroup">
+    <div class="main-container">
+        <mat-horizontal-stepper [linear]
+                                (selectionChange)="onChangeStepAction($event)"
+                                #stepper>
+            <ng-template matStepperIcon="edit">
+                <mat-icon>check</mat-icon>
+            </ng-template>
+            <mat-step>
+                <ng-template matStepLabel>Contract Selection Screen</ng-template>
+                <atlas-washout-selection #washoutSelectionComponent
+                                         (washoutContractsSelected)="onWashoutContractsSelected($event)"
+                                         (counterPartySelected)="onCounterPartySelected($event)">
+                </atlas-washout-selection>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column "
+                         fxLayoutAlign="start">
+                        <button (click)="onDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start">
+                        <button mat-raised-button
+                                (click)="onMoveButtonClicked(invoicingSteps.workingStep)">
+                            NEXT
+                        </button>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step [completed]="isCompleted">
+                <ng-template matStepLabel>Invoice Working Page</ng-template>
+                <atlas-washout-working-page #washoutWorkingPageComponent
+                                            (isDocumentTemplateSelected)="onDocumentTemplateSelected($event)"
+                                            (totalCostTaxCalculated)="ontotalAmountCalculated($event)"
+                                            (totalCostAndVatCode)="onChangeCostContract($event)"
+                                            (valueOfGoodsRecord)="onChangeValueOfGoods($event)"
+                                            (narrativeLength)="onNarrativeValueChanged($event)">
+                </atlas-washout-working-page>
+                <div fxLayout="row"
+                     fxLayoutAlign="end start">
+                    <mat-slide-toggle *ngIf="hasTemplate"
+                                      [formControl]="previewDocumentCtrl">Preview Document </mat-slide-toggle>
+                </div>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <button (click)="onDiscardButtonClicked()"
+                            [disabled]="isLoading"
+                            mat-button>
+                        DISCARD
+                    </button>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start end ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-button
+                                    (click)="onBackButtonClicked(invoicingSteps.invoiceCreationStep)"
+                                    [disabled]="isLoading">
+                                BACK
+                            </button>
+                            <div
+                                 *ifAuthorized="'Invoices.InvoiceCreation', company:company, level: PermissionLevels.ReadWrite">
+                                <button mat-raised-button
+                                        (click)="onOpenDialogOnPreviewOrSaveClicked()"
+                                        [disabled]="isLoading">
+                                    {{ previewDocumentCtrl.value ? "Preview and Invoice" : "Create Invoice" }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Invoice Summary Page</ng-template>
+                <atlas-washout-summary #washoutSummaryComponent
+                                       [invoiceTaxContracts]="taxRecords"
+                                       [invoiceTaxTotal]="totalData"
+                                       [invoiceCostContracts]="invoiceCostContracts"
+                                       [invoiceGoodsContracts]="invoiceGoodsContracts"
+                                       [goodsTaxCode]="goodsTaxCode"
+                                       [filteredCompanyBankAccounts]="filteredCompanyBankAccounts"
+                                       [isCreationMode]=isCreationMode>
+                </atlas-washout-summary>
+                <div class="btn-container"
+                     *ngIf="!isFromGrid">
+                    <div fxLayout="row"
+                         fxAlignLayout="start end">
+                        <span class="fill-space"></span>
+                        <button mat-button
+                                (click)="newSearchButtonClicked()">
+                            New Search
+                        </button>
+                        <button mat-raised-button
+                                (click)="nextInvoiceButtonClicked(stepper)">
+                            Next Invoice
+                        </button>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</form>

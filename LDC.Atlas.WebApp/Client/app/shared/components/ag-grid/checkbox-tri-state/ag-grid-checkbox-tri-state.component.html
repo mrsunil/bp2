@@ -1,0 +1,5 @@
+<mat-checkbox type="checkbox"
+              [ngModel]="checkStatus === TriStateCheckboxStatus.All"
+              [indeterminate]="checkStatus === TriStateCheckboxStatus.Partial"
+              (ngModelChange)="onChange($event)"
+              [disabled]="disabled"></mat-checkbox>

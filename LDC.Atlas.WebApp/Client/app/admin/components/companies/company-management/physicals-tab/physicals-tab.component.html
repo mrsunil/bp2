@@ -1,0 +1,93 @@
+<div class="main-container hub-menu">
+    <div fxLayout="row"
+         fxLayout.sm="row wrap"
+         fxLayout.xs="column"
+         fxLayoutAlign="space-between stretch"
+         fxLayoutAlign.sm="space-around stretch"
+         fxLayoutAlign.xs="center center"
+         fxLayoutGap="16px"
+         fxLayoutGap.sm="0"
+         class="hub-menu-panel">
+
+        <mat-card (click)="onMainPhysicalsTabCliked()">
+            <img mat-card-image
+                 src=".\assets\img\Companies_small.jpg">
+            <mat-card-title>
+                <h2 class="no-margin">Main Physicals</h2>
+            </mat-card-title>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="onMandatoyTradeSetUpTabCliked()">
+            <img mat-card-image
+                 src=".\assets\img\GlobalParam_small.jpg">
+            <mat-card-title>
+                <h2 class="no-margin">Mandatory & Trade Approval and Image set-up </h2>
+            </mat-card-title>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="onAllocationSetUpTabCliked()">
+            <img mat-card-image
+                 src=".\assets\img\Profiles_small.jpg">
+            <mat-card-title>
+                <h2 class="no-margin">Allocation set-up </h2>
+            </mat-card-title>
+        </mat-card>
+
+    </div>
+</div>
+<div fxLayout="column">
+    <mat-sidenav-container>
+        <mat-sidenav #mainPhysicalsSideNav
+                     class="sidenav"
+                     mode="over"
+                     position="end"
+                     disableClose
+                     [fixedTopGap]="56"
+                     [fixedInViewport]="true">
+            <atlas-physicals-main #mainPhysicalsComponent
+                                  (discardChanges)="onDiscardClick($event)"
+                                  (savePhysicals)="mainPhysicalsSideNav.close()"
+                                  (isSideNavOpened)="sideNavOpened($event)"></atlas-physicals-main>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>
+
+<div fxLayout="column"
+     [hidden]="hideMandatorySidenav">
+    <mat-sidenav-container>
+        <mat-sidenav #mandatoryTradeSetUpSideNav
+                     class="sidenav"
+                     mode="over"
+                     position="end"
+                     disableClose
+                     [fixedTopGap]="56"
+                     [fixedInViewport]="true">
+            <atlas-mandatory-trade-approval #mandatoryTradeSetUpComponent
+                                            (saveMandatory)="mandatoryTradeSetUpSideNav.close()"
+                                            (discardChanges)="onDiscardClick($event)"
+                                            (isSideNavOpened)="sideNavOpened($event)" 
+                                            (businessSectorMandatory)="onBusinessMandatory($event)">
+            </atlas-mandatory-trade-approval>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>
+
+<div fxLayout="column"
+     [hidden]="hideAllocationSidenav">
+    <mat-sidenav-container>
+        <mat-sidenav #allocationSetUpSideNav
+                     class="sidenav"
+                     mode="over"
+                     position="end"
+                     disableClose
+                     [fixedTopGap]="56"
+                     [fixedInViewport]="true">
+            <atlas-allocation-set-up #allocationSetupComponent
+                                     (saveAllocation)="allocationSetUpSideNav.close()"
+                                     (discardChanges)="onDiscardClick($event)"
+                                     (isSideNavOpened)="sideNavOpened($event)"></atlas-allocation-set-up>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>

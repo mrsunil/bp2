@@ -1,0 +1,11 @@
+<div>
+    <mat-form-field>
+        <input matInput
+               [formControl]="popUpStatusDisplayCtrl"
+               readonly>
+        <mat-icon matSuffix
+                  *ngIf="ispopUpcellRendererLoaded()"
+                  (click)="onExploreClicked($event)">launch</mat-icon>
+
+    </mat-form-field>
+</div>

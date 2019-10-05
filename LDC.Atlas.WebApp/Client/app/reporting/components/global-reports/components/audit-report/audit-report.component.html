@@ -1,0 +1,164 @@
+<div class='main-container'>
+    <form [formGroup]="formGroup">
+        <div fxLayout="row"
+             fxLayoutAlign="space-around center">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>General filters</h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout="row"
+                         fxLayoutGap="5%">
+                        <atlas-date-picker isEditable=true
+                                           label="From"
+                                           [fieldControl]="dateFromCtrl"
+                                           [errorMap]="dateErrorMap"
+                                           (dateChanged)="onDateChanged()">
+                        </atlas-date-picker>
+                        <atlas-date-picker isEditable=true
+                                           label="To"
+                                           [fieldControl]="dateToCtrl"
+                                           [errorMap]="ToDateErrorMap"
+                                           (dateChanged)="onDateChanged()">
+                        </atlas-date-picker>
+                        <atlas-dropdown-select label="Snapshot"
+                                               [fieldControl]="snapshotCtrl"
+                                               isEditable=true
+                                               [options]="snapshotOptions"
+                                               displayProperty="freezeDate"
+                                               [selectProperties]="['freezeDate']">
+                        </atlas-dropdown-select>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div fxLayout="row"
+                         fxLayoutGap="5%"
+                         class="general-filters">
+                        <atlas-dropdown-select label="Functional object"
+                                               [fieldControl]="functionalObjectCtrl"
+                                               isEditable=true
+                                               [options]="functionalObjectOptions"
+                                               displayProperty="functionalObjectName"
+                                               [selectProperties]="['functionalObjectName']"
+                                               (optionSelected)="onFunctionalObjectSelected($event)">
+                        </atlas-dropdown-select>
+                        <atlas-dropdown-select label="User"
+                                               [fieldControl]="userCtrl"
+                                               isEditable=true
+                                               [options]="userFilteredOptions"
+                                               isAutocompleteActivated=true
+                                               displayProperty="displayName"
+                                               [selectProperties]="['displayName']">
+                        </atlas-dropdown-select>
+                        <atlas-dropdown-select label="Type of event"
+                                               [options]="eventTypeOptions"
+                                               [fieldControl]="eventCtrl"
+                                               isEditable=true
+                                               (optionSelected)="onEventTypeSelected($event)"
+                                               multiselect=true>
+                        </atlas-dropdown-select>
+                        <atlas-dropdown-select label="Functional context"
+                                               [options]="functionalContextOptions"
+                                               [fieldControl]="functionalContextCtrl"
+                                               isEditable=true>
+                        </atlas-dropdown-select>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxLayout="row"
+             *ngIf="predefinedKeys.length > 0">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>Key fields</h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout="row wrap"
+                         fxLayoutGap="2%">
+                        <atlas-form-input *ngFor="let key of predefinedKeys; trackBy:trackKeyFields"
+                                          isEditable=true
+                                          [id]="key.fieldId"
+                                          [label]="key.friendlyName.concat(' (', key.type, ')')"
+                                          [errorMap]="keysErrorMap"
+                                          #keyFields>
+                        </atlas-form-input>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxLayout="row"
+             fxLayoutGap="2%">
+            <mat-card *ngIf="additionalFilterOptions && additionalFilterOptions.length > 0">
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>Additional filter</h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout="row"
+                         fxLayoutGap="1%">
+                        <atlas-dropdown-select label="Key"
+                                               [options]="additionalFilterOptions"
+                                               [fieldControl]="additionalKeyCtrl"
+                                               isEditable=true
+                                               displayProperty="fieldName"
+                                               [selectProperties]="['tableName', 'friendlyName']">
+                        </atlas-dropdown-select>
+                        <atlas-form-input [fieldControl]="oldValueCtrl"
+                                          isEditable=true
+                                          [errorMap]="keysErrorMap"
+                                          label="Old value"
+                                          #additionalFilterOldValue>
+                        </atlas-form-input>
+                        <atlas-form-input [fieldControl]="newValueCtrl"
+                                          isEditable=true
+                                          [errorMap]="keysErrorMap"
+                                          label="New value"
+                                          #additionalFilterNewValue>
+                        </atlas-form-input>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>Display options</h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout="row"
+                         fxLayoutGap="5%">
+                        <atlas-dropdown-select label="Order by"
+                                               [options]="orderByOptions"
+                                               [fieldControl]="orderByCtrl"
+                                               isEditable=true
+                                               [selectProperties]="['name']">
+                        </atlas-dropdown-select>
+                        <atlas-dropdown-select label="Display with"
+                                               [options]="displayWithOptions"
+                                               [fieldControl]="displayOptionCtrl"
+                                               isEditable=true
+                                               [selectProperties]="['name']">
+                        </atlas-dropdown-select>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="end center">
+            <button mat-raised-button
+                    class="generate-report-button"
+                    (click)="onGenerateReportButtonClicked()">GENERATE REPORT</button>
+        </div>
+    </form>
+    <div class="report-container">
+        <atlas-ssrsreport-viewer [reportServer]="reportServerUrl"
+                                 [reportUrl]="reportPath"
+                                 [parameters]="parameters"
+                                 #ssrsReportViewer>
+        </atlas-ssrsreport-viewer>
+    </div>
+</div>

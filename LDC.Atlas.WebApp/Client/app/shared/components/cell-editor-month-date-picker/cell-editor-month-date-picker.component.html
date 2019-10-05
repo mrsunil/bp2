@@ -1,0 +1,10 @@
+<mat-form-field>
+    <input matInput
+           [formControl]="monthPickerCtrl"
+           [matDatepicker]="picker">
+</mat-form-field>
+<mat-datepicker #picker
+                (monthSelected)="onMonthSelected($event)"
+                (closed)="onPickerClosed()"
+                [startView]="viewStart"
+                [startAt]="startDate"></mat-datepicker>

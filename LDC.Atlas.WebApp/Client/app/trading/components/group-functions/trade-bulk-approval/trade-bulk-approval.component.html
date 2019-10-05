@@ -1,0 +1,31 @@
+<div class="main-container">
+    <atlas-group-function-warning #groupFunctionWarning></atlas-group-function-warning>
+    <atlas-group-function-contracts #contractSelection
+                                    (contractSelected)="isContractSelected($event)"></atlas-group-function-contracts>
+    <div fxLayout="row "
+         fxLayoutAlign="space-between start"
+         class="button-details">
+        <div fxLayout="row "
+             fxLayoutAlign="start ">
+            <button (click)="onDiscardButtonClicked()"
+                    mat-button>
+                DISCARD
+            </button>
+            <button (click)="onPreviousButtonClicked()"
+                    mat-button>
+                PREVIOUS
+            </button>
+        </div>
+        <div fxLayout="column "
+             fxLayoutAlign="start ">
+            <div fxLayout="row "
+                 fxLayoutAlign="end start ">
+                <button mat-raised-button
+                        (click)="onApproveButtonCliked()"
+                        [disabled]="!isContractsNextDisabled">
+                    APPROVE
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

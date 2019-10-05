@@ -1,0 +1,108 @@
+version: '2.1'
+
+services:
+
+  trading.api:
+    image: atlas/trading.api
+    build:
+      context: ./LDC.Atlas.Services.Trading
+      dockerfile: Dockerfile
+  
+  execution.api:
+    image: atlas/execution.api
+    build:
+      context: ./LDC.Atlas.Services.Execution
+      dockerfile: Dockerfile
+
+  masterdata.api:
+    image: atlas/masterdata.api
+    build:
+      context: ./LDC.Atlas.Services.MasterData
+      dockerfile: Dockerfile
+
+  controlling.api:
+    image: atlas/controlling.api
+    build:
+      context: ./LDC.Atlas.Services.Controlling
+      dockerfile: Dockerfile
+
+  preaccounting.api:
+    image: atlas/preaccounting.api
+    build:
+      context: ./LDC.Atlas.Services.PreAccounting
+      dockerfile: Dockerfile
+
+  authorization.api:
+    image: atlas/UserIdentity.api
+    build:
+      context: ./LDC.Atlas.Services.UserIdentity
+      dockerfile: Dockerfile
+      
+  document.api:
+    image: atlas/Document.api
+    build:
+      context: ./LDC.Atlas.Services.Document
+      dockerfile: Dockerfile  
+      
+  configuration.api:
+    image: atlas/configuration.api
+    build:
+      context: ./LDC.Atlas.Services.Configuration 
+      dockerfile: Dockerfile
+
+  freeze.api:
+    image: atlas/freeze.api
+    build:
+      context: ./LDC.Atlas.Services.Freeze 
+      dockerfile: Dockerfile
+
+  reporting.api:
+    image: atlas/reporting.api
+    build:
+      context: ./LDC.Atlas.Services.Reporting 
+      dockerfile: Dockerfile
+
+  processor.api:
+    image: atlas/processor.api
+    build:
+      context: ./LDC.Atlas.Services.Processor 
+      dockerfile: Dockerfile
+
+  paymentrequestinterface.api:
+    image: atlas/paymentrequestinterface.api
+    build:
+      context: ./LDC.Atlas.Services.PaymentRequestInterface 
+      dockerfile: Dockerfile
+
+  accountinginterface.api:
+    image: atlas/accountinginterface.api
+    build:
+      context: ./LDC.Atlas.Services.AccountingInterface 
+      dockerfile: Dockerfile
+
+  lock.api:
+    image: atlas/lock.api
+    build:
+      context: ./LDC.Atlas.Services.Lock 
+      dockerfile: Dockerfile
+          
+
+  genericbackinterface.api:
+    image: atlas/genericbackinterface.api
+    build:
+      context: ./LDC.Atlas.Services.GenericBackInterface
+      dockerfile: Dockerfile
+
+  interface.api:
+    image: atlas/interface.api
+    build:
+      context: ./LDC.Atlas.Services.Interface
+      dockerfile: Dockerfile
+
+  audit.api:
+    image: atlas/audit.api
+    build:
+      context: ./LDC.Atlas.Services.Audit
+      dockerfile: Dockerfile
+          
+

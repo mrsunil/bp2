@@ -1,0 +1,42 @@
+import { AssignedSection } from './assigned-section.entity';
+import { Section } from './section.entity';
+
+export class Charter {
+    charterId: number;
+    charterCode: string;
+    description: string;
+    transportTypeCode: string;
+    vesselCode: string;
+    vesselId: number;
+    vesselBuilt: string;
+    loadingLocationCode: string;
+    departureDate: Date;
+    dischargeLocationCode: string;
+    arrivalDate: Date;
+    creationDate: Date;
+    createdBy: string;
+    charterManagerId: number;
+    charterManagerSamAccountName: string;
+    charterManagerDisplayName: string;
+    memo: string;
+    departmentId: number;
+    blDate?: Date;
+    blRef: string;
+    currency: string;
+    weightUnitId: number;
+    modifiedDate: Date;
+    modifiedBy: string;
+    assignmentDate: Date;
+    assignedSections: AssignedSection[];
+    charterStatusId: number;
+    marketSector: string;
+    shippingStatusCode: string;
+    shippingStatusDescription: string;
+    sectionsAssigned: Section[];
+    company: string;
+    assignedBy: string;
+    assignedByDisplayName: string;
+    departmentCode: string;
+    departmentDescription: string;
+    charterStatusDescription: string;
+}

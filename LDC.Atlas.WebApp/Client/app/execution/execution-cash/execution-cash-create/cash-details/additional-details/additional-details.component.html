@@ -1,0 +1,15 @@
+<mat-accordion class="cash-accordion">
+    <mat-expansion-panel [expanded]="isPanelExpanded">
+        <mat-expansion-panel-header [collapsedHeight]="'35px'"
+                                    [expandedHeight]="'35px'">
+            <mat-panel-title>
+                Additional Details
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <atlas-form-input [isEditable]="narrativeCtrl.enabled"
+                          [fieldControl]="narrativeCtrl"
+                          label="Narrative"
+                          [errorMap]="narrativeErrorMap">
+        </atlas-form-input>
+    </mat-expansion-panel>
+</mat-accordion>

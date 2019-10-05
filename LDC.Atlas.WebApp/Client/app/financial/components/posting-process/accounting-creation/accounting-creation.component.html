@@ -1,0 +1,254 @@
+<header class="header-background-creation">
+    <div class="header-content">
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutWrap
+             *ngIf="isLoadingassignOnLoad"
+             class="loading">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+        <div class="create-toggle-control"
+             *ngIf="!isLoadingassignOnLoad">
+            <mat-button-toggle-group *ngIf="!isSummaryView"
+                                     name="toggleStyle"
+                                     aria-label="Contract Document"
+                                     [formControl]='accountingEntryTypeCtrl'
+                                     [value]="accountingDocTypeSelected"
+                                     [disabled]="isSummaryView"
+                                     (change)="accountingEntryTypeChanged($event)">
+                <mat-button-toggle value="regularJournal">Regular Journal</mat-button-toggle>
+                <mat-button-toggle value="accrual">Accrual</mat-button-toggle>
+                <mat-button-toggle value="mtm">MTM</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        <div *ngIf="!isLoadingassignOnLoad"
+             class="create-accounting-document-fields">
+            <div fxLayout="row"
+                 fxLayoutGap="8px"
+                 fxLayoutAlign="left start">
+                <div class="custom-form"
+                     [class.isEmpty]="!docDateFormCtrl.value"
+                     [class.required-field]="docDateFormCtrl.isRequired"
+                     fxFlex="15">
+                    <mat-form-field>
+                        <input matInput
+                               [matDatepicker]="documentDatePicker"
+                               placeholder="Document date"
+                               [matTooltip]="'Document date'"
+                               [required]="docDateFormCtrl.isRequired"
+                               [disabled]="isSummaryView"
+                               (dateChange)="documentDateChanged($event)"
+                               [formControl]='docDateFormCtrl'
+                               autocomplete="off">
+                        <mat-datepicker-toggle matSuffix
+                                               [for]="documentDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #documentDatePicker></mat-datepicker>
+                        <mat-error *ngIf="docDateFormCtrl.hasError('required')">
+                            This field is required
+                        </mat-error>
+                        <mat-hint *ngIf="docDateFormCtrl.isRequired">
+                            Required *
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="custom-form"
+                    [class.isEmpty]="!valueDateFormCtrl.value"
+                    [class.required-field]="valueDateFormCtrl.isRequired"
+                    fxFlex="15">
+                    <mat-form-field>
+                        <input matInput
+                            [matDatepicker]="valueDatePicker"
+                            placeholder="Value Date"
+                            value="valueDatePicker"
+                            [disabled]="isSummaryView"
+                            [formControl]='valueDateFormCtrl'
+                            autocomplete="off">
+                        <mat-datepicker-toggle matSuffix
+                                            [for]="valueDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #valueDatePicker></mat-datepicker>
+                        <mat-hint class="value-date-warning"
+                                *ngIf="isValueDateBeforeDocumentDate()">Value date is before the document date
+                        </mat-hint>
+                        <mat-hint *ngIf="valueDateFormCtrl.isRequired">
+                            Required *
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="custom-form"
+                     fxFlex="15"
+                     [class.isEmpty]="!accPeriodFormCtrl.value"
+                     [class.required-field]="accPeriodFormCtrl.isRequired">
+                    <atlas-month-date-picker #monthDatePicker
+                                             class="month-date-picker"
+                                             [fieldControl]="accPeriodFormCtrl"
+                                             isEditable=true
+                                             [disabled]="isSummaryView"
+                                             (monthChanged)="accountPeriodChanged($event)"
+                                             [label]="'Accounting Period'">
+                    </atlas-month-date-picker>
+                </div>
+                <atlas-masterdata-user-preferences-input fxFlex="15"
+                                                         class="contextual-search-for-currency"
+                                                         [isEditable]="!isSummaryView"
+                                                         [fieldControl]="currencyCtrl"
+                                                         [options]="filteredCurrencyList"
+                                                         label="Currency"
+                                                         displayProperty="currencyCode"
+                                                         tooltip="description"
+                                                         [selectProperties]="['currencyCode', 'description']"
+                                                         [errorMap]="currencyErrorMap"
+                                                         lightBoxTitle="Results for Currency"
+                                                         gridId="currenciesGrid">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+        </div>
+    </div>
+    <div fxFlex="50"
+         fxLayout="row"
+         fxAlignLayout="start end">
+        <span class="fill-space"></span>
+        <div>
+            <atlas-accounting-file-upload-dialog-box #accountingFileUploadDialogBoxComponent
+                                                     [docType]="selectedDocType"
+                                                     (documentSelected)="ondocumentSelected($event)">
+            </atlas-accounting-file-upload-dialog-box>
+        </div>
+    </div>
+</header>
+
+<mat-toolbar class="menu-bar"
+             *ngIf="!isLoadingassignOnLoad && isSummaryView">
+    <div>
+        <button mat-menu-item
+                [matMenuTriggerFor]="exportMenu">
+            <mat-icon>import_export</mat-icon><span>Export</span>
+        </button>
+        <mat-menu #exportMenu="matMenu">
+            <button mat-menu-item
+                    (click)="onExportButtonClickedAsExcel()">
+                <mat-icon>import_export</mat-icon><span>Export as Excel</span>
+            </button>
+            <button mat-menu-item
+                    (click)="onExportButtonClickedAsCSV()">
+                <mat-icon>import_export</mat-icon><span>Export as CSV</span>
+            </button>
+        </mat-menu>
+    </div>
+</mat-toolbar>
+
+<div class="main-container">
+    <div *ngIf="!isSummaryView &&  !isLoadingassignOnLoad"
+         fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="10px"
+         class="add-line-container">
+        <div fxLayout="column"
+             fxLayoutAlign="start start">
+            <h6>Add new lines:</h6>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start start"
+             fxFlex="2">
+            <mat-form-field>
+                <input matInput
+                       [formControl]="addNewLineCtrl"
+                       autocomplete="off">
+            </mat-form-field>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start start">
+            <button mat-button
+                    (click)="onAddAccountingLineButtonClicked(addNewLineCtrl.value)">PROCEED</button>
+        </div>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         *ngIf="isLoadingassign"
+         class="loading">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-around start">
+        <div fxLayout="column"
+             fxFlex="98.5">
+            <mat-card>
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between start">
+                    <mat-card-title class="atlas-grid-card-title mat-card-title">Accounting Entries</mat-card-title>
+                    <atlas-grid-enlargement *ngIf="agGridOptions"
+                                            [gridOptions]="agGridOptions"
+                                            [userPreferencesParameters]="gridPreferencesParameters"
+                                            (cellValueChanged)="onCellValueChanged($event)"
+                                            #gridZoom>
+                    </atlas-grid-enlargement>
+                </div>
+                <mat-card-content>
+                    <div *ngIf="accountCreationConfiguration?.length > 0"
+                         ag-grid="agGridOptions">
+                        <ag-grid-angular class="ag-theme-material atr-ag-grid"
+                                         [rowData]="createAccountingDocumentLines"
+                                         [columnDefs]="columnDefs"
+                                         domLayout="autoHeight"
+                                         (gridReady)="onGridReady($event)"
+                                         [pagination]="true"
+                                         [gridOptions]="agGridOptions"
+                                         [paginationPageSize]="15"
+                                         [suppressDragLeaveHidesColumns]="true"
+                                         [suppressMovable]="true"
+                                         [enableSorting]="true"
+                                         [enableColResize]="false"
+                                         [singleClickEdit]=true
+                                         [enableRangeSelection]="true"
+                                         (cellValueChanged)="onCellValueChanged($event)"
+                                         [frameworkComponents]="gridComponents"
+                                         [processCellForClipboard]="processCellForClipboard"
+                                         [rowHeight]="atlasAgGridParam.rowHeight">
+                        </ag-grid-angular>
+                    </div>
+                    <span class="fill-space"></span>
+                    <div fxLayout="column"
+                         fxLayoutAlign="start end"
+                         class="total-amount-content">
+                        <mat-card-subtitle class="total-figure">Total Amount: <span
+                                  class="total-figure-value">{{formatAmountValue(totalAmount)}}
+                            </span> </mat-card-subtitle>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div fxLayout="row"
+         *ngIf="!isLoadingassignOnLoad"
+         fxLayoutAlign="end">
+        <div  fxLayout="column"
+              class="value-legs-total-figure">
+            <mat-slide-toggle class="mat-toggle-creation"
+                              *ifAuthorized="'Financials.POSTINGMGT.PostingInterface',company:this.company"
+                              [formControl]="interfaceCtrl"
+                              [disabled]="isSummaryView">To interface</mat-slide-toggle>
+
+            <mat-slide-toggle class="mat-toggle-creation"
+                              *ifAuthorized="'Financials.POSTINGMGT.AUTHORIZEPOSTING',company:this.company"
+                              [formControl]="authForCtrl"
+                              [disabled]="isSummaryView">Authorize for posting</mat-slide-toggle>
+        </div>
+    </div>
+
+    <div fxLayout="row"
+         *ngIf="!isLoadingassignOnLoad">
+        <button mat-button
+                class='mat-button-discard'
+                *ngIf="!isLoadingassign"
+                (click)="onDiscardButtonClicked()">
+            DISCARD
+        </button>
+        <span class="fill-space"></span>
+        <button *ngIf="!isSummaryView && !isLoadingassign"
+                mat-raised-button
+                (click)="onSaveButtonClicked()">
+            SAVE
+        </button>
+    </div>
+</div>

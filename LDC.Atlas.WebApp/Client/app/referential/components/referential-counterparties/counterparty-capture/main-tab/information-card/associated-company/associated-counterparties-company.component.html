@@ -1,0 +1,65 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3>Associate Counterparties To Company</h3>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div fxLayout="column">
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <atlas-dropdown-select-list fxFlex='50%'
+                                            fxLayout="row"
+                                            fxLayoutAlign="start left"
+                                            label="Available Companies"
+                                            [fieldControl]="counterpartyCompaniesCtrl"
+                                            isEditable="false"
+                                            [readonly]="true"
+                                            [(options)]="counterpartCompanyList"
+                                            isEditable=true
+                                            [selectProperties]="counterpartyCompany"
+                                            (optionSelected)="optionSelected($event)"
+                                            [defaultSelected]="matrixData"
+                                            multiselect=true>
+                </atlas-dropdown-select-list>
+                <atlas-dropdown-select-list fxLayout="row"
+                                            fxLayoutAlign="start end"
+                                            fxFlex='50%'
+                                            label="Associated Companies"
+                                            [fieldControl]="counterpartyAssociateCompanyCtrl"
+                                            isEditable="false"
+                                            [readonly]="true"
+                                            [(options)]="associateCompany"
+                                            isEditable=true
+                                            selected="true"
+                                            [selectProperties]="counterpartyAssociate"
+                                            [defaultSelected]="associateCompany"
+                                            [checked]="true"
+                                            multiselect=true>
+                </atlas-dropdown-select-list>
+            </div>
+        </div>
+        <div class="btn-container">
+            <div fxFlex="50"
+                 fxLayout="row"
+                 fxAlignLayout="start start">
+                <button mat-button
+                        type="button"
+                        (click)="onCancelButtonClicked()">
+                    cancel
+                </button>
+            </div>
+            <div fxFlex="50"
+                 fxLayout="row"
+                 fxAlignLayout="start end">
+                <span class="fill-space"></span>
+                <button mat-raised-button
+                        type="button"
+                        (click)="onSaveButtonClicked()">
+                    save
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,69 @@
+<div class="main-container hub-menu">
+    <h1>Global Parameters Panel</h1>
+    <div fxLayout="row wrap"
+         fxLayoutAlign="start stretch"
+         fxLayoutGap="16px"
+         class="hub-menu-panel">
+
+        <mat-card (click)="onNavigateButtonClicked('/admin/global-parameters/functional-object/list')"
+                  class="active-card"
+                  *ifAuthorized="'Administration.GlobalParameters.CreateFunctionalObject',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">Functional Object</h2>
+            </mat-card-title>
+            <p class="no-margin">Query and create functional objects</p>
+        </mat-card>
+
+        <mat-card (click)="onPrivilegeNavigationClicked()"
+                  class="active-card"
+                  *ngIf="isPrivilege || isAdmin">
+            <mat-card-title>
+                <h2 class="no-margin">List Configuration</h2>
+            </mat-card-title>
+            <p class="no-margin">Configure List & Search and Contextual Search</p>
+        </mat-card>
+
+        <mat-card (click)="onNavigateButtonClicked('/admin/global-parameters/lock-management/list')"
+                  class="active-card"
+                  *ifAuthorized="'Administration.GlobalParameters.AccessLock',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">Lock Management</h2>
+            </mat-card-title>
+            <p class="no-margin">Manage Locked Entities</p>
+        </mat-card>
+    </div>
+
+    <div fxLayout="row wrap"
+         fxLayoutAlign="start stretch"
+         fxLayoutGap="16px"
+         class="hub-menu-panel">
+
+        <mat-card class="active-card">
+            <img mat-card-image
+                 src=".\assets\img\Companies_small.jpg">
+            <mat-card-title>
+                <h2 class="no-margin">Global It Settings</h2>
+            </mat-card-title>
+            <p class="no-margin">Manage main details of the application</p>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/admin/global-parameters/configuration-interface')">
+            <img mat-card-image
+                 src=".\assets\img\Companies_small.jpg">
+            <mat-card-title>
+                <h2 class="no-margin">Interface</h2>
+            </mat-card-title>
+            <p class="no-margin">Build and monitor interfaces</p>
+        </mat-card>
+
+        <mat-card class="active-card">
+            <img mat-card-image
+                 src=".\assets\img\Companies_small.jpg">
+            <mat-card-title>
+                <h2 class="no-margin">IDD & Translation</h2>
+            </mat-card-title>
+            <p class="no-margin">Manage translations and data dictionary</p>
+        </mat-card>
+    </div>
+</div>

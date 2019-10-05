@@ -1,0 +1,33 @@
+<mat-card style="width: 100%">
+    <mat-card-header>
+        <mat-card-title>
+            <h3>{{translationKeyPrefix + 'TITLE' | translate}}</h3>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div fxLayout="column"
+                 fxLayoutAlign="space-between start">
+                <span class="subtotal-title">{{translationKeyPrefix + 'QTY' | translate}}</span>
+                <span>{{totalQuantity |number:'1.2-3'}}</span>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="space-between start">
+                <span class="subtotal-title">{{translationKeyPrefix + 'QTY%' | translate}}</span>
+                <span>{{totalQuantityPercent|number:'1.2-2'}}</span>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="space-between start">
+                <span class="subtotal-title">{{translationKeyPrefix + 'INVOICE_VALUE' | translate}}</span>
+                <span>{{totalInvoiceValue|number:'1.2-2'}}</span>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="space-between start">
+                <span class="subtotal-title">{{translationKeyPrefix + 'INVOICE_VALUE' | translate}}%</span>
+                <span>{{totalInvoiceValuePercent|number:'1.2-2'}}</span>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

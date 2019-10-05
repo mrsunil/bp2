@@ -1,0 +1,95 @@
+<mat-card class="trade-capture-card counterparty-details">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Identity</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="start"
+             fxLayoutGap="8px">
+            <div class="custom-form"
+                 fxFlex="22%">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Legal Entity"
+                           autocomplete="off"
+                           [formControl]='legalEntityCtrl'>
+                </mat-form-field>
+                <mat-error *ngIf="legalEntityCtrl.hasError('maxlength')">
+                    Legal Entity should be at most 4 characters long
+                </mat-error>
+            </div>
+
+            <div class="custom-form"
+                 fxFlex="23%">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Legal Entity Name"
+                           autocomplete="off"
+                           [formControl]='legalEntityNameCtrl'>
+                </mat-form-field>
+                <mat-error *ngIf="legalEntityNameCtrl.hasError('maxlength')">
+                    Legal Entity Name should be at most 50 characters long
+                </mat-error>
+            </div>
+
+            <div fxFlex="22%">
+                <atlas-masterdata-user-preferences-input isEditable="true"
+                                                         [fieldControl]="functionalCcyCtrl"
+                                                         [options]="filteredFunctionalCurrencies"
+                                                         label="Functional Ccy"
+                                                         displayProperty="currencyCode"
+                                                         [selectProperties]="['currencyCode', 'description']"
+                                                         [errorMap]="currencyErrorMap"
+                                                         lightBoxTitle="Results for Functional Currency"
+                                                         gridId="currenciesGrid"
+                                                         (optionSelected)="functionalCurrencyCodeSelected($event)">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+
+            <div fxFlex="22%">
+                <atlas-masterdata-user-preferences-input isEditable="true"
+                                                         [fieldControl]="statutoryCcyCtrl"
+                                                         [options]="filteredStatutoryCurrencies"
+                                                         label="Statutory Ccy"
+                                                         displayProperty="currencyCode"
+                                                         [selectProperties]="['currencyCode', 'description']"
+                                                         [errorMap]="currencyErrorMap"
+                                                         lightBoxTitle="Results for Statutory Currency"
+                                                         gridId="currenciesGrid"
+                                                         (optionSelected)="statutoryCurrencyCodeSelected($event)">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="start"
+             fxLayoutGap="8px">
+            <div fxFlex="22%">
+                <atlas-dropdown-select [isEditable]="true"
+                                       label="Company Type"
+                                       [fieldControl]="companyTypeCtrl"
+                                       [options]="filteredCompanyTypeList"
+                                       displayProperty="enumEntityValue"
+                                       [selectProperties]="['enumEntityValue']"
+                                       isAutocompleteActivated="true"
+                                       [errorMap]="companyErrorMap"
+                                       [hasIcon]="true">
+                </atlas-dropdown-select>
+            </div>
+
+            <div fxFlex="26%">
+                <atlas-dropdown-select [isEditable]="true"
+                                       label="Company Platform"
+                                       [fieldControl]="companyPlatformCtrl"
+                                       [options]="filteredCompanyPlatformList"
+                                       displayProperty="enumEntityValue"
+                                       [selectProperties]="['enumEntityValue']"
+                                       isAutocompleteActivated="true"
+                                       [errorMap]="companyErrorMap"
+                                       [hasIcon]="true">
+                </atlas-dropdown-select>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,27 @@
+<div class="main-container">
+    <h2>
+        Default Accounting
+    </h2>
+    <div ag-grid="defaultAccountingGridOptions">
+        <ag-grid-angular class="ag-theme-material"
+                         [rowData]="defaultAccountRowData"
+                         [columnDefs]="defaultAccountColumnDefs"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         [rowHeight]=atlasAgGridParam.rowHeight>
+        </ag-grid-angular>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">
+            DISCARD
+        </button>
+        <button mat-button
+                [disabled]="!checkEdit"
+                (click)="onSaveButtonClicked()">
+            SAVE
+        </button>
+    </div>
+</div>

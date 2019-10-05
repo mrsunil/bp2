@@ -1,0 +1,84 @@
+@import "../../../../theme.scss";
+
+.mat-expansion-panel {
+    color: $white;
+    background-color: $secondary;
+    border-radius: 25px;
+}
+
+.mat-expansion-panel-header-title {
+    font-size: 16px !important;
+    color: $white !important;
+}
+
+.mat-expansion-panel:hover {
+    background-color: $secondary !important;
+}
+
+.mat-expansion-panel-header,
+.mat-expansion-panel {
+    &.mat-expanded {
+        border-radius: 3px 3px 0 0;
+    }
+}
+
+.mat-expansion-panel-body {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2),
+        0 8px 10px 1px rgba(0, 0, 0, .14),
+        0 3px 14px 2px rgba(0, 0, 0, .12);
+}
+
+.mat-menu-item {
+    color: $dark-text;
+}
+
+.atlas-company-picker-select {
+    width: 250px;
+    height: inherit;
+    font-size: 14px !important;
+    text-align: right;
+}
+
+.company-list {
+    margin: 0;
+    padding: 5px;
+    height: 24px;
+    line-height: 1.5;
+}
+
+.atlas-company-picker-option {
+    height: 30px !important;
+    text-align: left;
+}
+
+.static {
+    position: relative;
+    height: 35px;
+}
+
+.foreground-element {
+    z-index: 2;
+    position: relative;
+
+    &.mat-expansion-panel {
+        background-color: #605C5E !important;
+    }
+}
+
+.foreground-element-primary {
+    z-index: 2;
+    position: relative;
+
+    &.mat-expansion-panel {
+        background-color: #53c234 !important;
+    }
+}
+
+.company-chip {
+
+    &.mat-expansion-panel {
+        box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2),
+            0 8px 10px 1px rgba(0, 0, 0, .14),
+            0 3px 14px 2px rgba(0, 0, 0, .12) !important;
+    }
+}

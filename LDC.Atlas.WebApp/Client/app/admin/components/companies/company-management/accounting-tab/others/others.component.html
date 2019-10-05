@@ -1,0 +1,43 @@
+<div class="main-container">
+    <mat-card class="shipment-details">
+        <mat-card-header>
+            <mat-card-title>
+                <h2>Default Department</h2>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="row"
+                 fxLayoutAlign="start"
+                 fxLayoutGap="16px">
+                <div class="custom-form"
+                     fxFlex="35%">
+                    <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                             isEditable="true"
+                                                             [fieldControl]="deptCntrl"
+                                                             [options]="filteredDepartments"
+                                                             label="Department"
+                                                             displayProperty="description"
+                                                             [errorMap]="departmentErrorMap"
+                                                             [selectProperties]="['departmentCode','description']"
+                                                             lightBoxTitle="Results for Department"
+                                                             gridId="departmentsGrid">
+                    </atlas-masterdata-user-preferences-input>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">
+            DISCARD
+        </button>
+        <button mat-button
+                [disabled]="!checkEdit"
+                (click)="onSaveButtonClicked()">
+            Save
+        </button>
+    </div>
+</div>

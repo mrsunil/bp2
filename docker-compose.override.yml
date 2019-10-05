@@ -1,0 +1,171 @@
+version: '2.1'
+
+services:
+  webapp:
+    container_name: webapp
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - TradeUrl=http://trading.api
+    ports:
+      - "7000:80"
+    network_mode: "LDC"
+
+  trading.api:
+    container_name: trading
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7001:80"
+    network_mode: "LDC"
+  
+  execution.api:
+    container_name: execution
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7002:80"
+    network_mode: "LDC"
+      
+  masterdata.api:
+    container_name: masterdata
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7003:80"
+    network_mode: "LDC"
+
+  controlling.api:
+    container_name: controlling
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7004:80"
+    network_mode: "LDC"
+
+  preaccounting.api:
+    container_name: preaccounting
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7005:80"
+    network_mode: "LDC"
+    
+  useridentity.api:
+    container_name: useridentity
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7006:80"
+    network_mode: "LDC"
+
+  document.api:
+    container_name: document 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7007:80"
+    network_mode: "LDC"
+
+  configuration.api:
+    container_name: configuration 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7008:80"
+    network_mode: "LDC"
+
+  freeze.api:
+    container_name: freeze 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7009:80"
+    network_mode: "LDC"
+
+  reporting.api:
+    container_name: reporting 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7010:80"
+    network_mode: "LDC"
+
+  processor.api:
+    container_name: processor 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7011:80"
+    network_mode: "LDC"
+
+  paymentrequestinterface.api:
+    container_name: paymentrequestinterface 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7012:80"
+    network_mode: "LDC"
+
+  lock.api:
+    container_name: lock 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7013:80"
+    network_mode: "LDC"
+
+  accountinginterface.api:
+    container_name: accountinginterface 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7015:80"
+    network_mode: "LDC"
+  
+  genericbackinterface.api:
+    container_name: genericbackinterface 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7014:80"
+    network_mode: "LDC"
+
+  interface.api:
+    container_name: interface
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7016:80"
+    network_mode: "LDC"
+
+  audit.api:
+    container_name: audit
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "7017:80"
+    network_mode: "LDC"
+            
+  cache:
+    container_name: cache
+    ports: 
+      - "6379:6379"
+    network_mode: "LDC"

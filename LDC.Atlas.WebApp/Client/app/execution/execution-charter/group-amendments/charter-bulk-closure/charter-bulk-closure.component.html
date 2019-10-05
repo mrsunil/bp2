@@ -1,0 +1,15 @@
+<mat-card *ifAuthorized="'Trades.Physicals.CloseTrade',company:this.company">
+    <mat-card-title>
+        <h2>Bulk Closure</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div *ngFor="let groupFunctionType of charterGroupFunctionTypeMenu">
+            <mat-checkbox #charterbulkCtrl
+                          [formControl]="charterBulkClosureCtrl"
+                          [value]="groupFunctionType.charterFunctionTypeCode"
+                          (change)="onSelectionChange($event,charterbulkCtrl.checked, groupFunctionType)">
+                {{groupFunctionType.name}}
+            </mat-checkbox>
+        </div>
+    </mat-card-content>
+</mat-card>

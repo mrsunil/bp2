@@ -1,0 +1,40 @@
+<div [class.displayMode]="!isEditable"
+     class="custom-form contextual"
+     [class.isEmpty]="!formControl.value"
+     [class.required-field]="isRequired">
+    <mat-form-field floatLabel="never">
+
+        <input [class.displayMode]="isDisabledField"
+               type="text"
+               matInput
+               [formControl]="formControl"
+               (click)="onInputClicked()"
+               (focusout)="onFocusOut()"
+               [matAutocomplete]="autocomplete"
+               [title]="getDescription()">
+        <mat-placeholder class="placeholder">{{isRequired ?'Required *':null}}</mat-placeholder>
+        <mat-icon matSuffix
+                  class="compass-icon"
+                  *ngIf="!isDisabled() && showContextualSearchIcon"
+                  (click)="onExploreClicked($event)">explore</mat-icon>
+
+        <mat-autocomplete panelWidth="auto"
+                          #autocomplete="matAutocomplete"
+                          (optionSelected)="selectionChanged($event);"
+                          [displayWith]="displayFn.bind(this)">
+            <span *ngIf="!isDisabledField">
+                <mat-option *ngFor="let item of getLimitedNumberOfOptions()"
+                            [value]="valueProperty ? item[valueProperty] : item">
+                    {{ getDisplayedValue(item) }}
+                </mat-option>
+                <mat-option disabled
+                            class="autocomplete-option-with-action"
+                            *ngIf="showContextualSearchIcon">
+                    <a (click)="onExploreClicked($event)">{{getNumberOfOptionsNotDisplayed()}} more for
+                        "{{getCurrentValue()}}"</a>
+                </mat-option>
+            </span>
+        </mat-autocomplete>
+        <mat-error *ngIf="formControl.errors && isEditable">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+</div>

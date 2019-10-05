@@ -1,0 +1,158 @@
+<atlas-filter-set-display (filtersChanged)=onFilterSetDetailsChange($event)
+                          [searchCode]="searchCode"
+                          [columnConfiguration]="columnConfiguration"
+                          [ngClass]="{'hidden-during-loading':!isFilterSetDisplay}"
+                          [gridCode]="gridCode"
+                          [company]="company">
+</atlas-filter-set-display>
+
+<atlas-empty-state *ngIf="!loadOnInit"
+                   [title]="'No results to display'"
+                   [message]="'Please use the search function to display the grid'">
+</atlas-empty-state>
+<mat-card class="charter-total mat-elevation-z1"
+          *ngIf="isLimitReached">
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutGap="2%"
+             fxLayoutAlign="start stretch">
+            <div fxLayout="column"
+                 fxLayoutAlign="center center"
+                 fxFlex="4">
+                <mat-icon class="icon-padding title-icon">warning</mat-icon>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="center start"
+                 fxFlex="60">
+                <h2 class="no-margin warning-title">Maximum criteria limit reached</h2>
+                <p class="no-margin">{{limitErrorMessage}}</p>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutGap="2%"
+                 fxLayoutAlign="end end"
+                 fxFlex>
+                <span class="fill-space"></span>
+                <button mat-button
+                        (click)="onDismissClicked()">Dismiss</button>
+
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+<mat-card [hidden]="!loadOnInit"
+          class="list-and-search-grid-card">
+    <div fxLayout="row"
+         class="quick-sum-div-height"
+         fxLayoutAlign="space-between center">
+        <mat-card-title>{{gridTitle}}</mat-card-title>
+        <div fxLayout="row"
+             fxLayoutAlign="space-around start">
+            <div *ngIf="totalSumShow"
+                 class="quick-sum">
+                <mat-chip>
+                    Amount : {{formatValue(amountSum)}} ||
+                    {{funcCurrencyTitle}} : {{formatValue(functionalCcySum)}} ||
+                    {{statCurrencyTitle}} : {{formatValue(statutoryCcySum)}}
+                </mat-chip>
+            </div>
+            <atlas-ag-grid-user-preferences *ngIf="agGridOptions && agGridOptions.columnDefs"
+                                            [gridOptions]="agGridOptions"
+                                            [company]="company"
+                                            [gridId]="gridCode"
+                                            [sharingEnabled]="hasGridSharing"
+                                            [hasDeleteViewPrivilege]="hasDeleteViewPrivilege"
+                                            [isCustomExportEnabled]="exportAdapter !== undefined && exportAdapter !== null"
+                                            [isCsvExportEnabled]="!exportAdapter"
+                                            (componentLoaded)="onUserPreferencesLoaded()"
+                                            (gridViewSelected)="onGridViewSelected($event)"
+                                            (exportClicked)="onExportButtonClicked()"
+                                            #userPreferences>
+            </atlas-ag-grid-user-preferences>
+            <atlas-grid-enlargement *ngIf="agGridOptions && agGridOptions.columnDefs"
+                                    [gridOptions]="agGridOptions"
+                                    [hasRangeSelectionOption]="true"
+                                    [summableColumns]="allowedColumnsforQuickSum"
+                                    [userPreferencesParameters]="gridPreferences"
+                                    (rowClicked)="onRowClicked($event)"
+                                    (dialogClose)="onGridEnlargementClose($event)">
+            </atlas-grid-enlargement>
+        </div>
+    </div>
+
+    <div *ngIf="hasQuickSum"
+         class="quick-sum-div-height"
+         fxLayout="row"
+         fxLayoutAlign="space-between center">
+        <mat-slide-toggle mat-raised-button
+                          (change)="toggleQuickSum()">Quick Sum Mode</mat-slide-toggle>
+        <div fxLayout="row"
+             fxLayoutAlign="space-around center">
+
+            <div *ngFor="let column of selectedColumnsArray">
+                <span class="quick-sum-span"
+                      *ngIf="quickSumModeActivated">{{column.name}} : {{column.sum | number }} </span>
+            </div>
+            <button mat-button
+                    (click)="onClearSelectionClicked()"
+                    class="mat-button-user-margin"
+                    *ngIf="quickSumModeActivated">Clear Selection</button>
+        </div>
+    </div>
+    <div fxLayout="row"
+         *ngIf="toogleText"
+         fxLayoutAlign="space-between center"
+         class="toggle-field">
+        <mat-slide-toggle mat-raised-button
+                          (change)="toggleChanged()">{{toogleText}}
+        </mat-slide-toggle>
+    </div>
+    <div class="ag-grid-div-container"
+         ag-grid="agGridOptions"
+         [ngClass]='classApplied'
+         [hidden]="isLoading || !loadOnInit">
+        <ag-grid-angular style=" height: 100%;"
+                         class="ag-theme-material"
+                         [rowData]="agGridRows"
+                         [columnDefs]="agGridCols"
+                         [enableColResize]="true"
+                         [pagination]="true"
+                         [paginationPageSize]="pageSize"
+                         [enableSorting]="true"
+                         [gridOptions]="agGridOptions"
+                         (gridReady)="onGridReady($event)"
+                         (rowClicked)="onRowClicked($event)"
+                         (rowSelected)="onRowSelected($event)"
+                         rowSelection="multiple"
+                         [enableRangeSelection]="true"
+                         [groupMultiAutoColumn]="groupMultiAutoColumn"
+                         [rowGroupPanelShow]="rowGroupPanelShow"
+                         (rangeSelectionChanged)="onRangeSelectionChanged($event)"
+                         (columnVisible)="onColumnVisibilityChanged($event)"
+                         enableFilter
+                         [context]="gridContext"
+                         (filterChanged)="onFilterChanged($event)"
+                         [rowHeight]="atlasAgGridParam.rowHeight"
+                         [headerHeight]="atlasAgGridParam.headerHeight"
+                         [excelStyles]="excelStyles">
+        </ag-grid-angular>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         *ngIf="isLoading && loadOnInit"
+         class="loading">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>    
+</mat-card>
+<mat-card *ngIf="gridCode === tradeChildSectionListGridCode">
+    <div class="total-box">
+        <h2 class="no-margin total-figure">
+            Total Quantity : <span class="total-figure-value">{{totalQuantityInSplits |number:'1.3-3'}}
+            </span>
+        </h2>
+        <h2 class="no-margin total-figure">Total Invoiced Quantity : <span
+                    class="total-figure-value">{{totalInvoiceValuesInSplits |number:'1.3-3'}}
+            </span>
+        </h2>
+    </div>
+</mat-card>

@@ -1,0 +1,253 @@
+<div [formGroup]="physicalsTabMainPhysicalsFormGroup"
+     class="margin">
+    <h2>Main Physicals</h2>
+
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="16px">
+        <div class="custom-form"
+             fxFlex="35%">
+            <atlas-masterdata-user-preferences-input isEditable="true"
+                                                     [fieldControl]="priceUnitCtrl"
+                                                     [options]="filteredPriceUnits"
+                                                     label="Price Unit"
+                                                     displayProperty="priceCode"
+                                                     [selectProperties]="['priceCode', 'description']"
+                                                     lightBoxTitle="Results for Price Unit"
+                                                     gridId="priceUnitsGrid">
+            </atlas-masterdata-user-preferences-input>
+        </div>
+        <div fxFlex="30%">
+            <h2>Crop Year Format</h2>
+            <mat-button-toggle-group [formControl]="cropYearCtrl">
+                <mat-button-toggle *ngFor="let cropYearFormat of cropYearFormats"
+                                   [value]="cropYearFormat.enumEntityId">{{cropYearFormat.enumEntityValue}}
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+    </div>
+
+    <mat-accordion class="cash-accordion">
+        <mat-expansion-panel [expanded]="isPanelExpanded">
+            <mat-expansion-panel-header [collapsedHeight]="'35px'"
+                                        [expandedHeight]="'35px'"
+                                        class="expansion-header">
+                <mat-panel-title>
+                    <h2>InterCo Confirmation e-mail</h2>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="row"
+                 fxLayoutAlign="start"
+                 fxLayoutGap="16px">
+                <div class="custom-form"
+                     fxFlex="200%">
+                    <div>
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="InterCo Confirmation e-mail"
+                                   [matAutocomplete]="intercoUserList"
+                                   [formControl]="intercoEmailCtrl"
+                                   [matTooltip]="'InterCo Confirmation e-mail'"
+                                   autocomplete="off">
+                            <mat-autocomplete #intercoUserList="matAutocomplete"
+                                              [panelWidth]="panelSize">
+                                <mat-option *ngFor="let user of filteredIntercoUserList"
+                                            [value]="user.email">{{user.email}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <mat-error *ngIf="intercoEmailCtrl.hasError('inDropdownList')">
+                                Value not in list
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-between end">
+                        <button mat-button
+                                [disabled]="!isEdit"
+                                (click)="onIntercoAddToListClicked()">
+                            ADD TO LIST
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between start">
+                <div class="chip-list">
+                    <atlas-chip-list *ngIf="interCoChipStringList"
+                                     [textList]='interCoChipStringList'
+                                     removable=true
+                                     disabled="!isEdit"
+                                     (removedElement)="onInterCoRemoveClicked($event)"></atlas-chip-list>
+                    <div *ngIf="!interCoChipStringList">
+                        <div fxLayout="row"
+                             fxLayoutAlign="center center"
+                             fxLayoutWrap
+                             fxLayoutGap="20px">
+                            <mat-spinner color="accent"></mat-spinner>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion class="cash-accordion">
+        <mat-expansion-panel [expanded]="isPanelExpanded">
+            <mat-expansion-panel-header [collapsedHeight]="'35px'"
+                                        [expandedHeight]="'35px'"
+                                        class="expansion-header">
+                <mat-panel-title>
+                    <h2>No-interCo Confirmation e-mail</h2>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="row"
+                 fxLayoutAlign="start"
+                 fxLayoutGap="16px">
+                <div class="custom-form"
+                     fxFlex="200%">
+                    <div>
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="No-interCo Confirmation e-mail"
+                                   [matAutocomplete]="noIntercoUserList"
+                                   [formControl]="noIntercoEmailCtrl"
+                                   [matTooltip]="'No-interCo Confirmation e-mail'"
+                                   autocomplete="off">
+                            <mat-autocomplete #noIntercoUserList="matAutocomplete"
+                                              [panelWidth]="panelSize">
+                                <mat-option *ngFor="let user of filteredNoIntercoUserList"
+                                            [value]="user.email">{{user.email}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <mat-error *ngIf="noIntercoEmailCtrl.hasError('inDropdownList')">
+                                Value not in list
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-between end">
+                        <button mat-button
+                                [disabled]="!isEdit"
+                                (click)="onNoIntercoAddToListClicked()">
+                            ADD TO LIST
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between start">
+                <div class="chip-list">
+                    <atlas-chip-list *ngIf="noInterCoChipStringList"
+                                     [textList]='noInterCoChipStringList'
+                                     removable=true
+                                     disabled="!isEdit"
+                                     (removedElement)="onNoInterCoRemoveClicked($event)"></atlas-chip-list>
+                    <div *ngIf="!noInterCoChipStringList">
+                        <div fxLayout="row"
+                             fxLayoutAlign="center center"
+                             fxLayoutWrap
+                             fxLayoutGap="20px">
+                            <mat-spinner color="accent"></mat-spinner>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <div fxLayout="column"
+         fxLayoutAlign="space-between start"
+         fxLayoutGap="16px">
+        <div fxLayout="row"
+             fxLayoutAlign="start"
+             fxLayoutGap="16px">
+            <div class="custom-form"
+                 fxFlex="200%">
+                <mat-slide-toggle [formControl]="businessSectorTradingCtrl"
+                                  (change)="onBusinessSectorTradingToggleChanged($event)">
+                    Business Sector Nominal for Trading Operation
+                </mat-slide-toggle>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="start"
+             fxLayoutGap="16px">
+            <div class="custom-form"
+                 fxFlex="200%">
+                <mat-slide-toggle [formControl]="businessSectorPostingCtrl"
+                                  (change)="onBusinessSectorPostingToggleChanged($event)">
+                    Business Sector Nominal for Posting Purpose
+                </mat-slide-toggle>
+            </div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-card class="Main-Physicals-Province-Details">
+        <mat-card-header>
+            <mat-card-title>
+                Province configuration
+            </mat-card-title>
+            <div class='mat-toggle-height'
+                 fxFlex="80%"
+                 fxLayoutAlign="end start">
+                Province Activation
+                <mat-slide-toggle mat-raised-button
+                                  [checked]="isProvinceActivationToggleChecked"
+                                  [formControl]="provinceActivationCtrl"
+                                  (change)="onProvinceActivation($event)">
+                </mat-slide-toggle>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="row"
+                 fxLayoutAlign="start center"
+                 fxLayoutGap="16px">
+                <div class="custom-form"
+                     fxFlex="50%"
+                     [class.isEmpty]="!provinceConfigurationCtrl.value"
+                     [class.required-field]="provinceConfigurationCtrl.isRequired"
+                     [class.isEmpty]="!branchConfigurationCtrl.value"
+                     [class.required-field]="branchConfigurationCtrl.isRequired">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Province"
+                               [required]="provinceConfigurationCtrl.isRequired"
+                               [matAutocomplete]="provinceControl"
+                               [formControl]="provinceConfigurationCtrl"
+                               [matTooltip]="'Province for the company'">
+                        <mat-autocomplete #provinceControl="matAutocomplete"
+                                          [panelWidth]="panelSize"
+                                          (closed)="clearDescription()"
+                                          (optionSelected)="onProvinceSelected($event.option.value)">
+                            <mat-option *ngFor="let item of filteredProvince"
+                                        [value]="item.stateCode">
+                                {{item.stateCode}} | {{item.description}}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <mat-error *ngIf="provinceConfigurationCtrl.hasError('required')">
+                            This field is required
+                        </mat-error>
+                        <mat-error *ngIf="provinceConfigurationCtrl.hasError('inDropdownList')">
+                            Value not in list
+                        </mat-error>
+                        <mat-hint *ngIf="provinceConfigurationCtrl.isRequired && provinceConfigurationCtrl.enabled">
+                            Required *
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">
+            DISCARD
+        </button>
+        <button mat-button
+                [disabled]="!isEdit"
+                (click)="onSaveButtonClicked()">
+            Save
+        </button>
+    </div>
+</div>

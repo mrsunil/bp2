@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.Lock</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.Lock.Controllers.LocksController.GetLocks(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of locks.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Lock.Controllers.LocksController.GetContractLockState(System.String,System.Int64,System.String)">
+            <summary>
+            Returns the list of locks.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="resourceId">The resource identifier.</param>
+            <param name="applicationSessionId">Application Session Id</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Lock.Controllers.LocksController.DeleteLocks(System.String,LDC.Atlas.Services.Lock.Application.Commands.DeleteLocksCommand)">
+            <summary>
+            Deletes a lock.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="deleteLocksCommand">Locks Ids to be deleted.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Lock.Controllers.LocksController.RefreshLockOwnership(System.String,LDC.Atlas.Services.Lock.Application.Commands.RefreshLockOwnershipCommand)">
+            <summary>
+            Refresh the lock ownership.
+            </summary>
+            <param name="company">Company</param>
+            <param name="refreshLockOwnershipCommand">Locks Ids to be deleted.</param>
+        </member>
+    </members>
+</doc>

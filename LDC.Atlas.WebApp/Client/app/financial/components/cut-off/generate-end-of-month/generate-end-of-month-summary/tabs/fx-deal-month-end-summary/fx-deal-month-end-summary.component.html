@@ -1,0 +1,158 @@
+<div class="main-container">
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="column">
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between center">
+                    <atlas-department-dropdown #departmentDropdownComponent
+                                               (departmentSelectionChanged)="onDepartmentSelectionChanges()">
+                    </atlas-department-dropdown>
+                    <atlas-dealt-currency-dropdown #dealtCurrencyDropdownComponent
+                                                   (dealtCurrencySelectionChanged)="onDealNumberSelectionChanges()">
+                    </atlas-dealt-currency-dropdown>
+                    <atlas-settlement-currency-dropdown #settlementCurrencyDropdownComponent
+                                                        (settlementCurrencySelectionChanged)="onSettlementCurrencySelectionChanges()">
+                    </atlas-settlement-currency-dropdown>
+                    <atlas-deal-number-dropdown #dealNumberDropdownComponent>
+                    </atlas-deal-number-dropdown>
+                    <button (click)="onApplyButtonClicked()"
+                            mat-button>
+                        APPLY
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <div>
+          <div *ngIf="isMappingError && !isCurrentDatabase">
+            <div *ngIf="clientAccountMappingErrorMessages.length > 0">
+                <mat-card class="warning-card warning-banner-card">
+                    <div class="warning-circle-icon">
+                        <mat-icon>warning_outline</mat-icon>
+                    </div>
+                    <mat-card-header>
+                        <mat-card-title>
+                            <h4 class="no-margin">Mapping Error for C2C code(s)</h4>
+                        </mat-card-title>
+    
+                        <mat-card-subtitle>
+                            This document cannot be posted due to missing C2C(s) for
+                            {{clientAccountMappingErrorMessages}}. Please contact the accountant.
+                        </mat-card-subtitle>
+                        <button class="remove-button"
+                                mat-button
+                                (click)="onWarningRemoveButtonClicked($event)">REMOVE
+                        </button>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+    
+            <div *ngIf="costTypeMappingErrorMessages.length > 0">
+                <mat-card class="warning-card warning-banner-card">
+                    <div class="warning-circle-icon">
+                        <mat-icon>warning_outline</mat-icon>
+                    </div>
+                    <mat-card-header>
+                        <mat-card-title>
+                            <h4 class="no-margin">Mapping Error for Cost Type code(s)</h4>
+                        </mat-card-title>
+    
+                        <mat-card-subtitle>
+                            This document cannot be posted due to missing cost type code(s) for
+                            {{costTypeMappingErrorMessages}}. Please contact the accountant.
+                        </mat-card-subtitle>
+                        <button class="remove-button"
+                                mat-button
+                                (click)="onWarningRemoveButtonClicked($event)">REMOVE
+                        </button>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+    
+            <div *ngIf="departmentMappingErrorMessages.length > 0">
+                <mat-card class="warning-card warning-banner-card">
+                    <div class="warning-circle-icon">
+                        <mat-icon>warning_outline</mat-icon>
+                    </div>
+                    <mat-card-header>
+                        <mat-card-title>
+                            <h4 class="no-margin">Mapping Error for Department code(s)</h4>
+                        </mat-card-title>
+    
+                        <mat-card-subtitle>
+                            This document cannot be posted due to department code(s) for
+                            {{departmentMappingErrorMessages}}. Please contact the accountant.
+                        </mat-card-subtitle>
+                        <button class="remove-button"
+                                mat-button
+                                (click)="onWarningRemoveButtonClicked($event)">REMOVE
+                        </button>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+    
+            <div *ngIf="nominalAccountMappingErrorMessages.length > 0">
+                <mat-card class="warning-card warning-banner-card">
+                    <div class="warning-circle-icon">
+                        <mat-icon>warning_outline</mat-icon>
+                    </div>
+                    <mat-card-header>
+                        <mat-card-title>
+                            <h4 class="no-margin">Mapping Error for Nominal Account code(s)</h4>
+                        </mat-card-title>
+    
+                        <mat-card-subtitle>
+                            This document cannot be posted due to missing nominal account(s) for
+                            {{nominalAccountMappingErrorMessages}}.Please contact the accountant.
+                        </mat-card-subtitle>
+                        <button class="remove-button"
+                                mat-button
+                                (click)="onWarningRemoveButtonClicked($event)">REMOVE
+                        </button>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+    
+        </div>
+    </div>
+    <div>
+        <mat-tab-group [selectedIndex]="tabIndex"
+                       (selectedIndexChange)="onSelectedIndexChanged($event)">
+
+            <mat-tab label="Details"></mat-tab>
+            <mat-tab label="Postings"></mat-tab>
+        </mat-tab-group>
+        <div class="content-tab">
+            <mat-tab-group [selectedIndex]="tabIndex">
+
+                <mat-tab>
+                    <atlas-detail-tab-fx-deal-month-end #fxDealDetail>
+                    </atlas-detail-tab-fx-deal-month-end>
+                </mat-tab>
+                <mat-tab>
+                    <atlas-posting-tab-fx-deal-month-end #fxDealPosting>
+                    </atlas-posting-tab-fx-deal-month-end>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start"
+         class="button-details">
+        <div fxLayout="column"
+             fxLayoutAlign="start">
+            <button (click)="onDiscardButtonClicked()"
+                    mat-button>
+                DISCARD
+            </button>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start">
+            <button mat-raised-button
+                    (click)="onGeneratePostingsButtonClicked()"
+                    [disabled]="disableButton || (isMappingError || isCurrentDatabase)">
+                GENERATE POSTINGS
+            </button>
+        </div>
+    </div>
+</div>

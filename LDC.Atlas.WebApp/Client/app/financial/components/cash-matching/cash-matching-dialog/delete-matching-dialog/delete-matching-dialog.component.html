@@ -1,0 +1,28 @@
+<h3 mat-dialog-title> Delete Match Flag ?
+    <button mat-icon-button
+            mat-dialog-close
+            class="close-dialog-btn">
+        <mat-icon aria-label="Closing button">clear</mat-icon>
+    </button></h3>
+<mat-dialog-content class="mat-dialog-content">
+    <div fxLayout="row"
+         fxLayoutAlign="none center"
+         fxLayoutWrap
+         fxLayoutGap="10px">
+        <p>{{dialogData.text}} {{dialogData.value}}.</p>
+    </div>
+</mat-dialog-content>
+<div fxLayout="column">
+    <div fxLayout="row"
+         class="confirmation-input-container"
+         fxLayoutGap="30%">
+        <div fxLayout="row"
+             fxFlex="100%"
+             fxLayoutAlign="space-between end">
+            <button mat-button
+                    (click)="onCancelButtonClicked()">{{dialogData.cancelButton}}</button>
+            <button mat-button
+                    (click)="onProceedButtonClicked()">{{dialogData.okButton}}</button>
+        </div>
+    </div>
+</div>

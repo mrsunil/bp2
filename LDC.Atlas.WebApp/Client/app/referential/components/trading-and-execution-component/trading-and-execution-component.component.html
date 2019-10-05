@@ -1,0 +1,35 @@
+<div class="main-container hub-menu">
+    <div fxLayout="row"
+         fxLayout.sm="row wrap"
+         fxLayout.xs="column"
+         fxLayoutAlign="space-between stretch"
+         fxLayoutAlign.sm="space-around stretch"
+         fxLayoutAlign.xs="center center"
+         fxLayoutGap="16px"
+         fxLayoutGap.sm="0"
+         class="hub-menu-panel"
+         [hidden]="isLoading">
+
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/referential/tradeexecution/counterparties')">
+            <mat-card-title>
+                <h2 class="no-margin">Counterparties</h2>
+            </mat-card-title>
+            <p class="no-margin">To Manage Counterparty Details</p>
+        </mat-card>
+    </div>
+
+    <div *ngIf="isLoading">
+        <mat-card>
+            <h2>Loading</h2>
+            <div class="custom-line-title"></div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 fxLayoutGap="20px">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.Processor</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.Processor.Extensions.ServiceConfigurationExtensions.AddAtlasServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Use this extension method in order to add all the services that are required for the custom authorization.
+            </summary>
+            <param name="services">The Microsoft.Extensions.DependencyInjection.IServiceCollection.</param>
+            <param name="configuration">Configuration to use.</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.Processor.Services.AtlasService">
+            <summary>
+            Type HTTP client to query the Atlas APIs.
+            See: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-2.1#typed-clients
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,87 @@
+<mat-card class="mat-elevation-z1 padding-small">
+    <div class="header-content">
+
+        <div class="toolbar-div menu-bar">
+            <div fxLayout="row"
+                 fxLayoutAlign="start center"
+                 fxLayoutGap="16px">
+                <h2>{{viewName}}</h2>
+            </div>
+            <span class="fill-space"></span>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="end center"
+                 fxFlex="20"
+                 fxLayoutGap="16px">
+
+                <a matTooltip="Save"
+                   *ngIf="isEditMode"
+                   class="menu-bar-action-icon">
+                    <mat-icon class="white-icon margin-top"
+                              (click)="onSaveButtonClicked()">save</mat-icon>
+                </a>
+
+                <a matTooltip="Edit"
+                   *ngIf="!isEditMode"
+                   class="menu-bar-action-icon">
+                    <mat-icon class="white-icon margin-top"
+                              (click)="onEditClicked()">edit</mat-icon>
+                </a>
+            </div>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="start end"
+             fxLayoutGap="16px">
+            <atlas-form-input fxFlex="20%"
+                              [fieldControl]="createdByCtrl"
+                              [isEditable]="true"
+                              label="Created By">
+            </atlas-form-input>
+            <atlas-form-input fxFlex="20%"
+                              [fieldControl]="creationDateCtrl"
+                              [isEditable]="true"
+                              label="On">
+            </atlas-form-input>
+            <atlas-form-input fxFlex="20%"
+                              [fieldControl]="lastAmendedByCtrl"
+                              [isEditable]="true"
+                              label="Last Amended By">
+            </atlas-form-input>
+            <atlas-form-input fxFlex="20%"
+                              [fieldControl]="modifiedDateCtrl"
+                              [isEditable]="true"
+                              label="On">
+            </atlas-form-input>
+        </div>
+
+    </div>
+
+    <div style="width: 100%; height:100%">
+        <div ag-grid="charterGridOptions"
+             class="ag-theme-material pointer-cursor"
+             style="width: 100%; height:100%">
+            <ag-grid-angular style=" height:100%;"
+                             class="ag-theme-material"
+                             [rowData]="contextualGridRows"
+                             [columnDefs]="contextualViewGridColumns"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             (cellValueChanged)="onCellValueChanged($event)"
+                             [frameworkComponents]="gridComponents"
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             enableFilter>
+            </ag-grid-angular>
+        </div>
+    </div>
+</mat-card>
+<div fxLayout="row"
+     fxLayoutAlign="center center"
+     fxLayoutWrap
+     *ngIf="isLoading"
+     class="loading">
+    <mat-spinner color="accent"></mat-spinner>
+</div>

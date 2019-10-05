@@ -1,0 +1,17 @@
+<atlas-financial-tab-group hasAddButton=true
+                           buttonText="CUT-OFF ACTIONS">
+</atlas-financial-tab-group>
+
+<div class="main-container">
+    <atlas-freeze-header-filter (displayButtonClicked)="onDisplayButtonClicked()"
+                                toogleText="Accounting data extraction"
+                                #freezeHeaderFilterComponent>
+    </atlas-freeze-header-filter>
+    <atlas-freeze-grid #grid
+                       [freezeMenuActions]="freezeMenuActions"
+                       [freezeGridContextualMenuActions]="freezeGridContextualMenuActions"
+                       (menuActionClicked)="onMenuActionClicked($event)"
+                       [rowData]="rowData"
+                       [isLoading]="isLoading"
+                       multipleSelection=true></atlas-freeze-grid>
+</div>

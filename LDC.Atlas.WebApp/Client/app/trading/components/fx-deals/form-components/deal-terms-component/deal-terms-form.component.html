@@ -1,0 +1,51 @@
+<mat-card class="fx-deals-capture Deal terms details">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Deal Terms</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="1%">
+            <div fxFlex="25%">
+                <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                         isEditable="true"
+                                                         [fieldControl]="dealTypeCtrl"
+                                                         label="Deal Type"
+                                                         [options]="filteredFxTradeTypes"
+                                                         displayProperty="code"
+                                                         [selectProperties]="['code','description']"
+                                                         lightBoxTitle="Results for Fx Deal Types"
+                                                         gridId="fxTradeTypeGrid"
+                                                         (onBlankSelected)="onBlankSelectionChanged();"
+                                                         (optionSelected)="onDealTypeSelectionChanged($event);">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+            <div fxFlex="25%"
+                 class="custom-form"
+                 [class.required-field]="contractDateCtrl.isRequired">
+
+                <atlas-date-picker fxFlex="100%"
+                                   [errorMap]="contractDateErrorMap"
+                                   [max]="maxDate"
+                                   label="Contract Date"
+                                   [fieldControl]="contractDateCtrl"
+                                   (dateChanged)="onContractDateChanged($event)"
+                                   [isEditable]="contractDateCtrl.enabled">
+                </atlas-date-picker>
+            </div>
+            <div fxFlex="25%"
+                 class="custom-form"
+                 [class.required-field]="maturityDateCtrl.isRequired">
+                <atlas-date-picker fxFlex="100%"
+                                   [errorMap]="maturityDateErrorMap"
+                                   label="Maturity Date"
+                                   [fieldControl]="maturityDateCtrl"
+                                   [isEditable]="maturityDateCtrl.enabled"
+                                   (dateChanged)="onDateSelectionChanged($event)">
+                </atlas-date-picker>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

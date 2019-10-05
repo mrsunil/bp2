@@ -1,0 +1,106 @@
+<a mat-list-item
+   [class.active]="isActive([company,'home'])"
+   routerLink="/{{company}}/home"
+   class="menu-icon">
+    <mat-icon matListIcon>home</mat-icon>
+    <a mat-line>Home</a>
+</a>
+<a mat-list-item
+   *ifAuthorized="'Trades',Company:this.company"
+   [class.active]="isActive([company,'trades'])"
+   routerLink="/{{company}}/trades"
+   class="menu-icon">
+    <atlas-privilege-level1-icon matListIcon
+                                 privilegeLevel1Name="Trades">
+    </atlas-privilege-level1-icon>
+    <a mat-line>Trades</a>
+</a>
+<a mat-list-item
+   *ifAuthorized="'Charters',Company:this.company"
+   [class.active]="isActive([company,'execution','charter'])"
+   routerLink="/{{company}}/execution/charter"
+   class="menu-icon">
+    <atlas-privilege-level1-icon matListIcon
+                                 privilegeLevel1Name="Charters">
+    </atlas-privilege-level1-icon>
+    <a mat-line>Charters</a>
+</a>
+<a mat-list-item
+   *ifAuthorized="'Invoices',company:this.company"
+   [class.active]="isActive([company,'execution','invoicing'])"
+   routerLink="/{{company}}/execution/invoicing/home"
+   class="menu-icon">
+    <atlas-privilege-level1-icon matListIcon
+                                 privilegeLevel1Name="Invoices">
+    </atlas-privilege-level1-icon>
+    <a mat-line>Invoices</a>
+</a>
+<a mat-list-item
+   *ifAuthorized="'Cash',Company:this.company"
+   [class.active]="isActive([company, 'execution', 'cash'])"
+   routerLink="/{{company}}/execution/cash"
+   class="menu-icon">
+    <atlas-privilege-level1-icon matListIcon
+                                 privilegeLevel1Name="Cash">
+    </atlas-privilege-level1-icon>
+    <a mat-line>Cash</a>
+</a>
+<a mat-list-item
+   *ifAuthorized="'Financials',Company:this.company"
+   [class.active]="isActive([company,'financial'])"
+   routerLink="/{{company}}/financial"
+   class="menu-icon">
+    <atlas-privilege-level1-icon matListIcon
+                                 privilegeLevel1Name="Financials">
+    </atlas-privilege-level1-icon>
+    <a mat-line>Financials</a>
+</a>
+<a mat-list-item
+   *ifAuthorized="'Reports',company:this.company"
+   [class.active]="isActive([company,'reporting'])"
+   routerLink="/{{company}}/reporting"
+   class="menu-icon">
+    <atlas-privilege-level1-icon matListIcon
+                                 privilegeLevel1Name="Reports">
+    </atlas-privilege-level1-icon>
+    <a mat-line>Reports</a>
+</a>
+<a mat-list-item
+   [hidden]="isCompanyFrozen"
+   *ifAuthorized="'Referential',company:this.company"
+   [class.active]="isActive([company,'referential'])"
+   routerLink="/{{company}}/referential"
+   class="menu-icon">
+    <atlas-privilege-level1-icon matListIcon
+                                 privilegeLevel1Name="Referential">
+    </atlas-privilege-level1-icon>
+    <a mat-line>Referential</a>
+</a>
+<a mat-list-item
+   *ifAuthorized="'Documents',company:this.company"
+   [class.active]="isActive([company,'execution','document','list'])"
+   routerLink="/{{company}}/execution/document/list"
+   class="menu-icon">
+    <atlas-privilege-level1-icon matListIcon
+                                 privilegeLevel1Name="Documents">
+    </atlas-privilege-level1-icon>
+    <a mat-line>Documents</a>
+</a>
+<a mat-list-item
+   *ifAuthorized="'Administration',company:this.company"
+   [class.active]="isActive([company,'admin'])"
+   routerLink="/{{company}}/admin"
+   class="menu-icon">
+    <atlas-privilege-level1-icon matListIcon
+                                 privilegeLevel1Name="Administration">
+    </atlas-privilege-level1-icon>
+    <a mat-line>Admin</a>
+</a>
+
+<mat-divider></mat-divider>
+
+<a mat-list-item
+   class="menu-icon">
+    <mat-icon matListIcon>help_outline</mat-icon>
+    <a mat-line>Help</a>
+</a>

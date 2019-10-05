@@ -1,0 +1,8 @@
+<div *ngFor="let cashType of cashTypes">
+    <mat-checkbox #receiptDifferentCurrencyTypeCtrl
+                  [formControl]="receiptDifferentCurrencyCtrl"
+                  [checked]="checked"
+                  [value]="cashType.cashTypeId"
+                  (change)="onChange($event,receiptDifferentCurrencyTypeCtrl.checked,cashType)">{{cashType.description}}
+    </mat-checkbox>
+</div>

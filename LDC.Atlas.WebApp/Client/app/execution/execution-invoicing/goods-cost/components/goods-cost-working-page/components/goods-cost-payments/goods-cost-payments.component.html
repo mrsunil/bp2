@@ -1,0 +1,44 @@
+<mat-card class="invoice-creation-card">
+    <mat-card-title>
+        <h2> Payments</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div>
+            <div class="goods-cost-payments"
+                 fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+                <mat-form-field fxFlex="30%"
+                                class="mat-read-only-field">
+                    <input matInput
+                           placeholder="Payment Terms"
+                           [formControl]="invoicePayTermsCtrl"
+                           matTooltip="Payment Terms"
+                           autocomplete="off"
+                           readonly>
+                </mat-form-field>
+                <mat-form-field fxFlex="30%"
+                                class="mandatory">
+                    <input matInput
+                           placeholder="Due Date"
+                           [formControl]="invoiceDueDateCtrl"
+                           [matDatepicker]="invoiceDueDatePicker"
+                           matTooltip="Due Date"
+                           autocomplete="off"
+                           (dateChange)='onInvoiceDueDateSelected()'>
+                    <mat-datepicker-toggle matSuffix
+                                           [for]="invoiceDueDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #invoiceDueDatePicker></mat-datepicker>
+                    <mat-hint *ngIf="!invoiceDueDateCtrl.hasError('isDateBeforeValid' || 'required') && !invoiceDueDateCtrl.disabled"
+                              class="invoice-creation-required-fields">Required*</mat-hint>
+                    <mat-error *ngIf="invoiceDueDateCtrl.hasError('required')">
+                        Required*
+                    </mat-error>
+                    <mat-error *ngIf="invoiceDueDateCtrl.hasError('isDateBeforeValid')">
+                        Value Date should be equal to or after the invoice date
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

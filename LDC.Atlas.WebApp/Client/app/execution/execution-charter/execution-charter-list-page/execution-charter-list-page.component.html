@@ -1,0 +1,49 @@
+<div class="main-container">
+    <mat-card class="search-card">
+        <div fxLayout="row"
+             fxLayoutAlign="start none"
+             class="search">
+            <mat-form-field>
+                <input matInput
+                       [formControl]="searchCharterReferenceCtrl"
+                       placeholder="Charter Ref"
+                       autocomplete="off"
+                       (keydown.enter)="onQuickSearchButtonClicked()"
+                       #message>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput
+                       [formControl]="charterManagerCtrl"
+                       placeholder="Charter Manager"
+                       autocomplete="off"
+                       (keydown.enter)="onQuickSearchButtonClicked()"
+                       #action>
+            </mat-form-field>
+            <button mat-raised-button
+                    (click)="onQuickSearchButtonClicked()"
+                    class="heroGradient">
+                <mat-icon aria-label="Search"
+                          class="search-icon">search</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <atlas-list-and-search class="default-height"
+                           [gridCode]="gridCode"
+                           [gridTitle]="'Charters'"
+                           [additionalFilters]="additionalFilters"
+                           (rowClicked)="onCharterRowClicked($event)"
+                           (quickNavigate)="onQuickNavigate($event)"
+                           [company]="company"
+                           [dataLoader]="dataLoader"
+                           [dataVersionId]="dataVersionId"
+                           [loadOnInit]="loadOnInit" 
+                           #listAndSearchComponent>
+    </atlas-list-and-search>
+</div>
+<atlas-floating-action-button [fabTitle]="fabTitle"
+                              [fabType]="fabType"
+                              [fabActions]="fabMenuActions"
+                              [isParentLoaded]="!isLoading"
+                              (fabActionClicked)="onFabActionClicked($event)">
+</atlas-floating-action-button>

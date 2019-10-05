@@ -1,0 +1,167 @@
+<header class="header-background"
+        style="background-image:url(http://www.almowatine.com/wp-content/uploads/2017/10/Le-Maroc-d%C3%A9tiendra-un-appel-doffres-pour-lachat-de-bl%C3%A9-am%C3%A9ricain.jpg)">
+    <div class="header-container">
+        <div fxLayout="row"
+             fxLayoutAlign="center start">
+            <h1>Trade Capture</h1>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="center start"
+             fxLayoutGap="5%">
+            <mat-button-toggle-group class="toggle-group"
+                                     name="toggleStyle"
+                                     aria-label="Example button">
+                <mat-button-toggle value="">toggle</mat-button-toggle>
+                <mat-button-toggle value="">toggle</mat-button-toggle>
+            </mat-button-toggle-group>
+            <mat-form-field fxFlex="25%">
+                <input matInput
+                       placeholder="Contract Reference"
+                       value="XXXXXXXXXXXXXxx">
+            </mat-form-field>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="center start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="10%">
+                <input matInput
+                       placeholder="Contract Reference"
+                       value="XXXXXXXXXXXXXxx">
+            </mat-form-field>
+            <mat-form-field fxFlex="10%">
+                <input matInput
+                       placeholder="Contract Reference"
+                       value="XXXXXXXXXXXXXxx">
+            </mat-form-field>
+            <mat-form-field fxFlex="10%">
+                <input matInput
+                       placeholder="Contract Reference"
+                       value="XXXXXXXXXXXXXxx">
+            </mat-form-field>
+        </div>
+    </div>
+</header>
+<main>
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="LAYOUT 2 COLUMNS">
+            <!-- Layout divided by column -->
+            <!-- container -->
+            <div fxLayout="row"
+                 fxLayout.md="column"
+                 fxLayoutAlign="space-between"
+                 fxLayoutGap="5%">
+                <!-- Left -->
+                <div fxLayout="column"
+                     fxLayoutAlign="start center"
+                     fxFlex="45"
+                     fxFlexOffset="5%">
+                    <mat-card fxFlexOffset="5%">
+                        <mat-card-header>
+                            <mat-card-title>
+                                <h2>Counterparty</h2>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae illo repellendus voluptas quasi deleniti asperiores eius
+                                tempore eos, suscipit doloribus laudantium temporibus eaque possimus accusantium praesentium.
+                                Quaerat quod nemo rem.
+                            </p>
+                            <mat-form-field class="mat-form-field">
+                                <input matInput
+                                       placeholder="Input"
+                                       placeholder="Field with ">
+                                <mat-icon matSuffix
+                                          matTooltip="This is a tooltip">error</mat-icon>
+                            </mat-form-field>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>
+                                <h2>Quantity</h2>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae illo repellendus voluptas quasi deleniti asperiores eius
+                                tempore eos, suscipit doloribus laudantium temporibus eaque possimus accusantium praesentium.
+                                Quaerat quod nemo rem.
+                            </p>
+                            <mat-form-field class="mat-form-field">
+                                <input matInput
+                                       placeholder="Input"
+                                       placeholder="Field with ">
+                                <mat-icon matSuffix
+                                          matTooltip="This is a tooltip">error</mat-icon>
+                            </mat-form-field>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <!-- Rigth -->
+                <div fxLayout="column"
+                     fxLayoutAlign="start center"
+                     fxFlex="45">
+                    <mat-card fxFlexOffset="5%"
+                              fxFlexOffset.md="0"
+                              fxFlexOffset.xs="0">
+                        <mat-card-header>
+                            <mat-card-title>
+                                <h2>Commodity</h2>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div fxLayout="row">
+                                <img mat-card-sm-image
+                                     src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+                                     fxFlexOffset="2%">
+                                <div fxLayout="column"
+                                     fxFlexOffset="2%">
+                                    <h4 class="no-margin">RIC_ING_WWW_2347</h4>
+                                    <p class="no-margin">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad doloremque maxime inventore quo nulla doloribus dolore
+                                    </p>
+                                </div>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutGap="5%">
+                                <div fxLayout="column">
+                                    <h5 class="no-margin data-label "
+                                        fxFlexOffset="30% ">Code value</h5>
+                                    <p class="no-margin ">XXXXXXX</p>
+                                </div>
+                                <div fxLayout="column "
+                                     fxFlexOffset="1% ">
+                                    <h5 class="no-margin data-label "
+                                        fxFlexOffset="30% ">Code value</h5>
+                                    <p class="no-margin ">XXXXXXX</p>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+
+            <mat-divider></mat-divider>
+            <div fxLayout="row "
+                 fxLayoutAlign="space-between center ">
+                <div fxLayout="column "
+                     fxLayoutAlign="start start ">
+                    <button mat-button
+                            fxFlexOffset="20% ">cancel</button>
+                </div>
+                <div fxLayout="column "
+                     fxLayoutAlign="start end ">
+                    <div fxLayout="row "
+                         fxLayoutAlign="end start "
+                         fxFlexOffset="20% ">
+                        <button mat-button>add costs</button>
+                        <button mat-raised-button>save</button>
+                    </div>
+                </div>
+            </div>
+
+        </mat-tab>
+
+    </mat-tab-group>
+</main>

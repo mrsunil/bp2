@@ -1,0 +1,115 @@
+<div class="main-container hub-menu">
+    <h1>Reports Panel</h1>
+    <div fxLayout="row wrap"
+         fxLayoutAlign="start stretch"
+         fxLayoutGap="16px"
+         class="hub-menu-panel"
+         [hidden]="isLoading">
+
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports/tradecost')"
+                  *ifAuthorized="'Reports.GlobalReports.TradeCostReport',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">Trade Cost</h2>
+            </mat-card-title>
+            <p class="no-margin">Generate trade cost report</p>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports/pnlreports')"
+                  *ifAuthorized="'Reports.GlobalReports.PLReport',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">P&amp;L Reports</h2>
+            </mat-card-title>
+            <p class="no-margin">Generate P&amp;L report</p>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports/audit')"
+                  *ifAuthorized="'Reports.GlobalReports.AuditReport',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">Audit</h2>
+            </mat-card-title>
+            <p class="no-margin">Generate audit report</p>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports/clientreport')"
+                  *ifAuthorized="'Reports.GlobalReports.ClientTransactionReport',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">Client Transaction Report</h2>
+            </mat-card-title>
+            <p class="no-margin">Generate Client Transaction report</p>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports/nominalreport')"
+                  *ifAuthorized="'Reports.GlobalReports.NominalReport',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">Nominal Report</h2>
+            </mat-card-title>
+            <p class="no-margin">Generate Nominal report</p>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports/trade')"
+                  *ifAuthorized="'Reports.GlobalReports.TradeReport',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">Trade Report</h2>
+            </mat-card-title>
+            <p class="no-margin">Generate trade report</p>
+        </mat-card>
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports/tradecostmovement')"
+                  *ifAuthorized="'Reports.GlobalReports.TradeCostMovementReport',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">Trade Cost Movement Report</h2>
+            </mat-card-title>
+            <p class="no-margin">Generate trade cost movement report</p>
+        </mat-card>
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports/newbiz')"
+                  *ifAuthorized="'Reports.GlobalReports.NEWBIZReport',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">New Biz Report</h2>
+            </mat-card-title>
+            <p class="no-margin">Generate new biz Report</p>
+        </mat-card>
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports/historicalrates')">
+            <mat-card-title>
+                <h2 class="no-margin">Historical Exchange Rates Report</h2>
+            </mat-card-title>
+            <p class="no-margin">Generate historical exchange rates report</p>
+        </mat-card>
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports/fxexposurerate')"
+                  *ifAuthorized="'Reports.GlobalReports.FxExposureReport',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">Fx Exposure report</h2>
+            </mat-card-title>
+            <p class="no-margin">Generate Fx Exposure report</p>
+        </mat-card>
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports/accountingdocumentsreport')">
+            <mat-card-title>
+                <h2 class="no-margin">Accounting documents Reports</h2>
+            </mat-card-title>
+            <p class="no-margin">Generate Accounting documents Reports</p>
+        </mat-card>
+    </div>
+
+    <div *ngIf="isLoading">
+        <mat-card>
+            <h2>Loading</h2>
+            <div class="custom-line-title"></div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 fxLayoutGap="20px">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+        </mat-card>
+    </div>
+</div>

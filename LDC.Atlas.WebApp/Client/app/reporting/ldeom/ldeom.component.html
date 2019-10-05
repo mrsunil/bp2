@@ -1,0 +1,103 @@
+<div class="main-container">
+    <mat-card>
+        <mat-horizontal-stepper linear
+                                #stepper>
+            <mat-step>
+                <ng-template matStepLabel>Accruals</ng-template>
+                <ag-grid-angular #agGrid
+                                 [gridOptions]="accrualGridOptions"
+                                 style="width: 100%; height: 100%;"
+                                 id="accrualGrid"
+                                 class="ag-theme-material"
+                                 [rowData]="accrualGridRows"
+                                 [columnDefs]="accrualGridCols"
+                                 [domLayout]="accrualDomLayout"
+                                 (gridReady)="onAccrualGridReady($event)"
+                                 [rowHeight]="atlasAgGridParam.rowHeight">
+                </ag-grid-angular>
+                <div class="custom-line-footer"></div>
+                <div style="margin:20px; text-align:right">
+                    <span class="fill-space"></span>
+                    <button mat-button
+                            color="primary"
+                            routerLink="/reporting">CANCEL</button>
+                    <button mat-button
+                            matStepperNext
+                            mat-raised-button
+                            color="accent">Next</button>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Aggregations</ng-template>
+                <div ag-grid="aggregationGgridOptions"
+                     class="ag-theme-material"
+                     style="height: 100%">
+                    <ag-grid-angular style="width: auto !important; height: 100%;"
+                                     class="ag-theme-material"
+                                     [rowData]="aggregationGridRows"
+                                     [columnDefs]="aggregationGridCols"
+                                     [domLayout]="aggregationDomLayout"
+                                     (gridReady)="onAggregationGridReady($event)"
+                                     [rowHeight]="atlasAgGridParam.rowHeight">
+                    </ag-grid-angular>
+                </div>
+                <div class="custom-line-footer"></div>
+                <div style="margin:20px; text-align:right">
+                    <span class="fill-space"></span>
+                    <button mat-button
+                            color="primary"
+                            routerLink="/{{company}}/reporting">CANCEL</button>
+                    <button mat-button
+                            matStepperPrevious>Back</button>
+                    <button mat-button
+                            (click)="goForward(stepper)"
+                            mat-raised-button
+                            color="accent">Next</button>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Summary</ng-template>
+                <mat-expansion-panel expanded="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h2>Tempory Adjustement</h2>
+                            <div class="custom-line-title"></div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxLayout="row"
+                         fxLayoutAlign="none center">
+                        <div fxFlex="100%">
+                            <label>Document Reference:</label> {{ postingResult.documentId }}
+                        </div>
+                    </div>
+                    <div fxLayout="row"
+                         fxLayoutAlign="none center">
+                        <div fxFlex="100%">
+                            <label>Document Date:</label> {{ postingResult.documentDate | date:'dd MMM y' }}
+                        </div>
+                    </div>
+                    <div fxLayout="row"
+                         fxLayoutAlign="none center">
+                        <div fxFlex="100%">
+                            <label>Accounting Month:</label> {{ postingResult.documentDate | date:'MMM y' }}
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div>
+                        <div class="custom-line-footer"></div>
+                        <div style="margin:20px; text-align:right">
+                            <span class="fill-space"></span>
+                            <button mat-button
+                                    matStepperPrevious>Back</button>
+                            <button mat-button
+                                    mat-raised-button
+                                    (click)="goToPreAccouting()"
+                                    color="accent">View TA</button>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </mat-card>
+</div>

@@ -1,0 +1,79 @@
+<mat-card>
+    <h2 class="atlas-grid-card-title">Selected Cost</h2>
+    <mat-card-content>
+        <div [hidden]="isAddDeleteButtonInvisible"
+             fxLayout="row"
+             fxLayoutAlign="start center"
+             fxLayoutGap="10px"
+             class="add-line-container">
+            <div fxLayout="column"
+                 fxLayoutAlign="start start">
+                <h6>Add new lines:</h6>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="start start"
+                 fxFlex="2">
+                <mat-form-field>
+                    <input matInput
+                           [formControl]="addNewLineCtrl">
+                </mat-form-field>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="start start">
+                <button mat-button
+                        (click)="onAddRowButtonClicked(addNewLineCtrl.value)">PROCEED</button>
+            </div>
+        </div>
+        <div fxLayout="row"
+             class=" table-title">
+            <span class="fill-space"></span>
+            <div fxLayout="row"
+                 fxLayoutAlign="end"
+                 fxLayoutGap="2%">
+                <mat-form-field fxFlex="40%">
+                    <mat-select placeholder="Cost VAT Code"
+                                [formControl]="costVatCodeCtrl"
+                                matTooltip="Cost VAT Code"
+                                (selectionChange)='onCostVatCodeSelected()'>
+                        <mat-option *ngFor="let code of costVatCodeOptions"
+                                    [value]="code.vatCode">
+                            {{code.vatCode}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div ag-grid="selectedCostGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular class="ag-theme-material"
+                             [rowData]="selectedCostGridRows"
+                             [columnDefs]="selectedCostGridColumns"
+                             [gridOptions]="selectedCostGridOptions"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             [pagination]="false"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             [enableFilter]="true"
+                             [rowSelection]="rowSelection"
+                             [frameworkComponents]="gridComponents"
+                             enableFilter
+                             [rowHeight]=atlasAgGridParam.rowHeight
+                             [groupUseEntireRow]="false"
+                             [suppressMakeColumnVisibleAfterUnGroup]="true"
+                             [singleClickEdit]=true>
+                <!-- [rowGroupPanelShow]="rowGroupPanelShow" -->
+            </ag-grid-angular>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="end center">
+            <mat-card-subtitle class="total-figure">
+                Total Cost:
+                <span class="total-figure-value">
+                    {{this.totalCostDirectionSign}}{{formatQuantityAndTotal(this.total)}} {{this.currencyCodeSelected}}
+                </span>
+            </mat-card-subtitle>
+        </div>
+    </mat-card-content>
+</mat-card>

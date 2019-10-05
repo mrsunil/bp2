@@ -1,0 +1,57 @@
+<div *ngIf="isLoading">
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         fxLayoutGap="20px"
+         class="loading">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+</div>
+<div fxLayout="column"
+     [ngClass]="{'hidden-during-loading':isLoading}"
+     fxLayoutGap="20px">
+    <h2 mat-dialog-title>Share View {{ this.gridViewNameCtrl.value ? '"' + this.gridViewNameCtrl.value + '"' : '' }}
+    </h2>
+    <div fxLayout="row"
+         fxLayoutAlign="start start">
+        <mat-form-field fxFlex="60%">
+            <input placeholder="Grid View Name"
+                   matInput
+                   maxlength=30
+                   [formControl]="gridViewNameCtrl"
+                   (change)="onNameOrSharingOptionChanged()">
+            <mat-error *ngIf="gridViewNameCtrl.hasError('required')">
+                Required*
+            </mat-error>
+            <mat-hint *ngIf="!isOwner">
+                You cannot overwrite a view which is not yours</mat-hint>
+            <mat-error *ngIf="gridViewNameCtrl.hasError('notUnique')">
+                The view's name is already used, please change it for saving to be completed
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <mat-slide-toggle [formControl]="shareWithAllUsersCtrl"
+                      (change)="onNameOrSharingOptionChanged()">Share with all users</mat-slide-toggle>
+    <mat-hint *ngIf="shareWithAllUsersCtrl && shareWithAllUsersCtrl.value">All users will have access to this View
+    </mat-hint>
+    <mat-hint *ngIf="shareWithAllUsersCtrl && !shareWithAllUsersCtrl.value">Other users will not be able to see this
+        View</mat-hint>
+
+    <div fxFlex="50"
+         fxLayout="row"
+         fxAlignLayout="start end"
+         mat-dialog-actions>
+        <button mat-button
+                (click)="onDiscardButtonClicked()"> discard </button>
+        <span class="fill-space"></span>
+        <button *ngIf="gridView.gridViewId != null && !gridView.isDefault &&
+                    gridView.gridViewId !== undefined && isOwner"
+                [disabled]="!gridViewNameCtrl.valid"
+                (click)="onSaveButtonClicked(1)"
+                mat-button>Save</button>
+        <button *ngIf="gridView.name !== gridViewNameCtrl.value"
+                [disabled]="!gridViewNameCtrl.valid"
+                (click)="onSaveButtonClicked(0)"
+                mat-button>Save as new Grid View</button>
+    </div>
+</div>

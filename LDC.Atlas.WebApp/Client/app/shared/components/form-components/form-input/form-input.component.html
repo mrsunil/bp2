@@ -1,0 +1,26 @@
+<div [class.displayMode]="!isEditable"
+     class="custom-form"
+     [class.required-field]="isRequired()"
+     [class.isEmpty]="!fieldControl.value"
+     [class.warning-field]="hasWarning">
+    <mat-form-field>
+        <input matInput
+               [formControl]="fieldControl"
+               [value]="fieldControl.value"
+               (blur)="onBlur($event)"
+               autocomplete="off">
+        <mat-placeholder>{{label}}</mat-placeholder>
+        <!-- <span *ngIf="fieldControl.touched && fieldControl.invalid && isEditable"
+              matSuffix>
+            <mat-icon>error</mat-icon>
+        </span>
+        <span *ngIf="fieldControl.touched && fieldControl.valid && isEditable && fieldControl.value && !hasWarning"
+              matSuffix>
+            <mat-icon class="validIcon">check_circle</mat-icon>
+        </span> -->
+        <mat-error *ngIf="fieldControl.errors && isEditable">{{getErrorMessage()}}</mat-error>
+        <mat-hint *ngIf="!isRequired() && (!fieldControl.value) && !hasWarning">{{hint}}</mat-hint>
+        <mat-hint *ngIf="isRequired() && isEditable && !hasWarning">Required *</mat-hint>
+        <mat-hint *ngIf="hasWarning && fieldControl.valid">{{warningMessage}}</mat-hint>
+    </mat-form-field>
+</div>

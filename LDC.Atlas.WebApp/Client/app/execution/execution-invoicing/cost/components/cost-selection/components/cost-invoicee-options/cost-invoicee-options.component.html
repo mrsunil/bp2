@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title fxFlex="5%">
+            Invoicee
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div class="custom-form"
+                 fxFlex="30%">
+                <mat-form-field fxFlex="70%">
+                    <input matInput
+                           placeholder="Invoicee"
+                           [required]="invoiceeCtrl.isRequired"
+                           [matAutocomplete]="invoicee"
+                           [formControl]="invoiceeCtrl"
+                           [matTooltip]="'Invoicee'"
+                           autocomplete="off">
+                    <mat-autocomplete #invoicee="matAutocomplete"
+                                      [panelWidth]="panelSize"
+                                      (optionSelected)="onSelectionChange($event.option.value)">
+                        <mat-option *ngFor="let counterparty of filteredCounterPartyList"
+                                    [value]="counterparty.counterpartyCode">
+                            {{counterparty.counterpartyCode}} | {{counterparty.description}}</mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="invoiceeCtrl.hasError('required')">
+                        Invoicee is required
+                    </mat-error>
+                    <mat-error *ngIf="invoiceeCtrl.hasError('inDropdownList')">
+                        Value not in list
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <mat-form-field fxFlex="70%"
+                            class="mat-read-only-field">
+                <input matInput
+                       placeholder="Invoicee Description"
+                       [matTooltip]="'Invoicee Description'"
+                       [formControl]="invoiceeDescriptionCtrl"
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

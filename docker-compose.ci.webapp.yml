@@ -1,0 +1,9 @@
+version: '2.1'
+
+services:
+
+  webapp:
+    image: atlas/webapp
+    build:
+      context: ./LDC.Atlas.WebApp
+      dockerfile: Dockerfile

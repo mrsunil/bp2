@@ -1,0 +1,17 @@
+.mat-card {
+    max-height: 320px;
+    overflow-y: auto;
+    height: auto;
+    width: 100%;
+}
+
+mat-selection-list {
+    padding-top: 4px;
+}
+
+button {
+    &.mat-mini-fab {
+        background-color: #53c234;
+        color: white;
+    }
+}

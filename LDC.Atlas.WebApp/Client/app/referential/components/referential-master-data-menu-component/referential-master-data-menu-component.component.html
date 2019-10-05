@@ -1,0 +1,51 @@
+<div class="main-container hub-menu">
+    <div fxLayout="row wrap"
+         fxLayout.lt-md="column"
+         fxLayoutAlign="start start"
+         fxLayoutAlign.lt-md="start center"
+         fxLayoutGap="16px"
+         fxLayoutGap.lt-md="0px"
+         class="hub-menu-panel"
+         [hidden]="isLoading">
+        <div *ngFor="let menu of menus">
+            <!-- Temporary ifAuthorized-->
+            <mat-card class="active-card"
+                      *ifAuthorized="menu.authorized !== '' ? menu.authorized : 'Referential', company:this.company">
+                <!-- remove tooltip and overlay when link implemented-->
+                <img mat-card-image
+                     [src]="menu.imageUrl"
+                     alt="menu picture" />
+                <mat-card-title>
+                    {{menu.title}}
+                </mat-card-title>
+                <mat-card-content>
+                    <div fxLayout="column"
+                         fxLayoutAlign="space-between stretch"
+                         fxLayoutGap="8px"
+                         fxLayoutGap.lt-md="0"
+                         class="hub-menu-panel"
+                         [hidden]="isLoading">
+                        <div *ngFor="let menuChild of menu.childrens">
+                            <a class="no-margin"
+                               (click)="onNavigateButtonClicked(menu.navigateUrl + menuChild.navigateUrl)">
+                                {{ menuChild.title }}
+                            </a>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div *ngIf="isLoading">
+            <mat-card>
+                <h2>Loading</h2>
+                <div class="custom-line-title"></div>
+
+                <div fxLayout="row"
+                     fxLayoutAlign="center center"
+                     fxLayoutWrap
+                     fxLayoutGap="20px">
+                    <mat-spinner color="accent"></mat-spinner>
+                </div>
+            </mat-card>
+        </div>
+    </div>

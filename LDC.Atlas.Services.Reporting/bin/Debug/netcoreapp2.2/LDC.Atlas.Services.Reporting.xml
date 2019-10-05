@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.Reporting</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.Reporting.Controllers.AuditsController.ProcessDataChangeLogs(LDC.Atlas.Services.Reporting.Application.Commands.ProcessDataChangeLogsRequest)">
+            <summary>
+            Process data change logs
+            </summary>
+            <param name="processDataChangeLogsRequest">The identifier of the data change log to process.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Reporting.Controllers.LdrepManualAdjustmentController.CreateUpdateLdrepManualAdjustment(System.String,LDC.Atlas.Services.Reporting.Application.Commands.CreateUpdateLdrepManualAdjustmentCommand)">
+            <summary>
+            Creates or updates LDREP manual adjustment(s).
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="adjustments">The ldrep manual adjustment to add.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Reporting.Controllers.LdrepManualAdjustmentController.GetLdrepManualAdjustments(System.String,System.DateTime,System.Nullable{System.DateTime},LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns Ldrep manual adjustments between date range.
+            </summary>
+            <param name="fromDate">The from date</param>
+            <param name="toDate">The to date</param>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Reporting.Controllers.LdrepManualAdjustmentController.DeleteLdrepManualAdjustment(System.String,LDC.Atlas.Services.Reporting.Application.Commands.DeleteLdrepManualAdjustmentCommand)">
+            <summary>
+            Delete Ldrep manual adjustment.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="ldrepManualAdjustment">documents to unmatch manual matching.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Reporting.Controllers.PnlMovementController.GetFreezeForSelectedCompany(System.String,System.String,System.String,System.String)">
+            <summary>
+            Returns a message for a Pnl Movement Report.
+            </summary>
+            <param name="company">The company code.</param>
+            /// <param name="companyList">The selected company code.</param>
+            <param name="dataVersionIdList">The dataversionId  of the freeze.</param>
+            <param name="compDataVersionIdList">The Compaarison dataversionId of the freeze.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Reporting.Controllers.ReportPredicatesController.CreateReportCriterias(System.String,LDC.Atlas.Services.Reporting.Application.Commands.ReportCriteriasRequest)">
+            <summary>
+            Creates report criterias.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="reportCriteriasRequest">The additional criterias to add to the report.</param>
+        </member>
+    </members>
+</doc>

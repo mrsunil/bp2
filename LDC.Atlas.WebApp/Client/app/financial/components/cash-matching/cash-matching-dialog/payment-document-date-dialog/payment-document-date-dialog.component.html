@@ -1,0 +1,50 @@
+<mat-dialog-content class="mat-dialog-content">
+    <div fxLayout="row"
+         fxLayoutAlign="none center"
+         fxLayoutWrap
+         fxLayoutGap="10px">
+        <p>{{dialogData.txtDocMatched}} <strong>{{dialogData.txtMatchFlag}} {{dialogData.value1}}</strong> are selected
+        </p>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="none center"
+         fxLayoutWrap
+         fxLayoutGap="10px">
+        <p>{{dialogData.txtPayDocDate}} {{dialogData.value3}}</p>
+    </div>
+</mat-dialog-content>
+<div fxLayout="column">
+    <div fxLayout="row"
+         fxLayoutAlign="left start"
+         fxLayoutGap="10%"
+         class="confirmation-input-container">
+        <mat-form-field fxFlex="40%">
+            <input matInput
+                   [matDatepicker]="documentDatePicker"
+                   placeholder="New Payment Document Date"
+                   matTooltip="New Payment Document Date"
+                   [required]="paymentDocDateCtrl.isRequired"
+                   autocomplete="off"
+                   [formControl]='paymentDocDateCtrl'>
+            <mat-datepicker-toggle matSuffix
+                                   [for]="documentDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #documentDatePicker></mat-datepicker>
+            <mat-error *ngIf="paymentDocDateCtrl.hasError('required')">
+                This field is required
+            </mat-error>
+            <mat-error *ngIf="paymentDocDateCtrl.hasError('isBeforeDateValid')">
+                Date cannot be before the document date
+            </mat-error>
+            <mat-error *ngIf="paymentDocDateCtrl.hasError('isDateAfterValid')">
+                Date cannot be greater than the system date
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between end">
+        <button mat-button
+                (click)="onCancelButtonClicked()">CANCEL</button>
+        <button mat-button
+                (click)="onProceedButtonClicked()">OK</button>
+    </div>
+</div>

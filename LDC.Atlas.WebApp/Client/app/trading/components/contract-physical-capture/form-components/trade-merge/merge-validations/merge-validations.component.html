@@ -1,0 +1,44 @@
+<div class="trade-merge-validations-messages">
+    <div *ngIf="showWarningMessageCard">
+        <mat-card *ngFor="let text of contractSectionCodeWarningList"
+                  class="trade-merge-validation-warning-card">
+            <div class="warning-circle-icon">
+                <mat-icon>warning_outline</mat-icon>
+            </div>
+            <mat-card-header>
+                <mat-card-title>
+                    <h4>{{text.contractSectionCode}} at risk for Merging</h4>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    {{text.blockingOrWarningInput}} are different
+                </mat-card-subtitle>
+                <button class="remove-button"
+                        mat-button
+                        (click)="onWarningRemoveButtonClicked(text.sectionId)">REMOVE
+                </button>
+            </mat-card-header>
+        </mat-card>
+    </div>
+
+    <div *ngIf="showRestrictedMessageCard">
+        <mat-card *ngFor="let text of contractSectionCodeBlockingList"
+                  class="trade-merge-validation-warning-card">
+            <div class="error-circle-icon">
+                <mat-icon>remove_circle</mat-icon>
+            </div>
+            <mat-card-header>
+                <mat-card-title>
+                    <h4>{{text.contractSectionCode}} impossible to merge</h4>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    {{text.blockingOrWarningInput}} are different
+                </mat-card-subtitle>
+                <button class="remove-button"
+                        mat-button
+                        (click)="onRestrictRemoveButtonClicked(text.sectionId)">REMOVE
+                </button>
+            </mat-card-header>
+        </mat-card>
+    </div>
+
+</div>

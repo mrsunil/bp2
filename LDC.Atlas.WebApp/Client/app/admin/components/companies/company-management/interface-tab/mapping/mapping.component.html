@@ -1,0 +1,52 @@
+<div class="main-container">
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <h2>
+            Mapping
+        </h2>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="10px"
+         class="add-line-container">
+        <div fxLayout="column"
+             fxLayoutAlign="start start">
+            <h6 class="no-margin">Add new lines:</h6>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start start"
+             fxFlex="4">
+            <mat-form-field>
+                <input matInput
+                       [formControl]="addNewLineCtrl">
+            </mat-form-field>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start start">
+            <button mat-button
+                    [disabled]="!checkEdit"
+                    (click)="onAddRowButtonClicked(addNewLineCtrl.value)">PROCEED</button>
+        </div>
+    </div>
+    <div ag-grid="mappingGridOptions">
+        <ag-grid-angular class="ag-theme-material"
+                         [rowData]="mappingRowData"
+                         [columnDefs]="mappingColumnDefs"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         [rowHeight]=atlasAgGridParam.rowHeight>
+        </ag-grid-angular>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">
+            DISCARD
+        </button>
+        <button mat-button
+                [disabled]="!checkEdit"
+                (click)="onSaveButtonClicked()">
+            SAVE
+        </button>
+    </div>
+</div>

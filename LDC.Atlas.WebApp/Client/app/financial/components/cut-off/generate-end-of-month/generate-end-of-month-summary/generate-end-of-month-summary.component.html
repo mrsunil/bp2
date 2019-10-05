@@ -1,0 +1,52 @@
+<div class="main-container">
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="column">
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between center">
+                    <atlas-department-dropdown (departmentSelectionChanged)="onDepartmentSelectionChanges()"
+                                               #departmentDropdownComponent>
+                    </atlas-department-dropdown>
+                    <atlas-charter-dropdown (charterSelectionChanged)="onCharterSelectionChanges()"
+                                            #charterDropdownComponent>
+                    </atlas-charter-dropdown>
+                    <atlas-cost-type-dropdown (costTypeSelectionChanged)="onCostTypeSelectionChanges()"
+                                              #costTypeDropdownComponent>
+                    </atlas-cost-type-dropdown>
+                    <atlas-associated-client-dropdown #associatedClientDropdownComponent>
+                    </atlas-associated-client-dropdown>
+                    <button (click)="onApplyButtonClicked()"
+                            mat-button>
+                        APPLY
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <atlas-generate-end-of-month-tab-group (filtered)="filtered($event)"
+                                           (stopPosting)="stopPosting($event)"
+                                           (applyButton)="onApplyButtonClicked()"
+                                           (tabIndexNumber)="onSelectedIndexChanged1($event)"
+                                           (mappingErrorChange)="onMappingErrorChange($event)"
+                                           [isFilterApplied]="isFilterApplied"
+                                           #generateEndOfMonthTabGroup></atlas-generate-end-of-month-tab-group>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start"
+         class="button-details">
+        <div fxLayout="column"
+             fxLayoutAlign="start">
+            <button (click)="onDiscardButtonClicked()"
+                    mat-button>
+                DISCARD
+            </button>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start">
+            <button mat-raised-button
+                    (click)="onGeneratePostingsButtonClicked()"
+                    [disabled]="disableButton || (isMappingError || isCurrentDatabase)">
+                GENERATE POSTINGS
+            </button>
+        </div>
+    </div>
+</div>

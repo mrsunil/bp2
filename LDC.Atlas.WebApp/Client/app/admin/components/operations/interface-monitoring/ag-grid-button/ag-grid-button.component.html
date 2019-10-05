@@ -1,0 +1,10 @@
+<button *ngIf="shouldDisplayButton"
+        mat-raised-button
+        class="button interface-message"
+        (click)="onMessageButtonClicked()"
+        [disabled]="disabled">
+    Message
+</button>
+<span *ngIf="!shouldDisplayButton">
+    {{ display }}
+</span>

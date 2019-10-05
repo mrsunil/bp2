@@ -1,0 +1,56 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Currency Information</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+
+            <atlas-dropdown-select fxFlex="30%"
+                                   label="Bank Currency"
+                                   [isEditable]="bankCurrencyCtrl.enabled"
+                                   [fieldControl]="bankCurrencyCtrl"
+                                   [options]="filteredCurrencyList"
+                                   displayProperty="currencyCode"
+                                   [selectProperties]="['currencyCode', 'description']"
+                                   [errorMap]="bankCurrencyErrorMap"
+                                   (optionSelected)="onBankCurrencyEntered($event)"
+                                   isAutocompleteActivated="true">
+            </atlas-dropdown-select>
+
+
+            <atlas-form-input fxFlex="30%"
+                              label="FX Rate"
+                              [fieldControl]="fxRateCtrl"
+                              [isEditable]="fxRateCtrl.enabled"
+                              (blur)="onFxRateEntered($event)"
+                              [errorMap]="fxRateErrorMap">
+            </atlas-form-input>
+
+            <atlas-form-input fxFlex="30%"
+                              label="Amount"
+                              [fieldControl]="amountCtrl"
+                              [isEditable]="amountCtrl.enabled"
+                              [textMask]="{mask:mask}"
+                              (input)="onAmountValueEntered($event)"
+                              [errorMap]="amountErrorMap">
+            </atlas-form-input>
+
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-radio-group [formControl]="divideMultiplyCtrl"
+                             (change)="onDivideMultiplyToggleChanges($event)"
+                             [disabled]="true">
+                <mat-radio-button value="D"
+                                  [checked]="onDivideOptionSelected()">Divide</mat-radio-button>
+                <mat-radio-button value="M"
+                                  [checked]="onMultiplyOptionSelected()">Multiply</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </mat-card-content>
+</mat-card>

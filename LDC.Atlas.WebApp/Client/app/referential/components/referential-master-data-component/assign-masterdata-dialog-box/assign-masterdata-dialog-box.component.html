@@ -1,0 +1,30 @@
+<h2>{{popupTitle}} {{dialogData.masterdataName}} to companies</h2>
+<mat-dialog-content class="mat-dialog-content">
+    <div fxLayout="column"
+         fxLayoutAlign="start">
+    </div>
+    <div>
+        <div ag-grid="agGridOptions">
+            <ag-grid-angular class="ag-theme-material"
+                             domLayout=autoHeight
+                             (gridReady)="onGridReady($event)"
+                             [rowData]="agGridRows"
+                             [columnDefs]="companyGridCols"
+                             [gridOptions]="agGridOptions"
+                             [enableColResize]="true"
+                             [pagination]="true"
+                             rowSelection="multiple"
+                             [enableSorting]="true"
+                             [rowHeight]="atlasAgGridParam.rowHeight"
+                             [headerHeight]="atlasAgGridParam.headerHeight">
+            </ag-grid-angular>
+        </div>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="end center">
+        <button mat-button
+                (click)="onCancelButtonClicked()">Cancel</button>
+        <button mat-button
+                (click)="onSaveButtonClicked()">Save</button>
+    </div>
+</mat-dialog-content>

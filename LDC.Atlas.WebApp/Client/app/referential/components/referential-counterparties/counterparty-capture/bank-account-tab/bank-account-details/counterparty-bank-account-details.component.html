@@ -1,0 +1,841 @@
+<mat-card *ngIf="newBankAccountForm || editBankAccount">
+    <div class="bankAccountDetails">
+        <mat-card-content>
+            <mat-panel-title>
+                <label class="headerName">{{bankAccountName}}</label>
+            </mat-panel-title>
+            <mat-accordion>
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Bank Information
+                        </mat-panel-title>
+                        <mat-panel-description>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <form [formGroup]="bankAccountFormGroup">
+                        <div fxLayout="column"
+                             fxFlex="100%"
+                             class="bankInformation">
+                            <div>
+                                <span class="fill-space"></span>
+                                <div fxLayout="row">
+                                    <div>
+                                        <mat-button-toggle-group class="toggle-group"
+                                                                 [disabled]="isViewMode"
+                                                                 [formControl]="bankAccountStatusCtrl"
+                                                                 aria-label="Date"
+                                                                 (change)='bankAccountStatusChanged()'>
+                                            <mat-button-toggle [value]="1">Activate</mat-button-toggle>
+                                            <mat-button-toggle [value]="2">Deactivate</mat-button-toggle>
+                                        </mat-button-toggle-group>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="fill-space"></span>
+                                <div fxLayout="row">
+                                    <div>
+                                        <button [disabled]="newBankAccountForm || isDeleteDisabled || isViewMode"
+                                                mat-raised-button
+                                                (click)='onBankAccountDeleteButtonClick()'
+                                                type="button"
+                                                class="deleteField">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="50%"
+                                                  [fieldControl]="bankNameCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="bankNameCtrl.isRequired"
+                                                  [label]="'Bank Name'">
+                                    <mat-error *ngIf="bankNameCtrl.hasError('maxlength')"> Bank Account
+                                        Bank Name should be at
+                                        most 40 Characters long </mat-error>
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Bank Account Description"
+                                              [formControl]='bankAccountDescriptionCtrl'></textarea>
+                                    <mat-error *ngIf="bankAccountDescriptionCtrl.hasError('maxlength')"> Bank Account
+                                        Description should be at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <b>Address</b>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 1"
+                                              [formControl]='addressLine1Ctrl'></textarea>
+                                    <mat-error *ngIf="addressLine1Ctrl.hasError('maxlength')"> Address Line 1 should be
+                                        at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 2"
+                                              [formControl]='addressLine2Ctrl'></textarea>
+                                    <mat-error *ngIf="addressLine2Ctrl.hasError('maxlength')"> Address Line 2 should be
+                                        at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 3"
+                                              [formControl]='addressLine3Ctrl'></textarea>
+                                    <mat-error *ngIf="addressLine3Ctrl.hasError('maxlength')"> Address Line 3 should be
+                                        at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 4"
+                                              [formControl]='addressLine4Ctrl'></textarea>
+                                    <mat-error *ngIf="addressLine4Ctrl.hasError('maxlength')"> Address Line 4 should be
+                                        at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="cityCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'City'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <mat-form-field fxFlex="30%">
+                                    <input matInput
+                                           placeholder="Country"
+                                           [matAutocomplete]="countryCode"
+                                           [formControl]="countryCtrl"
+                                           [required]="countryCtrl.isRequired"
+                                           autocomplete="off">
+                                    <mat-autocomplete #countryCode="matAutocomplete"
+                                                      [panelWidth]="panelSize">
+                                        <mat-option *ngFor="let country of bankCountry"
+                                                    [value]="country.description">
+                                            {{country.countryId}} | {{country.description}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <mat-error *ngIf="countryCtrl.hasError('inDropdownList')">
+                                        Value is not in the List
+                                    </mat-error>
+                                </mat-form-field>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="zipCodeCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Zip Code'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="bankSWIFTCodeCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="bankSWIFTCodeCtrl.isRequired"
+                                                  [label]="'Bank SWIFT Code'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <mat-form-field fxFlex="30%">
+                                    <input matInput
+                                           placeholder="Currency"
+                                           [matAutocomplete]="currencyCode"
+                                           [formControl]="accountCcyCtrl"
+                                           [required]="accountCcyCtrl.isRequired"
+                                           autocomplete="off">
+                                    <mat-autocomplete #currencyCode="matAutocomplete"
+                                                      [panelWidth]="panelSize">
+                                        <mat-option *ngFor="let currency of accountCurrency"
+                                                    [value]="currency.description">
+                                            {{currency.currencyCode}} | {{currency.description}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <mat-error *ngIf="accountCcyCtrl.hasError('inDropdownList')">
+                                        Value is not in the List
+                                    </mat-error>
+                                </mat-form-field>
+                                <span class="fill-space"></span>
+                                <atlas-dropdown-select fxFlex='30%'
+                                                       label="Bank Type"
+                                                       [fieldControl]="bankTypeCtrl"
+                                                       isEditable="true"
+                                                       [required]="bankTypeCtrl.isRequired"
+                                                       [options]="bankTypeOptions"
+                                                       [displayProperty]="bankTypeDisplayProperty"
+                                                       [selectProperties]="bankTypeSelectProperties">
+                                </atlas-dropdown-select>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="bankNoCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="bankNoCtrl.isRequired"
+                                                  [label]="'Bank No'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="bankBranchCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Bank Branch '">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="accountNoCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="accountNoCtrl.isRequired"
+                                                  [label]="'Account No'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="bankNccTypeCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Bank NCC Type'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="nccCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'NCC'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="ncsCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'NCS'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="fedABACtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'FED ABA'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="chipsCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Chips'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="bankPhoneNumberCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Bank Phone Number'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="bankTelexNumberCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Bank Telex Number'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="bankFaxNumberCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Bank Fax Number'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="interfaceCodeCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Interface Code'">
+                                </atlas-form-input>
+                            </div>
+                        </div>
+                    </form>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Bank Intermediary Details (1)
+                        </mat-panel-title>
+                        <mat-panel-description>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <form [formGroup]="bankAccountIntermediary1FormGroup">
+                        <div fxLayout="column"
+                             fxFlex="100%"
+                             class="bankIntermediaryDetails">
+                            <div fxLayout="row"
+                                 fxLayoutAlign="right start">
+                                <span class="fill-space"></span>
+                                <button mat-button
+                                        [disabled]="isViewMode"
+                                        type="button"
+                                        (click)="onBankIntermediary1AccountDeleteButtonClick()">
+                                    DELETE
+                                </button>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="50%"
+                                                  [fieldControl]="intermediary1BankNameCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="intermediary1BankNameCtrl.isRequired"
+                                                  [label]="'Intermediary Bank Name'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Bank Account Description"
+                                              [formControl]='bankIntermediary1AccountDescriptionCtrl'></textarea>
+                                    <mat-error *ngIf="bankIntermediary1AccountDescriptionCtrl.hasError('maxlength')">
+                                        Bank
+                                        Account
+                                        Description should be at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <b>Address</b>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 1"
+                                              [formControl]='intermediary1AddressLine1Ctrl'></textarea>
+                                    <mat-error *ngIf="intermediary1AddressLine1Ctrl.hasError('maxlength')"> Address
+                                        Line 1
+                                        should be at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 2"
+                                              [formControl]='intermediary1AddressLine2Ctrl'></textarea>
+                                    <mat-error *ngIf="intermediary1AddressLine2Ctrl.hasError('maxlength')"> Address
+                                        Line 2
+                                        should be at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 3"
+                                              [formControl]='intermediary1AddressLine3Ctrl'></textarea>
+                                    <mat-error *ngIf="intermediary1AddressLine3Ctrl.hasError('maxlength')"> Address Line
+                                        3
+                                        should be
+                                        at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 4"
+                                              [formControl]='intermediary1AddressLine4Ctrl'></textarea>
+                                    <mat-error *ngIf="intermediary1AddressLine4Ctrl.hasError('maxlength')"> Address Line
+                                        4
+                                        should be
+                                        at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary1CityCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'City'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <mat-form-field fxFlex="30%">
+                                    <input matInput
+                                           placeholder="Country"
+                                           [matAutocomplete]="intermediary1CountryCode"
+                                           [formControl]="intermediary1CountryCtrl"
+                                           [required]="intermediary1CountryCtrl.isRequired"
+                                           autocomplete="off">
+                                    <mat-autocomplete #intermediary1CountryCode="matAutocomplete"
+                                                      [panelWidth]="panelSize">
+                                        <mat-option *ngFor="let country of bankIntermediary1Country"
+                                                    [value]="country.description">
+                                            {{country.countryId}} | {{country.description}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary1ZipCodeCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Zip Code'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary1BankNoCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="intermediary1BankNoCtrl.isRequired"
+                                                  [label]="'Bank No'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-dropdown-select fxFlex='30%'
+                                                       label="Bank Type"
+                                                       [fieldControl]="intermediary1BankTypeCtrl"
+                                                       isEditable="true"
+                                                       [required]="intermediary1BankTypeCtrl.isRequired"
+                                                       [options]="bankTypeOptions"
+                                                       [displayProperty]="bankTypeDisplayProperty"
+                                                       [selectProperties]="bankTypeSelectProperties">
+                                </atlas-dropdown-select>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary1AccountNoCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="intermediary1AccountNoCtrl.isRequired"
+                                                  [label]="'Account No'">
+                                </atlas-form-input>
+
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field fxFlex="30%">
+                                    <input matInput
+                                           placeholder="Currency"
+                                           [matAutocomplete]="intermediary1currencyCode"
+                                           [formControl]="intermediary1AccountCcyCtrl"
+                                           [required]="intermediary1AccountCcyCtrl.isRequired"
+                                           autocomplete="off">
+                                    <mat-autocomplete #intermediary1currencyCode="matAutocomplete"
+                                                      [panelWidth]="panelSize">
+                                        <mat-option *ngFor="let currency of accountIntermediary1Currency"
+                                                    [value]="currency.description">
+                                            {{currency.currencyCode}} | {{currency.description}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary1BankSWIFTCodeCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="intermediary1BankSWIFTCodeCtrl.isRequired"
+                                                  [label]="'Bank SWIFT Code'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="bankName1Ctrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Bank Name'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary1BankBranchCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Bank Branch'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary1FEDABACtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'FED ABA'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary1ChipsCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Chips'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary1BankNccTypeCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Bank NCC Type'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="26%"
+                                                  [fieldControl]="intermediary1NCCCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'NCC'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="26%"
+                                                  [fieldControl]="intermediary1NCSCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'NCS'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-dropdown-select fxFlex='38%'
+                                                       label="Bank Intermediary Order"
+                                                       [fieldControl]="bankIntermediary1OrderCtrl"
+                                                       isEditable="true"
+                                                       [options]="bankIntermediary1OrderOptions"
+                                                       [displayProperty]="bankIntermediary1OrderDisplayProperty"
+                                                       [selectProperties]="bankIntermediary1OrderSelectProperties">
+                                </atlas-dropdown-select>
+                            </div>
+                        </div>
+                    </form>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Bank Intermediary Details (2)
+                        </mat-panel-title>
+                        <mat-panel-description>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <form [formGroup]="bankAccountIntermediary2FormGroup">
+                        <div fxLayout="column"
+                             fxFlex="100%"
+                             class="BankIntermediarySecondayDetails">
+                            <div fxLayout="row"
+                                 fxLayoutAlign="right start">
+                                <span class="fill-space"></span>
+                                <button mat-button
+                                        [disabled]="isViewMode"
+                                        type="button"
+                                        (click)="onBankIntermediary2AccountDeleteButtonClick()">
+                                    DELETE
+                                </button>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="50%"
+                                                  [fieldControl]="intermediary2BankNameCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="intermediary2BankNameCtrl.isRequired"
+                                                  [label]="'Intermediary Bank Name'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Bank Account Description"
+                                              [formControl]='bankIntermediary2AccountDescriptionCtrl'></textarea>
+                                    <mat-error *ngIf="bankIntermediary2AccountDescriptionCtrl.hasError('maxlength')">
+                                        Bank
+                                        Account
+                                        Description should be at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <b>Address</b>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 1"
+                                              [formControl]='intermediary2AddressLine1Ctrl'></textarea>
+                                    <mat-error *ngIf="intermediary2AddressLine1Ctrl.hasError('maxlength')"> Address
+                                        Line 1
+                                        should be at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 2"
+                                              [formControl]='intermediary2AddressLine2Ctrl'></textarea>
+                                    <mat-error *ngIf="intermediary2AddressLine2Ctrl.hasError('maxlength')"> Address
+                                        Line 2
+                                        should be at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 3"
+                                              [formControl]='intermediary2AddressLine3Ctrl'></textarea>
+                                    <mat-error *ngIf="intermediary2AddressLine3Ctrl.hasError('maxlength')"> Address Line
+                                        3
+                                        should be
+                                        at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field>
+                                    <textarea matInput
+                                              rows="3"
+                                              placeholder="Address Line 4"
+                                              [formControl]='intermediary2AddressLine4Ctrl'></textarea>
+                                    <mat-error *ngIf="intermediary2AddressLine4Ctrl.hasError('maxlength')"> Address Line
+                                        4
+                                        should be
+                                        at
+                                        most 160 Characters long </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary2CityCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'City'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <mat-form-field fxFlex="30%">
+                                    <input matInput
+                                           placeholder="Country"
+                                           [matAutocomplete]="intermediary2CountryCode"
+                                           [formControl]="intermediary2CountryCtrl"
+                                           [required]="intermediary2CountryCtrl.isRequired"
+                                           autocomplete="off">
+                                    <mat-autocomplete #intermediary2CountryCode="matAutocomplete"
+                                                      [panelWidth]="panelSize">
+                                        <mat-option *ngFor="let country of bankIntermediary2Country"
+                                                    [value]="country.description">
+                                            {{country.countryId}} | {{country.description}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary2ZipCodeCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Zip Code'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary2BankNoCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="intermediary2BankNoCtrl.isRequired"
+                                                  [label]="'Bank No'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-dropdown-select fxFlex='30%'
+                                                       label="Bank Type"
+                                                       [fieldControl]="intermediary2BankTypeCtrl"
+                                                       isEditable="true"
+                                                       [required]="intermediary2BankTypeCtrl.isRequired"
+                                                       [options]="bankTypeOptions"
+                                                       [displayProperty]="bankTypeDisplayProperty"
+                                                       [selectProperties]="bankTypeSelectProperties">
+                                </atlas-dropdown-select>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary2AccountNoCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="intermediary2AccountNoCtrl.isRequired"
+                                                  [label]="'Account No'">
+                                </atlas-form-input>
+
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <mat-form-field fxFlex="30%">
+                                    <input matInput
+                                           placeholder="Currency"
+                                           [matAutocomplete]="intermediary2currencyCode"
+                                           [formControl]="intermediary2AccountCcyCtrl"
+                                           [required]="intermediary2AccountCcyCtrl.isRequired"
+                                           autocomplete="off">
+                                    <mat-autocomplete #intermediary2currencyCode="matAutocomplete"
+                                                      [panelWidth]="panelSize">
+                                        <mat-option *ngFor="let currency of accountIntermediary2Currency"
+                                                    [value]="currency.description">
+                                            {{currency.currencyCode}} | {{currency.description}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary2BankSWIFTCodeCtrl"
+                                                  [isEditable]="true"
+                                                  [required]="intermediary2BankSWIFTCodeCtrl.isRequired"
+                                                  [label]="'Bank SWIFT Code'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="bankName1Ctrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Bank Name'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary2BankBranchCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Bank Branch'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary2FEDABACtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'FED ABA'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary2ChipsCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Chips'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-form-input fxFlex="30%"
+                                                  [fieldControl]="intermediary2BankNccTypeCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'Bank NCC Type'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="26%"
+                                                  [fieldControl]="intermediary2NCCCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'NCC'">
+                                </atlas-form-input>
+                                <span class="fill-space"></span>
+                                <atlas-form-input fxFlex="26%"
+                                                  [fieldControl]="intermediary2NCSCtrl"
+                                                  [isEditable]="true"
+                                                  [label]="'NCS'">
+                                </atlas-form-input>
+                            </div>
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start"
+                                 class="margin-top-8">
+                                <atlas-dropdown-select fxFlex='38%'
+                                                       label="Bank Intermediary Order"
+                                                       [fieldControl]="bankIntermediary2OrderCtrl"
+                                                       isEditable="true"
+                                                       [options]="bankIntermediary2OrderOptions"
+                                                       [displayProperty]="bankIntermediary2OrderDisplayProperty"
+                                                       [selectProperties]="bankIntermediary2OrderSelectProperties">
+                                </atlas-dropdown-select>
+                            </div>
+                        </div>
+                    </form>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <div fxLayout="row">
+                <div fxLayout="column"
+                     fxLayoutAlign="start start">
+                    <button mat-raised-button
+                            [disabled]="isViewMode"
+                            type="button"
+                            (click)="onBankAccountCancelButtonClick()">
+                        CANCEL
+                    </button>
+                </div>
+                <span class="fill-space"></span>
+                <div fxLayout="column"
+                     fxLayoutAlign="end start">
+                    <button mat-raised-button
+                            [disabled]="isViewMode"
+                            type="button"
+                            (click)="onBankAccountSaveButtonClick()">
+                        SAVE
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+    </div>
+</mat-card>
+<atlas-empty-state *ngIf="!newBankAccountForm && !editBankAccount"
+                   title="Want to see the Detail of a Bank Account"
+                   [message]="bankAccountEmptyMessage"></atlas-empty-state>

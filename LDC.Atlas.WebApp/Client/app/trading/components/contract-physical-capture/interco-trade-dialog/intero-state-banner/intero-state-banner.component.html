@@ -1,0 +1,25 @@
+<div>
+    <mat-card class="state-banner-card">
+        <div fxLayout="column">
+            <div fxFlex="20%"
+                 fxLayout="row">
+                <div [ngClass]="circleIconClass">
+                    <mat-icon>{{icon}}</mat-icon>
+                </div>
+
+                <div fxFlex="80%"
+                     fxLayout="column">
+                    <div fxFlex="40%"
+                         fxLayout="column">
+                        <h3>{{title}}</h3>
+                    </div>
+                    <div fxFlex="40%"
+                         fxLayout="column">
+                        {{description}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </mat-card>
+</div>

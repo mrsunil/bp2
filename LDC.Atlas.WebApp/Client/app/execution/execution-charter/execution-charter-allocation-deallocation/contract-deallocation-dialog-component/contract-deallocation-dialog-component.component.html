@@ -1,0 +1,21 @@
+<div fxLayout="row"
+     fxLayoutAlign="space-between center">
+    <h2 mat-dialog-title>
+        You are about to deallocate your trade. Do you wish to re-instate pre-allocation traffic details ?
+    </h2>
+    <mat-dialog-actions>
+        <button mat-button
+                (click)="onCancelButtonClicked()">
+            Cancel
+        </button>
+        <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+        <button mat-button
+                (click)="onYesButtonClicked()">
+            Yes
+        </button>
+        <button mat-button
+                (click)="onNoButtonClicked()">
+            No
+        </button>
+    </mat-dialog-actions>
+</div>

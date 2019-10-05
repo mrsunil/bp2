@@ -1,0 +1,9 @@
+<div #container class="container">
+	<mat-form-field>
+		<mat-select [(value)]="value" #select>
+			<mat-option *ngFor="let val of values" [value]="val[valuePropertyName]" >
+			  {{ getFormatedValue(val[valuePropertyName]) }}
+			</mat-option>
+		  </mat-select>
+	</mat-form-field>
+</div>

@@ -1,0 +1,65 @@
+<mat-card class="trade-capture-card"
+          *ngIf="!hasEmptyState">
+    <mat-card-header>
+        <mat-card-title>
+            Allocation
+        </mat-card-title>
+        <mat-card-subtitle>
+            Trade Allocated on {{dateOfAllocation}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="10%">
+            <div fxFlex="30%"
+                 [class.displayMode]="!groupingNumberCtrl.enabled">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Grouping Number"
+                           [formControl]="groupingNumberCtrl"
+                           readonly
+                           autocomplete="off"
+                           type="number">
+                </mat-form-field>
+            </div>
+        </div>
+        <mat-card-subtitle>
+            Allocated to
+        </mat-card-subtitle>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="30%">
+                <input matInput
+                       class="trade-allocation-card"
+                       placeholder="Contract Number"
+                       [formControl]="contractNumberCtrl"
+                       autocomplete="off"
+                       (click)="onContractReferenceClicked()"
+                       readonly>
+            </mat-form-field>
+            <div fxFlex="30%"
+                 [class.displayMode]="!counterpartyReferenceCtrl.enabled">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Counterparty Reference"
+                           autocomplete="off"
+                           [formControl]="counterpartyReferenceCtrl">
+                </mat-form-field>
+            </div>
+            <div fxFlex="30%"
+                 [class.displayMode]="!contractTermsCtrl.enabled">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Contract Terms"
+                           autocomplete="off"
+                           [formControl]="contractTermsCtrl">
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+<atlas-empty-state *ngIf="hasEmptyState"
+                   title="No Allocation"
+                   [message]="allocationEmptyMessage"></atlas-empty-state>

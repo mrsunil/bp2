@@ -1,0 +1,9 @@
+C:\AtlasDev\src\LDC.Atlas.Authorization.Core\bin\Debug\netstandard2.0\LDC.Atlas.Authorization.Core.deps.json
+C:\AtlasDev\src\LDC.Atlas.Authorization.Core\bin\Debug\netstandard2.0\LDC.Atlas.Authorization.Core.dll
+C:\AtlasDev\src\LDC.Atlas.Authorization.Core\bin\Debug\netstandard2.0\LDC.Atlas.Authorization.Core.pdb
+C:\AtlasDev\src\LDC.Atlas.Authorization.Core\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.Core.csprojAssemblyReference.cache
+C:\AtlasDev\src\LDC.Atlas.Authorization.Core\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.Core.csproj.CoreCompileInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Authorization.Core\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.Core.AssemblyInfoInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Authorization.Core\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.Core.AssemblyInfo.cs
+C:\AtlasDev\src\LDC.Atlas.Authorization.Core\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.Core.dll
+C:\AtlasDev\src\LDC.Atlas.Authorization.Core\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.Core.pdb

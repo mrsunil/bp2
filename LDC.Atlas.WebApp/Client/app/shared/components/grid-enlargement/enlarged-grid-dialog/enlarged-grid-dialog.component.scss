@@ -1,0 +1,20 @@
+.enlarged-grid {
+    height: 100%;
+}
+
+.enlarged-grid-without-grid-view {
+    height: calc(100% - 32px - 32px);
+}
+
+.enlarged-grid-with-grid-view {
+    height: calc(100% - 32px - 32px - 20px) // same as normal - 20 px
+}
+
+.quick-sum-div {
+    height: 32px;
+    font: 400 12px/20px Roboto, "Helvetica Neue", sans-serif;
+
+    button.mat-button {
+        margin-top: 0px !important;
+    }
+}

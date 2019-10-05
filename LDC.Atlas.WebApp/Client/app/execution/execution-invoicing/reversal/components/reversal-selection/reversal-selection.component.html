@@ -1,0 +1,24 @@
+<atlas-reversal-invoice-selection #invoiceSelectionComponent></atlas-reversal-invoice-selection>
+<atlas-document-search #documentSearchComponent
+                       (documentTypeSelected)="documentTypeSelected($event)"
+                       (documentDateSelected)="documentDateSelected($event)"
+                       (rowSelected)="onRowSelected($event)">
+</atlas-document-search>
+<div fxLayout="row wrap"
+     fxLayoutAlign="space-between"
+     fxLayoutAlign.lt-md="space-around center">
+    <div fxLayout="column"
+         fxLayoutAlign="start"
+         fxFlex="49">
+        <atlas-document-type #documentTypeComponent></atlas-document-type>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start"
+         fxFlex="49"
+         [hidden]="!isTemplateEnabled">
+        <atlas-reversal-document-template (templateSelected)="onTemplateSelected($event)"
+                                          [documentType]="DocumentTypes.InvoiceCancellation"
+                                          #documentTemplateComponent>
+        </atlas-reversal-document-template>
+    </div>
+</div>

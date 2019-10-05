@@ -1,0 +1,91 @@
+<div fxLayout="row"
+     fxLayout.md="column"
+     fxLayoutAlign="space-between stretch">
+    <div fxLayout="column"
+         fxLayoutAlign="space-between stretch"
+         fxFlex="49">
+        <atlas-document-information #documentInformationFormComponent
+                                    (currencySelected)="currencySelected($event)"
+                                    (currencySearchValue)="onCurrencySearchValuesEntered($event)"
+                                    (currencyChangeValue)="onCurrencyChange($event)"
+                                    (departmentSearchValue)="onDepartmentSearchvalueEntered($event)"
+                                    (amountSearchValue)="onAmountSearchValueEntered($event)">
+        </atlas-document-information>
+        <atlas-payment-order-template-selection-card *ngIf="!isEdit"
+                                                     (templateSelected)="onTemplateSelected($event)"
+                                                     #templateSelectionComponent
+                                                     fxFlex>
+        </atlas-payment-order-template-selection-card>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start stretch"
+         fxFlex="49">
+        <atlas-counterparty-card [ngClass]="{'counterparty-card':!isDifferentCurrencyOptionSelected() && cashTypeId !== CashType.CashPayment}"
+                                 #counterpartyFormComponent
+                                 (counterpartySearchValues)="onCounterpartySearchValuesEntered($event)"
+                                 (setClientBankInformation)="onSetClientBankInformation()">
+        </atlas-counterparty-card>
+
+        <atlas-bank-information #bankInformationComponent
+                                *ngIf="cashTypeId==CashType.CashPayment">
+        </atlas-bank-information>
+
+        <atlas-currency-information-card [ngClass]="{'hidden-during-loading':!isDifferentCurrencyOptionSelected()}"
+                                         #currencyFormComponent
+                                         (roeTypeSelected)="onRoeTypeChanged($event)"
+                                         (fxRateEntered)="onFxRateValueChanged($event)"
+                                         (bankCurrencySelected)="onBankCurrencyEntered($event)"
+                                         (amountSearchValue)="onAmountSearchValueEntered($event)">
+        </atlas-currency-information-card>
+    </div>
+</div>
+<atlas-lock-interval [resourcesInformation]="resourcesInformation">
+</atlas-lock-interval>
+
+<div fxLayout="column"
+     fxLayoutAlign="start left">
+    <atlas-additional-details #additionalDetailsFormComponent></atlas-additional-details>
+</div>
+
+<div fxLayout="column"
+     fxLayoutAlign="start left"
+     class="cost-style">
+    <atlas-additional-costs (currencySelected)="currencySelected($event)"
+                            (calculateCashAmountWithoutCost)="onEditCalculateCashAmountWithoutCost()"
+                            (calculateBalanceOnCostAmountEnter)="calculateBalanceOnCostAmountEnter()"
+                            #additionalCostsFormComponent></atlas-additional-costs>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="space-between">
+    <div fxLayout="column"
+         fxLayoutAlign="start">
+        <mat-slide-toggle [formControl]="urgentPaymentCtrl"
+                          *ngIf="cashTypeId === CashType.CashPayment">Urgent Payment</mat-slide-toggle>
+        <mat-slide-toggle [formControl]="authorizePostingCtrl"
+                          [checked]="isAuthorizePosting"
+                          (change)="onAuthorizePostingChanged($event)">
+            Authorize for posting
+        </mat-slide-toggle>
+    </div>
+
+
+    <div fxLayout="column"
+         fxLayoutAlign="start">
+        <mat-slide-toggle [ngClass]="{'hidden-during-loading':hideTransmitTreasury}"
+                          [disabled]="cashTypeId==CashType.CashReceipt"
+                          [formControl]="transmitTreasuryCtrl"
+                          [checked]="isTransmitTreasury"
+                          (change)="onTransmitTreasuryChanged($event)">
+            Transmit to treasury System
+            <mat-hint *ngIf="warning">
+                Unable to post
+            </mat-hint>
+            <mat-hint *ngIf="message">
+                Cash will be autoposted
+            </mat-hint>
+        </mat-slide-toggle>
+        <mat-slide-toggle *ngIf="hasTemplate && !isEdit"
+                          [formControl]="previewDocumentCtrl"
+                          (change)="onPreviewToggleSelected()">Preview Document</mat-slide-toggle>
+    </div>
+</div>

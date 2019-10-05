@@ -1,0 +1,72 @@
+<mat-card>
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutAlign="space-between center"
+         fxLayoutWrap
+         fxLayoutGap="10px"
+         class="atlas-grid-card-title">
+        <h2>Freezes</h2>
+        <span class="fill-space"></span>
+        <button mat-icon-button
+                (click)="$event.stopPropagation()"
+                [matMenuTriggerFor]="menu">
+            <i class="material-icons">more_vert</i>
+        </button>
+        <mat-menu #menu="matMenu">
+            <div *ngIf="multipleSelection">
+                <button *ngFor="let action of freezeGridContextualMenuActions"
+                        mat-menu-item
+                        (click)="onBulkMenuActionClicked(action)">
+                    <mat-icon>{{action.icon}}</mat-icon><span>{{ action.text }}</span>
+                </button>
+            </div>
+            <button mat-menu-item
+                    [matMenuTriggerFor]="exportMenu"
+                    (mouseover)="OnExportButton()">
+                <mat-icon>import_export</mat-icon><span>Export</span>
+            </button>
+        </mat-menu>
+        <mat-menu #exportMenu="matMenu">
+            <button mat-menu-item
+                    (click)="onExportButtonClickedAsExcel()">
+                <mat-icon>import_export</mat-icon><span>Export as Excel</span>
+            </button>
+            <button mat-menu-item
+                    (click)="onExportButtonClickedAsCSV()">
+                <mat-icon>import_export</mat-icon><span>Export as CSV</span>
+            </button>
+        </mat-menu>
+    </div>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutWrap
+             *ngIf="isLoading"
+             class="loading">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+        <div [ngClass]="{'hidden-during-loading':isLoading}"
+             ag-grid="agGridOptions"
+             class="ag-theme-material pointer-cursor"
+             style="width: 100%; height: 100%">
+            <ag-grid-angular style="height:100%;"
+                             class="ag-theme-material"
+                             [columnDefs]="columnDefs"
+                             [rowData]="rowData"
+                             enableColResize=true
+                             pagination=true
+                             singleClickEdit=true
+                             paginationPageSize=10
+                             rowSelection="multiple"
+                             suppressRowClickSelection=true
+                             domLayout="autoHeight"
+                             [excelStyles]="excelStyles"
+                             enableSorting=true
+                             (gridReady)="onGridReady($event)"
+                             enableFilter
+                             (firstDataRendered)="onFirstDataRendered($event)"
+                             [rowHeight]="atlasAgGridParam.rowHeight">
+            </ag-grid-angular>
+        </div>
+    </mat-card-content>
+</mat-card>

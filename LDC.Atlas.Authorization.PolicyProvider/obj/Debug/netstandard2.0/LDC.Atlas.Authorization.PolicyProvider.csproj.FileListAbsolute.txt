@@ -1,0 +1,14 @@
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\bin\Debug\netstandard2.0\LDC.Atlas.Authorization.PolicyProvider.deps.json
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\bin\Debug\netstandard2.0\LDC.Atlas.Authorization.PolicyProvider.dll
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\bin\Debug\netstandard2.0\LDC.Atlas.Authorization.PolicyProvider.pdb
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\bin\Debug\netstandard2.0\LDC.Atlas.Application.Core.dll
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\bin\Debug\netstandard2.0\LDC.Atlas.Authorization.Core.dll
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\bin\Debug\netstandard2.0\LDC.Atlas.Application.Core.pdb
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\bin\Debug\netstandard2.0\LDC.Atlas.Authorization.Core.pdb
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.PolicyProvider.csprojAssemblyReference.cache
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.PolicyProvider.csproj.CoreCompileInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.PolicyProvider.AssemblyInfoInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.PolicyProvider.AssemblyInfo.cs
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.PolicyProvider.csproj.CopyComplete
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.PolicyProvider.dll
+C:\AtlasDev\src\LDC.Atlas.Authorization.PolicyProvider\obj\Debug\netstandard2.0\LDC.Atlas.Authorization.PolicyProvider.pdb

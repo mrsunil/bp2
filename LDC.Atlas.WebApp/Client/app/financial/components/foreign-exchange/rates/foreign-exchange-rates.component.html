@@ -1,0 +1,21 @@
+<atlas-financial-tab-group></atlas-financial-tab-group>
+<atlas-market-data-tab-group></atlas-market-data-tab-group>
+
+<div class="main-container">
+    <atlas-foreign-exchange-rates-select-types (selectedViewParams)="onSelectedViewParamsChanged($event)"
+                                               [editMode]="editMode"></atlas-foreign-exchange-rates-select-types>
+    <atlas-foreign-exchange-rates-grid #grid
+                                       (editClicked)="onEditButtonClicked($event)"></atlas-foreign-exchange-rates-grid>
+
+    <div *ngIf="editMode"
+         fxLayout="row"
+         fxAlignLayout="space-between start">
+        <button type="button"
+                (click)="onDiscardButtonClicked()"
+                mat-button>Discard</button>
+        <span class="fill-space"></span>
+        <button type="submit"
+                (click)="onSaveButtonClicked()"
+                mat-raised-button>Save</button>
+    </div>
+</div>

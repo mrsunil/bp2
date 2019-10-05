@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.Audit</name>
+    </assembly>
+    <members>
+        <member name="T:LDC.Atlas.Services.Audit.Application.Queries.Dto.EventHistoryDto">
+            <summary>
+            For getting the event history details
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Audit.Controllers.EventsController.GetEvents(LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns list of events
+            </summary>
+            <param name="pagingOptions">The options for pagination.</param>
+            <returns>List of events.</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Audit.Controllers.EventsController.GetSearchEvents(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of events based on search criteria.
+            </summary>
+            <param name="interfaceType">The interface type.</param>
+            <param name="interfaceStatus">The interface status.</param>
+            <param name="fromDate">From Date</param>
+            <param name="toDate">To Date</param>
+            <param name="documentReference">Document Reference</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Audit.Controllers.EventsController.GetEvents(System.String,System.Int64,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of event history by event id
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="eventId">Event Id.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <returns>List of event history.</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Audit.Controllers.EventsController.GetTransactionDetailsByAccountingId(System.String,System.Int64)">
+            <summary>
+            Returns the transaction document details by accounting Id.
+            </summary>
+            <param name="company">Company Identifier.</param>
+            <param name="accountingId">Account Id.</param>
+            <returns>Return the transaction detail.</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Audit.Controllers.EventsController.GetCashDetailsByCashId(System.String,System.Int64)">
+            <summary>
+            Returns the cash document details by cash Id.
+            </summary>
+            <param name="company">Company Identifier.</param>
+            <param name="cashId">Account Id.</param>
+            <returns>Return the cash detail.</returns>
+        </member>
+    </members>
+</doc>

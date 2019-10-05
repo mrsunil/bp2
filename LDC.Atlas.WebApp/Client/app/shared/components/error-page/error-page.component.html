@@ -1,0 +1,55 @@
+<mat-toolbar matToolbarHighlight
+             class="fixedNavMenuOpen fixedNavSubMenu">
+    <div fxLayout="row"
+         fxLayoutAlign="none center"
+         fxLayoutGap="10px"
+         class="toolbar-div">
+        <mat-icon class="title-icon">swap_horiz</mat-icon>
+        <h1>{{ error.status===403 ?  '' : 'Error '+ (error.status + ' : ')  }}{{error.title}}</h1>
+    </div>
+</mat-toolbar>
+
+<div fxLayout="column"
+     fxLayoutAlign="none center"
+     fxLayoutWrap
+     fxLayoutGap="20px"
+     style="height: 100px;">
+    <div fxFlex="100%"
+         fxFlex.xs="100%"
+         fxFlex.sm="100%">
+        <h2>{{error.catchPhrase}}</h2>
+    </div>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="center end"
+     fxLayoutWrap
+     fxLayoutGap="20px"
+     class="error-image-container">
+    <div fxFlex="50%"
+         fxFlex.xs="50%"
+         fxFlex.sm="50%">
+        <img src={{error.image}} />
+    </div>
+</div>
+<div fxLayout="column"
+     fxLayoutAlign="none center"
+     fxLayoutWrap
+     fxLayoutGap="20px">
+    <div fxFlex="100%"
+         fxFlex.xs="100%"
+         fxFlex.sm="100%">
+        <h2>{{error.title}}</h2>
+    </div>
+    <div fxFlex="100%"
+         fxFlex.xs="100%"
+         fxFlex.sm="100%">
+        <p>{{error.message}}</p>
+    </div>
+    <div *ngIf="company != undefined"
+         fxFlex="100%"
+         fxFlex.xs="100%"
+         fxFlex.sm="100%">
+        <button mat-raised-button
+                (click)="goToHomePage()">BACK TO HOME</button>
+    </div>
+</div>

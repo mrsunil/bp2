@@ -1,0 +1,57 @@
+<mat-card>
+    <mat-card-title>Invoice Selection</mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="49"
+                            class="margin-bottom">
+                <input matInput
+                       [matDatepicker]="costInvoiceDatePicker"
+                       placeholder="Invoice date"
+                       [matTooltip]="'Invoice date'"
+                       [formControl]='costInvoiceDateCtrl'
+                       autocomplete="off"
+                       (dateChange)='onCostInvoiceDateSelected()'>
+                <mat-hint style="color:orange"
+                          *ngIf="isDateAfterValid">Invoice Date is in Future</mat-hint>
+                <mat-datepicker-toggle matSuffix
+                                       [for]="costInvoiceDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #costInvoiceDatePicker></mat-datepicker>
+                <mat-error *ngIf="costInvoiceDateCtrl.hasError('isDateBeforeValid')">
+                    Invoice Date can be equal to or after the contract date
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="70%"
+                            class="mat-read-only-field">
+                <input matInput
+                       placeholder="Counterparty"
+                       [matTooltip]="'Counterparty'"
+                       [formControl]="counterpartyCtrl"
+                       autocomplete="off"
+                       (userSupplier)="onUserSupplierValueChanged($event)"
+                       readonly>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start">
+            <mat-form-field fxFlex="49"
+                            class="mat-read-only-field">
+                <input matInput
+                       placeholder="Invoice Type"
+                       [formControl]='costInvoiceTypeCtrl'
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+        </div>
+
+        <mat-divider class="mat-divider-cost"></mat-divider>
+        <div class="toggle-cost"
+             fxLayoutAlign="left start">
+            <mat-slide-toggle [checked]="true"
+                              [formControl]="authorizePostingCtrl">Authorize for posting</mat-slide-toggle>
+        </div>
+    </mat-card-content>
+
+
+</mat-card>

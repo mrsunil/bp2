@@ -1,0 +1,634 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.Configuration</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.Configuration.Application.Commands.CompanyConfigurationCommandHandler.Handle(LDC.Atlas.Services.Configuration.Application.Commands.UpdateCompanyConfigurationCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a company configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update cash and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Application.Commands.CompanyConfigurationCommandHandler.Handle(LDC.Atlas.Services.Configuration.Application.Commands.DeleteCompanyCommand,System.Threading.CancellationToken)">
+            <param name="request">The command object that contains all the properties to update cash and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Application.Commands.CompanyConfigurationCommandHandler.Handle(LDC.Atlas.Services.Configuration.Application.Commands.UpdateIsFrozenForCompanyCommand,System.Threading.CancellationToken)">
+            <param name="request">The command object that contains all the properties to freeze or unfreeze company related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Application.Commands.CompanyCreationCommandHandler.Handle(LDC.Atlas.Services.Configuration.Application.Commands.CreateCompanyConfigurationCommand,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new company from scratch
+            </summary>
+            <param name="request">The command object that contains all the properties to create a company from scratch and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Application.Commands.CompanyCreationCommandHandler.Handle(LDC.Atlas.Services.Configuration.Application.Commands.CopyCompanyCommand,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new company from another company
+            </summary>
+            <param name="request">The command object that contains all the properties to create a company from another company and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Application.Commands.Dto.AccountingParameterDto">
+            <summary>
+            This DTO is used hold accountingParameter details in IT parameters tab in  company creation/update module.
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Application.Commands.Dto.TradeParameterDto">
+            <summary>
+            This DTO is used hold trade parameters details in IT parameters tab in  company creation/update module.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Application.Commands.UserPreferencesCommandHandler.Handle(LDC.Atlas.Services.Configuration.Application.Commands.Dto.CreateUserPreferencesCommand,System.Threading.CancellationToken)">
+            <summary>
+            Creates user preference for global parameter
+            </summary>
+            <param name="request">The command object that contains all the properties to create user preference.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Application.Commands.UserPreferencesCommandHandler.Handle(LDC.Atlas.Services.Configuration.Application.Commands.Dto.UpdateUserPreferencesCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of user preferences
+            </summary>
+            <param name="request">The command object that contains all the properties to update user preference.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Application.Queries.Dto.FeatureBitDto">
+            <summary>
+            Feature Bit data model definition.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Application.Queries.Dto.FeatureBitDto.Id">
+            <summary>
+            Gets or sets the Id of the model.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Application.Queries.Dto.FeatureBitDto.Name">
+            <summary>
+            Gets or sets the Name of the model.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Application.Queries.Dto.FeatureBitDto.IsOnOff">
+            <summary>
+            Gets or sets a value indicating whether the feature is activated or not.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Application.Queries.Dto.FeatureBitDto.ExcludedEnvironments">
+            <summary>
+            Gets or sets the excluded environments of the model where the feature is fixed to be disabled.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Application.Queries.Dto.FeatureBitDto.AllowedCompanies">
+            <summary>
+            Gets or sets the allowed companies of the model.
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Application.Queries.FeatureFlagsQueries">
+            <summary>
+            Query component of feature flags.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Application.Queries.FeatureFlagsQueries.#ctor(LDC.Atlas.DataAccess.IDapperContext,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LDC.Atlas.Services.Configuration.Application.Queries.FeatureFlagsQueries"/> class.
+            </summary>
+            <param name="dapperContext">Dapper context for data access.</param>
+            <param name="mapper">Mapper instance.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Application.Queries.FeatureFlagsQueries.GetFeatureFlagAsync(System.String,System.String)">
+            <summary>
+            Returns the status of the feature bit based on the gap name.
+            </summary>
+            <param name="company">Company to query.</param>
+            <param name="gapName">Name of the gap to query.</param>
+            <returns>Returns the feature instance for the company and gap name.</returns>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Application.Queries.IFeatureFlagsQueries">
+            <summary>
+            Query component interface for feature flags.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Application.Queries.IFeatureFlagsQueries.GetFeatureFlagAsync(System.String,System.String)">
+            <summary>
+            Returs the status of a given feature based on the company and gap name.
+            </summary>
+            <param name="company">Company input value for query.</param>
+            <param name="gapName">Gap name input value for query.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation with the status of the gap.</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.ApplicationTablesController.GetAllApplicationTables">
+            <summary>
+            Return the list of application tables.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.ApplicationTablesController.GetApplicationFieldsByTableId(System.Int32)">
+            <summary>
+            Returns the list of application fields associated to a table.
+            </summary>
+            <param name="tableId">The identifier of the application table.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.BatchesController.ExecuteBatch(System.Int32,System.Int32)">
+            <summary>
+            Execute a batch action on a group of companies.
+            </summary>
+            <param name="groupId">The group identifier.</param>
+            <param name="actionId">The action identifier to execute.</param>
+            <response code="204">Batch executed.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetCompanyConfiguration(System.String,System.Int32)">
+            <summary>
+            Returns a list of companies configuration setup details.
+            <param name="company">The company code.</param>
+            <param name="year">This is Year , used to fetch accounting parameter details</param>
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetDefaultAccounting(System.String)">
+            <summary>
+            Returns a list of companies configuration setup details.
+            <param name="company">The company code.</param>
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetCompanyListDetails">
+            <summary>
+            Returns a list of companies with company details.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetAccountingParameterAsync(System.String,System.Int32)">
+            <summary>
+            Return the acconting details of the company
+            </summary>
+            <param name="company">The company name</param>
+            <param name="year">The Year number</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetTradeParameterAsync(System.String)">
+            <summary>
+            Return the trading next number details of the company
+            </summary>
+            <param name="company">The company name</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetInvoiceSetupByCompany(System.String)">
+            <summary>
+            Returns a InvoicenSetup its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetCompanySetupByCompany(System.String)">
+            <summary>
+            Returns a Company Setup its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.CheckTransactionDataExists(System.String)">
+            <summary>
+            Returns a Company Setup its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetTradeSetupByCompany(System.String)">
+            <summary>
+            Returns a Company Setup its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetInterCoNoInterCoUsers(System.String)">
+            <summary>
+            Returns a InterCo or No InterCo user list.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetInterCoNoInterCoEmailSetup(System.String)">
+            <summary>
+            Returns a InterCo or No InterCo emails id list.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.UpdateCompanyConfiguration(System.String,LDC.Atlas.Services.Configuration.Application.Commands.UpdateCompanyConfigurationCommand)">
+            <summary>
+            Updates an existing company details.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">The company details to update.</param>
+            <response code="204">company updated</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.DeleteCompany(System.String)">
+            <summary>
+            Delete a company.
+            </summary>
+            <param name="company">The company details to delete.</param>
+            <response code="204">company deleted</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.UpdateIsFrozenForCompany(System.String,LDC.Atlas.Services.Configuration.Application.Commands.UpdateIsFrozenForCompanyCommand)">
+            <summary>
+            Freeze a company.
+            </summary>
+            <param name="company">The company details to freeze.</param>
+            <response code="204">company frozen</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetAllocationSetUpByCompanyId(System.String)">
+            <summary>
+            Returns a Allocation Set Up its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetInterfaceSetupByCompany(System.String)">
+            <summary>
+            Returns a Interface Setup its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetMandatoryFieldSetupByCompanyId(System.String)">
+            <summary>
+            Returns a Mandatory and Trade Approval and Image set-up fields
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetAllocationSetUp">
+            <summary>
+            Get the allocation fields for create company
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetMandatoryFieldSetup">
+            <summary>
+            Returns mandatory trade approval and iscopy fields list for create company
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.CheckCounterpartyExists(System.String)">
+            <summary>
+            Returns a Company Setup its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyConfigurationController.GetMainAccountingSetup">
+            <summary>
+            Returns the List of fields to be configured for Main Accounting
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyCreationController.CreateCompanyConfiguration(LDC.Atlas.Services.Configuration.Application.Commands.CreateCompanyConfigurationCommand)">
+            <summary>
+            Create a new company from scratch.
+            </summary>
+            <param name="request">The company details to create.</param>
+            <response code="204">company created</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.CompanyCreationController.CreateCompanyByCopy(LDC.Atlas.Services.Configuration.Application.Commands.CopyCompanyCommand)">
+            <summary>
+            Creates a new company by copy
+            </summary>
+            <param name="request">The company details to copy.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FeatureFlagsController.#ctor(LDC.Atlas.Services.Configuration.Application.Queries.IFeatureFlagsQueries,LDC.Atlas.Services.Configuration.Services.IFeatureBitEvaluator,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LDC.Atlas.Services.Configuration.Controllers.FeatureFlagsController"/> class.
+            </summary>
+            <param name="featureFlagsQueries">Interface of the Queries component.</param>
+            <param name="evaluator">Interface of the feature bits component.</param>
+            <param name="mapper">Interface of the mapper component.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FeatureFlagsController.Get(System.String,System.String)">
+            <summary>
+            Check if a particular flag is enabled or not.
+            </summary>
+            <param name="company">Company.</param>
+            <param name="name">Flag Name.</param>
+            <returns>The status of the particular flag indicating if it is enabled or not.</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FilterSetsController.GetUserFilterSets(System.String,System.String)">
+            <summary>
+            Returns the current user's list of filters set for a grid.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The grid code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FilterSetsController.GetUserFilterSetById(System.String,System.String,System.Int32)">
+            <summary>
+            Returns a filter set by its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The grid code.</param>
+            <param name="filterSetId">The filter set identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FilterSetsController.CreateUserFilterSet(System.String,System.String,LDC.Atlas.Services.Configuration.Application.Commands.CreateFilterSetCommand)">
+            <summary>
+            Creates a filter set.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The grid code.</param>
+            <param name="filterSet">The filter set to add.</param>
+            <response code="201">Grid configuration created</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FilterSetsController.UpdateUserFilterSet(System.String,System.String,System.Int32,LDC.Atlas.Services.Configuration.Application.Commands.UpdateFilterSetCommand)">
+            <summary>
+            Updates an existing filter set.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The code of the grid.</param>
+            <param name="filterSetId">The identifier of the filter set to update.</param>
+            <param name="filterSet">The filter set to update.</param>
+            <response code="204">Grid updated</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FilterSetsController.DeleteUserFilterSet(System.String,System.String,System.Int32)">
+            <summary>
+            Remove a filter set.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The code of the grid.</param>
+            <param name="filterSetId">The identifier of the filter set to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FormsController.GetFormConfiguration(System.String,System.String)">
+            <summary>
+            Returns a form configuration by its form identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="formId">The form identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FunctionalObjectsController.GetAllFunctionalObjects(LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.String)">
+            <summary>
+            Returns the list of functional objects.
+            </summary>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="name">Search term for functional object's name.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FunctionalObjectsController.GetFunctionalObjectById(System.Int32)">
+            <summary>
+            Returns a functional object by its name.
+            </summary>
+            <param name="functionalObjectId">ID of functional object.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FunctionalObjectsController.CreateFunctionalObject(LDC.Atlas.Services.Configuration.Application.Commands.CreateFunctionalObjectCommand)">
+            <summary>
+            Creates a new functional object.
+            </summary>
+            <param name="functionalObject">DTO that contains the required data to create a functional object.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FunctionalObjectsController.UpdateFunctionalObject(LDC.Atlas.Services.Configuration.Application.Commands.UpdateFunctionalObjectCommand)">
+            <summary>
+            Edit a new functional object.
+            </summary>
+            <param name="functionalObject">DTO that contains the required data to create a functional object.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.FunctionalObjectsController.CheckFunctionalObjectNameExists(System.String,System.Int32)">
+            <summary>
+            Checks if a functional object exists.
+            </summary>
+            <param name="name">The name of the functional object.</param>
+            <param name="id">The id of the current functional object.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GlobalParametersController.GetUserPreference(System.Int32)">
+            <summary>
+            Returns user preference list.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GlobalParametersController.CreateUserPreference(LDC.Atlas.Services.Configuration.Application.Commands.Dto.CreateUserPreferencesCommand)">
+            <summary>
+            Create global parameters language/date format user preference.
+            </summary>
+            <param name="request">The user preference details to create.</param>
+            <response code="204">user preference created</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GlobalParametersController.UpdateUserPreference(LDC.Atlas.Services.Configuration.Application.Commands.Dto.UpdateUserPreferencesCommand)">
+            <summary>
+            Update global parameters language/date format user preference.
+            </summary>
+            <param name="request">The user preference details to update.</param>
+            <response code="204">user preference updated</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GridsController.GetGridConfigByConfigurationTypeId(System.String,System.String)">
+            <summary>
+            Returns list of grids for configuration by its grid type.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="configurationTypeId">The configuration type id.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GridsController.GetGridConfiguration(System.String,System.String)">
+            <summary>
+            Returns a grid configuration by its grid code.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The grid code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GridsController.GetGridConfigurationByGridId(System.String,System.Int64)">
+            <summary>
+            Returns a grid configuration by its grid id.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridId">The grid Id.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GridsController.UpdateGridConfiguration(System.String,System.Int64,LDC.Atlas.Services.Configuration.Application.Commands.UpdateGridCommand)">
+            <summary>
+            Updates an existing grid configuration.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridId">The id of the grid to update.</param>
+            <param name="grid">The grid to update.</param>
+            <response code="204">Grid updated</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GridViewsController.GetUserGridViews(System.String,System.String)">
+            <summary>
+            Returns the current user's list of gridViewss for a grid.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The grid code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GridViewsController.GetUserGridViewById(System.String,System.String,System.Int32)">
+            <summary>
+            Returns a gridView by its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The grid code.</param>
+            <param name="gridViewId">The gridView identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GridViewsController.CreateUserGridView(System.String,System.String,LDC.Atlas.Services.Configuration.Application.Commands.CreateGridViewCommand)">
+            <summary>
+            Creates a gridView.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The grid code.</param>
+            <param name="gridView">The gridView to add.</param>
+            <response code="201">Grid configuration created</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GridViewsController.UpdateUserGridView(System.String,System.String,System.Int32,LDC.Atlas.Services.Configuration.Application.Commands.UpdateGridViewCommand)">
+            <summary>
+            Updates an existing gridView.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The code of the grid.</param>
+            <param name="gridViewId">The identifier of the gridView to update.</param>
+            <param name="gridView">The gridView to update.</param>
+            <response code="204">Grid updated</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GridViewsController.DeleteUserGridView(System.String,System.String,System.Int32)">
+            <summary>
+            Removes a gridView.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The code of the grid.</param>
+            <param name="gridViewId">The identifier of the gridView to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.GridViewsController.CheckGridViewName(System.String,System.String,System.String)">
+            <summary>
+            Checks if the name of the grid view exists regardless of the user.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="gridCode">The code of the grid.</param>
+            <param name="gridViewName">The name of the grid view.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.UserConfigurationController.CreateUserPreferenceColumns(System.String,LDC.Atlas.Services.Configuration.Application.Commands.CreateUserPreferenceCommand)">
+            <summary>
+            Creates the user favourite columns in a specific grid
+            </summary>
+            <param name="company">the company code</param>
+            <param name="userPreference">the user preferences to create</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Controllers.UserConfigurationController.GetUserPreferenceColumns(System.String,System.String)">
+            <summary>
+            Returns the user preference columns for a specific grid.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="componentId">The specific grid identifier</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Entities.AccountingParameter">
+            <summary>
+            This Entity is used hold accounting parameters details in IT parameters tab in company creation/update module
+            while creating/updating company functionlity.
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Entities.FeatureBitDefinition">
+            <summary>
+            Definition for Feature Bit toogle.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.FeatureBitDefinition.Id">
+            <summary>
+            Gets or sets the unique ID of the feature bit.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.FeatureBitDefinition.Name">
+            <summary>
+            Gets or sets the unique name of the feature bit.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.FeatureBitDefinition.IsOnOff">
+            <summary>
+            Gets or sets a value indicating whether gets or sets if the feature is active or not.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.FeatureBitDefinition.ExcludedEnvironments">
+            <summary>
+            Gets or sets the environments where the feature is desactivated.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.FeatureBitDefinition.AllowedCompanies">
+            <summary>
+            Gets or sets a list of companies where the gap is registered.
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Entities.FeatureResult">
+            <summary>
+            Flag operation result information.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.FeatureResult.Name">
+            <summary>
+            Gets or sets gap Name.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.FeatureResult.Active">
+            <summary>
+            Gets or sets a value indicating whether result of the flag evaluation.
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Entities.IFeatureBitDefinition">
+            <summary>
+            Interface definition for Feature Bit toogle.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.IFeatureBitDefinition.Id">
+            <summary>
+            Gets or sets the unique ID of the feature bit.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.IFeatureBitDefinition.Name">
+            <summary>
+            Gets or sets the unique name of the feature bit.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.IFeatureBitDefinition.IsOnOff">
+            <summary>
+            Gets or sets a value indicating whether gets or sets if the feature is active or not.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.IFeatureBitDefinition.ExcludedEnvironments">
+            <summary>
+            Gets or sets the environments where the feature is desactivated.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Entities.IFeatureBitDefinition.AllowedCompanies">
+            <summary>
+            Gets or sets a list of companies where the gap is registered.
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Entities.TradeParameter">
+            <summary>
+            This Entity is used hold trade parameters details in IT parameters tab in company creation/update module
+            while creating/updating company functionlity.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Extensions.ServiceConfigurationExtensions.AddAtlasServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Use this extension method in order to add all the services that are required for the custom authorization.
+            </summary>
+            <param name="services">The Microsoft.Extensions.DependencyInjection.IServiceCollection.</param>
+            <param name="configuration">Configuration to use.</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Services.AtlasService">
+            <summary>
+            Type HTTP client to query the Atlas APIs.
+            See: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-2.1#typed-clients
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Services.FeatureBitEvaluator">
+            <summary>
+            This class allows the user of the class to determine if a particular feature should be turned on or off.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Services.FeatureBitEvaluator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LDC.Atlas.Services.Configuration.Services.FeatureBitEvaluator"/> class.
+            </summary>
+            <param name="definitions">Object used to read the Feature Bits</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Services.FeatureBitEvaluator.IsEnabled(LDC.Atlas.Services.Configuration.Entities.IFeatureBitDefinition)">
+            <summary>
+            Indacicates if a given feature is enabled or not.
+            </summary>
+            <param name="feature">Feature </param>
+            <returns>Returns the boolean value of the feature status.</returns>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Services.IFeatureBitEvaluator">
+            <summary>
+            Interface of the evaluator of the feature bit functionality.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Configuration.Services.IFeatureBitEvaluator.IsEnabled(LDC.Atlas.Services.Configuration.Entities.IFeatureBitDefinition)">
+            <summary>
+            Determine if a feature should be enabled or disabled.
+            </summary>
+            <param name="feature">Feature to be chedked</param>
+            <returns>True if the feature is enabled.</returns>
+        </member>
+        <member name="T:LDC.Atlas.Services.Configuration.Services.SystemContext">
+            <summary>
+            Context class for environment management on FeatureBits.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Configuration.Services.SystemContext.GetEnvironmentVariable">
+            <summary>
+            Gets or sets the environment variable.
+            </summary>
+        </member>
+    </members>
+</doc>

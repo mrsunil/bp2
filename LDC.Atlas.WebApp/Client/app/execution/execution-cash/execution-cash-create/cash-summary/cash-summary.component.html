@@ -1,0 +1,160 @@
+<ng-template #headerContent>
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="1%"
+         class="bottom-marge">
+        <mat-card-title>
+            Cash {{docReference}}
+        </mat-card-title>
+        <mat-chip-list class="chip-list">
+            <mat-chip *ngIf="showTraxStatus"
+                      selected
+                      disabled
+                      matTooltip="Trax Status"
+                      [ngClass]="isTraxStatusSuccess == true ? 'mat-approved': 'mat-error'">
+                {{traxStatus}}
+            </mat-chip>
+            <mat-chip *ngIf="showPostingStatus"
+                      selected
+                      disabled
+                      matTooltip="Posting Status"
+                      [ngClass]="isPostingStatusSuccess == true ? 'mat-approved': 'mat-error'">
+                {{postingStatus}}
+            </mat-chip>
+            <mat-chip *ngIf="showAccInterfaceStatus"
+                      selected
+                      disabled
+                      matTooltip="Accounting Interface Status"
+                      [ngClass]="isAccInterfaceStatusSuccess == 'true' ? 'mat-approved': 'mat-error'">
+                {{accInterfaceStatus}}
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="1%">
+
+        <atlas-date-picker fxFlex="15%"
+                           [fieldControl]="creationDateCtrl"
+                           label="Created On">
+        </atlas-date-picker>
+
+        <atlas-form-input fxFlex="15%"
+                          [fieldControl]="createdByCtrl"
+                          label="By">
+        </atlas-form-input>
+    </div>
+</ng-template>
+
+<mat-card *ngIf="isCreationMode"
+          class="card-header-luke">
+    <ng-container *ngTemplateOutlet="headerContent"></ng-container>
+</mat-card>
+
+<header *ngIf="!isCreationMode"
+        class="header-background mat-elevation-z2">
+    <div class="header-content">
+        <ng-container *ngTemplateOutlet="headerContent"></ng-container>
+    </div>
+</header>
+
+<atlas-floating-action-button [fabTitle]="fabTitle"
+                              [fabType]="fabType"
+                              [fabActions]="fabMenuActions"
+                              [isParentLoaded]="!isLoading"
+                              (fabActionClicked)="onFabActionClicked($event)"
+                              *ngIf="!isCreationMode">
+</atlas-floating-action-button>
+<div class="main-container">
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         *ngIf="isLoading"
+         class="loading">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+
+    <!--these css classes  "warning-banner-card" is already defined in common style class.-->
+    <div class="warning-banner-card"
+         *ngIf="errorMessage">
+        <mat-card class="cash-warning-card">
+            <div class="warning-circle-icon">
+                <mat-icon>warning_outline</mat-icon>
+            </div>
+            <mat-card-header>
+                <mat-card-title>
+                    <h4 class="no-margin">Warning</h4>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    {{errorMessage}}
+                </mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
+
+    <div fxLayout="row"
+         fxLayout.md="column"
+         fxLayoutAlign="space-around start"
+         fxLayoutGap="20px">
+        <div fxLayout="column"
+             fxLayoutAlign="start left"
+             fxFlex="50">
+            <atlas-document-information #documentInformationFormComponent
+                                        [isSummary]='true'></atlas-document-information>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start right"
+             fxFlex="50">
+            <atlas-counterparty-card #counterpartyFormComponent></atlas-counterparty-card>
+
+            <atlas-currency-information-card [ngClass]="{'hidden-during-loading':isDifferentCurrencyoptionSelected()}"
+                                             #currencyFormComponent></atlas-currency-information-card>
+
+            <atlas-bank-information #bankInformationComponent
+                                    *ngIf="cashTypeId==CashType.CashPayment">
+            </atlas-bank-information>
+        </div>
+    </div>
+
+    <div fxLayout="column"
+         fxLayoutAlign="start left">
+        <atlas-additional-details #additionalDetailsFormComponent></atlas-additional-details>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start left"
+         class="cost-style">
+        <atlas-additional-costs #additionalCostsFormComponent></atlas-additional-costs>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start left">
+        <atlas-invoice-grid-for-summary #invoiceGridForSummaryComponent></atlas-invoice-grid-for-summary>
+    </div>
+
+    <div fxLayout="row "
+         fxLayoutAlign="right">
+        <mat-slide-toggle [formControl]="urgentPaymentSummaryCtrl"
+                          *ngIf="cashTypeId == CashType.CashPayment"
+                          [checked]="disabled">Urgent Payment</mat-slide-toggle>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between">
+        <div fxLayout="column"
+             fxLayoutAlign="start">
+            <mat-slide-toggle [disabled]="true"
+                              [formControl]="authorizePostingCtrl">
+                Authorize for posting
+            </mat-slide-toggle>
+        </div>
+
+        <div fxLayout="column"
+             fxLayoutAlign="start">
+            <mat-slide-toggle *ngIf="cashTypeId == CashType.CashPayment"
+                              [disabled]="true"
+                              [formControl]="transmitTreasuryCtrl">
+                Transmit to treasury System
+            </mat-slide-toggle>
+        </div>
+
+        <atlas-lock-interval [resourcesInformation]="resourcesInformation">
+        </atlas-lock-interval>
+    </div>

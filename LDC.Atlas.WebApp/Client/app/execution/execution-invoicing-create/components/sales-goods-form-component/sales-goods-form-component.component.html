@@ -1,0 +1,13 @@
+<mat-card>
+    <mat-card-title>
+        <h2>Sales of Goods</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div *ngFor="let invoicetype of invoiceTypeMenuItems">
+            <mat-checkbox #salesCtrl
+                          [formControl]="salesInvoiceCtrl"
+                          [value]="invoicetype.invoiceTypeId"
+                          (change)="OnChange($event,salesCtrl.checked,invoicetype)">{{invoicetype.name}}</mat-checkbox>
+        </div>
+    </mat-card-content>
+</mat-card>

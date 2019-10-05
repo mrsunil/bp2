@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>{{ dialogData.title }}</h1>
+<mat-dialog-content class="mat-dialog-content">
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         fxLayoutGap="6px"
+         *ngIf="!isWorkInProgress">
+        <div fxLayout="column">
+            <p>{{dialogText}}</p>
+            <p class="error-message">{{errorMessage}}</p>
+        </div>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         fxLayoutGap="6px"
+         *ngIf="isWorkInProgress">
+        <div fxLayout="column">
+            <mat-spinner color="accent"></mat-spinner>
+            <p>{{processMessage}}</p>
+        </div>
+    </div>
+</mat-dialog-content>
+<div fxLayout="column">
+    <div>
+        <input class="hidden-during-loading"
+               type="file"
+               accept=".docx"
+               (change)="onFileSelected($event)"
+               #fileUpload>
+    </div>
+    <!-- <mat-divider></mat-divider> commenting as per Bug 24332 -->
+    <div fxLayout="row"
+         fxLayoutAlign="space-between end">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">Discard
+        </button>
+        <button mat-button
+                (click)="fileUpload.click()"
+                [disabled]="isWorkInProgress">Upload Document
+        </button>
+    </div>
+</div>

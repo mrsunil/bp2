@@ -1,0 +1,110 @@
+<div class="main-container fx-exposure-report">
+    <div fxLayout="row wrap"
+         fxLayoutAlign="start"
+         fxLayoutAlign.lt-md="space-around center"
+         fxLayoutGap="16px">
+        <mat-card fxFlex="35%"
+                  fxFlexOrder.lt-md="1">
+            <mat-card-header>
+                <mat-card-title>
+                    <h2>Database Selection</h2>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayoutGap="5px">
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between start"
+                     fxLayoutGap="15%">
+                    <atlas-dropdown-select fxFlex='40%'
+                                           [label]="'Snapshot'"
+                                           [fieldControl]="fxExposureSnapshotCtrl"
+                                           isEditable=true
+                                           [options]="snapshotList"
+                                           displayProperty="freezeDate"
+                                           [selectProperties]="['freezeDate']">
+                    </atlas-dropdown-select>
+                </div>
+                <div class="DisplayToggle"
+                     fxLayout="row"
+                     fxLayoutAlign="start start">
+                    <mat-slide-toggle mat-raised-button
+                                      (change)="onToggleDisplay()">Display open/Realised
+                    </mat-slide-toggle>
+                </div>
+
+                <div fxLayout="row"
+                     fxLayoutAlign="start end">
+                    <mat-slide-toggle mat-raised-button
+                                      (change)="onToggleExcludeBankAccount()">Exclude Bank account
+                    </mat-slide-toggle>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="start end">
+                    <mat-slide-toggle mat-raised-button
+                                      (change)="onToggleExcludeGLAccount()">Exclude GL account
+                    </mat-slide-toggle>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card fxFlex="35%"
+                  fxFlexOrder.lt-md="2">
+            <mat-card-header>
+                <mat-card-title>
+                    <h2>Report Criterias</h2>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div fxLayout="row"
+                     fxLayoutGap="100%">
+                    <atlas-contextual-search-multiple-autocomplete-select #currencyDropdownComponent
+                                                                          [options]="currencies"
+                                                                          [selectedOptions]="[]"
+                                                                          [allOptionsElement]="CurrencyAllOptions"
+                                                                          [allSelected]="allCurrenciesSelected"
+                                                                          displayCode="true"
+                                                                          valueProperty="currencyCode"
+                                                                          codeProperty="currencyCode"
+                                                                          placeholder="Currency Code"
+                                                                          placeholderFilter="Currency Code"
+                                                                          elementName="Currency Code"
+                                                                          (selectionChangedEvent)="onCurrencySelectionChanged($event)">
+                    </atlas-contextual-search-multiple-autocomplete-select>
+                </div>
+
+                <div fxLayout="row"
+                     fxLayoutGap="100%">
+                    <atlas-contextual-search-multiple-autocomplete-select #departmentDropdownComponent
+                                                                          [options]="filteredDepartments"
+                                                                          [selectedOptions]="[]"
+                                                                          [allOptionsElement]="departmentAllOptions"
+                                                                          [allSelected]="allDepartmentsSelected"
+                                                                          displayCode="true"
+                                                                          valueProperty="departmentId"
+                                                                          codeProperty="departmentCode"
+                                                                          displayProperty="description"
+                                                                          placeholder="Departments"
+                                                                          placeholderFilter="Department"
+                                                                          elementName="Department"
+                                                                          (selectionChangedEvent)="onDepartmentSelectionChange($event)">
+
+                    </atlas-contextual-search-multiple-autocomplete-select>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="end center">
+        <button mat-raised-button
+                (click)="onGenerateReportButtonClicked()">GENERATE REPORT</button>
+
+        <button mat-raised-button
+                class="generate-report-button"
+                (click)="onGenerateExcelButtonClicked()">Detailed Excel View</button>
+    </div>
+    <div class="report-container">
+        <atlas-ssrsreport-viewer [reportServer]="reportServerUrl"
+                                 [reportUrl]="reportPath"
+                                 [parameters]="parameters"
+                                 [toBeDownloaded]="toBeDownloaded"
+                                 #ssrsReportViewer></atlas-ssrsreport-viewer>
+    </div>
+</div>

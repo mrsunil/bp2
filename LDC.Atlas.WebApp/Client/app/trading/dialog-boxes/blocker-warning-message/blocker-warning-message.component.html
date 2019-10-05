@@ -1,0 +1,35 @@
+<mat-dialog-content>
+    <div fxLayout="row"
+         fxLayoutAlign="none center"
+         fxLayoutWrap
+         fxLayoutGap="10px">
+        <mat-dialog-actions *ngIf="isBlockerDisplayed">
+            <span class="fill-space"></span>
+            <p>{{dialogData.messageBlocker}}</p>
+            <div>
+                <button mat-button
+                        (click)='onBlockerButtonClicked(false)'>No</button>
+                <button mat-button
+                        (click)='onBlockerButtonClicked(true)'>Yes</button>
+            </div>
+        </mat-dialog-actions>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions *ngIf="isWarningDisplayed">
+    <span class="fill-space"></span>
+    <p>{{warningMessagedDisplayed}}</p>
+    <div *ngIf="!userClickedOnYes && isBlockerDisplayed">
+        <button mat-button
+                (click)="onWarningButtonClicked(actions.ok)">Ok</button>
+        <button mat-button
+                (click)="onWarningButtonClicked(actions.discard)">Discard</button>
+    </div>
+    <div *ngIf="userClickedOnYes || !isBlockerDisplayed">
+        <button mat-button
+                (click)="onWarningButtonClicked(actions.discard)">Discard</button>
+        <button mat-button
+                (click)="onWarningButtonClicked(actions.no)">No</button>
+        <button mat-button
+                (click)="onWarningButtonClicked(actions.yes)">Yes</button>
+    </div>
+</mat-dialog-actions>

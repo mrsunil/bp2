@@ -1,0 +1,96 @@
+<atlas-admin-stepper></atlas-admin-stepper>
+
+<div class="main-container">
+    <div class="elevated-container mat-elevation-z1 container-custom">
+        <form [formGroup]="userForm">
+            <mat-card class="atr-card-header">
+                <mat-card-title>User Creation</mat-card-title>
+                <mat-card-content class="atr-user-card">
+                    <div fxLayout="column"
+                         fxLayoutAlign="none center"
+                         fxLayoutWrap
+                         fxLayoutGap="20px">
+                        <div fxFlex="50%"
+                             fxFlex.xs="100%"
+                             fxFlex.sm="100%"
+                             class="custom-form"
+                             [class.isEmpty]="!userIdCtrl.value"
+                             [class.required-field]="true">
+                            <mat-form-field>
+                                <input required
+                                       matInput
+                                       placeholder="Username"
+                                       formControlName="userIdCtrl" />
+                                <mat-error *ngIf="userIdCtrl.hasError('required')">
+                                    Username is Required
+                                </mat-error>
+                                <mat-hint>
+                                    Required *
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="50%"
+                             fxFlex.xs="100%"
+                             fxFlex.sm="100%">
+                            <button type="submit"
+                                    class="search"
+                                    mat-button
+                                    [disabled]="!userForm.valid"
+                                    (click)="getDirectoryUsers()">SEARCH IN ACTIVE DIRECTORY</button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+        <div fxLayout="column"
+             fxLayoutAlign="none center"
+             fxLayoutWrap
+             fxLayoutGap="20px"
+             class="user-creation-result">
+            <div *ngIf="directoryUsers && !isSearchInProgress"
+                 fxFlexAlign="start"
+                 fxFlexOffset="10"
+                 fxFlex="80"
+                 fxFlex.xs="100%"
+                 fxFlex.sm="100%">
+                <h3>{{ directoryUsers.length }} {{ directoryUsers.length > 1 ? 'Results' : 'Result'}} for "{{
+                    searchTerm }}"</h3>
+            </div>
+            <div *ngIf="directoryUsers && !isSearchInProgress"
+                 fxFlex="100%"
+                 fxFlex.xs="100%"
+                 fxFlex.sm="100%"
+                 ag-grid="userGridOptions"
+                 class="ag-theme-material pointer-cursor"
+                 style="width: 100%; height: 100%">
+                <ag-grid-angular style=" height: 100%;"
+                                 class="ag-theme-material"
+                                 [rowData]="userGridRows"
+                                 [columnDefs]="userGridColumns"
+                                 [enableColResize]="true"
+                                 [pagination]="false"
+                                 [enableSorting]="true"
+                                 domLayout="autoHeight"
+                                 (gridReady)="onGridReady($event)"
+                                 (columnVisible)="onAddOrDeleteColumn($event)"
+                                 (rowClicked)="onUserRowClicked($event)"
+                                 [rowHeight]="atlasAgGridParam.rowHeight"
+                                 enableFilter>
+                </ag-grid-angular>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 *ngIf="isSearchInProgress">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between center"
+                 fxLayoutWrap
+                 class="no-search-results"
+                 *ngIf="directoryUsers?.length === 0">
+                <p>No result has been found.</p>
+            </div>
+        </div>
+    </div>
+</div>

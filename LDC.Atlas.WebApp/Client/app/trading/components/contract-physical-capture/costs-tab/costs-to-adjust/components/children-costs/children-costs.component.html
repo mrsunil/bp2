@@ -1,0 +1,40 @@
+<mat-card>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutWrap
+             *ngIf="isLoading"
+             class="loading">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+        <div fxLayout="row"
+             fxLayout.xs="column"
+             fxLayoutAlign="space-between left"
+             fxLayoutWrap
+             fxLayoutGap="20px"
+             class="atlas-grid-card-header">
+            <h2 class="atlas-grid-card-title">Children Costs</h2>
+        </div>
+        <div ag-grid="transferCostChildrenGridOptions"
+             style="width: 100%; height:100%">
+            <ag-grid-angular style=" height:100%;"
+                             class="ag-theme-material"
+                             [rowData]="childCostsGridRows"
+                             [gridOptions]="transferCostChildrenGridOptions"
+                             [columnDefs]="transferCostChildrenGridColumns"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             [pagination]="true"
+                             [paginationPageSize]="30"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             enableFilter
+                             [rowHeight]=atlasAgGridParam.rowHeight
+                             [singleClickEdit]=true
+                             [frameworkComponents]="gridComponents"
+                             rowSelection="multiple"
+                             rowMultiSelectWithClick=true>
+            </ag-grid-angular>
+        </div>
+    </mat-card-content>
+</mat-card>

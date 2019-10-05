@@ -1,0 +1,38 @@
+<mat-card *ngIf="showGrid"
+          fxFlex=100%
+          style="padding:20px;">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Documents paid</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <div fxLayout="row"
+         fxLayoutAlign="end center">
+        <atlas-grid-enlargement *ngIf="invoiceSummaryGridOptions"
+                                [gridOptions]="invoiceSummaryGridOptions"
+                                [userPreferencesParameters]="gridPreferences">
+        </atlas-grid-enlargement>
+
+    </div>
+
+    <div ag-grid="invoiceSummaryGridOptions"
+         class="ag-theme-material pointer-cursor">
+        <ag-grid-angular style=" height:100%;"
+                         class="ag-theme-material"
+                         [columnDefs]="invoiceSummaryGridColumns"
+                         [rowData]="invoiceSummaryGridRows"
+                         [gridOptions]="invoiceSummaryGridOptions"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         rowSelection="multiple"
+                         [singleClickEdit]="true"
+                         [suppressRowClickSelection]="true"
+                         [pagination]="true"
+                         [paginationPageSize]="10"
+                         [enableSorting]="true"
+                         [enableColResize]="true"
+                         enableFilter
+                         [rowHeight]="atlasAgGridParam.rowHeight">
+        </ag-grid-angular>
+    </div>
+</mat-card>

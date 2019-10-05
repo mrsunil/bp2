@@ -1,0 +1,49 @@
+<div [class.displayMode]="!isEditable"
+     class="custom-form"
+     [class.isEmpty]="!fieldControl.value"
+     [class.required-field]="isRequired()">
+    <mat-form-field>
+        <input matInput
+               #field
+               [formControl]="fieldControl"
+               [matTooltip]="tooltipDisplayed"
+               [matAutocomplete]="auto"
+               (blur)="onBlur()">
+        <mat-placeholder>
+            {{label}}
+        </mat-placeholder>
+        <mat-icon matSuffix
+                  class="compass-icon"
+                  *ngIf="!fieldControl.disabled && !isSearchBar"
+                  (click)="onExploreClicked($event)">explore</mat-icon>
+
+        <mat-autocomplete #auto="matAutocomplete"
+                          class="contextual-search-autocomplete"
+                          [displayWith]="generateDisplay.bind(this)"
+                          (optionSelected)="onOptionSelected($event)">
+            <mat-option *ngFor="let item of getLimitedNumberOfOptions()"
+                        [value]="item">
+                {{ generateSelect(item) }}
+            </mat-option>
+            <mat-option disabled
+                        class="autocomplete-option-with-action">
+                <a (click)="onExploreClicked($event)">{{getNumberOfOptionsNotDisplayed()}} more for
+                    "{{getCurrentValue()}}"</a>
+            </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="fieldControl.hasError('required')">
+            Required *
+        </mat-error>
+        <mat-error *ngIf="fieldControl.hasError('inDropdownList')">
+            {{errorMessage}}
+        </mat-error>
+        <mat-hint *ngIf="isRequired() && isEditable">Required *</mat-hint>
+    </mat-form-field>
+    <button *ngIf="isSearchBar"
+            mat-raised-button
+            (click)="onExploreClicked($event)"
+            class="heroGradient">
+        <mat-icon aria-label="Search"
+                  class="compass-icon">explore</mat-icon>
+    </button>
+</div>

@@ -1,0 +1,130 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3>Inter Company Transfer</h3>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div style="margin-bottom: 10px">
+            You selected LDC companies both as buyer and seller
+        </div>
+        <div fxLayout="column">
+            <div fxFlex="100%"
+                 fxLayout="row"
+                 fxLayoutAlign="space-between center">
+                <mat-slide-toggle mat-raised-button
+                                  [checked]="isInterco"
+                                  (change)="toggleIntercoTrade()">Create an Inter-company contract</mat-slide-toggle>
+            </div>
+
+            <div fxFlex="100%"
+                 fxLayout="row"
+                 *ngIf="isInterco">
+                <mat-divider class="divider"></mat-divider>
+                <div fxFlex="100%"
+                     class="dropdown-height">
+                     <div class="dropdown-width">
+                    <atlas-dropdown-select fxFlex='30%'
+                                           fxLayout="row"
+                                           fxLayoutAlign="start left"
+                                           label="Company"
+                                           [fieldControl]="companyCtrl"
+                                           isEditable=true
+                                           [options]="companyList"
+                                           [selectProperties]="company"
+                                           [displayProperty]="companyDisplay"
+                                           (optionSelected)="bindDepartments($event)"
+                                           [required]="companyCtrl.isRequired">
+                    </atlas-dropdown-select>
+                </div>
+                    <atlas-dropdown-select fxLayout="row"
+                                           fxFlex='30%'
+                                           label="Department"
+                                           [fieldControl]="departmentCtrl"
+                                           isEditable=true
+                                           [options]="filteredDepartmentList"
+                                           selected="true"
+                                           [isAutocompleteActivated]="true"
+                                           [displayProperty]="departmentDisplay"
+                                           (optionSelected)="bindTraders($event)"
+                                           [selectProperties]="department">
+                    </atlas-dropdown-select>
+                    <atlas-dropdown-select fxLayout="row"
+                                           fxFlex='30%'
+                                           label="Trader"
+                                           [fieldControl]="traderCtrl"
+                                           isEditable=true
+                                           [readonly]="true"
+                                           [options]="filteredTraderList"
+                                           selected="true"
+                                           [selectProperties]="trader"
+                                           [isAutocompleteActivated]="true"
+                                           [displayProperty]="traderDisplay">
+                    </atlas-dropdown-select>
+                </div>
+            </div>
+            <atlas-intero-state-banner *ngIf="isInterco"
+                                       [title]="bannerTitle"
+                                       [description]="bannerDescription"
+                                       [state]="bannerState"></atlas-intero-state-banner>
+
+            <mat-card *ngIf="isInterco &&  isValueMissing">
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>Values to set up</h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div ag-grid=""
+                         class="ag-theme-material pointer-cursor">
+                        <ag-grid-angular style=" height:100%;"
+                                         class="ag-theme-material"
+                                         [columnDefs]="interoGridCols"
+                                         [rowData]="intercoMissingData"
+                                         [gridOptions]=""
+                                         domLayout="autoHeight"
+                                         (gridReady)="onGridReady($event)"
+                                         (rowSelected)="onSelectionChanged($event)"
+                                         [suppressRowClickSelection]="true"
+                                         [enableSorting]="true"
+                                         [enableColResize]="true"
+                                         enableFilter
+                                         [pagination]="true"
+                                         [paginationPageSize]="5">
+                        </ag-grid-angular>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="btn-container">
+            <div fxFlex="50"
+                 fxLayout="row"
+                 fxAlignLayout="start start">
+                <button *ngIf="isInterco"
+                        mat-button
+                        type="button"
+                        (click)="onDiscardButtonClicked()">
+                    Discard
+                </button>
+            </div>
+            <div fxFlex="50"
+                 fxLayout="row"
+                 fxAlignLayout="start end">
+                <span class="fill-space"></span>
+                <button *ngIf="!isInterco"
+                        mat-button
+                        type="button"
+                        (click)="onCancelButtonClicked()">
+                    Cancel
+                </button>
+                <button mat-raised-button
+                        type="button"
+                        [disabled]="disableSaveButton"
+                        (click)="onSaveButtonClicked()">
+                    save
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

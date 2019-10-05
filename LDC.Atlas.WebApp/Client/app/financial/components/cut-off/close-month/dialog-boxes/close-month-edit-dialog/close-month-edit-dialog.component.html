@@ -1,0 +1,99 @@
+<h2>Closure settings
+    <button mat-icon-button
+            mat-dialog-close
+            class="close-dialog-btn">
+        <mat-icon aria-label="Closing button">clear</mat-icon>
+    </button>
+</h2>
+
+<mat-dialog-content class="mat-dialog-content"
+                    fxLayout="column">
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="150px">
+        <mat-form-field fxFlex="40%">
+            <mat-select placeholder="No of open periods"
+                        [formControl]="numberOfOpenPeriodsCtrl"
+                        [disabled]="closeMonthDialogEdit">
+                <mat-option *ngFor="let periods of numberOfOpenPeriods"
+                            [value]="periods">{{periods}} </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="start center">
+        <h2>Accounting Periods Open</h2>
+
+    </div>
+    <div class="close-month-field">
+        <mat-chip-list multiple
+                       fxFlex="100%">
+            <mat-chip *ngFor="let periods of accountingPeriods"
+                      [selectable]="false">
+                {{periods | date : "MMM y"}}
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="start center">
+        <mat-form-field fxFlex="100%">
+            <input matInput
+                   placeholder="Youngest Month"
+                   autocomplete="off"
+                   [formControl]="youngestMonthCtrl"
+                   readonly>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="16px">
+        <mat-form-field fxFlex="60%">
+            <mat-select placeholder="Maximum no. of open financial years"
+                        [formControl]="numberOfOpenFinancialYearsCtrl"
+                        [disabled]="closeMonthDialogEdit">
+                <mat-option *ngFor="let periods of numberOfOpenFinancialYears"
+                            [value]="periods">{{periods}} </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="50%">
+            <mat-select placeholder="Last Month of Financial Year"
+                        [formControl]="lastMonthFinancialYearCtrl"
+                        [disabled]="closeMonthDialogEdit">
+                <mat-option *ngFor="let periods of lastMonthFinancialYears"
+                            [value]="periods.monthId">{{periods.description}} </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="155px">
+        <mat-form-field fxFlex="100%">
+            <input matInput
+                   placeholder="Last Financial Year Closed"
+                   [formControl]="lastFinancialYearClosedCtrl"
+                   readonly
+                   autocomplete="off">
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+<div fxLayout="row"
+     fxLayoutAlign="space-between center">
+    <div fxLayout="column"
+         fxLayoutAlign="start start">
+        <button mat-button
+                (click)="onDiscardButtonClick()">
+            DISCARD
+        </button>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start end">
+        <div fxLayout="row"
+             fxLayoutAlign="end start">
+            <button mat-button
+                    (click)="onSaveButtonClicked()">
+                SAVE
+            </button>
+        </div>
+    </div>
+</div>

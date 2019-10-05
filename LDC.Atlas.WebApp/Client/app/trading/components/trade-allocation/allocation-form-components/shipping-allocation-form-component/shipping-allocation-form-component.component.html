@@ -1,0 +1,85 @@
+<mat-card class="trade-allocation-shipping-card">
+    <div class="mat-card-title">
+        Allocation Options
+    </div>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="start left"
+             fxFlex="100%">
+            <mat-form-field fxFlex="14%">
+                <mat-select placeholder="Transfer Shipping"
+                            [formControl]="shippingTypeCtrl">
+                    <mat-option *ngFor="let type of shippingTypes"
+                                [value]="type.value">{{type.shippingDescription}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="14%"
+                            *ngIf="!dataVersionId">
+                <mat-select placeholder="Allocation option"
+                            [formControl]="allocationSourceTypeCtrl">
+                    <mat-option *ngFor="let type of allocationSourceTypes"
+                                [value]="type.value">{{type.allocationDescription}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="14%">
+                <input matInput
+                       [textMask]="{mask:mask}"
+                       [formControl]="sourceQuantityCtrl"
+                       placeholder="Quantity to allocate"
+                       (keydown.enter)="$event.preventDefault()"
+                       [required]="sourceQuantityCtrl.isRequired"
+                       autocomplete="off"
+                       (blur)="updateQuantityValue($event.target.value)">
+                <mat-error *ngIf="sourceQuantityCtrl.hasError('required')">
+                    Quantity to allocate is required
+                </mat-error>
+                <mat-error *ngIf="sourceQuantityCtrl.hasError('isPositiveError')">
+                    Quantity to allocate must be positive.
+                </mat-error>
+                <mat-error *ngIf="sourceQuantityCtrl.hasError('max')">
+                    Cannot be greater than quantity available.
+                </mat-error>
+                <mat-error *ngIf="sourceQuantityCtrl.hasError('min')">
+                    Quantity cannot be zero.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="12%">
+                <input matInput
+                       [formControl]="sourceQuantityCodeCtrl"
+                       placeholder="Quantity Code"
+                       autocomplete="off"
+                       (keydown.enter)="$event.preventDefault()"
+                       readonly>
+            </mat-form-field>
+            <mat-form-field fxFlex="14%"
+                            *ngIf="!dataVersionId">
+                <mat-select placeholder="Allocation option"
+                            [formControl]="allocationTargetTypeCtrl">
+                    <mat-option *ngFor="let type of allocationTargetTypes"
+                                [value]="type.value">{{type.allocationDescription}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <atlas-form-input fxFlex="14%"
+                              [fieldControl]="targetQuantityCtrl"
+                              [isEditable]="targetQuantityCtrl.enabled"
+                              label="Quantity to allocate"
+                              [textMask]="{mask:mask}"
+                              (keydown.enter)="$event.preventDefault()"
+                              (blur)="updateQuantityValue($event.target.value)"
+                              [errorMap]="targetQuantityErrorMap"
+                              class="custom-input">
+            </atlas-form-input>
+            <mat-form-field fxFlex="12%">
+                <input matInput
+                       [formControl]="targetQuantityCodeCtrl"
+                       placeholder="Quantity Code"
+                       autocomplete="off"
+                       (keydown.enter)="$event.preventDefault()"
+                       readonly>
+                <mat-error *ngIf="targetQuantityCodeCtrl.hasError('required')">
+                    Quantity Code is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

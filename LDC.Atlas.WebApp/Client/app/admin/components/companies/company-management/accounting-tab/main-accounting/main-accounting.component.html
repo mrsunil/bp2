@@ -1,0 +1,38 @@
+<div class="main-container">
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <h2>
+            Main Accounting
+        </h2>
+        <h2>
+            Authorize For Posting By Default
+            <mat-slide-toggle [formControl]="authorizeForPostingCtrl"
+                              [disabled]="!checkEdit">
+            </mat-slide-toggle>
+        </h2>
+    </div>
+
+    <div ag-grid="mandatoryAccountingGridOptions">
+        <ag-grid-angular class="ag-theme-material"
+                         [rowData]="mainAccountingRowData"
+                         [columnDefs]="mandatoryColumnDefs"
+                         [pinnedTopRowData]="pinnedTopRowData"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         [rowHeight]=atlasAgGridParam.rowHeight>
+        </ag-grid-angular>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">
+            DISCARD
+        </button>
+        <button mat-button
+                [disabled]="!checkEdit"
+                (click)="onSaveButtonClicked()">
+            SAVE
+        </button>
+    </div>
+</div>

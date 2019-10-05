@@ -1,0 +1,15 @@
+<mat-card *ifAuthorized="'Trades.Physicals.AllocateDeallocate',company:company">
+    <mat-card-title>
+        <h2>Bulk Allocation</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div *ngFor="let groupFunctionType of groupFunctionTypeMenu">
+            <mat-checkbox #bulkAllocationsCtrl
+                          [formControl]="bulkAllocationCtrl"
+                          [value]="groupFunctionType.functionTypeCode"
+                          (change)="onSelectionChange($event,bulkAllocationsCtrl.checked, groupFunctionType)">
+                {{groupFunctionType.name}}
+            </mat-checkbox>
+        </div>
+    </mat-card-content>
+</mat-card>

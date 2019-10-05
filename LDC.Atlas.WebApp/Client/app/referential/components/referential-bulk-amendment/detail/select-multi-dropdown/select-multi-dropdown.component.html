@@ -1,0 +1,49 @@
+<div [class.displayMode]="!isEditable"
+     class="custom-form"
+     [class.isEmpty]="!fieldControl.value"
+     [class.required-field]="isRequired()">
+    <mat-form-field *ngIf="isAutocompleteActivated">
+        <input matInput
+               #field
+               [formControl]="fieldControl"
+               [matAutocomplete]="auto"
+               (blur)="onBlur()">
+        <mat-placeholder>
+            {{label}}
+        </mat-placeholder>
+        <mat-icon *ngIf="fieldControl.enabled && hasIcon"
+                  class="bookmark-icon"
+                  matSuffix>bookmark</mat-icon>
+        <mat-autocomplete #auto="matAutocomplete"
+                          [displayWith]="generateDisplay.bind(this)"
+                          (optionSelected)="onOptionSelected($event)">
+            <mat-option *ngFor="let item of options"
+                        [value]="item">
+                {{ generateSelect(item) }}
+            </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="fieldControl.errors && isEditable">{{ getErrorMessage() }}</mat-error>
+        <mat-hint *ngIf="!fieldControl.value && isEditable && !isRequired()">
+            {{hint}}
+        </mat-hint>
+        <mat-hint *ngIf="isRequired() && isEditable && !hasWarning">Required *</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!isAutocompleteActivated">
+        <mat-select [formControl]="fieldControl"
+                    (selectionChange)="onSelectionChanged($event)"
+                    [multiple]="multiselect"
+                    [displayWith]="generateSelect.bind(this)">
+            <mat-option *ngFor="let object of options"
+                        [value]="valueProperty ? object[valueProperty] : object">
+                <span>{{ descriptionProperty ? object[descriptionProperty] : descriptionProperty }}</span>
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="fieldControl.errors && isEditable">{{ getErrorMessage() }}</mat-error>
+        <mat-placeholder>{{label}}</mat-placeholder>
+        <mat-hint *ngIf="!fieldControl.value && isEditable && !isRequired()">
+            {{hint}}
+        </mat-hint>
+        <mat-hint *ngIf="isRequired() && isEditable && !hasWarning">Required *</mat-hint>
+    </mat-form-field>
+</div>

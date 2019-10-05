@@ -1,0 +1,67 @@
+<h1 mat-dialog-title>{{ dialogData.title }}</h1>
+<mat-dialog-content class="mat-dialog-content">
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         fxLayoutGap="6px"
+         *ngIf="!isWorkInProgress">
+        <div fxLayout="column">
+            <div>
+                <atlas-warning-banner *ngIf="bannerTitle || bannerDescription"
+                                      [title]="bannerTitle"
+                                      [description]="bannerDescription">
+                </atlas-warning-banner>
+            </div>
+            <p>{{dialogText}}</p>
+            <p class="error-message">{{errorMessage}}</p>
+        </div>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         fxLayoutGap="6px"
+         *ngIf="isWorkInProgress">
+        <div fxLayout="column">
+            <mat-spinner color="accent"></mat-spinner>
+            <p>{{processMessage}}</p>
+        </div>
+    </div>
+</mat-dialog-content>
+<div fxLayout="column">
+    <div>
+        <input class="hidden-during-loading"
+               type="file"
+               accept=".docx"
+               (change)="onFileSelected($event)"
+               #fileUpload>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between end">
+        <button mat-button
+                (click)="onNoClicked()"
+                [matTooltipDisabled]="!discardTooltip"
+                [matTooltip]="discardTooltip">
+            Discard
+        </button>
+
+        <div fxLayout="row"
+             fxLayoutAlign="start end">
+            <button mat-button
+                    (click)="onConfirmClicked()"
+                    [disabled]="isWorkInProgress"
+                    [matTooltipDisabled]="!(dialogData.buttonSettings && dialogData.buttonSettings.createButtonTooltip)"
+                    [matTooltip]="dialogData.buttonSettings.createButtonTooltip">
+                {{dialogData.buttonSettings.createButtonText}}
+            </button>
+            <button mat-button
+                    *ngIf="dialogData.hasBrowseButton"
+                    (click)="fileUpload.click()"
+                    [disabled]="isWorkInProgress"
+                    [matTooltipDisabled]="!(dialogData.buttonSettings && dialogData.buttonSettings.uploadButtonTooltip)"
+                    [matTooltip]="dialogData.buttonSettings.uploadButtonTooltip">
+                {{dialogData.buttonSettings.uploadButtonText}}
+            </button>
+        </div>
+    </div>
+</div>

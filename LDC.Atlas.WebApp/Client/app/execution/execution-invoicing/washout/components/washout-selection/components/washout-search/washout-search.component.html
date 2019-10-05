@@ -1,0 +1,107 @@
+<div fxLayout="column"
+     fxLayoutAlign="start none">
+    <mat-card>
+        <form [formGroup]="searchForm">
+            <div fxLayout="row"
+                 fxLayoutAlign="start none"
+                 class="search">
+                <mat-form-field>
+                    <input matInput
+                           fxFlex="30%"
+                           formControlName="searchContractCtrl"
+                           (keydown.enter)="onSearchWashoutContractsClicked()"
+                           placeholder="Contract Search" />
+                </mat-form-field>
+                <atlas-masterdata-user-preferences-input fxFlex="30%"
+                                                         isEditable="true"
+                                                         [fieldControl]="charterReferenceCtrl"
+                                                         [options]="filteredCharters"
+                                                         label="Charter Reference"
+                                                         (keydown.enter)="onSearchWashoutContractsClicked()"
+                                                         displayProperty="charterCode"
+                                                         [selectProperties]="['charterCode','description']"
+                                                         [errorMap]="charterErrorMap"
+                                                         lightBoxTitle="Results for charters"
+                                                         gridId="charterGrid"
+                                                         [dataLoader]="charterDataLoader">
+                </atlas-masterdata-user-preferences-input>
+                <atlas-masterdata-user-preferences-input fxFlex="30%"
+                                                         isEditable="true"
+                                                         [fieldControl]="counterPartyCtrl"
+                                                         [options]="filteredCounterPartyList"
+                                                         label="Counter Party"
+                                                         (keydown.enter)="onSearchWashoutContractsClicked()"
+                                                         displayProperty="counterpartyCode"
+                                                         [selectProperties]="['counterpartyCode', 'description']"
+                                                         [errorMap]="counterpartyErrorMap"
+                                                         lightBoxTitle="Results for Counterparty"
+                                                         gridId="counterpartiesGrid"
+                                                         [dataLoader]="counterpartyDataLoader">
+                </atlas-masterdata-user-preferences-input>
+                <button mat-raised-button
+                        (click)="onSearchWashoutContractsClicked()"
+                        class="heroGradient"
+                        id="search-button">
+                    <mat-icon aria-label="Search"
+                              class="search-icon">search</mat-icon>
+                </button>
+            </div>
+        </form>
+
+    </mat-card>
+</div>
+
+<atlas-filter-set-display (filtersChanged)=onFilterSetDetailsChange($event)
+                          [columnConfiguration]="columnConfiguration"
+                          [gridCode]="gridCode"
+                          [company]="company"
+                          #filterSetDisplayComponent>
+</atlas-filter-set-display>
+<mat-card>
+
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutAlign="space-between start"
+         fxLayoutGap="20px"
+         class="atlas-grid-card-header">
+        <h2 class="no-margin">{{gridTitle}}</h2>
+
+        <atlas-ag-grid-user-preferences *ngIf="isConfigLoaded"
+                                        [gridOptions]="washoutContractGridOptions"
+                                        [company]="company"
+                                        [gridId]="gridCode"
+                                        [sharingEnabled]="hasGridSharing"
+                                        #userPreferences>
+        </atlas-ag-grid-user-preferences>
+    </div>
+    <div ag-grid="costContractGridOptions"
+         class="ag-theme-material pointer-cursor"
+         style="width: 100%; height: 100%">
+        <ag-grid-angular style="height:100%;"
+                         class="ag-theme-material"
+                         [rowData]="washoutContractGridRows"
+                         [gridOptions]="washoutContractGridOptions"
+                         [columnDefs]="washoutContractGridColumns"
+                         domLayout="autoHeight"
+                         rowSelection="multiple"
+                         [singleClickEdit]="true"
+                         [suppressRowClickSelection]="true"
+                         [pagination]="true"
+                         [paginationPageSize]="10"
+                         [enableSorting]="true"
+                         [enableColResize]="true"
+                         enableFilter
+                         [rowHeight]=atlasAgGridParam.rowHeight
+                         rowMultiSelectWithClick=true
+                         [rowHeight]=atlasAgGridParam.rowHeight
+                         (columnVisible)="onColumnVisibilityChanged($event)"
+                         (gridReady)="onGridReady($event)"
+                         (firstDataRendered)="onFirstDataRendered($event)"
+                         (rowSelected)="onSelectionChanged($event)"
+                         (rowDataChanged)="onRowDataChanged($event)">
+            <!-- [suppressRowClickSelection]="true" -->
+        </ag-grid-angular>
+    </div>
+</mat-card>
+<atlas-lock-interval [resourcesInformation]="resourcesInformation">
+</atlas-lock-interval>

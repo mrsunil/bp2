@@ -1,0 +1,44 @@
+<form [formGroup]="tradeMergeForm">
+    <div class="main-container">
+        <atlas-trades-list #tradesListComponent
+                           (selectedSectionIds)="onSelectionOfSelectedIds($event)"
+                           (selectedContractLabels)="onSelectedContractLabels($event)"
+                           (mergeToContractLabel)="onSelectedMergeToContractLabel($event)"
+                           (noRowsSelected)="onNoRowsSelected()"
+                           (multipleMergeSelected)="onMultipleMergeOptionSelected($event)"
+                           (selectedSectionIds)="selectedSectionIds($event)"
+                           (successMsg)="onShowMessage($event)"
+                           (removeCardOnUnCheck)="onRemoveCardOnUncheck($event)"></atlas-trades-list>
+        <atlas-merge-validations #mergeValidationsComponent
+                                 (removeClick)="onRemoveClick($event)"
+                                 (mergeButtonEnabled)="enableMergeButton($event)"
+                                 (noWarningCardToButtonEnable)="enableMergeOnNoWarning($event)"
+                                 (warningMessageOnDiffFields)="messageOnCostPopup($event)">
+        </atlas-merge-validations>
+        <atlas-merge-options #mergeOptionsComponent
+                             (mergeOptionSelected)="onMergeOptionSelected($event)"></atlas-merge-options>
+
+        <div fxLayout="row "
+             fxLayoutAlign="space-between start"
+             class="button-details">
+            <div fxLayout="column "
+                 fxLayoutAlign="start ">
+                <button mat-button
+                        (click)="onDiscardButtonClicked()">
+                    DISCARD
+                </button>
+            </div>
+            <div fxLayout="column "
+                 fxLayoutAlign="start ">
+                <div fxLayout="row "
+                     fxLayoutAlign="end start ">
+                    <button mat-raised-button
+                            (click)="onMergeButtonClicked()"
+                            [disabled]="displayMergeButton">
+                        Merge Selected Splits
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,16 @@
+<button *ngIf="showIcon"
+        type="button"
+        mat-icon-button
+        (click)="onClickEvent($event)"
+        [disabled]="isDisabled"
+        [matMenuTriggerFor]="menu">
+    <i class="material-icons">more_vert</i>
+</button>
+<mat-menu #menu="matMenu">
+    <button *ngFor="let action of menuActions"
+            [disabled]="action.disabled"
+            mat-menu-item
+            (click)="onActionButtonClicked(action, $event)">
+        <mat-icon>{{action.icon}}</mat-icon><span>{{ action.text }}</span>
+    </button>
+</mat-menu>

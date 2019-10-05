@@ -1,0 +1,75 @@
+<mat-card [ngClass]="{'hidden-during-loading':isSaving}">
+    <mat-card-header>
+        <div fxLayout="row"
+             fxLayoutAlign="start center"
+             fxLayoutGap="5%"
+             fxFlex>
+            <mat-card-title class="no-margin">Create a freeze</mat-card-title>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="formGroup">
+            <div class="min-height"
+                 fxLayout="row"
+                 fxLayoutAlign="space-between">
+                <div fxLayout="row"
+                     fxLyaoutAlign="start center"
+                     fxLayoutGap="16px">
+                    <div class="custom-form"
+                         [class.isEmpty]="!dateCtrl.value"
+                         *ngIf="freezeTypeCtrl.value === FreezeType.Daily"
+                         [class.required-field]="true">
+                        <atlas-date-picker isEditable=true
+                                           [errorMap]="dailyErrorMap"
+                                           label="Date"
+                                           required
+                                           [fieldControl]="dateCtrl">
+                        </atlas-date-picker>
+                    </div>
+                    <div class="custom-form"
+                         [class.isEmpty]="!dateCtrl.value"
+                         *ngIf="freezeTypeCtrl.value === FreezeType.Monthly"
+                         [class.required-field]="true">
+                        <atlas-month-date-picker isEditable=true
+                                                 required
+                                                 label="Date"
+                                                 [errorMap]="monthlyErrorMap"
+                                                 [fieldControl]="dateCtrl">
+                        </atlas-month-date-picker>
+                    </div>
+                    <div>
+                        <mat-button-toggle-group class="toggle-group"
+                                                 [formControl]="freezeTypeCtrl"
+                                                 aria-label="Date"
+                                                 (change)="onDataVersionTypeChanged($event.value)">
+                            <mat-button-toggle [value]="FreezeType.Daily">Day Freeze</mat-button-toggle>
+                            <mat-button-toggle [value]="FreezeType.Monthly">Month Freeze</mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                </div>
+                <button type="submit"
+                        *ifAuthorized="'Financials.CutOff.CreateFreeze',company:this.company,level: PermissionLevels.ReadWrite"
+                        (click)="onSaveButtonClicked()"
+                        mat-raised-button
+                        [disabled]="isSaving || isFrozen">
+                    Create
+                </button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
+<mat-card *ngIf="isSaving">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Freeze creation in progress</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutWrap
+             fxLayoutGap="20px">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+    </mat-card-content>
+</mat-card>

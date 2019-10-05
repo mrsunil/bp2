@@ -1,0 +1,29 @@
+<div class="main-container hub-menu">
+    <h1>Interfaces</h1>
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutAlign.xs="center center"
+         fxLayoutGap="16px"
+         fxLayoutGap.sm="0"
+         class="hub-menu-panel">
+
+        <mat-card class="active-card"
+                  *ifAuthorized="'Administration.Operations.InterfaceMonitoring',company:this.company"
+                  (click)="onNavigateButtonClicked('/admin/operations/interface-monitoring')">
+            <mat-card-title>
+                <h2 class="no-margin">Interface Monitoring</h2>
+            </mat-card-title>
+            <p class="no-margin">Interface Monitoring</p>
+        </mat-card>
+
+        <mat-card (click)="onNavigateButtonClicked('/admin/operations/interface-builder/details')"
+                  class="active-card"
+                  *ifAuthorized="'Administration.Operations.InterfaceBuilder',company:this.company">
+            <mat-card-title>
+                <h2 class="no-margin">Interface Builder</h2>
+            </mat-card-title>
+            <p class="no-margin">Interface Builder</p>
+        </mat-card>
+
+    </div>
+</div>

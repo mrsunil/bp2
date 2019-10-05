@@ -1,0 +1,55 @@
+<form [formGroup]="formGroup">
+
+    <div class="main-container">
+        <mat-card>
+            <mat-card-content>
+                <div fxLayout="column"
+                     fxLayoutAlign="start end">
+                    <div fxLayout="row"
+                         fxLayoutAlign="end start">
+                        <button mat-button
+                                (click)="onAddRowButtonClicked()">
+                            Add row
+                        </button>
+                    </div>
+                </div>
+                <div ag-grid="templateManagementGridOptions"
+                     class="ag-theme-material pointer-cursor"
+                     style="width: 100%; height: 100%">
+                    <ag-grid-angular style="height: 100%;"
+                                     [rowData]="tableRows"
+                                     [columnDefs]="templateManagementGridColumns"
+                                     [gridOptions]="templateManagementGridOptions"
+                                     [enableColResize]="true"
+                                     [pagination]="true"
+                                     [paginationPageSize]="10"
+                                     [enableSorting]="true"
+                                     domLayout="autoHeight"
+                                     [frameworkComponents]="gridComponents"
+                                     (gridReady)="onGridReady($event)"
+                                     enableFilter
+                                     [singleClickEdit]="true">
+                    </ag-grid-angular>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <div fxLayout="row "
+             fxLayoutAlign="space-between start"
+             class="button-details">
+            <div fxLayout="column "
+                 fxLayoutAlign="start ">
+                <button (click)="onDiscardButtonClicked()"
+                        mat-button>
+                    DISCARD
+                </button>
+            </div>
+            <div fxLayout="column "
+                 fxLayoutAlign="start ">
+                <button mat-raised-button
+                        (click)="onSaveButtonClicked()">
+                    SAVE
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,54 @@
+<mat-card class="trade-capture-card mat-card-height">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Adjust Weight</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div fxFlex="40%"
+                 [class.displayMode]="!quantityCtrl.enabled">
+                <mat-form-field id="quantityToolTip"
+                                title="">
+                    <input matInput
+                           [textMask]="{mask:mask}"
+                           placeholder="Quantity"
+                           [matTooltip]="'Quantity'"
+                           autocomplete="off"
+                           [attr.disabled]="isWashoutInvoiceGenerated"
+                           [formControl]="quantityCtrl"
+                           (blur)="ifCheckQuantityChange()">
+                    <mat-hint style="color:orangered"
+                              *ngIf="quantityCtrl.value === 0">Quantity is 0</mat-hint>
+                    <mat-error *ngIf="quantityCtrl.hasError('isPositiveError')">
+                        Value must be positive
+                    </mat-error>
+                    <mat-error *ngIf="quantityCtrl.hasError('maximumValue')">
+                        Invoice generated can only be decreased
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="60%"
+                 [class.displayMode]="!quantityCodeCtrl.enabled">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Quantity Code"
+                           [matTooltip]="'Quantity Code'"
+                           [attr.disabled]="isWashoutInvoiceGenerated"
+                           [matAutocomplete]="weightUnits"
+                           autocomplete="off"
+                           [formControl]="quantityCodeCtrl">
+                    <mat-autocomplete #weightUnits ="matAutocomplete"
+                                      [displayWith]="displayWeightUnit.bind(this)">
+                        <mat-option *ngFor="let weightUnit of filteredWeightUnits "
+                                    [value]="weightUnit.weightUnitId">{{weightUnit.weightCode}} |
+                            {{weightUnit.description}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

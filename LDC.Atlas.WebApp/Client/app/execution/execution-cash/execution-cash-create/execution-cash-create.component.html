@@ -1,0 +1,307 @@
+<div class="main-container"
+     *ngIf="cashTypeId==cashType.CashPayment">
+    <mat-horizontal-stepper [linear]
+                            (selectionChange)="onChangeStepAction($event)"
+                            #stepper>
+        <ng-template matStepperIcon="edit">
+            <mat-icon>check</mat-icon>
+        </ng-template>
+        <mat-step>
+            <ng-template matStepLabel>Cash Type</ng-template>
+            <atlas-cash-selection-form-component #selectionFormComponent
+                                                 (checkBoxValueChange)="onCheckBoxValueChange($event)"
+                                                 (cashOptionSelected)="onCashOptionSelected($event)">
+            </atlas-cash-selection-form-component>
+            <div fxLayout="row "
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="column "
+                     fxLayoutAlign="start ">
+                    <button (click)="onDiscardButtonClickedForCashSelectionType()"
+                            mat-button>
+                        DISCARD
+                    </button>
+                </div>
+
+                <div fxLayout="column "
+                     fxLayoutAlign="start "
+                     matTooltip="Select the Cash Type"
+                     [matTooltipDisabled]="!isDisabled">
+                    <button mat-raised-button
+                            (click)="onPaymentNextButtonClicked()"
+                            [disabled]="isDisabled">
+                        NEXT
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+        <div *ngIf="!isSimpleCashSelected">
+            <mat-step [completed]="isCompleted">
+                <ng-template matStepLabel>Pick Transaction</ng-template>
+                <atlas-pick-transaction #pickTransactionComponent
+                                        (setNarrative)="onSetNarrative($event)"
+                                        (totalBalanceCalculated)="onTotalBalanceCalculated($event)"
+                                        (cashDetailsDefaultValues)="onInvoiceSearchValuesEntered($event)"
+                                        (invoicesSelected)="onInvoicesSelected($event)"
+                                        (calculateTotalBalanceOnCostAmountEnter)="calculateTotalBalanceOnCostAmountEnter()"
+                                        (AmountEnterOrInvoiceSelection)="onAmountEnterOrInvoiceSelection()">
+                </atlas-pick-transaction>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <button (click)="onDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-button
+                                    (click)="onPreviousButtonClicked()"
+                                    [disabled]="isPreviousButtonDisabled">
+                                PREVIOUS
+                            </button>
+                            <button mat-raised-button
+                                    (click)="onMatchSelectedButtonClicked()"
+                                    [disabled]="isDisabled">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+        </div>
+        <mat-step [completed]="isCompleted">
+            <form [formGroup] ="cashFormGroup">
+                <ng-template matStepLabel>Details</ng-template>
+                <atlas-cash-details-form-component #cashDetailsFormComponent
+                                                   (currencySearchValue)="onCurrencySearchValueEntered($event)"
+                                                   (previewToggleSelected)="onPreviewToggleSelected($event)"
+                                                   (templateSelected)="onTemplateSelected($event)"
+                                                   (calculateTotalBalanceOnCostAmountEnter)="calculateTotalBalanceOnCostAmountEnterInCashDetails($event)"
+                                                   (amountSearchValue)="onAmountSearchValueEntered($event)"
+                                                   (calculateCashAmountWithoutCost)="onEditCalculateCashAmountWithoutCost($event)">
+                </atlas-cash-details-form-component>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column"
+                         fxLayoutAlign="start">
+                        <button (click)="onDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column"
+                         fxLayoutAlign="start">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-button
+                                    (click)="onPreviousButtonClicked()"
+                                    [disabled]="saveInProgress">
+                                PREVIOUS
+                            </button>
+                            <button mat-raised-button
+                                    (click)="onCreateButtonClicked()"
+                                    [disabled]="saveInProgress">
+                                {{ hasPreviewDocument ? 'Preview and save' : 'Save' }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Summary</ng-template>
+            <atlas-cash-summary-form-component #cashSummaryFormComponent
+                                               [isCreationMode]="isCreation">
+            </atlas-cash-summary-form-component>
+            <div fxLayout="row "
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="column "
+                     fxLayoutAlign="start">
+                    <button (click)="onDiscardButtonClicked()"
+                            mat-button>
+                        DISCARD
+                    </button>
+                </div>
+                <div fxLayout="column"
+                     fxLayoutAlign="start">
+                    <div fxLayout="row"
+                         fxLayoutAlign="end start">
+                        <button mat-button
+                                (click)="onNewTransactionClicked()">
+                            NEW TRANSACTION
+                        </button>
+                        <button mat-raised-button
+                                (click)="onNewDocumentClicked()">
+                            NEW DOCUMENT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>
+
+
+<div class="main-container"
+     *ngIf="cashTypeId==cashType.CashReceipt">
+    <mat-horizontal-stepper [linear]
+                            (selectionChange)="onChangeStepAction($event)"
+                            #stepper>
+        <ng-template matStepperIcon="edit">
+            <mat-icon>check</mat-icon>
+        </ng-template>
+        <mat-step>
+            <ng-template matStepLabel>Cash Type</ng-template>
+            <atlas-cash-selection-form-component #selectionFormComponent
+                                                 (checkBoxValueChange)="onCheckBoxValueChange($event)"
+                                                 (cashOptionSelected)="onCashOptionSelected($event)">
+            </atlas-cash-selection-form-component>
+            <div fxLayout="row "
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="column "
+                     fxLayoutAlign="start ">
+                    <button (click)="onDiscardButtonClickedForCashSelectionType()"
+                            mat-button>
+                        DISCARD
+                    </button>
+                </div>
+                <div fxLayout="column "
+                     fxLayoutAlign="start "
+                     matTooltip="Select the Cash Type"
+                     [matTooltipDisabled]="!isDisabled">
+                    <button mat-raised-button
+                            (click)="onNextReceiptButtonClicked()"
+                            [disabled]="isDisabled">
+                        NEXT
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step [completed]="isCompleted">
+            <form [formGroup]="cashFormGroup">
+                <ng-template matStepLabel>Details</ng-template>
+                <atlas-cash-details-form-component #cashDetailsFormComponent
+                                                   (counterpartySearchValues)="onCounterpartySearchValueEntered($event)"
+                                                   (currencySearchValue)="onCurrencySearchValueEntered($event)"
+                                                   (departmentSearchValue)="onDepartmentSearchValueEntered($event)"
+                                                   (amountSearchValue)="onAmountSearchValueEntered($event)"
+                                                   (currencyCardInitialValues)="onCurrencyCardValuesEntered($event)"
+                                                   (currencyCardFinalRowType)="onFinalRoeTypeEntered($event)"
+                                                   (fxRateValueCalculated)="onFinalFxRateValueEntered($event)"
+                                                   (calculateTotalBalanceOnCostAmountEnter)="calculateTotalBalanceOnCostAmountEnterInCashDetails($event)"
+                                                   (templateSelected)="onTemplateSelected($event)"
+                                                   (previewToggleSelected)="onPreviewToggleSelected($event)"
+                                                   (calculateCashAmountWithoutCost)="onEditCalculateCashAmountWithoutCost($event)">
+                </atlas-cash-details-form-component>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column"
+                         fxLayoutAlign="start">
+                        <button (click)="onDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column"
+                         fxLayoutAlign="start">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-button
+                                    (click)="onPreviousButtonClicked()"
+                                    [disabled]="isPreviousButtonDisabled">
+                                PREVIOUS
+                            </button>
+                            <button mat-raised-button
+                                    (click)="onNextButtonClicked()"
+                                    [hidden]="selectionValue == cashSelectionType.SimpleCashReceipt">
+                                NEXT
+                            </button>
+                            <button mat-raised-button
+                                    *ngIf="selectionValue == cashSelectionType.SimpleCashReceipt"
+                                    (click)="onCreateButtonClicked()"
+                                    [disabled]="saveInProgress">
+                                {{ hasPreviewDocument ? 'Preview and save' : 'Save' }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [completed]="isCompleted">
+            <ng-template matStepLabel>Pick Transaction</ng-template>
+            <atlas-pick-transaction (proceedClickedCashReceipt)="onProceedClickedCashReceipt()"
+                                    (invoicesSelected)="onInvoicesSelected($event)"
+                                    (totalAmountCalculated)="onTotalAmountCalculated($event)"
+                                    (calculateTotalBalanceOnCostAmountEnter)="calculateTotalBalanceOnCostAmountEnter($event)"
+                                    (AmountEnterOrInvoiceSelection)="onAmountEnterOrInvoiceSelection()"
+                                    #pickTransactionComponent></atlas-pick-transaction>
+            <div fxLayout="row "
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="column "
+                     fxLayoutAlign="start ">
+                    <button (click)="onDiscardButtonClicked()"
+                            mat-button>
+                        DISCARD
+                    </button>
+                </div>
+                <div fxLayout="column "
+                     fxLayoutAlign="start ">
+                    <div fxLayout="row "
+                         fxLayoutAlign="end start ">
+                        <button mat-button
+                                (click)="onPreviousButtonClicked()"
+                                [disabled]="saveInProgress">
+                            PREVIOUS
+                        </button>
+                        <button mat-raised-button
+                                (click)="onCreateReceiptButtonClicked()"
+                                [disabled]="saveInProgress">
+                            {{ hasPreviewDocument ? 'Preview and save' : 'Save' }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Summary</ng-template>
+            <atlas-cash-summary-form-component #cashSummaryFormComponent
+                                               [isCreationMode]="isCreation">
+            </atlas-cash-summary-form-component>
+            <div fxLayout="row "
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="column "
+                     fxLayoutAlign="start">
+                    <button (click)="onDiscardButtonClicked()"
+                            mat-button>
+                        DISCARD
+                    </button>
+                </div>
+                <div fxLayout="column"
+                     fxLayoutAlign="start">
+                    <div fxLayout="row"
+                         fxLayoutAlign="end start">
+                        <button mat-button
+                                (click)="onNewTransactionClicked()">
+                            NEW TRANSACTION </button>
+                        <button mat-raised-button
+                                (click)="onNewDocumentClicked()">
+                            NEW DOCUMENT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

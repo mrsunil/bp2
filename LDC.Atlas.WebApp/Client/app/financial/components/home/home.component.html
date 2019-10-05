@@ -1,0 +1,15 @@
+<atlas-financial-tab-group #tabGroup>
+</atlas-financial-tab-group>
+
+<div class="main-container">
+    <mat-expansion-panel disabled=true>
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutWrap
+             *ngIf="isLoading"
+             class="loading">
+            <mat-spinner color="accent"></mat-spinner>
+
+        </div>
+    </mat-expansion-panel>
+</div>

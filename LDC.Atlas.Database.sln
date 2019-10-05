@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ATR_Prototype", "LDC.Atlas.Database\ATR_Prototype\ATR_Prototype.sqlproj", "{016462D0-6E7D-4624-ADDA-E2130B41C9AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8EFB6D79-F606-475D-A1B9-906675B89538}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E72CCAB7-D46D-4025-B6CF-6AFD4224E3BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDC.Atlas.Database.Test", "..\tests\database\LDC.Atlas.Database.Test\LDC.Atlas.Database.Test.csproj", "{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{8E12E37F-EF67-4A67-B270-DFC7D102743B}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ATR_SampleTestDataInitialisation", "LDC.Atlas.Database\ATR_DataInitialisation\ATR_SampleTestDataInitialisation.sqlproj", "{91C13FEE-E35C-41AE-8D56-6D0735F91D87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AA639C2-EBEE-465F-AAC1-556D2E96DA27}"
+	ProjectSection(SolutionItems) = preProject
+		LDC.Atlas.Database\DataCompareMasterAndE6Release.dcmp = LDC.Atlas.Database\DataCompareMasterAndE6Release.dcmp
+		LDC.Atlas.Database\DataCompareMasterAndSample.dcmp = LDC.Atlas.Database\DataCompareMasterAndSample.dcmp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XMLCascadingQueries", "XMLCascadingQueries", "{BA58ACCE-B3FC-4B67-998C-0D2C836AE112}"
+	ProjectSection(SolutionItems) = preProject
+		LDC.Atlas.Database\XMLCascadingQueries\FQ010_TransactionDocument.sql = LDC.Atlas.Database\XMLCascadingQueries\FQ010_TransactionDocument.sql
+		LDC.Atlas.Database\XMLCascadingQueries\FQ020_PhysicalContract.sql = LDC.Atlas.Database\XMLCascadingQueries\FQ020_PhysicalContract.sql
+		LDC.Atlas.Database\XMLCascadingQueries\FQ030_DocumentMatching.sql = LDC.Atlas.Database\XMLCascadingQueries\FQ030_DocumentMatching.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ToolingQueries", "ToolingQueries", "{42EC460E-D111-4F9A-A293-F6DCD5798D97}"
+	ProjectSection(SolutionItems) = preProject
+		LDC.Atlas.Database\ToolingQueries\TQ010_EmptyAllTables.sql = LDC.Atlas.Database\ToolingQueries\TQ010_EmptyAllTables.sql
+		LDC.Atlas.Database\ToolingQueries\TQ020_GenerateDataInsert.sql = LDC.Atlas.Database\ToolingQueries\TQ020_GenerateDataInsert.sql
+		LDC.Atlas.Database\ToolingQueries\TQ030_SanityCheck.sql = LDC.Atlas.Database\ToolingQueries\TQ030_SanityCheck.sql
+		LDC.Atlas.Database\ToolingQueries\TQ040_DeleteDocumentAndAssociatedInfo.sql = LDC.Atlas.Database\ToolingQueries\TQ040_DeleteDocumentAndAssociatedInfo.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF} = {8EFB6D79-F606-475D-A1B9-906675B89538}
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A} = {E72CCAB7-D46D-4025-B6CF-6AFD4224E3BC}
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87} = {8EFB6D79-F606-475D-A1B9-906675B89538}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75B8EB26-5CF6-4A73-A746-04CA4317EF72}
+	EndGlobalSection
+EndGlobal

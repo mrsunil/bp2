@@ -1,0 +1,27 @@
+<div class="main-container">
+    <div fxLayout="row"
+         fxAlignLayout="start end">
+        <span class="fill-space"></span>
+        <button mat-button
+                (click)="onOpenClosureSettingsDialog()"
+                [disabled]="isCompanyFrozen">EDIT CLOSURE SETTINGS</button>
+    </div>
+    <div fxLayout="row"
+         fxLayout.md="column"
+         fxLayoutAlign="space-between start">
+        <div fxLayout="column"
+             fxLayoutAlign="start left"
+             fxFlex="49">
+            <atlas-operations-closure #operationsClosureComponent
+                                      (operationClosureUpdate)="onUpdateAccountingSetup($event)">
+            </atlas-operations-closure>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start right"
+             fxFlex="49">
+            <atlas-accounting-closure #accountingClosureComponent
+                                      (accountClosureUpdate)="onUpdateAccountingSetup($event)">
+            </atlas-accounting-closure>
+        </div>
+    </div>
+</div>

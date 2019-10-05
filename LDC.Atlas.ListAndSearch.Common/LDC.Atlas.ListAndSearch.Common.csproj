@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="ClosedXML" Version="0.94.2" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>LDC.Atlas.ListAndSearch.Common.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\_stylecop\stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LDC.Atlas.Application.Common\LDC.Atlas.Application.Common.csproj" />
+    <ProjectReference Include="..\LDC.Atlas.Application.Core\LDC.Atlas.Application.Core.csproj" />
+    <ProjectReference Include="..\LDC.Atlas.DataAccess\LDC.Atlas.DataAccess.csproj" />
+    <ProjectReference Include="..\LDC.Atlas.Infrastructure\LDC.Atlas.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

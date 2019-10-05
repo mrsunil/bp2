@@ -1,0 +1,30 @@
+<div class='mat-checkbox-height'
+     *ngIf="isGridReady">
+    <mat-checkbox [(ngModel)]="selectAllCharterToClose"
+                  (change)="onSelectAllClicked($event.checked)"
+                  label="Select all">Tick all/ Untick all
+    </mat-checkbox>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="center center"
+     fxLayoutWrap
+     *ngIf="!isGridReady"
+     class="loading">
+    <mat-spinner color="accent"></mat-spinner>
+</div>
+<div class="ag-theme-material pointer-cursor"
+     *ngIf="isGridReady">
+    <ag-grid-angular style="width: 100%; height:450px"
+                     id="myGrid"
+                     class="ag-theme-material"
+                     [columnDefs]="columnDefs"
+                     [rowData]="rowData"
+                     [getNodeChildDetails]="getNodeChildDetails"
+                     [suppressRowClickSelection]="true"
+                     [gridOptions]="bulkClosureGridOptions"
+                     (rowSelected)="onSelectionChanged($event)"
+                     [rowHeight]="atlasAgGridParam.rowHeight"
+                     rowSelection="multiple"
+                     (gridReady)="onGridReady($event)">
+    </ag-grid-angular>
+</div>

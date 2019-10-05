@@ -1,0 +1,66 @@
+<div fxLayout="row">
+    <div fxLayout="row"
+         fxFlex="50%">
+        <atlas-masterdata-user-preferences-input tabindex="1"
+                                                 class="contextual-search-for-control"
+                                                 isEditable="true"
+                                                 [fieldControl]="charterCtrl"
+                                                 label="New Charter"
+                                                 [options]="filteredCharters"
+                                                 displayProperty="charterCode"
+                                                 [selectProperties]="['charterCode','description']"
+                                                 lightBoxTitle="Results for charters"
+                                                 gridId="charterGrid"
+                                                 [errorMap]="charterErrorMap"
+                                                 (valueChange)='onCharterSelected($event)'
+                                                 (optionSelected)="onCharterSelected($event)"
+                                                 isSearchBar="true">
+        </atlas-masterdata-user-preferences-input>
+    </div>
+
+</div>
+<div>
+    <mat-card>
+        <mat-card-content>
+            <div ag-grid="reassignOptions"
+                 class="ag-theme-material pointer-cursor"
+                 style="width:80%; height: 80%;">
+                <ag-grid-angular class="ag-theme-material"
+                                 [rowData]="reassignContractGridRows"
+                                 [columnDefs]="reassignGridCols"
+                                 (gridReady)="onGridReady($event)"
+                                 [pagination]="true"
+                                 domLayout=autoHeight
+                                 [enableColResize]="false"
+                                 [paginationPageSize]="10"
+                                 (cellValueChanged)="onCellValueChanged($event)"
+                                 rowSelection="multiple"
+                                 [rowHeight]=32>
+                </ag-grid-angular>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center">
+        <div fxLayout="column"
+             fxLayoutAlign="start start">
+            <button mat-button
+                    type="button"
+                    (click)="onDiscardButtonClick()">
+                DISCARD
+            </button>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start end">
+            <div fxLayout="row"
+                 fxLayoutAlign="end start">
+                <button mat-raised-button
+                        type="button"
+                        (click)="onSideNavSaveButtonClick()">
+                    SAVE
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

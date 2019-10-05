@@ -1,0 +1,11 @@
+.warning-message {
+    color: #df5a4d !important;
+}
+
+.mat-form-field {
+    margin-bottom: 16px;
+}
+
+:host ::ng-deep div.mat-expansion-panel-body label {
+    font-weight: 400;
+}

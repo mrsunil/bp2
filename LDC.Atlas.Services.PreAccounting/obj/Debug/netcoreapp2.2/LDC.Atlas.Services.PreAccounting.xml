@@ -1,0 +1,621 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.PreAccounting</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Application.Commands.CreateAccountingDocumentCommandHandler.Handle(LDC.Atlas.Services.PreAccounting.Application.Commands.CreateAccountingDocumentCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handling the creation of an accounting document
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Application.Commands.UpdateAccountingDocumentStatusToPostedCommandHandler.Handle(LDC.Atlas.Services.PreAccounting.Application.Commands.UpdateAccountingDocumentStatusToPostedCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handling of a request to declare an accounting document as "posted".
+            This request is called by the background process which manages the posting
+            </summary>
+            <param name="request">Contains the id of the accounting document to post</param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.AccountingDocumentQueries.GetTransactionDocumentIdByReversalId(System.Int64,System.String)">
+            <summary>
+            Returns the transaction id of a document reversed, by passing either the id of the reversal, 
+            or the id of the reversed document itself.
+            </summary>
+            <param name="transactionDocId">id of the doc to analyse (either the one of the reversal, either the one of the reversed document)</param>
+            <param name="company">Code of the working company</param>
+            <returns>ID of the document which is reversed (= the parameter transactionDocId if this is the reversed doc itself,
+            or another id if documentId is the reversal id).
+            Returns NULL if the id passed corresponds to neither a reversal nor a reversed document</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.AccountingDocumentQueries.GetRevalInformationForAccountingDocument(System.Int64,System.String)">
+            <summary>
+            Called when creating the accounting document of a reval
+            </summary>
+            <param name="transactionDocumentId"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.AccountingDocumentQueries.GetAccountNumberbyBusinessSectorId(System.String,System.String)">
+            <summary>
+            Get cost type and account reference based on the business sector code
+            </summary>
+            <param name="company"> The company Code</param>
+            <param name="sectorCode"> The business sector code</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.AccountingDocumentQueries.ConvertAccountingDocumentLinesIntoDataTable(System.Collections.Generic.IEnumerable{LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentLine})">
+            <summary>
+            Generates the datatable representing AccountingDocumentLines to be passed as UDTT as parameter to a SP
+            </summary>
+            <param name="accountingDocumentLines">Lines to send as UDTT to the SP</param>
+            <returns>The generated data table</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.AccountingDocumentQueries.UpdateProcessStatus(System.Int64)">
+            <summary>
+            Update process status to reset retry value
+            </summary>
+            <param name="messageId"> The messageId</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.AccountingDocumentQueries.GetErrorMessages(System.String,System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Get error message according to filter parameters
+            </summary>
+            <param name="company"> The company Code</param>
+            <param name="statusList"> The list of status we want to select</param>
+            <param name="processNameList"> The list of processName we want to select</param>
+            <param name="dateBegin"> The date of begining for the filter</param>
+            <param name="dateEnd"> The date of ending for the filter</param>
+            <param name="userName"> The user we want to select</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.AccountingDocumentQueries.GetPreAccountinFieldsConfiguration(System.String)">
+            <summary>
+            Get Manual Journal Field Configuration
+            </summary>
+            <param name="company"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.AccountingSetupDto.FXReval">
+            <summary>
+            Cost type code of the "ledger" lines which are not costs
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.AccountingSetupDto.FXRevalaccount">
+            <summary>
+            Nominal account id to use for the non-cost ledger lines
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.CashInformationDto.PaymentCounterpartyCode">
+            <summary>
+            Gets or sets code of the counterparty associated to the payment. Filled in only for cash by picking for different customer.
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.DocumentMatchingDto.SourceJournalLineId">
+            <summary>
+            Gets or sets iD of the line of the journal entry in Preaccounting.ManualJournalLine this accounting line
+            is linked to.
+            This field is exclusive with SourceInvoiceId and SourceCashLineId
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.DocumentMatchingDto.SourceInvoiceId">
+            <summary>
+            Gets or sets iD of the invoice record this accounting line is referring
+            Only relevant for "C" / "V" lines
+            This field is exclusive with SourceJournalLineId and SourceCashLineId
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.DocumentMatchingDto.SourceCashLineId">
+            <summary>
+            Gets or sets iD of the cash record line this accounting line is linked with.
+            Only relevant for "C" / "V" lines
+            This field is exclusive with SourceJournalLineId and SourceInvoiceId
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.DocumentMatchingDto.MatchedJournalLineId">
+            <summary>
+            Gets or sets iD of the line of the journal entry in Preaccounting.ManualJournalLine this accounting line
+            is linked to.
+            This field is exclusive with MatchedInvoiceId and MatchedCashLineId
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.DocumentMatchingDto.MatchedInvoiceId">
+            <summary>
+            Gets or sets iD of the invoice record this accounting line is referring
+            Only relevant for "C" / "V" lines
+            This field is exclusive with MatchedJournalLineId and MatchedCashLineId
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.DocumentMatchingDto.MatchedCashLineId">
+            <summary>
+            Gets or sets iD of the cash record line this accounting line is linked with.
+            Only relevant for "C" / "V" lines
+            This field is exclusive with MatchedJournalLineId and MatchedInvoiceId
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.ItemConfigurationPropertiesDto">
+            <summary>
+            Dto To Read Accounting Entries Configuration
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.RevaluationInformationDto.CounterpartyId">
+            <summary>
+            ID of the counterparty associated to the revaluation to create.
+            As a reminder, the reval is linked to a matchflag which itself, is linked to a counterparty
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.PreAccounting.Application.Queries.Dto.TransactionDocumentSummaryDto">
+            <summary>
+            Summary of transaction document information
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Application.Queries.IAccountingDocumentQueries.GetPreAccountinFieldsConfiguration(System.String)">
+            <summary>
+            Method to read Manual Journal Configuration
+            </summary>
+            <param name="company"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingDocumentsController.GetPostingManagement(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Returns the list of accounting documents for posting.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingDocumentsController.GetAccountingDocumentsByAccountingId(System.String,System.Int32)">
+            <summary>
+            Returns an accounting document by its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="accountingId">The accounting document identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingDocumentsController.SearchAccountingEntries(System.String,LDC.Atlas.Infrastructure.ViewModel.AdditionalEntitySearchRequest{System.Boolean})">
+            <summary>
+            Searches in the list of accounting entries.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingDocumentsController.CreateAccountingDocument(System.String,LDC.Atlas.Services.PreAccounting.Application.Commands.CreateAccountingDocumentCommand)">
+            <summary>
+            Creates an accounting document.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="document">The document to create (accounting header and lines).</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingDocumentsController.UpdateAccountingDocumentStatusToPosted(System.String,LDC.Atlas.Services.PreAccounting.Application.Commands.UpdateAccountingDocumentStatusToPostedCommand)">
+            <summary>
+            Update Accounting Document Status As Posted.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="document">document to update accounting document status to posted.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingDocumentsController.UpdateAccountingDocumentStatusToDeleted(System.String,LDC.Atlas.Services.PreAccounting.Application.Commands.UpdateAccountingDocumentStatusToDeletedCommand)">
+            <summary>
+            Delete Accounting Document Status.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="document">document to delete accounting document status</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingDocumentsController.AuthorizeForPostingDocument(System.String,LDC.Atlas.Services.PreAccounting.Application.Commands.AuthorizeForPostingCommand)">
+            <summary>
+            Authorize documents for sanity checks.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="document">Authorize for posting.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingDocumentsController.DocumentsToMatch(System.String,System.Int64,System.String,System.String,System.Boolean,System.Nullable{System.Int64},LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of documents for document matching.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="counterpartyId">The counterparty identifier.</param>
+            <param name="department">The department of the document.</param>
+            <param name="currency">Currency of the documents.</param>
+            <param name="bitEdit">Boolean value to check if edit or create.</param>
+            <param name="matchFlagId">return the existing matchflag.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingDocumentsController.GetErrorMessages(System.String,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Get error message for display in interface.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="statusList">List of status filtered</param>
+            <param name="processNameList">List of process filtered</param>
+            <param name="dateBegin">date of begining</param>
+            <param name="dateEnd">date of ending</param>
+            <param name="userName">name of user</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingSetUpController.GetAccountingSetup(System.String)">
+            <summary>
+            Returns the accounting setup details.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingSetUpController.GetTADocumentStatus(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns TA document details for a company.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="dataVersionId">The dataVersionId</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Controllers.AccountingSetUpController.UpdateAccountingSetUp(System.String,LDC.Atlas.Services.PreAccounting.Application.Commands.UpdateAccountingSetUpCommand)">
+            <summary>
+            Updates the accounting setup details for a company.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="accountingSetUp">The setup details to update.</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentLine">
+            <summary>
+            AccountingDocumentLine Entity
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentLine.SourceJournalLineId">
+            <summary>
+            Gets or sets iD of the line of the journal entry in Preaccounting.ManualJournalLine this accounting line
+            is linked to.
+            This field is exclusive with SourceInvoiceId and SourceCashLineId
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentLine.SourceInvoiceId">
+            <summary>
+            Gets or sets iD of the invoice record this accounting line is referring
+            Only relevant for "C" / "V" lines
+            This field is exclusive with SourceJournalLineId and SourceCashLineId
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentLine.SourceInvoiceLineId">
+            <summary>
+            Gets or sets iD of the invoice LINE record this accounting line is referring
+            Only relevant for "C" / "V" lines
+            This field is exclusive with SourceJournalLineId and SourceCashLineId
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentLine.SourceCostLineId">
+            <summary>
+            Gets or sets iD of the cost LINE record this accounting line is referring
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentLine.SourceCashLineId">
+            <summary>
+            Gets or sets iD of the cash record line this accounting line is linked with.
+            Only relevant for "C" / "V" lines
+            This field is exclusive with SourceJournalLineId and SourceInvoiceId
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentLine.GroupId">
+            <summary>
+            Information used at the creation of the accounting document,
+            to link a line with its document header (we can create several
+            accounting document in just one call)
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentLine.SourceTALineId">
+            <summary>
+            Gets or sets iD of the month end TA record this accounting line is referring
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentPostingInformation">
+            <summary>
+            Contains the information required to executed correctly the change of the "posting" status
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentPostingInformation.DetailedCashType">
+            <summary>
+            Gets or sets id of the cash type ; null if the document is not a cash
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentPostingInformation.DetailedInvoiceType">
+            <summary>
+            Gets or sets detailed invoice type ; null if the document is not an invoice
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentPostingInformation.CashByPickingMatchFlagId">
+            <summary>
+            Gets or sets gets of sets the id of the match flag associated to the cash by picking.
+            This is filled in only when working with a cash by picking that we want to post (otherwise, null)
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentPostingInformation.FullAccountingDocument">
+            <summary>
+            Gets or sets the full document details ; this is usefull mostly when posting the accruals (creation
+            of the automatic opposite for month +1)
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentPostingInformation.CurrencyCode">
+            <summary>
+            Gets or sets the currency code of the document
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Entities.Bold.CommercialInvoiceClient.BookCommercialInvoiceAsync(System.String,System.String,LDC.Atlas.Services.PreAccounting.Entities.Bold.CommercialInvoiceRoot)">
+            <returns>Successful</returns>
+            <exception cref="T:LDC.Atlas.Services.PreAccounting.Entities.Bold.SwaggerException">A server side error occurred.</exception>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Entities.Bold.CommercialInvoiceClient.BookCommercialInvoiceAsync(System.String,System.String,LDC.Atlas.Services.PreAccounting.Entities.Bold.CommercialInvoiceRoot,System.Threading.CancellationToken)">
+            <returns>Successful</returns>
+            <exception cref="T:LDC.Atlas.Services.PreAccounting.Entities.Bold.SwaggerException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.Commodity">
+            <summary>Commodity code in the LDC group referential</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.TypeOfExpense">
+            <summary>Type of Expense as of LDC global classifications of costs</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.DischargeCountry">
+            <summary>Country of discharge</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.CountryCurrency">
+            <summary>Country currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.CounterpartyId">
+            <summary>Statistical info to enable 3rd party on offseting account</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.AmountFuncCurr">
+            <summary>Amount in functional currency of the entity</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.ProfitCenter">
+            <summary>Profit center code</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.Branch">
+            <summary>tbc with guillaume</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.BusinessDate">
+            <summary>Transfer of risk date</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.AmountCountryCurr">
+            <summary>Amount in Country currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.GroupCurrency">
+            <summary>Group currency - USD</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.LoadCountry">
+            <summary>Country of loading</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.FunctCurrency">
+            <summary>Functional currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.GlAccount">
+            <summary>General Ledger Account Number in LDC CoA referential</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.ContractTrader">
+            <summary>Trader associated to the commercial invoice</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.UnitPrice">
+            <summary>Unitary price</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.Fimmo">
+            <summary>Type of Expense as of LDC global classifications of costs</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.Quantity">
+            <summary>Quantity</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.AmountTransactionCurr">
+            <summary>Amount in Country currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.DischargePort">
+            <summary>Port of discharge</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.ItemId">
+            <summary>Unique item number in the document</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.Unit">
+            <summary>Unit of quantity</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.CropYear">
+            <summary>Crop year corresponding to the commodity</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.Incoterm">
+            <summary>Incoterm of the contract</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.Stase">
+            <summary>tbc with guillaume</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.LoadPort">
+            <summary>Port of discharge</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.Location">
+            <summary>Physical location</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.AmountGroupCurr">
+            <summary>Amount in group currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceLgItem.VesselName">
+            <summary>Name of the Vessel</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.Commodity">
+            <summary>Commodity code in the LDC group referential</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.Incoterms">
+            <summary>ID enabling the access to the corresponding document in the DSM system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.IntercoPartnerId">
+            <summary>ID enabling the access to the corresponding document in the DSM system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.CountryCurrency">
+            <summary>Country currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.AmountFuncCurr">
+            <summary>Amount in functional currency of the entity</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.ProfitCenter">
+            <summary>Profit center code</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.Branch">
+            <summary>ID enabling the access to the corresponding document in the DSM system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.ItemID">
+            <summary>Unique item number in the document</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.BusinessDate">
+            <summary>Transfer of risk date</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.AmountCountryCurr">
+            <summary>Amount in Country currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.GroupCurrency">
+            <summary>Group currency - USD</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.FunctCurrency">
+            <summary>Functional currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.State">
+            <summary>ID enabling the access to the corresponding document in the DSM system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.ContractTrader">
+            <summary>ID enabling the access to the corresponding document in the DSM system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.UnitPrice">
+            <summary>ID enabling the access to the corresponding document in the DSM system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.Quantity">
+            <summary>ID enabling the access to the corresponding document in the DSM system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.AmountTransactionCurr">
+            <summary>Amount in Country currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.SubledgerType">
+            <summary>Indicator enable indication whether it is a Vendor or Customer Line, or empty if to be determined by a business rule</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.Unit">
+            <summary>ID enabling the access to the corresponding document in the DSM system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.CropYear">
+            <summary>Crop year corresponding to the commodity</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.DebitCard">
+            <summary>Indicator whther it is a debit credit</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.ContractId">
+            <summary>Main Contract ID</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.ContractItemId">
+            <summary>ID of the contract split - sub section of a contract</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.Location">
+            <summary>ID enabling the access to the corresponding document in the DSM system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.Sbox1">
+            <summary>Most granular organizational unit from the source application</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.AmountGroupCurr">
+            <summary>Amount in group currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceSublgItem.VesselName">
+            <summary>ID enabling the access to the corresponding document in the DSM system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceHeader.DocumentDate">
+            <summary>date indicated on the document </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceHeader.TranslationDate">
+            <summary>date to consider when we apply a convertion of currencies</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceHeader.DmsId">
+            <summary>ID enabling the access to the corresponding document in the DSM system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceHeader.InvoiceDescription">
+            <summary>Short description related to the invoice</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceHeader.CancellationInvoiceIndicator">
+            <summary>flag indicating the original invoice must be reversed</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceHeader.TransactionCurreny">
+            <summary>Transaction currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceHeader.DocumentId">
+            <summary>unique functional ID of the document in the source system</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceHeader.TransactionDate">
+            <summary>date related to the accounting date / period to book the document</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceHeader.ReferenceId">
+            <summary>ID of the orginal document (eg the invoice ID form the partner) - external reference</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceHeader.LegalEntity">
+            <summary>Legal entity</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceHeader.TypeCode">
+            <summary>Document type : based on a defined list of variant</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.CommercialInvoice.SenderId">
+            <summary>This is the Identification of the LDC application sending this message. Referential will be provided by enterprise architecture team.</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceTaxItem.Commodity">
+            <summary>Commodity code in the LDC group referential</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceTaxItem.CountryCurrency">
+            <summary>Country currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceTaxItem.AmountFuncCurr">
+            <summary>Amount in functional currency of the entity</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceTaxItem.ProfitCenter">
+            <summary>Profit center code</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceTaxItem.AmountTransactionCurr">
+            <summary>Amount in Country currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceTaxItem.AmountCountryCurr">
+            <summary>Amount in Country currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceTaxItem.GroupCurrency">
+            <summary>Group currency - USD</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceTaxItem.CropYear">
+            <summary>Year</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceTaxItem.FunctCurrency">
+            <summary>Functional currency</summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.PreAccounting.Entities.Bold.InvoiceTaxItem.AmountGroupCurr">
+            <summary>Amount in group currency</summary>
+        </member>
+        <member name="F:LDC.Atlas.Services.PreAccounting.DocumentType.MTA">
+            <summary>
+            Accruals (manual and monthly)
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Repositories.AccountingDocumentRepository.CreateAccountingDocumentForReversal(System.Int64,System.Int64,System.String,System.Boolean)">
+            <summary>
+            Create Accouting Documents For Reversal
+            </summary>
+            <param name="transactionDocumentId">TransactionDocumentId of the reversal</param>
+            <param name="reversedTransactionDocumentId">TransactionDocumentId of the reversed (original) Document</param>
+            <param name="company">The company code </param>
+            <param name="postOpClosedPolicy">True if the user that created the reversal has the PostOpClosed privilege</param>
+            <returns> The list of new accouting document id created</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Repositories.AccountingDocumentRepository.UpdateAccountingDocumentsStatus(System.String,System.Collections.Generic.List{LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentStatus},System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="company"></param>
+            <param name="accountingDocuments">"Accounting documents", for which only the following properties are usefull
+            in this context (ie used by the SP) : AccountingId, ErrorMessage, StatusId </param>
+            <param name="statusId">If set to "posted", the SP will also update the posting date
+            Note that this parameter SHOULD NOT exist, as the status id is already within the accounting docs passed in parameter</param>
+            <returns></returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Repositories.AccountingDocumentRepository.ConvertAccountingDocumentLinesIntoDataTable(System.Collections.Generic.IEnumerable{LDC.Atlas.Services.PreAccounting.Entities.AccountingDocumentLine},System.Boolean)">
+            <summary>
+            Generates the datatable representing AccountingDocumentLines to be passed as UDTT as parameter to a SP
+            </summary>
+            <param name="accountingDocumentLines">Lines to send as UDTT to the SP</param>
+            <param name="isUpdate">If true, the id of the line is passed so that the called SP can do an update</param>
+            <returns>The generated data table</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.PreAccounting.Repositories.IAccountingDocumentRepository.CreateAccountingDocumentForReversal(System.Int64,System.Int64,System.String,System.Boolean)">
+            <summary>
+            Create Accouting Documents For Reversal
+            </summary>
+            <param name="transactionDocumentId">TransactionDocumentId of the reversal</param>
+            <param name="reversedTransactionDocumentId">TransactionDocumentId of the reversed (original) Document</param>
+            <param name="company">The company code </param>
+            <param name="postOpClosedPolicy">True if the user that created the reversal has the PostOpClosed privilege</param>
+            <returns> The list of new accouting document id created</returns>
+        </member>
+    </members>
+</doc>

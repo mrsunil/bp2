@@ -1,0 +1,30 @@
+<div [class.displayMode]="!isEditable"
+     class="custom-form"
+     [class.required-field]="isRequired()"
+     [class.isEmpty]="!fieldControl.value">
+    <mat-form-field>
+        <input matInput
+               [matDatepicker]="picker"
+               [formControl]="fieldControl"
+               autocomplete="off"
+               [disabled]="disabled"
+               (dateChange)="onChosenDateSelected()">
+        <mat-placeholder>
+            <div fxLayout="row">
+                {{label}}
+                <div *ngIf="(!fieldControl.value) && !isEditable">: {{emptyValue}}</div>
+            </div>
+        </mat-placeholder>
+        <mat-datepicker-toggle matSuffix
+                               [for]="picker"
+                               *ngIf="isEditable"
+                               [disabled]="disabled"
+                               [class.validIcon]="fieldControl.valid"
+                               [class.notValidIcon]="!fieldControl.valid && (fieldControl.touched || fieldControl.dirty)">
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="fieldControl.hasError('invalidDateForSql')">Date should be after 01/01/1753</mat-error>
+        <mat-error *ngIf="fieldControl.errors && isEditable">{{ getErrorMessage() }}</mat-error>
+        <mat-hint *ngIf="isRequired() && isEditable">Required *</mat-hint>
+    </mat-form-field>
+</div>

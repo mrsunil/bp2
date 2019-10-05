@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>{{ lightboxTitle}}
+    <button mat-icon-button
+            mat-dialog-close
+            class="close-dialog-btn">
+        <mat-icon aria-label="Closing button">clear</mat-icon>
+    </button></h1>
+
+<mat-dialog-content *ngIf="!isLoading">
+    <div fxLayout="row"
+         fxLayoutAlign="end"
+         fxLayoutWrap
+         class="atlas-grid-card-header">
+        <div>
+            <atlas-ag-grid-user-preferences *ngIf="gridOptions && gridOptions.columnDefs"
+                                            [gridOptions]="gridOptions"
+                                            [company]="company"
+                                            [gridId]="gridId"
+                                            #userPreferences>
+            </atlas-ag-grid-user-preferences>
+        </div>
+    </div>
+    <div ag-grid="gridOptions"
+         class="ag-theme-material pointer-cursor"
+         style="height:auto">
+        <ag-grid-angular class="ag-theme-material"
+                         [columnDefs]="columnDefs"
+                         (gridReady)="onGridReady($event)"
+                         [enableColResize]="true"
+                         [enableSorting]="true"
+                         domLayout=autoHeight
+                         (rowClicked)="onRowClicked($event)"
+                         [getMainMenuItems]="getMainMenuItems.bind(this)"
+                         (columnVisible)="onColumnVisibilityChanged($event)"
+                         enableFilter
+                         [rowHeight]="atlasAgGridParam.rowHeight">
+        </ag-grid-angular>
+    </div>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions>
+    <button mat-button
+            mat-dialog-close>discard</button>
+</mat-dialog-actions>

@@ -1,0 +1,19 @@
+<h1 mat-dialog-title
+    style="text-transform: uppercase;">{{dialogData.title}}</h1>
+<mat-dialog-content>
+    <div fxLayout="row"
+         fxLayoutAlign="none center"
+         fxLayoutWrap
+         fxLayoutGap="10px">
+        <p>{{dialogData.text}}</p>
+    </div>
+</mat-dialog-content>
+<div fxLayout="row"
+     fxLayoutAlign="space-between end">
+    <button mat-button
+            (click)="onCloseCancel()">DISCARD</button>
+    <button mat-button
+            (click)="onCloseEdit()">EDIT CASH</button>
+    <button mat-button
+            (click)="onCloseConfirm()">SAVE ANYWAY</button>
+</div>

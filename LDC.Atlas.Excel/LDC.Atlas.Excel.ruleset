@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="SonarQube - Atlas v2 Sonar way" ToolsVersion="15.0">
+  <Include Path="..\.sonarlint\atlas_v2csharp.ruleset" Action="Default" />
+  <Include Path="..\_stylecop\stylecoperules.ruleset" Action="Default" />
+</RuleSet>

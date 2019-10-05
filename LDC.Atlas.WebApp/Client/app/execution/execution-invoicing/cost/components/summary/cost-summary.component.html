@@ -1,0 +1,20 @@
+<atlas-execution-invoicing-summary-header #summaryHeaderComponent></atlas-execution-invoicing-summary-header>
+
+<div class="main-container">
+    <atlas-invoice-cost-selected-cost #invoiceCostSelectedCostComponent></atlas-invoice-cost-selected-cost>
+    <atlas-invoicing-cost-taxes #invoicingCostTaxesComponent></atlas-invoicing-cost-taxes>
+
+    <div fxLayout="row"
+         fxLayoutAlign="start"
+         fxLayoutAlign.lt-md="space-around center"
+         fxLayoutGap="16px"
+         class="payment-total-amount-section">
+
+        <atlas-cost-payments #costPaymentsComponent
+                             fxFlex="50%"
+                             fxFlex.lt-md="92"></atlas-cost-payments>
+        <atlas-total-amount #totalAmountComponent
+                            fxFlex="50%"
+                            fxFlex.lt-md="92"></atlas-total-amount>
+    </div>
+</div>

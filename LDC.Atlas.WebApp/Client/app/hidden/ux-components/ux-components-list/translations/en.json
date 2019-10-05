@@ -1,0 +1,175 @@
+{
+    "TITLE_PAGE": "Title page",
+    "INPUT_LABEL": "Input label",
+    "SECTION": "Section",
+    "TOOGLE": "toogle",
+    "TOOGLE_SELECTED": "toogle selected",
+    "MESSAGE": "Message",
+    "ACTION": "Action",
+    "SELECT": {
+        "FIELD_NAME": "Select",
+        "OPTION": "My favourite field"
+    },
+    "MORE_FILTERS": "+ MORE FILTERS",
+    "APPLY_FILTERS": "Apply filters",
+    "EMAIL_FIELD": {
+        "FIELD_NAME": "Enter your email"
+    },
+    "You must enter a value": "You must enter a value",
+    "Not a valid email": "Not a valid email",
+
+    "COMPLEXE_VALUE_FIELD": "Complexe value entry",
+    "AUTOCOMPLETE_FIELD": "Autocomplete",
+    "DROPDOWN_FIELD": {
+        "FIELD_NAME": "Dropdown field",
+        "OPTION": "Option"
+    },
+    "DATE_PICKER_FIELD": "Date picker field",
+    "BUTTONS_BOX": {
+        "TITLE": "Buttons",
+        "BASIC": "Basic button",
+        "RAISED": "Raised button"
+    },
+    "FLOATING_ACTION_BUTTON_BOX": {
+        "TITLE": "Floating Action button",
+        "CUSTOMIZE": "Customize the trade",
+        "CLOSE": "Close trade",
+        "NEW_CALL_OFF": "New call of",
+        "ASSIGN": "Assign to charter",
+        "SPLIT": "Split trade",
+        "ALLOCATE": "Allocate trade"
+    },
+    "BUTTON_LABEL": "Label of the button",
+    "TOOLTIP_BOX": {
+        "TITLE": "Tooltip",
+        "TEST": "Have a tooltip !",
+        "FIELD": "Field with",
+        "TOOLTIP": "This is a tooltip"
+    },
+    "EMPTY_STATE_BOX_1": {
+        "TITLE": "No result for ABC",
+        "MESSAGE": "Try another search"
+    },
+    "EMPTY_STATE_BOX_2": {
+        "TITLE": "Title of the card",
+        "MESSAGE": "Message of the empty state"
+    },
+    "EMPTY_STATE_BOX_3": {
+        "TITLE": "No result for P00003",
+        "MESSAGE": "Try another search"
+    },
+    "STEPPER": {
+        "PERSONAL_INFO": "Personnal information",
+        "FILL_OUT_ADDRESS": "Fill out your address",
+        "DONE": "Done",
+        "END_MESSAGE": "Congratulation<br/>You are now done"
+    },
+    "NAME": "Name",
+    "USERNAME": "Username",
+    "ADDRESS": "Address",
+    "CITY": "City",
+    "COUNTRY": "Country",
+    "BACK": "Back",
+    "NEXT": "Next",
+    "RESET": "Reset",
+    "PROGRESS_BOX": {
+        "TITLE": "Progress indicator",
+        "INDETERMINATE": "Indeterminate loading",
+        "DETERMINATE": "Determinate loading"
+    },
+    "CHECKBOX": {
+        "PARENT": "Parent Checkbox",
+        "CHILD1": "Child 1",
+        "CHILD2": "Child 2",
+        "CHILD3": "Child 3",
+        "INDETERMINATE": "Indeterminate",
+        "RADIO_BUTTON": "radio-button",
+        "SLIDE_TOOGLE": "Slide Toogle"
+    },
+    "CARD": {
+        "1": "Card 1",
+        "2": "Card 2",
+        "3": "Card 3",
+        "4": "Card 4"
+    },
+    "DIALOG_BOX": {
+        "TITLE": "Dialog box",
+        "FIELD_NAME": "What's your name",
+        "OPEN_DIALOG": "OPEN DIALOGUE",
+        "GREETINGS": "Hi",
+        "QUESTION": "What's your favourite animal?",
+        "CHOICE": "You chose:"
+    },
+    "DIALOG_CLOSED": "The dialog was closed",
+
+    "CONTEXTUAL_SEARCH_BOX": {
+        "TITLE": "Contextual search",
+        "FIELD_NAME": "Vessel name",
+        "LIGHTBOX": {
+            "TITLE": "Lightbox title",
+            "MAKE": "Make",
+            "MODEL": "Model",
+            "PRICE": "Price",
+            "DISCARD": "Discard"
+        }
+    },
+    "COMMODITY_INPUT_BOX": {
+        "TITLE": "Commodity Input",
+        "INVALID": "Please enter a valid commodity",
+        "GRID": {
+            "TITLE": "Contextual search grid for commodities",
+            "DISCARD": "Discard",
+            "COMMODITY_DESCRIPTION": "Commodity description",
+            "AUTHORISE_COLUMN": "Authorise this column",
+            "AUTHORISE_ALL_COLUMNS": "Authorise all columns",
+            "FILTER": "Filter",
+            "CONTAINS": "Contains",
+            "NOT_CONTAINS": "Not contains",
+            "EQUALS": "Equals",
+            "NOT_EQUALS": "Not equal",
+            "START_WITH": "Starts with",
+            "ENDS_WITH": "Ends with"
+        }
+    },
+    "LIST_AND_SEARCH": "List & Search",
+    "NO_DEFAULT_SET": "No Default Set",
+    "SAVE": "Save",
+    "EDIT_CRITERIAS": "EDIT CRITERIAS",
+    "FILTER_SET_NAME": "Filter Set Name",
+    "REQUIRED": "Required*",
+    "SHARE_WITH_ALL_USERS": "Share with all users",
+    "SHARE WITH ALL COMPANIES": "Share with all companies",
+    "SAVE_AS_NEW_FILTER_SET": "SAVE AS NEW FILTER SET",
+
+    "QUICK_SUM_MODE": "Quick Sum Mode",
+    "CLEAR_SELECTION": "CLEAR SELECTION",
+    "make": "Make",
+    "model": "Model",
+    "price": "Price",
+
+    "Child 1": "Child 1",
+    "Child 2": "Child 2",
+    "Child 3": "Child 3",
+
+    "Ag-Grid Examples": "Ag-Grid Examples",
+    "Enable Range Selection": "Enable Range Selection",
+    "Clear Selection": "Clear Selection",
+    "Bright Tab": "Bright Tab",
+    "First": "First",
+    "Second": "Second",
+    "Third": "Thrid",
+    "Number 1": "Number 1",
+    "Number 2": "Number 2",
+    "Number 3": "Number 3",
+
+    "Dark Tab - for topbar": "Dark Tab - for topbar",
+    "trade type": "trade type",
+    "Label of the button": "Label of the button",
+    "Content 1": "Content 1",
+    "Content 2": "Content 2",
+    "Content 3": "Content 3",
+
+    "Admin Tab - for topbar": "Admin Tab - for topbar",
+    "The background image needs to be defined in the css class admin-tab": "The background image needs to be defined in the css class 'admin-tab'"
+
+}

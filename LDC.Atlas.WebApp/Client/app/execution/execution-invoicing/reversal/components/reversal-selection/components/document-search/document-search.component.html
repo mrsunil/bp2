@@ -1,0 +1,120 @@
+<div fxLayout="row"
+     fxLayoutAlign="start none">
+    <mat-card fxFlex="100">
+        <form [formGroup]="searchForm">
+            <div fxLayout="row"
+                 fxLayoutAlign="start none"
+                 class="search">
+
+                <mat-form-field>
+                    <input matInput
+                           (keydown.enter)="onSearchReversalDocumentClicked()"
+                           formControlName="searchDocumentCtrl"
+                           placeholder="Invoice Document Ref">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput
+                           formControlName="contractReferenceCtrl"
+                           placeholder="Contract Reference"
+                           (keydown.enter)="onSearchReversalDocumentClicked()"
+                           #action>
+                </mat-form-field>
+                <atlas-masterdata-user-preferences-input isEditable="true"
+                                                         [fieldControl]="charterReferenceCtrl"
+                                                         [options]="filteredCharters"
+                                                         label="Charter Reference"
+                                                         (keydown.enter)="onSearchReversalDocumentClicked()"
+                                                         displayProperty="charterCode"
+                                                         [selectProperties]="['charterCode','description']"
+                                                         [errorMap]="charterErrorMap"
+                                                         lightBoxTitle="Results for charters"
+                                                         gridId="charterGrid"
+                                                         [dataLoader]="charterDataLoader">
+                </atlas-masterdata-user-preferences-input>
+                <atlas-masterdata-user-preferences-input isEditable="true"
+                                                         [fieldControl]="counterPartyCtrl"
+                                                         [options]="filteredCounterPartyList"
+                                                         label="Counter Party"
+                                                         (keydown.enter)="onSearchReversalDocumentClicked()"
+                                                         displayProperty="counterpartyCode"
+                                                         [selectProperties]="['counterpartyCode', 'description']"
+                                                         [errorMap]="counterpartyErrorMap"
+                                                         lightBoxTitle="Results for Counterparty"
+                                                         gridId="counterpartiesGrid"
+                                                         [dataLoader]="counterpartyDataLoader">
+                </atlas-masterdata-user-preferences-input>
+                <button mat-raised-button
+                        (click)="onSearchReversalDocumentClicked()"
+                        class="heroGradient">
+                    <mat-icon aria-label="Search"
+                              class="search-icon">search</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-card>
+</div>
+
+<atlas-filter-set-display (filtersChanged)=onFilterSetDetailsChange($event)
+                          [columnConfiguration]="columnConfiguration"
+                          [gridCode]="gridCode"
+                          [company]="company"
+                          #filterSetDisplayComponent>
+</atlas-filter-set-display>
+<div fxLayout="row"
+     fxLayoutAlign="start none">
+    <mat-card fxFlex="100">
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutWrap
+             *ngIf="isLoading"
+             class="loading">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+        <div fxLayout="row"
+             *ngIf="!isLoading"
+             fxLayout.xs="column"
+             fxLayoutAlign="space-between start"
+             fxLayoutGap="20px"
+             class="atlas-grid-card-header">
+            <h2 class="no-margin">{{gridTitle}}</h2>
+
+            <atlas-ag-grid-user-preferences *ngIf="reversalDocumentGridOptions && reversalDocumentGridOptions.columnDefs"
+                                            [gridOptions]="reversalDocumentGridOptions"
+                                            [company]="company"
+                                            [gridId]="gridCode"
+                                            [sharingEnabled]="hasGridSharing"
+                                            #userPreferences>
+            </atlas-ag-grid-user-preferences>
+        </div>
+        <div ag-grid="reversalDocumentGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular class="ag-theme-material"
+                             [gridOptions]="reversalDocumentGridOptions"
+                             [rowData]="reversalDocumentGridRows"
+                             [columnDefs]="reversalDocumentGridColumns"
+                             domLayout=autoHeight
+                             rowSelection="multiple"
+                             [singleClickEdit]="true"
+                             [suppressRowClickSelection]="true"
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             [enableFilter]="true"
+                             [rowHeight]=atlasAgGridParam.rowHeight
+                             rowMultiSelectWithClick=true
+                             [singleClickEdit]="true"
+                             enableFilter
+                             [rowHeight]=atlasAgGridParam.rowHeight
+                             (columnVisible)="onColumnVisibilityChanged($event)"
+                             (gridReady)="onGridReady($event)"
+                             (firstDataRendered)="onFirstDataRendered($event)"
+                             (rowSelected)="onRowSelected($event)">
+                <!-- [suppressRowClickSelection]="true" -->
+            </ag-grid-angular>
+        </div>
+    </mat-card>
+</div>
+
+<atlas-lock-interval [resourcesInformation]="resourcesInformation">
+</atlas-lock-interval>

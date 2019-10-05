@@ -1,0 +1,14 @@
+<div class="main-container">
+    <atlas-list-and-search class="default-height"
+                           [gridCode]="gridCode"
+                           gridTitle="Generated documents"
+                           [company]="company"
+                           [dataLoader]="dataLoader"
+                           [gridContextualMenuActions]="gridContextualMenuActions"
+                           (menuActionClicked)="onMenuActionClicked($event)"
+                           [additionalFilters]="additionalFilters"
+                           waitBeforeLoadingData=true
+                           (configurationLoaded)="initAdditionnalFilters()"
+                           #listAndSearchComponent>
+    </atlas-list-and-search>
+</div>

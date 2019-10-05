@@ -1,0 +1,79 @@
+<div class="main-container">
+    <mat-card>
+        <div fxLayout="row"
+             fxLayoutAlign="start none"
+             class="search">
+            <atlas-dropdown-select fxFlex="60%"
+                                   [label]="'Database'"
+                                   [fieldControl]="databaseCtrl"
+                                   isEditable=true
+                                   [options]="databaseList"
+                                   (keydown.enter)="onQuickSearchButtonClicked()"
+                                   displayProperty="freezeDate"
+                                   [selectProperties]="['freezeDate']"></atlas-dropdown-select>
+            <mat-form-field>
+                <input matInput
+                       placeholder="Target Weight Code"
+                       [matAutocomplete]="quantityCode"
+                       [formControl]="weightUnitIdCtrl"
+                       (keydown.enter)="onQuickSearchButtonClicked()"
+                       [matTooltip]="'Weight Codes'">
+                <mat-autocomplete #quantityCode="matAutocomplete">
+                    <mat-option *ngFor="let qtCode of filteredQuantityCode"
+                                [value]="qtCode.weightCode">
+                        {{qtCode.weightCode}}|
+                        {{qtCode.description}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="weightUnitIdCtrl.hasError('inDropdownList')">
+                    Value not in list
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button
+                    class="heroGradient">
+                <mat-icon aria-label="Search"
+                          (click)="onQuickSearchButtonClicked()"
+                          class="search-icon">search</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <div fxLayout="row"
+         fxLayoutAlign="left stretch"
+         fxLayoutGap="5%">
+        <mat-card fxFlex="30">
+            <mat-card-header>
+                <mat-card-title>
+                    <h2>General Inclusion/Exclusion</h2>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayoutGap="10px">
+                <div fxLayout="row"
+                     fxLayoutAlign="left stretch"
+                     fxLayoutGap="5%">
+                    <atlas-dropdown-select fxFlex='50%'
+                                           [label]="'Trade Status'"
+                                           [options]="filteredContractStatusList"
+                                           [fieldControl]="contractStatusCtrl"
+                                           isEditable=true
+                                           [selectProperties]="contractStatusDisplayProperty"
+                                           multiselect=true
+                                           (panelOpened)="onPanelOpened($event)"></atlas-dropdown-select>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <atlas-list-and-search class="default-height"
+                           [gridCode]="gridCode"
+                           [searchCode]="searchCode"
+                           [gridTitle]="'Trade Report'"
+                           [additionalFilters]="additionalFilters"
+                           [company]="company"
+                           [dataLoader]="dataLoader"
+                           [hasDeleteViewPrivilege]="hasDeleteViewPrivilege"
+                           [dataVersionId]="dataVersionId!==-1?dataVersionId:null"
+                           [pageSize]="100"
+                           waitBeforeLoadingData=true
+                           (configurationLoaded)="initAdditionnalFilters()"
+                           #tradeReportListAndSearchComponent>
+    </atlas-list-and-search>
+</div>

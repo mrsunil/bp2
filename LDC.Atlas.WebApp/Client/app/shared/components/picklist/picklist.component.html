@@ -1,0 +1,76 @@
+<div fxLayout="row"
+     fxLayoutAlign="start">
+    <h2 class="picklist-title">{{title}}</h2>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="start"
+     fxLayoutGap="24px"
+     fxLayout.xs="column">
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="column"
+                 fxLayoutAlign="space-between start">
+                <div>
+                    <mat-checkbox class="picklist-header"
+                                  [checked]="isAllOriginalChecked"
+                                  (change)="onAllOriginalChecked($event)"
+                                  [indeterminate]="originalListIndeterminated">{{originalListHeader}}</mat-checkbox>
+                </div>
+                <div>
+                    <mat-selection-list #originalList
+                                        [(ngModel)]="originalOptionsChecked"
+                                        [compareWith]="compareListItems"
+                                        (ngModelChange)="onOriginalItemsSelected($event)">
+                        <mat-list-option class="picklist-option"
+                                         *ngFor="let item of options; trackBy:trackPicklist"
+                                         [value]="item"
+                                         checkboxPosition="before">
+                            {{(displayWith ? item[displayWith] : item)}}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div fxFlex="20"
+         fxLayout="column"
+         fxLayoutAlign="center center"
+         fxLayoutGap="24px">
+        <button mat-mini-fab
+                (click)="onPickItemsClicked()">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <button mat-mini-fab
+                (click)="onRemoveItemsClicked()">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+    </div>
+
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="column"
+                 fxLayoutAlign="space-between start">
+                <div>
+                    <mat-checkbox class="picklist-header"
+                                  [checked]="isAllPickedChecked"
+                                  (change)="onAllPickedChecked($event)"
+                                  [indeterminate]="pickedListIndeterminated">{{pickedListHeader}}</mat-checkbox>
+                </div>
+                <div>
+                    <mat-selection-list #pickedList
+                                        [(ngModel)]="pickedOptionsChecked"
+                                        [compareWith]="compareListItems"
+                                        (ngModelChange)="onPickedItemsSelected($event)">
+                        <mat-list-option class="picklist-option"
+                                         *ngFor="let item of pickedOptions; trackBy:trackPicklist"
+                                         [value]="item"
+                                         checkboxPosition="before">
+                            {{(displayWith ? item[displayWith] : item)}}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

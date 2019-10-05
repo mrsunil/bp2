@@ -1,0 +1,60 @@
+<div fxLayoutAlign="space-between center">
+    <h1 class="no-margin">Save {{dialogData.title}} As Favourite</h1>
+</div>
+
+<mat-dialog-content [FormGroup]="formGroup">
+    <div fxLayout="row"
+         fxLayoutAlign="left start"
+         fxLayoutGap="30px">
+        <div fxFlex="40%"
+             [class.isEmpty]="!nameCtrl.value"
+             [class.required-field]="nameCtrl.isRequired">
+            <mat-form-field>
+                <input matInput
+                       placeholder="Name"
+                       [formControl]="nameCtrl"
+                       autocomplete="off"
+                       matTooltip="Name of the Favourite"
+                       required="nameCtrl.isRequired"
+                       (change)="onNameChanged($event)">
+                <mat-hint class="required-field">Required *</mat-hint>
+                <mat-error *ngIf="nameCtrl.hasError('required')">Name is Required</mat-error>
+                <mat-error *ngIf="nameCtrl.hasError('maxlength')">
+                    Name cannot be more than 50 characters
+                </mat-error>
+                <mat-hint align="end"
+                          *ngIf="nameCtrl.hasError('notUnique')">
+                    Name already used
+                </mat-hint>
+            </mat-form-field>
+        </div>
+        <div fxFlex="60%">
+            <mat-form-field>
+                <input matInput
+                       placeholder="Description"
+                       [formControl]="descriptionCtrl"
+                       autocomplete="off"
+                       matTooltip="Description of the Favourite">
+                <mat-error *ngIf="descriptionCtrl.hasError('maxlength')">
+                    Description can not be more than 150 characters
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div fxFlex="50"
+         fxLayout="row"
+         fxAlignLayout="start start">
+        <button mat-button
+                (click)="onCloseButtonClicked()">DISCARD</button>
+    </div>
+    <div fxFlex="50"
+         fxLayout="row"
+         fxAlignLayout="start end">
+        <span class="fill-space"></span>
+        <button mat-button
+                (click)="onSaveAsFavouriteButtonClicked()">{{saveButtonText}}</button>
+    </div>
+</mat-dialog-actions>

@@ -1,0 +1,160 @@
+<header class="header-background mat-elevation-z2">
+    <div class="header-content">
+        <div fxLayout="row"
+             fxLayoutGap="40px">
+            <div>
+                <mat-form-field fxFlex="20"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="Document Date"
+                           disabled
+                           value="{{documentDate}}"
+                           autocomplete="off"
+                           [formControl]='docDateFormCtrl'>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field fxFlex="20"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="Original Value Date"
+                           disabled
+                           value="{{originalValueDate}}"
+                           autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field fxFlex="20"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="GL Date"
+                           disabled
+                           value="{{glDate}}"
+                           autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="value-date-control"
+                                fxFlex="40%">
+                    <input matInput
+                           [matDatepicker]="valueDatePicker"
+                           placeholder="Value Date"
+                           value="valueDatePicker"
+                           autocomplete="off"
+                           [formControl]='valueDateFormCtrl'>
+                    <mat-datepicker-toggle matSuffix
+                                           [for]="valueDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #valueDatePicker></mat-datepicker>
+                    <mat-error *ngIf="valueDateFormCtrl.hasError('valid')">
+                        Invalid Value Date
+                    </mat-error>
+                    <mat-hint class="value-date-warning"
+                              *ngIf="isValueDateBeforeDocumentDate()">Value date is before the
+                        document date
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutGap="40px"
+             class="no-padding-fields">
+            <div>
+                <mat-form-field fxFlex="20"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="Accounting Period"
+                           disabled
+                           value="{{accountingPeriod}}"
+                           autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field fxFlex="20"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="Currency"
+                           disabled
+                           value="{{currency}}"
+                           autocomplete="off">
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="30%">
+                <atlas-form-input [fieldControl]="dmsidFormCtrl"
+                                  [textMask]="{mask:mask}"
+                                  label="DMSID">
+                </atlas-form-input>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="main-container">
+    <mat-card>
+        <div ag-grid="accountingLineGridOptions">
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between center"
+                 class=" table-title atlas-grid-card-header">
+                <mat-card-title>
+                    Accounting lines
+                </mat-card-title>
+                <div>
+                    <button mat-icon-button
+                            [matMenuTriggerFor]="displayedColumnsMenu">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                    <div>
+                        <mat-menu #displayedColumnsMenu="matMenu">
+                            <div *ngFor="let col of columnDefs">
+                                <mat-checkbox [checked]="!col.hide"
+                                              (click)="showOrHideColum($event, col)"
+                                              *ngIf="(!col.headerName =='') ">{{col.headerName}}</mat-checkbox>
+                            </div>
+                        </mat-menu>
+                    </div>
+                </div>
+            </div>
+            <ag-grid-angular class="ag-theme-material atr-ag-grid"
+                             [rowData]="accountingDocumentLine"
+                             [columnDefs]="columnDefs"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             [enableSorting]="true"
+                             [singleClickEdit]=true
+                             [enableColResize]="false"
+                             [enableRangeSelection]="true"
+                             [processCellForClipboard]="processCellForClipboard"
+                             [rowHeight]="atlasAgGridParam.rowHeight">
+            </ag-grid-angular>
+        </div>
+        <div  fxLayout="column"
+              fxFlex=15
+              fxLayoutAlign="space-around start"
+              *ngIf="false"
+              class="loading">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+    </mat-card>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start"
+         class="mat-buttons">
+        <div fxLayout="column">
+            <button mat-button
+                    class='mat-button-discard'
+                    (click)="onCancelButtonClicked()">
+                DISCARD
+            </button>
+        </div>
+        <div fxLayout="column">
+            <button mat-raised-button
+                    (click)="submitForm()">
+                SAVE
+            </button>
+        </div>
+    </div>
+</div>
+<atlas-lock-interval [resourcesInformation]="resourcesInformation">
+</atlas-lock-interval>

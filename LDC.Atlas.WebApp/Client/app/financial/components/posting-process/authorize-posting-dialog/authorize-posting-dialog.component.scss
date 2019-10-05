@@ -1,0 +1,37 @@
+.dialog-top-card {
+    margin-top: 2px;
+}
+
+.question-circle-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 8px;
+
+    .mat-icon {
+        height: 30px;
+        width: 30px;
+        padding: 10px;
+        font-size: 30px;
+    }
+}
+
+.content-padding {
+    padding-top: 16px;
+}
+
+.content-font {
+    font-size: 15px;
+    font-weight: initial;
+    display: inline-grid;
+    color: rgba(0, 0, 0, 0.54);
+    margin-bottom: 0px;
+
+    p {
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+}
+
+.mat-button {
+    margin: 0;
+}

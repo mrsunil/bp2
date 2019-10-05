@@ -1,0 +1,134 @@
+<form [formGroup]="formGroup">
+    <header class="header-background">
+        <div class="header-content">
+            <div *ifAuthorized="'Administration.GlobalParameters.CreateFunctionalObject',company:this.company"
+                 fxLayout="row"
+                 fxLayoutAlign="start start"
+                 fxLayoutGap="16px">
+                <div class="fob-title">
+                    <h2>{{title}}</h2>
+                </div>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-evenly center">
+                <div fxFlex="30"
+                     fxFlex.xs="100"
+                     fxFlex.sm="100">
+                    <mat-form-field>
+                        <input required
+                               matInput
+                               placeholder="Name"
+                               aria-label="Name"
+                               formControlName="nameCtrl">
+                        <mat-error *ngIf="nameCtrl.hasError('required')">
+                            Func. object name <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="nameCtrl.hasError('notUnique')">
+                            Name already exists
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <mat-toolbar class="menu-bar">
+        <div class="toolbar-div">
+            <span class="fill-space"></span>
+            <div fxLayout="row"
+                 fxLayoutAlign="end center"
+                 fxFlex="20"
+                 fxLayoutGap="16px">
+                <a (click)="onCreateButtonClicked()"
+                   matTooltip="Create new functional object"
+                   class="menu-bar-action-icon">
+                    <div class="white-icon outline-save-icon"></div>
+                </a>
+            </div>
+        </div>
+    </mat-toolbar>
+
+    <div class="main-container">
+        <mat-horizontal-stepper linear
+                                (selectionChange)="onStepChanged($event)"
+                                #stepper>
+            <ng-template matStepperIcon="edit">
+                <mat-icon>check</mat-icon>
+            </ng-template>
+            <mat-step>
+                <ng-template matStepLabel>Tables</ng-template>
+
+                <atlas-picklist originalListHeader="Available tables"
+                                pickedListHeader="Selected tables"
+                                [options]="tablesOptions"
+                                displayWith="tableName"
+                                compareWith="tableId"
+                                #tablePicklist>
+                </atlas-picklist>
+
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column"
+                         fxLayoutAlign="start">
+                        <button (click)="onDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column"
+                         fxLayoutAlign="start">
+                        <button mat-raised-button
+                                (click)="onNextButtonClicked()">
+                            NEXT
+                        </button>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Predefined keys</ng-template>
+                <atlas-information-banner [title]="bannerTitle"
+                                          [description]="bannerMessage">
+                </atlas-information-banner>
+
+                <div class="fob-picklist">
+                    <atlas-picklist *ngFor="let table of pickedTables"
+                                    [id]="table.tableId"
+                                    [title]="table.tableName"
+                                    originalListHeader="Available keys"
+                                    pickedListHeader="Selected keys"
+                                    [options]="table.fields"
+                                    displayWith="friendlyName"
+                                    compareWith="fieldId"
+                                    #keyPicklist>
+                    </atlas-picklist>
+                </div>
+
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between"
+                     class="button-details">
+                    <button (click)="onDiscardButtonClicked()"
+                            mat-button>
+                        DISCARD
+                    </button>
+                    <div fxLayout="column"
+                         fxLayoutAlign="start end">
+                        <div fxLayout="row"
+                             fxLayoutAlign="end start">
+                            <button mat-button
+                                    (click)="onPreviousButtonClicked()">
+                                PREVIOUS
+                            </button>
+                            <div>
+                                <button mat-raised-button
+                                        (click)="onCreateButtonClicked()">
+                                    {{(this.functionalObjectId !== undefined) ? 'UPDATE' : 'CREATE'}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</form>

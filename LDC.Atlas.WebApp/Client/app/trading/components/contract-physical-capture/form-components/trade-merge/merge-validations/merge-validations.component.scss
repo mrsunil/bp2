@@ -1,0 +1,32 @@
+mat-card.trade-merge-validation-warning-card.mat-card {
+    padding: 0 !important;
+    height: 75px;
+    display: flex;
+    align-items: center;
+
+    button {
+        margin: 0px 15px 0 10px;
+        box-shadow: none;
+    }
+
+    mat-card-header.mat-card-header {
+        mat-card-title.mat-card-title {
+            margin: 0;
+            padding: 8px 0;
+        }
+
+        h4 {
+            margin: 0;
+        }
+
+        mat-card-subtitle.mat-card-subtitle {
+            margin: 0;
+        }
+    }
+}
+
+button.remove-button.mat-button {
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+}

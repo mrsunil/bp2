@@ -1,0 +1,43 @@
+<div class="main-container">
+    <mat-card>
+        <div fxLayout="row"
+             fxLayoutAlign="start none"
+             class="search">
+            <form class="large-form"
+                  fxFlex="100%">
+                <mat-form-field>
+                    <input specialIsAlphaNumeric
+                           matInput
+                           placeholder="Search document reference"
+                           (keydown.enter)="onSearchButtonClicked()"
+                           [formControl]="searchedValueCtrl" />
+                </mat-form-field>
+            </form>
+            <button mat-raised-button
+                    (click)="onSearchButtonClicked()"
+                    class="heroGradient"
+                    id="search-button">
+                <mat-icon aria-label="Search"
+                          class="search-icon">search</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <atlas-list-and-search class="default-height" [gridCode]="gridCode"
+                           gridTitle="Cash List"
+                           [company]="company"
+                           [dataLoader]="dataLoader"
+                           [additionalFilters]="additionalFilters"
+                           waitBeforeLoadingData=true
+                           (configurationLoaded)="initAdditionnalFilters()"
+                           (rowClicked)="onCashClicked($event)"
+                           #listAndSearchComponent>
+    </atlas-list-and-search>
+    <mat-card *ngIf="isLoading">
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutWrap
+             class="loading">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+    </mat-card>
+</div>

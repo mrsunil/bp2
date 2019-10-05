@@ -1,0 +1,46 @@
+<atlas-grid-configuration></atlas-grid-configuration>
+
+<div class="main-container"
+     fxLayout="row"
+     fxLayoutAlign="space-between start">
+
+    <div fxLayout="column"
+         fxFlex="28%"
+         fxLayoutAlign="start left">
+        <div fxLayout="row"
+             fxLayoutAlign="start left">
+            <atlas-list-view [configurationTypeId]="configurationTypeId"
+                             #listView></atlas-list-view>
+        </div>
+    </div>
+    <div fxLayout="column"
+         fxFlex="70%">
+        <div fxLayout="row"
+             fxLayoutAlign="start left">
+            <atlas-list-view-details #listViewDetailsComponent></atlas-list-view-details>
+        </div>
+        <div *ngIf="isEditMode"
+             fxLayout="row"
+             fxLayoutAlign="space-between center">
+            <div fxLayout="column"
+                 fxLayoutAlign="start start">
+                <button mat-button
+                        type="button"
+                        (click)="onDiscardButtonClicked()">
+                    DISCARD
+                </button>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="start end">
+                <div fxLayout="row"
+                     fxLayoutAlign="end start">
+                    <button mat-raised-button
+                            type="button"
+                            (click)="onSaveButtonClick()">
+                        SAVE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

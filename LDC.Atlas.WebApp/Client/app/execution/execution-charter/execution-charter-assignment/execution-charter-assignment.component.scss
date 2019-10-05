@@ -1,0 +1,38 @@
+:host ::ng-deep.ag-layout-auto-height.ag-body-container {
+
+    min-height: 100px !important;
+}
+
+.atr-ag-grid {
+    height: 100%;
+}
+
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding-top: 13px !important;
+}
+
+.search-bar {
+    margin-bottom: 16px;
+}
+
+.mat-card-title {
+    margin-bottom: 0px;
+}
+
+
+:host ::ng-deep atlas-list-and-search {
+    &.charter-trade-assign-height {
+        height: calc(100vh - 56px - 236px - 130px - 40px - 256px); // minus the height of the other elements in the screen
+
+        .list-and-search-grid-card {
+            height: inherit;
+            min-height: 230px;
+            max-height: calc(100vh - 120px);
+
+            .ag-grid-div-container {
+                height: calc(100% - 60px);
+                width: 100%;
+            }
+        }
+    }
+}

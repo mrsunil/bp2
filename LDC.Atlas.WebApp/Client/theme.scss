@@ -1,0 +1,223 @@
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+$atlas-title: rgba(0, 0, 0, 1);
+$ag-grid-input-error: rgba(223, 90, 77, .5);
+$white: rgba(255, 255, 255, 1);
+$primary: rgba(24, 91, 157, 1); // #185b9d
+$blue-light: #5788ce; //#5788ce ebf1fa
+$blue-dark: rgba(0, 50, 110, 1); //#00326e
+$secondary: #53c234; //behongo green - Secondary
+$green-light: #89f666; //lemon green
+$green-dark: #069100; //pelouse green
+$background-white: #fefcfe;
+$border1: #c7c2c4;
+$border2: #928d8f;
+$shadow: #605c5e;
+$dark-text: #332f30;
+$info-blue: #00a9c6;
+$success: #8ce683;
+$warning: #ec8d2d;
+$valid: #229e00;
+$lemon: #f9f871;
+$energy: #ffc65b;
+$apricot: #ff9661;
+$coral: #f46b72;
+$cherry: #cb4d84;
+$violine: #90408d;
+$royal: #007caa;
+$grass: #43d49e;
+$duck: #009cb9;
+$aqua: #00bab4;
+$error: #df5a4d;
+$mat-green: (50: #eaf3e6,
+    100: #cae2c0,
+    200: #a7ce96,
+    300: #83ba6c,
+    400: #69ac4d,
+    500: $secondary,
+    // Override : Custom	- Vert
+    600: $secondary,
+    // Override : LDC		- Vert Standard
+    700: $green-dark,
+    // Override : Custom	- Vert foncé
+    800: #35811c,
+    900: #256f11,
+    A100: #ff8a80,
+    A200: #ff5252,
+    A400: #ff1744,
+    A700: #b9faa4,
+    A800: $lemon,
+    A900: #b3ff8c,
+    contrast: (50: $dark-text,
+        100: $dark-text,
+        200: $dark-text,
+        300: $dark-text,
+        400: $dark-text,
+        500: white,
+        600: white,
+        700: white,
+        800: $background-white,
+        900: $background-white,
+        A100: $background-white,
+        A200: white,
+        A400: white,
+        A700: white));
+$mat-blue: (50: #fff,
+    100: #e3ebf3,
+    200: $duck,
+    300: $grass,
+    400: $royal,
+    500: $blue-light,
+    600: $primary,
+    700: $energy,
+    800: #0e4081,
+    900: $blue-dark,
+    //	Override : LDC		- bleu foncé (hover)
+    A100: $cherry,
+    A200: $coral,
+    A400: $apricot,
+    A700: $violine,
+    A800: $aqua,
+    // Override : LDC		- bleu trés foncé
+    A900: #5788ce,
+    // Override : LDC		- bleu clair (contraste)
+    contrast: (50: $dark-text,
+        100: $dark-text,
+        200: $dark-text,
+        300: $dark-text,
+        400: $dark-text,
+        500: white,
+        600: white,
+        700: white,
+        800: $background-white,
+        900: $background-white,
+        A100: $dark-text,
+        A200: white,
+        A400: white,
+        A700: white));
+$mat-blue-grey: (50: #eceff1,
+    100: #cfd8dc,
+    200: #b0bec5,
+    300: #90a4ae,
+    400: #78909c,
+    500: #607d8b,
+    600: #546e7a,
+    700: #455a64,
+    800: #df5a4d,
+    // Override : LDC		- rouge (mat-error)
+    900: #263238,
+    A100: #cfd8dc,
+    A200: #b0bec5,
+    A400: #78909c,
+    A700: #455a64,
+    contrast: (50: $dark-text,
+        100: $dark-text,
+        200: $dark-text,
+        300: $dark-text,
+        400: white,
+        500: white,
+        600: $background-white,
+        700: $background-white,
+        800: $background-white,
+        900: $background-white,
+        A100: $dark-text,
+        A200: $dark-text,
+        A400: white,
+        A700: $background-white));
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$atlas-app-primary: mat-palette($mat-blue, 500, A900, 900);
+$atlas-app-accent: mat-palette($mat-green, 500, A900, 900);
+// $atlas-app-accent: mat-palette($mat-green, 500, A800, 900);
+$atlas-app-warn: mat-palette($mat-blue-grey, 800, 600, 900);
+// Create the theme object (a Sass map containing all of the palettes).
+$atlas-app-theme: mat-light-theme($atlas-app-primary,
+    $atlas-app-accent,
+    $atlas-app-warn);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($atlas-app-theme);
+
+.mat-chip.mat-standard-chip.mat-chip-selected {
+    &.mat-chip.mat-standard-chip {
+        background-color: mat-color($mat-blue, 200);
+        color: mat-color($mat-blue, 50);
+
+        mat-icon {
+            margin-left: -8px;
+            margin-right: 5px;
+        }
+
+        &.flat {
+            // background-color:mat-color($mat-green, 50);
+            cursor: not-allowed;
+        }
+
+        &.mat-lemon {
+            background-color: mat-color($mat-green, A800);
+        }
+
+        &.mat-energy {
+            background-color: mat-color($mat-blue, 700);
+        }
+
+        &.mat-cherry {
+            background-color: mat-color($mat-blue, A100);
+            color: mat-color($mat-blue, 50);
+        }
+
+        &.mat-coral {
+            background-color: mat-color($mat-blue, A200);
+        }
+
+        &.mat-apricot {
+            background-color: mat-color($mat-blue, A400);
+        }
+
+        &.mat-violine {
+            background-color: mat-color($mat-blue, A700);
+            color: mat-color($mat-blue, 50);
+        }
+
+        &.mat-aqua {
+            background-color: mat-color($mat-blue, A800);
+            color: mat-color($mat-blue, 50);
+        }
+
+        &.mat-duck {
+            background-color: mat-color($mat-blue, 200);
+            color: mat-color($mat-blue, 50);
+        }
+
+        &.mat-grass {
+            background-color: mat-color($mat-blue, 300);
+            color: mat-color($mat-blue, 50);
+        }
+
+        &.mat-royal {
+            background-color: mat-color($mat-blue, 400);
+            color: mat-color($mat-blue, 50);
+        }
+
+        &.mat-error {
+            background-color: $error;
+            color: mat-color($mat-blue, 50);
+        }
+
+        &.mat-success {
+            background-color: $success;
+            color: mat-color($mat-blue, 50);
+        }
+
+        &.mat-approved {
+            background-color: $valid;
+            color: mat-color($mat-blue, 50);
+        }
+    }
+}

@@ -1,0 +1,53 @@
+<mat-card>
+    <mat-card-content>
+        <div class="atlas-invoice-top-card"
+             fxLayout="row"
+             fxLayoutAlign="left start">
+            <mat-form-field class="mat-read-only-field"
+                            fxFlex="70%">
+                <input matInput
+                       placeholder="{{translationKeyPrefix + 'COMMODITY_DESCRIPTION' | translate}}"
+                       autocomplete="off"
+                       [formControl]='commodityDescrCtrl'
+                       readonly>
+            </mat-form-field>
+
+            <mat-form-field class="mat-read-only-field"
+                            fxFlex="30%">
+                <input matInput
+                       placeholder="{{translationKeyPrefix + 'CPY_CODE'| translate}}"
+                       autocomplete="off"
+                       [formControl]='counterPartyCodeCtrl'
+                       readonly>
+            </mat-form-field>
+
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start">
+            <mat-form-field class="mat-read-only-field"
+                            fxFlex="20%">
+                <input matInput
+                       placeholder="{{translationKeyPrefix + 'QTY' | translate}}"
+                       autocomplete="off"
+                       [formControl]='quantityCtrl'
+                       readonly>
+            </mat-form-field>
+            <mat-form-field class="mat-read-only-field"
+                            fxFlex="20%">
+                <input matInput
+                       placeholder="{{translationKeyPrefix + 'PRICING' | translate}}"
+                       autocomplete="off"
+                       [formControl]='pricingCtrl'
+                       readonly>
+            </mat-form-field>
+            <mat-form-field class="mat-read-only-field"
+                            fxFlex="60%">
+                <input matInput
+                       placeholder="{{translationKeyPrefix + 'SHIPPING_PERIOD' | translate}}"
+                       autocomplete="off"
+                       [formControl]='shippingPeriodCtrl'
+                       readonly>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

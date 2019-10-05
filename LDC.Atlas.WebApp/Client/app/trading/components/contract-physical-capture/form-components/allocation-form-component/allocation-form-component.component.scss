@@ -1,0 +1,14 @@
+.allocation-toggle-ctrl {
+            &::ng-deep {
+                .mat-disabled .mat-slide-toggle-thumb {
+                    background-color:#53c234 !important;
+                }
+            }
+            &::ng-deep {
+                .mat-disabled .mat-slide-toggle-bar
+                        {
+                            background-color:rgba(83, 194, 52, 0.5) !important;
+                        }
+            }
+            
+        }

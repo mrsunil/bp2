@@ -1,0 +1,8 @@
+<button mat-icon-button
+        type="button"
+        (click)='setFavorite(rowIndex)'
+        matTooltip="Make favorite">
+    <mat-icon [ngClass]="isFavorite ? 'heart-saved' : 'heart-not-saved'">
+        {{isFavorite ? 'favorite' : 'favorite_border'}}
+    </mat-icon>
+</button>

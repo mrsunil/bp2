@@ -1,0 +1,48 @@
+<div class="main-container">
+    <div fxLayout="row" fxLayoutAlign="space-around start"
+                        class="button-details">
+        <mat-card fxFlex="100%">
+            <div fxLayout="row"
+                 fxLayoutAlign="start none"
+                 class="search">
+                <atlas-masterdata-user-preferences-input fxFlex="100"
+                                                         class="contextual-search-for-currency"
+                                                         isEditable="true"
+                                                         [fieldControl]="documentCtrl"
+                                                         label="Document"
+                                                         [options]="filteredDocumentReferences"
+                                                         displayProperty="documentReference"
+                                                         [selectProperties]="['documentReference']"
+                                                         lightBoxTitle="Results for Document"
+                                                         gridId="documentReferenceGrid"
+                                                         (valueChange)='valueChanged($event)'
+                                                         (optionSelected)="valueChanged($event)"
+                                                         (keyup.enter)="OnChangeValue($event)"
+                                                         isSearchBar="true">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+    </mat-card>
+        </div>
+        <atlas-list-and-search class="default-height"
+                               [gridCode]="gridCode"
+                               gridTitle="Accounting Entries"
+                               [company]="company"
+                               [dataLoader]="financialsEditDocumentDataLoader"
+                               #listAndSearchComponent>
+        </atlas-list-and-search>
+        <div fxLayout="row"
+             class='mat-buttons'>
+            <div fxFlex="90">
+                <button mat-button
+                        class='mat-button-discard'
+                        (click)="onCancelButtonClicked()">DISCARD</button>
+            </div>
+            <div fxFlex="6">
+                <button mat-raised-button
+                        [disabled]="isEditDisable"
+                        (click)="onEditClicked()">
+                    EDIT
+                </button>
+            </div>
+        </div>
+</div>

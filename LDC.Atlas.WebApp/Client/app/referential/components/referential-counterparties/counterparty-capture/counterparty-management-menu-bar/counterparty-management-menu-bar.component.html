@@ -1,0 +1,60 @@
+<mat-toolbar class="menu-bar mat-elevation-z6">
+    <div class="toolbar-div">
+        <div fxLayout="row"
+             fxLayoutAlign="start center"
+             fxFlex="100"
+             fxLayoutGap="100px">
+            <mat-button-toggle-group class="toggle-group toggle-button-counterparty"
+                                     (change)="onViewModeChanged($event)"
+                                     aria-label="Contract Type"
+                                     [value]="selectedCounterpartyDisplayVal">
+                <mat-button-toggle value="Global"
+                                   [checked]="true">
+                    Global View Mode
+                </mat-button-toggle>
+                <mat-button-toggle value="Local">
+                    Local View Mode
+                </mat-button-toggle>
+                <mat-button-toggle [matMenuTriggerFor]="reports"
+                                   value="Local">
+                    Reports
+                </mat-button-toggle>
+                <mat-menu #reports="matMenu"
+                          [overlapTrigger]="false"
+                          xPosition="after">
+                    <span *ngFor="let item of filteredTemplates">
+                        <button mat-button
+                                (click)="OnReportClick(item)">
+                            {{item.name}}
+                        </button>
+                    </span>
+                </mat-menu>
+            </mat-button-toggle-group>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="end end"
+             fxFlex="100"
+             fxLayoutGap="100px">
+            <a (click)="onDiscardButtonClicked()"
+               *ngIf="!isViewMode"
+               matTooltip="Discard the changes"
+               class="menu-bar-action-icon">
+                <mat-icon class="white-icon">backspace</mat-icon>
+            </a>
+
+            <a (click)="onSaveCounterPartyButtonClicked()"
+               *ngIf="!isViewMode || isCreateMode"
+               matTooltip="Save the Counterparty"
+               class="menu-bar-action-icon">
+                <mat-icon class="white-icon">save</mat-icon>
+            </a>
+
+            <a (click)="onEditCounterPartyButtonClicked()"
+               *ngIf="isViewMode && isEditCounterpartyPrivilege && !isCreateMode"
+               matTooltip="Edit the Counterparty"
+               class="menu-bar-action-icon">
+                <mat-icon>create</mat-icon>
+            </a>
+        </div>
+    </div>
+</mat-toolbar>

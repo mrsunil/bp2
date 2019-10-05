@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>Import Accounting Line </h1>
+<mat-dialog-content>
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         *ngIf="isLoading"
+         class="loading">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+    <div fxLayout="column"
+         *ngIf="!isLoading">
+        <div class="manual-import information-banner-card">
+            <div fxLayout="row">
+                <div *ngIf="dialogData.blockerData.length > 0">
+                    <div class="error-circle-icon"
+                         fxLayout="column">
+                        <mat-icon>remove_circle</mat-icon>
+                    </div>
+                    <div *ngFor="let data of dialogData.blockerData">
+                        <p>{{data.errorMessage}}</p>
+                        <mat-chip-list class="chip-list">
+                            <mat-chip selected
+                                      disabled
+                                      *ngFor="let key of data.lineNumber">
+                                {{'Line number: ' + key }}
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="info"
+                 fxLayout="row"
+                 *ngIf="goodDataCount > 0">
+                <div class="info-circle-icon"
+                     fxLayout="column">
+                    <mat-icon>check_circle</mat-icon>
+                </div>
+                <div>
+                    <p>{{dialogData.goodData.errorMessage}} </p>
+                    <mat-chip-list class="chip-list">
+                        <mat-chip selected
+                                  disabled
+                                  *ngFor="let key of dialogData.goodData.lineNumber">
+                            {{'Line number: ' + key }}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+
+    <button mat-button
+            (click)="onDiscardButtonClicked()">Discard</button>
+    <span class="fill-space"></span>
+    <button mat-button
+            disabled="{{this.dialogData.disableConfirmImport}}"
+            (click)="onConfirmButtonClicked()">Confirm Import</button>
+
+</mat-dialog-actions>

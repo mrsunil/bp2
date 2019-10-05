@@ -1,0 +1,103 @@
+<form [formGroup]="commercialInvoiceFormGroup">
+    <div class="main-container">
+        <mat-horizontal-stepper [linear]
+                                (selectionChange)="onChangeStepAction($event)"
+                                #stepper>
+            <ng-template matStepperIcon="edit">
+                <mat-icon>check</mat-icon>
+            </ng-template>
+            <mat-step>
+                <ng-template matStepLabel>Contract Selection Screen</ng-template>
+                <atlas-commercial-selection #commercialSelectionComponent
+                                            [companyWeightCode]="weightCode"
+                                            (contractsSelected)="onContractsSelected($event)"
+                                            (pricingAndDecimalOptionSelected)="onPricingAndDecimalOptionSelected($event)">
+                </atlas-commercial-selection>
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column"
+                         fxLayoutAlign="start">
+                        <button (click)="onDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start">
+                        <button mat-raised-button
+                                (click)="onMoveButtonClicked(invoicingSteps.workingStep)">
+                            NEXT
+                        </button>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step [completed]="isCompleted">
+                <ng-template matStepLabel>Invoice Working Page</ng-template>
+                <atlas-commercial-working-page #commercialWorkingPageComponent
+                                               [companyWeightCode]="weightCode"
+                                               (totalCostTaxCalculated)="ontotalAmountCalculated($event)"
+                                               (totalCostAndVatCode)="onChangeCostContract($event)"
+                                               (templateSelected)="onDocumentTemplateSelected($event)">
+                </atlas-commercial-working-page>
+                <div fxLayout="row"
+                     fxLayoutAlign="end start">
+                    <mat-slide-toggle [formControl]="previewDocumentCtrl"
+                                      *ngIf="hasTemplate">Preview Document </mat-slide-toggle>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <button (click)="onDiscardButtonClicked()"
+                            [disabled]="isLoading"
+                            mat-button>
+                        DISCARD
+                    </button>
+                    <div fxLayout="column"
+                         fxLayoutAlign="start end">
+                        <div fxLayout="row"
+                             fxLayoutAlign="end start">
+                            <button mat-button
+                                    (click)="onBackButtonClicked(invoicingSteps.invoiceCreationStep)"
+                                    [disabled]="isLoading">
+                                BACK
+                            </button>
+                            <div
+                                 *ifAuthorized="'Invoices.InvoiceCreation', company:company, level: PermissionLevels.ReadWrite">
+                                <button mat-raised-button
+                                        (click)="onOpenDialogOnPreviewOrSaveClicked()"
+                                        [disabled]="isLoading">
+                                    {{ previewDocumentCtrl.value ? "Preview and Invoice" : "Create Invoice" }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Invoice Summary Page</ng-template>
+                <atlas-commercial-summary #commercialSummaryComponent
+                                          [invoiceTaxContracts]="taxRecords"
+                                          [filteredCompanyBankAccounts]="filteredCompanyBankAccounts"
+                                          [isCreationMode]="isCreationMode"
+                                          [invoiceCostContracts]="invoiceCostContracts">
+                </atlas-commercial-summary>
+                <div class="btn-container"
+                     *ngIf="!isFromGrid">
+                    <div fxLayout="row"
+                         fxAlignLayout="start end">
+                        <span class="fill-space"></span>
+                        <button mat-button
+                                (click)="newSearchButtonClicked()">
+                            New Search
+                        </button>
+                        <button mat-raised-button
+                                (click)="nextInvoiceButtonClicked(stepper)">
+                            Next Invoice
+                        </button>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</form>

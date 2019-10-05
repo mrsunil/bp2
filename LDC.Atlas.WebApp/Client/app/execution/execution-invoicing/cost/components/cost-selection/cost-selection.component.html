@@ -1,0 +1,11 @@
+<div>
+    <atlas-invoice-selection #invoiceSelectionComponent>
+    </atlas-invoice-selection>
+    <atlas-contract-search #contractSearchComponent
+                           (costContractsSelected)="onCostContractsSelected($event)"
+                           (supplier)="onSupplierSelected($event)">
+    </atlas-contract-search>
+    <atlas-cost-invoicee-options #costInvoiceeOptionsComponent
+                                 (userSupplier)="onUserSupplierValueChanged($event)">
+    </atlas-cost-invoicee-options>
+</div>

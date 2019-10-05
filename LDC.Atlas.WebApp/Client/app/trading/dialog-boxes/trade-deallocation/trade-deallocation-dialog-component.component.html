@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>
+    Deallocation
+</h2>
+<div mat-dialog-content>
+    <p> You are about to deallocate your trade. Do you wish to re-instate pre-allocation traffic details ?</p>
+</div>
+<mat-dialog-actions>
+    <button mat-button
+            (click)="onDiscardButtonClicked()">
+        discard
+    </button>
+    <div class="fill-space"></div>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-button
+            (click)="onReinstateButtonClicked()">
+        Re-instate traffic details
+    </button>
+    <button mat-button
+            (click)="onKeepButtonClicked()">
+        Keep trafic details
+    </button>
+</mat-dialog-actions>

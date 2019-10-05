@@ -1,0 +1,51 @@
+<div class="main-container">
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <div fxLayout="column"
+             fxLayoutAlign="start">
+            <h1>Accounting Parameter </h1>
+        </div>
+
+        <div class="custom-form"
+             fxLayout="column"
+             fxLayoutAlign="end start"
+             [class.isEmpty]="!yearCtrl.value">
+            <atlas-year-picker [isEditable]="checkEdit"
+                               [disabled]="!checkEdit"
+                               label="Year"
+                               (yearChanged)="onChosenYearSelected($event)"
+                               [fieldControl]="yearCtrl">
+            </atlas-year-picker>
+        </div>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="start none">
+        <mat-card fxFlex="100%">
+            <div ag-grid="accountingGridOptions"
+                 class="ag-theme-material pointer-cursor">
+                <ag-grid-angular style="height:100%"
+                                 class="ag-theme-material"
+                                 [rowData]="accountingRowData"
+                                 [columnDefs]="accountingColumnDefs"
+                                 [gridOptions]="accountingGridOptions"
+                                 domLayout="autoHeight"
+                                 [singleClickEdit]="true"
+                                 [suppressNoRowsOverlay]="true"
+                                 [enableColResize]="true"
+                                 [enableSorting]="true"
+                                 enableFilter
+                                 (gridReady)="onGridReady($event)"
+                                 [rowHeight]=atlasAgGridParam.rowHeight
+                                 [frameworkComponents]="gridComponents">
+                </ag-grid-angular>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 *ngIf="isLoading"
+                 class="loading">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+        </mat-card>
+    </div>
+</div>

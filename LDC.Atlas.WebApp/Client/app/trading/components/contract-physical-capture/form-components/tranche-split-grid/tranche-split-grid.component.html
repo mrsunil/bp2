@@ -1,0 +1,37 @@
+<mat-card>
+    <div fxLayout="row"
+         fxLayoutAlign="start none"
+         class="search">
+        <mat-form-field>
+            <input matInput
+                   [formControl]="searchValueCtrl"
+                   placeholder="First Criteria"
+                   (keydown.enter)="onSearchButtonClick()"
+                   #message>
+        </mat-form-field>
+        <button mat-raised-button
+                (click)="onSearchButtonClick()"
+                class="heroGradient">
+            <mat-icon aria-label="Search"
+                      class="search-icon">search</mat-icon>
+        </button>
+    </div>
+</mat-card>
+
+<atlas-list-and-search class="children-section-height"
+                       *ngIf="!isLoading"
+                       [gridCode]="gridCode"
+                       [gridTitle]="(childSectionsSearchResult ? childSectionsSearchResult.length + ' ' : '') + 'Tranche & Split Found'"
+                       [company]="company"
+                       [additionalFilters]="additionalFilters"
+                       [dataLoader]="dataLoader"
+                       [isFilterSetDisplay]="false"
+                       [dataVersionId]="dataVersionId"
+                       #listAndSearchComponent>
+</atlas-list-and-search>
+<atlas-invoice-status #invoiceStatusComponent
+                      [hidden]="true"></atlas-invoice-status>
+<atlas-invoicing-form-component #invoiceFormComponent
+                                [hidden]="true"></atlas-invoicing-form-component>
+<atlas-allocation-info-form-component #allocationInfoComponent
+                                      [hidden]="true"></atlas-allocation-info-form-component>

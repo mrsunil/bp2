@@ -1,0 +1,42 @@
+<mat-card>
+    <mat-card-title>
+        Payments
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="2%">
+            <mat-form-field fxFlex="30%">
+                <mat-select placeholder="Payment Terms"
+                            [formControl]="costPaymentTermsCtrl"
+                            matTooltip="Payment Terms">
+                    <mat-option *ngFor="let terms of paymentTermsOption"
+                                [value]="terms.paymentTermCode">{{terms.paymentTermCode}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="30%"
+                            class="mandatory">
+                <input matInput
+                       placeholder="Due Date"
+                       [formControl]="costDueDateCtrl"
+                       [matDatepicker]="costDueDatePicker"
+                       matTooltip="Due Date"
+                       autocomplete="off"
+                       (dateChange)='onInvoiceDueDateSelected()'>
+                <mat-datepicker-toggle matSuffix
+                                       [for]="costDueDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #costDueDatePicker></mat-datepicker>
+                <mat-hint *ngIf="!costDueDateCtrl.hasError('isDateBeforeValid' || 'required') && !costDueDateCtrl.disabled"
+                          class="invoice-creation-required-fields">Required*</mat-hint>
+                <mat-error *ngIf="costDueDateCtrl.hasError('required')">
+                    Required*
+                </mat-error>
+                <mat-error *ngIf="costDueDateCtrl.hasError('isDateBeforeValid')">
+                    Value Date should be equal to or after the invoice date
+                </mat-error>
+            </mat-form-field>
+
+
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,138 @@
+.header-container {
+    height: 130px;
+}
+
+div.mat-form-field-infix {
+    padding: 0px;
+    border-top: none !important;
+}
+
+.header-meta {
+    margin-top: 19px;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 1em;
+}
+
+.mat-form-field-infix {
+    padding: 0px 0px 5px 0px;
+}
+
+.header-background.fxDeal {
+    height: 100px;
+    width: 100%;
+    background: bottom/cover url("/assets/img/pattern-small.jpg") no-repeat;
+
+    &.fxDeal-capture {
+        background: top/contain url("/assets/img/luke-waves-gray.svg") no-repeat;
+        background-position-x: right;
+        background-color: white;
+
+        .header-container {
+            background: none;
+
+            h2,
+            .mat-input-element:disabled,
+            label,
+            span,
+            .mat-form-field {
+                color: #332f30
+            }
+            ::ng-deep.mat-input-element:disabled {
+                color:#332f30 !important;
+            }
+        }
+
+        .header-meta {
+            margin-top: 4px;
+        }
+    }
+
+    
+
+    .header-container {
+        background: rgba(24,
+                91,
+                157,
+                0.84);
+        background: -moz-linear-gradient(left,
+                rgba(24,
+                    91,
+                    157,
+                    0.84) 0%,
+                rgba(53,
+                    129,
+                    28,
+                    0.68) 100%);
+        background: -webkit-gradient(left top,
+                right top,
+                color-stop(0%,
+                    rgba(24,
+                        91,
+                        157,
+                        0.84)),
+                color-stop(100%,
+                    rgba(53,
+                        129,
+                        28,
+                        0.68)));
+        background: -webkit-linear-gradient(left,
+                rgba(24,
+                    91,
+                    157,
+                    0.84) 0%,
+                rgba(53,
+                    129,
+                    28,
+                    0.68) 100%);
+        background: -o-linear-gradient(left,
+                rgba(24,
+                    91,
+                    157,
+                    0.84) 0%,
+                rgba(53,
+                    129,
+                    28,
+                    0.68) 100%);
+        background: -ms-linear-gradient(left,
+                rgba(24,
+                    91,
+                    157,
+                    0.84) 0%,
+                rgba(53,
+                    129,
+                    28,
+                    0.68) 100%);
+        background: linear-gradient(to right,
+                rgba(24,
+                    91,
+                    157,
+                    0.84) 0%,
+                rgba(53,
+                    129,
+                    28,
+                    0.68) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#185b9d',
+                endColorstr='#35811c',
+                GradientType=1);
+
+
+        h2,
+        .mat-input-element:disabled,
+        label,
+        span,
+        .mat-icon-button,
+        .mat-form-field {
+            color: white;
+        }
+
+        .chip-list {
+            margin-bottom: 4px;
+        }
+        ::ng-deep.mat-input-element:disabled {
+            color: white !important;
+        }
+        
+    }
+}

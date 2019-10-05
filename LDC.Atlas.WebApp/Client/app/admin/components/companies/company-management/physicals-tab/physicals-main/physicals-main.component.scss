@@ -1,0 +1,15 @@
+.margin{
+    margin: 16px;
+}
+div.mat-toggle-height {
+   height:  9px;
+  }
+  :host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    margin-bottom: 9px !important;
+}
+:host ::ng-deep.mat-slide-toggle-bar, .mat-slide-toggle-thumb {
+    margin-bottom: 9px !important;
+}
+div.margin-bottom {
+    margin-bottom: 80px;
+}

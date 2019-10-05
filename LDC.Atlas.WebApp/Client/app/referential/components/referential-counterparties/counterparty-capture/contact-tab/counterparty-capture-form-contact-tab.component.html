@@ -1,0 +1,32 @@
+<div class="main-container">
+    <main>
+        <div fxLayout="row"
+             fxLayout.md="column"
+             fxLayoutAlign="space-around start"
+             class='charter-creation-margin'>
+            <div fxLayout="column"
+                 fxLayoutAlign="start left"
+                 fxFlex="48">
+                <atlas-counterparty-contact-card #contactCardComponent
+                                                 (addNewContact)="onAddNewContactClicked($event)"
+                                                 (contactDetails)="onContactListClicked($event)"
+                                                 (cancelContact)="onCancelContact()"
+                                                 [isViewMode]="isViewMode">
+                </atlas-counterparty-contact-card>
+
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="start right"
+                 fxFlex="49">
+                <atlas-counterparty-contact-detail-card #contactDetailCardComponent
+                                                        (contactCreated)="onNewContactCreated($event)"
+                                                        (contactDeleted)="onContactDeleted($event)"
+                                                        (cancelContact)="onCancelContact()"
+                                                        [contactListLength]="contactListLength"
+                                                        [counterPartyId]="counterPartyId"
+                                                        [isViewMode]="isViewMode">
+                </atlas-counterparty-contact-detail-card>
+            </div>
+        </div>
+    </main>
+</div>

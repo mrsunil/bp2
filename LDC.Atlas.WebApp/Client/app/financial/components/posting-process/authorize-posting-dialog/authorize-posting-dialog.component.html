@@ -1,0 +1,50 @@
+<h1 class="no-margin">Authorize documents for posting </h1>
+
+<div *ngIf="isTopCardVisible"
+     fxLayout="row"
+     fxLayoutAlign="start start"
+     class="dialog-top-card">
+    <div class="authorize-posting-dialog"
+         fxLayout="column"
+         fxLayoutAlign="center center">
+        <div class="question-circle-icon">
+            <mat-icon>help</mat-icon>
+        </div>
+    </div>
+    <div fxLayout="column">
+        <h2 fxLayoutAlign="start center"
+            class="no-margin">
+            Some documents cannot be authorized for posting
+        </h2>
+        <div class="content-font"
+             *ngIf="isTopCardVisible">
+
+            <p *ngFor="let document of validateAccountingDocument">
+                {{document.documentReference}} : {{document.reason}}
+            </p>
+        </div>
+    </div>
+</div>
+
+<p *ngIf="isBottomCardVisible">
+    The following documents will be authorized for posting:
+</p>
+
+<div *ngIf="isBottomCardVisible">
+    <mat-chip-list multiple>
+        <mat-chip *ngFor="let document of passedAccountingDocument"
+                  [selected]="true">
+            <mat-icon>cancel</mat-icon>
+            {{document.documentReference}}
+        </mat-chip>
+    </mat-chip-list>
+</div>
+
+<mat-dialog-actions>
+    <button mat-button
+            (click)="onDiscardButtonClicked()">Discard</button>
+    <span class="fill-space"></span>
+    <button mat-button
+            *ngIf="isBottomCardVisible"
+            (click)="onConfirmButtonClicked()">Proceed</button>
+</mat-dialog-actions>

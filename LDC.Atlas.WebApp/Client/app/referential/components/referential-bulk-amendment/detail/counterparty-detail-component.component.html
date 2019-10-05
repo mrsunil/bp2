@@ -1,0 +1,28 @@
+<div fxLayout="row"
+     fxLayoutAlign="space-around start">
+    <div fxLayout="column"
+         fxFlex="98.5">
+        <mat-card>
+            <mat-card-title class="atlas-grid-card-title mat-card-title">Counterparties to edit</mat-card-title>
+            <mat-card-content>
+                <div ag-grid="detailCounterpartiesLineGridOptions">
+                    <ag-grid-angular class="ag-theme-material atr-ag-grid"
+                                     [rowData]="editCounterpartyDocumentLines"
+                                     [columnDefs]="columnDefs"
+                                     domLayout="autoHeight"
+                                     (gridReady)="onGridReady($event)"
+                                     [pinnedTopRowData]="pinnedTopRowData"
+                                     [pagination]="true"
+                                     [paginationPageSize]="15"
+                                     [enableSorting]="true"
+                                     [enableColResize]="false"
+                                     [singleClickEdit]=true
+                                     [enableRangeSelection]="true"
+                                     (cellValueChanged)="onCellValueChanged($event)"
+                                     [rowHeight]=32>
+                    </ag-grid-angular>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

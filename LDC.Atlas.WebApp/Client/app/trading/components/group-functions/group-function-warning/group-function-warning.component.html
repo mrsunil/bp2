@@ -1,0 +1,31 @@
+<div class="main-container"
+     fxLayout="column"
+     fxLayoutAlign="start none">
+    <div class="group-function-warning-banner">
+        <mat-card class="group-function-warning-card">
+            <div class="question-circle-icon">
+                <mat-icon>help_outline</mat-icon>
+            </div>
+            <mat-card-header>
+                <mat-card-title *ngIf="bulkActionTypeId==GroupFunctionTypes.TradeBulkEdition">
+                    <h4>Please select contracts to bulk edit</h4>
+                </mat-card-title>
+                <mat-card-title *ngIf="bulkActionTypeId==GroupFunctionTypes.TradeBulkApproval">
+                    <h4>Please select contracts for bulk approval</h4>
+                </mat-card-title>
+                <mat-card-title *ngIf="bulkActionTypeId==GroupFunctionTypes.TradeBulkClosure">
+                    <h4>Please select contracts for bulk closure</h4>
+                </mat-card-title>
+                <mat-card-title *ngIf="bulkActionTypeId==GroupFunctionTypes.TradeBulkAllocation">
+                    <h4>Please select contracts for bulk allocation</h4>
+                </mat-card-title>
+                <mat-card-title *ngIf="bulkActionTypeId==GroupFunctionTypes.TradeBulkDeAllocation">
+                    <h4>Please select contracts for bulk deAllocation</h4>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    be sure to filter the list accordingly
+                </mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
+</div>

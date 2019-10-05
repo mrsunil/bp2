@@ -1,0 +1,86 @@
+<div class="main-container">
+    <div fxLayout="row wrap"
+         fxLayoutAlign="space-between stretch"
+         fxLayoutAlign.lt-md="space-around center">
+
+        <mat-card class="database-selection"
+                  fxFlex="35">
+            <mat-card-header>
+                <mat-card-title>
+                    Database Selection
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayoutGap="5px">
+                <div fxLayout="row"
+                     fxLayoutAlign="left start"
+                     fxLayoutGap="8px">
+                    <atlas-dropdown-select fxFlex='50'
+                                           [label]="'Snapshot'"
+                                           [fieldControl]="pnlSnapshotCtrl"
+                                           isEditable=true
+                                           [options]="snapshotList"
+                                           displayProperty="freezeDate"
+                                           [selectProperties]="['freezeDate']"></atlas-dropdown-select>
+                    <atlas-dropdown-select-list fxFlex='50'
+                                                [label]="'Company'"
+                                                [fieldControl]="pnlcompanyCtrl"
+                                                [(options)]="filteredCompany"
+                                                [selectProperties]="companySelect"
+                                                isEditable=true
+                                                (optionSelected)="onCompanySelected($event)"
+                                                multiselect=true>
+                    </atlas-dropdown-select-list>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="left start"
+                     fxLayoutGap="8px">
+                    <div fxFlex='50'
+                         class="view-realized-physicals-font">View for Realized physicals </div>
+                    <atlas-dropdown-select fxFlex='50'
+                                           [label]="'Columns to be selected'"
+                                           [options]="columnsList"
+                                           [fieldControl]="columnstoSelectCtrl"
+                                           isEditable=true
+                                           [selectProperties]="columnsListDisplayProperty"
+                                           multiselect=true></atlas-dropdown-select>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="left start"
+                     fxLayoutGap="8px">
+                    <mat-slide-toggle fxFlex='50'
+                                      fxLayoutAlign="left start"
+                                      mat-raised-button
+                                      (change)="onToggleViewRealizedPhysicals()">Charter
+                    </mat-slide-toggle>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+
+        <mat-card fxFlex="60">
+            <mat-card-header>
+                <mat-card-title>
+                    Report Criterias
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayoutGap="5px">
+                <atlas-report-criterias #reportCriterias></atlas-report-criterias>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="end center">
+        <button mat-raised-button
+                (click)="onGenerateReportButtonClicked()">GENERATE REPORT</button>
+        <button mat-raised-button
+                class="generate-report-button"
+                (click)="onGenerateExcelButtonClicked()">Detailed Excel View</button>
+    </div>
+    <div class="report-container">
+        <atlas-ssrsreport-viewer [reportServer]="reportServerUrl"
+                                 [reportUrl]="reportPath"
+                                 [parameters]="parameters"
+                                 [toBeDownloaded]="toBeDownloaded"
+                                 #ssrsReportViewer></atlas-ssrsreport-viewer>
+    </div>
+</div>

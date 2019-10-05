@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>{{ lightboxTitle}}
+    <button mat-icon-button
+            mat-dialog-close
+            class="close-dialog-btn">
+        <mat-icon aria-label="Closing button">clear</mat-icon>
+    </button></h2>
+
+<mat-dialog-content>
+    <div ag-grid="gridOptions"
+         class="ag-theme-material pointer-cursor"
+         style="width: 100%; height: 100%"
+         *ngIf="!isLoading">
+        <ag-grid-angular class="ag-theme-material"
+                         [columnDefs]="columnDefs"
+                         (gridReady)="onGridReady($event)"
+                         [enableColResize]="true"
+                         [enableSorting]="true"
+                         [rowSelection]="rowSelection"
+                         [rowMultiSelectWithClick]="data.multiselect"
+                         [getMainMenuItems]="getMainMenuItems.bind(this)"
+                         domLayout=autoHeight
+                         (rowClicked)="onRowClicked($event)"
+                         enableFilter
+                         [rowHeight]="atlasAgGridParam.rowHeight">
+        </ag-grid-angular>
+    </div>
+</mat-dialog-content>
+
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions>
+    <button mat-button
+            mat-dialog-close>discard</button>
+    <span class="fill-space"></span>
+    <button *ngIf='data.multiselect'
+            mat-button
+            (click)='onMultipleSelectConfirmButtonClicked()'>confirm</button>
+</mat-dialog-actions>

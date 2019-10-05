@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.AccountingInterface</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.AccountingInterface.Controllers.AccountingInterfaceController.ProcessAXDataLogsRequest(LDC.Atlas.Services.AccountingInterface.Application.Commands.ProcessInterfaceDataChangeLogsRequest)">
+            <summary>
+            Process AX message logs
+            </summary>
+            <param name="processInterfaceDataChangeLogsRequest">Process the Accounting Document queued in Message queue.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.AccountingInterface.Controllers.AccountingInterfaceController.ProcessESBResponse(LDC.Atlas.Services.AccountingInterface.Application.Commands.ProcessESBResponse)">
+            <summary>
+            Process the response for the accounting interface from generic back interface
+            </summary>
+            <param name="esbResponse">The identifier of the data response.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.AccountingInterface.Controllers.AccountingInterfaceController.GetListOfErrorsForErrorManagement(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Get List of functional Errors for Accounting Error Screen
+            </summary>
+            <param name="company">The company code</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.AccountingInterface.Controllers.AccountingInterfaceController.UpdateAccountingErrorStatus(System.String,LDC.Atlas.Services.AccountingInterface.Application.Commands.UpdateInterfaceStatusCommand)">
+            <summary>
+            Update the Flag "ToBeInterfaced" for given DocRefs
+            </summary>
+            <param name="company">The company code</param>
+            <param name="errorLines">Doc Refs of the Documents to be updated the interface status for</param>
+        </member>
+    </members>
+</doc>

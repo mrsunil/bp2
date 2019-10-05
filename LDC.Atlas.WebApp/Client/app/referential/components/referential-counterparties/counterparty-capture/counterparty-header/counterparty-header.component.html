@@ -1,0 +1,72 @@
+<header class="header-background">
+    <div class="header-content">
+        <div [formGroup]="headerFormGroup">
+            <div fxLayout="row"
+                 fxLayoutAlign="start center"
+                 fxLayoutGap="1px">
+                <h2>
+                    <atlas-form-input fxFlex="90%"
+                                      [fieldControl]="accountRefCtrl"
+                                      [errorMap]="accountrefErrorMap"
+                                      [isEditable]="true"
+                                      [required]="accountRefCtrl.isRequired"
+                                      label="Account Ref">
+                    </atlas-form-input>
+                    <h1> : </h1>
+                    <atlas-form-input fxFlex="320px"
+                                      [fieldControl]="accountTitleCtrl"
+                                      [isEditable]="true"
+                                      [required]="accountTitleCtrl.isRequired"
+                                      label="Account Title">
+                    </atlas-form-input>
+                </h2>
+                <mat-button-toggle-group class="toggle-group"
+                                         aria-label="Date"
+                                         selected
+                                         disabled>
+                    <mat-button-toggle [value]="0"
+                                       [checked]="!isDeactivated">Active</mat-button-toggle>
+                    <mat-button-toggle [value]="1"
+                                       [checked]="isDeactivated">Inactive</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="start end"
+                 fxLayoutGap="16px">
+                <atlas-form-input fxFlex="20%"
+                                  [fieldControl]="createdByCtrl"
+                                  [isEditable]="true"
+                                  label="Created By">
+                </atlas-form-input>
+                <atlas-form-input fxFlex="20%"
+                                  [fieldControl]="creationDateCtrl"
+                                  [isEditable]="true"
+                                  label="On">
+                </atlas-form-input>
+                <atlas-form-input *ngIf="isShowLastAmendedBy"
+                                  fxFlex="20%"
+                                  [fieldControl]="lastAmendedByCtrl"
+                                  [isEditable]="true"
+                                  label="Last Amended By">
+                </atlas-form-input>
+                <atlas-form-input *ngIf="isShowLastAmendedBy"
+                                  fxFlex="20%"
+                                  [fieldControl]="modifiedDateCtrl"
+                                  [isEditable]="true"
+                                  label="On">
+                </atlas-form-input>
+
+                <mat-button-toggle-group fxLayoutAlign="start end"
+                                         *ngIf="isLocalViewMode"
+                                         aria-label="Date"
+                                         (change)='onStatusChanged($event.value)'>
+                    <mat-button-toggle [value]="0"
+                                       [checked]="!isDeactivated">Activate</mat-button-toggle>
+                    <mat-button-toggle [value]="1"
+                                       [checked]="isDeactivated">Deactivate</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+        </div>
+    </div>
+</header>

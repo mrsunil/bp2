@@ -1,0 +1,87 @@
+<div class="copy-company-warning-banner">
+    <mat-card class="copy-company-warning-card">
+
+        <mat-card-header>
+            <mat-card-title>
+                <h4>
+                    <mat-slide-toggle [formControl]="transactionDataCtrl"
+                                      (change)="onTransactionDataToggleChange($event)">
+                    </mat-slide-toggle> Copy Transactional Data
+                </h4>
+
+            </mat-card-title>
+            <mat-card-subtitle>
+                All data from company {{selectedCompany}} will be copied to the new Company
+            </mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+</div>
+<div fxLayout="row"
+     fxLayout.md="column"
+     fxLayoutAlign="space-between">
+    <mat-card class="transaction-data-card">
+        <mat-card-title>
+            <h2> Trades</h2>
+        </mat-card-title>
+        <mat-card-content>
+            <div fxLayout="row"
+                 fxLayoutAlign="start"
+                 fxLayoutGap="16px">
+                <p>Physical contracts</p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="transaction-data-card">
+        <mat-card-title>
+            <h2> Invoices</h2>
+        </mat-card-title>
+        <mat-card-content>
+            <p>Goods</p>
+            <p>Costs</p>
+            <p>Washout</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="transaction-data-card">
+        <mat-card-title>
+            <h2> Cash</h2>
+        </mat-card-title>
+        <mat-card-content>
+            <p>Simple cash</p>
+            <p>Cash by picking transaction different client</p>
+            <p>Cash by picking transaction full or partial payment</p>
+            <p>Cash by picking transaction different currencey</p>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div fxLayout="row"
+     fxLayout.md="column"
+     fxLayoutAlign="stretch">
+    <mat-card class="transaction-data-card">
+        <mat-card-title>
+            <h2> Accurals</h2>
+        </mat-card-title>
+        <mat-card-content>
+            <p>Month End</p>
+            <p>Year End</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="transaction-data-card">
+        <mat-card-title>
+            <h2> Journal Entry</h2>
+        </mat-card-title>
+        <mat-card-content>
+            <p>Manual Journal Log</p>
+            <p>Revaluation Journal Log</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="transaction-data-card">
+        <mat-card-title>
+            <h2> Others</h2>
+        </mat-card-title>
+        <mat-card-content>
+            <p>Credit Note</p>
+            <p>Debit Note</p>
+            <p>Charter</p>
+        </mat-card-content>
+    </mat-card>
+</div>

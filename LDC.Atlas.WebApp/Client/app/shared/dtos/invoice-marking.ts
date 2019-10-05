@@ -1,0 +1,32 @@
+export interface InvoiceMarkingSearchResult {
+    sectionType: string;
+    allocatedTo: number;
+    invoiceMarkingId: number;
+    contractReference: string;
+    invoiceReference: string;
+    invoiceDate: Date;
+    invoiceAmount: number;
+    invoicePercent: number;
+    postingStatus: string;
+    quantity: number;
+    currencyCode: string;
+    documentType: string;
+    dueDate: Date;
+    paymentTermCode: string;
+    customerReference: string;
+    paidPercentage: string;
+    cashMatchDate: Date;
+    cashMatchPercentage: number;
+    contractQuantity: number;
+    price: number;
+    costType: string;
+    postingStatusId: number;
+    isDeleted: boolean;
+    priceConversionFactor: number;
+    weightConversionFactor: number;
+    sectionId: number;
+    invoiceLineId: number;
+    invoicingStatusId: number;
+    mainInvoice: boolean;
+    invoicedQuantity: number;
+}

@@ -1,0 +1,142 @@
+<mat-card fxFlex="100">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Document Information</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="column"
+             fxLayoutGap="16px">
+
+
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+
+                <atlas-date-picker fxFlex="40%"
+                                   [errorMap]="docDateErrorMap"
+                                   label="Document date"
+                                   [fieldControl]="docDateCtrl"
+                                   [isEditable]="docDateCtrl.enabled">
+                </atlas-date-picker>
+
+                <atlas-date-picker fxFlex="40%"
+                                   [errorMap]="valueDateErrorMap"
+                                   label="Value date"
+                                   [fieldControl]="valueDateCtrl"
+                                   [isEditable]="valueDateCtrl.enabled"></atlas-date-picker>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+                <atlas-dropdown-select fxFlex="40%"
+                                       [isEditable]="currencyCtrl.enabled"
+                                       label="Currency"
+                                       [fieldControl]="currencyCtrl"
+                                       [options]="filteredCurrencyList"
+                                       displayProperty="currencyCode"
+                                       [selectProperties]="['currencyCode', 'description']"
+                                       isAutocompleteActivated="true"
+                                       (optionSelected)="onCurrencyValueEntered($event)"
+                                       [errorMap]="currencyErrorMap">
+                </atlas-dropdown-select>
+
+                <atlas-form-input *ngIf="isDiffCurrency"
+                                  fxFlex="40%"
+                                  [fieldControl]="amountOriginalCurrencyCtrl"
+                                  label="Amount"
+                                  [textMask]="{mask:mask}"
+                                  [errorMap]="amountErrorMap">
+                </atlas-form-input>
+                <atlas-form-input *ngIf="!isDiffCurrency"
+                                  fxFlex="40%"
+                                  [isEditable]="amountCtrl.enabled"
+                                  [fieldControl]="amountCtrl"
+                                  label="Amount"
+                                  [textMask]="{mask:mask}"
+                                  [errorMap]="amountErrorMap"
+                                  (blur)="onAmountValueEntered()">
+                </atlas-form-input>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+
+                <atlas-dropdown-select fxFlex="40%"
+                                       [isEditable]="nominalAccountCtrl.enabled"
+                                       label="Nom. Account"
+                                       [fieldControl]="nominalAccountCtrl"
+                                       [options]="filteredNominalAccountList"
+                                       displayProperty="accountNumber"
+                                       [selectProperties]="['nominalAccountNumberFormated', 'detailedDescription']"
+                                       isAutocompleteActivated="true"
+                                       [errorMap]="nomAccountErrorMap"
+                                       (optionSelected)="getDescriptionOfAccount($event)">
+                </atlas-dropdown-select>
+
+
+                <atlas-form-input fxFlex="40%"
+                                  [isEditable]="accountDescriptionCtrl.enabled"
+                                  [fieldControl]="accountDescriptionCtrl"
+                                  label="Bank Account description">
+                </atlas-form-input>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+
+                <atlas-dropdown-select fxFlex="40%"
+                                       [isEditable]="departmentCodeCtrl.enabled"
+                                       label="Department"
+                                       [fieldControl]="departmentCodeCtrl"
+                                       [options]="filteredDepartments"
+                                       displayProperty="departmentCode"
+                                       [selectProperties]="['departmentCode', 'description']"
+                                       isAutocompleteActivated="true"
+                                       [errorMap]="departementErrorMap"
+                                       (optionSelected)="onDepartmentValueEntered($event)">
+                </atlas-dropdown-select>
+
+                <atlas-form-input fxFlex="40%"
+                                  [isEditable]="docRefCtrl.enabled"
+                                  [fieldControl]="docRefCtrl"
+                                  label="2nd Document Reference"
+                                  [errorMap]="docRefErrorMap">
+                </atlas-form-input>
+            </div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+
+                <atlas-dropdown-select fxFlex="40%"
+                                       [isEditable]="costTypeCtrl.enabled"
+                                       label="Cost Type"
+                                       [fieldControl]="costTypeCtrl"
+                                       [options]="filteredCostTypes"
+                                       displayProperty="costTypeCode"
+                                       [selectProperties]="['costTypeCode', 'name']"
+                                       isAutocompleteActivated="true"
+                                       [errorMap]="costTypeErrorMap">
+                </atlas-dropdown-select>
+
+                <div fxFlex="45%"
+                     class="custom-form">
+                    <atlas-masterdata-user-preferences-input fxFlex="90%"
+                                                             [isEditable]="charterCtrl.enabled"
+                                                             [fieldControl]="charterCtrl"
+                                                             [options]="filteredCharters"
+                                                             label="Charters"
+                                                             displayProperty="charterCode"
+                                                             [selectProperties]="['charterCode','description']"
+                                                             [errorMap]="charterErrorMap"
+                                                             lightBoxTitle="Results for charters"
+                                                             gridId="charterGrid"
+                                                             (optionSelected)="onCharterSelected($event)">
+
+                    </atlas-masterdata-user-preferences-input>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

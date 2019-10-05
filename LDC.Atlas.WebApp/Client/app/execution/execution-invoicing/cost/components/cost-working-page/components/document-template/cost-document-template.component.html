@@ -1,0 +1,66 @@
+<mat-card>
+    <mat-card-title>
+        Invoice Document
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="2%">
+            <mat-form-field>
+                <mat-select placeholder="External/InHouse"
+                            [formControl]="invoiceExtInHouseCtrl"
+                            matTooltip="External/InHouse">
+                    <mat-option *ngFor="let info of invoiceSourceType"
+                                [value]="info.viewValue">
+                        {{info.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput
+                       placeholder="External Invoice Reference"
+                       [formControl]="invoiceExtRefCtrl"
+                       autocomplete="off">
+                <mat-error *ngIf="invoiceExtRefCtrl.hasError('required')">
+                    Reference is required
+                </mat-error>
+                <mat-error *ngIf="invoiceExtRefCtrl.hasError('maxlength')">
+                    Must be less than 25 characters
+                </mat-error>
+                <mat-hint style="color:orange"
+                          *ngIf="!isUnique">
+                    Reference Number already used
+                </mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row">
+            <mat-form-field fxFlex="32%">
+                <mat-select placeholder="Document Template"
+                            [formControl]="invoiceTemplatesCtrl"
+                            (selectionChange)="onInvoiceTemplateSelected()">
+                    <mat-option></mat-option>
+                    <mat-option *ngFor="let template of filteredTemplates"
+                                [value]="template">
+                        {{template.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="invoiceTemplatesCtrl.hasError('required')">
+                    Template is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row">
+            <mat-form-field fxFlex="32%">
+                <mat-select placeholder="Doc Type"
+                            [formControl]="docTypeCtrl">
+                    <mat-option *ngFor="let info of transactionDocumentType"
+                                [value]="info.value">
+                        {{info.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

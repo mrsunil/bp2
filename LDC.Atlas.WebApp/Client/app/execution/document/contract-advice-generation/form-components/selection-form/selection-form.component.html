@@ -1,0 +1,29 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>
+			<h2>Select the template</h2>
+		</mat-card-title>
+	</mat-card-header>
+	<mat-card-content *ngIf="isLoading">
+		<div fxLayout="row"
+		     fxLayoutAlign="center center"
+		     fxLayoutWrap
+		     fxLayoutGap="20px">
+			<mat-spinner color="accent"></mat-spinner>
+		</div>
+	</mat-card-content>
+	<mat-card-content [ngClass]="{'hidden-during-loading':isLoading}">
+		<div fxLayout="row"
+		     fxLayoutAlign="space-between start"
+		     fxLayoutGap="5%">
+			<div fxFlex="60%">
+				<atlas-select-multiple-autocomplete #selectTemplate
+				                                    [objects]="documentTemplates"
+				                                    displayProperty="name"
+				                                    placeholder="Document template"
+				                                    [controller]="documentTemplateCtrl"></atlas-select-multiple-autocomplete>
+
+			</div>
+		</div>
+	</mat-card-content>
+</mat-card>

@@ -1,0 +1,192 @@
+<form [formGroup]="copyCompanyFormGroup">
+    <div class="main-container">
+        <mat-horizontal-stepper [linear]
+                                (selectionChange)="onStepActionChanged($event)"
+                                #stepper>
+            <ng-template matStepperIcon="edit">
+                <mat-icon>check</mat-icon>
+            </ng-template>
+            <mat-step>
+                <ng-template matStepLabel>Company To Copy</ng-template>
+                <atlas-company-management #companyManagement></atlas-company-management>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <button (click)="onDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onSummaryViewNextButtonClicked()">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Master Data</ng-template>
+                <atlas-master-data-field #masterDataField
+                                         (isCounterpartyToggleEnabled)="isCounterpartyToggleEnabled($event)">
+                </atlas-master-data-field>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="row "
+                         fxLayoutAlign="start ">
+                        <button (click)="onDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                        <button mat-button
+                                (click)="onPreviousButtonClicked()">
+                            PREVIOUS
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onMasterDataNextButtonClicked()">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Transaction Data</ng-template>
+                <atlas-transaction-data #transactionData>
+                </atlas-transaction-data>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="row "
+                         fxLayoutAlign="start ">
+                        <button (click)="onDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                        <button mat-button
+                                (click)="onPreviousButtonClicked()">
+                            PREVIOUS
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onNextButtonClicked()">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>User Privileges</ng-template>
+                <atlas-user-privileges #userPrivileges
+                                       (userPrivilegeEvent)="userPrivilegesEvent($event)"
+                                       (userPrivilegeRowChangedEvent)="userPrivilegeRowChangedEvent($event)">
+                </atlas-user-privileges>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="row "
+                         fxLayoutAlign="start ">
+                        <button mat-button
+                                (click)="onDiscardButtonClicked()">
+                            DISCARD
+                        </button>
+                        <button mat-button
+                                (click)="onPreviousButtonClicked()">
+                            PREVIOUS
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onUserPrivilegeNextButtonClicked()">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>User Account</ng-template>
+                <atlas-user-account #userAccounts
+                                    (userAccountEvent)="userAccountEvent($event)">
+                </atlas-user-account>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="row "
+                         fxLayoutAlign="start ">
+                        <button mat-button
+                                (click)="onDiscardButtonClicked()">
+                            DISCARD
+                        </button>
+                        <button mat-button
+                                (click)="onPreviousButtonClicked()">
+                            PREVIOUS
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onUserAccountNextButtonClicked()">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Configuration Details</ng-template>
+                <atlas-company-management #companyCreation></atlas-company-management>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="row "
+                         fxLayoutAlign="start ">
+                        <button mat-button
+                                (click)="onDiscardButtonClicked()"
+                                [disabled]="isSaveInProgress">
+                            DISCARD
+                        </button>
+                        <button mat-button
+                                (click)="onPreviousButtonClicked()"
+                                [disabled]="isSaveInProgress">
+                            PREVIOUS
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onSaveButtonClicked()"
+                                    [disabled]="isSaveInProgress">
+                                SAVE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</form>

@@ -1,0 +1,14 @@
+<div fxLayout="row wrap"
+     fxLayoutAlign="start"
+     fxLayoutGap="16px"
+     class="grid-main-tab">
+    <atlas-tax-configuration #taxConfigurationComponent
+                             (sendTaxActive)="getData($event)"
+                             fxFlexOrder.lt-md="1"
+                             fxFlex="49%"></atlas-tax-configuration>
+    <atlas-default-taxes #defaultTaxesComponent
+                         [hidden]="!taxActiveStatus"
+                         fxFlexOrder.lt-md="2"
+                         fxFlex="49%"></atlas-default-taxes>
+
+</div>

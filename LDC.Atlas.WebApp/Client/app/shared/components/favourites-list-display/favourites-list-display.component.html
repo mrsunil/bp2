@@ -1,0 +1,22 @@
+<div fxLayout="row"
+     fxLayoutAlign="start start">
+    <h1>Favourites</h1>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="start start"
+     ag-grid="favouritesListOptions"
+     class="ag-theme-material pointer-cursor"
+     style="width: 100%; height: 100%">
+    <ag-grid-angular style=" height: 100%; width: 100%;"
+                     class="ag-theme-material favourites-list-grid"
+                     [rowData]="favouriteListGridRows"
+                     [columnDefs]="favouriteListGridCols"
+                     [gridOptions]="favouriteListOptions"
+                     [enableColResize]="true"
+                     [pagination]="true"
+                     [paginationPageSize]="10"
+                     domLayout=autoHeight
+                     (gridReady)="onGridReady($event)"
+                     [singleClickEdit]=true>
+    </ag-grid-angular>
+</div>

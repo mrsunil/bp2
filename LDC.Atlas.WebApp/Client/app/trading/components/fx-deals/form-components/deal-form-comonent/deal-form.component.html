@@ -1,0 +1,111 @@
+<mat-card class="fx-deals-capture Deal terms details">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Deal</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="bottom-space">
+            <mat-button-toggle-group class="toggle-group"
+                                     name="toggleStyle"
+                                     aria-label="FX Deal Type"
+                                     [formControl]='fxDealDirectionCtrl'
+                                     (change)='onStatusChanged($event.value)'>
+                <mat-button-toggle [value]="fxDealDirection.Buy"
+                                   [checked]="true">Buy</mat-button-toggle>
+                <mat-button-toggle [value]="fxDealDirection.Sell">Sell</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="1%">
+            <div fxFlex="25%"
+                 class="bottom-space">
+                <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                         isEditable="true"
+                                                         [fieldControl]="currencyDealtCtrl"
+                                                         [options]="dealtFilteredCurrencies"
+                                                         label="Currency Dealt"
+                                                         [errorMap]="currencyDealtErrorMap"
+                                                         displayProperty="currencyCode"
+                                                         [selectProperties]="['currencyCode','description']"
+                                                         lightBoxTitle="Results for Currency"
+                                                         (valueChange)='onDealtRoeTypeValue($event)'
+                                                         (optionSelected)='onDealtRoeTypeValue($event)'
+                                                         gridId="currenciesGrid">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+            <div fxFlex="25%"
+                 class="custom-form"
+                 [class.required-field]="dealtAmountCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Dealt Amount"
+                           autocomplete="off"
+                           [textMask]="{mask:mask}"
+                           [formControl]="dealtAmountCtrl"
+                           (blur)="onSettledAmountCalculate()">
+                    <mat-error *ngIf="dealtAmountCtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                    <mat-error *ngIf="dealtAmountCtrl.hasError('isGreatherThanZero')">
+                        Amount must be greater than Zero.
+                    </mat-error>
+                    <mat-hint *ngIf="dealtAmountCtrl.isRequired">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div fxFlex="25%">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Traded ROE"
+                           autocomplete="off"
+                           [textMask]="{mask:masked}"
+                           [formControl]="tradedROECtrl">
+                    <mat-error *ngIf="tradedROECtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                    <mat-hint *ngIf="tradedROECtrl.isRequired">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="1%">
+            <div fxFlex="25%">
+                <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                         isEditable="true"
+                                                         [fieldControl]="settlementCurrencyCtrl"
+                                                         [options]="settlementFilteredCurrency"
+                                                         label="Settlement Currency"
+                                                         [errorMap]="currencyDealtErrorMap"
+                                                         displayProperty="currencyCode"
+                                                         [errorMap]="settlementCurrencyErrorMap"
+                                                         [selectProperties]="['currencyCode','description']"
+                                                         lightBoxTitle="Results for Currency"
+                                                         (valueChange)='onSettlementRoeTypeValue($event)'
+                                                         (optionSelected)='onSettlementRoeTypeValue($event)'
+                                                         gridId="currenciesGrid">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+            <div fxFlex="25%">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Settled Amount"
+                           autocomplete="off"
+                           [textMask]="{mask:mask}"
+                           [formControl]="settledAmountCtrl">
+                    <mat-error *ngIf="settledAmountCtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                    <mat-hint *ngIf="settledAmountCtrl.isRequired">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

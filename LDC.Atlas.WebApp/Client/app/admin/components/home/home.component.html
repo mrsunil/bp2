@@ -1,0 +1,94 @@
+<div class="main-container hub-menu">
+    <h1>Administration Panel</h1>
+    <div fxLayout="row wrap"
+         fxLayoutAlign="start stretch"
+         fxLayoutGap="16px"
+         class="hub-menu-panel"
+         [hidden]="isLoading">
+
+        <mat-card class="active-card"
+                  (click)="navigate('/admin/companies')">
+            <img mat-card-image
+                 src=".\assets\img\Companies_small.jpg">
+            <mat-card-title>
+                <h2 class="no-margin"> Company Configuration</h2>
+            </mat-card-title>
+            <p class="no-margin">Manage all your companies and their associated templates</p>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="navigate('/admin/global-parameters')"
+                  *ifAuthorized="'Administration.GlobalParameters',company:this.company">
+            <img mat-card-image
+                 src=".\assets\img\GlobalParam_small.jpg">
+            <mat-card-title>
+                <h2 class="no-margin">Global Parameters</h2>
+            </mat-card-title>
+            <p class="no-margin">Your Environments, Decimals, Translations and Interface Parameters are waiting for you
+            </p>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="navigate('/admin/profiles')"
+                  *ifAuthorized="'Administration.Profiles',company:this.company">
+            <img mat-card-image
+                 src=".\assets\img\Profiles_small.jpg">
+            <mat-card-title>
+                <h2 class="no-margin">Profiles</h2>
+            </mat-card-title>
+            <p class="no-margin">Create and Edit Atlas privileges thanks to the associated profiles</p>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="navigate('/admin/users')"
+                  *ifAuthorized="'Administration.Users',company:this.company">
+            <img mat-card-image
+                 src=".\assets\img\Users_small.jpg">
+            <mat-card-title>
+                <h2 class="no-margin"> Users</h2>
+            </mat-card-title>
+            <p class="no-margin">Help your users accessing functionalities dedicated to their work through user
+                management</p>
+        </mat-card>
+    </div>
+    <div fxLayout="row wrap"
+         fxLayoutAlign="start stretch"
+         fxLayoutGap="16px"
+         class="hub-menu-panel"
+         [hidden]="isLoading">
+
+        <mat-card class="active-card"
+                  (click)="navigate('/admin/operations')">
+            <img mat-card-image
+                 src=".\assets\img\GlobalParam_small.jpg">
+            <mat-card-title>
+                <h2 class="no-margin">Operations</h2>
+            </mat-card-title>
+            <p class="no-margin"> Interfaces
+            </p>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="navigate('/admin/templates-management')">
+            <img mat-card-image
+                 src=".\assets\img\paper.jpeg">
+            <mat-card-title>
+                Templates-management
+            </mat-card-title>
+        </mat-card>
+
+    </div>
+    <div *ngIf="isLoading">
+        <mat-card>
+            <h2>Loading</h2>
+            <div class="custom-line-title"></div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 fxLayoutGap="20px">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+        </mat-card>
+    </div>
+</div>

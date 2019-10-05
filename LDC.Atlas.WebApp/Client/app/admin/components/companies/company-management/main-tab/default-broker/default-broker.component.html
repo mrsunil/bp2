@@ -1,0 +1,36 @@
+<mat-card class="trade-capture-card commodity-details">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>FX Deal</h2>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="1%">
+            <div fxFlex="25%">
+                <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                         isEditable="true"
+                                                         [fieldControl]="defaultBrokerCtrl"
+                                                         [options]="filteredCounterparties"
+                                                         label="Bank/broker"
+                                                         displayProperty="counterpartyCode"
+                                                         [selectProperties]="['counterpartyCode', 'description']"
+                                                         [errorMap]="brokerErrorMap"
+                                                         lightBoxTitle="Results for Counterparty"
+                                                         gridId="counterpartiesGrid"
+                                                         (optionSelected)="onCounterpartyCodeSelected($event)"
+                                                         (valueChange)='onCounterpartyValueChanged($event)'>
+                </atlas-masterdata-user-preferences-input>
+            </div>
+            <div fxFlex="25%">
+                <atlas-form-input [fieldControl]="defaultBrokerDescriptionCtrl"
+                                  [errorMap]="brokerDescriptionErrorMap"
+                                  [required]="defaultBrokerDescriptionCtrl.isRequired"
+                                  label="Bank/broker description">
+                </atlas-form-input>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

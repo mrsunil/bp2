@@ -1,0 +1,20 @@
+// this code needs to be added in the styles.scss
+main {
+    margin: 50px;
+}
+
+.example-card {
+    max-width: 100%;
+}
+
+.header-background {
+    background: bottom/ cover url("/assets/img/empty-status.png");
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.data-label {
+    color: #928D8F; // to be replaced
+}

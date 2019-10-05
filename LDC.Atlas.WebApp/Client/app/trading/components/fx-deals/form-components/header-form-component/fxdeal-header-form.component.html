@@ -1,0 +1,113 @@
+<header class="header-background fxDeal "
+        [class.fxDeal-capture]="!isShow">
+    <div class="header-container">
+        <div class="header-content">
+            <div fxLayout="row"
+                 fxLayoutGap="1%">
+                <div fxFlex="15%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Deal No."
+                               autocomplete="off"
+                               [formControl]="dealNoCtrl">
+                    </mat-form-field>
+                </div>
+                <mat-chip-list *ngIf="isShow || isEditMode"
+                               class="chip-list">
+                    <mat-chip selected
+                              disabled>
+                        {{dealType}}
+                    </mat-chip>
+                    <mat-chip selected
+                              class='mat-approved'
+                              disabled>
+                        {{dealStatus}}
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutGap="1%">
+                <div fxFlex="10%">
+                    <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                             isEditable="true"
+                                                             [fieldControl]="traderCtrl"
+                                                             [options]="filteredTradeOwners"
+                                                             label="Trader"
+                                                             displayProperty="displayName"
+                                                             [errorMap]="traderErrorMap"
+                                                             [selectProperties]="['samAccountName','displayName']"
+                                                             lightBoxTitle="Results for Trader"
+                                                             gridId="traderGrid">
+                    </atlas-masterdata-user-preferences-input>
+                </div>
+                <div fxFlex="10%">
+                    <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                             isEditable="true"
+                                                             [fieldControl]="departmentCodeCtrl"
+                                                             [options]="filteredDepartments"
+                                                             label="Department Code"
+                                                             displayProperty="departmentCode"
+                                                             [errorMap]="departmentErrorMap"
+                                                             [selectProperties]="['departmentCode','description']"
+                                                             lightBoxTitle="Results for Department"
+                                                             (valueChange)='onValueChanged($event)'
+                                                             (optionSelected)="onOptionSelected($event)"
+                                                             gridId="departmentsGrid">
+                    </atlas-masterdata-user-preferences-input>
+                </div>
+                <div fxFlex="10%">
+                    <atlas-form-input [fieldControl]="departmentDescriptionCtrl"
+                                      [required]="departmentDescriptionCtrl.isRequired"
+                                      [errorMap]="departmentDescriptionErrorMap"
+                                      [label]="'Department Desc'">
+                    </atlas-form-input>
+                </div>
+                <div fxFlex="10%"
+                     [class.required-field]="accountCtrl.isRequired">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Account ref"
+                               autocomplete="off"
+                               [formControl]="accountCtrl">
+                        <mat-error *ngIf="accountCtrl.hasError('required')">
+                            This field is required
+                        </mat-error>
+                        <mat-hint *ngIf="accountCtrl.isRequired">
+                            Required *
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="10%">
+                    <atlas-form-input [fieldControl]="accountDescriptionCtrl"
+                                      [errorMap]="accountDescriptionErrorMap"
+                                      [label]="'Account Desc'">
+                    </atlas-form-input>
+                </div>
+                <div fxFlex="10%"
+                     *ngIf="showAuditInformation">
+                    <atlas-form-input [fieldControl]="createdByCtrl"
+                                      [label]="'Created By'">
+                    </atlas-form-input>
+                </div>
+                <div fxFlex="10%"
+                     *ngIf="showAuditInformation">
+                    <atlas-form-input [fieldControl]="createdOnCtrl"
+                                      [label]="'Created On'">
+                    </atlas-form-input>
+                </div>
+                <div fxFlex="10%"
+                     *ngIf="showAuditInformation && showAmendedFields">
+                    <atlas-form-input [fieldControl]="amendedByCtrl"
+                                      [label]="'Amended By'">
+                    </atlas-form-input>
+                </div>
+                <div fxFlex="10%"
+                     *ngIf="showAuditInformation && showAmendedFields">
+                    <atlas-form-input [fieldControl]="amendedOnCtrl"
+                                      [label]="'Amended On'">
+                    </atlas-form-input>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

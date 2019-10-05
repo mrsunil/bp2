@@ -1,0 +1,20 @@
+<mat-expansion-panel [expanded]="isPanelExpanded"
+                     (opened)="isPanelExpanded = true"
+                     (closed)="isPanelExpanded = false">
+    <mat-expansion-panel-header>
+        <mat-panel-title fxLayout="row"
+                         fxLayoutAlign="start center"
+                         dir="ltr"
+                         fxLayoutGap="5px">
+            <h2>Parameters</h2>
+            <mat-icon matSuffix
+                      *ngIf="!isCostMatrixDisplay"
+                      class="compass-icon"
+                      (click)="emmitClick($event)">explore</mat-icon>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-panel-description>
+        <atlas-chip-list *ngIf="chipStringList"
+                         [textList]="chipStringList"></atlas-chip-list>
+    </mat-panel-description>
+</mat-expansion-panel>

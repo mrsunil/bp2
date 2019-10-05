@@ -1,0 +1,48 @@
+<header class="header-background">
+    <div class="header-container">
+        <div class="header-content">
+            <div fxLayout="row"
+                 fxLayoutGap="15%">
+                <div fxFlex="10%">
+                    <atlas-form-input [isEditable]="companyCodeCtrl.enabled"
+                                      [fieldControl]="companyCodeCtrl"
+                                      label="Company Id"
+                                      [errorMap]="companyCodeErrorMap">
+                    </atlas-form-input>
+                </div>
+                <div fxFlex="15%">
+                    <atlas-form-input [isEditable]="companyFriendlyCodeCtrl.enabled"
+                                      [fieldControl]="companyFriendlyCodeCtrl"
+                                      label="Company Friendly Code"
+                                      [errorMap]="companyFriendlyCodeErrorMap">
+                    </atlas-form-input>
+                </div>
+                <div fxFlex="15%">
+                    <atlas-form-input [isEditable]="companyNameCtrl.enabled"
+                                      [fieldControl]="companyNameCtrl"
+                                      label="Company Name"
+                                      [errorMap]="companyNameErrorMap">
+                    </atlas-form-input>
+                </div>
+            </div>
+            <br>
+            <div fxLayout="row"
+                 fxLayoutAlign="start end"
+                 fxLayoutGap="5%">
+                <div fxFlex="15%">
+                    <atlas-masterdata-user-preferences-input isEditable="true"
+                                                             [fieldControl]="companyClientCodeCtrl"
+                                                             [options]="filteredCounterparties"
+                                                             label="Company Client Code"
+                                                             displayProperty="counterpartyCode"
+                                                             [selectProperties]="['counterpartyCode', 'description']"
+                                                             [errorMap]="counterpartyErrorMap"
+                                                             lightBoxTitle="Results for Counterparty"
+                                                             gridId="counterpartiesGrid"
+                                                             (optionSelected)="counterpartyCodeSelected($event)">
+                    </atlas-masterdata-user-preferences-input>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,44 @@
+// this code needs to be added in the styles.scss
+.example-card {
+    max-width: 100%;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.data-label {
+    color: #928D8F; // to be replaced
+}
+
+.side-nav-screen {
+    width: calc(100% - 64px);
+    height: calc(100vh - 53px);
+    top: 56px;
+}
+
+.atr-sidenav-margin {
+    margin: 16px;
+}
+
+.isLoading {
+    width: 0;
+    height: 0;
+}
+
+.trade-approval-success-banner {
+    button {
+        margin: 0;
+    }
+
+    .mat-card-title {
+        margin-bottom: 8px;
+    }
+
+    .mat-card-subtitle {
+        margin-bottom: 0px;
+    }
+}
+.mat-toolbar{
+    margin-top: 13px;
+}

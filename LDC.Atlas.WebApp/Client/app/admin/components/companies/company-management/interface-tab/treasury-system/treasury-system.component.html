@@ -1,0 +1,53 @@
+<div class="main-container">
+    <form [formGroup]="treasurySystemFormGroup">
+        <mat-card>
+            <mat-card-header fxLayoutAlign="space-between">
+                <mat-card-title>
+                    <h2>To Treasury System</h2>
+                </mat-card-title>
+                <mat-slide-toggle [formControl]="interfaceActiveCtrl"
+                                  [checked]="isInterfaceActive"
+                                  (change)="onInterfaceActiveToggleChanged($event)">
+                    Interface Active
+                </mat-slide-toggle>
+            </mat-card-header>
+            <mat-card-content>
+                <div fxLayout="row"
+                     fxLayoutAlign="start"
+                     fxLayoutGap="8px">
+                    <div fxFlex="20%">
+                        <atlas-dropdown-select [isEditable]="interfaceSystemCtrl.enabled"
+                                               label="Interface System"
+                                               [fieldControl]="interfaceSystemCtrl"
+                                               [options]="filteredInterfaceTypeList"
+                                               displayProperty="interfaceType"
+                                               [selectProperties]="['interfaceType']"
+                                               isAutocompleteActivated="true"
+                                               [errorMap]="treasuryInterfaceErrorMap"
+                                               [hasIcon]="true">
+                        </atlas-dropdown-select>
+                    </div>
+                    <div fxFlex="20%">
+                        <atlas-form-input [isEditable]="traxLegalEntityCodeCtrl.enabled"
+                                          [fieldControl]="traxLegalEntityCodeCtrl"
+                                          label="TRAX Legal Entity Code"
+                                          [errorMap]="legalEntityCodeErrorMap">
+                        </atlas-form-input>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </form>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">
+            DISCARD
+        </button>
+        <button mat-button
+                [disabled]="!checkEdit"
+                (click)="onSaveButtonClicked()">
+            SAVE
+        </button>
+    </div>
+</div>

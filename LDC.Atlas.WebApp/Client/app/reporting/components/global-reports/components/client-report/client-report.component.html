@@ -1,0 +1,297 @@
+<div class="main-container">
+    <form [formGroup]="clientReportFormGroup">
+        <div fxLayout="row wrap"
+             fxLayoutAlign="center"
+             fxLayoutGap="1%"
+             fxLayoutAlign.lt-md="space-between stretch">
+            <mat-card fxFlex="auto">
+                <mat-card-content>
+                    <div fxLayout="row wrap"
+                         fxLayoutAlign="space-between start"
+                         fxLayoutGap="1%">
+                        <div fxLayout="column"
+                             fxLayoutAlign="start"
+                             fxFlex="32%">
+                            <mat-card-title>Period Range</mat-card-title>
+                            <atlas-month-date-picker isEditable=true
+                                                     label="From"
+                                                     [fieldControl]="clientDateFromCtrl"
+                                                     (monthChanged)="onMonthChanged()">
+                            </atlas-month-date-picker>
+                            <atlas-month-date-picker isEditable=true
+                                                     label="To"
+                                                     [errorMap]="periodRangeErrorMap"
+                                                     [fieldControl]="clientDateToCtrl"
+                                                     (monthChanged)="onMonthChanged()">
+                            </atlas-month-date-picker>
+                        </div>
+                        <div fxLayout="column"
+                             fxFlex="32%">
+                            <mat-card-title>Report Parameters</mat-card-title>
+                            <div fxLayout="row">
+                                <mat-form-field>
+                                    <mat-select [formControl]="reportStyleCtrl"
+                                                [required]="reportStyleCtrl.isRequired"
+                                                (selectionChange)="optionValueChanged($event)">
+                                        <mat-option *ngFor="let reportStyle of reportStyleTypes"
+                                                    [value]="reportStyle.value">
+                                            {{reportStyle.reportStyleDescription}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="reportStyleCtrl.hasError('required')">
+                                        This field is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <mat-slide-toggle *ngIf="reportStyleCtrl.value === ReportStyleType.Summary"
+                                              [formControl]="functionalCurrencyCtrl">Functional currency only
+                            </mat-slide-toggle>
+                            <mat-slide-toggle [formControl]="accrualsIncludedCtrl">Accruals Included
+                            </mat-slide-toggle>
+                        </div>
+                        <div fxLayout="column"
+                             fxFlex="30%">
+                            <mat-card-title>Quick Filters</mat-card-title>
+                            <atlas-masterdata-user-preferences-input fxFlex="40%"
+                                                                     isEditable="true"
+                                                                     [fieldControl]="clientAccountCtrl"
+                                                                     [options]="filteredCounterPartyList"
+                                                                     label="Client Account"
+                                                                     displayProperty="counterpartyCode"
+                                                                     [selectProperties]="['counterpartyCode', 'description']"
+                                                                     [errorMap]="counterpartyErrorMap"
+                                                                     lightBoxTitle="Results for Client Accounts"
+                                                                     gridId="counterpartiesGrid">
+                            </atlas-masterdata-user-preferences-input>
+
+                            <atlas-masterdata-user-preferences-input isEditable="true"
+                                                                     [fieldControl]="currencyCtrl"
+                                                                     [options]="filteredCurrencyList"
+                                                                     label="Currency"
+                                                                     displayProperty="currencyCode"
+                                                                     [selectProperties]="['currencyCode', 'description']"
+                                                                     [errorMap]="currencyErrorMap"
+                                                                     lightBoxTitle="Results for Currencies"
+                                                                     gridId="CurrenciesGrid">
+                            </atlas-masterdata-user-preferences-input>
+
+                            <atlas-masterdata-user-preferences-input isEditable="true"
+                                                                     [fieldControl]="clientDepartmentCtrl"
+                                                                     [options]="filteredDepartmentList"
+                                                                     label="Department"
+                                                                     displayProperty="departmentCode"
+                                                                     [selectProperties]="['departmentCode', 'description']"
+                                                                     [errorMap]="departmentErrorMap"
+                                                                     lightBoxTitle="Results for Departments"
+                                                                     gridId="departmentsGrid">
+                            </atlas-masterdata-user-preferences-input>
+
+                            <atlas-masterdata-user-preferences-input fxFlex="40%"
+                                                                     isEditable="true"
+                                                                     [fieldControl]="costTypeCtrl"
+                                                                     [options]="filteredCostTypeList"
+                                                                     label="Cost Type"
+                                                                     displayProperty="costTypeCode"
+                                                                     [selectProperties]="['costTypeCode', 'name']"
+                                                                     [errorMap]="costTypeErrorMap"
+                                                                     lightBoxTitle="Results for costTypes"
+                                                                     gridId="costTypesGrid">
+                            </atlas-masterdata-user-preferences-input>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card fxFlex="260px">
+                <mat-card-content>
+                    <div fxLayout="column"
+                         fxLayoutAlign="start"
+                         fxLayoutGap="2%">
+
+                        <mat-card-title>Balances</mat-card-title>
+
+                        <mat-form-field>
+                            <mat-select [formControl]="balancesCtrl"
+                                        [required]="balancesCtrl.isRequired">
+                                <mat-option *ngFor="let balance of balancesTypes"
+                                            [value]="balance.value">
+                                    {{balance.balancesDescription}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="balancesCtrl.hasError('required')">
+                                This field is required
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-card-title>Matching</mat-card-title>
+                        <div fxLayout="row">
+                            <mat-button-toggle-group [formControl]="matchingCtrl"
+                                                     (change)="onMatchingChange($event.value)"
+                                                     [required]="matchingCtrl.isRequired">
+                                <mat-button-toggle *ngFor="let matching of matchingTypes"
+                                                   [value]="matching.value">{{matching.matchingTypeDescription}}
+                                </mat-button-toggle>
+                            </mat-button-toggle-group>
+                            <mat-error *ngIf="matchingCtrl.hasError('required')">
+                                This field is required
+                            </mat-error>
+                        </div>
+                        <div fxLayout="row">
+                            <mat-form-field>
+                                <mat-select [formControl]="unmatchedCtrl">
+                                    <mat-option *ngFor="let unmatched of unmatchedTypes"
+                                                [value]="unmatched.value">{{unmatched.unmatchedDescription}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+            <atlas-filter-set-display fxFlex="auto"
+                                      (filtersChanged)=onFilterSetChanged($event)
+                                      [columnConfiguration]="columnConfiguration"
+                                      [gridCode]="gridCode"
+                                      [company]="company"
+                                      #filterSetDisplay>
+            </atlas-filter-set-display>
+        </div>
+    </form>
+    <div fxLayout="row"
+         fxLayoutAlign="end center">
+        <button mat-raised-button
+                class="generate-report-button"
+                (click)="onGenerateReportButtonClicked()">GENERATE REPORT</button>
+    </div>
+    <mat-tab-group *ngIf="isTabEnalble"
+                   [selectedIndex]="tabIndex"
+                   (selectedIndexChange)=onSelectedIndexChanged($event)>
+        <mat-tab label="Overview"></mat-tab>
+        <mat-tab label="Details"></mat-tab>
+    </mat-tab-group>
+    <div class="content-tab">
+        <mat-tab-group [selectedIndex]="tabIndex">
+            <mat-tab>
+                <atlas-overview #overviewComponent
+                                [isFormValid]="isFormValid"
+                                [clientDateFromCtrl]="clientDateFromCtrl"
+                                [clientDateToCtrl]="clientDateToCtrl"
+                                [clientReportFormGroup]="clientReportFormGroup"
+                                [balancesCtrl]="balancesCtrl"
+                                [reportStyleCtrl]="reportStyleCtrl"
+                                [matchingCtrl]="matchingCtrl"
+                                [unmatchedCtrl]="unmatchedCtrl"
+                                [functionalCurrencyCtrl]="functionalCurrencyCtrl"
+                                [accrualsIncludedCtrl]="accrualsIncludedCtrl"
+                                [clientAccountCtrl]="clientAccountCtrl"
+                                [currencyCtrl]="currencyCtrl"
+                                [clientDepartmentCtrl]="clientDepartmentCtrl"
+                                [costTypeCtrl]="costTypeCtrl"
+                                [isTabEnalble]="isTabEnalble"></atlas-overview>
+            </mat-tab>
+            <mat-tab>
+                <atlas-detail #detailComponent
+                              [isFormValid]="isFormValid"
+                              [clientDateFromCtrl]="clientDateFromCtrl"
+                              [clientDateToCtrl]="clientDateToCtrl"
+                              [clientReportFormGroup]="clientReportFormGroup"
+                              [balancesCtrl]="balancesCtrl"
+                              [reportStyleCtrl]="reportStyleCtrl"
+                              [matchingCtrl]="matchingCtrl"
+                              [unmatchedCtrl]="unmatchedCtrl"
+                              [functionalCurrencyCtrl]="functionalCurrencyCtrl"
+                              [accrualsIncludedCtrl]="accrualsIncludedCtrl"
+                              [clientAccountCtrl]="clientAccountCtrl"
+                              [currencyCtrl]="currencyCtrl"
+                              [clientDepartmentCtrl]="clientDepartmentCtrl"
+                              [costTypeCtrl]="costTypeCtrl"></atlas-detail>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <mat-card *ngIf="!isTabEnalble">
+        <mat-card-content>
+            <div fxLayout="row"
+                 fxLayoutAlign="end start">
+                <atlas-ag-grid-user-preferences *ngIf="agGridOptions && agGridOptions.columnDefs && isClientReportDisplay"
+                                                [gridOptions]="agGridOptions"
+                                                [company]="company"
+                                                [gridId]="gridCode"
+                                                [isAutosize]="false"
+                                                [defaultViewIsLatestView]="true"
+                                                fxLayoutAlign="end"
+                                                [sharingEnabled]="hasGridSharing"
+                                                (exportClicked)="onExportButtonClickToExcel($event)"
+                                                [isCustomExportEnabled]="true"
+                                                (componentLoaded)="onUserPreferencesLoaded()"
+                                                (gridViewSelected)="onGridViewSelected($event)"
+                                                #userPreferences>
+                </atlas-ag-grid-user-preferences>
+                <atlas-grid-enlargement *ngIf="agGridOptions && agGridOptions.columnDefs && isClientReportDisplay"
+                                        [gridOptions]="agGridOptions"
+                                        [userPreferencesParameters]="gridPreferences"
+                                        [hasRangeSelectionOption]="true"
+                                        [summableColumns]="allowedColumnsforQuickSum"
+                                        (columnRowGroupChanged)="onColumnVisibilityChanged($event)"
+                                        (columnVisibilityChanged)="onColumnVisibilityChanged($event)"
+                                        (customExcelExport)="onExportButtonClickToExcel($event)"
+                                        (dialogClose)="onGridEnlargementClose($event)"
+                                        #gridZoom>
+                </atlas-grid-enlargement>
+            </div>
+            <div fxLayout="row"
+                 *ngIf='isClientReportDisplay'
+                 class="quick-sum-div-height"
+                 fxLayoutAlign="space-between center">
+                <mat-slide-toggle mat-raised-button
+                                  (change)="toggleQuickSum($event.checked)">Quick Sum Mode</mat-slide-toggle>
+                <div fxLayout="row"
+                     fxLayoutAlign="space-around center">
+
+                    <div *ngFor="let column of selectedColumnsArray">
+                        <span class="quick-sum-span"
+                              *ngIf="quickSumModeActivated">{{column.name}} : {{column.sum | number }} </span>
+                    </div>
+                    <button mat-button
+                            (click)="onClearSelectionClicked()"
+                            class="mat-button-user-margin"
+                            *ngIf="quickSumModeActivated">Clear Selection</button>
+                </div>
+            </div>
+            <div ag-grid="agGridOptions"
+                 [ngClass]='classApplied'
+                 style="width: 100%; height: 100%">
+                <ag-grid-angular style=" height: 100%;"
+                                 [ngClass]="{'hidden-during-loading':!isClientReportDisplay}"
+                                 class="ag-theme-material"
+                                 [rowData]="agGridRows"
+                                 [columnDefs]="agGridCols"
+                                 [enableColResize]="true"
+                                 [pagination]="true"
+                                 [paginationPageSize]="100"
+                                 [enableSorting]="true"
+                                 domLayout=autoHeight
+                                 (gridReady)="onGridReady($event)"
+                                 [gridOptions]="agGridOptions"
+                                 [enableRangeSelection]="true"
+                                 [groupMultiAutoColumn]="groupMultiAutoColumn"
+                                 [rowGroupPanelShow]="rowGroupPanelShow"
+                                 (columnVisible)="onColumnVisibilityChanged($event)"
+                                 (columnRowGroupChanged)="onColumnVisibilityChanged($event)"
+                                 (rangeSelectionChanged)="onRangeSelectionChanged($event)"
+                                 enableFilter
+                                 [context]="gridContext"
+                                 [suppressAggFuncInHeader]="true"
+                                 [rowHeight]="atlasAgGridParam.rowHeight"
+                                 [excelStyles]="excelStyles">
+                </ag-grid-angular>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 *ngIf="isLoading"
+                 class="loading">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

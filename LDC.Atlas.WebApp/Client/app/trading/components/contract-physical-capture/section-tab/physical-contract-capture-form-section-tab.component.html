@@ -1,0 +1,39 @@
+<div fxLayout="row"
+     fxLayout.md="column"
+     fxLayoutAlign="end">
+
+    <div fxLayout="row"
+         fxLayoutAlign="end"
+         fxFlex="32">
+        <span matTooltip={{toolTipMerge}}>
+            <button mat-button
+                    *ifAuthorized="'Trades.Physicals.Merge',company:this.company"
+                    [disabled]="disableTradeMerge"
+                    (click)="onMergeButtonClicked()">MERGE
+            </button>
+        </span>
+        <span matTooltip={{toolTipSplit}}>
+            <button mat-button
+                    *ngIf="!isCreateMode"
+                    [disabled]="disableCreateSplit || isSnapshot"
+                    (click)="onUpdateSplitTranchesButtonClicked()">UPDATE
+                SPLITS & TRANCHES</button>
+        </span>
+        <span matTooltip={{toolTipSplit}}>
+            <button mat-button
+                    *ifAuthorized="'Trades.Physicals.CreateTrancheSplit',company:this.company"
+                    [disabled]="disableCreateSplit || isSnapshot ||!trancheSplitPrivilege"
+                    (click)="onSplitSideNavOpenClicked();">CREATE
+                SPLIT</button>
+        </span>
+        <span matTooltip={{toolTipTranche}}>
+            <button mat-button
+                    *ifAuthorized="'Trades.Physicals.CreateTrancheSplit',company:this.company"
+                    [disabled]="disableCreateTranche || isSnapshot||!trancheSplitPrivilege"
+                    (click)="onTrancheSideNavOpenClicked();">CREATE
+                TRANCHE</button>
+        </span>
+    </div>
+</div>
+<atlas-tranche-split-grid [childSectionsSearchResult]="childSectionsSearchResult"
+                          #TranceSplitGridFormComponent></atlas-tranche-split-grid>

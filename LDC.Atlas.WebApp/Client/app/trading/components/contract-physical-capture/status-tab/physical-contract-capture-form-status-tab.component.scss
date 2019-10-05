@@ -1,0 +1,13 @@
+.status-tab-main {
+	&::ng-deep {
+		.mat-form-field-underline {
+			display: none;
+		}
+	}
+	h6 {
+		margin: 0;
+	}
+	h4 {
+		margin: 0;
+	}
+}

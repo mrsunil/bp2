@@ -1,0 +1,18 @@
+<div [ngSwitch]="invoiceTypeId">
+    <atlas-commercial #commercialComponent
+                      *ngSwitchDefault></atlas-commercial>
+    <atlas-cost #costComponent
+                *ngSwitchCase=InvoiceTypes.Cost>
+    </atlas-cost>
+    <atlas-goods-cost #goodsCostComponent
+                      *ngSwitchCase=InvoiceTypes.GoodsCostPurchase>
+    </atlas-goods-cost>
+    <atlas-goods-cost #goodsCostComponent
+                      *ngSwitchCase=InvoiceTypes.GoodsCostSales>
+    </atlas-goods-cost>
+    <atlas-washout #washoutComponent
+                   *ngSwitchCase=InvoiceTypes.Washout>
+    </atlas-washout>
+    <atlas-reversal #reversalComponent
+                    *ngSwitchCase="InvoiceTypes.Reversal"></atlas-reversal>
+</div>

@@ -1,0 +1,64 @@
+<div class="company-masterdata-warning-banner">
+    <mat-card class="company-masterdata-warning-card">
+        <div class="question-circle-icon">
+            <mat-icon>help_outline</mat-icon>
+        </div>
+        <mat-card-header>
+            <mat-card-title>
+                <h4>Transactional Data Requirements</h4>
+            </mat-card-title>
+            <mat-card-subtitle>
+                You need to copy all Master Data to the new company to be able to copy Transactional
+                Data
+            </mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+</div>
+<div fxLayout="row"
+     fxLayout.md="column"
+     fxLayoutAlign="space-between">
+    <mat-card class="master-data-card">
+        <mat-card-title>
+            <h2> Automatic Master Data Import</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+            Following Master Data will be imported automatically
+        </mat-card-subtitle>
+        <mat-card-content>
+            <p>Arbitration</p>
+            <p>Business Sector</p>
+            <p>Price Unit</p>
+            <p>Weight Unit</p>
+            <p>Commodity</p>
+            <p>Nominal Account</p>
+            <p>Cost Type</p>
+            <p>Contract Term</p>
+            <p>Payment Term</p>
+            <p>Port</p>
+            <p>Profit Centre</p>
+            <p>Tax</p>
+            <p>Vessel</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="master-data-card">
+        <mat-card-title>
+            <h2> Optional Master Data Import
+                <mat-slide-toggle [formControl]="masterDataCtrl"
+                                  [checked]="isCounterpartyExist"
+                                  (change)="onCounterpartyToggleChange($event)">
+                </mat-slide-toggle>
+            </h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+            By activating this toggle, you will import following Master Data
+        </mat-card-subtitle>
+        <mat-card-content>
+            <p>MDM category</p>
+            <p>Account Types</p>
+            <p>Counterparty</p>
+            <p>Address</p>
+            <p>Bank Accounts</p>
+            <p>Bank Intermediary</p>
+        </mat-card-content>
+    </mat-card>
+</div>

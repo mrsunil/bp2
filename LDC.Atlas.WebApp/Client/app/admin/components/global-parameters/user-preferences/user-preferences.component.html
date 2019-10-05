@@ -1,0 +1,69 @@
+<div class="main-container hub-menu">
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+
+        <div fxLayout.xs="column"
+             fxLayoutAlign="space-between"
+             fxLayoutGap="10px"
+             fxLayoutGap.sm="10"
+             class="hub-menu-panel">
+
+            <mat-card class="active-card"
+                      (click)="onLanguageTabClicked()">
+                <img mat-card-image
+                     src=".\assets\img\Companies_small.jpg">
+                <mat-card-title>
+                    <h2 class="no-margin"> Language</h2>
+                </mat-card-title>
+                <p class="no-margin">Customize the language of Atlas V2 application</p>
+            </mat-card>
+
+            <mat-card class="active-card"
+                      (click)="onDateFormatTabClicked()">
+                <img mat-card-image
+                     src=".\assets\img\GlobalParam_small.jpg">
+                <mat-card-title>
+                    <h2 class="no-margin">Date format</h2>
+                </mat-card-title>
+                <p class="no-margin">Adapt the date format to your needs
+                </p>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
+
+<div fxLayout="column"
+     [hidden]="false">
+    <mat-sidenav-container>
+        <mat-sidenav #languageSideNav
+                     class="sidenav"
+                     mode="over"
+                     position="end"
+                     disableClose
+                     [fixedTopGap]="56"
+                     [fixedInViewport]="true">
+            <atlas-language #languageComponent
+                            (saveMandatory)="languageSideNav.close()"
+                            (discardChanges)="onDiscardButtonClicked($event)">
+            </atlas-language>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>
+
+<div fxLayout="column">
+    <mat-sidenav-container>
+        <mat-sidenav #dateFormatSideNav
+                     class="sidenav"
+                     mode="over"
+                     position="end"
+                     disableClose
+                     [fixedTopGap]="56"
+                     [fixedInViewport]="true">
+            <atlas-date-format #dateFormatComponent
+                               (saveMandatory)="dateFormatSideNav.close()"
+                               (discardChanges)="onDiscardButtonClicked($event)">
+            </atlas-date-format>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>

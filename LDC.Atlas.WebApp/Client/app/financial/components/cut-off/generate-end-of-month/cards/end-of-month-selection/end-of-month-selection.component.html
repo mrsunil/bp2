@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>End of month selection</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <atlas-dropdown-select fxFlex='30%'
+                                   [label]="'Database Snapshot'"
+                                   [fieldControl]="snapshotsCtrl"
+                                   isEditable=true
+                                   [options]="snapshotList"
+                                   [errorMap]="snapshotErrorMap"
+                                   displayProperty="freezeDate"
+                                   [selectProperties]="['freezeDate']"
+                                   (optionSelected)="onSnapshotSelected($event)"></atlas-dropdown-select>
+
+            <atlas-dropdown-select fxFlex='30%'
+                                   [label]="'Type'"
+                                   [fieldControl]="reportTypeCtrl"
+                                   isEditable=true
+                                   [options]="reportTypeList"
+                                   [errorMap]="reportTypeErrorMap"
+                                   displayProperty="enumEntityValue"
+                                   [selectProperties]="['enumEntityValue']"
+                                   (optionSelected)="onReportTypeSelected($event)"></atlas-dropdown-select>
+        </div>
+    </mat-card-content>
+</mat-card>

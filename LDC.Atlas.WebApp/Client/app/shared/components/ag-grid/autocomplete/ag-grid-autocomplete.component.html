@@ -1,0 +1,28 @@
+<div [class.displayMode]="!isEditable"
+     class="custom-form"
+     [class.isEmpty]="!fieldControl.value"
+     [class.required-field]="isRequired">
+    <mat-form-field floatLabel="never">
+        <input [class.displayMode]="formControl.disabled"
+               type="text"
+               matInput
+               [formControl]="formControl"
+               (click)="onInputClicked()"
+               (focusout)="onFocusOut()"
+               [matAutocomplete]="autocomplete">
+        <mat-placeholder class="placeholder"> {{isRequiredField?'Required *':null}}</mat-placeholder>
+        <mat-icon *ngIf="!formControl.disabled"
+                  class="bookmark-icon"
+                  matSuffix>bookmark</mat-icon>
+        <mat-autocomplete #autocomplete="matAutocomplete"
+                          (optionSelected)="selectionChanged($event);"
+                          [displayWith]="displayFn.bind(this)">
+            <mat-option *ngFor="let object of filteredOptions"
+                        [value]="valueProperty ? object[valueProperty] : object">
+                <span>{{ codeProperty ? object[codeProperty] : '' }}</span>
+                <span *ngIf="codeProperty && descriptionProperty"> | </span>
+                <span>{{ descriptionProperty ? object[descriptionProperty] : descriptionProperty }}</span>
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</div>

@@ -1,0 +1,822 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.MasterData</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.ArbitrationsCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.ArbitrationsUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.ArbitrationsCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.ArbitrationsCreateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "create" event of a commodity configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to create commodities and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.BusinessSectorsCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.BusinessSectorsUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a business sector configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update businessSector and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.CommodityTypes.CreateCommodityTypes.CreateCommodityTypesCommandHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.CommodityTypes.CreateCommodityTypes.CreateCommodityTypesCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "create" event of a commodity configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to create commodities and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.CommodityTypes.DeleteCommodityTypes.DeleteCommodityTypesCommandHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.CommodityTypes.DeleteCommodityTypes.DeleteCommodityTypesCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "delete" event of a commodity configuration
+            </summary>
+            <param name="request">The command object that contains the id of commodities.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.CommodityTypes.UpdateCommodityTypes.UpdateCommodityTypesCommandHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.CommodityTypes.UpdateCommodityTypes.UpdateCommodityTypesCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a commodity configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update commodities and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.ContractTermsCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.ContractTermsUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a contract term configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update contractTerms and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.CostTypesCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.CostTypesUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.MasterData.Application.Command.AddUpdateCounterpartyCommand">
+            <summary>
+            Counterpaty objects to hold all the informations 
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.CountryCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.CountryUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.CurrencyCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.CurrencyUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.DepartmentsCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.DepartmentsUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.FxTradeTypeCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.FxTradeTypeGlobalUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of  Fx Trade Type
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.FxTradeTypeCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.FxTradeTypeLocalUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of Fx Trade Type
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.FxTradeTypeCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.FxTradeTypeCreateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "create" event of a commodity configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to create commodities and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.NominalAccountCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.NominalAccountUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.PaymentTermsCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.PaymentTermsUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a contract term configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update contractTerms and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.PeriodTypesCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.PeriodTypesUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.PortsCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.PortsUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Ports unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Ports unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.PricesUnits.DeletePricesUnits.DeletePricesUnitsCommandHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.PricesUnits.DeletePricesUnits.DeletePricesUnitsCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "delete" event of a price unit configuration
+            </summary>
+            <param name="request">The command object that contains the list id of price unit.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.ProfitCentersCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.ProfitCentersUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.RegionsCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.RegionsUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.ShippingStatusCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.ShippingStatusUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.TaxCodesCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.TaxCodesUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.VesselCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.VesselUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a vessel configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update vessels and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Application.Command.WeightUnitCommandsHandler.Handle(LDC.Atlas.Services.MasterData.Application.Command.WeightUnitsUpdateCommands,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a Price unit configuration
+            </summary>
+            <param name="request">The command object that contains all the properties to update Price unit and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.AccountLineTypesController.Get">
+            <summary>
+            Returns the list of account line types.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.ArbitrationsController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of arbitrations.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.ArbitrationsController.Delete(LDC.Atlas.Services.MasterData.Application.Command.ArbitrationCommands.DeleteArbitrationsCommand)">
+            <summary>
+            Delete a list of arbitrations.
+            </summary>
+            <param name="request">The list of arbitrations to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.ArbitrationsController.Deactivate(LDC.Atlas.Services.MasterData.Application.Command.ArbitrationCommands.DeactivateArbitrationsCommand)">
+            <summary>
+            Deactivate a list of arbitrations.
+            </summary>
+            <param name="request">The list of arbitrations to deactivate.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.BankAccountStatusesController.Get">
+            <summary>
+            Returns the list of bank account status.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.BankNccTypesController.Get">
+            <summary>
+            Returns the list of bank ncc types.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.BankTypesController.Get">
+            <summary>
+            Returns the list of bank types.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.BranchesController.Get(System.String,System.String,System.Boolean)">
+            <summary>
+            Returns the list of provinces.
+            </summary>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.BusinessSectorsController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of market sectors.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CashTypesController.Get">
+            <summary>
+            Returns the list of cash types.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CommoditiesController.Get(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,LDC.Atlas.Services.MasterData.Entities.CommoditySearchTerm,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of commodities.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">Options for pagination.</param>
+            <param name="commoditySearchTerm">Search terms for commodities.</param>
+            <param name="code">Parameter to support the quick search functionality for masterdata management.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CommodityTypesController.Get(System.String,System.String,System.Boolean)">
+            <summary>
+            Returns the list of commodity types.
+            </summary>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CommodityTypesController.Update(LDC.Atlas.Services.MasterData.Application.Command.CommodityTypes.UpdateCommodityTypes.UpdateCommodityTypesCommand)">
+            <summary>
+            Updates commodity types on the global level.
+            </summary>
+            <param name="request">The command object which contains the commodity types records to update.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CommodityTypesController.CreateGlobal(LDC.Atlas.Services.MasterData.Application.Command.CommodityTypes.CreateCommodityTypes.CreateCommodityTypesCommand)">
+            <summary>
+            Create commodity types on the global level.
+            </summary>
+            <param name="request">The command object which contains the commodity types records to create.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CommodityTypesController.Delete(LDC.Atlas.Services.MasterData.Application.Command.CommodityTypes.DeleteCommodityTypes.DeleteCommodityTypesCommand)">
+            <summary>
+            Delete a list of commodity types.
+            </summary>
+            <param name="request">The list of commodity types to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CompaniesController.Get(System.Nullable{System.Int64})">
+            <summary>
+            Returns the list of companies.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CompaniesController.GetCompanyById(System.String)">
+            <summary>
+            Returns a company by its identifier.
+            </summary>
+            <param name="companyId">The company identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CompaniesController.GetCompanyDate(System.String)">
+            <summary>
+            Returns the current date of a specified company.
+            </summary>
+            <param name="companyId">The company identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CompaniesController.GetAllByCounterpartyIdAsync(System.String,System.Int64)">
+            <summary>
+            List of comapnies mapped with Counterparty
+            </summary>
+            <param name="company">Company Id</param>
+            <param name="counterpartyId">Counterparty Id</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CompaniesController.CheckCompanyNameExists(System.String)">
+            <summary>
+            Checks if a company name already exists.
+            </summary>
+            <param name="companyName">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CompanyBankAccountsController.Get(System.String,System.String)">
+            <summary>
+            Returns the list of bank names based on the company and currency code.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="currency">The currency code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CompanyCropYearFormatsController.Get">
+            <summary>
+            Returns the list of company crop year formats.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CompanyPlatformsController.Get">
+            <summary>
+            Returns the list of company types.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CompanyTypesController.Get">
+            <summary>
+            Returns the list of company types.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.ContractStatusController.Get(System.String)">
+            <summary>
+            Returns the list of contract status.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.ContractTermsController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of contract terms.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.ContractTypesController.Get(System.String)">
+            <summary>
+            Returns the list of contract types.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CostTypesController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of cost types.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The name to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CounterpartiesController.Get(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.String,System.String)">
+            <summary>
+            Returns the list of counter parties.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="code">The start of the counterparty code to search for</param>
+            <param name="description">The search term for the description of the counterparty</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CounterpartiesController.GetFuturesOptionsClients(System.String)">
+            <summary>
+            Returns the list of futures options clients.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CounterpartiesController.GetFuturesOptionsBrokers(System.String)">
+            <summary>
+            Returns the list of futures options brokers.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CounterpartiesController.GetCounterpartyById(System.String,System.Int64)">
+            <summary>
+            Returns a Counterparty details along with addresses, bank accounts, contacts, taxes by its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="counterpartyId">The counter party identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CounterpartiesController.GetMdmCategoryAccountTypeMapping">
+            <summary>
+            Returns MDM category and Accoount Type Mapping Data
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CounterpartiesController.AddUpdateCounterparty(System.String,LDC.Atlas.Services.MasterData.Application.Command.AddUpdateCounterpartyCommand)">
+            <summary>
+            Add or Update the Counterpart details along with addresses, bank accounts, contacts, taxes
+            </summary>
+            <param name="company">The company code</param>
+            <param name="counterparty">Counterpart object</param>
+            <returns>Counterparty Id single or multiple</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CounterpartiesController.BulkUpdateCounterparty(System.String,LDC.Atlas.Services.MasterData.Application.Command.BulkUpdateCounterpartyCommand)">
+            <summary>
+            Bulk update Counterpart details
+            </summary>
+            <param name="company">The company code</param>
+            <param name="counterparties">Counterparty object list</param>
+            <returns>Counterparty Id single or multiple</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CounterPartyBankAccountsController.Get(System.String,System.Int32,System.String)">
+            <summary>
+            Returns the list of bank names based on the counterparty code and currency code.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="counterParty">The counterparty identifier.</param>
+            <param name="currency">The currency code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CountriesController.Get(System.String,System.String,System.Boolean)">
+            <summary>
+            Returns the list of countries.
+            </summary>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CountriesController.Delete(LDC.Atlas.Services.MasterData.Application.Command.CountryCommands.DeleteCountriesCommand)">
+            <summary>
+            Delete a list of countries.
+            </summary>
+            <param name="request">The list of countries to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CurrenciesController.Get(System.String,System.String,System.Boolean)">
+            <summary>
+            Returns the list of currencies.
+            </summary>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.CurrenciesController.Delete(LDC.Atlas.Services.MasterData.Application.Command.CurrencyCommands.DeleteCurrenciesCommand)">
+            <summary>
+            Delete a list of currencies.
+            </summary>
+            <param name="request">The list of currencies to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.DateFormatPreferenceController.Get">
+            <summary>
+            Returns the list of date formats.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.DepartmentsController.Get(System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.String,System.String,System.Boolean)">
+            <summary>
+            Returns the list of departments.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="selectedCompanies">The selected company code.</param>
+            <param name="pagingOptions">for paging options code.</param>
+            <param name="code">The department code.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.FxRatesController.GetAsync(System.Nullable{System.DateTime},System.String,System.Boolean)">
+            <summary>
+            Returns the list of foreign exchange rates.
+            </summary>
+            <param name="fxRateDate">The date for which to request the foreign exchange rates. Required in Daily and Monthly view modes.</param>
+            <param name="viewMode">The view mode (Spot, Daily, Monthly). If not specified, Spot by default.</param>
+            <param name="inactiveCurrencies">The inactivecurrencies send whether to show active currencies or both .Default it is false</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.FxRatesController.ImportFxRates(System.Collections.Generic.List{LDC.Atlas.Services.MasterData.Entities.FxRateToImport})">
+            <summary>
+            Imports a list of foreign exchange rates.
+            </summary>
+            <param name="fxRates">The foreign exchange rates to add.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.FxRatesController.GetFxRateByDateAsync(System.DateTime,System.String)">
+            <summary>
+            Get foreign exchange rate for a currency for a specified date.
+            </summary>
+            <param name="fxRateDate">The date for which to request the foreign exchange rate.</param>
+            <param name="currencyCode">The currency code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.FxRatesController.Convert(System.String,System.String,System.Decimal,System.Nullable{System.DateTime})">
+            <summary>
+            Converts the specified value from a currency to another.
+            </summary>
+            <param name="currencyCodeFrom">The currency code from.</param>
+            <param name="currencyCodeTo">The currency code to.</param>
+            <param name="value">The value to convert.</param>
+            <param name="fxRateDate">The fx rate date.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.FxRatesCsvImporter.ProcessManualFxRatesImport(System.Collections.Generic.List{LDC.Atlas.Services.MasterData.Entities.FxRateCsvLine})">
+            <summary>
+            Validates the FXRates data read from CSV.
+            </summary>
+            <param name="csvFxRatesData">List of FxRates read from CSV File.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.FxRatesCsvImporter.ConvertToFxRateRecord(System.Collections.Generic.List{LDC.Atlas.Services.MasterData.Entities.FxRateCsvLine})">
+            <summary>
+            Reads the dictionary object and generates FxRateRecord Object
+            </summary>
+            <param name="dictionaryDataToBeFormatted">Dictionary Object to be formatted</param>
+            <returns>FxRateRecord Object</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.InterfaceObjectTypeController.Get">
+            <summary>
+            Returns the list of interface types.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.InterfaceStatusController.Get">
+            <summary>
+            Returns the list of interface status.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.InterfaceTypeController.Get">
+            <summary>
+            Returns the list of interface types.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.InvoiceTypesController.Get">
+             <summary>
+             Returns the list of Invoice Types.
+             </summary>
+            
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.LanguagePreferenceController.Get">
+            <summary>
+            Returns the list of languagess.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.MdmCategoriesController.Get">
+            <summary>
+            Returns the list of MdmCategories.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.MonthEndReportTypeController.Get(System.String)">
+            <summary>
+            Returns the list of MOnth end report types.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.NominalAccountsController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of nominal accounts.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The nominal account number to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PaymentTermsController.Get(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of payment terms.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="code">The start of the paymentTerm code to search for</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PeriodTypesController.Get(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Returns the list of period types.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PeriodTypesController.Delete(LDC.Atlas.Services.MasterData.Application.Command.PeriodTypeCommands.DeletePeriodTypesCommand)">
+            <summary>
+            Delete a list of period types.
+            </summary>
+            <param name="request">The list of period types to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PhysicalDocumentStatusController.Get(System.String)">
+            <summary>
+            Returns the list of physical document status.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PhysicalDocumentTypesController.Get(System.String)">
+            <summary>
+            Returns the list of physical document types.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PNLTypesController.Get(System.String)">
+            <summary>
+            Returns the list of pnl types.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PortsController.Get(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of ports.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">for paging code.</param>
+            <param name="code">The port code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PostingStatusController.Get(System.String)">
+            <summary>
+            Returns the list of cost types.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PriceUnitsController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of price units.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PriceUnitsController.Update(System.String,LDC.Atlas.Services.MasterData.Application.Command.UpdatePricesUnits.UpdatePricesUnitsLocalCommand)">
+            <summary>
+            Updates price units on the company level.
+            </summary>
+            <param name="company">Then company that the user belongs to.</param>
+            <param name="request">The command object which contains the price unit records to update.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PriceUnitsController.UpdateGlobal(System.String,LDC.Atlas.Services.MasterData.Application.Command.UpdatePricesUnits.UpdatePricesUnitsCommand)">
+            <summary>
+            Updates price units on the global level.
+            </summary>
+            <param name="company">Then company that the user belongs to.</param>
+            <param name="request">The command object which contains the price unit records to update.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PriceUnitsController.CreateGlobal(System.String,LDC.Atlas.Services.MasterData.Application.Command.CreatePricesUnits.CreatePricesUnitsCommand)">
+            <summary>
+            Create price units on the global level.
+            </summary>
+            <param name="company">Then company that the user belongs to.</param>
+            <param name="request">The command object which contains the price unit records to create.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PriceUnitsController.Delete(LDC.Atlas.Services.MasterData.Application.Command.PricesUnits.DeletePricesUnits.DeletePricesUnitsCommand)">
+            <summary>
+            Delete a list of prices units.
+            </summary>
+            <param name="request">The list of prices units to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PriceUnitsController.GetAssignments(LDC.Atlas.Services.MasterData.Application.Queries.Dto.GetAssignmentsRequest)">
+            <summary>
+            Returns the list of assignments for price units.
+            </summary>
+            <param name="request">The list of price units.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PriceUnitsController.Assign(System.String,LDC.Atlas.Services.MasterData.Application.Command.PriceUnitCommands.AssignPriceUnitCommand)">
+            <summary>
+            Assigns or deassigns a list of price units to companies.
+            </summary>
+            <param name="company">Then company that the user belongs to.</param>
+            <param name="request">The masterdata to assign or deassign.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PriceUnitsController.GetActivations(LDC.Atlas.Services.MasterData.Application.Queries.Dto.GetActivationsRequest)">
+            <summary>
+            Returns the list of activations for price units.
+            </summary>
+            <param name="request">The list of price units.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.PriceUnitsController.Activate(System.String,LDC.Atlas.Services.MasterData.Application.Command.PriceUnitCommands.ActivatePriceUnitCommand)">
+            <summary>
+            Activates or deactivates a list of price units to companies.
+            </summary>
+            <param name="company">Then company that the user belongs to.</param>
+            <param name="request">The masterdata to activate or deactivate.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.ProcessStatusesController.Get">
+            <summary>
+            Returns the list of process status.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.ProfitCentersController.Get(System.String,System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of profit centers.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="selectedCompanies">The list of section identifiers.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.ProvincesController.Get(System.String,System.String,System.Boolean)">
+            <summary>
+            Returns the list of provinces.
+            </summary>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.RateTypesController.Get(System.String)">
+            <summary>
+            Returns the list of Rate Types.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.RegionsController.Get(System.String,System.String,System.Boolean)">
+            <summary>
+            Returns the list of regions.
+            </summary>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.RegionsController.Delete(LDC.Atlas.Services.MasterData.Application.Command.RegionCommands.DeleteRegionsCommand)">
+            <summary>
+            Delete a list of regions.
+            </summary>
+            <param name="request">The list of regions to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.ShippingStatusController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of shipping status.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.TaxCodeController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of Tax Types.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.TaxTypesController.Get(System.String)">
+            <summary>
+            Returns the list of Tax Types.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.TimeZonesController.Get">
+            <summary>
+            Returns the list of time zones.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.TransactionDocumentStatusController.Get(System.String)">
+            <summary>
+            Returns the list of transaction document status.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.TransactionDocumentTypeController.Get(System.String)">
+            <summary>
+            Returns the list of physical document types.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.TransportTypesController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of transport types.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.VatsController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of vat.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.VesselsController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of vessels.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The name to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.MasterData.Controllers.WeightUnitsController.Get(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Returns the list of weight units.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="code">The code to search for.</param>
+            <param name="description">The description to search for.</param>
+            <param name="includeDeactivated">Include or not deactivated lines.</param>
+            <param name="viewMode">The view mode (Local, Global). If not specified, Local by default.</param>
+        </member>
+        <member name="F:LDC.Atlas.Services.MasterData.Model.RedisConnectionFactory._connection">
+            <summary>
+                The _connection.
+            </summary>
+        </member>
+    </members>
+</doc>

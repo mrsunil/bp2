@@ -1,0 +1,34 @@
+<mat-card class="trade-capture-card">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Shipment Information</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div fxFlex="60%"
+                 [class.displayMode]="!vesselCtrl.enabled"
+                 fxLayout="column">
+                <atlas-masterdata-user-preferences-input [isEditable]="vesselNamePrivilege"
+                                                         [fieldControl]="vesselCtrl"
+                                                         [options]="filteredVessels"
+                                                         label="Vessel Name"
+                                                         displayProperty="vesselName"
+                                                         [selectProperties]="['vesselName']"
+                                                         [errorMap]="vesselErrorMap"
+                                                         lightBoxTitle="Results for Vessel"
+                                                         gridId="vesselsGrid">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+            <div fxLayout="column"
+                 fxFlex="50%">
+                <div fxLayout="row"
+                     fxLayoutAlign="left start">
+                </div>
+            </div>
+        </div>
+
+    </mat-card-content>
+</mat-card>

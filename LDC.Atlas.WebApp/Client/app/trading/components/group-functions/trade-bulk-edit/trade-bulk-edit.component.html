@@ -1,0 +1,131 @@
+<form [formGroup]="bulkEditionFormGroup">
+    <div class="main-container">
+        <mat-horizontal-stepper [linear]
+                                (selectionChange)="onChangeStepAction($event)"
+                                #stepper>
+            <ng-template matStepperIcon="edit">
+                <mat-icon>check</mat-icon>
+            </ng-template>
+            <mat-step>
+                <ng-template matStepLabel>Contracts</ng-template>
+                <atlas-group-function-warning #groupFunctionWarning></atlas-group-function-warning>
+                <atlas-group-function-contracts #contractSelection
+                                                (contractSelected)="isContractSelected($event)">
+                </atlas-group-function-contracts>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <button (click)="onContractSelectionDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onContractSelectionNextButtonClicked()"
+                                    [disabled]="isContractsNextDisabled">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Fields</ng-template>
+                <atlas-trade-bulk-fields #tradeBulkFields
+                                         (selectedFieldsToEdit)="getSelectedFieldsToEdit($event)">
+                </atlas-trade-bulk-fields>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="row "
+                         fxLayoutAlign="start ">
+                        <button (click)="onFieldSelectionDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                        <button mat-button
+                                (click)="onFieldSelectionPreviousButtonClicked()">
+                            PREVIOUS
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onFieldSelectionNextButtonClicked()">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Details</ng-template>
+                <atlas-edition-matrix #editionMatrix
+                                      (blockingErrorMessage)=saveBlockingMessage($event)></atlas-edition-matrix>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="bulk-edit-card">
+                    <div fxLayout="row "
+                         fxLayoutAlign="start ">
+                        <button (click)="onEditionMatrixDiscardButtonClicked()"
+                                [disabled]="isSaveInProgress"
+                                mat-button>
+                            DISCARD
+                        </button>
+                        <button mat-button
+                                (click)="onEditionMatrixPreviousButtonClicked()"
+                                [disabled]="isSaveInProgress">
+                            PREVIOUS
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onBulkEditionSaveButtonClicked()"
+                                    [disabled]="isSaveInProgress">
+                                SAVE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Summary</ng-template>
+                <atlas-edition-matrix #summaryGrid></atlas-edition-matrix>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="row "
+                         fxLayoutAlign="start ">
+                        <button mat-raised-button
+                                (click)="onSummaryEditButtonClicked()"
+                                [disabled]="!fetchingInProgress"
+                                mat-button>
+                            EDIT
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onCloseButtonClicked()">
+                                CLOSE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</form>

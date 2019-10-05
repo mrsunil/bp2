@@ -1,0 +1,66 @@
+<div class="main-container hub-menu">
+    <h1>Reports Panel</h1>
+    <div fxLayout="row wrap"
+         fxLayoutAlign="start stretch"
+         fxLayoutGap="16px"
+         class="hub-menu-panel"
+         [hidden]="isLoading">
+
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/globalreports')"
+                  *ifAuthorized="'Reports.GlobalReports',company:this.company">
+            <!-- remove tooltip and overlay when link implemented-->
+            <img mat-card-image
+                 src=".\assets\img\globalReport.png">
+            <mat-card-title>
+                <h2 class="no-margin">Global Reports</h2>
+            </mat-card-title>
+            <p class="no-margin">Global Reports description</p>
+        </mat-card>
+
+        <mat-card class="active-card"
+                  (click)="onNavigateButtonClicked('/reporting/customreports')">
+            <img mat-card-image
+                 src=".\assets\img\customReport.png">
+            <mat-card-title>
+                <h2 class="no-margin">Custom Reports</h2>
+            </mat-card-title>
+            <p class="no-margin">Custom Reports Description</p>
+        </mat-card>
+
+        <mat-card class="inactive-card"
+                  matTooltip="Feature coming soon">
+            <img mat-card-image
+                 src=".\assets\img\accountingReport.png">
+            <div class="overlay"></div>
+            <mat-card-title>
+                <h2 class="no-margin">Accounting documents Reports</h2>
+            </mat-card-title>
+            <p class="no-margin">Accounting documents Reports Description</p>
+        </mat-card>
+
+        <mat-card class="inactive-card"
+                  matTooltip="Feature coming soon">
+            <img mat-card-image
+                 src=".\assets\img\docTemplateReport.png">
+            <div class="overlay"></div>
+            <mat-card-title>
+                <h2 class="no-margin">Document template builder</h2>
+            </mat-card-title>
+            <p class="no-margin">Document template builder description</p>
+        </mat-card>
+    </div>
+    <div *ngIf="isLoading">
+        <mat-card>
+            <h2>Loading</h2>
+            <div class="custom-line-title"></div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 fxLayoutGap="20px">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+        </mat-card>
+    </div>
+</div>

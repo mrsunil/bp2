@@ -1,0 +1,14 @@
+<atlas-financial-tab-group hasAddButton=true
+                           buttonText="CUT-OFF ACTIONS">
+</atlas-financial-tab-group>
+
+<div class="main-container">
+    <atlas-freeze-header *ngIf="isNew"
+                         (freezeCreated)="onCreated()"></atlas-freeze-header>
+    <atlas-freeze-grid #grid
+                       [freezeMenuActions]="freezeMenuActions"
+                       [freezeGridContextualMenuActions]="freezeGridContextualMenuActions"
+                       (menuActionClicked)="onMenuActionClicked($event)"
+                       [isLoading]="isLoading"
+                       [rowData]="rowData"></atlas-freeze-grid>
+</div>

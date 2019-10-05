@@ -1,0 +1,77 @@
+<mat-card class="invoice-creation-card">
+    <mat-card-title>
+        <h2>Invoice Selection</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="49"
+                            class="margin-bottom">
+                <input matInput
+                       [matDatepicker]="invoiceDatePicker"
+                       placeholder="Invoice date"
+                       matTooltip="Invoice date"
+                       [formControl]='invoiceDateCtrl'
+                       autocomplete="off"
+                       (dateChange)='onInvoiceDateSelected()'>
+                <mat-hint style="color:orange"
+                          *ngIf="isDateAfterValid"> Invoice Date is in Future</mat-hint>
+                <mat-datepicker-toggle matSuffix
+                                       [for]="invoiceDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #invoiceDatePicker></mat-datepicker>
+                <mat-error *ngIf="invoiceDateCtrl.hasError('isDateBeforeValid')">
+                    Invoice Date can be equal to or after the contract date
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="mat-read-only-field"
+                            fxFlex="49">
+                <input matInput
+                       placeholder="Counterparty"
+                       matTooltip="Counterparty"
+                       [formControl]="counterpartyCtrl"
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field class="mat-read-only-field"
+                            fxFlex="32%">
+                <input matInput
+                       placeholder="Invoice type"
+                       matTooltip="Invoice Type"
+                       [formControl]="invoiceTypeCtrl"
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+            <mat-form-field class="mat-read-only-field"
+                            fxFlex="32%">
+                <input matInput
+                       placeholder="Costs/Commission"
+                       matTooltip="Costs/Commission"
+                       [formControl]="costCommissionCtrl"
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+            <mat-form-field class="mat-read-only-field"
+                            fxFlex="25%">
+                <input matInput
+                       placeholder="Quantity to Invoice"
+                       matTooltip="Quantity to Invoice"
+                       value="Contract"
+                       [formControl]="quantityInvoiceCtrl"
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+        </div>
+        <mat-divider></mat-divider>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-slide-toggle [checked]="true"
+                              [formControl]="authorizePostingCtrl">Authorize for posting</mat-slide-toggle>
+        </div>
+    </mat-card-content>
+</mat-card>

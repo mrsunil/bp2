@@ -1,0 +1,53 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px;
+}
+
+.steppers li.active .circle,
+.steppers li.complete .circle {
+    background: green;
+}
+
+.example-section {
+    margin: 10px;
+}
+
+.mat-basic-chip {
+    background-color: #e0e0e0;
+    color: rgba(0, 0, 0, .87);
+    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+    display: inline-flex;
+    padding: 7px 12px;
+    border-radius: 24px;
+    align-items: center;
+    cursor: default;
+    margin: 4px;
+}
+
+.mat-checkbox,
+.mat-radio-button {
+    margin: 10px;
+}
+
+// Add image in the solution
+.example-empty-state {
+    background-image: url()
+}
+
+//for ag-grid
+::ng-deep.ag-icon.ag-icon-checkbox-checked {
+    background-image: url("/assets/checkbox.svg") !important;
+}
+
+::ng-deep.ag-icon.ag-icon-checkbox-unchecked {
+    background-image: url("/assets/check_box_unchecked.svg") !important;
+    background-size: 24px 24px;
+}
+
+// Style for dialog box
+li.display_animal {
+    margin-top: 10px;
+    list-style-type: none;
+}

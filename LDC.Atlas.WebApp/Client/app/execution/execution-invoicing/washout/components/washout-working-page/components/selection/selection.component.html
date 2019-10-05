@@ -1,0 +1,54 @@
+<mat-card fxFlex="100">
+    <mat-card-title>
+        Invoice Selection
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="49"
+                            class="margin-bottom">
+                <input matInput
+                       [matDatepicker]="washoutInvoiceDatePicker"
+                       placeholder="Invoice date"
+                       [matTooltip]="'Invoice date'"
+                       [formControl]='washoutInvoiceDateCtrl'
+                       autocomplete="off"
+                       (dateChange)='onWashoutInvoiceDateSelected()'>
+                <mat-hint *ngIf="isDateAfterValid">Invoice Date is in Future</mat-hint>
+                <mat-datepicker-toggle matSuffix
+                                       [for]="washoutInvoiceDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #washoutInvoiceDatePicker></mat-datepicker>
+                <mat-error *ngIf="washoutInvoiceDateCtrl.hasError('isDateBeforeValid')">
+                    Invoice Date can be equal to or after the contract date
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="49"
+                            class="mat-read-only-field">
+                <input matInput
+                       placeholder="Counterparty"
+                       [matTooltip]="'Counterparty'"
+                       [formControl]="counterpartyCtrl"
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start">
+            <mat-form-field fxFlex="32%"
+                            class="mat-read-only-field">
+                <input matInput
+                       placeholder="Invoice Type"
+                       [formControl]='washoutInvoiceTypeCtrl'
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+        </div>
+        <mat-divider class="mat-divider-washout"></mat-divider>
+        <div class="toggle-washout"
+             fxLayoutAlign="left start">
+            <mat-slide-toggle [checked]="true"
+                              [formControl]="authorizePostingCtrl">Authorize for posting</mat-slide-toggle>
+        </div>
+    </mat-card-content>
+</mat-card>

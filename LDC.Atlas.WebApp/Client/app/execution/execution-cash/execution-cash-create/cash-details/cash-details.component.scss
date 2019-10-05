@@ -1,0 +1,15 @@
+.cost-style {
+    padding: 10px 0px;
+}
+
+.hidden-during-loading {
+    display: none;
+}
+
+:host ::ng-deep .counterparty-card {
+    height: 74% !important;
+
+    .mat-card {
+        height: inherit;
+    }
+}

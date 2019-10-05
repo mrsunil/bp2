@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.Interface</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.Interface.Controllers.BuilderController.GetMessage(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Returns the message to be sent to ESB based on the Interface Type and Document Reference
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="interfaceTypeId">Type of the Interface.</param>
+            <param name="objectTypeId"> Object Type of the Interface.</param>
+            <param name="docId">Document Reference.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Interface.Controllers.BuilderController.CheckDocumentReferenceExists(System.String,System.String,System.Int32)">
+            <summary>
+            Returns whether the Document Exists for the company or not
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="docId">Document Reference.</param>
+            <param name="objectTypeId"> Object Type of the Interface.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,39 @@
+<div class="edit-costs-dialog">
+    <div fxLayoutAlign="space-between center">
+        <h1 class="no-margin">Overriding a non - existing cost</h1>
+        <button mat-button
+                class="close-button">
+            <mat-icon (click)="onCloseButtonClicked()">close</mat-icon>
+        </button>
+    </div>
+    <mat-dialog-content>
+        <div fxLayout="row"
+             fxLayoutAlign="center center">
+            <p>{{dialogText}}</p>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="space-between start">
+            <div class="chip-list">
+                <atlas-chip-list *ngIf="chipStringList"
+                                 [textList]='chipStringList'></atlas-chip-list>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div fxFlex="50"
+             fxLayout="row"
+             fxAlignLayout="start start">
+            <button mat-button
+                    (click)="onNoButtonClicked()">NO</button>
+        </div>
+        <div fxFlex="50"
+             fxLayout="row"
+             fxAlignLayout="start end">
+            <span class="fill-space"></span>
+            <button mat-button
+                    class="add-cost-button"
+                    (click)="onYesButtonClicked()">YES</button>
+        </div>
+    </mat-dialog-actions>
+</div>

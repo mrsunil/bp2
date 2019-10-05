@@ -1,0 +1,70 @@
+<div fxLayout="row wrap"
+     fxLayoutAlign="space-between"
+     fxLayoutAlign.lt-md="space-around center">
+    <div fxLayout="column"
+         fxLayoutAlign="start"
+         fxFlex="49">
+        <atlas-selection-form-component #selectionFormComponent
+                                        fxFlex="100"
+                                        fxFlex.lt-md="92"
+                                        (invoiceDateSelected)="onInvoiceDateSelected($event)">
+        </atlas-selection-form-component>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start"
+         fxFlex="49">
+        <atlas-document-template #documentTemplateComponent
+                                 (templateSelected)="onTemplateSelected($event)"
+                                 fxFlex="100"
+                                 fxFlex.lt-md="92"
+                                 [documentType]="DocumentTypes.InvoiceGoodsInvoice">
+        </atlas-document-template>
+    </div>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="start"
+     fxLayoutAlign.lt-md="start center">
+    <atlas-value-of-goods-component #valueOfGoodsComponent
+                                    [defaultWeightCode]="companyWeightCode"
+                                    (totalAmountCalculated)="ontotalAmountCalculated($event)"
+                                    (costCurrency)="onCostCurrency($event)"
+                                    fxFlex="100"></atlas-value-of-goods-component>
+</div>
+<atlas-add-cost #addCostComponent
+                [selectedGoodsVat]="selectedGoodsVatCode"
+                (totalCostAndVatCode)="onChangeCostContract($event)"
+                (narrativeLength)="onNarrativeValueChanged($event)">
+</atlas-add-cost>
+
+<div fxLayout="row"
+     fxLayoutAlign="start"
+     fxLayoutAlign.lt-md="start center">
+    <atlas-taxes-component #taxesComponent
+                           (selectedGoodsTaxCode)="onChangeGoodsTaxCode($event)"
+                           fxFlex="100"></atlas-taxes-component>
+</div>
+
+<div fxLayout="row wrap"
+     fxLayoutAlign="space-between"
+     fxLayoutAlign.lt-md="space-around center"
+     class="payment-total-amount-section">
+    <div fxLayout="column"
+         fxLayoutAlign="start"
+         fxFlex="49">
+        <atlas-payments-component #paymentComponent
+                                  fxFlex="100"
+                                  fxFlex.lt-md="92">
+        </atlas-payments-component>
+    </div>
+    <atlas-tax-costs fxFlex="50%"
+                     (totalCostTaxCalculated)="onTotalCostTaxCalculated($event)"
+                     #taxCostsComponent>
+    </atlas-tax-costs>
+    <div fxLayout="column"
+         fxLayoutAlign="start"
+         fxFlex="100">
+        <atlas-add-cost-total #totalComponent
+                              fxFlex="100"
+                              fxFlex.lt-md="92"></atlas-add-cost-total>
+    </div>
+</div>

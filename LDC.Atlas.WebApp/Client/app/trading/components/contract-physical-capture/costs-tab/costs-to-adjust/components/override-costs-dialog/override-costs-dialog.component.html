@@ -1,0 +1,29 @@
+<div fxLayoutAlign="end">
+    <button mat-button>
+        <mat-icon (click)="onCloseButtonClicked()">close</mat-icon>
+    </button>
+</div>
+<mat-dialog-content>
+    <div fxLayout="row"
+         fxLayoutAlign="center center">
+        <p>{{dialogText}}</p>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div fxFlex="50"
+         fxLayout="row"
+         fxAlignLayout="start start">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">DISCARD</button>
+    </div>
+    <div fxFlex="50"
+         fxLayout="row"
+         fxAlignLayout="start end">
+        <span class="fill-space"></span>
+        <button mat-button
+                (click)="onAddCostsButtonClicked()">ADD COSTS</button>
+        <button mat-button
+                (click)="onOverrideButtonClicked()">OVERRIDE</button>
+    </div>
+</mat-dialog-actions>

@@ -1,0 +1,344 @@
+<div class="container container-custom">
+	<div fxLayout="row"
+	     fxLayout.xs="column"
+	     fxFlexFill
+	     fxLayoutGap="1rem"
+	     fxLayoutAlign="start"
+	     class="container">
+
+		<mat-card class="dashboard-card elevated-container "
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title>P&L</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="plBarChartData"
+				        [labels]="plBarChartLabels"
+				        [options]="plBarChartOptions"
+				        [legend]="plBarChartLegend"
+				        [chartType]="plBarChartType"
+				        [colors]="chartColors"
+				        (chartHover)="chartHovered($event)"
+				        (chartClick)="chartClicked($event)"></canvas>
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Department"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="317">Milk</mat-option>
+								<mat-option value="751">Crude Glycerine</mat-option>
+								<mat-option value="1122">Py Wheat</mat-option>
+								<mat-option value="1260">Ar Wheat</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Commodities"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="BAG_AR_">BAG Empty Bags</mat-option>
+								<mat-option value="BAG_PP_">BAG PP Bags</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+		<mat-card class="dashboard-card elevated-container "
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title>Open positions and stock</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="openAndStockBarChartData"
+				        [labels]="openAndStockBarChartLabels"
+				        [options]="openAndStockBarChartOptions"
+				        [legend]="openAndStockBarChartLegend"
+				        [chartType]="openAndStockBarChartType"
+				        [colors]="chartColors"
+				        (chartHover)="chartHovered($event)"
+				        (chartClick)="chartClicked($event)"></canvas>
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Department"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="317">Milk</mat-option>
+								<mat-option value="751">Crude Glycerine</mat-option>
+								<mat-option value="1122">Py Wheat</mat-option>
+								<mat-option value="1260">Ar Wheat</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Commodities"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="BAG_AR_">BAG Empty Bags</mat-option>
+								<mat-option value="BAG_PP_">BAG PP Bags</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+
+		<mat-card class="dashboard-card elevated-container "
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title>Program</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<mat-grid-list cols="6">
+					<mat-grid-tile *ngFor="let tile of program"
+					               [colspan]="tile.cols"
+					               [rowspan]="tile.rows"
+					               [style.background]="tile.color"
+					               [style.color]="tile.fontColor">
+						{{tile.text}}
+					</mat-grid-tile>
+				</mat-grid-list>
+
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Department"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="317">Milk</mat-option>
+								<mat-option value="751">Crude Glycerine</mat-option>
+								<mat-option value="1122">Py Wheat</mat-option>
+								<mat-option value="1260">Ar Wheat</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Commodities"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="BAG_AR_">BAG Empty Bags</mat-option>
+								<mat-option value="BAG_PP_">BAG PP Bags</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+
+	</div>
+
+	<div fxLayout="row"
+	     fxLayout.xs="column"
+	     fxFlexFill
+	     fxLayoutGap="1rem"
+	     fxLayoutAlign="start"
+	     class="container">
+
+		<mat-card class="dashboard-card elevated-container "
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title>Activity</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="activityBarChartData"
+				        [labels]="activityBarChartLabels"
+				        [options]="activityBarChartOptions"
+				        [legend]="activityBarChartLegend"
+				        [chartType]="activityBarChartType"
+				        [colors]="chartFlashColorsV2"
+				        (chartHover)="chartHovered($event)"
+				        (chartClick)="chartClicked($event)"></canvas>
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Department"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="317">Milk</mat-option>
+								<mat-option value="751">Crude Glycerine</mat-option>
+								<mat-option value="1122">Py Wheat</mat-option>
+								<mat-option value="1260">Ar Wheat</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Commodities"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="BAG_AR_">BAG Empty Bags</mat-option>
+								<mat-option value="BAG_PP_">BAG PP Bags</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+		<mat-card class="dashboard-card elevated-container "
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title>Action</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<mat-grid-list cols="2">
+					<mat-grid-tile *ngFor="let tile of actions"
+					               [colspan]="tile.cols"
+					               [rowspan]="tile.rows"
+					               [style.background]="tile.color"
+					               [style.color]="tile.fontColor">
+						<h3>{{tile.text}}</h3>
+					</mat-grid-tile>
+				</mat-grid-list>
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Department"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="317">Milk</mat-option>
+								<mat-option value="751">Crude Glycerine</mat-option>
+								<mat-option value="1122">Py Wheat</mat-option>
+								<mat-option value="1260">Ar Wheat</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Commodities"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="BAG_AR_">BAG Empty Bags</mat-option>
+								<mat-option value="BAG_PP_">BAG PP Bags</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+
+		<mat-card class="dashboard-card elevated-container "
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title>Total Default Contracts</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<mat-grid-list cols="1">
+					<mat-grid-tile *ngFor="let tile of contracts"
+					               [colspan]="tile.cols"
+					               [rowspan]="tile.rows"
+					               [style.background]="tile.color"
+					               [style.color]="tile.fontColor"
+					               [style.font-size]="150">
+						{{tile.text}}
+					</mat-grid-tile>
+				</mat-grid-list>
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Department"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="317">Milk</mat-option>
+								<mat-option value="751">Crude Glycerine</mat-option>
+								<mat-option value="1122">Py Wheat</mat-option>
+								<mat-option value="1260">Ar Wheat</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="35%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Commodities"
+							            class="dashboardInput"
+							            multiple>
+								<mat-option value="BAG_AR_">BAG Empty Bags</mat-option>
+								<mat-option value="BAG_PP_">BAG PP Bags</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+
+	</div>
+
+</div>

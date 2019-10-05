@@ -1,0 +1,50 @@
+<div class="main-container">
+    <h2>
+        DMS
+        <mat-card-subtitle class="mat-toggle"> Interface Active
+            <mat-slide-toggle [formControl]="interfaceActiveCtrl"
+                              [checked]="isIntefaceToggleChecked"
+                              (change)="onInterfaceActiveToggleChanged($event)">
+
+            </mat-slide-toggle>
+        </mat-card-subtitle>
+    </h2>
+
+    <mat-form-field>
+        <input matInput
+               placeholder="Platform Id"
+               [formControl]="platformIdCtrl"
+               autocomplete="off">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+               placeholder="Platform Label"
+               [formControl]="platformLabelCtrl"
+               autocomplete="off">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+               placeholder="Region Id"
+               [formControl]="regionIdCtrl"
+               autocomplete="off">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+               placeholder="Region Label"
+               [formControl]="regionLabelCtrl"
+               autocomplete="off">
+    </mat-form-field>
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">
+            DISCARD
+        </button>
+        <button mat-button
+                [disabled]="!checkEdit"
+                (click)="onSaveButtonClicked()">
+            SAVE
+        </button>
+    </div>
+</div>

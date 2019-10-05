@@ -1,0 +1,25 @@
+<mat-card class="card-header-luke">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Invoice Selection</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="none center"
+             fxLayoutGap="10px">
+            <div fxFlex="33%"
+                 fxFlex.xs="33%"
+                 fxFlex.sm="33%">
+                <mat-form-field class="mat-read-only-field">
+                    <input matInput
+                           placeholder="Invoice type"
+                           [matTooltip]="'Invoice Type'"
+                           [formControl]="invoiceTypeSelectedCtrl"
+                           autocomplete="off"
+                           readonly>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

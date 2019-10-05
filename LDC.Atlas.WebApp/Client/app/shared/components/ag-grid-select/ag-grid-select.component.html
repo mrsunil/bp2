@@ -1,0 +1,31 @@
+<div class="selectComp"
+     *ngIf="formGroup"
+     [formGroup]="formGroup">
+    <mat-select #selectMat
+                (selectionChange)="onSelectionChange($event)"
+                [formControlName]="formControlName"
+                [id]="formControlName"
+                multiple>
+        <mat-option *ngFor="let option of options"
+                    [value]="option.value">{{ option.label }}</mat-option>
+    </mat-select>
+    <div class="buttonExplore">
+        <mat-icon matSuffix
+                  *ngIf="rowsModal"
+                  class="compass-icon"
+                  (click)="onExploreClicked($event)">
+            explore
+        </mat-icon>
+    </div>
+    <mat-checkbox class="material-checkbox"
+                  #check
+                  type="checkbox"
+                  [checked]="checked"
+                  (change)="onChangeCheckbox($event)"></mat-checkbox>
+
+    <div *ngIf="formControl">
+        <mat-error *ngIf="!formControl.valid && check.checked">
+            Choose a value first!
+        </mat-error>
+    </div>
+</div>

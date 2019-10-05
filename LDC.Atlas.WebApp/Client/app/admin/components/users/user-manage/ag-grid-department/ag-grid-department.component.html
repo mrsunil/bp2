@@ -1,0 +1,20 @@
+<input type="text"
+       matInput
+       [(ngModel)]="selectedDepartement"
+       [matAutocomplete]="autocomplete">
+<mat-autocomplete #autocomplete="matAutocomplete"
+                  (optionSelected)="selectionChanged($event);">
+    <mat-option [value]="allDepartmentsOption">
+        <mat-checkbox [checked]="allSelected">
+            All
+        </mat-checkbox>
+    </mat-option>
+    <mat-option *ngFor="let object of allDepartment"
+                [value]="object">
+        <mat-checkbox [checked]="isSelected(object)">
+            <span>{{ object[codeProperty] }}</span>
+            <span> | </span>
+            <span>{{ object[displayProperty] }}</span>
+        </mat-checkbox>
+    </mat-option>
+</mat-autocomplete>

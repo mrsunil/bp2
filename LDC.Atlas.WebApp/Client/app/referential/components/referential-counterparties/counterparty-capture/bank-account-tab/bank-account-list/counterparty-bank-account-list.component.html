@@ -1,0 +1,72 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3>Counterparty Bank Accounts</h3>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="column"
+             fxLayoutAlign="center end">
+            <mat-nav-list *ngFor="let data of bankAccountsData">
+                <div *ngIf="!data.isDeleted">
+                    <div fxLayout="column">
+                        <div fxLayout="row"
+                             fxLayoutAlign="left start">
+                            <mat-list-item style="width: 510px;"
+                                           (click)="onSetBankAccountData(data)">
+                                <div fxLayout="column"
+                                     style="width: 240px;">
+                                    <div fxLayout="row">
+                                        <b>Bank Name</b>
+                                    </div>
+                                    <div fxLayout="row">
+                                        {{ data.bankName }}
+                                    </div>
+                                </div>
+                                <span class="fill-space"
+                                      style=" flex: 0.1 1 auto;"></span>
+                                <div fxLayout="column">
+                                    <div fxLayout="row">
+                                        <b>Currency</b>
+                                    </div>
+                                    <div fxLayout="row">
+                                        {{ data.accountCCY}}
+                                    </div>
+                                </div>
+                                <span class="fill-space"
+                                      style=" flex: 0.1 1 auto;"></span>
+                                <div fxLayout="column">
+                                    <div fxLayout="row">
+                                        <b>Status</b>
+                                    </div>
+                                    <div fxLayout="row">
+                                        {{ (data.isDeactivated) ? 'Deactivated' : 'Activated' }}
+                                    </div>
+                                </div>
+                            </mat-list-item>
+                            <mat-list-item (click)="onSetBankAccountFavorite(data)">
+                                <div fxLayout="column">
+                                    <mat-icon [ngClass]="data.bankAccountDefault ? 'heart-saved' : 'heart-not-saved'">
+                                        {{ data.bankAccountDefault ? 'favorite' : 'favorite_border' }}
+                                    </mat-icon>
+                                </div>
+                            </mat-list-item>
+                        </div>
+                    </div>
+                    <mat-divider class="charter-creation-divider"></mat-divider>
+                </div>
+            </mat-nav-list>
+            <div class="btn-container"></div>
+            <div fxFlex="50"
+                 fxAlignLayout="start end">
+                <span class="fill-space"></span>
+                <button mat-raised-button
+                        [disabled]="isAddNewBankAccountDisabled || isViewMode"
+                        (click)="onAddNewBankAccountButtonClick()"
+                        type="button">
+                    ADD NEW BANK ACCOUNT
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,58 @@
+<mat-card>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center"
+             class="table-title">
+            <mat-card-title class="no-margin">Value Of Goods</mat-card-title>
+            <span class="fill-space"></span>
+            <atlas-ag-grid-user-preferences *ngIf="valueOfGoodsGridOptions && valueOfGoodsGridOptions.columnDefs"
+                                            [gridOptions]="valueOfGoodsGridOptions"
+                                            [company]="company"
+                                            [sharingEnabled]="hasGridSharing"
+                                            [gridId]="componentId"
+                                            #userPreferences>
+            </atlas-ag-grid-user-preferences>
+        </div>
+        <div ag-grid="valueOfGoodsGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular class="ag-theme-material"
+                             [rowData]="valueOfGoodsGridRows"
+                             [columnDefs]="valueOfGoodsGridColumns"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             [pagination]="false"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             [animateRows]="true"
+                             [groupUseEntireRow]="false"
+                             [rowGroupPanelShow]="rowGroupPanelShow"
+                             [suppressDragLeaveHidesColumns]="true"
+                             [suppressMakeColumnVisibleAfterUnGroup]="true"
+                             (columnVisible)="onColumnVisibilityChanged($event)"
+                             enableFilter
+                             [suppressAggFuncInHeader]="true"
+                             [rowHeight]=atlasAgGridParam.rowHeight>
+            </ag-grid-angular>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="end"
+             class="value-goods-total-figure">
+            <div fxFlex="30">
+                <mat-card-subtitle class="total-figure">Total Invoiced Quantity : <span
+                          class="total-figure-value">{{formatQuantityAndTotal(totalQuantity)}}
+                        {{weightCode}}</span></mat-card-subtitle>
+            </div>
+            <div fxFlex="30">
+                <mat-card-subtitle class="total-figure">Sub Total : <span
+                          class="total-figure-value">{{debitCreditSign}}{{formatQuantityAndTotal(this.total)}}
+                        {{currencyCode}}</span>
+                </mat-card-subtitle>
+            </div>
+            <div fxFlex="30">
+                <mat-card-subtitle class="total-figure">Total : <span
+                          class="total-figure-value">{{debitCreditSign}}{{formatQuantityAndTotal(this.total)}}
+                        {{currencyCode}}</span> </mat-card-subtitle>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

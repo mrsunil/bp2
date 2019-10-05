@@ -1,0 +1,67 @@
+<form>
+    <div class="main-container">
+        <div fxLayout="row wrap"
+             fxLayoutAlign="space-around start">
+            <div fxLayout="column"
+                 fxFlex="32">
+                <atlas-purchase-goods-form-component #purchaseGoodsComponent
+                                                     fxFlex="32"
+                                                     fxFlex.lt-md="85"
+                                                     (purchaseOptionChecked)="onPurchaseOptionChecked($event)">
+                </atlas-purchase-goods-form-component>
+
+                <atlas-cost-form-component #costComponent
+                                           fxFlex="32"
+                                           fxFlex.lt-md="85"
+                                           (costOptionChecked)="onCostsOptionChecked($event)">
+                </atlas-cost-form-component>
+                <atlas-reversal-form-component #reversalFormComponent
+                                               fxFlex="32"
+                                               fxFlex.lt-md="85"
+                                               (reversalOptionChecked)="onReversalOptionChecked($event)">
+
+                </atlas-reversal-form-component>
+            </div>
+            <div fxLayout="column"
+                 fxFlex="32">
+                <atlas-sales-goods-form-component #salesGoodsComponent
+                                                  fxFlex="32"
+                                                  fxFlex.lt-md="85"
+                                                  (salesOptionChecked)="onSalesOptionChecked($event)">
+                </atlas-sales-goods-form-component>
+                <atlas-washout-form-component #washoutFormComponent
+                                              fxFlex="32"
+                                              fxFlex.lt-md="85"
+                                              (washoutOptionChecked)="onWashoutsOptionChecked($event)">
+                </atlas-washout-form-component>
+            </div>
+            <div fxLayout="column"
+                 fxFlex="32">
+                <atlas-quantity-invoice-form-component #quantityInvoiceComponent
+                                                       fxFlex="32"
+                                                       fxFlex.lt-md="85"></atlas-quantity-invoice-form-component>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <div fxFlex="50"
+                 fxLayout="row"
+                 fxAlignLayout="start start">
+                <button mat-button
+                        (click)="onDiscardButtonClicked()">
+                    Discard
+                </button>
+            </div>
+            <div fxFlex="50"
+                 fxLayout="row"
+                 fxAlignLayout="start end">
+                <span class="fill-space"></span>
+                <button mat-raised-button
+                        (click)="onNextButtonClicked(invoiceOption)"
+                        [disabled]="isDisabled">
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

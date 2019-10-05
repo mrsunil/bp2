@@ -1,0 +1,27 @@
+.empty-state {
+    background: url("/assets/img/empty-status.svg") bottom center;
+    background-size: 100% 40%;
+    background-repeat: no-repeat;
+    background-color: white;
+    min-height: 160px;
+    line-height: 19px;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+
+    p {
+        font-size: 16px;
+        letter-spacing: 0.5px;
+    }
+
+    h3 {
+        font-weight: 600;
+    }
+
+    .empty-state-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

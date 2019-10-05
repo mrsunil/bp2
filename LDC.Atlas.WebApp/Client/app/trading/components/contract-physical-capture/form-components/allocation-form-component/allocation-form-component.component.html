@@ -1,0 +1,29 @@
+<mat-card class="trade-capture-card allocation-form"
+          *ngIf="showAllocation">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Allocation: {{allocatedSectionCode}}</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%"
+             [ngClass]="{'allocation-toggle-ctrl': isAdjustAllocationEnabled==true}">
+            <mat-slide-toggle [formControl]="adjustAllocationToggleCtrl"
+                              (change)="toggleAllocation()">Adjust Allocation</mat-slide-toggle>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-slide-toggle [formControl]="leaveStatusToggleCtrl"
+                              (change)="toggleLeaveStatus()">Leave Status as-is</mat-slide-toggle>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-slide-toggle [formControl]="unallocationToggleCtrl"
+                              (change)="toggleUnallocated()">Create Unallocated Residual Split</mat-slide-toggle>
+        </div>
+    </mat-card-content>
+</mat-card>

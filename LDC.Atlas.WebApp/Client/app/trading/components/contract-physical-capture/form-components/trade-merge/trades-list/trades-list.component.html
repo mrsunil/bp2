@@ -1,0 +1,48 @@
+<mat-card>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutWrap
+             *ngIf="isLoading"
+             class="loading">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+        <div fxLayout="row"
+             fxLayout.xs="column"
+             fxLayoutAlign="space-between left"
+             fxLayoutWrap
+             fxLayoutGap="20px"
+             class="atlas-grid-card-header">
+            <h2 class="atlas-grid-card-title">{{dataLength}} {{dataLength > 1 ? 'Sections' : 'Section'}} Found</h2>
+            <atlas-ag-grid-user-preferences *ngIf="tradesListToMergeGridOptions && tradesListToMergeGridOptions.columnDefs"
+                                            [gridOptions]="tradesListToMergeGridOptions"
+                                            [company]="company"
+                                            [gridId]="componentId"
+                                            [sharingEnabled]="hasGridSharing"
+                                            #userPreferences>
+            </atlas-ag-grid-user-preferences>
+        </div>
+        <div ag-grid="tradesListToMergeGridOptions"
+             style="width: 100%; height:100%">
+            <ag-grid-angular style=" height:100%;"
+                             class="ag-theme-material"
+                             [rowData]="tradesListToMergeGridRows"
+                             [gridOptions]="tradesListToMergeGridOptions"
+                             [columnDefs]="tradesListToMergeGridColumns"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             [pagination]="true"
+                             [paginationPageSize]="50"
+                             (columnVisible)="onAddOrDeleteColumn($event)"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             (rowSelected)="onSelectionChanged($event)"
+                             enableFilter
+                             [rowHeight]=atlasAgGridParam.rowHeight
+                             rowSelection="multiple">
+            </ag-grid-angular>
+        </div>
+    </mat-card-content>
+    <atlas-lock-interval [resourcesInformation]="resourcesInformation">
+    </atlas-lock-interval>
+</mat-card>

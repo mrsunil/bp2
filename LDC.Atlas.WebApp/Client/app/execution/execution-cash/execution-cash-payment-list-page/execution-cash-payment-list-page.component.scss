@@ -1,0 +1,8 @@
+.search button {
+    position: absolute;
+    right: 0;
+}
+
+:host ::ng-deep.ag-menu{
+    overflow-y: hidden !important;  
+}

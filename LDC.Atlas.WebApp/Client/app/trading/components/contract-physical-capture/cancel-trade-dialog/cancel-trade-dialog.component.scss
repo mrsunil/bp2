@@ -1,0 +1,12 @@
+.btn-primary.mat-button{
+    margin-left: 0px !important;
+}
+div.mat-toggle-height{
+  height: 50px;
+}
+:host ::ng-deep .mat-form-field{
+    padding-right: 10px !important;
+}
+.mat-form-field-appearance-legacy .mat-hint {
+        color: #00a9c6 !important;
+}

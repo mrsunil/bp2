@@ -1,0 +1,15 @@
+<div fxLayoutAlign="space-between center">
+    <div></div>
+    <button mat-button>
+        <mat-icon (click)="onCloseButtonClicked()">close</mat-icon>
+    </button>
+</div>
+<div fxLayout="row wrap"
+     fxLayoutAlign="space-between stretch"
+     fxLayoutAlign.lt-md="space-around center">{{message}}</div>
+<div fxLayoutAlign="space-between center">
+    <div></div>
+    <button mat-button
+            (click)="onOkButtonClicked()">OK
+    </button>
+</div>

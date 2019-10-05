@@ -1,0 +1,31 @@
+<div class="main-container">
+    <main>
+        <div fxLayout="row"
+             fxLayout.md="column"
+             fxLayoutAlign="space-around start"
+             class='charter-creation-margin'>
+            <div fxLayout="column"
+                 fxLayoutAlign="start left"
+                 fxFlex="48">
+                <atlas-counterparty-address-card #addressComponent
+                                                 (addNewAddress)="addNewAddressCalled($event)"
+                                                 (rowClicked)="rowClickedCalled($event)"
+                                                 (cancelAddress)="onCancelAddress()"
+                                                 [isViewMode]="isViewMode">
+                </atlas-counterparty-address-card>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="start right"
+                 fxFlex="49">
+                <atlas-counterparty-address-detail-card #addressDetailComponent
+                                                        (addedNewAddress)="saveNewAddressCalled($event)"
+                                                        (addressDeleted)="onAddressDeleted($event)"
+                                                        [addressListLength]="addressListLength"
+                                                        (cancelAddress)="onCancelAddress()"
+                                                        [counterPartyId]="counterPartyId"
+                                                        [isViewMode]="isViewMode">
+                </atlas-counterparty-address-detail-card>
+            </div>
+        </div>
+    </main>
+</div>

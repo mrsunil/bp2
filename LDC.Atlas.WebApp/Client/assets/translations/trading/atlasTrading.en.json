@@ -1,0 +1,69 @@
+{
+    "TRADING": {
+        "TRADE_CAPTURE": {
+            "INVOICE_MARKING_TAB": {
+                "VIEW_MODE": {
+                    "VIEW_MODE_TITLE": "View Mode",
+                    "DOC_TYPE_TITLE": "Document Type",
+                    "WHOLE_TRADE_DETAILS": "Show Details for whole trade",
+                    "TRADE_DETAILS": "Details for this trade",
+                    "ALL_TRADE_DETAILS": "Show Details for all trades",
+                    "TRANCHES_DETAILS": "Show details for tranches",
+                    "COMMERCIAL": "Commercial",
+                    "REVERSAL": "Reversal",
+                    "WASHOUT": "Washout",
+                    "ALL": "All",
+                    "EDIT_MODE": "Edit mode is ",
+                    "INACTIVE": "Inactive",
+                    "ACTIVE": "Active"
+                },
+                "TOP_CARD": {
+                    "COMMODITY_DESCRIPTION": "Commodity Description",
+                    "CPY_CODE": "Counterparty Code",
+                    "QTY": "Quantity",
+                    "PRICING": "Pricing",
+                    "SHIPPING_PERIOD": "Shipping Period"
+                },
+                "DETAILED_VIEW": {
+                    "TITLE": "Detailed View",
+                    "DELETE": "Delete",
+                    "INVOICE_MARKING_DELETION": "Invoice Marking Deletion",
+                    "IRREVERSIBLE_DELETION": "This deletion is irreversible. Continue with deleting?",
+                    "DELETE_ANYWAY": "Delete anyway",
+                    "CANCEL": "Cancel",
+                    "ROW_DELETED": "Invoice Marking Row Deleted",
+                    "TO_DELETE_SELECTION": "Please select a row to delete",
+                    "SECTION_ID": "Section Id",
+                    "CONTRACT_REFERENCE": "Contract Reference",
+                    "INVOICE_REFERENCE": "Invoice Reference",
+                    "INVOICE_DATE": "Invoice Date",
+                    "POSTING_STATUS": "Posting Status",
+                    "INVOICE_QUANTITY": "Invoice Quantity",
+                    "WARNING_NULL_QUANTITY": "Quantity should not be 0",
+                    "CURRENCY": "Currency",
+                    "INVOICE_VALUE": "Invoice Value",
+                    "PERCENTAGE_INVOICE": "Percentage Invoice",
+                    "WARNING_INVOICE_PERCENTAGE_TOO_HIGH": "Percentage Invoice should not be more than 100",
+                    "DOC_TYPE": "Document Type",
+                    "DUE_DATE": "Due Date",
+                    "PAYMENT_TERMS": "Payment Terms",
+                    "CUSTOMER_REF": "Customer Reference",
+                    "MAIN_INVOICE": "Main Invoice",
+                    "PAID_PERCENTAGE": "Paid Percentage",
+                    "WARNING_PAID_PERCENTAGE_TOO_HIGH": "Paid Percentage should not be more than 100",
+                    "CASH_MATCH_DATE": "Cash Match Date"
+                },
+                "TOTALS": {
+                    "TITLE": "Totals",
+                    "QTY": "Quantity",
+                    "QTY%": "Qty%",
+                    "INVOICE_VALUE": "Invoice Value"
+                },
+                "INVOICING_STATUS": {
+                    "TITLE": "Invoicing Status",
+                    "PLACEHOLDER": "Status"
+                }
+            }
+        }
+    }
+}

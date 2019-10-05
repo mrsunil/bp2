@@ -1,0 +1,36 @@
+export class ContractsToInvoice {
+    sectionId: number;
+    contractQuantity: number;
+    contractNumber: number;
+    commodity: string;
+    quantityCode: string;
+    charter: string;
+    contractTermCode: string;
+    contractReference: string;
+    counterparty: string;
+    currencyCode: string;
+    allocationContract: string;
+    invoicedQuantity: number;
+    uninvoicedQuantity: number;
+    quantityToInvoice: number;
+    contractTypeCode: string;
+    price: number;
+    priceConversionFactor: number;
+    bLDate: Date;
+    arrivalDate: Date;
+    contractDate: Date;
+    weightConversionFactor: number;
+    paymentTermCode: string;
+    allocatedQuantity: number;
+    priceUnitId: number;
+    quantityUnitId: number;
+    totalInvoiceValue: number;
+    premiumDiscountType: number;
+    premiumDiscountBasis: number;
+    premiumDiscountValue: number;
+    priceCode: string;
+    commodity2: string;
+    commodity3: string;
+    commodity4: string;
+    commodity5: string;
+}

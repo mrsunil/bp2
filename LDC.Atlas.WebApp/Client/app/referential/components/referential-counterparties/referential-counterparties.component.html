@@ -1,0 +1,58 @@
+<atlas-referential-counterparty-tab #referentialComponent
+                                    (localViewMode)="onLocalViewModeCalled($event)">
+</atlas-referential-counterparty-tab>
+
+<div class="main-container">
+    <mat-card>
+        <div fxLayout="row"
+             fxLayoutAlign="start none"
+             class="search">
+            <atlas-masterdata-user-preferences-input fxFlex="60%"
+                                                     isEditable="true"
+                                                     [fieldControl]="accountReferenceCtrl"
+                                                     (keydown.enter)="onQuickSearchButtonClicked()"
+                                                     [options]="filteredCounterPartyList"
+                                                     label="Counterparty"
+                                                     displayProperty="counterpartyCode"
+                                                     [selectProperties]="['counterpartyCode', 'description']"
+                                                     [errorMap]="counterpartyErrorMap"
+                                                     lightBoxTitle="Results for Counterparty"
+                                                     gridId="counterpartiesGrid"
+                                                     (optionSelected)="onCounterpartyIdSelected($event)">
+            </atlas-masterdata-user-preferences-input>
+
+            <atlas-dropdown-select fxFlex='90%'
+                                   [label]="'Account Type'"
+                                   [fieldControl]="counterPartyTypeCtrl"
+                                   (keydown.enter)="onQuickSearchButtonClicked()"
+                                   [errorMap]="snapshotErrorMap"
+                                   isEditable=true
+                                   [options]="filteredAccTypesList"
+                                   displayProperty="name"
+                                   [selectProperties]="['name']"
+                                   [isAutocompleteActivated]="isAutoCompleteActivated"></atlas-dropdown-select>
+
+
+            <button mat-raised-button
+                    (click)="onQuickSearchButtonClicked()"
+                    class="heroGradient">
+                <mat-icon aria-label="Search"
+                          class="search-icon">search</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <atlas-list-and-search [gridCode]="gridCode"
+                           [gridTitle]="'Counterparties'"
+                           [company]="company"
+                           (rowClicked)="onCounterPartyRowClicked($event)"
+                           (configurationLoaded)="onConfigurationLoaded()"
+                           [additionalFilters]="additionalFilters"
+                           [dataLoader]="dataLoader"
+                           [pageSize]="100"
+                           [hasQuickSum]="false"
+                           [hasGrouping]="true"
+                           toogleText="Show Duplicate Counterparty data"
+                           #listAndSearchComponent
+                           class="default-height">
+    </atlas-list-and-search>
+</div>

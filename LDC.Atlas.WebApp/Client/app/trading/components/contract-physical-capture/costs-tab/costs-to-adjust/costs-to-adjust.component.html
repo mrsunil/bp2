@@ -1,0 +1,30 @@
+<form [formGroup]="transferCostsToSplitsForm">
+    <div class="main-container">
+        <atlas-parent-costs #parentCostsComponent
+                            (listOfCostTypes)="onCostTypesList($event)"></atlas-parent-costs>
+
+        <atlas-children-costs #childrenCostsComponent></atlas-children-costs>
+
+        <div fxLayout="row "
+             fxLayoutAlign="space-between start"
+             class="button-details">
+            <div fxLayout="column "
+                 fxLayoutAlign="start ">
+                <button mat-button
+                        (click)="onDiscardButtonClicked()">
+                    DISCARD
+                </button>
+            </div>
+            <div fxLayout="column "
+                 fxLayoutAlign="start ">
+                <div fxLayout="row "
+                     fxLayoutAlign="end start ">
+                    <button mat-raised-button
+                            (click)="onSaveButtonClicked()">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

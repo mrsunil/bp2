@@ -1,0 +1,82 @@
+<form [formGroup]="bulkCostUpdateForm">
+    <div class="main-container">
+        <mat-horizontal-stepper [linear]
+                                (selectionChange)="onChangeStepAction($event)"
+                                #stepper>
+            <ng-template matStepperIcon="edit">
+                <mat-icon>check</mat-icon>
+            </ng-template>
+            <mat-step>
+                <ng-template matStepLabel>Selection</ng-template>
+                <atlas-select-contracts #selectContractsComponent
+                                        (contractSelected)="isContractSelected($event)">
+                </atlas-select-contracts>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <button (click)="onContractSelectionDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    *ifAuthorized="'Trades.CostTab',company:company,level: PermissionLevels.ReadWrite"
+                                    (click)="onContractSelectionNextButtonClicked()"
+                                    [disabled]="isContractsNextDisabled">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Edit Costs</ng-template>
+                <atlas-update-costs #updateCostsComponent></atlas-update-costs>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <button (click)="onContractSelectionDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-button
+                                    (click)="onFieldSelectionPreviousButtonClicked()">
+                                PREVIOUS
+                            </button>
+                            <button mat-raised-button
+                                    (click)="onSaveButtonClicked()">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Summary</ng-template>
+                <atlas-cost-bulk-update-summary #CostBulkUpdateSummaryComponent></atlas-cost-bulk-update-summary>
+                <div fxLayout="row "
+                     fxLayoutAlign="start end">
+                    <span class="fill-space"></span>
+                    <button mat-button
+                            *ifAuthorized="'Invoices.InvoiceCreation', company:this.company"
+                            (click)="onInvoiceButtonClicked()">
+                        INVOICE SELECTED
+                    </button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</form>

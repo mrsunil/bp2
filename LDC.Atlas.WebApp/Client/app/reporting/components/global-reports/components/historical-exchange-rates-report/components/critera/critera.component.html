@@ -1,0 +1,36 @@
+<form [formGroup]="formGroup">
+    <mat-card>
+        <mat-card-title>
+            <h2>
+                Criteria
+            </h2>
+        </mat-card-title>
+        <mat-card-content>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between-center">
+                <atlas-contextual-search-multiple-autocomplete-select #currencyDropdownComponent
+                                                                      [options]="currencies"
+                                                                      [selectedOptions]="[]"
+                                                                      [allOptionsElement]="CurrencyAllOptions"
+                                                                      [allSelected]="allCurrenciesSelected"
+                                                                      displayCode="true"
+                                                                      valueProperty="currencyCode"
+                                                                      codeProperty="currencyCode"
+                                                                      placeholder="Currency Code"
+                                                                      placeholderFilter="Currency Code"
+                                                                      elementName="Currency Code"
+                                                                      (selectionChangedEvent)="onCurrencySelectionChanged($event)">
+                </atlas-contextual-search-multiple-autocomplete-select>
+
+                <atlas-dropdown-select [label]="'Type of rate'"
+                                       [fieldControl]="monthEndCtrl"
+                                       isEditable=true
+                                       [options]="monthEndList"
+                                       displayProperty="id"
+                                       [selectProperties]="['value']"
+                                       (optionSelected)="onChanges()">
+                </atlas-dropdown-select>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</form>

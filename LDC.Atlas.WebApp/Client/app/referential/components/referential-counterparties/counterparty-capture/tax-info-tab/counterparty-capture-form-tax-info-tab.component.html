@@ -1,0 +1,44 @@
+<div fxLayout="row">
+    <div fxLayout="row"
+         fxFlex="50%">
+        <h2 class="atlas-grid-card-title"> VAT Registrations numbers</h2>
+    </div>
+    <div fxLayout="row"
+         fxLayout.md="column"
+         fxLayoutAlign="end"
+         fxFlex="50%">
+        <div fxLayout="row "
+             fxLayoutAlign="start end ">
+            <div fxLayout="row "
+                 fxLayoutAlign="end start ">
+                <button mat-button
+                        [disabled]="isViewMode"
+                        type="button"
+                        (click)="onAddRowButtonClicked()">Add New VAT</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <mat-card>
+        <mat-card-content>
+            <div ag-grid="taxGridOptions"
+                 class="ag-theme-material pointer-cursor"
+                 style="width:100%; height: 100%;">
+                <ag-grid-angular style="height: 100%; width:100%; "
+                                 ag-grid="taxGridOptions"
+                                 [rowData]="counterpartyTaxes"
+                                 [columnDefs]="taxGridCols"
+                                 [enableColResize]="true"
+                                 [suppressDragLeaveHidesColumns]="true"
+                                 [enableSorting]="true"
+                                 domLayout="autoHeight"
+                                 enableFilter
+                                 (gridReady)="onGridReady($event)"
+                                 [gridOptions]="taxGridOptions"
+                                 [singleClickEdit]="true">
+                </ag-grid-angular>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

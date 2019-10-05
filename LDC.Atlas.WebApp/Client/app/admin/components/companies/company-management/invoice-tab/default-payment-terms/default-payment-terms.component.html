@@ -1,0 +1,38 @@
+<mat-card>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="start right"
+             fxLayoutGap="16px">
+            <div class="custom-form"
+                 fxFlex="50%"
+                 [class.required-field]="defaultPaymentIDCtrl.isRequired">
+                <mat-form-field fxFlex="50%">
+                    <input matInput
+                           placeholder="Default Payment Terms"
+                           [matAutocomplete]="paymentTermsTypes"
+                           [formControl]="defaultPaymentIDCtrl"
+                           autocomplete="off"
+                           [matTooltip]="'Payment Terms'">
+                    <mat-autocomplete #paymentTermsTypes="matAutocomplete"
+                                      [panelWidth]="panelSize">
+                        <mat-option *ngFor="let paymentTerm of PaymentTermType"
+                                    [value]="paymentTerm.paymentTermCode">
+                            {{paymentTerm.paymentTermCode}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="defaultPaymentIDCtrl.hasError('inDropdownList')">
+                        Value not in list
+                    </mat-error>
+                    <mat-error *ngIf="defaultPaymentIDCtrl.hasError('required')">
+                        Required *
+                    </mat-error>
+                    <mat-hint *ngIf="defaultPaymentIDCtrl.isRequired">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+    </mat-card-content>
+</mat-card>

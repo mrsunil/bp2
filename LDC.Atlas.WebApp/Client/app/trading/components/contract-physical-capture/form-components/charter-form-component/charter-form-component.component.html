@@ -1,0 +1,36 @@
+<mat-card *ngIf="!hasEmptyState"
+          class="trade-capture-card">
+    <mat-card-header>
+        <mat-card-title>Charter</mat-card-title>
+        <mat-card-subtitle>
+            Contract assigned on {{charterAssignmentDate }} by {{charterAssignedBy}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div>
+            <mat-form-field fxFlex="50%">
+                <input matInput
+                       placeholder="Charter Reference"
+                       [formControl]="charterRefCtrl"
+                       (click)="charterRefClicked()"
+                       readonly
+                       autocomplete="off"
+                       class="trade-charter-card">
+            </mat-form-field>
+
+            <atlas-form-input fxFlex="50%"
+                              [fieldControl]="charterManagerCtrl"
+                              [isEditable]="isInputField"
+                              [label]="'Charter Manager'">
+            </atlas-form-input>
+            <atlas-form-input fxFlex="50%"
+                              [fieldControl]="blDateCtrl"
+                              [isEditable]="isInputField"
+                              [label]="'BL Date'">
+            </atlas-form-input>
+        </div>
+    </mat-card-content>
+</mat-card>
+<atlas-empty-state *ngIf="hasEmptyState"
+                   title="No Charter Assignment"
+                   [message]="charterEmptyMessage"></atlas-empty-state>

@@ -1,0 +1,128 @@
+<div fxLayout="row"
+     class="quick-sum-div-height"
+     fxLayoutAlign="space-between center">
+    <div fxLayout="column "
+         fxLayoutAlign="start ">
+        <h3>Original document reference: [{{this.documentReference}}]</h3>
+    </div>
+</div>
+<div fxLayout="row"
+     class="quick-sum-div-height"
+     fxLayoutAlign="space-between center">
+    <div class="create-accounting-document-fields">
+        <div fxLayout="column">
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="10px">
+                <div fxLayout="column">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Document Date"
+                               autocomplete="off"
+                               readonly="true"
+                               [formControl]='docDateFromCtrl'>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="column">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Value Date"
+                               readonly="true"
+                               autocomplete="off"
+                               [formControl]='valueDateFormCtrl'>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="column">
+                    <mat-form-field>
+                        <input matInput
+                               [matDatepicker]="reverseDatePicker"
+                               placeholder="Reverse Document Date"
+                               [matTooltip]="'Reverse Document Date'"
+                               (dateChange)="validateReversalDate()"
+                               [required]="true"
+                               autocomplete="off"
+                               [formControl]='reverseDateFormCtrl'>
+                        <mat-datepicker-toggle matSuffix
+                                               [for]="reverseDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #reverseDatePicker></mat-datepicker>
+                        <mat-hint>
+                            <div class="reverse-date-error"
+                                 *ngIf="this.isReversalDateBefore">
+                                Not allowed. Reversal doc. date prior to original document date.
+                            </div>
+                            <div class="reverse-date-error"
+                                 *ngIf="this.isReversalDateNotInLastDay && isAccrualDocument">
+                                Reversal doc. date must be a last month day.
+                            </div>
+                            <div class="reverse-date-error"
+                                 *ngIf="this.isReversalDateAfter">
+                                Not allowed. Reversal doc. cannot be in the future.
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="column">
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="10px">
+                <div fxLayout="column">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Accounting Period"
+                               [formControl]='accPeriodFormCtrl'
+                               autocomplete="off"
+                               readonly="true">
+                    </mat-form-field>
+                </div>
+                <div fxLayout="column">
+                    <mat-form-field>
+                        <mat-label>Currency</mat-label>
+                        <input matInput
+                               [formControl]='currencyCtrl'
+                               autocomplete="off"
+                               readonly="true">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="space-between start">
+    <div fxLayout="column"
+         fxFlex="98.5">
+        <div ag-grid="reverseDocumntGridOptions">
+            <ag-grid-angular class="ag-theme-material grid-size"
+                             [rowData]="accountingDocumentLine"
+                             [columnDefs]="reverseDocumentCreateGridCols"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             [pagination]="false"
+                             [paginationPageSize]="20"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             enableFilter="false"
+                             [rowHeight]="atlasAgGridParam.rowHeight">
+            </ag-grid-angular>
+        </div>
+        <span class="fill-space"></span>
+        <div fxLayout="column"
+             fxLayoutAlign="start end"
+             class="total-amount-content">
+            <mat-card-subtitle class="total-figure">Total Amount:
+                <span class="total-figure-value">{{totalAmount}}</span> </mat-card-subtitle>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="row"
+     class="quick-sum-div-height"
+     fxLayoutAlign="space-between center">
+    <div fxLayout="column "
+         *ifAuthorized="'Financials.POSTINGMGT.AUTHORIZEPOSTING',company:this.company"
+         fxLayoutAlign="start">
+        <mat-slide-toggle [formControl]="interfaceCtrl">To Interface</mat-slide-toggle>
+    </div>
+</div>

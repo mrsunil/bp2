@@ -1,0 +1,34 @@
+<mat-card>
+    <mat-card-content>
+        <div fxLayout="row"
+             class=" table-title">
+            <span class="fill-space"></span>
+            <atlas-ag-grid-user-preferences *ngIf="trancheGridOptions && trancheGridOptions.columnDefs"
+                                            [gridOptions]="trancheGridOptions"
+                                            [company]="company"
+                                            [sharingEnabled]="hasGridSharing"
+                                            [gridId]="componentId"
+                                            #userPreferences>
+            </atlas-ag-grid-user-preferences>
+        </div>
+        <div ag-grid="trancheGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular class="ag-theme-material atlas-ag-grid"
+                             [rowData]="childSectionList"
+                             [columnDefs]="trancheGridCols"
+                             (gridReady)="onGridReady($event)"
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             [context]="gridContext"
+                             (cellValueChanged)="onCellValueChanged($event)"
+                             (columnVisible)="onColumnVisibilityChanged($event)"
+                             [frameworkComponents]="gridComponents"
+                             [singleClickEdit]=true
+                             [suppressRowClickSelection]="true"
+                             [rowHeight]="atlasAgGridParam.rowHeight">
+            </ag-grid-angular>
+        </div>
+    </mat-card-content>
+</mat-card>

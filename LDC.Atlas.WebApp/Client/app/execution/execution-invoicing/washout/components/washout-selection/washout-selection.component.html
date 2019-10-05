@@ -1,0 +1,10 @@
+<div>
+    <atlas-invoice-type-selection #invoiceTypeSelectionComponent>
+    </atlas-invoice-type-selection>
+    <atlas-washout-search #washoutSearchComponent
+                          (washoutContractsSelected)="onContractsSelected($event)"
+                          (counterPartySelected)="onCounterPartySelected($event)">
+    </atlas-washout-search>
+    <atlas-decimals #washoutDecimalsComponent>
+    </atlas-decimals>
+</div>

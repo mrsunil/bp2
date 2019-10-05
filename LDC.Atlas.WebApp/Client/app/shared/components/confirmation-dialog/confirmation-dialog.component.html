@@ -1,0 +1,19 @@
+<h1 mat-dialog-title
+    style="text-transform: uppercase;">{{dialogData.title}}</h1>
+<mat-dialog-content>
+    <div fxLayout="row"
+         fxLayoutAlign="none center"
+         fxLayoutWrap
+         fxLayoutGap="10px">
+        <p [innerHtml]="dialogData.text"></p>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button *ngIf="dialogData.cancelButton"
+            mat-button
+            (click)="onCloseCancel()">{{dialogData.cancelButton}}</button>
+    <span class="fill-space"></span>
+    <button *ngIf="dialogData.okButton"
+            mat-button
+            (click)="onCloseConfirm()">{{dialogData.okButton}}</button>
+</mat-dialog-actions>

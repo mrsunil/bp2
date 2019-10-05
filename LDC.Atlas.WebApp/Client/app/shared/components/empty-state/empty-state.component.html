@@ -1,0 +1,12 @@
+<mat-card class="empty-state">
+    <div class="empty-state-content">
+
+        <h3>{{title}}</h3>
+        <p>{{message}}</p>
+
+        <div *ngIf="hasButton">
+            <button mat-raised-button
+                    (click)="onButtonClicked()">{{buttonText}}</button>
+        </div>
+    </div>
+</mat-card>

@@ -1,0 +1,24 @@
+<h3 class="atlas-grid-card-title">Parameters</h3>
+<form [formGroup]="paramsFormGroup">
+    <ag-grid-angular *ngIf="gridOptions"
+                     [gridOptions]="gridOptions"
+                     (gridReady)="onGridReady($event)"
+                     class="ag-theme-material">
+    </ag-grid-angular>
+</form>
+
+<mat-divider></mat-divider>
+<div fxLayout="row"
+     fxLayoutAlign="space-between start">
+    <button mat-button
+            (click)="onDiscardButtonClicked()"
+            type="button">
+        DISCARD
+    </button>
+    <button mat-button
+            (click)="onSaveButtonClicked()"
+            [disabled]="paramsFormGroup.errors"
+            type="button">
+        SAVE
+    </button>
+</div>

@@ -1,0 +1,24 @@
+<div class="section-light-box lightbox-width">
+    <h1>De-Allocation</h1>
+    <div>
+        <p>
+            You are about to deallocate the trades. Unselect the ones for which you want to re-instate pre-allocation
+            traffic details.
+        </p>
+        <mat-chip-list multiple>
+            <mat-chip *ngFor="let contract of model.selectedContracts"
+                      [selected]="contract.removeSectionTrafficInfo"
+                      (click)="onSelectedContractClicked(contract)">
+                <mat-icon>{{ contract.removeSectionTrafficInfo ? 'check_circle' : 'panorama_fish_eye'}}</mat-icon>
+                {{contract.contractLabel}}
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between end">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">discard</button>
+        <button mat-button
+                (click)="onDeAllocateButtonClicked()">DeAllocate</button>
+    </div>
+</div>

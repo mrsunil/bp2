@@ -1,0 +1,44 @@
+<div class="dark-tab header-tab mat-elevation-z6">
+    <div class="header-tab-container">
+        <nav mat-tab-nav-bar>
+            <div>
+                <a mat-tab-link
+                   *ifAuthorized="routeLinks[0].privilege,company:this.company"
+                   routerLinkActive
+                   #rla="routerLinkActive"
+                   [active]="isActive(routeLinks[0])">
+                    {{ routeLinks[0].label }}
+                </a>
+            </div>
+            <div *ngFor="let routeLink of routeLinks | slice:2">
+                <a mat-tab-link
+                   *ifAuthorized="routeLink.privilege,company:this.company"
+                   [routerLink]="routeLink.link"
+                   routerLinkActive
+                   #rla="routerLinkActive"
+                   [active]="isActive(routeLink)">
+                    {{ routeLink.label }}
+                </a>
+            </div>
+            <div>
+                <button mat-button
+                        class="report-option"
+                        [matMenuTriggerFor]="fxReport">
+                    <a mat-tab-link
+                       *ifAuthorized="routeLinks[0].privilege,company:this.company"
+                       routerLinkActive
+                       #rla="routerLinkActive"
+                       [active]="isActive(routeLinks[0])">
+                        {{ routeLinks[1].label }}
+                    </a>
+                </button>
+                <mat-menu #fxReport="matMenu"
+                          [overlapTrigger]="false"
+                          xPosition="after">
+                    <button mat-menu-item
+                            (click)="onExchangeButtonClicked()">Exchange Rate Reports</button>
+                </mat-menu>
+            </div>
+        </nav>
+    </div>
+</div>

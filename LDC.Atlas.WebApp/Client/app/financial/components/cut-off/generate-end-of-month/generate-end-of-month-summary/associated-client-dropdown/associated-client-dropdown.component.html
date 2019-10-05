@@ -1,0 +1,29 @@
+<div [formGroup]="formGroup">
+    <mat-form-field fxFlex=100%>
+        <input #input
+               matInput
+               [matAutocomplete]="autocomplete"
+               [placeholder]="'Associated Client'"
+               formControlName="formCtrl"
+               (focus)="clearValueEvent()"
+               (focusout)="setValueEvent($event, autocomplete)"
+               (click)="openAutocompletePanel()">
+        <mat-autocomplete #autocomplete="matAutocomplete"
+                          (optionSelected)="selectionChanged($event); input.value=''">
+            <mat-option *ngIf="allFilterOption.value.toString().startsWith(input.value)"
+                        [value]="allFilterOption">
+                <mat-checkbox [checked]="allSelected">
+                    All
+                </mat-checkbox>
+            </mat-option>
+            <mat-option *ngFor="let object of filteredObjects"
+                        [value]="object">
+                <mat-checkbox [checked]="allSelected ? true : isSelected(object)">
+                    <span *ngIf="displayCode">{{ object[valueProperty] }}</span>
+                    <span *ngIf="object[valueProperty] !== null && displayCode"> | </span>
+                    <span>{{ object[displayProperty] }}</span>
+                </mat-checkbox>
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</div>

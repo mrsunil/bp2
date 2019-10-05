@@ -1,0 +1,15 @@
+<div [ngSwitch]="invoiceTypeId">
+    <atlas-commercial-summary #commercialSummaryComponent
+                              [defaultVATCode]="defaultVATCode"
+                              [isCreationMode]="isCreationMode"
+                              *ngIf="isCommercial()"></atlas-commercial-summary>
+    <atlas-cost-summary #costSummaryComponent
+                        [defaultVATCode]="defaultVATCode"
+                        *ngIf="isCost()"></atlas-cost-summary>
+    <atlas-goods-cost-summary #goodsCostSummaryComponent
+                              [defaultVATCode]="defaultVATCode"
+                              *ngIf="isGoodsCost()"></atlas-goods-cost-summary>
+    <atlas-washout-summary #washoutSummaryComponent
+                           [defaultVATCode]="defaultVATCode"
+                           *ngIf="isWashout()"></atlas-washout-summary>
+</div>

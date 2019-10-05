@@ -1,0 +1,144 @@
+<mat-card class="trade-capture-card">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Terms</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div class="custom-form"
+                 fxFlex="30%"
+                 [class.displayMode]="!contractTermsCtrl.enabled"
+                 [class.isEmpty]="!contractTermsCtrl.value"
+                 [class.required-field]="contractTermsCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Contract Terms"
+                           [required]="contractTermsCtrl.isRequired"
+                           [matAutocomplete]="contractTerms"
+                           [formControl]="contractTermsCtrl"
+                           [matTooltip]="'Contract Terms Code'">
+                    <mat-icon *ngIf="isEdit"
+                              class="bookmark-icon"
+                              matSuffix>bookmark</mat-icon>
+                    <mat-autocomplete #contractTerms="matAutocomplete"
+                                      [panelWidth]="panelSize"
+                                      (closed)="clearDescription()"
+                                      (optionSelected)="contractTermsCodeSelected($event.option.value)">
+                        <mat-option *ngFor="let coTerm of filteredContractTerms"
+                                    [value]="coTerm.contractTermCode">
+                            {{coTerm.contractTermCode}} | {{coTerm.description}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="contractTermsCtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                    <mat-error *ngIf="contractTermsCtrl.hasError('inDropdownList')">
+                        Value not in list
+                    </mat-error>
+                    <mat-hint *ngIf="contractTermsCtrl.isRequired && contractTermsCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <atlas-form-input fxFlex="70%"
+                              [fieldControl]="contractTermsDescriptionCtrl"
+                              [isEditable]="isInputField"
+                              [label]="'Contract Terms Description'">
+            </atlas-form-input>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div class="custom-form"
+                 fxFlex="30%"
+                 [class.displayMode]="!portTermsCtrl.enabled"
+                 [class.isEmpty]="!portTermsCtrl.value"
+                 [class.required-field]="portTermsCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Port Terms"
+                           [required]="portTermsCtrl.isRequired"
+                           [matAutocomplete]="portTerms"
+                           [formControl]="portTermsCtrl"
+                           autocomplete="off"
+                           [matTooltip]="'Port Terms Code'">
+                    <mat-icon *ngIf="isEdit"
+                              class="bookmark-icon"
+                              matSuffix>bookmark</mat-icon>
+                    <mat-autocomplete #portTerms="matAutocomplete"
+                                      [panelWidth]="panelSize"
+                                      (closed)="clearDescription()"
+                                      (optionSelected)="portCodeSelected($event.option.value)">
+                        <mat-option *ngFor="let poTerm of filteredPortTerms"
+                                    [value]="poTerm.portCode">
+                            {{poTerm.portCode}} | {{poTerm.description}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="portTermsCtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                    <mat-error *ngIf="portTermsCtrl.hasError('inDropdownList')">
+                        Value not in list
+                    </mat-error>
+                    <mat-hint *ngIf="portTermsCtrl.isRequired && portTermsCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <atlas-form-input fxFlex="70%"
+                              [fieldControl]="portTermsDescriptionCtrl"
+                              [isEditable]="isInputField"
+                              [label]="'Port Description'">
+            </atlas-form-input>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%"
+             class="custom-form"
+             [class.required-field]="arbitrationCtrl.isRequired"
+             [class.displayMode]="!arbitrationCtrl.enabled">
+
+            <mat-form-field fxFlex="30%">
+                <input matInput
+                       placeholder="Arbitration"
+                       [required]="arbitrationCtrl.isRequired"
+                       [matAutocomplete]="arbitration"
+                       [formControl]="arbitrationCtrl"
+                       autocomplete="off"
+                       [matTooltip]="'Arbitration Code'">
+                <mat-icon *ngIf="isEdit"
+                          class="bookmark-icon"
+                          matSuffix>bookmark</mat-icon>
+                <mat-autocomplete #arbitration="matAutocomplete"
+                                  [panelWidth]="panelSize"
+                                  (closed)="clearDescription()"
+                                  (optionSelected)="arbitrationCodeSelected($event.option.value)">
+                    <mat-option *ngFor="let arCode of filteredArbitration"
+                                [value]="arCode.arbitrationCode">
+                        {{arCode.arbitrationCode}} | {{arCode.description}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="arbitrationCtrl.hasError('required')">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf="arbitrationCtrl.hasError('inDropdownList')">
+                    Value not in list
+                </mat-error>
+                <mat-hint *ngIf="arbitrationCtrl.isRequired && arbitrationCtrl.enabled">
+                    Required *
+                </mat-hint>
+            </mat-form-field>
+
+            <atlas-form-input fxFlex="60%"
+                              [fieldControl]="arbitrationDescriptionCtrl"
+                              [isEditable]="isInputField"
+                              [label]="'Arbitration Description'">
+            </atlas-form-input>
+        </div>
+    </mat-card-content>
+</mat-card>

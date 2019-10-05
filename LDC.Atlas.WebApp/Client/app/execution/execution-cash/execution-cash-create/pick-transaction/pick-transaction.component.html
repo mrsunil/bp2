@@ -1,0 +1,15 @@
+<atlas-invoice-matching #invoiceMatchingComponent
+                        (setNarrative)="onSetNarrative($event)"
+                        (totalBalanceValue)="onTotalBalanceValueCalculated($event)"
+                        (invoiceSearchValues)="onInvoiceSearchValueEntered($event)"
+                        (invoiceSelected)="onInvoiceSelected($event)"
+                        (currencySelected)="currencySelected($event)"
+                        (invoiceAmountValue)="onInvoiceAmountEntered($event)"
+                        (AmountEnterOrInvoiceSelection)="OnAmountEnterOrInvoiceSelection()">
+</atlas-invoice-matching>
+<div fxLayout="column"
+     fxLayoutAlign="start left">
+    <atlas-additional-costs (proceedClickedCashReceipt)="onProceedClickedCashReceipt()"
+                            (calculateBalanceOnCostAmountEnter)="calculateBalanceOnCostAmountEnter()"
+                            #additionalCostsFormComponent></atlas-additional-costs>
+</div>

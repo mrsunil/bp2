@@ -1,0 +1,174 @@
+<mat-card>
+    <form [formGroup]="searchForm">
+        <mat-card-header>
+            <mat-card-title>
+                Entries to Cash Matching
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="row"
+                 fxLayoutGap="8px">
+
+                <atlas-dropdown-select fxFlex="9%"
+                                       label="Cli. Reference"
+                                       [isEditable]="counterpartyCtrl.enabled"
+                                       [fieldControl]="counterpartyCtrl"
+                                       [options]="filteredCounterPartyList"
+                                       displayProperty="counterpartyCode"
+                                       [selectProperties]="['counterpartyCode', 'description']"
+                                       [errorMap]="counterpartyErrorMap"
+                                       (optionSelected)="onCounterpartySelected($event)"
+                                       isAutocompleteActivated="true">
+                </atlas-dropdown-select>
+
+                <atlas-form-input fxFlex={{clientNameWidth}}
+                                  label="Client Name"
+                                  [fieldControl]="clientNameCtrl"
+                                  [isEditable]="clientNameCtrl.enabled">
+                </atlas-form-input>
+
+                <atlas-dropdown-select fxFlex="7%"
+                                       label="Department"
+                                       [isEditable]="departmentsCtrl.enabled"
+                                       [fieldControl]="departmentsCtrl"
+                                       [options]="filteredDepartments"
+                                       displayProperty="departmentCode"
+                                       [selectProperties]="['departmentCode', 'description']"
+                                       (optionSelected)="onDepartmentCodeSelected($event)"
+                                       isAutocompleteActivated="true">
+                </atlas-dropdown-select>
+
+                <atlas-dropdown-select fxFlex="6%"
+                                       label="Currency"
+                                       [isEditable]="currencyCtrl.enabled"
+                                       [fieldControl]="currencyCtrl"
+                                       [options]="filteredCurrencyList"
+                                       displayProperty="currencyCode"
+                                       [selectProperties]="['currencyCode', 'description']"
+                                       [errorMap]="currencyErrorMap"
+                                       (optionSelected)="onCurrencyOptionSelected($event)"
+                                       isAutocompleteActivated="true">
+                </atlas-dropdown-select>
+
+                <atlas-form-input fxFlex={{secDocReferenceWidth}}
+                                  label="Second Document Reference"
+                                  [fieldControl]="secDocReferenceCtrl"
+                                  [isEditable]="secDocReferenceCtrl.enabled">
+                </atlas-form-input>
+
+                <atlas-dropdown-select fxFlex="13%"
+                                       label="DocumentReference"
+                                       [isEditable]="docReferenceCtrl.enabled"
+                                       [fieldControl]="docReferenceCtrl"
+                                       [options]="filteredDocReferenceList"
+                                       displayProperty="invoiceDocumentReference"
+                                       [selectProperties]="['invoiceDocumentReference']"
+                                       [errorMap]="currencyErrorMap"
+                                       (optionSelected)="onDocumentReferenceSelected($event)"
+                                       (blur)="onDocumentReferenceSelection()"
+                                       (keydown.enter)="onKeydown($event)"
+                                       isAutocompleteActivated="true">
+                </atlas-dropdown-select>
+
+                <atlas-dropdown-select fxFlex="9%"
+                                       *ngIf="selectedValue==cashSelectionType.PaymentDifferentCurrency || selectedValue==cashSelectionType.ReceiptDifferentCurrency"
+                                       label="Bank Currency"
+                                       [isEditable]="bankCurrencyCtrl.enabled"
+                                       [fieldControl]="bankCurrencyCtrl"
+                                       [options]="filteredBankCurrencylist"
+                                       displayProperty="currencyCode"
+                                       [selectProperties]="['currencyCode', 'description']"
+                                       [errorMap]="bankCurrencyErrorMap"
+                                       (optionSelected)="onBankCurrencyEntered($event)"
+                                       isAutocompleteActivated="true">
+                </atlas-dropdown-select>
+
+                <atlas-form-input fxFlex="6%"
+                                  *ngIf="selectedValue==cashSelectionType.PaymentDifferentCurrency || selectedValue==cashSelectionType.ReceiptDifferentCurrency"
+                                  label="FX Rate"
+                                  [fieldControl]="fxRateCtrl"
+                                  [isEditable]="fxRateCtrl.enabled"
+                                  (change)="onFXRateValueChanged($event)"
+                                  [errorMap]="fxRateErrorMap">
+                </atlas-form-input>
+
+                <div fxFlex="15%"
+                     *ngIf="selectedValue==cashSelectionType.PaymentDifferentCurrency || selectedValue==cashSelectionType.ReceiptDifferentCurrency">
+                    <mat-radio-group class="currency-radio-group"
+                                     [formControl]="divideMultiplyCtrl"
+                                     (change)="onDivideMultiplyToggleChanges($event)"
+                                     [disabled]="true">
+                        <mat-radio-button value="D">Divide</mat-radio-button>
+                        <mat-radio-button value="M">Multiply</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <span class="fill-space"></span>
+                <button mat-icon-button
+                        (click)="onSearchButtonClicked()">
+                    <mat-icon aria-label="Search">search</mat-icon>
+                </button>
+
+            </div>
+        </mat-card-content>
+    </form>
+</mat-card>
+<mat-card>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between">
+        <mat-card-title>
+            Documents found
+        </mat-card-title>
+        <atlas-grid-enlargement *ngIf="invoiceMatchingGridOptions && invoiceMatchingGridOptions.columnDefs"
+                                [gridOptions]="invoiceMatchingGridOptions"
+                                (rowSelected)="onSelectionChanged($event)"
+                                #gridZoom>
+        </atlas-grid-enlargement>
+    </div>
+    <mat-card-content>
+        <div ag-grid="invoiceMatchingGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular style=" height:100%;"
+                             class="ag-theme-material"
+                             [columnDefs]="invoiceMatchingGridColumns"
+                             [rowData]="invoiceMatchingGridRows"
+                             [gridOptions]="invoiceMatchingGridOptions"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             (firstDataRendered)="autosizeColumns()"
+                             (rowSelected)="onSelectionChanged($event)"
+                             rowSelection="multiple"
+                             [singleClickEdit]="true"
+                             [suppressRowClickSelection]="true"
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             enableFilter
+                             [rowHeight]="atlasAgGridParam.rowHeight"
+                             [frameworkComponents]="gridComponents">
+            </ag-grid-angular>
+        </div>
+    </mat-card-content>
+    <div fxLayout="row"
+         fxLayoutAlign="end center"
+         *ngIf="selectedValue == cashSelectionType.ReceiptFullPartialTransaction || selectedValue == cashSelectionType.ReceiptDifferentCurrency">
+        <mat-card-subtitle class="total-figure">Balance : <span
+                  class="total-figure-value">{{invoiceAmount | number : '1.2-2' }}
+            </span></mat-card-subtitle>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="end center"
+         *ngIf="selectedValue == cashSelectionType.PaymentFullPartialTransaction || selectedValue == cashSelectionType.PaymentDifferentCurrency 
+             || selectedValue == cashSelectionType.PaymentDifferentClient">
+        <mat-card-subtitle class="total-figure">Amount to be Paid : <span
+                  class="total-figure-value">{{totalBalance  | number : '1.2-2' }}
+            </span></mat-card-subtitle>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         *ngIf="isLoading"
+         class="loading">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+</mat-card>

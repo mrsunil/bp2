@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.PaymentRequestInterface</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.PaymentRequestInterface.Application.Behaviors.ValidationResultExtension.AddToDictionary(FluentValidation.Results.ValidationResult,System.Collections.Generic.IDictionary{System.String,System.String},System.String)">
+            <summary>
+            Stores the errors in a ValidationResult object to the specified dictionary.
+            </summary>
+            <param name="result">The validation result to store</param>
+            <param name="errors">The dictionary to store the errors in.</param>
+            <param name="prefix">An optional prefix. If omitted, the property names will be the keys. If specified, the prefix will be concatenated to the property name with a period. Eg "user.Name"</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PaymentRequestInterface.Controllers.PaymentRequestController.ProcessPaymentRequestdatachangelog(LDC.Atlas.Services.PaymentRequestInterface.Application.Commands.ProcessInterfaceDataChangeLogsRequest)">
+            <summary>
+            Process PaymentRequest message logs
+            </summary>
+            <param name="ProcessInterfaceDataChangeLogsRequest">The identifier of the data change log to process.</param>
+        </member>
+    </members>
+</doc>

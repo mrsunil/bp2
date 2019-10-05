@@ -1,0 +1,134 @@
+<mat-card>
+    <mat-accordion class="price-accordion">
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header [collapsedHeight]="'25px'"
+                                        [expandedHeight]="'25px'">
+                <mat-panel-title>Client Bank Account Details</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Bank Country"
+                               [formControl]="bankCountryCtrl"
+                               [matTooltip]="'Quantity Codes'">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Bank City"
+                               [formControl]="bankCityCtrl"
+                               [matTooltip]="'Bank City'">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Bank Swift Code"
+                               [formControl]="bankSwiftCodeCtrl"
+                               [matTooltip]="'Bank Swift Code'">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="NCC"
+                               [formControl]="nccCtrl"
+                               [matTooltip]="'NCC'">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="NCS"
+                               [formControl]="ncsCtrl"
+                               [matTooltip]="'NCS'">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Bank Branch"
+                               [formControl]="bankBranchCtrl"
+                               [matTooltip]="'Bank Branch'">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Bank ZIP Code"
+                               [formControl]="bankZIPCodeCtrl"
+                               [matTooltip]="'Bank ZIP Code'">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Bank Account Description"
+                               [formControl]="bankAccountDescriptionCtrl"
+                               [matTooltip]="'Bank Account Description'">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Account No"
+                               [formControl]="accountNoCtrl"
+                               [matTooltip]="'Account No'">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Account Currency"
+                               [formControl]="accountCurrencyCtrl"
+                               [matTooltip]="'Account Currency'">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="External Reference"
+                               [formControl]="externalReferenceCtrl"
+                               [matTooltip]="'External Reference'">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Bank Type"
+                               [formControl]="bankTypeCtrl"
+                               [matTooltip]="'Bank Type'">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+                <div fxFlex="30%">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Bank Account Status"
+                               [formControl]="bankAccountStatusCtrl"
+                               [matTooltip]="'Bank Account Status'">
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</mat-card>

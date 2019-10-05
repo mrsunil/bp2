@@ -1,0 +1,41 @@
+.ssrs-reportviewer {
+    overflow-x: hidden;
+    overflow-Y: hidden;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    border: none;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) // shadow of a material mat-card
+}
+
+.empty-state {
+    background: url("/assets/img/empty-status.svg") bottom center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    min-height: 160px;
+    line-height: 19px;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+
+    p {
+        font-size: 16px;
+        letter-spacing: 0.5px;
+    }
+
+    h3 {
+        font-weight: 600;
+    }
+
+    .empty-state-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.report-container {
+    height: 100%;
+    margin: 8px 0;
+}

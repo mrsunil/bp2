@@ -1,0 +1,21 @@
+<div  fxLayout="column"
+      *ngIf="totalSumShow"
+      class="value-legs-total-figure"
+      fxLayoutAlign="space-around end">
+    <div fxFlex="33">
+        <mat-card-subtitle class="total-figure ">Amount : <span class="total-figure-value">{{formatValue(amountSum)}}
+            </span></mat-card-subtitle>
+    </div>
+    <div fxFlex="33">
+        <mat-card-subtitle class="total-figure">{{functionalCcyTitle}} : <span
+                  class="total-figure-value">{{formatValue(functionalCcySum)}}
+            </span>
+        </mat-card-subtitle>
+    </div>
+    <div fxFlex="33">
+        <mat-card-subtitle class="total-figure ">{{statutoryCcyTitle}} : <span
+                  class="total-figure-value">{{formatValue(statutoryCcySum)}}
+
+            </span> </mat-card-subtitle>
+    </div>
+</div>

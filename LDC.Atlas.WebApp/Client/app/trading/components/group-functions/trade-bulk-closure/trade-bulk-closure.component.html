@@ -1,0 +1,101 @@
+<form [formGroup]="bulkEditionFormGroup">
+    <div class="main-container">
+        <mat-horizontal-stepper [linear]
+                                (selectionChange)="onChangeStepAction($event)"
+                                #stepper>
+            <ng-template matStepperIcon="edit">
+                <mat-icon>check</mat-icon>
+            </ng-template>
+            <mat-step>
+                <ng-template matStepLabel>Contracts</ng-template>
+                <atlas-group-function-warning #groupFunctionWarning></atlas-group-function-warning>
+                <atlas-group-function-contracts #contractSelection
+                                                (contractSelected)="isContractSelected($event)">
+                </atlas-group-function-contracts>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="row "
+                         fxLayoutAlign="start ">
+                        <button (click)="onContractSelectedDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                        <button mat-button
+                                (click)="onContractSelectionPreviousButtonClicked()">
+                            PREVIOUS
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onContractSelectionNextButtonClicked()"
+                                    [disabled]="isContractsNextDisabled">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+
+
+            <mat-step>
+                <ng-template matStepLabel>Details</ng-template>
+                <atlas-bulk-closure-matrix #closurematrix
+                                           (contractClosureSelected)="isContractClosureSelected($event)">
+                </atlas-bulk-closure-matrix>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="row "
+                         fxLayoutAlign="start ">
+                        <button (click)="onClosureMatrixDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                        <button mat-button
+                                (click)="onClosureMatrixPreviousButtonClicked()">
+                            PREVIOUS
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onClosureMatrixNextButtonClicked()"
+                                    [disabled]="isContractsClosureNextDisabled">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>Summary</ng-template>
+                <atlas-summary-closure-matrix #summarymatrix>
+                </atlas-summary-closure-matrix>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="row "
+                         fxLayoutAlign="start ">
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onSummaryFinishClosureMatrixButtonClicked()">
+                                FINISH
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</form>

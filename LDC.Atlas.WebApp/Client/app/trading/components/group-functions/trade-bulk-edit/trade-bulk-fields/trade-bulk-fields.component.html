@@ -1,0 +1,116 @@
+<div class="main-container"
+     fxLayout="column"
+     fxLayoutAlign="start none">
+    <mat-card>
+        <form [formGroup]="searchFieldForm">
+            <div fxLayout="row"
+                 fxLayoutAlign="start none"
+                 class="search">
+                <mat-form-field>
+                    <input specialIsAlphaNumeric
+                           matInput
+                           (keydown.enter)="onSearchFields()"
+                           (keyup.backspace)="onSearchFields()"
+                           placeholder="Field Name"
+                           formControlName="searchFieldCtrl" />
+                </mat-form-field>
+                <button mat-raised-button
+                        (click)="onSearchFields()"
+                        class="heroGradient">
+                    <mat-icon aria-label="Search"
+                              class="search-icon">search</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-card>
+    <div>
+        <button mat-button
+                (click)="onTickButtonClicked()">
+            TICK
+        </button>
+        <button mat-button
+                (click)="onUntickButtonClicked()">
+            UNTICK
+        </button>
+    </div>
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="row wrap"
+                 fxLayoutAlign="space-around start">
+                <div fxLayout="column"
+                     fxLayoutAlign="start left"
+                     fxFlex="18"
+                     *ngFor="let fields of tradeBulkFieldList1">
+                    <mat-card class="active-card field-container">
+                        <mat-card-title>
+                            <h2 class="no-margin"> {{fields[0].tradeFieldHeader}}</h2>
+                        </mat-card-title>
+                        <div *ngFor="let field of fields">
+                            <mat-checkbox #bulkEditFieldSelectionctrl
+                                          [formControl]="tradeBulkEditFieldCtrl"
+                                          [value]="field.fieldName"
+                                          [checked]="isFieldSelected"
+                                          (change)="onSelectionChanged(bulkEditFieldSelectionctrl.checked, field.fieldId, field.fieldName)">
+                                {{field.friendlyName}}
+                            </mat-checkbox>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="row wrap"
+                 fxLayoutAlign="space-around start">
+                <div fxLayout="column"
+                     fxLayoutAlign="start left"
+                     fxFlex="18"
+                     *ngFor="let fields of tradeBulkFieldList2">
+                    <mat-card class="active-card field-container">
+                        <mat-card-title>
+                            <h2 class="no-margin"> {{fields[0].tradeFieldHeader}}</h2>
+                        </mat-card-title>
+                        <div *ngFor="let field of fields">
+                            <mat-checkbox #bulkEditFieldSelectionctrl
+                                          [value]="field.fieldName"
+                                          [formControl]="tradeBulkEditFieldCtrl"
+                                          [checked]="isFieldSelected"
+                                          (change)="onSelectionChanged(bulkEditFieldSelectionctrl.checked, field.fieldId, field.fieldName)">
+                                {{field.friendlyName}}
+                            </mat-checkbox>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="row"
+                 fxLayoutAlign="start">
+                <div fxLayout.xs="column"
+                     fxLayoutAlign="space-between"
+                     fxLayoutGap="5px"
+                     fxLayoutGap.sm="10"
+                     fxFlex="21"
+                     *ngFor="let fields of tradeBulkFieldList3">
+                    <mat-card class="active-card list3-field-container">
+                        <mat-card-title>
+                            <h2 class="no-margin"> {{fields[0].tradeFieldHeader}}</h2>
+                        </mat-card-title>
+                        <div *ngFor="let field of fields">
+                            <mat-checkbox #bulkEditFieldSelectionctrl
+                                          [value]="field.fieldName"
+                                          [formControl]="tradeBulkEditFieldCtrl"
+                                          [checked]="isFieldSelected"
+                                          (change)="onSelectionChanged(bulkEditFieldSelectionctrl.checked, field.fieldId, field.fieldName)">
+                                {{field.friendlyName}}
+                            </mat-checkbox>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,38 @@
+<form [formGroup]="invoiceMarkingForm">
+    <div fxLayoutAlign="center"
+         fxLayout="row wrap"
+         fxLayoutAlign="space-between"
+         class="cards-fxLayout">
+        <atlas-invoice-view-mode #invoiceViewModeComponent
+                                 (documentTypeSelected)="documentTypeSelected($event)"
+                                 (editToggleChanged)="editToggleChanged($event)"
+                                 fxFlex="calc(50% - 16px)"
+                                 fxFlex.lt-md="100"
+                                 class="flex-item">
+        </atlas-invoice-view-mode>
+
+        <atlas-physical-contract-capture-invoice-marking-top-card #topCardComponent
+                                                                  fxFlex="calc(50% - 16px)"
+                                                                  fxFlex.lt-md="100">
+        </atlas-physical-contract-capture-invoice-marking-top-card>
+
+        <atlas-detailed-view #detailedViewComponent
+                             [documentType]="documentType"
+                             [isEditToggle]="isEditToggle"
+                             (totalValuesCalculated)="onTotalValuesCalculated($event)"
+                             (setCashMatchDate)="onGetCashMatchDate($event)"
+                             fxFlex="100">
+        </atlas-detailed-view>
+        <atlas-invoice-totals #invoiceTotalsComponent
+                              fxFlex="calc(50% - 16px)"
+                              fxFlex.lt-sm="100"
+                              class="flex-item">
+        </atlas-invoice-totals>
+        <atlas-invoice-status #invoiceStatusComponent
+                              fxFlex="calc(50% - 16px)"
+                              fxFlex.lt-sm="100"
+                              class="flex-item"
+                              [isEditToggle]="isEditToggle">
+        </atlas-invoice-status>
+    </div>
+</form>

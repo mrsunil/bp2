@@ -1,0 +1,926 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.Execution</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.AllocateSectionCommandHandler.InsertFreezeRecalcProcessQueue(System.Int64,System.Nullable{System.Int64},System.String)">
+            <summary>
+            This method will insert record into Process message to call the recalc
+            </summary>
+            <param name="sectionId"> section command object</param>
+            <param name="dataVersionId">dataversion being edited</param>
+            <param name="companyId">company on which there is edition</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.CharterCommandsHandler.InsertFreezeRecalcProcessQueue(System.Int64,System.Nullable{System.Int64},System.String)">
+            <summary>
+            This method will insert record into Process message to call the recalc
+            </summary>
+            <param name="sectionId"> section command object</param>
+            <param name="dataVersionId">dataversion being edited</param>
+            <param name="companyId">company on which there is edition</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.CreateCashCommandHandler.Handle(LDC.Atlas.Services.Execution.Application.Commands.CreateCashCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "creation" event for a cash
+            </summary>
+            <param name="request">The command object that contains all the properties to create cash and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+            <returns>The Cash object that has been generated.</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.CreateCashCommandHandler.Handle(LDC.Atlas.Services.Execution.Application.Commands.UpdateCashCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handling the "update" event of a cash
+            </summary>
+            <param name="request">The command object that contains all the properties to update cash and related objects.</param>
+            <param name="cancellationToken">Token to cancel the operation.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.CreateCashCommandHandler.GenerateDocumentReference(System.String,System.Int32,System.Int64,System.Int32)">
+            <summary>
+            This method will generate the document reference number based on CashType
+            e.x For CaSh Receipt: CI1800001
+                For Cash Payment: CP1800001
+            </summary>
+            <param name="company">company code</param>
+            <param name="year">The full year (2019 for ex...)</param>
+            <param name="transactionDocumentTypeId">type of the transaction document to create</param>
+            <param name="increment">The number to increment the counter with. One by default.</param>
+            <returns>Tuple which contains at Item1 the new "yearnumber", and at Item2 the new DocumentReference (made
+            of the transaction doc type, the year and the yearnumber</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.CreateCashCommandHandler.CalculateFunctionalStatutoryCurrencyValues(LDC.Atlas.Services.Execution.Entities.Cash)">
+            <summary>
+            Calculation of the functional and statutory currencies
+            IMPORTANT NOTE : this is a temporary information ; as soon as the cash is posted,
+            a call to usp_UpdateTransactionDocumentRates will "fix" the rates as the values at posting time
+            and will recalculate the final matchable amounts
+            </summary>
+            <param name="cash">cash</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.CreateCashCommandHandler.CalculateSignForCashDocumentMatching(LDC.Atlas.Services.Execution.Entities.DirectionType,LDC.Atlas.Services.Execution.Entities.MasterDocumentType)">
+            <summary>
+            Generates the sign of matching of a document type in a cash by picking
+            </summary>
+            <param name="cashType">CashType</param>
+            <param name="documentType">Document Type</param>
+            <returns> Sign for single cash</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.InvoiceCommandsHandler.Handle(LDC.Atlas.Services.Execution.Application.Commands.CreateInvoiceCommand,System.Threading.CancellationToken)">
+            <summary>
+            Creation of an invoie OR a REVERSAL of an invoice
+            </summary>
+            <param name="request">Request</param>
+            <param name="cancellationToken">cancellation token</param>
+            <returns>Task Invoice Record</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.InvoiceCommandsHandler.CalculateBalancedTotalAmount(LDC.Atlas.Services.Execution.Entities.InvoiceRecord,System.Collections.Generic.IEnumerable{LDC.Atlas.Services.Execution.Entities.InvoiceLineRecord})">
+            <summary>
+            Calculation of the total of the invoice based on the lines.
+            Algorithm also applied in UpdateAccountingDocumentStatusToPostedCommandHandler.UpdateDocumentRates
+            </summary>
+            <param name="invoice">Invoice</param>
+            <param name="newInvoiceLines">List of invoice lines</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.InvoiceCommandsHandler.Handle(LDC.Atlas.Services.Execution.Application.Commands.CreateTransactionDocumentCommand,System.Threading.CancellationToken)">
+            <summary>
+            Creation of the REVERSAL of a transaction document (the name of the command here is misleading)
+            </summary>
+            <param name="request">request</param>
+            <param name="cancellationToken">Cancellation token</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.InvoiceCommandsHandler.GetInvoiceDocumentReferenceValue(LDC.Atlas.Services.Execution.Entities.InvoiceRecord)">
+            <summary>
+            This method will generate the document reference number based on InvoiceType
+            e.x For Purchase Invoice: PI1800001
+                For Sale Invoice: SI1800001
+            </summary>
+            <param name="invoice">The invoice</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.InvoiceCommandsHandler.AddCostLines(System.Collections.Generic.IEnumerable{LDC.Atlas.Services.Execution.Entities.InvoiceLineRecord},System.String,LDC.Atlas.Services.Execution.Entities.InvoiceType,System.Boolean)">
+            <summary>
+            This method will Insert the newly added lines of Cost to Trade Cost
+            which will return the CostIds of the newly inserted Costs and then
+            map them with SectionId in UDTT_InvoiceLine
+            </summary>
+            <param name="invoiceLines"> Invoice Line Record Collection</param>
+            <param name="company"> Company Id</param>
+            <param name="selectedInvoiceType">selectedInvoiceType</param>
+            <param name="isDraft">Draft ?</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.InvoiceCommandsHandler.AddCostLinesForWashout(System.Collections.Generic.IEnumerable{LDC.Atlas.Services.Execution.Entities.InvoiceLineRecord},System.String)">
+            <summary>
+            This method will Insert the newly added lines of Cost in washout to Trade Cost
+            which will return the CostIds of the newly inserted Costs and then
+            map them with SectionId in UDTT_InvoiceLine
+            </summary>
+            <param name="invoiceLines"> Invoice Line Record Collection</param>
+            <param name="company"> Company Id</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.Execution.Application.Commands.UnmatchManualDocumentMatchingCommand">
+            <summary>
+            Contains the only parameters required to unmatch a matchflag...
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.ManualDocumentMatchingCommandHandler.Handle(LDC.Atlas.Services.Execution.Application.Commands.CreateManualDocumentMatchingCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handles the creation of a manual document matching
+            </summary>
+            <param name="request">request</param>
+            <param name="cancellationToken">cancellationToken</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.ManualDocumentMatchingCommandHandler.Handle(LDC.Atlas.Services.Execution.Application.Commands.UnmatchManualDocumentMatchingCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handling of the unmatching of a match (whichever a manual or the result of a cash by picking)
+            </summary>
+            <param name="request">request</param>
+            <param name="cancellationToken">cancellationToken</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.Execution.Application.Commands.UpdateInvoiceMarkingPercentLinesCommand">
+            <summary>
+            Update only invoice percent  in cost invoice marking dialog.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Commands.UpdateInvoiceMarkingCommandHandler.Handle(LDC.Atlas.Services.Execution.Application.Commands.UpdateInvoiceMarkingPercentLinesCommand,System.Threading.CancellationToken)">
+            <summary>
+            Update invoice Percent in Cost invoice marking dialog
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Execution.Application.Queries.Dto.MatchedDocumentInfo_ForUnmatchDto">
+            <summary>
+            This class has been created to store the information for the documents to unmatch,
+            to make the Datetime properties nullable. Doing so directly in the class  DocumentMatchingDto
+            would have resulted in impacts which could hardly be managed
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Execution.Application.Queries.Dto.ItemConfigurationPropertiesDto">
+            <summary>
+            Dto To Read Accounting Entries Configuration
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Queries.InvoiceQueries.GetBusinessSectorForPosting(System.String)">
+            <summary>
+            Get the setup details to bind business sector while creating invoices
+            </summary>
+            <param name="company"> The company Id</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Queries.IManualJournalQueries.GetManualJournalFieldsConfiguration(System.String)">
+            <summary>
+            Method to read Manual Journal Configuration
+            </summary>
+            <param name="company"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Queries.ManualJournalQueries.GetManualJournalFieldsConfiguration(System.String)">
+            <summary>
+            Get Manual Journal Field Configuration
+            </summary>
+            <param name="company"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.Queries.TransactionDocumentQueries.GetNextTransactionDocumentReferenceValues(System.String,System.Int32,System.Int32)">
+            <summary>
+            Returns the next available value of the document # for the given type and year
+            </summary>
+            <param name="companyId">Company code ('e6')</param>
+            <param name="transactionDocumentTypeId">type of the document</param>
+            <param name="year">Pass the year for which to get the transaction doc ref (ex 2019)</param>
+            <returns>the next available transaction document number</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Application.SharedRules.AmountConverter.ConvertAmountThroughIntermediateRoeToUSD(System.Decimal,System.Decimal,System.String,System.Decimal,System.String,System.Int32)">
+            <summary>
+            Converts an amount from one currency to another using the rates of exchange between those
+            currencies and USD.
+            </summary>
+            <param name="amountToConvert">Amount to convert in original currency</param>
+            <param name="rateFromAmountToUSD">Rate of the amount in the original currency, compared to USD</param>
+            <param name="rateTypeFromAmountToUSD">Type of the rate to USD of the original currency (M or D)</param>
+            <param name="rateFromTargetToUSDCCY">Rate of the target currency, compared to USD</param>
+            <param name="rateTypeFromTargetToCCY">Type of the rate to USD of the target currency (M or D)</param>
+            <param name="precision">Precision of the calculated result. The method calls Math.Round to the final calculation</param>
+            <returns>Converted amount</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.AllocationController.FindContractToAllocate(System.String,System.Int64,System.String,System.Int32)">
+            <summary>
+            Finds the contract to allocate.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="originalsectionId">The original section identifier.</param>
+            <param name="sectionLabelKeyword">The section label to search for.</param>
+            <param name="pricingMethod">The pricing method.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.AllocationController.GetAllocationBySectionId(System.String,System.Int64,System.Nullable{System.Int64})">
+            <summary>
+            Get Allocated Details
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.AllocationController.GetSectionTrafficDetails(System.String,System.Int64,System.Nullable{System.Int64})">
+            <summary>
+            Getting the section traffic information
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.AllocationController.Allocate(System.String,LDC.Atlas.Services.Execution.Application.Commands.AllocateSectionCommand)">
+            <summary>
+            Allocates the specified section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">The allocation request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.AllocationController.GetWarningMessageAsync(System.String,System.Int64,System.Int64)">
+            <summary>
+            Returns the allocation warning messages.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier</param>
+            <param name="allocatedSectionId">The allocated section indentifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.AllocationController.AllocateSectionListAsync(System.String,LDC.Atlas.Services.Execution.Application.Commands.AllocateSectionListCommand)">
+            <summary>
+            Add Multiple Section in Allocation
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:LDC.Atlas.Services.Execution.Controllers.AllocationController.AllocateImageSectionListAsync(System.String,LDC.Atlas.Services.Execution.Application.Commands.AllocateSectionListCommand)" -->
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.AllocationController.GetPossibleAllocationByCharterAsync(System.String,System.Int32)">
+            <summary>
+            to get the poissible allocation for charter
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterId">The charter identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.AllocationController.GetPossibleDeallocationByCharterAsync(System.String,System.Int32)">
+            <summary>
+            Returns the possible deallocated records.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterId">The charter identitifer.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CashController.GetCashList(System.String,System.Int32,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of cash payments/receipts.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="costDirectionId">The cost direction reference for cash type (Payment or Receipt.)</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CashController.CreateCash(System.String,LDC.Atlas.Services.Execution.Application.Commands.CreateCashCommand)">
+            <summary>
+            Creates a new cash.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">The cash to add.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CashController.GetCashSetupDetails(System.String)">
+            <summary>
+            Getting default values for cash payment and receipt
+            </summary>
+            <param name="company"> The company code</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CashController.GetCashById(System.Int64,System.String)">
+            <summary>
+            Returns a cash by its identifier.
+            </summary>
+            <param name="cashId">The cash identifier</param>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CashController.UpdateCash(System.String,System.Int64,LDC.Atlas.Services.Execution.Application.Commands.UpdateCashCommand)">
+            <summary>
+            Updates an existing cash.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="cashId">The identifier of the cash to update.</param>
+            <param name="cash">The cash to update.</param>
+            <response code="204">Cash updated</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CashController.InvoiceToMatch(System.String,System.Int64,System.String,System.String,System.Boolean,System.Nullable{System.Int64},System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Getting the list of invoices based on counterparty department and currency entered.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="counterpartyId">The counterparty identifier</param>
+            <param name="department"> the department identifier</param>
+            <param name="currency">the currency identifier</param>
+            <param name="isEdit">the action identifier whether it is creat/edit</param>
+            <param name="matchFlagId">matchflad identifier</param>
+            <param name="documentReference">The document reference.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CashController.GetInvoiceByDocumentReference(System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Getting the list of invoices based on document reference
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="docReference">the document reference code</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CashController.Get(System.String)">
+            <summary>
+            Listing the document reference
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CashController.GetAsync(System.String,System.String)">
+            <summary>
+            Get the FX rate based on currency from and currency to
+            </summary>
+            <param name="currencyCodeFrom">The currency of cash</param>
+            <param name="currencyCodeTo">The matching currency</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CashController.SearchCashList(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Search in the list of cash payment.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CashController.SearchCashReceiptList(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Search in the list of cash receipt.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.CharterManagersController.GetCharterManagersAsync(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.String)">
+            <summary>
+            Returns the list of charter managers.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="name">The name of the charter manager to search for.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.GetCharters(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.String,System.String)">
+            <summary>
+            Returns the list of charters.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="selectedCompanies">The selected company code.</param>
+            <param name="charterRef">The charter reference.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.SearchCharters(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Search in the list of charters.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.GetCharterById(System.String,System.Int64)">
+            <summary>
+            Returns a charter by its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterId">The charter identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.CheckCharterReferenceExists(System.String,System.String)">
+            <summary>
+            Checks if a charter reference exists.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterRef">The charter reference.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.GetSectionsAssignedToCharter(System.String,System.Int32)">
+            <summary>
+            Returns the sections assigned to a charter.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterId">The charter identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.GetContractsToBeAssignedToCharterAsync(System.String,System.String)">
+            <summary>
+            Returns the sections which can be assigned to charter.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="contractLabel">The contract label.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.CreateCharter(System.String,LDC.Atlas.Services.Execution.Application.Commands.CreateCharterCommand)">
+            <summary>
+            Creates a new charter.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charter">The charter to create.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.UpdateCharter(System.String,System.Int32,LDC.Atlas.Services.Execution.Application.Commands.UpdateCharterCommand)">
+            <summary>
+            Update a charter.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterId">The charter identifier.</param>
+            <param name="charter">The charter to update.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.AssignSectionsToCharter(System.String,System.Int32,LDC.Atlas.Services.Execution.Application.Commands.AssignSectionsToCharterCommand)">
+            <summary>
+            Assigns sections to a charter.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterId">The charter identifier.</param>
+            <param name="request">The sections to assign.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.RemoveSectionsFromCharter(System.String,System.Int32,LDC.Atlas.Services.Execution.Application.Commands.RemoveSectionsFromCharterCommand)">
+            <summary>
+            Remove selected section list assigned to a charter.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterId">The charter identifier.</param>
+            <param name="request">The sections to remove.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.ReassignSectionsForCharter(System.String,System.Int32,LDC.Atlas.Services.Execution.Application.Commands.ReassignSectionsForCharterCommand)">
+            <summary>
+            Reassign selected section list to another charter.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterId">The charter identifier.</param>
+            <param name="request">The sections to reassign.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.DeleteCharter(System.String,System.Int64)">
+            <summary>
+            Remove a charter.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterId">The charter identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.GetCharterBySectionId(System.String,System.Int64)">
+            <summary>
+            Returns the charters associated to a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.UpdateSectionTraffic(System.String,LDC.Atlas.Services.Execution.Application.Commands.UpdateSectionTrafficCommand)">
+            <summary>
+            Update a Section traffic details.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionTraffic">Section traffic to update</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.CloseCharter(System.String,System.String)">
+            <summary>
+            Close a charter.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterIds">The identifier of the charters to close.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.OpenCharter(System.String,System.String)">
+            <summary>
+            ReOpens a charter.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterIds">The identifier of the charters to reopen.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.GetAssignedSectionDetailsForBulkClosure(System.String,System.String)">
+            <summary>
+            Returns the charters Details and its assigned Section For Bulk Closure.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="charterIds">The Charter identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ChartersController.SearchCharterAssignments(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Search in the list of charter Assignments.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoiceMarkingsController.GetInvoiceMarkingsForSection(System.String,System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            Returns the list of invoice markings.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier.</param>
+            <param name="costId">The cost identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.GetUnpaidInvoices(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.String)">
+            <summary>
+            Returns the list of unpaid invoices.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="searchCriteria">The search criteria.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.GetInvoiceById(System.String,System.Int64)">
+            <summary>
+            Returns an invoice by its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="invoiceId">The invoice identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.SearchInvoices(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Searchs in the list of invoices.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.ContractsToInvoiceByInvoiceType(System.String,System.Int32,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns list of contracts to invoice.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="invoiceType">The invoice type.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.SearchContractsToPurchaseInvoice(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Searchs in the list of contracts to invoice.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.SearchContractsToSaleInvoice(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Searchs in the list of contracts to invoice.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.CostContractsByInvoiceType(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns list of cost contracts to invoice
+            </summary>
+            <param name="company">The company code</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.SearchContractsForCostInvoice(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Search in the list of contracts with some costs to invoice.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.SearchInvoicesForReversal(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of invoices for reversal.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.SearchContractsForReversalInvoice(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Searchs in the list of invoices to be reversed
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.GetInvoiceDetailsAsync(System.String,System.Int64,System.Nullable{System.Int64})">
+            <summary>
+            Returns the invoice marking details of first invoice linked to a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.GetInvoiceDetailsBySection(System.String,System.Int64,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.Nullable{System.Int64},System.Int32)">
+            <summary>
+            Returns the nvoice marking details of the section.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="sectionId">The section identifier.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+            <param name = "childFlag">The Child flag to check which type of filter is set</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.GetInvoiceCostBySection(System.String,System.Int64,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.Nullable{System.Int64})">
+            <summary>
+            Returns the invoice marking for the costs of the section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.InvoiceSetupByCompany(System.String)">
+            <summary>
+            Returns the invoice setup for a company.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.InterfaceSetupByCompany(System.String,System.Int64)">
+            <summary>
+            Returns the inerface setup for a company.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="interfaceTypeId">The type of interface.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.FindContractsToInvoice(System.String,System.Int32,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Returns the contracts to invoice.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="type">The type of contract.</param>
+            <param name="filterParameter">The filter parameter.</param>
+            <param name="periodFromDate">The period from.</param>
+            <param name="periodToDate">The period to.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.FindCosts(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Returns the costs to invoice.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="costType">Type of the cost.</param>
+            <param name="supplierCode">The supplier code.</param>
+            <param name="charter">The charter.</param>
+            <param name="contractRef">The contract reference.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.GetContractsToInvoiceBySectionId(System.String,System.Int64,System.Int32)">
+            <summary>
+            Returns the contracts to invoice by section identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier.</param>
+            <param name="type">The type of contract.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.CreateInvoice(System.String,LDC.Atlas.Services.Execution.Application.Commands.CreateInvoiceCommand)">
+            <summary>
+            Creates a new invoice.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="invoice">The invoice to create.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.GetWashoutContracts(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns list of washout contracts to invoice.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.SearchWashoutContracts(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Returns list of contracts to invoice.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.GetCostsForSelectedContracts(System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of costs for given contracts.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionIds">The list of section identifiers.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.GetAllocatedContractsToInvoiceBySectionIds(System.String,System.String)">
+            <summary>
+            Returns the list of allocated contracts along with selected section identifiers for Washout Invoice.
+            </summary>
+            <param name="selectedSectionIds">The list of section identifiers.</param>
+            <param name="company">The company code</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.CheckExternalInvoiceReferenceExists(System.String,System.String)">
+            <summary>
+            Checks if a external invoice reference exists.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="externalInvoiceRef">The external invoice reference.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.GetBusinessSectorForPosting(System.String)">
+            <summary>
+            Trade Configuration for Business Sector.
+            </summary>
+            <param name="company">The company code</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.InvoicesController.UpdateInvoiceMarkingPercent(System.String,LDC.Atlas.Services.Execution.Application.Commands.UpdateInvoiceMarkingPercentLinesCommand,System.Nullable{System.Int64})">
+            <summary>
+            Update InvoicePercent in invoice marking line.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ManualDocumentMatchingController.DocumentsToMatch(System.String,System.Int64,System.String,System.String,System.Boolean,System.Nullable{System.Int64},LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of documents for document matching.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="counterpartyId">The counterparty identifier.</param>
+            <param name="department">The department of the documents.</param>
+            <param name="currency">The currency of the documents.</param>
+            <param name="bitEdit">Boolean value to check if edit or create.</param>
+            <param name="matchFlagId">The matchflag identifier.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ManualDocumentMatchingController.Get(System.String,System.Int32)">
+            <summary>
+            Returns the list of document reference.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="matchType">The type of transaction.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ManualDocumentMatchingController.GetDocumentByDocumentReference(System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns list of the documents based on document reference.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="docReference">the document reference code</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ManualDocumentMatchingController.DocumentsToUnmatch(System.String,System.Int64,System.String,System.String,System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of documents for unmatching documents.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="counterpartyId">The counterparty identifier.</param>
+            <param name="department">The department of the documents.</param>
+            <param name="currency">The currency of the documents.</param>
+            <param name="documentReference">Document reference</param>
+            <param name="matchFlagCode">Match Flag Code</param>
+            <param name="pagingOptions">Paging Options</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ManualDocumentMatchingController.GetMatchFlag(System.String)">
+            <summary>
+            Returns the list of match flag for unmatch.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ManualDocumentMatchingController.GetDocumentByMatchFlag(System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the documents based on match flag for unmatch.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="matchFlagCode">The match flag code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ManualDocumentMatchingController.GetDocumentToUnmatchByDocumentReference(System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the documents based on document reference for unmatch.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="docReference">The document reference code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ManualDocumentMatchingController.CreateManualDocumentMatching(System.String,LDC.Atlas.Services.Execution.Application.Commands.CreateManualDocumentMatchingCommand)">
+            <summary>
+            Creates Manual Document Matching.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="document">The documents to create manual matching.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ManualDocumentMatchingController.UnmatchManualDocumentMatching(System.String,LDC.Atlas.Services.Execution.Application.Commands.UnmatchManualDocumentMatchingCommand)">
+            <summary>
+            Unmatches Manual Document Matching.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="documents">documents to unmatch manual matching.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.ManualJournalController.CreateManualJournal(System.String,LDC.Atlas.Services.Execution.Application.Commands.CreateManualJournalDocumentCommand)">
+            <summary>
+            Creates a manual journal.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">The manual document to create.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.MonthEndTemporaryAdjustmentController.SaveMonthEndReport(System.String,LDC.Atlas.Services.Execution.Application.Commands.MonthEndTemporaryAdjustmentListCommand)">
+            <summary>
+            Saves the month end report.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">Month End TA Details</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.MonthEndTemporaryAdjustmentController.SaveFxDealMonthEndReport(System.String,LDC.Atlas.Services.Execution.Application.Commands.MonthEndTemporaryAdjustmentListCommand)">
+            <summary>
+            Saves the FxDealmonth end report.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">Month End TA Details</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.YearEndProcessController.GetYearEndProcessList(System.Int32,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of Year End Process.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="year">year end process according to year</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Controllers.YearEndProcessController.GenerateYearEndProcess(System.String,LDC.Atlas.Services.Execution.Application.Commands.YearEndProcessListCommand)">
+            <summary>
+            Saves the Year end report.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">Year End Details</param>
+        </member>
+        <member name="P:LDC.Atlas.Services.Execution.Entities.Cash.CashTypeId">
+            <summary>
+            This does not contain the cash type, at the time this is used for creating a
+            cash, but contains instead a direction
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Execution.Entities.DocumentMatching.MatchingStatusId">
+            <summary>
+            unused
+            </summary>
+        </member>
+        <member name="P:LDC.Atlas.Services.Execution.Entities.CashAdditionalCost.DocumentReference">
+            <summary>
+            Probably useless field...
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.CashRepository.CreateCashAsync(LDC.Atlas.Services.Execution.Entities.Cash)">
+            <summary>
+            This SP creates the following records associated to cash:
+              TransactionDocument
+              Cash
+              CashLines
+               CashAdditionalCost
+            It also creates a Transaction document related to diff ccy(not sure this is the right place...)
+            and updates the status "to interface" depending on mapping errors(not sure this is the right place...)
+            </summary>
+            <param name="cash"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.CashRepository.DeleteCashAsync(System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Boolean)">
+            <summary>
+            Delete a cash by passing either a cash id or the transaction document id
+            </summary>
+            <param name="company"></param>
+            <param name="cashId">Id of the cash ; if not null, transactionDocumentId must be null and vice versa</param>
+            <param name="transactionDocumentId">Id of the transaction document; if not null, cash id must be null and vice versa</param>
+            <param name="physicalDelete">Pass true if you want to physically delete the record. If false is passed,
+            a logical delete is made</param>
+            <returns></returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.CharterRepository.UpdateCharterStatusAsync(System.String,System.Int64[],System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Update the charter status as open/close
+            </summary>
+            <param name="company">The company identifier</param>
+            <param name="charterIds">List of charter id to update status</param>
+            <param name="charterStatusId">Charter status to update for charters</param>
+            <param name="dataVersionId">Data version Id identifier</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.ICharterRepository.UpdateCharterStatusAsync(System.String,System.Int64[],System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Update the charter status as open/close
+            </summary>
+            <param name="company">The company identifier</param>
+            <param name="charterIds">List of charter id to update status</param>
+            <param name="charterStatus">Charter status to update for charters</param>
+            <param name="dataVersionId">DataversionId identifier</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.IInvoiceRepository.UpdateDocumentTypeForDocumentReversal(System.Int64,System.String)">
+            <summary>
+            Update the flag IsReversed in the "reversed" transaction document
+            </summary>
+            <param name="transactionDocumentId">transactionDocumentId of the REVERSED document (not the Reversal)</param>
+            <param name="company">the company code</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.IManualDocumentMatchingRepository.DeleteMatchFlag(System.Nullable{System.Int64},System.String)">
+            <summary>
+            Deletes a match flag
+            </summary>
+            <param name="matchFlagId">Id of the matchflag to delete</param>
+            <param name="companyCode">working company code ('e6')</param>
+            <returns>Id of the revaluation document to be reversed, if any</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.InvoiceRepository.CreateReversalInvoiceAsync(LDC.Atlas.Services.Execution.Entities.InvoiceRecord)">
+            <summary>
+            Creates a reversal for a given document AND set the "isreversed" flag to "true"
+            for this document
+            </summary>
+            <param name="invoice">The invoice that has to be reverted</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.InvoiceRepository.UpdateDocumentTypeForDocumentReversal(System.Int64,System.String)">
+            <summary>
+            Update the flag IsReversed in the "reversed" transaction document
+            </summary>
+            <param name="transactionDocumentId">transactionDocumentId of the REVERSED document (not the Reversal)</param>
+            <param name="company">the company code</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.ITransactionDocumentRepository.ReverseDocument(System.Int64,System.String,System.Int32,System.Int32,System.String,System.DateTime)">
+            <summary>
+            For a given transaction doc, set its "isreversed" status to true, and create a reversal TD
+            </summary>
+            <param name="reversedTransactionDocumentId">Transaction id of the document to reverse</param>
+            <param name="companyCode">Code of the working company</param>
+            <param name="yearOfReversalDoc">Year associated to the reversal doc to create</param>
+            <param name="yearNumberOfReversalDoc">Number associated to the reversal doc to create</param>
+            <param name="documentReferenceOfReversalDoc">ref doc of the reversal to create</param>
+            <param name="docDateOfReversal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.ITransactionDocumentRepository.DeleteManualJLOrRevaluation(System.Int64,System.String)">
+            <summary>
+            Delete a JL document which is either a revaluation either a manual JL
+            </summary>
+            <param name="transactionDocumentId"></param>
+            <param name="companyCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.ITransactionDocumentRepository.GetTransactionDocumentRateOfExchangeList(System.Collections.Generic.IEnumerable{System.Int64},System.String)">
+            <summary>
+            Retrieve the list of Rate of exchange informations for the list of transactionDocumentId
+            </summary>
+            <param name="transactionDocumentIds">List of transactionDocumentId</param>
+            <param name="companyCode">The company code</param>
+            <returns>The list of Rate of exchange informations for the list of transactionDocumentId</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Execution.Repositories.ManualJournalRepository.CreateManualJournal(LDC.Atlas.Services.Execution.Entities.ManualJournalDocument,System.String)">
+            <summary>
+            Saves a journal document (including its lines)
+            </summary>
+            <param name="manualJournalDocument"></param>
+            <param name="company"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

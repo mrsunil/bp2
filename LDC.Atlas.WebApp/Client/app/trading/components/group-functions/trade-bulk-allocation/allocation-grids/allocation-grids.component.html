@@ -1,0 +1,164 @@
+<mat-card class="mat-elevation-z1 padding-small">
+    <div fxFlex="100%"
+         fxFlex.xs="100%"
+         fxFlex.sm="100%">
+        <div fxLayout="row"
+             class="table-title">
+            <h3>Purchase Contracts</h3>
+            <span class="fill-space"></span>
+        </div>
+        <div ag-grid="contractGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular class="ag-theme-material"
+                             [rowData]="contractPurchaseRows"
+                             [columnDefs]="allocationGridColumns"
+                             domLayout=autoHeight
+                             (gridReady)="onGridReadyPurchase($event)"
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             (rowSelected)="onPurcahseRowSelected($event)"
+                             [enableSorting]="true"
+                             [enableColResize]="false"
+                             [rowHeight]="atlasAgGridParam.rowHeight"
+                             rowSelection='multiple'
+                             enableFilter>
+            </ag-grid-angular>
+        </div>
+    </div>
+</mat-card>
+<mat-card class="mat-elevation-z1 padding-small atr-ag-grid">
+    <div fxFlex="100%"
+         fxFlex.xs="100%"
+         fxFlex.sm="100%">
+        <div fxLayout="row"
+             class="table-title">
+            <h3>Sales Contracts</h3>
+            <span class="fill-space"></span>
+        </div>
+        <div ag-grid="contractGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular class="ag-theme-material"
+                             [rowData]="contractSalesRows"
+                             [columnDefs]="allocationGridColumns"
+                             domLayout=autoHeight
+                             (gridReady)="onGridReadySales($event)"
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             [enableSorting]="true"
+                             (rowSelected)="onSaleRowSelected($event)"
+                             [enableColResize]="false"
+                             rowSelection='multiple'
+                             [rowHeight]="atlasAgGridParam.rowHeight"
+                             enableFilter>
+            </ag-grid-angular>
+        </div>
+    </div>
+</mat-card>
+
+<div class="trade-allocation-messages"
+     *ngFor="let warningMessage of showWarningMessage">
+    <mat-card class="trade-allocation-warning-card"
+              *ngIf="warningMessage.showRestrictedDescriptionCard">
+        <div class="error-circle-icon">
+            <mat-icon>remove_circle</mat-icon>
+        </div>
+        <mat-card-header>
+            <mat-card-title>
+                <h4>Allocation cannot be completed for {{warningMessage.sourceContract}} and
+                    {{warningMessage.targetContract}}
+                </h4>
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{warningMessage.restrictedWarningMessage}}
+            </mat-card-subtitle>
+            <button class="remove-button"
+                    mat-button
+                    (click)="onRestrictRemoveclicked(warningMessage.sourceContract,warningMessage.targetContract,warningMessage.showRestrictedDescriptionCard)">REMOVE
+            </button>
+        </mat-card-header>
+    </mat-card>
+
+    <mat-card class="trade-allocation-warning-card"
+              *ngIf="warningMessage.showWarningDescriptionCard">
+        <div class="warning-circle-icon">
+            <mat-icon>warning_outline</mat-icon>
+        </div>
+        <mat-card-header>
+            <mat-card-title>
+                <h4>Allocation can be completed for {{warningMessage.sourceContract}} and
+                    {{warningMessage.targetContract}}
+                </h4>
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{warningMessage.warningMessage}}
+            </mat-card-subtitle>
+            <button class="remove-button"
+                    mat-button
+                    (click)="onWarningRemoveButtonClicked($event)">REMOVE
+            </button>
+
+        </mat-card-header>
+    </mat-card>
+
+    <mat-card class="trade-allocation-warning-card"
+              *ngIf="warningMessage.showAllowDescriptionCard">
+        <button mat-fab
+                disabled>
+            <mat-icon>check</mat-icon>
+        </button>
+        <mat-card-header>
+            <mat-card-title>
+                <h4>Allocation is allowed for {{warningMessage.sourceContract}} and {{warningMessage.targetContract}}
+                </h4>
+            </mat-card-title>
+        </mat-card-header>
+    </mat-card>
+</div>
+
+<mat-card class="trade-allocation-shipping-card">
+    <h3>Allocation Options</h3>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="start left"
+             fxFlex="60">
+
+            <mat-form-field>
+                <mat-select placeholder="Transfer Shipping"
+                            [formControl]="shippingTypeCtrl">
+                    <mat-option *ngFor="let type of shippingTypes"
+                                [value]="type.value">{{type.shippingDescription}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field *ngIf="isOneToOneAllocation">
+                <input matInput
+                       [textMask]="{mask:mask}"
+                       [formControl]="sourceQuantityCtrl"
+                       placeholder="Quantity to allocate"
+                       (blur)="checkQuantityValue()"
+                       (keydown.enter)="$event.preventDefault()"
+                       [required]="sourceQuantityCtrl.isRequired"
+                       autocomplete="off">
+                <mat-error *ngIf="sourceQuantityCtrl.hasError('required')">
+                    Quantity to allocate is required
+                </mat-error>
+                <mat-error *ngIf="sourceQuantityCtrl.hasError('isPositiveError')">
+                    Quantity to allocate must be positive.
+                </mat-error>
+                <mat-error *ngIf="sourceQuantityCtrl.hasError('max')">
+                    Cannot be greater than quantity available.
+                </mat-error>
+                <mat-error *ngIf="sourceQuantityCtrl.hasError('min')">
+                    Quantity cannot be zero.
+                </mat-error>
+            </mat-form-field>
+            <atlas-form-input fxFlex="30%"
+                              *ngIf="isOneToNAllocation"
+                              class="side-nav-footer-components"
+                              [fieldControl]="sumOfQuantitiesCtrl"
+                              [isEditable]="isInputField"
+                              label='Sum Of Quantities'>
+            </atlas-form-input>
+
+        </div>
+    </mat-card-content>
+</mat-card>

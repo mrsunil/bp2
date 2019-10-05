@@ -1,0 +1,33 @@
+.mat-table {
+    overflow: auto;
+} 
+
+.mat-tab-group {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+:host ::ng-deep.ag-menu{
+    overflow-y: hidden !important;  
+}
+
+.margin-align-top {
+    margin-top: 19px;
+}
+
+.main-container.margin-adjustment {
+    margin-top: 23px !important;
+}
+
+.atr-sidenav-margin {
+    margin: 16px;
+}
+
+.side-nav-reassignscreen {
+    width: 900px;
+    overflow: hidden;
+}
+
+.overlayer-index {
+    z-index: 10 !important;
+}

@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Additional Information</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                     isEditable="true"
+                                                     [fieldControl]="charterDeptCntrl"
+                                                     [options]="filteredDepartments"
+                                                     label="Department"
+                                                     displayProperty="departmentCode"
+                                                     [errorMap]="departmentErrorMap"
+                                                     [selectProperties]="['departmentCode','description']"
+                                                     lightBoxTitle="Results for Department"
+                                                     gridId="departmentsGrid">
+            </atlas-masterdata-user-preferences-input>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                     isEditable="true"
+                                                     [fieldControl]="charterQuantityCntrl"
+                                                     [options]="filteredQuantities"
+                                                     label="Quantity for Reporting"
+                                                     displayProperty="weightCode"
+                                                     [selectProperties]="['weightCode','description']"
+                                                     lightBoxTitle="Results for Quantity"
+                                                     gridId="weightUnitsGrid">
+            </atlas-masterdata-user-preferences-input>
+
+            <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                     isEditable="true"
+                                                     [fieldControl]="charterCurrencyCntrl"
+                                                     [options]="filteredCurrencies"
+                                                     label="Currency for Reporting"
+                                                     displayProperty="currencyCode"
+                                                     [selectProperties]="['currencyCode','description']"
+                                                     lightBoxTitle="Results for Currency"
+                                                     gridId="currenciesGrid">
+            </atlas-masterdata-user-preferences-input>
+        </div>
+    </mat-card-content>
+</mat-card>

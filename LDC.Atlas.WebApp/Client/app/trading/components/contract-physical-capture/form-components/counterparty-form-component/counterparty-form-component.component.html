@@ -1,0 +1,87 @@
+<mat-card class="trade-capture-card counterparty-details">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Counterparty</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div fxFlex="30%">
+                <atlas-masterdata-user-preferences-input [isEditable]="buyerCodeCtrl.enabled"
+                                                         [fieldControl]="buyerCodeCtrl"
+                                                         [options]="filteredBuyers"
+                                                         label="Buyer Code"
+                                                         displayProperty="counterpartyCode"
+                                                         [selectProperties]="['counterpartyCode', 'description']"
+                                                         [errorMap]="counterpartyErrorMap"
+                                                         lightBoxTitle="Results for Counterparty"
+                                                         gridId="counterpartiesGrid"
+                                                         (optionSelected)="buyerCodeSelected($event)"
+                                                         [dataLoader]="counterpartyDataLoader">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+            <atlas-form-input fxFlex="70%"
+                              [fieldControl]="buyerNameCtrl"
+                              [required]="buyerNameCtrl.isRequired"
+                              [isEditable]="isInputField"
+                              [label]="'Buyer Name'">
+                <mat-error *ngIf="buyerNameCtrl.hasError('required')">
+                    Required *
+                </mat-error>
+            </atlas-form-input>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="center start"
+             fxLayoutGap="5%">
+            <div fxFlex="30%">
+                <atlas-masterdata-user-preferences-input [isEditable]="sellerCodeCtrl.enabled"
+                                                         [fieldControl]="sellerCodeCtrl"
+                                                         [options]="filteredSellers"
+                                                         label="Seller Code"
+                                                         displayProperty="counterpartyCode"
+                                                         [selectProperties]="['counterpartyCode', 'description']"
+                                                         [errorMap]="counterpartyErrorMap"
+                                                         lightBoxTitle="Results for Counterparty"
+                                                         gridId="counterpartiesGrid"
+                                                         (optionSelected)="sellerCodeSelected($event)"
+                                                         [dataLoader]="counterpartyDataLoader">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+            <atlas-form-input fxFlex="70%"
+                              [fieldControl]="sellerNameCrtl"
+                              [required]="sellerNameCrtl.isRequired"
+                              [isEditable]="isInputField"
+                              [label]="'Seller Name'">
+                <mat-error *ngIf="sellerNameCrtl.hasError('required')">
+                    Required *
+                </mat-error>
+            </atlas-form-input>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div fxFlex="35%"
+                 class="custom-form"
+                 [class.required-field]="counterpartyReferenceCtrl.isRequired"
+                 [class.displayMode]="!counterpartyReferenceCtrl.enabled">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Counterparty Reference"
+                           autocomplete="off"
+                           [formControl]="counterpartyReferenceCtrl">
+                    <mat-error *ngIf="counterpartyReferenceCtrl.hasError('maxlength')">
+                        Counterparty Reference should be more than 40 characters long
+                    </mat-error>
+                    <mat-error *ngIf="counterpartyReferenceCtrl.hasError('required')">
+                        Required *
+                    </mat-error>
+                    <mat-hint *ngIf="counterpartyReferenceCtrl.isRequired && counterpartyReferenceCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

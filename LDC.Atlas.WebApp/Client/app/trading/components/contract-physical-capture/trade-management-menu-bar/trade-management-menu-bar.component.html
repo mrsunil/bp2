@@ -1,0 +1,184 @@
+<mat-toolbar class="menu-bar mat-elevation-z6">
+    <div class="toolbar-div">
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center"
+             fxFlex="40">
+            <button mat-button
+                    [matMenuTriggerFor]="contract"
+                    [disabled]="menuDisable">Contract</button>
+            <button mat-button
+                    [matMenuTriggerFor]="createEdit"
+                    *ngIf="!dataVersionId"
+                    [disabled]="menuDisable">Creation & Edit</button>
+            <button mat-button
+                    [matMenuTriggerFor]="groupEdit"
+                    *ngIf="!dataVersionId"
+                    [disabled]="menuDisable">Group Edit</button>
+            <button mat-button
+                    [matMenuTriggerFor]="reports"
+                    [disabled]="menuDisable">Reports</button>
+            <button mat-button
+                    [matMenuTriggerFor]="help">Help</button>
+            <button mat-button
+                    [matMenuTriggerFor]="documents"
+                    *ngIf="!dataVersionId && hasDocumentPrivilege"
+                    [disabled]="menuDisable">Documents</button>
+            <mat-menu #contract="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <div id="notForSnashot"
+                     *ngIf="!dataVersionId">
+                    <span matTooltip={{toolTipSplit}}>
+                        <button mat-menu-item
+                                *ifAuthorized="'Trades.Physicals.CreateTrancheSplit',company:this.company"
+                                [disabled]="disableCreateSplit || !trancheSplitPrivilege"
+                                (click)="onSplitButtonClicked()">Split</button>
+                    </span>
+                    <span matTooltip={{toolTipTranche}}>
+                        <button mat-menu-item
+                                *ifAuthorized="'Trades.Physicals.CreateTrancheSplit',company:this.company"
+                                [disabled]="disableCreateTranche || hasAllocation() || !trancheSplitPrivilege"
+                                (click)="onTranchButtonClicked()">Tranche</button>
+                    </span>
+                    <span matTooltip={{toolTipMerge}}> <button mat-menu-item
+                                [disabled]="disableTradeMerge"
+                                *ifAuthorized="'Trades.Physicals.Merge',company:this.company"
+                                (click)="onMergeButtonClicked()">Merge</button>
+                    </span>
+
+                </div>
+                <button mat-menu-item
+                        [disabled]="(isContractWithBLDate || dataVersionId) || isClosed"
+                        *ngIf="hasAllocation() && (!isContractWithBLDate || hasSuperEditionPrivilege)"
+                        (click)="onDeallocateButtonClicked()">De-Allocate</button>
+                <span matTooltip={{toolTipAllocate}}>
+                    <button mat-menu-item
+                            [disabled]="(!isApproved && !dataVersionId) || isClosed || isCancelledSection || disableAllocateButton"
+                            *ngIf="!hasAllocation() && (isApproved || dataVersionId || hasSuperEditionPrivilege)"
+                            (click)="onAllocateButtonClicked()">
+                        <ng-container *ifAuthorized="'Trades.Physicals.AllocateDeallocate',company:company">
+                        </ng-container>
+                        Allocate
+                    </button>
+                </span>
+
+                <div id="notForSnashot"
+                     *ngIf="!dataVersionId">
+                    <button mat-menu-item
+                            [matMenuTriggerFor]="contractStatus">Contract Status</button>
+                </div>
+                <div id="forSnapshot"
+                     *ngIf="dataVersionId">
+                    <button mat-menu-item
+                            [matMenuTriggerFor]="contractStatusForSnapshot">Contract Status</button>
+                </div>
+            </mat-menu>
+            <mat-menu #contractStatus="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <button mat-menu-item
+                        [disabled]="currentSection.status === ContractStatus.Approved || !tradeApprovalPrivilege || isClosed  ||isCancelledSection"
+                        (click)="onApproveButtonClicked()">Approve Contract</button>
+                <button mat-menu-item
+                        [disabled]="currentSection.status === ContractStatus.Unapproved || !tradeApprovalPrivilege || isClosed || isCancelledSection "
+                        (click)="onUnApproveButtonClicked()">Unapprove Contract</button>
+                <button mat-menu-item
+                        *ifAuthorized="'Trades.Physicals.TradeDeletion',company:company"
+                        (click)="onDeleteButtonClicked()">Delete Contract</button>
+                <button mat-menu-item
+                        *ngIf="currentSection.isClosed"
+                        (click)="onReOpenButtonClicked()">ReOpen Contract</button>
+                <button mat-menu-item
+                        *ngIf="!currentSection.isClosed && tradeClosePrivilege"
+                        (click)="onCloseButtonClicked()">Close Contract</button>
+                <span [(matTooltip)]="blockerMessageForCancellingOfTrade"
+                      *ifAuthorized="'Trades.Physicals.CancelReverseTrade',company:this.company">
+                    <button mat-menu-item
+                            (click)="onCancelButtonClicked()"
+                            [disabled]="!isTradeCancellationAllowed || currentSection.status === ContractStatus.Unapproved">
+                        Cancel at Settlement Price
+                    </button>
+                    <button mat-menu-item
+                            *ngIf="currentSection.isCancelled"
+                            (click)="onReverseCancelButtonClicked()">
+                        Reverse Cancellation
+                    </button>
+                </span>
+
+            </mat-menu>
+            <mat-menu #contractStatusForSnapshot="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <button mat-menu-item
+                        *ngIf="currentSection.isClosed"
+                        (click)="onReOpenButtonClicked()">ReOpen Contract</button>
+                <button mat-menu-item
+                        *ngIf="!currentSection.isClosed"
+                        (click)="onCloseButtonClicked()">Close Contract</button>
+
+            </mat-menu>
+            <mat-menu #createEdit="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <button mat-menu-item
+                        *ifAuthorized="'Trades.Physicals.ImageCreation',company:this.company"
+                        (click)="onImageButtonClicked()">Image</button>
+                <button mat-menu-item
+                        [disabled]="isIntercoCreationIsAllowed()"
+                        (click)="onIntercoTradeCreation()">Create Interco</button>
+                <!-- uninvoiced status / !IsInterco / Valid Counterparty/ Parent Contract -->
+                <button mat-menu-item
+                        *ifAuthorized="'Trades.Physicals.ImageCreation',company:this.company"
+                        (click)="onSaveAsFavoriteClicked()">Save As Favourite</button>
+            </mat-menu>
+            <mat-menu #groupEdit="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <button mat-menu-item
+                        [matMenuTriggerFor]="GroupFunction">Group function</button>
+            </mat-menu>
+            <mat-menu #GroupFunction="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <button mat-menu-item
+                        disabled>Group Approval</button>
+            </mat-menu>
+            <button mat-icon-button
+                    [matMenuTriggerFor]="reports">
+            </button>
+            <mat-menu #reports="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <button mat-menu-item
+                        (click)="onviewPLButtonClicked()">View P&L</button>
+                <button mat-menu-item
+                        (click)="onTradeCostClicked()">Trade Cost</button>
+                <span *ngFor="let item of filteredTemplates">
+                    <button mat-button
+                            (click)="OnReportClick(item)">
+                        {{item.name}}
+                    </button>
+                </span>
+
+            </mat-menu>
+            <mat-menu #help="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <button mat-menu-item
+                        disabled>Contextual Help</button>
+            </mat-menu>
+            <mat-menu #documents="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <button mat-menu-item
+                        *ifAuthorized="'Trades.Physicals.GenerateContractAdvice',company:company"
+                        [disabled]="isClosed"
+                        (click)="onGenerateDocumentButtonClicked()">Generate Document</button>
+                <button mat-menu-item
+                        (click)="onSeeDocumentButtonClicked()">See Documents</button>
+            </mat-menu>
+        </div>
+
+        <span class="fill-space"></span>
+    </div>
+</mat-toolbar>

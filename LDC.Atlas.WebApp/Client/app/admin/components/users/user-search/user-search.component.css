@@ -1,0 +1,23 @@
+.custom-line-footer {
+	margin-top: 50px;
+	margin-left: 50px;
+}
+
+mat-card {
+	background-color: #52C234;
+}
+
+.atr-user-card-body {
+	color: white;
+}
+
+button,
+.mat-button[disabled][disabled] {
+	color: white;
+}
+
+button.search {
+	border: 1px solid white;
+	border-radius: 5px;
+	color: white;
+}

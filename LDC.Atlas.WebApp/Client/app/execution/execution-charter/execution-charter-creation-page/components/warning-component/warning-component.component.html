@@ -1,0 +1,28 @@
+<mat-card class="charter-total mat-elevation-z1">
+	<mat-card-content>
+		<div fxLayout="row"
+		     fxLayoutGap="2%"
+		     fxLayoutAlign="start stretch">
+			<div fxLayout="column"
+			     fxLayoutAlign="center center"
+			     fxFlex="4">
+				<mat-icon class="icon-padding title-icon">{{icon}}</mat-icon>
+			</div>
+			<div fxLayout="column"
+			     fxLayoutAlign="center start"
+			     fxFlex="60">
+				<h2 class="no-margin warning-title">{{title}} </h2>
+				<p class="no-margin">{{message}}</p>
+			</div>
+			<div *ngIf="isActionDisplayed"
+			     fxLayout="row"
+			     fxLayoutGap="2%"
+			     fxLayoutAlign="end end"
+			     fxFlex>
+				<span class="fill-space"></span>
+				<button mat-button>Dismiss</button>
+				<button mat-button>Action</button>
+			</div>
+		</div>
+	</mat-card-content>
+</mat-card>

@@ -1,0 +1,9 @@
+C:\AtlasDev\src\LDC.Atlas.Application.Core\bin\Debug\netstandard2.0\LDC.Atlas.Application.Core.deps.json
+C:\AtlasDev\src\LDC.Atlas.Application.Core\bin\Debug\netstandard2.0\LDC.Atlas.Application.Core.dll
+C:\AtlasDev\src\LDC.Atlas.Application.Core\bin\Debug\netstandard2.0\LDC.Atlas.Application.Core.pdb
+C:\AtlasDev\src\LDC.Atlas.Application.Core\obj\Debug\netstandard2.0\LDC.Atlas.Application.Core.csprojAssemblyReference.cache
+C:\AtlasDev\src\LDC.Atlas.Application.Core\obj\Debug\netstandard2.0\LDC.Atlas.Application.Core.csproj.CoreCompileInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Application.Core\obj\Debug\netstandard2.0\LDC.Atlas.Application.Core.AssemblyInfoInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Application.Core\obj\Debug\netstandard2.0\LDC.Atlas.Application.Core.AssemblyInfo.cs
+C:\AtlasDev\src\LDC.Atlas.Application.Core\obj\Debug\netstandard2.0\LDC.Atlas.Application.Core.dll
+C:\AtlasDev\src\LDC.Atlas.Application.Core\obj\Debug\netstandard2.0\LDC.Atlas.Application.Core.pdb

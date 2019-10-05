@@ -1,0 +1,30 @@
+export class DefaultAccountingSetupResult {
+    accountingSetupId: number;
+    cashReceivedCostTypeId: number;
+    cashPaidCostTypeId: number;
+    purchaseInvoiceCostTypeId: number;
+    salesInvoiceCostTypeId: number;
+    washoutInvoiceGainsCostTypeId: number;
+    washoutInvoiceLossCostTypeId: number;
+    fxRevalCostTypeId: number;
+    defaultBankAccountId: number;
+    salesLedgerControlClientDebtorsId: number;
+    purchaseLedgerControlClientCreditorsId: number;
+    fxRevalaccountId: number;
+    suspenseAccountforWashoutSuspenseId: number;
+    realisedPhysicalsPayableId: number;
+    realisedPhysicalsReceivableId: number;
+    vatAccountInputsId: number;
+    vatAccountOutputsId: number;
+    fxAccountGainId: number;
+    fxAccountLossId: number;
+    plClearanceYepAccountId: number;
+    balanceSheetClearanceYepAccountId: number;
+    bsReserveYepAccountId: number;
+    yepCostTypeId: number;
+    dealNominalAccountId: number;
+    settlementNominalAccountId: number;
+    cancellationGainCostTypeId: number;
+    cancellationLossCostTypeId: number;
+    yepDepartmentId: number;
+}

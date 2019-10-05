@@ -1,0 +1,38 @@
+<div class="main-container">
+    <h2 class="heading">
+        Language
+    </h2>
+    <div>
+        <div fxLayout="row"
+             fxLayoutAlign="end"
+             fxFlex="200%">
+            <mat-form-field fxFlex="90%"
+                            class="content-height">
+                <mat-select [value]='languageSelected'
+                            placeholder="Favourite Language"
+                            (selectionChange)='onLanguageChanged($event)'>
+                    <mat-option *ngFor="let language of languageList"
+                                [value]="language.enumEntityId">
+                        {{ language.enumEntityValue }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>
+                    Changes the languages of the templates
+                </mat-hint>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">
+            DISCARD
+        </button>
+        <button mat-raised-button
+                [disabled]="false"
+                (click)="onSaveButtonClicked()">
+            SAVE
+        </button>
+    </div>
+</div>

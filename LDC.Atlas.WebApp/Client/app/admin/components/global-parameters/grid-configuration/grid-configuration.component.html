@@ -1,0 +1,40 @@
+<div *ngIf="isAdmin"
+     matToolbarHighlight
+     class="dark-tab header-tab mat-elevation-z6">
+    <div class="header-tab-container">
+        <nav mat-tab-nav-bar
+             matToolbarHighlight>
+            <div *ngFor="let routeLink of routeLinks">
+                <a mat-tab-link
+                   [routerLink]="routeLink.link"
+                   routerLinkActive
+                   #rla="routerLinkActive"
+                   [active]="isActive(routeLink)">
+                    {{ routeLink.label }}
+                </a>
+            </div>
+        </nav>
+        <span class="fill-space"></span>
+    </div>
+</div>
+
+<div *ngIf="!isAdmin"
+     matToolbarHighlight
+     class="dark-tab header-tab mat-elevation-z6">
+    <div class="header-tab-container">
+        <nav mat-tab-nav-bar
+             matToolbarHighlight>
+            <div *ngFor="let routeLink of routeLinks">
+                <a mat-tab-link
+                   *ifAuthorized="routeLink.privilege,company:this.company"
+                   [routerLink]="routeLink.link"
+                   routerLinkActive
+                   #rla="routerLinkActive"
+                   [active]="isActive(routeLink)">
+                    {{ routeLink.label }}
+                </a>
+            </div>
+        </nav>
+        <span class="fill-space"></span>
+    </div>
+</div>

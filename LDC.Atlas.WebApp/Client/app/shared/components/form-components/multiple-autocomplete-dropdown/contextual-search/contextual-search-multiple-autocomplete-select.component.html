@@ -1,0 +1,59 @@
+<div class="custom-form"
+     [class.isEmpty]="!fieldControl.value"
+     [class.required-field]="true">
+    <mat-form-field color="accent">
+        <mat-select [multiple]="true"
+                    [formControl]="fieldControl"
+                    [placeholder]="placeholder">
+            <mat-select-trigger>
+                {{ displayFn() }}
+            </mat-select-trigger>
+            <div id="myHeader"
+                 class="fixedHeader">
+                <mat-select-header #stickyHeader>
+                    <input matInput
+                           type="search"
+                           [placeholder]="placeholderFilter"
+                           [formControl]="filterControl"
+                           autocomplete="off"
+                           (keydown)="$event.stopPropagation()"
+                           (input)="onSearchChange($event.target.value)">
+                </mat-select-header>
+            </div>
+            <div id="options">
+                <mat-option (click)="toggleAll()"
+                            *ngIf="displayAll"
+                            style="color:black"
+                            [value]="allOptionsElement[valueProperty]">
+                    All
+                </mat-option>
+                <mat-option *ngFor="let option of filteredOptions"
+                            [value]="option[valueProperty]"
+                            (click)="selectionChanged(option[valueProperty], $event)">
+                    <span *ngIf="displayCode"
+                          style="color:black">{{ option[codeProperty] }}</span>
+                    <span *ngIf="option[codeProperty] !== null && displayCode && displayProperty"
+                          style="color:black">|</span>
+                    <span *ngIf="displayProperty"
+                          style="color:black">{{ option[displayProperty] }}</span>
+                </mat-option>
+                <mat-option [value]="fakeOption"
+                            style="height: 0">
+                </mat-option>
+                <mat-option disabled
+                            class="autocomplete-option-with-action">
+                    <a (click)="onExploreClicked($event)">
+                        {{filteredOptionsSize - filteredOptions.length}} more for
+                        "{{this.filterControl.value ? this.filterControl.value : ''}}"
+                    </a>
+                </mat-option>
+            </div>
+        </mat-select>
+        <mat-error *ngIf="fieldControl.hasError('required')">
+            {{elementName}} is required
+        </mat-error>
+        <mat-hint>
+            Required *
+        </mat-hint>
+    </mat-form-field>
+</div>

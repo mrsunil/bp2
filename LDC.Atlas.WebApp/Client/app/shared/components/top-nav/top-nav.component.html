@@ -1,0 +1,82 @@
+<mat-toolbar matToolbarHighlight
+             class='top-toolbar-primary'>
+
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="10px"
+         class="toolbar-div">
+
+        <button mat-button
+                class="button-icon"
+                (click)="onLoadPreviousPageButtonClicked()"
+                [color]="color"
+                *ngIf="!isHomePage">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button mat-button
+                class="button-icon"
+                [color]="color"
+                *ngIf="isHomePage"
+                disabled>
+            <atlas-privilege-level1-icon class="privilege-icon"
+                                         [privilegeLevel1Name]="privilegeLevel1Name">
+            </atlas-privilege-level1-icon>
+        </button>
+        <h1 color="white">{{pageTitle}} {{entityLabel}}</h1>
+    </div>
+    <span class="fill-space"></span>
+    <div fxLayout="row"
+         fxLayoutAlign="center"
+         fxLayoutGap="8px">
+        <div>
+            <span class="metadata-text">v.{{versionNumber}}</span>
+        </div>
+        <div class="company">
+            <atlas-company-picker></atlas-company-picker>
+        </div>
+    </div>
+    <a mat-icon-button
+       matTooltip="Notifications">
+        <mat-icon class="mat-icon">notifications</mat-icon>
+    </a>
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         [ngClass]='settingsClass'>
+        <div [ngClass]='profilePictureClass'
+             matTooltip="Profile">
+            {{userInitials}}
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start center">
+            <div class="static">
+                <mat-expansion-panel [ngClass]='foreGroundClass'
+                                     (mouseleave)="closePanel()"
+                                     [expanded]="isPanelOpen"
+                                     (opened)="isPanelOpen = true"
+                                     [ngClass]="{'username-chip': isPanelOpen}">
+
+                    <mat-expansion-panel-header expandedHeight="35px"
+                                                collapsedHeight="35px">
+                        <mat-panel-title>
+                            {{username}}
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div mat-menu-item
+                         class="user-setting-item"
+                         (click)="navigate()">
+                        <mat-icon>settings_applications</mat-icon>
+                        <span class="settingIcon">User Settings</span>
+                    </div>
+
+                </mat-expansion-panel>
+            </div>
+
+        </div>
+    </div>
+    <a mat-icon-button
+       matTooltip="Sign Off"
+       (click)="onLogout()">
+        <mat-icon matListIcon>power_settings_new</mat-icon>
+    </a>
+</mat-toolbar>

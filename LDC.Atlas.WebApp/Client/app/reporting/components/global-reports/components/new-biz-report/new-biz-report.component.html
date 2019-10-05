@@ -1,0 +1,185 @@
+<div class="main-container">
+    <form [formGroup]="newBizReportFormGroup">
+        <div fxLayout="row"
+             fxLayoutAlign="start"
+             fxLayoutGap="10px"
+             fxLayoutAlign.lt-md="start center">
+            <mat-card fxFlex="35%">
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>Report Parameters</h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout="row"
+                         fxLayoutGap="20px">
+                        <mat-form-field fxFlex="31%">
+                            <mat-select [formControl]="contractDateCtrl"
+                                        required="contractDateCtrl.isRequired">
+                                <mat-option *ngFor="let newBizDate of newBizDateTypes"
+                                            [value]="newBizDate.value">
+                                    {{newBizDate.newBizDateTypesDescription}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="contractDateCtrl.hasError('required')">
+                                This field is required
+                            </mat-error>
+                        </mat-form-field>
+                        <span fxLayoutGap="5%">
+                            <div class="custom-form"
+                                 fxFlex="25%"
+                                 [class.isEmpty]="!newBizDateFromCtrl.value"
+                                 [class.required-field]="newBizDateFromCtrl.isRequired">
+                                <mat-form-field>
+                                    <input matInput
+                                           [required]="newBizDateFromCtrl.isRequired"
+                                           [matDatepicker]="frompicker"
+                                           placeholder="From"
+                                           value="frompicker"
+                                           autocomplete="off"
+                                           [formControl]='newBizDateFromCtrl'>
+                                    <mat-datepicker-toggle matSuffix
+                                                           [for]="frompicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #frompicker></mat-datepicker>
+                                    <mat-error *ngIf="newBizDateFromCtrl.hasError('required')">
+                                        This field is required
+                                    </mat-error>
+                                    <mat-error *ngIf="newBizDateToCtrl.hasError('isBeforeDate')">
+                                        Cannot be After Period To
+                                    </mat-error>
+                                    <mat-hint *ngIf="newBizDateFromCtrl.isRequired">
+                                        Required *
+                                    </mat-hint>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="custom-form"
+                                 fxFlex="25%"
+                                 [class.isEmpty]="!newBizDateToCtrl.value"
+                                 [class.required-field]="newBizDateToCtrl.isRequired">
+                                <mat-form-field>
+                                    <input matInput
+                                           [required]="newBizDateToCtrl.isRequired"
+                                           [matDatepicker]="topicker"
+                                           placeholder="To"
+                                           value="topicker"
+                                           autocomplete="off"
+                                           [formControl]='newBizDateToCtrl'>
+                                    <mat-datepicker-toggle matSuffix
+                                                           [for]="topicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #topicker></mat-datepicker>
+                                    <mat-error *ngIf="newBizDateToCtrl.hasError('required')">
+                                        This field is required
+                                    </mat-error>
+                                    <mat-error *ngIf="newBizDateToCtrl.hasError('isBeforeDate')">
+                                        Cannot be before Period From
+                                    </mat-error>
+                                    <mat-hint *ngIf="newBizDateToCtrl.isRequired">
+                                        Required *
+                                    </mat-hint>
+                                </mat-form-field>
+                            </div>
+
+                        </span>
+                    </div>
+                    <div fxLayout="row"
+                         class="container-custom"
+                         fxLayoutGap="20px">
+                        <atlas-masterdata-user-preferences-input fxFlex="30%"
+                                                                 isEditable="true"
+                                                                 [fieldControl]="newBizReportDepartmentCtrl"
+                                                                 [options]="filteredDepartmentList"
+                                                                 label="Department"
+                                                                 displayProperty="departmentCode"
+                                                                 [selectProperties]="['departmentCode', 'description']"
+                                                                 [errorMap]="departmentErrorMap"
+                                                                 lightBoxTitle="Results for Departments"
+                                                                 gridId="departmentsGrid">
+                        </atlas-masterdata-user-preferences-input>
+                        <mat-form-field fxFlex="25%">
+                            <mat-select [formControl]="styleCtrl"
+                                        placeholder="Style"
+                                        required="styleCtrl.isRequired">
+                                <mat-option *ngFor="let newBizStyle of newBizStyleTypes"
+                                            [value]="newBizStyle.value">
+                                    {{newBizStyle.newBizStyleTypesDescription}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="styleCtrl.hasError('required')">
+                                This field is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card fxFlex="38%">
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>Report</h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout="row"
+                         fxLayoutGap="20px">
+                        <mat-form-field fxFlex="52%">
+                            <mat-select [formControl]="newContractsCtrl"
+                                        placeholder="New Contracts"
+                                        (selectionChange)='onFXDealSelected($event)'>
+                                <mat-option *ngFor="let newContractsTypes of newBiznewContractTypes"
+                                            [value]="newContractsTypes.value">
+                                    {{newContractsTypes.newBizNewContractsTypesDescription}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="newContractsCtrl.hasError('required')">
+                                This field is required
+                            </mat-error>
+                        </mat-form-field>
+                        <atlas-dropdown-select fxFlex='48%'
+                                               [label]="'Amendments'"
+                                               [options]="amendmentsTypeList"
+                                               [fieldControl]="amendmentsCtrl"
+                                               isEditable=true
+                                               (optionSelected)="selectionChanged($event)"
+                                               [selectProperties]="amendmentsDisplayProperty"
+                                               multiselect=true>
+                        </atlas-dropdown-select>
+                    </div>
+                    <div fxLayout="row"
+                         class="view-realized-physicals-pnl">
+                        <span fxFlex='50%'></span>
+                        <span fxLayoutAlign="right center">
+                            <mat-checkbox [formControl]="amendmentSummaryCtrl"
+                                          (change)="onAmendmentSummaryChanged($event)">Amendment Summary
+                            </mat-checkbox>
+                        </span>
+                    </div>
+                    <div fxLayout="row"
+                         class="container-custom">
+                        <span fxFlex='50%'></span>
+                        <span fxLayoutAlign="right center">
+                            <mat-checkbox [formControl]="amendmentDetailsCtrl"
+                                          (change)="onAmendmentDetailsChanged($event)">Amendment Details
+                            </mat-checkbox>
+                        </span>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <atlas-filter-set-display fxFlex="40%"
+                                      [columnConfiguration]="columnConfiguration"
+                                      [gridCode]="gridCode"
+                                      (filtersChanged)=onFilterSetChanged($event)
+                                      [company]="company">
+            </atlas-filter-set-display>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="end center">
+            <button mat-raised-button
+                    class="generate-report-button"
+                    (click)="onGenerateReportButtonClicked()">GENERATE REPORT</button>
+        </div>
+    </form>
+    <div class="report-container">
+        <atlas-ssrsreport-viewer [reportServer]="reportServerUrl"
+                                 [reportUrl]="reportPath"
+                                 [parameters]="parameters"
+                                 #ssrsReportViewer>
+        </atlas-ssrsreport-viewer>
+    </div>
+</div>

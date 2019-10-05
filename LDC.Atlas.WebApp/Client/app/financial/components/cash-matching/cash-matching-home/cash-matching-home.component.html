@@ -1,0 +1,17 @@
+<div matToolbarHighlight
+     class="dark-tab header-tab mat-elevation-z6">
+    <div class="header-tab-container">
+        <nav matToolbarHighlight
+             mat-tab-nav-bar>
+            <div *ngFor="let routeLink of routeLinks">
+                <a mat-tab-link
+                   [routerLink]="routeLink.link"
+                   routerLinkActive
+                   #rla="routerLinkActive"
+                   [active]="isActive(routeLink)">
+                    {{ routeLink.label }}
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

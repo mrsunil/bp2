@@ -1,0 +1,31 @@
+<div [class.displayMode]="!isEditable"
+     class="custom-form"
+     [class.required-field]="isRequired()"
+     [class.isEmpty]="!fieldControl.value">
+    <mat-form-field>
+        <input matInput
+               [matDatepicker]="picker"
+               [placeholder]="label"
+               autocomplete="off"
+               [formControl]="fieldControl"
+               [disabled]="disabled"
+               (blur)="onValueEntered()">
+        <mat-datepicker-toggle matSuffix
+                               [for]="picker"
+                               *ngIf="isEditable"
+                               [disabled]="disabled"
+                               [class.validIcon]="fieldControl.valid"
+                               [class.notValidIcon]="!fieldControl.valid && (fieldControl.touched || fieldControl.dirty)">
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker
+                        startView="multi-year"
+                        (yearSelected)="onChosenYearSelected($event)"
+                        (monthSelected)="onChosenMonthSelected($event, picker)"></mat-datepicker>
+        <mat-error *ngIf="fieldControl.hasError('invalidDateForSql')">Date should be after 01/01/1753</mat-error>
+        <mat-error *ngIf="isRequired() && fieldControl.hasError('required') && isEditable">{{label}} is Required *
+        </mat-error>
+        <mat-error *ngIf="fieldControl.errors && isEditable">{{ getErrorMessage() }}</mat-error>
+        <mat-hint *ngIf="isRequired() && fieldControl.pristine && !fieldControl.value && isEditable">Required *
+        </mat-hint>
+    </mat-form-field>
+</div>

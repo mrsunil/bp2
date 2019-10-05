@@ -1,0 +1,71 @@
+<div class='main-container trade-cost-report'>
+    <div fxLayout="row wrap"
+         fxLayoutAlign="space-between stretch"
+         fxLayoutAlign.lt-md="space-around center">
+        <mat-card fxFlex="45">
+            <mat-card-header>
+                <mat-card-title>
+                    <h2>Criterias</h2>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayoutGap="10px">
+                <div fxLayout="row"
+                     fxLayoutAlign="left stretch"
+                     fxLayoutGap="5%">
+                    <atlas-dropdown-select fxFlex='30%'
+                                           [label]="'Snapshot'"
+                                           [fieldControl]="snapshotsCtrl"
+                                           isEditable=true
+                                           [options]="snapshotList"
+                                           [errorMap]="snapshotErrorMap"
+                                           displayProperty="freezeDate"
+                                           [selectProperties]="['freezeDate']"></atlas-dropdown-select>
+                    <atlas-dropdown-select fxFlex='30%'
+                                           [label]="'Trade Status'"
+                                           [options]="constractStatusList"
+                                           [fieldControl]="contractStatusCtrl"
+                                           [errorMap]="contractStatusErrorMap"
+                                           isEditable=true
+                                           [selectProperties]="contractStatusDisplayProperty"
+                                           multiselect=true></atlas-dropdown-select>
+                    <span fxLayoutAlign="left center">
+                        <mat-checkbox [checked]="includeGoods"
+                                      (change)="onIncludeGoodsChanged($event)">Include Goods</mat-checkbox>
+                    </span>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="left stretch"
+                     fxLayoutGap="5%">
+                    <atlas-dropdown-select-list fxFlex='30%'
+                                                [label]="'Company'"
+                                                [fieldControl]="tradeCostCompanyCtrl"
+                                                [(options)]="filteredCompany"
+                                                [selectProperties]="companySelect"
+                                                isEditable=true
+                                                (optionSelected)="companyOptionSelected($event)"
+                                                multiselect=true>
+                    </atlas-dropdown-select-list>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+        <atlas-filter-set-display fxFlex="50"
+                                  (filtersChanged)=onFilterSetChanged($event)
+                                  [columnConfiguration]="columnConfiguration"
+                                  [gridCode]="gridCode"
+                                  [company]="company">
+        </atlas-filter-set-display>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="end center">
+        <button mat-raised-button
+                class="generate-report-button"
+                (click)="onGenerateReportButtonClicked()">GENERATE REPORT</button>
+    </div>
+    <div class="report-container">
+        <atlas-ssrsreport-viewer [reportServer]="reportServerUrl"
+                                 [reportUrl]="reportPath"
+                                 [parameters]="parameters"
+                                 #ssrsReportViewer></atlas-ssrsreport-viewer>
+    </div>
+</div>

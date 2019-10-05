@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="start left"
+             fxLayoutGap="16px">
+            <div class="custom-form"
+                 fxFlex="50%">
+                <mat-form-field>
+                    <input matInput
+                           [textMask]="{mask:mask}"
+                           fxFlex="25%"
+                           placeholder="Threshold for Cost vs Estimate"
+                           [formControl]="thresholdIDCtrl"
+                           autocomplete="off">
+                </mat-form-field>
+            </div>
+        </div>
+
+
+    </mat-card-content>
+</mat-card>

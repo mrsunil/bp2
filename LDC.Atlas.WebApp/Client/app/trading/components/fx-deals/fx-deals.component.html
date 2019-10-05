@@ -1,0 +1,65 @@
+<div class="main-container"
+     fxLayout="column"
+     fxLayoutAlign="start none">
+    <mat-card>
+        <div fxLayout="row"
+             fxLayoutAlign="start none"
+             class="search">
+            <mat-form-field>
+                <input matInput
+                       [formControl]="dealCtrl"
+                       placeholder="Deal N°"
+                       (keydown.enter)="onQuickSearchButtonClicked()"
+                       #message>
+            </mat-form-field>
+            <button mat-raised-button
+                    (click)="onQuickSearchButtonClicked()"
+                    class="heroGradient">
+                <mat-icon aria-label="Search"
+                          class="search-icon">search</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <atlas-list-and-search class="default-height"
+                           [gridCode]="gridCode"
+                           [gridTitle]="'FX Deals'"
+                           [additionalFilters]="additionalFilters"
+                           [company]="company"
+                           [dataLoader]="dataLoader"
+                           (rowClicked)="onFxDealClicked($event)"
+                           [dataVersionId]="dataVersionId"
+                           #listAndSearchComponent>
+    </atlas-list-and-search>
+
+    <div fxLayout="row"
+         fxLayout.md="column"
+         fxLayoutAlign="end"
+         fxFlex="50%">
+        <button mat-raised-button
+                class="fab-text-button"
+                color="accent"
+                [matMenuTriggerFor]="menu">
+            <mat-icon class="material-icons">add</mat-icon>
+            FX DEALS ACTIONS
+        </button>
+        <mat-menu #menu="matMenu"
+                  class="floating-menu has-header">
+            <button mat-menu-item
+                    class="menu-header"
+                    disabled=true>
+                <mat-icon class="material-icons">add</mat-icon>
+                <span>FX DEALS ACTIONS</span>
+            </button>
+            <button *ifAuthorized="'Trades.FxDeals.CreateEditFxDeal',company:this.company"
+                    mat-menu-item
+                    (click)="onCreateFxDealButtonClicked()">
+                <mat-icon class="material-icons">add</mat-icon>
+                Create FX Deal
+            </button>
+            <button mat-menu-item>
+                <mat-icon class="material-icons">bar_chart</mat-icon>
+                FX Deals Report
+            </button>
+        </mat-menu>
+    </div>
+</div>

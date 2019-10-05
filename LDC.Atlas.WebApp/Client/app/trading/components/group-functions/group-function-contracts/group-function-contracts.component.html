@@ -1,0 +1,125 @@
+<div class="main-container"
+     fxLayout="column"
+     fxLayoutAlign="start none">
+    <mat-card>
+        <form [formGroup]="searchContractForm">
+            <div fxLayout="row"
+                 fxLayoutAlign="start none"
+                 *ngIf="!showDeallocationSearch"
+                 class="search">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Contract Search"
+                           formControlName="searchContractReferenceCtrl" />
+                </mat-form-field>
+                <button mat-raised-button
+                        (click)="onSearchContracts()"
+                        class="heroGradient">
+                    <mat-icon aria-label="Search"
+                              class="search-icon">search</mat-icon>
+                </button>
+            </div>
+            <div fxLayout="row"
+                 *ngIf="showDeallocationSearch"
+                 fxLayoutAlign="start none"
+                 class="search">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Contract Search"
+                           formControlName="searchContractReferenceDeallocationCtrl" />
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Group Number"
+                           formControlName="groupNumberDeallocationCtrl" />
+                </mat-form-field>
+                <button mat-raised-button
+                        (click)="onSearchContractsDeallocation()"
+                        class="heroGradient">
+                    <mat-icon aria-label="Search"
+                              class="search-icon">search</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-card>
+    <atlas-filter-set-display (filtersChanged)="onFilterSetDetailsChange($event)"
+                              [columnConfiguration]="columnConfiguration"
+                              [gridCode]="gridCode"
+                              [company]="company">
+    </atlas-filter-set-display>
+    <mat-card>
+        <div fxLayout="row"
+             class="quick-sum-div-height"
+             fxLayoutAlign="space-between center">
+            <h2 class="no-margin">{{gridTitle}}</h2>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-around center"
+                 class="accEntriesSum">
+                <atlas-ag-grid-user-preferences *ngIf="groupFunctionsGridOptions && groupFunctionsGridOptions.columnDefs && groupFunctionsGridOptions.columnApi"
+                                                [gridOptions]="groupFunctionsGridOptions"
+                                                [company]="company"
+                                                [gridId]="gridCode"
+                                                [sharingEnabled]="hasGridSharing"
+                                                [hasDeleteViewPrivilege]="hasDeleteViewPrivilege"
+                                                (columnStateSetToGrid)="onColumnStateSetToGrid()"
+                                                #userPreferences>
+                </atlas-ag-grid-user-preferences>
+            </div>
+        </div>
+        <div fxLayout="row"
+             class="quick-sum-div-height"
+             fxLayoutAlign="space-between center">
+            <mat-slide-toggle mat-raised-button
+                              (change)="toggleQuickSum($event.checked)">Quick Sum Mode</mat-slide-toggle>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-around center">
+
+                <div *ngFor="let column of selectedColumnsArray">
+                    <span class="quick-sum-span"
+                          *ngIf="quickSumModeActivated">{{column.name}}:{{column.sum | number }}</span>
+                </div>
+                <button mat-button
+                        (click)="onClearSelectionClicked()"
+                        class="mat-button-user-margin"
+                        *ngIf="quickSumModeActivated">
+                    Clear Selection
+                </button>
+            </div>
+        </div>
+        <div ag-grid="groupFunctionsGridOptions"
+             [ngClass]='classApplied'
+             style="width: 100%; height: 100%">
+            <ag-grid-angular [ngClass]="{'hidden-during-loading':isLoading}"
+                             style="height:100%;"
+                             class="ag-theme-material"
+                             [rowData]="ContractGridRows"
+                             [columnDefs]="columnDefs"
+                             [enableColResize]="true"
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             [enableSorting]="true"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             [enableRangeSelection]="true"
+                             (rangeSelectionChanged)="onRangeSelectionChanged($event)"
+                             (columnVisible)="onColumnVisibilityChanged($event)"
+                             enableFilter
+                             [gridOptions]="groupFunctionsGridOptions"
+                             (firstDataRendered)="onFirstDataRendered()"
+                             rowSelection="multiple"
+                             [singleClickEdit]="true"
+                             [suppressRowClickSelection]="true"
+                             (rowSelected)="onSelectionChanged($event)"
+                             [rowHeight]=atlasAgGridParam.rowHeight>
+            </ag-grid-angular>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutWrap
+             *ngIf="isLoading"
+             class="loading">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+    </mat-card>
+    <atlas-lock-interval [resourcesInformation]="resourcesInformation"></atlas-lock-interval>
+</div>

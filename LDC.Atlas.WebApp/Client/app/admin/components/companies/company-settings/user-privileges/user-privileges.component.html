@@ -1,0 +1,42 @@
+<div class="main-container">
+    <mat-card>
+        <div fxLayout="row"
+             fxLayout.xs="column"
+             fxLayoutAlign="space-between left"
+             fxLayoutWrap
+             fxLayoutGap="20px"
+             class="atlas-grid-card-header">
+            <h2 class="atlas-grid-card-title">User Profiles to Copy</h2>
+            <atlas-ag-grid-user-preferences *ngIf="UserPrivilegesGridOptions && UserPrivilegesGridOptions.columnDefs"
+                                            [gridOptions]="UserPrivilegesGridOptions"
+                                            [company]="company"
+                                            [gridId]="gridCode"
+                                            [showExport]="false"
+                                            [sharingEnabled]="hasGridSharing"
+                                            #userPreferences>
+            </atlas-ag-grid-user-preferences>
+        </div>
+        <div ag-grid="UserPrivilegesGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular style=" height: 100%;"
+                             class="ag-theme-material"
+                             [rowData]="profilesGridRows"
+                             [columnDefs]="columnDefs"
+                             [enableColResize]="true"
+                             [suppressSizeToFit]=false
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             [enableSorting]="true"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             (rowSelected)="onUserPrivilegeRowSelected($event)"
+                             rowSelection="multiple"
+                             enableFilter
+                             [rowHeight]="atlasAgGridParam.rowHeight"
+                             (columnVisible)="onColumnVisibilityChanged($event)">
+            </ag-grid-angular>
+        </div>
+
+    </mat-card>
+
+</div>

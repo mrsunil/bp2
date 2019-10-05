@@ -1,0 +1,135 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3>Information</h3>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div fxLayout="column">
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <atlas-form-input fxFlex="100%"
+                                  [fieldControl]="nameCtrl"
+                                  [isEditable]="true"
+                                  [errorMap]="nameErrorMap"
+                                  [required]="nameCtrl.isRequired"
+                                  label="Name"
+                                  [readonly]="true">
+                </atlas-form-input>
+            </div>
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <atlas-dropdown-select-list fxFlex='100%'
+                                            label="Account Type Name"
+                                            [fieldControl]="accountTypeCtrl"
+                                            [readonly]="true"
+                                            [options]="accountTypes"
+                                            [required]="accountTypeCtrl.isRequired"
+                                            isEditable="true"
+                                            (optionSelected)="optionSelected($event)"
+                                            [selectProperties]="accountTypesSelect"
+                                            [defaultSelected]="checkedAccountTypes"
+                                            multiselect="true">
+                </atlas-dropdown-select-list>
+            </div>
+            <div fxFlex="100%"
+                 fxLayout="row">
+
+                <mat-form-field style="max-width: 130px;">
+                    <input matInput
+                           placeholder="Account Manager"
+                           [matAutocomplete]="accountManager"
+                           [formControl]="accountManagerCtrl"
+                           [matTooltip]="'Account Manager'"
+                           autocomplete="off">
+                    <mat-autocomplete #accountManager="matAutocomplete"
+                                      [panelWidth]="panelSize">
+                        <mat-option *ngFor="let accountManager of filteredAccountManagers"
+                                    [value]="accountManager.samAccountName">
+                            {{ accountManager.samAccountName }} | {{accountManager.displayName}}
+                        </mat-option>
+                    </mat-autocomplete>
+
+                    <mat-error *ngIf="accountManagerCtrl.hasError('inDropdownList')">
+                        Account Manager is not in the List
+                    </mat-error>
+                </mat-form-field>
+                <span class="fill-space"></span>
+                <atlas-dropdown-select fxFlex='25%'
+                                       label="Trade Status"
+                                       [fieldControl]="tradeStatusCtrl"
+                                       [readonly]="true"
+                                       [options]="counterpartyTradeStatusList"
+                                       [required]="tradeStatusCtrl.isRequired"
+                                       isEditable="true"
+                                       [selectProperties]="counterpartyTradeStatusDisplayProperty">
+                </atlas-dropdown-select>
+                <span class="fill-space"></span>
+                <atlas-masterdata-user-preferences-input fxFlex="25%"
+                                                         isEditable="true"
+                                                         [fieldControl]="headOfFamilyCtrl"
+                                                         [options]="headofFamily"
+                                                         label="Head of Family"
+                                                         displayProperty="counterpartyCode"
+                                                         [selectProperties]="['counterpartyCode', 'description']"
+                                                         [errorMap]="counterpartyErrorMap"
+                                                         lightBoxTitle="Results for Counterparty"
+                                                         gridId="counterpartiesGrid"
+                                                         (optionSelected)="onCounterpartyIdSelected($event)">
+                </atlas-masterdata-user-preferences-input>
+                <span class="fill-space"></span>
+            </div>
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Department"
+                           [matAutocomplete]="departmentCode"
+                           [formControl]="departmentCtrl"
+                           autocomplete="off">
+                    <mat-autocomplete #departmentCode="matAutocomplete"
+                                      [panelWidth]="panelSize"
+                                      (optionSelected)="onSelectionChanged($event)">
+                        <mat-option *ngFor="let department of filteredDepartments"
+                                    [value]="department.departmentCode">
+                            {{department.departmentCode}} | {{department.description}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="departmentCtrl.hasError('inDropdownList')">
+                        value is not in the List
+                    </mat-error>
+                </mat-form-field>
+                <span class="fill-space"></span>
+                <atlas-form-input fxFlex="30%"
+                                  [fieldControl]="departmentDescriptionCtrl"
+                                  [isEditable]="true"
+                                  label="Description"
+                                  [readonly]="true">
+                </atlas-form-input>
+                <atlas-form-input fxFlex="35%"
+                                  [fieldControl]="fiscalRegCtrl"
+                                  [errorMap]="inputErrorMap"
+                                  [isEditable]="true"
+                                  label="Fiscal Registration Number">
+                </atlas-form-input>
+            </div>
+            <div FxFlex="100%"
+                 fxLayout="row">
+                <atlas-form-input fxFlex="60%"
+                                  [fieldControl]="associatedCompaniesCtrl"
+                                  [isEditable]="true"
+                                  [required]="associatedCompaniesCtrl.isRequired"
+                                  label="Associated Companies"
+                                  [readonly]="true">
+                </atlas-form-input>
+                <button (click)="onChangeButtonClicked()"
+                        [disabled]="isViewMode || !isAdmin"
+                        mat-raised-button
+                        type="button">
+                    Change
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

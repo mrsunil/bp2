@@ -1,0 +1,53 @@
+<atlas-floating-action-button [fabTitle]="fabTitle"
+                              [fabType]="fabType"
+                              [fabActions]="fabMenuActions"
+                              [isParentLoaded]="isLoaded"
+                              (fabActionClicked)="onFabActionClicked($event)">
+</atlas-floating-action-button>
+<div class="main-container">
+    <mat-card>
+        <div fxLayout="row"
+             fxLayoutAlign="start none"
+             class="search">
+            <atlas-masterdata-user-preferences-input fxFlex="45%"
+                                                     isEditable="true"
+                                                     [fieldControl]="counterPartyCtrl"
+                                                     [options]="filteredCounterPartyList"
+                                                     label="Counter Party"
+                                                     (keydown.enter)="onQuickSearchButtonClicked()"
+                                                     displayProperty="counterpartyCode"
+                                                     [selectProperties]="['counterpartyCode', 'description']"
+                                                     [errorMap]="counterpartyErrorMap"
+                                                     lightBoxTitle="Results for Counterparty"
+                                                     gridId="counterpartiesGrid"
+                                                     [dataLoader]="counterpartyDataLoader">
+            </atlas-masterdata-user-preferences-input>
+            <mat-form-field>
+                <input matInput
+                       fxFlex="45%"
+                       value=""
+                       [formControl]="invoiceReferenceCtrl"
+                       placeholder="Invoice Reference"
+                       (keydown.enter)="onQuickSearchButtonClicked()"
+                       #action>
+            </mat-form-field>
+            <button mat-raised-button
+                    class="heroGradient">
+                <mat-icon aria-label="Search"
+                          (click)="onQuickSearchButtonClicked()"
+                          class="search-icon">search</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+
+    <atlas-list-and-search class="default-height" [gridCode]="gridCode"
+                           (rowClicked)="onInvoiceRowClicked($event)"
+                           (quickNavigate)="onQuickNavigate($event)"
+                           [company]="company"
+                           [dataLoader]="dataLoader"
+                           [additionalFilters]="additionalFilters"
+                           gridTitle="Invoices"
+                           [loadOnInit]="loadOnInit" 
+                           #listAndSearchComponent>
+    </atlas-list-and-search>
+</div>

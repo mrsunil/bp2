@@ -1,0 +1,129 @@
+<form [formGroup]="charterForm">
+    <header class="header-background charter-detail">
+        <div class="header-content">
+            <div fxLayout="row"
+                 fxLayoutAlign="start center"
+                 fxLayoutGap="16px"
+                 class="bottom-marge">
+                <h2>Charter {{charterReference}}</h2>
+                <mat-chip-list>
+                    <mat-chip class="mat-success status-chip"
+                              selected
+                              disabled>
+                        Open
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="start center"
+                 fxLayoutGap="16px"
+                 class="charter-global-info">
+                <mat-form-field fxFlex="14"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="Created By"
+                           disabled
+                           value="{{createdBy}}"
+                           autocomplete="off">
+                </mat-form-field>
+                <mat-form-field fxFlex="14"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="On"
+                           disabled
+                           value="{{creationDate}}"
+                           autocomplete="off">
+                </mat-form-field>
+                <mat-form-field fxFlex="14"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="Modified By"
+                           disabled
+                           value="{{modifiedBy ? modifiedBy : ' '}}"
+                           autocomplete="off">
+                </mat-form-field>
+                <mat-form-field fxFlex="14"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="On"
+                           disabled
+                           value="{{modifiedDate ? modifiedDate : ' '}}"
+                           autocomplete="off">
+                </mat-form-field>
+            </div>
+        </div>
+    </header>
+
+    <atlas-charter-menu-bar-component [menuDisable]="isEdit"
+                                      (charterSaveAction)="onSaveButtonClicked()"></atlas-charter-menu-bar-component>
+
+    <div class="main-container">
+        <main [ngClass]="{'hidden-during-loading':isLoading}"
+              class="cards-fxLayout">
+            <mat-tab-group class="bright-tab">
+                <mat-tab label="Contracts">
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-between">
+                        <atlas-shipment-form-component #shipmentComponent
+                                                       [isCreateOrEdit]=true
+                                                       fxFlex="50"></atlas-shipment-form-component>
+                        <atlas-total-card-component #totalCardComponent
+                                                    [isCreateOrEdit]=false
+                                                    fxFlex="50"></atlas-total-card-component>
+                    </div>
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-around start">
+                        <atlas-warning-component #warningComponent
+                                                 *ngIf="warning"
+                                                 title='Select the contracts you want to update with the new charter informations.'
+                                                 message='Non selected contracts will have to be updated manually later'
+                                                 icon='swap_horiz'
+                                                 fxFlex="100"></atlas-warning-component>
+                    </div>
+                    <atlas-assigned-contract-list-form-component (isReassignedButtonClicked)="onReassignedButtonClicked($event)"
+                                                                 #assignedContractListFormComponent>
+                    </atlas-assigned-contract-list-form-component>
+                </mat-tab>
+                <mat-tab label="General">
+                    <div fxLayout="row wrap"
+                         fxLayoutAlign="space-around start">
+                        <div fxFlex="50"
+                             fxFlex.lt-md="100">
+                            <atlas-main-information-form-component #mainInfoComponent
+                                                                   [isCreateOrEdit]=true>
+                            </atlas-main-information-form-component>
+                        </div>
+                        <!-- Right -->
+                        <div fxFlex="50"
+                             fxFlex.lt-md="100">
+                            <atlas-additional-information-form-component #additionalInfoComponent
+                                                                         [isCreateOrEdit]=true>
+                            </atlas-additional-information-form-component>
+                            <atlas-memo-form-component #memoComponent
+                                                       [isCreateOrEdit]=true></atlas-memo-form-component>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </main>
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutWrap
+             *ngIf="isLoading"
+             class="loading">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+    </div>
+    <atlas-lock-interval [resourceId]="charterId"
+                         [resourceCode]="charterReference"
+                         resourceType="Charter"
+                         isEdit=true>
+    </atlas-lock-interval>
+</form>
+<atlas-floating-action-button *ngIf="!hideFloatingButtons"
+                              [fabTitle]="fabTitle"
+                              [fabType]="fabType"
+                              [fabActions]="fabMenuActions"
+                              [isParentLoaded]="!isLoading"
+                              (fabActionClicked)="onFabActionClicked($event)">
+</atlas-floating-action-button>

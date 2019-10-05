@@ -1,0 +1,31 @@
+<div class="main-container"
+     fxLayout="column"
+     fxLayoutAlign="start none">
+    <div ag-grid="bulkClosureGridOptions"
+         class="ag-theme-material pointer-cursor">
+        <ag-grid-angular style="height:100%;"
+                         class="ag-theme-material"
+                         [rowData]="bulkClosureGridRows"
+                         [gridOptions]="bulkClosureGridOptions"
+                         [columnDefs]="bulkClosureGridColumns"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         [singleClickClosure]=true
+                         rowSelection="multiple"
+                         [treeData]="true"
+                         [animateRows]="true"
+                         [groupDefaultExpanded]="groupDefaultExpanded"
+                         [getDataPath]="getDataPath"
+                         [autoGroupColumnDef]="autoGroupColumnDef"
+                         (columnVisible)="onColumnVisibilityChanged($event)"
+                         [frameworkComponents]="gridComponents"
+                         (rowSelected)="onSelectionChanged($event)"
+                         [pagination]="true"
+                         [paginationPageSize]="28"
+                         [enableSorting]="true"
+                         [enableColResize]="true"
+                         enableFilter
+                         [rowHeight]=32>
+        </ag-grid-angular>
+    </div>
+</div>

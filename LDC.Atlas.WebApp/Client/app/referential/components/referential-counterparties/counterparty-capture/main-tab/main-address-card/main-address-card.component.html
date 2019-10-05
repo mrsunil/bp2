@@ -1,0 +1,223 @@
+<mat-card style="width: 400px">
+    <mat-card-header>
+        <mat-card-title>
+            <h3>Counterparty Main Address</h3>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field>
+                <input matInput
+                       placeholder="Address Type Name"
+                       [formControl]="addressTypeNameCtrl">
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field>
+                <input matInput
+                       placeholder="Address 1"
+                       [formControl]="address1Ctrl">
+                <mat-error *ngIf="address1Ctrl.hasError('maxlength')">
+                    Maximum 60 charcters Allowed
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field>
+                <input matInput
+                       placeholder="Address 2"
+                       [formControl]="address2Ctrl">
+                <mat-error *ngIf="address2Ctrl.hasError('maxlength')">
+                    Maximum 60 charcters Allowed
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field>
+                <input matInput
+                       placeholder="Address Type Code"
+                       [matAutocomplete]="addressCode"
+                       autocomplete="off"
+                       [formControl]="addressTypeCodeCtrl">
+
+                <mat-autocomplete #addressCode="matAutocomplete"
+                                  [panelWidth]="panelSize"
+                                  (optionSelected)="onSelectionChanged($event)">
+                    <mat-option *ngFor="let addressType of filteredAddressType"
+                                [value]="addressType.enumEntityValue">
+                        {{addressType.enumEntityId}} | {{addressType.enumEntityValue}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-hint *ngIf="addressTypeCodeCtrl.isRequired">
+                    Required *
+                </mat-hint>
+                <mat-error *ngIf="addressTypeCodeCtrl.hasError('inDropdownList')">
+                    Value not in list
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="50%">
+                <input matInput
+                       placeholder="Zip Code"
+                       (keypress)="numberValidation($event)"
+                       [formControl]="zipCodeCtrl">
+                <mat-error *ngIf="zipCodeCtrl.hasError('maxlength')">
+                    Maximum 40 digits Allowed
+                </mat-error>
+            </mat-form-field>
+
+            <div fxFlex="50%">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="City"
+                           [formControl]="cityCtrl">
+                    <mat-error *ngIf="cityCtrl.hasError('maxlength')">
+                        Maximum 60 charcters Allowed
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="50%"
+                            [class.isEmpty]="!provinceCtrl.value"
+                            [class.required-field]="provinceCtrl.isRequired">
+                <input matInput
+                       placeholder="Province"
+                       [matAutocomplete]="provinceCode"
+                       [formControl]="provinceCtrl"
+                       [required]="provinceCtrl.isRequired"
+                       autocomplete="off">
+                <mat-autocomplete #provinceCode="matAutocomplete"
+                                  [panelWidth]="panelSize">
+                    <mat-option *ngFor="let province of filteredProvince"
+                                [value]="province.description">
+                        {{province.provinceId}} | {{province.description}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-hint *ngIf="provinceCtrl.isRequired">
+                    Required *
+                </mat-hint>
+                <mat-error *ngIf="provinceCtrl.hasError('inDropdownList')">
+                    Value not in list
+                </mat-error>
+            </mat-form-field>
+
+            <div fxFlex="50%"
+                 [class.isEmpty]="!countryCtrl.value"
+                 [class.required-field]="countryCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Country"
+                           [matAutocomplete]="countryCode"
+                           [formControl]="countryCtrl"
+                           [required]="countryCtrl.isRequired"
+                           autocomplete="off">
+                    <mat-autocomplete #countryCode="matAutocomplete"
+                                      [panelWidth]="panelSize">
+                        <mat-option *ngFor="let country of filteredCountry"
+                                    [value]="country.description">
+                            {{country.countryId}} | {{country.description}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="countryCtrl.hasError('inDropdownList')">
+                        Value not in list
+                    </mat-error>
+                    <mat-hint *ngIf="countryCtrl.isRequired">
+                        Required *
+                    </mat-hint>
+                    <mat-error *ngIf="countryCtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <mat-list>
+            <mat-divider></mat-divider>
+        </mat-list>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="30%">
+                <input matInput
+                       placeholder="Main Email Address"
+                       [formControl]="emailCtrl">
+                <mat-error *ngIf="emailCtrl.hasError('email')">
+                    Not a valid email
+                </mat-error>
+                <mat-error *ngIf="emailCtrl.hasError('maxlength')">
+                    Maximum 40 charcters Allowed
+                </mat-error>
+            </mat-form-field>
+
+            <div fxFlex="30%">
+                <mat-form-field>
+                    <input matInput
+                           (keypress)="numberValidation($event)"
+                           placeholder="Phone Number"
+                           [formControl]="phoneNumberCtrl">
+                    <mat-error *ngIf="phoneNumberCtrl.hasError('maxlength')">
+                        Maximum 10 digits Allowed
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="30%">
+                <mat-form-field>
+                    <input matInput
+                           (keypress)="numberValidation($event)"
+                           placeholder="Fax Number"
+                           [formControl]="faxNumberCtrl">
+                    <mat-error *ngIf="faxNumberCtrl.hasError('maxlength')">
+                        Maximum 40 digits Allowed
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field>
+                <input matInput
+                       placeholder="LDC Region"
+                       [matAutocomplete]="ldcRegionCode"
+                       autocomplete="off"
+                       [formControl]="ldcRegionCtrl">
+
+                <mat-autocomplete #ldcRegionCode="matAutocomplete"
+                                  [panelWidth]="panelSize">
+                    <mat-option *ngFor="let ldcRegion of filteredLdcRegion"
+                                [value]="ldcRegion.description">
+                        {{ldcRegion.ldcRegionCode}} | {{ldcRegion.description}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-hint *ngIf="ldcRegionCtrl.isRequired">
+                    Required *
+                </mat-hint>
+                <mat-error *ngIf="ldcRegionCtrl.hasError('inDropdownList')">
+                    Value not in list
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

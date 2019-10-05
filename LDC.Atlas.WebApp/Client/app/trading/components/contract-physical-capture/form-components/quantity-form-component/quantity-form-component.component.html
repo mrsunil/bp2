@@ -1,0 +1,79 @@
+<mat-card class="trade-capture-card">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Quantity</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div class="custom-form"
+                 fxFlex="30%"
+                 [class.displayMode]="!weightUnitIdCtrl.enabled"
+                 [class.isEmpty]="!weightUnitIdCtrl.value"
+                 [class.required-field]="weightUnitIdCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Quantity Code"
+                           [required]="weightUnitIdCtrl.isRequired"
+                           [matAutocomplete]="quantityCode"
+                           [formControl]="weightUnitIdCtrl"
+                           [matTooltip]="'Quantity Codes'"
+                           autocomplete="off"
+                           (focusout)="onFocusOut()"
+                           (blur)="quantityCodeSet()">
+                    <mat-icon *ngIf="isEdit"
+                              class="bookmark-icon"
+                              matSuffix>bookmark</mat-icon>
+                    <mat-autocomplete #quantityCode="matAutocomplete"
+                                      [panelWidth]="panelSize"
+                                      [displayWith]="displayQuantityUnit.bind(this)">
+                        <mat-option *ngFor="let qtCode of filteredQuantityCode"
+                                    [value]="qtCode.weightUnitId">
+                            {{qtCode.weightCode}} |
+                            {{qtCode.description}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="weightUnitIdCtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                    <mat-error *ngIf="weightUnitIdCtrl.hasError('inDropdownList')">
+                        Value not in list
+                    </mat-error>
+                    <mat-hint *ngIf="weightUnitIdCtrl.isRequired && weightUnitIdCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div fxFlex="30%">
+                <atlas-form-input [fieldControl]="quantityCtrl"
+                                  [required]="quantityCtrl.isRequired"
+                                  [textMask]="{mask:mask}"
+                                  [isEditable]="isInputField|| isInputMode"
+                                  [title]="quantityToolTip"
+                                  label="Quantity"
+                                  [errorMap]="inputErrorMap"
+                                  type="number"
+                                  [hasWarning]="quantityWarning"
+                                  warningMessage="Quantity is 0"
+                                  (blur)="onQuantityBlur($event.target.value)">
+                </atlas-form-input>
+            </div>
+            <div fxFlex="30%">
+                <atlas-form-input [fieldControl]="quantityContractedCtrl"
+                                  [required]="quantityContractedCtrl.isRequired"
+                                  [textMask]="{mask:mask}"
+                                  [isEditable]="isInputField|| isInputMode"
+                                  [title]="contractedQtyToolTip"
+                                  label="Quantity Contracted"
+                                  type="number"
+                                  [errorMap]="inputErrorMap "
+                                  [hasWarning]="quantityContractedWarning"
+                                  warningMessage="Quantity Contracted is 0"
+                                  (blur)="onContractedQuantityBlur($event.target.value)">
+                </atlas-form-input>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

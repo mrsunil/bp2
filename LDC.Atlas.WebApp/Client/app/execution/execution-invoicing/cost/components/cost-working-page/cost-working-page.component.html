@@ -1,0 +1,30 @@
+<div fxLayout="column">
+    <div fxLayout="row"
+         fxLayoutGap="2%">
+        <atlas-cost-invoice-selection #costInvoiceSelectionComponent
+                                      fxFlex="49%"
+                                      (invoiceDateSelected)="onInvoiceDateSelected($event)">
+
+        </atlas-cost-invoice-selection>
+        <atlas-cost-document-template #costDocumentTemplateComponent
+                                      fxFlex="49%"
+                                      (templateSelected)="onDocumentTemplateSelected($event)">
+
+        </atlas-cost-document-template>
+    </div>
+    <atlas-invoice-cost-selected-cost (totalCostAndVatCode)="onChangeCostContract($event)"
+                                      (narrativeLength)="onNarrativeValueChange($event)"
+                                      #invoiceCostSelectedCostComponent>
+    </atlas-invoice-cost-selected-cost>
+    <atlas-invoicing-cost-taxes (totalCostTaxCalculated)="onTotalCostTaxCalculated($event)"
+                                #invoicingCostTaxesComponent></atlas-invoicing-cost-taxes>
+    <div class="payment-total-amount-section"
+         fxLayout="row"
+         fxLayoutGap="2%">
+        <atlas-cost-payments #costPaymentsComponent
+                             fxFlex="50%"></atlas-cost-payments>
+        <atlas-total-amount #totalAmountComponent
+                            fxFlex="50%"></atlas-total-amount>
+
+    </div>
+</div>

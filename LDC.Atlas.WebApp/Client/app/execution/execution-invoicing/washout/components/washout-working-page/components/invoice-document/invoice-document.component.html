@@ -1,0 +1,87 @@
+<mat-card class="invoice-creation-card"
+          fxFlex="100">
+    <mat-card-title>
+        Invoice Document
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="30%">
+                <mat-select [panelWidth]="panelSize"
+                            (optionSelected)="onExternalInHouseSelected()"
+                            placeholder="External/InHouse"
+                            [formControl]="invoiceExtInHouseCtrl"
+                            matTooltip="External/InHouse">
+                    <mat-option *ngFor="let info of invoiceSourceType"
+                                [value]="info.viewValue">
+                        {{info.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="60%">
+                <input matInput
+                       placeholder="External Invoice Reference"
+                       autocomplete="off"
+                       [formControl]="invoiceExtRefCtrl">
+                <mat-error *ngIf="invoiceExtRefCtrl.hasError('required')">
+                    Reference is required
+                </mat-error>
+                <mat-error *ngIf="invoiceExtRefCtrl.hasError('maxlength')">
+                    Must be less than 25 characters
+                </mat-error>
+                <mat-hint align="end">
+                    {{invoiceExtRefCtrl.value.length}} / 25
+                </mat-hint>
+                <mat-hint style="color:orange"
+                          *ngIf="!isUnique">
+                    Reference Number already used
+                </mat-hint>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start">
+            <mat-form-field fxFlex="30%"
+                            class="margin-bottom">
+                <mat-select [panelWidth]="panelSize"
+                            placeholder="Template"
+                            [formControl]="invoiceTemplatesCtrl"
+                            (selectionChange)="onInvoiceTemplateSelected()"
+                            matTooltip="Template"
+                            [required]="invoiceTemplatesCtrl.isRequired">
+                    <mat-option></mat-option>
+                    <mat-option *ngFor="let template of filteredTemplates"
+                                [value]="template">
+                        {{template.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="invoiceTemplatesCtrl.hasError('required')">
+                    Template is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start">
+            <mat-form-field fxFlex="32%">
+                <input matInput
+                       [matDatepicker]="washoutAgreementDatePicker"
+                       placeholder="Agreement Date (BL Date)"
+                       [matTooltip]="'Agreement Date'"
+                       [formControl]='washoutAgreementDateCtrl'
+                       autocomplete="off"
+                       (dateChange)='onAgreementDateChanged()'>
+                <mat-error *ngIf="washoutAgreementDateCtrl.hasError('isDateAfterCurrentDateValid')">
+                    Date cannot be greater than the system date
+                </mat-error>
+                <mat-error *ngIf="washoutAgreementDateCtrl.hasError('required')">
+                    Agreement Date is required
+                </mat-error>
+                <mat-hint *ngIf="!washoutAgreementDateCtrl.hasError('isDateAfterCurrentDateValid' || 'required')"
+                          class="invoice-creation-required-fields">Required*</mat-hint>
+                <mat-datepicker-toggle matSuffix
+                                       [for]="washoutAgreementDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #washoutAgreementDatePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

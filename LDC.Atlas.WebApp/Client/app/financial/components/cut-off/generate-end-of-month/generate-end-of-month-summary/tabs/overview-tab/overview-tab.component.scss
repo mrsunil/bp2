@@ -1,0 +1,7 @@
+.footer-label {
+    padding-top: 20px;
+}
+
+:host ::ng-deep .endofmonth-grid-height {
+    height: calc(100vh - 265px - 120px); // windows height minus the height of the other elements in the screen
+}

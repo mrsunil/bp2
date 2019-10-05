@@ -1,0 +1,126 @@
+<mat-divider></mat-divider>
+<div class="privileges-section">
+    <h2>
+        <mat-icon class="title-icon">swap_horiz</mat-icon>{{privilege.privilege.description}}
+    </h2>
+    <div class="privileges-table">
+        <div class="privilege-level level-two-header"
+             fxLayout="row"
+             fxLayoutAlign="none center"
+             fxLayoutGap="10px">
+            <div fxFlex="50%"
+                 fxFlex.xs="50%"
+                 fxFlex.sm="50%">
+                <div>{{privilege.privilege.displayName}}</div>
+            </div>
+            <div fxFlex="25%"
+                 fxFlex.xs="25%"
+                 fxFlex.sm="25%">
+                <mat-checkbox [checked]="isSelected(privilege,PermissionLevels.Read)"
+                              (change)="privilegePermissionChange(privilege, PermissionLevels.Read)"></mat-checkbox>
+                Read
+            </div>
+            <div fxFlex="25%"
+                 fxFlex.xs="25%"
+                 fxFlex.sm="25%">
+                <mat-checkbox [checked]="isSelected(privilege,PermissionLevels.ReadWrite)"
+                              (change)="privilegePermissionChange(privilege, PermissionLevels.ReadWrite)">
+                </mat-checkbox>
+                ReadWrite
+            </div>
+        </div>
+        <div class="privilege-level level-three-header"
+             *ngIf="privilege.children.length > 0"
+             fxLayout="row"
+             fxLayoutAlign="none center"
+             fxLayoutGap="10px">
+            <div fxFlex="50%"
+                 fxFlex.xs="50%"
+                 fxFlex.sm="50%">
+                {{PrivilegeTypes[0]}}
+            </div>
+            <div fxFlex="25%"
+                 fxFlex.xs="25%"
+                 fxFlex.sm="25%"></div>
+            <div fxFlex="25%"
+                 fxFlex.xs="25%"
+                 fxFlex.sm="25%">
+                <mat-checkbox [checked]="allActionsHaveWrite"
+                              (change)="selectAllActions()"></mat-checkbox>
+                Authorized
+            </div>
+        </div>
+        <div *ngFor="let action of actionPrivileges">
+            <div fxLayout="row"
+                 class="privilege-level"
+                 fxLayoutAlign="none center"
+                 fxLayoutGap="10px">
+                <div fxFlex="50%"
+                     fxFlex.xs="50%"
+                     fxFlex.sm="50%">
+                    <div>{{action.privilege.displayName}}</div>
+                </div>
+                <div fxFlex="25%"
+                     fxFlex.xs="25%"
+                     fxFlex.sm="25%"></div>
+                <div fxFlex="25%"
+                     fxFlex.xs="25%"
+                     fxFlex.sm="25%">
+                    <mat-checkbox [checked]="isSelected(action,PermissionLevels.ReadWrite)"
+                                  (change)="privilegePermissionChange(action,PermissionLevels.ReadWrite)">
+                    </mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="privilege-level level-three-header"
+             *ngIf="exceptionPrivileges.length > 0">
+            <div fxLayout="row"
+                 fxLayoutAlign="none center"
+                 fxLayoutGap="10px">
+                <div fxFlex="50%"
+                     fxFlex.xs="50%"
+                     fxFlex.sm="50%">
+                    {{PrivilegeTypes[1]}}
+                </div>
+                <div fxFlex="25%"
+                     fxFlex.xs="25%"
+                     fxFlex.sm="25%">
+                    <mat-checkbox [checked]="allExceptionsHaveRead"
+                                  (change)="selectAllExceptions(PermissionLevels.Read)"></mat-checkbox>
+                </div>
+                <div fxFlex="25%"
+                     fxFlex.xs="25%"
+                     fxFlex.sm="25%">
+                    <mat-checkbox [checked]="allExceptionsHaveWrite"
+                                  (change)="selectAllExceptions(PermissionLevels.ReadWrite)"></mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let exception of exceptionPrivileges">
+            <div fxLayout="row"
+                 class="privilege-level"
+                 fxLayoutAlign="none center"
+                 fxLayoutGap="10px">
+                <div fxFlex="50%"
+                     fxFlex.xs="50%"
+                     fxFlex.sm="50%">
+                    <div>{{exception.privilege.displayName}}</div>
+                </div>
+                <div fxFlex="25%"
+                     fxFlex.xs="25%"
+                     fxFlex.sm="25%">
+                    <mat-checkbox [checked]="isSelected(exception,PermissionLevels.Read)"
+                                  (change)="privilegePermissionChange(exception,PermissionLevels.Read)"></mat-checkbox>
+                </div>
+                <div fxFlex="25%"
+                     fxFlex.xs="25%"
+                     fxFlex.sm="25%">
+                    <mat-checkbox [checked]="isSelected(exception,PermissionLevels.ReadWrite)"
+                                  (change)="privilegePermissionChange(exception,PermissionLevels.ReadWrite)">
+                    </mat-checkbox>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

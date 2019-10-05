@@ -1,0 +1,140 @@
+version: '2.1'
+
+services:
+
+  trading.api:
+    image: atlas/trading.api
+    build:
+      context: ./LDC.Atlas.Services.Trading
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  execution.api:
+    image: atlas/execution.api
+    build:
+      context: ./LDC.Atlas.Services.Execution
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+      
+  masterdata.api:
+    image: atlas/masterdata.api
+    build:
+      context: ./LDC.Atlas.Services.MasterData
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  controlling.api:
+    image: atlas/controlling.api
+    build:
+      context: ./LDC.Atlas.Services.Controlling
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  preaccounting.api:
+    image: atlas/preaccounting.api
+    build:
+      context: ./LDC.Atlas.Services.PreAccounting
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+      
+  useridentity.api:
+    image: atlas/useridentity.api
+    build:
+      context: ./LDC.Atlas.Services.UserIdentity
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  document.api:
+    image: atlas/document.api
+    build:
+      context: ./LDC.Atlas.Services.Document
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  configuration.api:
+    image: atlas/configuration.api
+    build:
+      context: ./LDC.Atlas.Services.Configuration
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  freeze.api:
+    image: atlas/freeze.api
+    build:
+      context: ./LDC.Atlas.Services.Freeze
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  reporting.api:
+    image: atlas/reporting.api
+    build:
+      context: ./LDC.Atlas.Services.Reporting
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  processor.api:
+    image: atlas/processor.api
+    build:
+      context: ./LDC.Atlas.Services.Processor
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  paymentrequestinterface.api:
+    image: atlas/paymentrequestinterface.api
+    build:
+      context: ./LDC.Atlas.Services.PaymentRequestInterface
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  lock.api:
+    image: atlas/lock.api
+    build:
+      context: ./LDC.Atlas.Services.Lock
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  accountinginterface.api:
+    image: atlas/accountinginterface.api
+    build:
+      context: ./LDC.Atlas.Services.AccountingInterface
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+   
+  genericbackinterface.api:
+    image: atlas/genericbackinterface.api
+    build:
+      context: ./LDC.Atlas.Services.GenericBackInterface
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  interface.api:
+    image: atlas/interface.api
+    build:
+      context: ./LDC.Atlas.Services.Interface
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+
+  audit.api:
+    image: atlas/audit.api
+    build:
+      context: ./LDC.Atlas.Services.Audit
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: "Microsoft.ApplicationInsights.Profiler.AspNetCore"
+      

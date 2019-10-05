@@ -1,0 +1,23 @@
+<div matToolbarHighlight
+     class="dark-tab header-tab mat-elevation-z6">
+    <div *ifAuthorized="'Reports.PLReport',company:this.company"
+         class="header-tab-container">
+        <mat-tab-group dynamicHeight
+                       (selectedTabChange)="getPosition($event)"
+                       [(selectedIndex)]=selectedTab
+                       class="bright-tab">
+            <mat-tab label="P&L">
+                <atlas-pnl-report #pnlReportComponent>
+                </atlas-pnl-report>
+            </mat-tab>
+            <mat-tab label="P&L MOVEMENT">
+                <atlas-pnl-movement-report #pnlMovementReportComponent>
+                </atlas-pnl-movement-report>
+            </mat-tab>
+            <mat-tab label="MANUAL ADJUSTMENT">
+                <atlas-ldrep-manual-adjustment-report #ldrepManualAdjustmentReportComponent>
+                </atlas-ldrep-manual-adjustment-report>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

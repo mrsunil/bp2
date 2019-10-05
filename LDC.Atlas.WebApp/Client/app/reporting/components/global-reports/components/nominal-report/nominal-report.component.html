@@ -1,0 +1,292 @@
+<div class="main-container">
+    <form [formGroup]="nominalReportFormGroup">
+        <div fxLayout="row wrap">
+            <mat-card class="flex-item-marge"
+                      fxFlex="calc(60% - 16px)"
+                      fxFlex.lt-md="100%">
+                <mat-card-content fxLayout="column"
+                                  fxLayoutGap="1%">
+                    <div fxLayout="row"
+                         fxLayoutAlign="start">
+                        <div fxLayout="column"
+                             fxLayoutAlign="start"
+                             fxLayoutGap="3%"
+                             fxFlex="50%">
+                            <mat-card-title>Report Parameters</mat-card-title>
+                            <div fxLayout="column"
+                                 fxLayoutAlign="start"
+                                 fxLayoutGap="1%">
+                                <span>
+                                    <mat-form-field fxFlex="40%">
+                                        <mat-select (selectionChange)="optionValueChanged($event)"
+                                                    [formControl]="reportStyleCtrl"
+                                                    [required]="reportStyleCtrl.isRequired"
+                                                    placeholder="Report Style">
+                                            <mat-option *ngFor="let reportStyle of reportStyleTypes"
+                                                        [value]="reportStyle.value">
+                                                {{reportStyle.reportStyleDescription}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="reportStyleCtrl.hasError('required')">
+                                            This field is required
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field fxFlex="40%">
+                                        <mat-select [formControl]="accountTypeCtrl"
+                                                    [required]="accountTypeCtrl.isRequired"
+                                                    placeholder="Account Type">
+                                            <mat-option *ngFor="let accountType of nominalAccountTypes"
+                                                        [value]="accountType.value">
+                                                {{accountType.accountTypeDescription}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="accountTypeCtrl.hasError('required')">
+                                            This field is required
+                                        </mat-error>
+                                    </mat-form-field>
+                                </span>
+                            </div>
+                        </div>
+                        <div fxLayout="column"
+                             fxLayoutAlign="end"
+                             fxFlex="50%"
+                             class="documentDateField">
+                            <mat-card-title>Document Date Range </mat-card-title>
+                            <span fxLayoutGap="2%">
+                                <atlas-date-picker fxFlex="30%"
+                                                   isEditable=true
+                                                   label="From"
+                                                   required
+                                                   [fieldControl]="documentDateFromCtrl"
+                                                   (dateChanged)="onDateChanged()">
+                                </atlas-date-picker>
+                                <atlas-date-picker fxFlex="30%"
+                                                   isEditable=true
+                                                   label="To"
+                                                   required
+                                                   [errorMap]="documentRangeErrorMap"
+                                                   [fieldControl]="documentDateToCtrl"
+                                                   (dateChanged)="onDateChanged()">
+                                </atlas-date-picker>
+                            </span>
+                        </div>
+                    </div>
+                    <div fxLayout="row"
+                         fxLayoutAlign="start"
+                         class="top-margin">
+                        <div fxLayout="column"
+                             fxLayoutAlign="start"
+                             fxFlex="58%">
+                            <h3>Nominal Report Filter</h3>
+                            <div fxLayout="column"
+                                 fxLayoutAlign="start">
+                                <span fxLayoutGap="10%">
+                                    <atlas-masterdata-user-preferences-input fxFlex="40%"
+                                                                             class="contextual-search-for-nominalaccount"
+                                                                             [fieldControl]="nominalAccountsCtrl"
+                                                                             [options]="filteredNominalAccountList"
+                                                                             label="Nominal Account"
+                                                                             displayProperty="accountNumber"
+                                                                             tooltip="detailedDescription"
+                                                                             [selectProperties]=" ['accountNumber', 'detailedDescription']"
+                                                                             [errorMap]="nominalAccountErrorMap"
+                                                                             lightBoxTitle="Results for Nominal Accounts"
+                                                                             gridId="nominalAccountsGrid">
+                                    </atlas-masterdata-user-preferences-input>
+
+                                    <atlas-masterdata-user-preferences-input fxFlex="40%"
+                                                                             class="contextual-search-for-currency"
+                                                                             [fieldControl]="currencyCtrl"
+                                                                             [options]="filteredCurrencyList"
+                                                                             label="Currency"
+                                                                             displayProperty="currencyCode"
+                                                                             tooltip="description"
+                                                                             [selectProperties]="['currencyCode', 'description']"
+                                                                             [errorMap]="currencyErrorMap"
+                                                                             lightBoxTitle="Results for Currency"
+                                                                             gridId="currenciesGrid">
+                                    </atlas-masterdata-user-preferences-input>
+
+                                </span>
+                            </div>
+                        </div>
+                        <div fxLayout="column"
+                             fxLayoutAlign="end"
+                             fxLayoutGap="3%"
+                             fxFlex="50%">
+                            <mat-card-title>Accounting Period Range</mat-card-title>
+                            <span fxLayoutGap="5%">
+                                <atlas-month-date-picker fxFlex="30%"
+                                                         isEditable=true
+                                                         label="From"
+                                                         [fieldControl]="accountingDateFromCtrl"
+                                                         (monthChanged)="onMonthChanged()">
+                                </atlas-month-date-picker>
+                                <atlas-month-date-picker fxFlex="30%"
+                                                         isEditable=true
+                                                         label="To"
+                                                         [errorMap]="accountPeriodRangeErrorMap"
+                                                         [fieldControl]="accountingDateToCtrl"
+                                                         (monthChanged)="onMonthChanged()">
+                                </atlas-month-date-picker>
+                            </span>
+                        </div>
+                    </div>
+                    <div fxLayout="row"
+                         fxLayoutAlign="start">
+                        <div fxLayout="column"
+                             fxLayoutAlign="end start"
+                             fxFlex="50%">
+                            <mat-slide-toggle [formControl]="functionalCurrencyCtrl"
+                                              *ngIf="reportStyleCtrl.value === ReportStyleType.Summary">Functional
+                                currency only
+                            </mat-slide-toggle>
+                            <mat-slide-toggle [formControl]="broughtForwardCtrl"
+                              (change)="toToggleChanged($event)">
+                                Brought forward Balance required</mat-slide-toggle>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+
+            <atlas-filter-set-display fxFlex="calc(40% - 16px)"
+                                      fxFlex.lt-md="100%"
+                                      (filtersChanged)="onFilterSetChanged($event)"
+                                      [columnConfiguration]="getColumnConfig()"
+                                      [gridCode]="getGridCode()"
+                                      [company]="company"
+                                      #filterSetDisplay>
+            </atlas-filter-set-display>
+        </div>
+    </form>
+    <div fxLayout="row"
+         fxLayoutAlign="end center">
+        <button mat-raised-button
+                (click)="onGenerateReportButtonClicked(true)">GENERATE REPORT
+        </button>
+    </div>
+    <mat-tab-group *ngIf="isTabEnalble"
+                   [selectedIndex]="tabIndex"
+                   (selectedIndexChange)=onSelectedIndexChanged($event)>
+        <mat-tab label="Overview"></mat-tab>
+        <mat-tab label="Details"></mat-tab>
+    </mat-tab-group>
+    <div class="content-tab">
+        <mat-tab-group [selectedIndex]="tabIndex">
+            <mat-tab>
+                <atlas-overview-tab #overviewComponent
+                                    [isTabEnalble]="isTabEnalble"
+                                    [reportStyleCtrl]="reportStyleCtrl"
+                                    [reportStyleTypes]="reportStyleTypes"
+                                    [accountTypeCtrl]="accountTypeCtrl"
+                                    [nominalAccountTypes]="nominalAccountTypes"
+                                    [documentDateFromCtrl]="documentDateFromCtrl"
+                                    [documentDateToCtrl]="documentDateToCtrl"
+                                    [accountingDateFromCtrl]="accountingDateFromCtrl"
+                                    [accountingDateToCtrl]="accountingDateToCtrl"
+                                    [functionalCurrencyCtrl]="functionalCurrencyCtrl"
+                                    [currencyCtrl]="currencyCtrl"
+                                    [nominalAccountsCtrl]="nominalAccountsCtrl"
+                                    [nominalReportFormGroup]="nominalReportFormGroup"></atlas-overview-tab>
+            </mat-tab>
+            <mat-tab>
+                <atlas-detail-tab #detailComponent
+                                  [isTabEnalble]="isTabEnalble"
+                                  [reportStyleCtrl]="reportStyleCtrl"
+                                  [reportStyleTypes]="reportStyleTypes"
+                                  [accountTypeCtrl]="accountTypeCtrl"
+                                  [nominalAccountTypes]="nominalAccountTypes"
+                                  [documentDateFromCtrl]="documentDateFromCtrl"
+                                  [documentDateToCtrl]="documentDateToCtrl"
+                                  [accountingDateFromCtrl]="accountingDateFromCtrl"
+                                  [accountingDateToCtrl]="accountingDateToCtrl"
+                                  [functionalCurrencyCtrl]="functionalCurrencyCtrl"
+                                  [currencyCtrl]="currencyCtrl"
+                                  [nominalAccountsCtrl]="nominalAccountsCtrl"
+                                  [nominalReportFormGroup]="nominalReportFormGroup"></atlas-detail-tab>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <mat-card *ngIf="!isTabEnalble">
+        <mat-card-content>
+            <div fxLayout="row"
+                 fxLayoutAlign="end start">
+                <atlas-ag-grid-user-preferences *ngIf="agGridOptions && agGridOptions.columnDefs && isNominalReportDisplay"
+                                                [gridOptions]="agGridOptions"
+                                                [company]="company"
+                                                [gridId]="getGridCode()"
+                                                [isAutosize]="false"
+                                                [defaultViewIsLatestView]="true"
+                                                [sharingEnabled]="hasGridSharing"
+                                                (componentLoaded)="onUserPreferencesLoaded()"
+                                                (gridViewSelected)="onGridViewSelected($event)"
+                                                #userPreferences>
+                </atlas-ag-grid-user-preferences>
+                <atlas-grid-enlargement *ngIf="agGridOptions && agGridOptions.columnDefs && isNominalReportDisplay"
+                                        [gridOptions]="agGridOptions"
+                                        [userPreferencesParameters]="gridPreferences"
+                                        [hasRangeSelectionOption]="true"
+                                        [summableColumns]="allowedColumnsforQuickSum"
+                                        (columnRowGroupChanged)="onColumnVisibilityChanged($event)"
+                                        (columnVisibilityChanged)="onColumnVisibilityChanged($event)"
+                                        (dialogClose)="onGridEnlargementClose($event)"
+                                        #gridZoom>
+                </atlas-grid-enlargement>
+            </div>
+            <div fxLayout="row"
+                 *ngIf='isNominalReportDisplay'
+                 class="quick-sum-div-height"
+                 fxLayoutAlign="space-between center">
+                <mat-slide-toggle mat-raised-button
+                                  (change)="toggleQuickSum($event.checked)">Quick Sum Mode</mat-slide-toggle>
+                <div fxLayout="row"
+                     fxLayoutAlign="space-around center">
+
+                    <div *ngFor="let column of selectedColumnsArray">
+                        <span class="quick-sum-span"
+                              *ngIf="quickSumModeActivated">{{column.name}} : {{column.sum | number }} </span>
+                    </div>
+                    <button mat-button
+                            (click)="onClearSelectionClicked()"
+                            class="mat-button-user-margin"
+                            *ngIf="quickSumModeActivated">Clear Selection</button>
+                </div>
+            </div>
+            <div ag-grid="agGridOptions"
+                 [ngClass]='classApplied'
+                 class="ag-theme-material pointer-cursor"
+                 style="width: 100%; height: 100%">
+                <ag-grid-angular style=" height: 100%;"
+                                 [ngClass]="{'hidden-during-loading':!isNominalReportDisplay}"
+                                 class="ag-theme-material"
+                                 [rowData]="agGridRows"
+                                 [columnDefs]="agGridCols"
+                                 [enableColResize]="true"
+                                 [pagination]="true"
+                                 [paginationPageSize]="100"
+                                 [gridOptions]="agGridOptions"
+                                 [enableSorting]="true"
+                                 domLayout=autoHeight
+                                 (gridReady)="onGridReady($event)"
+                                 [enableRangeSelection]="true"
+                                 [groupMultiAutoColumn]="groupMultiAutoColumn"
+                                 [rowGroupPanelShow]="rowGroupPanelShow"
+                                 (columnVisible)="onColumnVisibilityChanged($event)"
+                                 (columnRowGroupChanged)="onColumnVisibilityChanged($event)"
+                                 (rangeSelectionChanged)="onRangeSelectionChanged($event)"
+                                 enableFilter
+                                 [context]="gridContext"
+                                 [suppressAggFuncInHeader]="true"
+                                 [rowHeight]="atlasAgGridParam.rowHeight"
+                                 [excelStyles]="excelStyles">
+                </ag-grid-angular>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 *ngIf="isLoading"
+                 class="loading">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,151 @@
+// Keep the class for improvement of hero header
+.header-background {
+    min-height: 120px;
+}
+
+.header-container {
+    height: 120px;
+}
+
+.header-content {
+    padding: 16px 30px 0px;
+}
+
+.header-height {
+    height: 100px;
+}
+
+div.mat-form-field-infix {
+    padding: 0px;
+    border-top: none !important;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 1em;
+}
+
+.mat-form-field-infix {
+    padding: 0px 0px 5px 0px;
+}
+
+.header-background.trade {
+    display: table;
+    height: 100px;
+    width: 100%;
+    background: bottom/cover url("/assets/img/pattern-small.jpg") no-repeat;
+
+    &.trade-capture {
+        background: top/contain url("/assets/img/luke-waves-gray.svg") no-repeat;
+        background-position-x: right;
+        background-color: white;
+
+        .header-container {
+            background: none;
+
+            h2,
+            .mat-input-element:disabled,
+            label,
+            span,
+            .mat-form-field {
+                color: #332f30
+            }
+        }
+
+        .header-meta {
+            margin-top: 4px;
+        }
+    }
+
+    ::ng-deep.mat-input-element:disabled {
+        color: white !important;
+    }
+
+    .header-container {
+        background: rgba(24,
+                91,
+                157,
+                0.84);
+        background: -moz-linear-gradient(left,
+                rgba(24,
+                    91,
+                    157,
+                    0.84) 0%,
+                rgba(53,
+                    129,
+                    28,
+                    0.68) 100%);
+        background: -webkit-gradient(left top,
+                right top,
+                color-stop(0%,
+                    rgba(24,
+                        91,
+                        157,
+                        0.84)),
+                color-stop(100%,
+                    rgba(53,
+                        129,
+                        28,
+                        0.68)));
+        background: -webkit-linear-gradient(left,
+                rgba(24,
+                    91,
+                    157,
+                    0.84) 0%,
+                rgba(53,
+                    129,
+                    28,
+                    0.68) 100%);
+        background: -o-linear-gradient(left,
+                rgba(24,
+                    91,
+                    157,
+                    0.84) 0%,
+                rgba(53,
+                    129,
+                    28,
+                    0.68) 100%);
+        background: -ms-linear-gradient(left,
+                rgba(24,
+                    91,
+                    157,
+                    0.84) 0%,
+                rgba(53,
+                    129,
+                    28,
+                    0.68) 100%);
+        background: linear-gradient(to right,
+                rgba(24,
+                    91,
+                    157,
+                    0.84) 0%,
+                rgba(53,
+                    129,
+                    28,
+                    0.68) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#185b9d',
+                endColorstr='#35811c',
+                GradientType=1);
+
+
+        h2,
+        .mat-input-element:disabled,
+        label,
+        span,
+        .mat-icon-button,
+        .mat-form-field {
+            color: white;
+        }
+
+        .mat-button-toggle-group {
+            height: 32px;
+        }
+
+        .chip-list {
+            margin-bottom: 4px;
+        }
+
+        .trade-view-title {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-title>
+        <h2>Additional Invoicing</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div *ngFor="let invoicetype of invoiceTypeMenuItems">
+            <mat-checkbox #costsCtrl
+                          [formControl]="costInvoiceCtrl"
+                          [checked]="invoicetype.checked"
+                          [value]="invoicetype.invoiceTypeId"
+                          (change)="onInvoiceTypeChecked($event,costsCtrl.checked,invoicetype)">{{invoicetype.name}}</mat-checkbox>
+        </div>
+    </mat-card-content>
+</mat-card>

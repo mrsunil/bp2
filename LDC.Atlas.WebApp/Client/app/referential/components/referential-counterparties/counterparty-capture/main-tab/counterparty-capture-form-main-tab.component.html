@@ -1,0 +1,52 @@
+<div class="main-container"
+     fxLayout="row">
+    <main>
+        <div fxLayout="column"
+             fxFlex="50%"
+             style="padding-right: 28px">
+
+            <div fxLayout="row"
+                 fxLayoutAlign="start left"
+                 fxFlex="57">
+
+                <atlas-information-card #informationCardComponent
+                                        [isViewMode]="isViewMode"
+                                        [isEditMode]="isEditMode"
+                                        (selectedAccountTypesOptions)="onSelectedAccountTypesOptions($event)">
+                </atlas-information-card>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="start right"
+                 fxFlex="50">
+                <atlas-third-system-codes-card #thirdSystemCodesCardComponent
+                                               [isEditMode]="isEditMode"
+                                               (selectedMdmCodesOptions)="onSelectedMdmCodesOptions($event)">
+                </atlas-third-system-codes-card>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="start right"
+                 fxFlex="50">
+
+                <atlas-alternate-mailing-card #alternateMailingCardComponent></atlas-alternate-mailing-card>
+
+            </div>
+        </div>
+
+        <div fxLayout="column"
+             fxLayout.md="column"
+             fxFlex="50%"
+             fxLayoutAlign="space-around start"
+             class='charter-creation-margin'>
+            <div fxLayout="row"
+                 fxLayoutAlign="start left"
+                 fxFlex="100%">
+                <atlas-main-address-card #mainAddressCardComponent></atlas-main-address-card>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="start right"
+                 fxFlex="100%">
+                <atlas-customer-default-card #customerDefaultCardComponent></atlas-customer-default-card>
+            </div>
+        </div>
+    </main>
+</div>

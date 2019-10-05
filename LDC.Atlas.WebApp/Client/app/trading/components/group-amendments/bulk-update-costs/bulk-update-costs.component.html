@@ -1,0 +1,15 @@
+<mat-card>
+    <mat-card-title>
+        <h2>Others</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div *ngFor="let groupFunctionType of groupFunctionTypeMenu">
+            <mat-checkbox #bulkCostsCtrl
+                          [formControl]="bulkCostsUpdateCtrl"
+                          [value]="groupFunctionType.functionTypeCode"
+                          (change)="onSelectionChange($event,bulkCostsCtrl.checked, groupFunctionType)">
+                {{groupFunctionType.name}}
+            </mat-checkbox>
+        </div>
+    </mat-card-content>
+</mat-card>

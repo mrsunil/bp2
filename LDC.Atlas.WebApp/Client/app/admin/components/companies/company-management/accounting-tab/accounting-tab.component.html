@@ -1,0 +1,133 @@
+<div class="main-container hub-menu">
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <div fxLayout.xs="column"
+             fxLayoutAlign="space-between"
+             fxLayoutGap="10px"
+             fxLayoutGap.sm="10"
+             class="hub-menu-panel">
+
+            <mat-card class="active-card"
+                      (click)="onMainAccountingTabCliked()">
+                <img mat-card-image
+                     src=".\assets\img\Companies_small.jpg">
+                <mat-card-title>
+                    <h2 class="no-margin">Main Accounting</h2>
+                </mat-card-title>
+            </mat-card>
+
+            <mat-card class="active-card"
+                      (click)="onDefaultAccountingTabCliked()">
+                <img mat-card-image
+                     src=".\assets\img\GlobalParam_small.jpg">
+                <mat-card-title>
+                    <h2 class="no-margin">Default Account</h2>
+                </mat-card-title>
+            </mat-card>
+
+            <mat-card class="active-card"
+                      (click)="onDefaultCostTypeTabCliked()">
+                <img mat-card-image
+                     src=".\assets\img\Profiles_small.jpg">
+                <mat-card-title>
+                    <h2 class="no-margin">Default Cost Type</h2>
+                </mat-card-title>
+            </mat-card>
+        </div>
+
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <div fxLayout.xs="column"
+             fxLayoutAlign="space-between"
+             fxLayoutGap="10px"
+             fxLayoutGap.sm="10"
+             class="hub-menu-panel">
+
+            <mat-card class="active-card"
+                      (click)="onOthersTabCliked()">
+                <img mat-card-image
+                     src=".\assets\img\Companies_small.jpg">
+                <mat-card-title>
+                    <h2 class="no-margin">Others</h2>
+                </mat-card-title>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
+<div fxLayout="column"
+     [hidden]="hideMainAccountSideNav">
+    <mat-sidenav-container>
+        <mat-sidenav #mainAccountingSideNav
+                     class="sidenav"
+                     mode="over"
+                     position="end"
+                     disableClose
+                     [fixedTopGap]="56"
+                     [fixedInViewport]="true">
+            <atlas-main-accounting #mainAccountingComponent
+                                   (discardChanges)="onDiscardButtonClicked($event)"
+                                   (saveMandatory)="mainAccountingSideNav.close()"
+                                   (isSideNavOpened)="sideNavOpened($event)">
+            </atlas-main-accounting>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>
+
+<div fxLayout="column"
+     [hidden]="hideDefaultAccountSideNav">
+    <mat-sidenav-container>
+        <mat-sidenav #defaultAccountingSideNav
+                     class="sidenav"
+                     mode="over"
+                     position="end"
+                     disableClose
+                     [fixedTopGap]="56"
+                     [fixedInViewport]="true">
+            <atlas-default-account #defaultAccountComponent
+                                   (saveMandatory)="defaultAccountingSideNav.close()"
+                                   (discardChanges)="onDiscardButtonClicked($event)"
+                                   (isSideNavOpened)="sideNavOpened($event)">
+            </atlas-default-account>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>
+
+<div fxLayout="column"
+     [hidden]="hideDefaultCostTypeSideNav">
+    <mat-sidenav-container>
+        <mat-sidenav #defaultCostTypeSideNav
+                     class="sidenav"
+                     mode="over"
+                     position="end"
+                     disableClose
+                     [fixedTopGap]="56"
+                     [fixedInViewport]="true">
+            <atlas-default-cost-type #defaultCostTypeComponent
+                                     (saveMandatory)="defaultCostTypeSideNav.close()"
+                                     (discardChanges)="onDiscardButtonClicked($event)"
+                                     (isSideNavOpened)="sideNavOpened($event)">
+            </atlas-default-cost-type>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>
+
+<div fxLayout="column"
+     [hidden]="hideOthersSideNav">
+    <mat-sidenav-container>
+        <mat-sidenav #othersSideNav
+                     class="sidenav"
+                     mode="over"
+                     position="end"
+                     disableClose
+                     [fixedTopGap]="56"
+                     [fixedInViewport]="true">
+            <atlas-others #othersComponent
+                          (saveMandatory)="othersSideNav.close()"
+                          (discardChanges)="onDiscardButtonClicked($event)"
+                          (isSideNavOpened)="sideNavOpened($event)">
+            </atlas-others>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>

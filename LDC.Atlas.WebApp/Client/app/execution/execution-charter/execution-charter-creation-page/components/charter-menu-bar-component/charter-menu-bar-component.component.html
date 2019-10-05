@@ -1,0 +1,69 @@
+<mat-toolbar class="menu-bar">
+    <div class="toolbar-div">
+        <div fxLayout="row"
+             fxLayoutAlign="start center"
+             fxFlex="30">
+            <button mat-button
+                    class="menu-bar-button"
+                    *ifAuthorized="'Charters.ChartersView',company:this.company"
+                    (click)='onAssignButtonClicked()'
+                    [disabled]="menuDisable">Assign </button>
+            <button mat-button
+                    class="menu-bar-button"
+                    *ifAuthorized="'Charters.ChartersView',company:this.company"
+                    (click)='onCopyButtonClicked()'
+                    [disabled]="menuDisable">Image </button>
+            <button mat-button
+                    class="menu-bar-button"
+                    *ngIf="charterStatus !== 'Open'"
+                    (click)='onOpenButtonClicked()'
+                    [disabled]="menuDisable">Open </button>
+            <button mat-button
+                    class="menu-bar-button"
+                    *ngIf="charterStatus === 'Open' && tradeClosePrivilege"
+                    (click)='onCloseButtonClicked()'
+                    [disabled]="menuDisable">Close </button>
+            <button mat-button
+                    class="menu-bar-button"
+                    *ifAuthorized="'Charters.ChartersView',company:this.company"
+                    (click)='onDeleteButtonClicked()'>Delete
+            </button>
+            <button mat-button
+                    class="menu-bar-button"
+                    (click)='allocateDeallocate()'>Allocate/Deallocate
+            </button>
+            <button mat-button
+                    [matMenuTriggerFor]="reports"
+                    class="menu-bar-button">Reports
+            </button>
+            <mat-menu #reports="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <button mat-menu-item
+                        (click)='onViewPnLButtonClicked()'>View P&L</button>
+                <button mat-menu-item
+                        (click)='onViewCharterReportButtonClicked()'>Charter Report</button>
+                <span *ngFor="let item of filteredTemplates">
+                    <button mat-button
+                            (click)="OnReportClick(item)">
+                        {{item.name}}
+                    </button>
+                </span>
+            </mat-menu>
+            <button mat-button
+                    *ifAuthorized="'Documents',company:this.company"
+                    [matMenuTriggerFor]="documents"
+                    class="menu-bar-button"
+                    [disabled]="menuDisable">Documents
+            </button>
+            <mat-menu #documents="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <button mat-menu-item
+                        (click)="onSeeDocumentButtonClicked()">See Documents</button>
+            </mat-menu>
+        </div>
+
+        <span class="fill-space"></span>
+    </div>
+</mat-toolbar>

@@ -1,0 +1,56 @@
+<mat-card>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start"
+         class=" table-title">
+        <h2 class="no-margin">Value Of Goods</h2>
+        <span class="fill-space"></span>
+        <atlas-ag-grid-user-preferences *ngIf="valueOfGoodsGridOptions && valueOfGoodsGridOptions.columnDefs"
+                                        [gridOptions]="valueOfGoodsGridOptions"
+                                        [company]="company"
+                                        [gridId]="componentId"
+                                        [sharingEnabled]="hasGridSharing"
+                                        #userPreferences>
+        </atlas-ag-grid-user-preferences>
+    </div>
+    <mat-card-content>
+
+        <div ag-grid="valueOfGoodsGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular class="ag-theme-material"
+                             [rowData]="valueOfGoodsGridRows"
+                             [columnDefs]="valueOfGoodsGridColumns"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             [pagination]="false"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             [animateRows]="true"
+                             [groupUseEntireRow]="false"
+                             [rowGroupPanelShow]="rowGroupPanelShow"
+                             [suppressDragLeaveHidesColumns]="true"
+                             [suppressMakeColumnVisibleAfterUnGroup]="true"
+                             (columnVisible)="onColumnVisibilityChanged($event)"
+                             enableFilter
+                             [suppressAggFuncInHeader]="true"
+                             [rowHeight]=atlasAgGridParam.rowHeight>
+            </ag-grid-angular>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="end">
+            <div class="total-box">
+                <mat-card-subtitle class="total-figure">Total Invoiced Quantity :
+                    <span class="total-figure-value">{{formatQuantityAndTotal(totalQuantity)}}
+                        {{weightCode}}</span>
+                </mat-card-subtitle>
+                <mat-card-subtitle class="total-figure">Sub Total :
+                    <span class="total-figure-value">{{debitCreditSign}}{{formatQuantityAndTotal(this.total)}}
+                        {{currencyCode}}</span>
+                </mat-card-subtitle>
+                <mat-card-subtitle class="total-figure">Total :
+                    <span class="total-figure-value">{{debitCreditSign}}{{formatQuantityAndTotal(this.total)}}
+                        {{currencyCode}}</span>
+                </mat-card-subtitle>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

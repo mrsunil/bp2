@@ -1,0 +1,101 @@
+<div [formGroup]="permissionForm"
+     fxLayout="column"
+     fxFlex="100%">
+    <div fxLayout="row"
+         fxLayoutAlign="none center"
+         fxLayoutGap="10px"
+         class="atr-user-configuration">
+        <div fxFlex="25%"
+             fxFlex.xs="100%"
+             class="custom-form"
+             [class.isEmpty]="!companyCtrl.value"
+             [class.required-field]="true">
+            <mat-form-field>
+                <input required
+                       matInput
+                       [matAutocomplete]="company"
+                       autocomplete="off"
+                       placeholder="Company"
+                       formControlName="companyCtrl">
+                <mat-autocomplete #company="matAutocomplete">
+                    <mat-option *ngFor="let company of filteredCompanies"
+                                [value]="company.companyId">{{company.companyId}}</mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="permissionForm.get('companyCtrl').hasError('required')">
+                    Company is required
+                </mat-error>
+                <mat-error *ngIf="permissionForm.get('companyCtrl').hasError('inDropdownList')">
+                    Value not in list
+                </mat-error>
+                <mat-hint>
+                    Required *
+                </mat-hint>
+            </mat-form-field>
+        </div>
+        <div fxFlex="25%"
+             fxFlex.xs="100%"
+             class="custom-form"
+             [class.isEmpty]="!profileCtrl.value"
+             [class.required-field]="true">
+            <mat-form-field>
+                <input required
+                       matInput
+                       [matAutocomplete]="profile"
+                       placeholder="Profile"
+                       formControlName="profileCtrl">
+                <mat-autocomplete #profile="matAutocomplete">
+                    <mat-option *ngFor="let profile of filteredProfiles"
+                                [value]="profile.name">{{profile.name}}</mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="permissionForm.get('profileCtrl').hasError('required')">
+                    Profile is required
+                </mat-error>
+                <mat-error *ngIf="permissionForm.get('profileCtrl').hasError('inDropdownList')">
+                    Value not in list
+                </mat-error>
+                <mat-hint>
+                    Required *
+                </mat-hint>
+            </mat-form-field>
+        </div>
+        <div fxFlex="25%"
+             fxFlex.xs="100%">
+            <atlas-multiple-autocomplete-dropdown #multipleAutocompleteDropdownComponent
+                                                  [options]="departments"
+                                                  [selectedOptions]="permission.departments"
+                                                  [allOptionsElement]="allOptionsElement"
+                                                  [allSelected]="permission.allDepartments"
+                                                  displayCode="true"
+                                                  codeProperty='departmentCode'
+                                                  displayProperty='description'
+                                                  placeholder='Department *'
+                                                  placeholderFilter='Department Name'
+                                                  elementName='Department'
+                                                  [fieldCtrl]="fieldCtrl">
+            </atlas-multiple-autocomplete-dropdown>
+        </div>
+        <div fxFlex="10%"
+             fxFlex.xs="100%">
+            <mat-checkbox formControlName="traderCtrl">Trader</mat-checkbox>
+        </div>
+        <div fxFlex="15%"
+             fxFlex.xs="100%">
+
+            <mat-checkbox formControlName="charterManagerCtrl">Charter Manager</mat-checkbox>
+
+        </div>
+        <div fxFlex="25%"
+             fxFlex.xs="100%">
+            <button type="button"
+                    *ngIf='isNew'
+                    mat-button
+                    class="add-privileges-button"
+                    (click)="addPermission()">ADD</button>
+            <a mat-icon-button
+               *ngIf='!isNew'
+               (click)="removePermission()">
+                <mat-icon>close</mat-icon>
+            </a>
+        </div>
+    </div>
+</div>

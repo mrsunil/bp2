@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.Freeze</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.Freeze.Controllers.FreezesController.GetFreezes(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{LDC.Atlas.Services.Freeze.Application.Queries.Dto.DataVersionTypeDto})">
+            <summary>
+            Returns the list of freezes.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="dateFrom">The start date.</param>
+            <param name="dateTo">The end date.</param>
+            <param name="dataVersionTypeId">The data version type if specified.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Freeze.Controllers.FreezesController.GetFreeze(System.String,System.Int32)">
+            <summary>
+            Returns a freeze by its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="dataVersionId">The data version of the freeze.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Freeze.Controllers.FreezesController.GetFreeze(System.String,System.DateTime,LDC.Atlas.Services.Freeze.Application.Queries.Dto.DataVersionTypeDto)">
+            <summary>
+            Returns a freeze for a specified date.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="freezeDate">The date of the freeze.</param>
+            <param name="dataVersionTypeId">The data version type of the freeze.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Freeze.Controllers.FreezesController.CheckFreezeExists(System.String,System.DateTime,LDC.Atlas.Services.Freeze.Application.Queries.Dto.DataVersionTypeDto)">
+            <summary>
+            Checks if a freeze exists for a specified date.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="freezeDate">The date of the freeze.</param>
+            <param name="dataVersionTypeId">The data version type of the freeze.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Freeze.Controllers.FreezesController.CreateFreeze(System.String,LDC.Atlas.Services.Freeze.Application.Commands.CreateFreezeCommand)">
+            <summary>
+            Creates a new freeze.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="freeze">The freeze to add.</param>
+            <response code="201">Freeze created.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Freeze.Controllers.FreezesController.DeleteFreeze(System.String,System.Int32)">
+            <summary>
+            Deletes a freeze.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="dataVersionId">The data version identifier of the freeze.</param>
+            <response code="204">Freeze deleted.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Freeze.Controllers.FreezesController.RecalculateFreeze(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Recalculate a freeze.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="dataVersionId">The id of the freeze to recalculate.</param>
+            <param name="recalculateAccEntries">Is true if recalculate includes accounting data.</param>
+            <response code="201">Freeze recalculated.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Freeze.Controllers.FreezesController.CreateGlobalFreeze(LDC.Atlas.Services.Freeze.Application.Commands.CreateGlobalFreezeCommand)">
+            <summary>
+            Creates a new freeze for every company in atlas.
+            </summary>
+            <param name="freeze">The freezes to create.</param>
+            <response code="200">Freezes created.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Freeze.Controllers.FreezesController.PurgeFreezes(System.String)">
+            <summary>
+            Purges freezes for a company based on retention policies.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Freeze.Controllers.FreezesController.CheckFreezeForSelectedDatabase(System.String,System.String,System.Nullable{LDC.Atlas.Services.Freeze.Application.Queries.Dto.DataVersionTypeDto},System.Nullable{System.DateTime},System.Nullable{LDC.Atlas.Services.Freeze.Application.Queries.Dto.DataVersionTypeDto},System.Nullable{System.DateTime})">
+            <summary>
+            Checks if a freeze exists for a specified company list and date.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="companyList">The list of company.</param>
+            <param name="dataVersionTypeId">The data version type of the freeze.</param>
+            <param name="freezeDate">The date of the freeze.</param>
+            <param name="comparisonDataVersionTypeId">The data version type of the comparison db.</param>
+            <param name="comparisonDbDate">The date of the comparison db.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Freeze.Controllers.FreezesController.GetFreezeForSelectedCompany(System.String,System.String,System.DateTime,LDC.Atlas.Services.Freeze.Application.Queries.Dto.DataVersionTypeDto)">
+            <summary>
+            Returns a freeze for a specified date.
+            </summary>
+            <param name="company">The company code.</param>
+            /// <param name="companyList">The selected company code.</param>
+            <param name="freezeDate">The date of the freeze.</param>
+            <param name="dataVersionTypeId">The data version type of the freeze.</param>
+        </member>
+    </members>
+</doc>

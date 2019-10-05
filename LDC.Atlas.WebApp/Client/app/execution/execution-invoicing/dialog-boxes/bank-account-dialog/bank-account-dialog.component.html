@@ -1,0 +1,37 @@
+<h1 mat-dialog-title> Bank Account</h1>
+<mat-dialog-content class="mat-dialog-content">
+    <div fxLayout="column">
+        <div fxLayout="row"
+             fxLayoutAlign="left start">
+            <mat-form-field fxFlex="50%">
+                <mat-select [panelWidth]="panelSize"
+                            placeholder="LDC Bank Account Details"
+                            [formControl]="bankAccountCtrl"
+                            matTooltip="Bank Account">
+
+                    <mat-option *ngFor="let option of filteredCompanyBankAccounts"
+                                [value]="option.bankAccountId">
+                        {{option.bankName}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="bankAccountCtrl.hasError('required')">
+                    Reference is required
+                </mat-error>
+                <mat-hint style="color:orange"
+                          *ngIf="filteredCompanyBankAccounts.length==0">
+                    selected currency and company have no bank accounts
+                </mat-hint>
+            </mat-form-field>
+        </div>
+        <div fxLayoutGap="50%">
+            <div fxFlex="30%">
+                <button mat-button
+                        (click)="onCancelButtonClicked()">Cancel</button>
+            </div>
+            <div fxFlex="30%">
+                <button mat-raised-button
+                        (click)="onConfirmButtonClicked()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

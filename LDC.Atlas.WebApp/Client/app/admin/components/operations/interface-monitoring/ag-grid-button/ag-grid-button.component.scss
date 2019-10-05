@@ -1,0 +1,9 @@
+.interface-message {
+margin: 0;
+height: 83%;
+font-size: 11px;
+}
+
+.interface-message span.mat-button-wrapper, button.mat-raised-button span {
+    line-height: 23px !important;
+}

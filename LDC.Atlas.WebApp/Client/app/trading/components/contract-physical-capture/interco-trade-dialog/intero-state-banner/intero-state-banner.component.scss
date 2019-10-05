@@ -1,0 +1,21 @@
+
+.error-circle-icon{
+    color: red !important;
+    position: relative;
+    top: 2px;
+    margin-right: 10px;
+
+}
+.done{
+    color: #53c234 !important;
+    position: relative;
+    top: 2px;
+    margin-right: 10px;
+}
+:host ::ng-deep .mat-icon{
+    width: 36px !important;
+}
+:host ::ng-deep.material-icons{
+    font-size: 39px !important;
+
+}

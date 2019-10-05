@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.GenericBackInterface</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.GenericBackInterface.Controller.BackInterfaceController.ProcessESBResponse(LDC.Atlas.Services.GenericBackInterface.Entities.Message)">
+            <summary>
+            Process esb response
+            </summary>
+            <param name="message">The identifier of the esb request to be processed.</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.GenericBackInterface.Services.AtlasService">
+            <summary>
+            Type HTTP client to query the Atlas APIs.
+            See: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-2.1#typed-clients
+            </summary>
+        </member>
+    </members>
+</doc>

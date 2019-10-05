@@ -1,0 +1,734 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.Trading</name>
+    </assembly>
+    <members>
+        <member name="T:LDC.Atlas.Services.Trading.Application.Commands.MergeSection.MergeSectionCommand">
+            <summary>
+            Used to merge the selected sectionids
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Commands.PhysicalContractCommandsHandler.InsertFreezeRecalcProcessQueue(System.Int64,System.Nullable{System.Int64},System.String)">
+            <summary>
+            This method will insert record into Process message to call the recalc
+            </summary>
+            <param name="sectionId"> section command object</param>
+            <param name="dataVersionId">dataversion being edited</param>
+            <param name="companyId">company on which there is edition</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Commands.SectionCommandsHandler.CreateInvoiceMarkingsSplit(LDC.Atlas.Services.Trading.Application.Commands.SplitSectionCommand,System.Decimal,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Get the invoice marking of the parent
+            Foreach child section, create the new invoice marking
+            Update the invoice marking of the parent
+            </summary>
+            <param name="request">SplitCostsOfSection containing the new sections splitted</param>
+            <param name="quantity">the original section quantity</param>
+            <param name="invoiceStatusId">the invoice status id</param>
+            <param name="cancellationToken">the cancellation token</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Commands.SectionCommandsHandler.CreateCostsSplit(LDC.Atlas.Services.Trading.Application.Commands.SplitSectionCommand,System.Decimal,System.Decimal,LDC.Atlas.Services.Trading.Entities.ContractStatus,System.Threading.CancellationToken)">
+            <summary>
+            Calculate new values for costs
+            Get invoice markings for those costs
+            Calculate new values for invoice marking
+            Save new and update original costs and invoice markings
+            </summary>
+            <param name="request">SplitCostsOfSection containing the new sections splitted</param>
+            <param name="quantity">the original section quantity</param>
+            <param name="price">the original price</param>
+            <param name="contractStatusCode">the original contract status code</param>
+            <param name="cancellationToken">the cancellation token</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Commands.SectionCommandsHandler.Handle(LDC.Atlas.Services.Trading.Application.Commands.DeleteSectionCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handle Delete Section Command.
+            </summary>
+            <param name="request">The delete command request.</param>
+            <param name="cancellationToken">The cancellation token</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Commands.SectionCommandsHandler.Handle(LDC.Atlas.Services.Trading.Application.Commands.CloseSectionStatusCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handle Close Section Command.
+            </summary>
+            <param name="request">The close command request.</param>
+            <param name="cancellationToken">The cancellation token</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Commands.SectionCommandsHandler.Handle(LDC.Atlas.Services.Trading.Application.Commands.OpenSectionStatusCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handle Open Section Command.
+            </summary>
+            <param name="request">The open command request.</param>
+            <param name="cancellationToken">The cancellation token</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.Trading.Application.Queries.Dto.ContractFamilyForMergeDto">
+            <summary>
+            Information reagrding the contracts for trade merge
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Trading.Application.Queries.Dto.MergeAllowedForContractsDto">
+            <summary>
+            Returns information to enable/disable the trade merge button along the message 
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Trading.Application.Queries.Dto.MergeContextualDataForContracts">
+            <summary>
+            For the contextextual data required to check the trade merge
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Trading.Application.Queries.Dto.MergeCostDetailDto">
+            <summary>
+            Information regarding costs for trade merge business rule
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Trading.Application.Queries.Dto.MergeDetailDto">
+            <summary>
+            Information reuqired to check the business rule to enable/disable trade merge button
+            </summary>
+        </member>
+        <member name="T:LDC.Atlas.Services.Trading.Application.Queries.Dto.TradeMergeMessageDto">
+            <summary>
+            Information about the blocking/warning messages for trade merge as per the business rules
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Queries.ISectionQueries.GetTradeDetailForClosure(System.String,System.Int64[])">
+            <summary>
+            Gets the charter details for closure validations
+            </summary>
+            <param name="company"> The Company Identifier</param>
+            <param name="sectionIds"> The Charter Identifier</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Queries.SectionQueries.GetContractsForBulkEdit(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest,LDC.Atlas.Application.Common.Configuration.Dto.GridDto)">
+            <summary>
+            Returns the list of trades for bulk edit
+            </summary>
+            <param name="company"> The company code</param>
+            <param name="searchRequest">List and search request</param>
+            <param name="grid"> the grid details</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Queries.SectionQueries.GetTradeConfigurationDetails(System.String)">
+            <summary>
+            Get the trade setup details
+            </summary>
+            <param name="company"> The company code</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Queries.SectionQueries.GetPhysicalTradesForBulkClosure(System.String,System.Int32[],System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets the physical trades for bulk closure
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Queries.SectionQueries.GetTradeDetailForClosure(System.String,System.Int64[])">
+            <summary>
+            Gets the charter details for closure validations
+            </summary>
+            <param name="company"> The Company Identifier</param>
+            <param name="sectionIds"> The Charter Identifier</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Application.Queries.TagFieldsQueriesFixed.GetAllTagParametersAsync(System.String)">
+            <summary>
+            Get all tag parameters (static way).
+            https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1?view=netframework-4.8
+            </summary>
+            <param name="company">Company considered to retrieve tags associated.</param>
+            <returns>Task object.</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.CostMatricesController.GetCostMatrixList(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of cost matrix.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <returns>list of cost matrix</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.CostMatricesController.SearchCostMatrixListWithBestMatch(System.String,System.Collections.Generic.List{LDC.Atlas.Application.Common.Tags.Dto.TagDto},LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of cost matrix with the Best Match indicator.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">The tag paramters that filter the cost matrix.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <returns>list of cost matrix</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.CostMatricesController.GetCostMatrixById(System.Int64)">
+            <summary>
+            Returns a cost matrix by its identifier.
+            </summary>
+            <param name="costMatrixId">The cost matrix identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.CostMatricesController.CreateCostMatrix(System.String,LDC.Atlas.Services.Trading.Application.Commands.CreateCostMatrixCommand)">
+            <summary>
+            Creates a cost matrix.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="costMatrix">The cost matrix to create.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.CostMatricesController.CreateCostMatrixWithParameters(System.String,LDC.Atlas.Services.Trading.Application.Commands.CreateCostMatrixWithParametersCommand)">
+            <summary>
+            Creates a cost matrix with parameters.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="costMatrix">The cost matrix to create.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.CostMatricesController.UpdateCostMatrix(System.String,System.Int64,LDC.Atlas.Services.Trading.Application.Commands.UpdateCostMatrixCommand)">
+            <summary>
+            Updates an existing cost matrix.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="costMatrixId">The identifier of the cost matrix to update.</param>
+            <param name="costMatrix">The cost matrix to update.</param>
+            <response code="204">Cost matrix updated.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.CostMatricesController.UpdateCostMatrixWithParameters(System.String,System.Int64,LDC.Atlas.Services.Trading.Application.Commands.UpdateCostMatrixWithParametersCommand)">
+            <summary>
+            Updates an existing cost matrix.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="costMatrixId">The identifier of the cost matrix to update.</param>
+            <param name="costMatrix">The cost matrix to update.</param>
+            <response code="204">Cost matrix updated.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.CostMatricesController.DeleteCostMatrix(System.Int64)">
+            <summary>
+            Deletes a cost matrix.
+            </summary>
+            <param name="costMatrixId">The identifier of the cost matrix to delete.</param>
+            <response code="204">Cost matrix deleted</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.CostMatricesController.DeleteCostMatrixLine(System.Int64,System.Int64)">
+            <summary>
+            Deletes a cost matrix line.
+            </summary>
+            <param name="costMatrixId">The identifier of the cost matrix to delete.</param>
+            <param name="costMatrixLineId">The identifier of the cost matrix.</param>
+            <response code="204">Cost matrix line deleted.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.CostMatricesController.CheckCostMatrixNameExistsAsync(System.String,System.String)">
+            <summary>
+            Checks if a cost matrix name exists.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="name">The name of the cost matrix.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.CostMatricesController.GetCostMatricesListWithTags(System.String,System.String)">
+            <summary>
+            Get the list of cost Matrices with parameters.
+            </summary>
+            <param name="company"></param>
+            <param name="costMatrixIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.GetFxDeals(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of fx deals.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.SearchFxDeals(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Search in the list of fx deals.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.GetFxDealById(System.String,System.Int64,System.Nullable{System.Int32})">
+            <summary>
+            Returns a fx deal by its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="fxDealId">The fx deal identifier</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.CreateFxDeal(System.String,LDC.Atlas.Services.Trading.Application.Commands.CreateFxDeal.CreateFxDealCommand)">
+            <summary>
+            Creates a fx deal.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="fxDeal">The fx deal to create.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.UpdateFxdeal(System.String,System.Int64,LDC.Atlas.Services.Trading.Application.Commands.UpdateFxDeal.UpdateFxDealCommand)">
+            <summary>
+            Updates a fx deal.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="fxDealId">The identifier of the fx deal to update.</param>
+            <param name="fxDeal">The fx deal to update.</param>
+            <response code="204">Fx deal updated.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.DeleteFxDeal(System.String,System.Int64)">
+            <summary>
+            Delete a fx deal.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="fxDealId">The identifier of the fx deal to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.GetFxDealSections(System.String,System.Int64)">
+            <summary>
+            Returns the list of sections associated to a fx deal.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="fxDealId">The identifier of the fx deal.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.DeleteFxDealSections(System.String,System.Int64,System.Int64[])">
+            <summary>
+            Remove sections associated to a fx deal.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="fxDealId">The identifier of the fx deal.</param>
+            <param name="sectionId">The identifiers of the sections to remove.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.UpdateFxDealsStatus(System.String)">
+            <summary>
+            Update the status of the fx deal for whom the maturity date is reached.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.SettleFxDealsDueForSettlement(System.String)">
+            <summary>
+            Settle all fx deals which has reached machurity date through overnight process.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.SettleFxDeal(System.String,System.Int64)">
+            <summary>
+            Settle Fx Deal and return document reference with transaction document id
+            </summary>
+            <param name="company">The company code</param>
+            <param name="fxDealId">FxDeal Identifier</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.FxDealsController.ReverseFxDeal(System.String,System.Int64)">
+            <summary>
+            Generate reversal document for FxDeal document.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="fxDealId">FxDeal Identifier</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.GetTradeForAllocation(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.CheckContractReferenceExists(System.String,System.String,System.Nullable{System.Int64})">
+            <summary>
+            Checks if a contract reference exists.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="contractRef">The contract reference.</param>
+            <param name="dataVersionId">The data version id if database is not current.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.GetPhysicalContractById(System.String,System.Int64,System.Nullable{System.Int64})">
+            <summary>
+            Returns a physical contract by its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="physicalContractId">The physical contract identifier.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.CreatePhysicalContract(System.String,LDC.Atlas.Services.Trading.Application.Commands.CreatePhysicalFixedPricedContractCommand)">
+            <summary>
+            Creates a new physical contract.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="physicalContract">The physical contract to add.</param>
+            <response code="201">Physical contract created.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.UpdatePhysicalContract(System.String,System.Int64,LDC.Atlas.Services.Trading.Application.Commands.UpdatePhysicalContractCommand)">
+            <summary>
+            Updates an existing physical contract.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="physicalContractId">The identifier of the physical contract to update.</param>
+            <param name="physicalContract">The physical contract to update.</param>
+            <response code="204">Physical contract updated.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.PhysicalTradeBulkEdit(System.String,LDC.Atlas.Services.Trading.Application.Commands.PhysicalTradeBulkEditCommand)">
+            <summary>
+            Updates physical Trades in Bulk
+            </summary>
+            <param name="company"> The companyId</param>
+            <param name="physicalTradeBulkEdit">Contains the list of physical Trades</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.CreateSectionTranche(System.String,LDC.Atlas.Services.Trading.Application.Commands.CreateTrancheCommand)">
+            <summary>
+            Creates new tranches for  a contract.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionToTranche">The section tranches to add.</param>
+            <response code="200">Tranches created.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.CreateSectionSplit(System.String,LDC.Atlas.Services.Trading.Application.Commands.CreateSplitCommand)">
+            <summary>
+            Creates new splits for a contract.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionToSplit">The section splits to add.</param>
+            <response code="200">Splits created.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.CreateSplitForContract(System.String,LDC.Atlas.Services.Trading.Application.Commands.SplitDetailsCommand)">
+            <summary>
+            Creates new splits for a contract.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="splitDetails">The details of the split action.</param>
+            <response code="200">Splits created.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.CreateBulkSplitForContract(System.String,LDC.Atlas.Services.Trading.Application.Commands.BulkSplitDetailsCommand)">
+            <summary>
+            Creates new splits for a contract.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="bulkSplitDetails">The details of the split action.</param>
+            <response code="200">Splits created.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.ValidateIntercoFields(LDC.Atlas.Services.Trading.Application.Commands.IntercoValidationCommand)">
+            <summary>
+            Validate the Interco contract Fields and returns the missing values.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="intercoValidation">The details of the Interco validation command.</param>
+            <response code="200">Splits created.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.CreateManualIntercoContract(System.String,System.Int64,LDC.Atlas.Services.Trading.Application.Commands.CreateManualIntercoCommand)">
+            <summary>
+            Create Manual Interco Contract from normal contracts.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The identifier of the contract to clone as Interco contract.</param>
+            <param name="manualInterco">The interco contract details to be created.</param>
+            <response code="204">Physical contract updated.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.PhysicalContractsController.GetMandatoryFieldsConfiguration(System.String,System.String)">
+            <summary>
+            Returns mandatory fields configuration for Trade
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetSections(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.Nullable{System.Int64})">
+            <summary>
+            Returns the list of sections.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="physicalContractId">The contractRef identifier</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetTradeCostGenerateMonthEnd(System.String,System.Int32,System.Int16,System.Int32,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the Overview as well as Details list of Generate End of Month for a Trade Contracts and Costs.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="reportType">The report type.</param>
+            <param name="tabType">Type</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.SearchPhysicalContracts(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Search in the list of sections.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.SearchPhysicalContractsExport(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest,System.String)">
+            <summary>
+            Search in the list of sections. Export the result to a file.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+            <param name="format">The format of the export.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetTradeReportData(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Get List of Trades for TradeReport.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetChileSectionData(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Get List of child sections for Trade.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetSectionChilds(System.String,System.Int64,System.Nullable{System.Int32})">
+            <summary>
+            Returns the childs of a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetSectionById(System.String,System.Int64,System.Nullable{System.Int32})">
+            <summary>
+            Returns a section by its identifier.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetTradeDetailForClosure(System.String,System.String)">
+            <summary>
+            Returns the charters details to validate closure conditons.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionIds">The Charter identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.ApproveSection(System.String,System.Int64)">
+            <summary>
+            Approves a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The identifier of the section to approve.</param>
+            <param name="command">The command containing the sectionId and the dataVersionId</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.UnapproveSection(System.String,System.Int64)">
+            <summary>
+            Unapproves a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The identifier of the section to unapprove.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.DeleteSection(System.String,System.Int64)">
+            <summary>
+            Delete a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The identifier of the section to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.CloseSection(System.String,System.String,LDC.Atlas.Services.Trading.Application.Commands.CloseSectionStatusCommand)">
+            <summary>
+            Close a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionIds">The identifier of the sections to close.</param>
+            <param name="request">The request containing the data version Id.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.OpenSection(System.String,System.String,LDC.Atlas.Services.Trading.Application.Commands.OpenSectionStatusCommand)">
+            <summary>
+            Open a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionIds">The identifier of the sections to open.</param>
+            <param name="request">The request containing the data version Id.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.CancelSection(System.String,LDC.Atlas.Services.Trading.Application.Commands.CancelSectionStatusCommand)">
+            <summary>
+            Cancel a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="command">The details of the sections to cancel.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.ReverseCancelSection(System.String,System.String)">
+            <summary>
+            Reverse cancellation for a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionIds">The identifier of the sections to reverse cancel.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetAllCosts(System.String,System.Int64,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.Nullable{System.Int32})">
+            <summary>
+            Returns the list of costs for a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.DeleteCost(System.String,System.Int64,System.Int64,System.Nullable{System.Int32})">
+            <summary>
+            Deletes a cost of a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier</param>
+            <param name="costId">The identifier of the cost to delete.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.TradeImageFieldByCompany(System.String)">
+            <summary>
+            Returns Trade Image Field details
+            </summary>
+            <param name="company">The company code.</param>
+            <returns>Return Trade Image Fields</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetTradeConfigurationAsync(System.String)">
+            <summary>
+            Trade Configuration for Business Sector
+            </summary>
+            <param name="company">The company code</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.DeleteCosts(System.String,System.Int64,LDC.Atlas.Services.Trading.Application.Commands.DeleteCostsCommand)">
+            <summary>
+            Deletes multiple costs of a section.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier.</param>
+            <param name="request">The costs to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.BulkApprovalOfTrades(System.String,LDC.Atlas.Services.Trading.Application.Commands.UpdateBulkApprovalCommand)">
+            <summary>
+            Bulk approval update.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">The trades to approve.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetPhysicalTradesForBulkEdit(System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Trade Bulk Edit.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="selectedSectionIds">The section id for the selected contracts</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetPhysicalTradesForBulkClosure(System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Trade Bulk Closure.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="selectedSectionIds">The section id for the selected contracts</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.CheckTradeFavoriteNameExists(System.String)">
+            <summary>
+            Checks if a trade favorite name exists.
+            </summary>
+            <param name="tradeFavoriteName">The trade favorite name.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.DeleteTradeFavorite(System.Int64)">
+            <summary>
+            Deletes a favorite.
+            </summary>
+            <param name="favoriteId">The identifier of the trade favorite to delete.</param>
+            <response code="204">Favorite deleted</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetFavorites(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of sections.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetTradeFavoriteById(System.Int64)">
+            <summary>
+            Returns a trade favorite by its identifier.
+            </summary>
+            <param name="tradeFavoriteId">The trade favorite identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetCostsForContracts(System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of costs for given contracts.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionIds">The list of section identifiers.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.SaveBulkCosts(System.String,LDC.Atlas.Services.Trading.Application.Commands.SaveBulkCostsCommand)">
+            <summary>
+            save costs after bulk edit
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">The costs to save/update.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetParentCostsToAdjustForSection(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Returns the list of costs for given section id.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">section id.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetTradeFieldsForBulkEdit(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of trade field for bulk edit by company id.
+            </summary>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetChildSectionCostsToAdjustForSection(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Returns the list of costs  in splits/tranches for given section id.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">section id.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsController.GetFxDealDetailsGenerateMonthEnd(System.String,System.Int32,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the Overview as well as Details list of Generate End of Month for a Fx Deal.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsMergeController.GetContextualDataForContractMerge(System.String,System.Int64,System.Nullable{System.Int32})">
+            <summary>
+            Returns the enable/disable information for trade merge button
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionId">The section identifier</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsMergeController.GetContractFamilyForMerge(System.String,System.Int64,LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.Nullable{System.Int32})">
+            <summary>
+            Returns the family of contract for trade merge.
+            </summary>
+            <param name="company">The company code</param>
+            <param name="sectionId">The section identifier</param>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+            <returns>list of contracts for trade merge</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsMergeController.GetContextualDataForSelectedContractMerge(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Returns the warning/blocking messages along with the list of section Ids
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="sectionIds">List of Section Ids selected for merge</param>
+            <param name="dataVersionId">The data version id. Null for current one.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.SectionsMergeController.MergeContracts(System.String,LDC.Atlas.Services.Trading.Application.Commands.MergeSection.MergeSectionCommand)">
+            <summary>
+            merges the selected sections
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">The sections to merge.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.TagFieldsController.GetAllTagParametersAsync(System.String)">
+            <summary>
+            Returns all tag parameters.
+            </summary>
+            <param name="company">Company</param>
+            <returns>All tag parameters.</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Controllers.TradersController.GetTradersAsync(System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of traders.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="name">The name of the trader.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="T:LDC.Atlas.Services.Trading.Entities.TradeMergeOption">
+            <summary>
+            Merge options used for trade merge
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:LDC.Atlas.Services.Trading.Repositories.ISectionMergeRepository.MergeSectionAsync(System.Collections.Generic.IEnumerable{LDC.Atlas.Services.Trading.Entities.MergeContracts},System.Collections.Generic.IEnumerable{LDC.Atlas.Services.Trading.Application.Queries.Dto.CostDto},System.String,System.Nullable{System.Int32})" -->
+        <member name="M:LDC.Atlas.Services.Trading.Repositories.SectionMergeRepository.MergeSectionAsync(System.Collections.Generic.IEnumerable{LDC.Atlas.Services.Trading.Entities.MergeContracts},System.Collections.Generic.IEnumerable{LDC.Atlas.Services.Trading.Application.Queries.Dto.CostDto},System.String,System.Nullable{System.Int32})">
+            <summary>
+            For creating trade merge
+            </summary>
+            <param name="mergeContracts">list of contracts to be merged</param>
+            <param name="costDetailsForMerge">list of costs to be updated after merge</param>
+            <param name="company">company code</param>
+            <param name="dataVersionId">data version Id</param>
+            <returns>the list of section ids modified</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Trading.Services.TagService.ListCostMatricesOrderedByTagsAsync(System.String,System.Collections.Generic.List{LDC.Atlas.Application.Common.Tags.Dto.TagDto})">
+            <summary>
+            
+            </summary>
+            <param name="companyId"></param>
+            <param name="listCostMatricesByTags"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,38 @@
+<form [formGroup]="formGroup">
+    <div class="main-container">
+        <div fxLayout="column">
+            <div fxLayout="row"
+                 fxLayoutGap="2%"
+                 fxLayoutAlign="space-between-center">
+                <div fxFlex="35%">
+                    <atlas-critera #criteraComponent
+                                   (rateSelected)="onRateSelected($event)"
+                                   (currSelected)="onCurrencySelected($event)"></atlas-critera>
+                </div>
+                <div fxFlex="45%">
+                    <atlas-period #periodComponent
+                                  [rateSelected]="rateSelected"
+                                  (periodSelected)="onPeriodSelected($event)"
+                                  (fromSelected)="onFromSelected($event)"
+                                  (toSelected)="onToSelected($event)"
+                                  (showAllDatesSelected)="onShowAllDatesSelected($event)"></atlas-period>
+                </div>
+                <div fxFlex="20%">
+                    <atlas-sort-by #sortByComponent
+                                   (sortBySelected)="onSortBySelected($event)"></atlas-sort-by>
+                </div>
+            </div>
+            <div>
+                <button mat-raised-button
+                        class="generate-report-button report-button"
+                        (click)="onGenerateReportButtonClicked(true)">GENERATE REPORT</button>
+            </div>
+            <div class="report-container">
+                <atlas-ssrsreport-viewer [reportServer]="reportServerUrl"
+                                         [reportUrl]="reportPath"
+                                         [parameters]="parameters"
+                                         #ssrsReportViewer></atlas-ssrsreport-viewer>
+            </div>
+        </div>
+    </div>
+</form>

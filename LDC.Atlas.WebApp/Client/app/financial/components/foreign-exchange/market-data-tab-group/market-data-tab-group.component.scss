@@ -1,0 +1,39 @@
+.header-tab {
+    margin-bottom: 0px;
+    margin-top: -19px;
+    background-color: white !important;
+}
+
+.menu-header {
+    background-color: #53c234;
+    color: white;
+
+    mat-icon {
+        color: white;
+    }
+}
+
+.mat-menu-content {
+    padding-top: 0 !important;
+}
+
+.floating-menu {
+    top: -1px;
+}
+
+
+
+::ng-deep.dark-tab.mat-tab-nav-bar.mat-primary,
+.dark-tab .mat-tab-link,
+.dark-tab .mat-tab-label .mat-tab-label-content {
+    text-transform: none !important;
+    color: #332f30 !important;
+    opacity: 0.6;
+}
+
+.report-option {
+    margin-top: 0px;
+    height: 100%;
+    color: #332f30 !important;
+
+}

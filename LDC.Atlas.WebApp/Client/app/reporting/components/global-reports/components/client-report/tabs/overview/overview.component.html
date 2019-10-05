@@ -1,0 +1,69 @@
+<div *ngIf="isOverviewMode">
+    <mat-card>
+        <mat-card-content>
+            <atlas-ag-grid-user-preferences *ngIf="agGridOptions && agGridOptions.columnDefs && isClientReportDisplay"
+                                            [gridOptions]="agGridOptions"
+                                            [company]="company"
+                                            [gridId]="gridCode"
+                                            [isAutosize]="false"
+                                            fxLayoutAlign="end"
+                                            [sharingEnabled]="hasGridSharing"
+                                            #userPreferences>
+            </atlas-ag-grid-user-preferences>
+            <div fxLayout="row"
+                 *ngIf='isClientReportDisplay'
+                 class="quick-sum-div-height"
+                 fxLayoutAlign="space-between center">
+                <mat-slide-toggle mat-raised-button
+                                  (change)="toggleQuickSum($event.checked)">Quick Sum Mode</mat-slide-toggle>
+                <div fxLayout="row"
+                     fxLayoutAlign="space-around center">
+
+                    <div *ngFor="let column of selectedColumnsArray">
+                        <span class="quick-sum-span"
+                              *ngIf="quickSumModeActivated">{{column.name}} : {{column.sum | number }} </span>
+                    </div>
+                    <button mat-button
+                            (click)="onClearSelectionClicked()"
+                            class="mat-button-user-margin"
+                            *ngIf="quickSumModeActivated">Clear Selection</button>
+                </div>
+            </div>
+            <atlas-filter-set-display #filterSetDisplay
+                                      [hidden]="true"></atlas-filter-set-display>
+            <div ag-grid="agGridOptions"
+                 [ngClass]='classApplied'
+                 style="width: 100%; height: 100%">
+                <ag-grid-angular style=" height: 100%;"
+                                 [ngClass]="{'hidden-during-loading':!isClientReportDisplay}"
+                                 class="ag-theme-material"
+                                 [rowData]="agGridRows"
+                                 [columnDefs]="agGridCols"
+                                 [enableColResize]="true"
+                                 [pagination]="true"
+                                 [paginationPageSize]="100"
+                                 [enableSorting]="true"
+                                 domLayout=autoHeight
+                                 (gridReady)="onGridReady($event)"
+                                 [enableRangeSelection]="true"
+                                 [groupMultiAutoColumn]="groupMultiAutoColumn"
+                                 [rowGroupPanelShow]="rowGroupPanelShow"
+                                 (columnVisible)="onColumnVisibilityChanged($event)"
+                                 (rangeSelectionChanged)="onRangeSelectionChanged($event)"
+                                 enableFilter
+                                 [context]="gridContext"
+                                 [suppressAggFuncInHeader]="true"
+                                 [rowHeight]="atlasAgGridParam.rowHeight"
+                                 [excelStyles]="excelStyles">
+                </ag-grid-angular>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 *ngIf="isLoading"
+                 class="loading">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

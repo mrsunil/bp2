@@ -1,0 +1,23 @@
+<div fxLayout="row"
+     fxLayout.md="column"
+     fxLayoutAlign="space-between"
+     fxLayoutGap="16px">
+    <div class="itparameters-card">
+        <atlas-accounting-parameters #accountingParameterComponent
+                                     fxFlexOrder.lt-md="1"></atlas-accounting-parameters>
+    </div>
+    <div class="itparameters-card">
+        <atlas-trade-parameters #tradeParameterComponent
+                                fxFlexOrder.lt-md="2"></atlas-trade-parameters>
+    </div>
+</div>
+
+<div fxLayout="row"
+     fxLayout.md="column"
+     fxLayoutAlign="space-between"
+     fxLayoutGap="16px">
+    <div class="itparameters-card">
+        <atlas-freeze-parameters #freezeParameterComponent
+                                 fxFlexOrder.lt-md="1"></atlas-freeze-parameters>
+    </div>
+</div>

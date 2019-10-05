@@ -1,0 +1,77 @@
+<div class="main-container">
+    <mat-card>
+        <div fxLayout="row"
+             fxLayoutAlign="start none"
+             class="search">
+            <atlas-masterdata-user-preferences-input fxFlex="60%"
+                                                     isEditable="true"
+                                                     [fieldControl]="accountReferenceCtrl"
+                                                     (keydown.enter)="onQuickSearchButtonClicked()"
+                                                     [options]="filteredCounterPartyList"
+                                                     label="Counterparty"
+                                                     displayProperty="counterpartyCode"
+                                                     [selectProperties]="['counterpartyCode', 'description']"
+                                                     lightBoxTitle="Results for Counterparty"
+                                                     gridId="counterpartiesGrid"
+                                                     (optionSelected)="onCounterpartyIdSelected($event)">
+            </atlas-masterdata-user-preferences-input>
+
+            <atlas-dropdown-select fxFlex='90%'
+                                   [label]="'Account Type'"
+                                   [fieldControl]="counterPartyTypeCtrl"
+                                   (keydown.enter)="onQuickSearchButtonClicked()"
+                                   [errorMap]="snapshotErrorMap"
+                                   isEditable=true
+                                   [options]="filteredAccTypesList"
+                                   displayProperty="name"
+                                   [selectProperties]="['name']"
+                                   [isAutocompleteActivated]="isAutoCompleteActivated"></atlas-dropdown-select>
+
+
+            <button mat-raised-button
+                    (click)="onQuickSearchButtonClicked()"
+                    class="heroGradient">
+                <mat-icon aria-label="Search"
+                          class="search-icon">search</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+
+    <atlas-filter-set-display (filtersChanged)="onFilterSetDetailsChange($event)"
+                              [columnConfiguration]="columnConfiguration"
+                              [gridCode]="gridCode"
+                              [company]="company">
+    </atlas-filter-set-display>
+    <div fxLayout="row"
+         fxLayoutAlign="start none">
+        <mat-card fxFlex="100">
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 *ngIf="isLoading"
+                 class="loading">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+            <div ag-grid="counterpartyContractGridOptions"
+                 class="ag-theme-material pointer-cursor">
+                <ag-grid-angular style=" height:100%;"
+                                 class="ag-theme-material"
+                                 [rowData]="counterpartyContractGridRows"
+                                 [gridOptions]="counterpartyContractGridOptions"
+                                 [columnDefs]="columnDefs"
+                                 domLayout="autoHeight"
+                                 (gridReady)="onGridReady($event)"
+                                 rowSelection="multiple"
+                                 [singleClickEdit]="true"
+                                 [suppressRowClickSelection]="true"
+                                 (rowSelected)="onSelectionChanged($event)"
+                                 [pagination]="true"
+                                 [paginationPageSize]="28"
+                                 [enableSorting]="true"
+                                 [enableColResize]="true"
+                                 enableFilter
+                                 [rowHeight]=32>
+                </ag-grid-angular>
+            </div>
+        </mat-card>
+    </div>

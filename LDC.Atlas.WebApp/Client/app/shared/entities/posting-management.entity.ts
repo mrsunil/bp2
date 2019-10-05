@@ -1,0 +1,42 @@
+import { PostingDocumentType } from '../enums/posting-document-type.enum';
+import { PostingStatus } from '../enums/posting-status.enum';
+import { AccountingDocumentLine } from './accounting-document-line.entity';
+
+export interface PostingManagement {
+    accountingId: number;
+    documentReference: string;
+    documentDate: Date;
+    associatedAcc: string;
+    statusId: PostingStatus;
+    errorMessage: string;
+    amount: number;
+    departmentId: number;
+    authorizedOn: Date;
+    authorizedAt: string;
+    authorizedBy: string;
+    createdDateTime: Date;
+    createdBy: string;
+    modifiedDateTime: Date;
+    modifiedBy: string;
+    valueDate: Date;
+    originalValueDate: Date;
+    dmsId: number;
+    glDate: Date;
+    accountingPeriod: Date;
+    currencyCode: string;
+    total: number;
+    toInterface: boolean;
+    transactionDocumentTypeId: PostingDocumentType;
+    accountingDocumentLines: AccountingDocumentLine[];
+    invoiceId: number;
+    invoiceTypeId: number;
+    cashId: number;
+    costDirectionId: number;
+    authorizedDate: Date;
+    localAuthorizedDate: Date;
+    taTypeId: number;
+    journalLineId: number;
+    provinceId: number;
+    settlementCurrency: string;
+    dealNumber: string;
+}

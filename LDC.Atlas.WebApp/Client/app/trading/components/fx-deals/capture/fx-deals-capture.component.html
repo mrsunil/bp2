@@ -1,0 +1,62 @@
+<form [formGroup]="captureFxdealFormGroup">
+    <div>
+        <atlas-fxdeal-header-form #fxDealHeaderFormComponent></atlas-fxdeal-header-form>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="fx-deal-main"
+         fxLayout="row"
+         fxLayout.md="column"
+         fxLayoutAlign="space-around start">
+        <div fxLayout="column"
+             fxLayoutAlign="start left"
+             fxFlex="48">
+            <atlas-deal-terms-form- #dealTermsFormComponent
+                                    (dealTypeChange)="onDealTypeChanged($event)"
+                                    (maturityDateChange)="onMaturityDateChanged($event)"></atlas-deal-terms-form->
+        </div>
+        <div fxLayout="
+                                    column"
+             fxLayoutAlign="start right"
+             fxFlex="49">
+            <atlas-bank-form #bankFormComponent> </atlas-bank-form>
+        </div>
+    </div>
+    <div class="fx-deal-main"
+         fxLayout="row"
+         fxLayout.md="column"
+         fxLayoutAlign="space-around start">
+        <div fxLayout="column"
+             fxLayoutAlign="start left"
+             fxFlex="48">
+            <atlas-deal-form #dealFormComponent
+                             (defaultRoeTypeValuePassed)="onDefaultSpotRoeTypeValue($event)"
+                             (fxRateValuePassed)="onFxRateValue($event)"
+                             (spotRoeWarningValuePassed)="onSpotRoeWarningValue($event)"></atlas-deal-form>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start right"
+             fxFlex="49">
+            <atlas-rate-entry #rateEntryComponent
+                              (valueSelected)="onTraderROECalculation($event)"
+                              (roeTypeSelected)="onSettledAmountCalculation($event)"
+                              (settledAmountValuePassed)="onSettledAmountEvaluation($event)"></atlas-rate-entry>
+            <atlas-settlement-documents #settlementDocumentsComponent></atlas-settlement-documents>
+        </div>
+    </div>
+    <div class="fx-deal-main"
+         fxLayout="row"
+         fxLayout.md="column"
+         fxLayoutAlign="start left">
+        <div>
+            <atlas-internal-memo-form #internalMemoFormComponent></atlas-internal-memo-form>
+        </div>
+
+        <atlas-floating-action-button [fabTitle]="fabTitle"
+                                      [fabType]="fabType"
+                                      [fabActions]="fabMenuActions"
+                                      [isParentLoaded]="isLoaded"
+                                      (fabActionClicked)="onFabActionClicked($event)">
+        </atlas-floating-action-button>
+
+    </div>
+</form>

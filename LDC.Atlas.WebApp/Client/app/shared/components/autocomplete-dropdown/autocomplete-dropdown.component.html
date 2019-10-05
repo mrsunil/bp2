@@ -1,0 +1,9 @@
+<mat-autocomplete class="autocompletedropdown" (optionSelected)="onOptionSelected($event)">
+	<mat-option *ngFor="let element of list | async" [value]="element[valueProperty]">
+
+		<span *ngIf="displayValue" class="elementvalue">{{ element[valueProperty] }}</span>
+		<span *ngIf="element[valueProperty] !== null && displayValue">|</span>
+		<span class="elementdescription">{{ element[displayProperty] }}</span>
+	</mat-option>
+</mat-autocomplete>
+

@@ -1,0 +1,46 @@
+<div class="cost-impact-warning-dialog">
+    <div fxLayoutAlign="space-between center">
+        <h1 class="no-margin">Cost Impact Warning Message</h1>
+        <button mat-button
+                class="close-button">
+            <mat-icon (click)="onCloseButtonClicked()">close</mat-icon>
+        </button>
+    </div>
+    <mat-dialog-content>
+        <div fxLayout="row"
+             fxLayoutAlign="space-between start">
+            <p>{{dialogText}}</p>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="space-between start">
+            <div class="chip-list">
+                <atlas-chip-list *ngIf="chipStringList"
+                                 [textList]='chipStringList'></atlas-chip-list>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="space-between start"
+             *ngIf="warningListForDiffFields">
+            <p>The following field(s) "{{warningListForDiffFields}}" are different on both trades. Do you wish to
+                continue.
+            </p>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div fxFlex="50"
+             fxLayout="row"
+             fxAlignLayout="start start">
+            <button mat-button
+                    (click)="onNoButtonClicked()">No</button>
+        </div>
+        <div fxFlex="50"
+             fxLayout="row"
+             fxAlignLayout="start end">
+            <span class="fill-space"></span>
+            <button mat-button
+                    class="add-cost-button"
+                    (click)="onYesButtonClicked()">Yes</button>
+        </div>
+    </mat-dialog-actions>
+</div>

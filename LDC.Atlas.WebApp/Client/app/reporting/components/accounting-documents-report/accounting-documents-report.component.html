@@ -1,0 +1,101 @@
+<div class="main-container">
+    <form [formGroup]="reportFormGroup">
+        <div fxLayout="row"
+             fxLayoutAlign="start"
+             fxLayoutGap="1%"
+             fxLayoutAlign.lt-md="start center">
+
+            <mat-card fxFlex="50%"
+                      class="card-title">
+
+                <h3>Report Parameters</h3>
+
+                <div>
+                    <div fxLayout="row"
+                         fxLayoutAlign="left start"
+                         fxLayoutGap="10%">
+                        <div fxFlex="25%">
+                            <atlas-document-type-dropdown #DocumentTypeDropdownComponent
+                                                          (docTypeSelectionChanged)="onDocumentTypeSelectionChanged($event)">
+                            </atlas-document-type-dropdown>
+                        </div>
+                        <div fxFlex="30%">
+                            <atlas-document-status-dropdown #DocumentStatusDropdownComponent
+                                                            (docStatusSelectionChanged)="onDocumentStatusSelectionChanged($event)">
+                            </atlas-document-status-dropdown>
+                        </div>
+                        <div fxFlex="15%">
+
+                            <mat-checkbox [checked]="showDetails"
+                                          (change)="onShowDetailsChanged($event)">Show Details</mat-checkbox>
+
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+
+            <mat-card fxFlex="50%"
+                      class="document-dates">
+                <mat-card-content>
+                    <div fxLayout="row"
+                         fxLayoutAlign="left start"
+                         fxLayoutGap="5%">
+                        <h3>Documents Entered Between </h3>
+                    </div>
+                    <div fxLayout="row"
+                         fxLayoutAlign="left start"
+                         fxLayoutGap="5%">
+                        <atlas-date-picker isEditable=true
+                                           label="From"
+                                           [fieldControl]="enteredDateFromCtrl"
+                                           [errorMap]="dateErrorMap">
+                        </atlas-date-picker>
+
+                        <atlas-date-picker isEditable=true
+                                           label="To"
+                                           [fieldControl]="enteredDateToCtrl"
+                                           [errorMap]="dateErrorMap">
+                        </atlas-date-picker>
+                    </div>
+                    <br />
+                    <div fxLayout="row"
+                         fxLayoutAlign="left start"
+                         fxLayoutGap="5%">
+                        <h3>Documents Amended Between </h3>
+                    </div>
+                    <div fxLayout="row"
+                         fxLayoutAlign="left start"
+                         fxLayoutGap="5%">
+                        <atlas-date-picker isEditable=true
+                                           label="From"
+                                           [fieldControl]="amendedDateFromCtrl"
+                                           [errorMap]="dateErrorMap">
+                        </atlas-date-picker>
+
+                        <atlas-date-picker isEditable=true
+                                           label="To"
+                                           [fieldControl]="amendeddDateToCtrl"
+                                           [errorMap]="dateErrorMap">
+                        </atlas-date-picker>
+
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="end center">
+            <button mat-raised-button
+                    class="generate-report-button"
+                    (click)="onGenerateReportButtonClicked()">GENERATE REPORT</button>
+        </div>
+    </form>
+    <div class="report-container">
+        <atlas-ssrsreport-viewer [reportServer]="reportServerUrl"
+                                 [reportUrl]="reportPath"
+                                 [showParameters]="showParameters"
+                                 [parameters]="parameters"
+                                 #ssrsReportViewer>
+        </atlas-ssrsreport-viewer>
+    </div>
+</div>

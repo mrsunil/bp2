@@ -1,0 +1,41 @@
+<mat-card>
+    <div fxLayout="row"
+         fxLayoutAlign="start none"
+         class="search">
+        <mat-form-field>
+            <input matInput
+                   placeholder="Contract Reference"
+                   [formControl]="searchedValueCtrl"
+                   (input)="onSearchChange()"
+                   #message>
+        </mat-form-field>
+
+        <button mat-raised-button
+                class="heroGradient"
+                (click)="onSearchChange()">
+            <mat-icon aria-label="Search"
+                      class="search-icon">search</mat-icon>
+        </button>
+    </div>
+</mat-card>
+<div [hidden]="isEmptyStateShowed">
+    <atlas-list-and-search class="trade-allocation-height"
+                           [gridCode]="gridCode"
+                           [gridTitle]="'Possible Allocations'"
+                           [additionalFilters]="additionalFilters"
+                           (rowSelected)="rowSelected($event)"
+                           [company]="company"
+                           [dataLoader]="dataLoader"
+                           [dataVersionId]="dataVersionId"
+                           waitBeforeLoadingData=true
+                           (configurationLoaded)="initAdditionnalFilters()"
+                           [loadOnInit]="loadOnInit"
+                           #listAndSearchComponent>
+    </atlas-list-and-search>
+</div>
+<div [hidden]="!isEmptyStateShowed">
+    <atlas-empty-state [title]="emptySearchResultTitle"
+                       message="Try another search"></atlas-empty-state>
+</div>
+<atlas-lock-interval [resourcesInformation]="resourcesInformation">
+</atlas-lock-interval>

@@ -1,0 +1,28 @@
+<div class="main-container">
+    <h2>
+        Default Cost Type
+    </h2>
+
+    <div ag-grid="defaultCostTypeGridOptions">
+        <ag-grid-angular class="ag-theme-material"
+                         [rowData]="defaultCostTypeRowData"
+                         [columnDefs]="defaultCostTypeColumnDefs"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         [rowHeight]=atlasAgGridParam.rowHeight>
+        </ag-grid-angular>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">
+            DISCARD
+        </button>
+        <button mat-button
+                [disabled]="!checkEdit"
+                (click)="onSaveButtonClicked()">
+            Save
+        </button>
+    </div>
+</div>

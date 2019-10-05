@@ -1,0 +1,177 @@
+<form [formGroup]="interfaceBuilderFormGroup">
+    <div class="main-container">
+        <div>
+            <mat-card class="flex-item-marge"
+                      fxFlex="calc(60% - 16px)"
+                      fxFlex.lt-md="80%">
+                <mat-card-content>
+                    <div fxLayout="row"
+                         fxLayoutAlign="start"
+                         class="top-margin">
+                        <div fxLayout="column"
+                             fxLayoutAlign="start"
+                             fxFlex="25%">
+                            <h1>Select an interface</h1>
+                            <div class="custom-form"
+                                 fxLayoutGap="2%"
+                                 [class.required-field]="interfaceCtrl.isRequired"
+                                 [class.isEmpty]="!interfaceCtrl.value"
+                                 fxLayoutAlign="start">
+                                <mat-form-field fxFlex="80%">
+                                    <input matInput
+                                           placeholder="Interface"
+                                           [required]="interfaceCtrl.isRequired"
+                                           [matAutocomplete]="interfaceTypes"
+                                           [formControl]="interfaceCtrl"
+                                           autocomplete="off"
+                                           [matTooltip]="'Interface Type'"
+                                           (change)="clearFieldValues()">
+                                    <mat-autocomplete #interfaceTypes="matAutocomplete"
+                                                      [panelWidth]="panelSize"
+                                                      (optionSelected)="onInterfaceTypeSelected($event.option.value)"
+                                                      [displayWith]="displayInterfaceType.bind(this)">
+                                        <mat-option *ngFor="let interfaceType of filteredInterfaceTypes"
+                                                    [value]="interfaceType.interfaceTypeId">
+                                            {{interfaceType.interfaceType}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <mat-error *ngIf="interfaceCtrl.hasError('required')">
+                                        This field is required
+                                    </mat-error>
+                                    <mat-error *ngIf="interfaceCtrl.hasError('inDropdownList')">
+                                        Value not in list
+                                    </mat-error>
+                                    <mat-hint *ngIf="interfaceCtrl.isRequired && interfaceCtrl.enabled">
+                                        Required *
+                                    </mat-hint>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="column"
+                             fxLayoutAlign="start"
+                             fxFlex="25%">
+                            <h1>Select an object type</h1>
+                            <div class="custom-form"
+                                 fxLayoutGap="2%"
+                                 [class.required-field]="objectTypeCtrl.isRequired"
+                                 [class.isEmpty]="!objectTypeCtrl.value"
+                                 fxLayoutAlign="start">
+                                <mat-form-field fxFlex="80%">
+                                    <input matInput
+                                           placeholder="Object Type"
+                                           [required]="objectTypeCtrl.isRequired"
+                                           [matAutocomplete]="objectType"
+                                           [formControl]="objectTypeCtrl"
+                                           autocomplete="off"
+                                           [matTooltip]="'Object Type'"
+                                           (change)="clearFieldValues()">
+                                    <mat-autocomplete #objectType="matAutocomplete"
+                                                      [panelWidth]="panelSize"
+                                                      [displayWith]="displayObjectType.bind(this)">
+                                        <mat-option *ngFor="let type of objectTypes"
+                                                    [value]="type.interfaceObjectTypeId">
+                                            {{type.objectType}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <mat-error *ngIf="objectTypeCtrl.hasError('required')">
+                                        This field is required
+                                    </mat-error>
+                                    <mat-error *ngIf="objectTypeCtrl.hasError('inDropdownList')">
+                                        Value not in list
+                                    </mat-error>
+                                    <mat-hint *ngIf="objectTypeCtrl.isRequired && objectTypeCtrl.enabled">
+                                        Required *
+                                    </mat-hint>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="column"
+                             fxLayoutAlign="start"
+                             fxFlex="25%">
+                            <h1>Select parameters</h1>
+                            <div fxLayout="row"
+                                 fxLayoutGap="2%">
+                                <div class="custom-form"
+                                     fxFlex="70%"
+                                     [class.required-field]="docIdCtrl.isRequired"
+                                     fxLayoutAlign="start">
+                                    <mat-form-field>
+                                        <input matInput
+                                               placeholder="Document ID"
+                                               autocomplete="off"
+                                               [formControl]="docIdCtrl"
+                                               (change)="clearFieldValues()">
+                                        <mat-error *ngIf="docIdCtrl.hasError('required')">
+                                            This field is required
+                                        </mat-error>
+                                        <mat-hint *ngIf="docIdCtrl.isRequired">
+                                            Required *
+                                        </mat-hint>
+                                    </mat-form-field>
+                                </div>
+                                <div class="custom-form"
+                                     fxLayoutGap="2%"
+                                     [class.required-field]="companyCtrl.isRequired"
+                                     [class.isEmpty]="!companyCtrl.value"
+                                     fxLayoutAlign="start">
+                                    <mat-form-field fxFlex="80%">
+                                        <input matInput
+                                               placeholder="Company"
+                                               [required]="companyCtrl.isRequired"
+                                               [matAutocomplete]="company"
+                                               [formControl]="companyCtrl"
+                                               autocomplete="off"
+                                               [matTooltip]="'Company'"
+                                               (change)="clearFieldValues()">
+                                        <mat-autocomplete #company="matAutocomplete"
+                                                          [panelWidth]="panelSize"
+                                                          [displayWith]="displayCompany.bind(this)">
+                                            <mat-option *ngFor="let company of filteredCompanies"
+                                                        [value]="company.id">
+                                                {{company.companyId}}
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                        <mat-error *ngIf="companyCtrl.hasError('required')">
+                                            This field is required
+                                        </mat-error>
+                                        <mat-error *ngIf="companyCtrl.hasError('inDropdownList')">
+                                            Value not in list
+                                        </mat-error>
+                                        <mat-hint *ngIf="companyCtrl.isRequired && companyCtrl.enabled">
+                                            Required *
+                                        </mat-hint>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="row"
+                         fxLayoutAlign="end center">
+                        <button mat-raised-button
+                                (click)="onGenerateButtonClicked()">
+                            GENERATE
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div>
+            <mat-card class="flex-item-marge"
+                      fxFlex="calc(60% - 16px)"
+                      fxFlex.lt-md="80%">
+                <mat-card-content>
+                    <div fxLayout="row"
+                         fxLayoutAlign="start"
+                         class="top-margin">
+                        <mat-form-field fxFlex="100%">
+                            <textarea matInput
+                                      rows="10"
+                                      [formControl]="messageCtrl"
+                                      class="fxDeal-input-fields"></textarea>
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</form>

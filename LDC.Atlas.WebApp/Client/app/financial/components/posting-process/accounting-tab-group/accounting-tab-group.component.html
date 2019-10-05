@@ -1,0 +1,56 @@
+<atlas-financial-tab-group></atlas-financial-tab-group>
+<div class="dark-tab header-tab mat-elevation-z6">
+    <div class="header-tab-container">
+        <nav mat-tab-nav-bar>
+
+            <div *ngIf="documentActionsPrivilege">
+                <a mat-tab-link
+                   *ifAuthorized="routeLinks[0].privilege,company:this.company"
+                   routerLinkActive
+                   #rla="routerLinkActive"
+                   [matMenuTriggerFor]="export"
+                   [active]="isActive(routeLinks[0])">
+                    {{ routeLinks[0].label }}
+                </a>
+                <mat-menu #export="matMenu"
+                          [overlapTrigger]="false"
+                          xPosition="after">
+                    <div *ngFor="let routeLinkChild of routeLinks[0].routeLinksChildren">
+                        <a mat-tab-link
+                           *ifAuthorized="routeLinkChild.privilege,company:this.company"
+                           [routerLink]="routeLinkChild.link"
+                           routerLinkActive
+                           #rla="routerLinkActive"
+                           [active]="isActive(routeLinkChild)">
+                            {{ routeLinkChild.label }}
+                        </a>
+                    </div>
+                </mat-menu>
+            </div>
+            <div *ngFor="let routeLink of routeLinks | slice:1">
+                <a mat-tab-link
+                   *ifAuthorized="routeLink.privilege,company:this.company"
+                   [routerLink]="routeLink.link"
+                   routerLinkActive
+                   #rla="routerLinkActive"
+                   [active]="isActive(routeLink)">
+                    {{ routeLink.label }}
+                </a>
+            </div>
+            <a mat-tab-link
+               [matMenuTriggerFor]="reports">
+                Reports
+            </a>
+            <mat-menu #reports="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <span *ngFor="let item of filteredTemplates">
+                    <button mat-button
+                            (click)="OnReportClick(item)">
+                        {{item.name}}
+                    </button>
+                </span>
+            </mat-menu>
+        </nav>
+    </div>
+</div>

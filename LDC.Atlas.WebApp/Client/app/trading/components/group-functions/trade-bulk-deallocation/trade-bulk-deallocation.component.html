@@ -1,0 +1,32 @@
+<form [formGroup]="bulkDeAllocationForm">
+    <div class="main-container">
+
+        <atlas-group-function-warning #groupFunctionWarning></atlas-group-function-warning>
+        <atlas-group-function-contracts #contractSelection
+                                        (contractSelected)="isContractSelected($event)">
+        </atlas-group-function-contracts>
+
+        <div fxLayout="row "
+             fxLayoutAlign="space-between start"
+             class="button-details">
+            <div fxLayout="column "
+                 fxLayoutAlign="start ">
+                <button (click)="onContractSelectionDiscardButtonClicked()"
+                        mat-button>
+                    DISCARD
+                </button>
+            </div>
+            <div fxLayout="column "
+                 fxLayoutAlign="start ">
+                <div fxLayout="row "
+                     fxLayoutAlign="end start ">
+                    <button mat-raised-button
+                            (click)="onDeAllocationButtonClicked()"
+                            [disabled]="isContractsNextDisabled">
+                        DEALLOCATE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,117 @@
+<mat-sidenav-container>
+    <mat-sidenav class="side-nav-reassignscreen"
+                 position="end"
+                 mode="over"
+                 [(opened)]="sideReassignNavOpened">
+        <div class="atr-sidenav-margin">
+            <h2>Edit Reassigned Sections</h2>
+            <atlas-reassign-contract-ag-grid #atlasNewReassign
+                                             (sideReassignValueNavOpened)="closeReassignSideNav($event)">
+            </atlas-reassign-contract-ag-grid>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-card [hidden]="hasEmptyState">
+            <mat-card-header>
+                <div fxLayout="row"
+                     fxLayoutAlign="start start"
+                     fxFlex>
+                    <mat-card-title>Assigned Section</mat-card-title>
+                    <span class="fill-space"></span>
+                    <button mat-button
+                            (click)="onUpdateCostsButtonClicked()">
+                        <span>UPDATE COSTS</span>
+                    </button>
+                    <button mat-button
+                            *ifAuthorized="'Charters.ChartersView',company:this.company"
+                            [disabled]="!isEdit"
+                            (click)="onActionButtonClicked()">
+                        <span>DEASSIGN</span>
+                    </button>
+                    <button mat-button
+                            *ifAuthorized="'Charters.ChartersView',company:this.company"
+                            [disabled]="!isEdit"
+                            (click)=" onReassignSideNavOpenClicked()">
+                        <span>REASSIGN</span>
+                    </button>
+                    <atlas-ag-grid-user-preferences *ngIf="charterGridOptions && charterGridOptions.columnDefs"
+                                                    [gridOptions]="charterGridOptions"
+                                                    [company]="company"
+                                                    [gridId]="componentId"
+                                                    [showExport]="true"
+                                                    [sharingEnabled]="hasGridSharing"
+                                                    #userPreferences>
+                    </atlas-ag-grid-user-preferences>
+                    <atlas-grid-enlargement *ngIf="charterGridOptions && charterGridOptions.columnDefs"
+                                            [gridOptions]="charterGridOptions"
+                                            [userPreferencesParameters]="gridPreferences"
+                                            [hasRangeSelectionOption]="true"
+                                            [summableColumns]="allowedColumnsforQuickSum"
+                                            [additionnalActions]="gridZoomAdditionalActions"
+                                            (additionalActionTriggered)="handleGridZoomAction($event)"
+                                            (rowSelected)="onRowSelected($event)"
+                                            #gridZoom>
+                    </atlas-grid-enlargement>
+                </div>
+            </mat-card-header>
+
+            <div fxLayout="row"
+                 class="quick-sum-div-height"
+                 fxLayoutAlign="space-between center">
+                <mat-slide-toggle mat-raised-button
+                                  (change)="toggleQuickSum()">Quick Sum Mode</mat-slide-toggle>
+                <div fxLayout="row"
+                     fxLayoutAlign="space-around center">
+
+                    <div *ngFor="let column of selectedColumnsArray">
+                        <span class="quick-sum-span"
+                              *ngIf="column.sum!==0 && quickSumModeActivated">{{column.name}}:{{column.sum}}</span>
+                    </div>
+                    <button mat-button
+                            (click)="onClearSelectionClicked()"
+                            class="mat-button-user-margin"
+                            *ngIf="quickSumModeActivated">
+                        Clear Selection
+                    </button>
+                </div>
+            </div>
+            <div ag-grid="charterGridOptions"
+                 class="atr-ag-grid"
+                 [ngClass]='classApplied'>
+                <ag-grid-angular class="ag-theme-material atr-ag-grid"
+                                 [rowData]="sectionsAssigned"
+                                 [columnDefs]="columnDefs"
+                                 domLayout="autoHeight"
+                                 (columnVisible)="onAddOrDeleteColumn($event)"
+                                 (gridReady)="onGridReady($event)"
+                                 [pagination]="true"
+                                 [paginationPageSize]="10"
+                                 [gridOptions]='charterGridOptions'
+                                 [enableSorting]="true"
+                                 [enableColResize]="false"
+                                 [context]="gridContext"
+                                 [rowSelection]="rowSelection"
+                                 [rowStyle]="rowStyle"
+                                 [enableRangeSelection]="true"
+                                 (rangeSelectionChanged)="onRangeSelectionChanged($event)"
+                                 (rowSelected)="onRowSelected($event)"
+                                 [rowHeight]="atlasAgGridParam.rowHeight"
+                                 [excelStyles]="excelStyles">
+                </ag-grid-angular>
+            </div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 *ngIf="isLoadingAssigned"
+                 class="loading">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+        </mat-card>
+        <atlas-empty-state *ngIf="hasEmptyState"
+                           title="No Assignments"
+                           [message]="assignmentEmptyMessage"></atlas-empty-state>
+        <atlas-lock-interval [resourcesInformation]="resourcesInformation">
+        </atlas-lock-interval>
+    </mat-sidenav-content>
+</mat-sidenav-container>

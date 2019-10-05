@@ -1,0 +1,103 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Shipment</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                     isEditable="true"
+                                                     [fieldControl]="charterLoadLocationCntrl"
+                                                     [options]="filteredLoadLocations"
+                                                     label="Loading Location"
+                                                     displayProperty="portCode"
+                                                     [selectProperties]="['portCode','description','countryCode']"
+                                                     lightBoxTitle="Results for Port"
+                                                     gridId="portsGrid"
+                                                     (valueChange)='LoadingValueChanged($event)'
+                                                     (optionSelected)="onLoadingPortSelected($event)">
+            </atlas-masterdata-user-preferences-input>
+
+            <atlas-form-input fxFlex="30%"
+                              [fieldControl]="charterLoadDescrCntrl"
+                              [isEditable]="isInputField"
+                              [label]="'Description'">
+            </atlas-form-input>
+            <atlas-form-input fxFlex="30%"
+                              [fieldControl]="charterLoadCntryCntrl"
+                              [isEditable]="isInputField"
+                              [label]="'Country'">
+            </atlas-form-input>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+
+            <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                     isEditable="true"
+                                                     [fieldControl]="charterDiscLocationCntrl"
+                                                     [options]="filteredDiscLocations"
+                                                     label="Discharge Location"
+                                                     displayProperty="portCode"
+                                                     [selectProperties]="['portCode','description','countryCode']"
+                                                     lightBoxTitle="Results for Port"
+                                                     gridId="portsGrid"
+                                                     (valueChange)='DischargeValueChanged($event)'
+                                                     (optionSelected)="onDischargePortSelected($event)">
+            </atlas-masterdata-user-preferences-input>
+            <atlas-form-input fxFlex="30%"
+                              [fieldControl]="charterDiscDescrCntrl"
+                              [isEditable]="isInputField"
+                              [label]="'Description'"
+                              class="charter-input-fields">
+
+            </atlas-form-input>
+            <atlas-form-input fxFlex="30%"
+                              [fieldControl]="charterDiscCntryCntrl"
+                              [isEditable]="isInputField"
+                              [label]="'Country'"
+                              class="charter-input-fields">
+
+            </atlas-form-input>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="30%">
+                <input matInput
+                       [max]="maxDate"
+                       placeholder="Charter BL Date"
+                       autocomplete="off"
+                       [formControl]="charterBLDateCntrl"
+                       [matDatepicker]="charterDatePicker"
+                       class="charter-input-fields">
+                <mat-datepicker-toggle matSuffix
+                                       [for]="charterDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #charterDatePicker></mat-datepicker>
+                <mat-icon matSuffix
+                          class="validIcon"
+                          *ngIf="charterBLDateCntrl.valid && (charterBLDateCntrl.value!==null)">check_circle</mat-icon>
+                <mat-error *ngIf="charterBLDateCntrl.hasError('isDateValid')">
+                    Cannot be After Today
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="30%">
+                <input matInput
+                       placeholder="BL Reference"
+                       [formControl]="charterBLRefnCntrl"
+                       autocomplete="off"
+                       class="charter-input-fields">
+                <mat-icon class="validIcon"
+                          matSuffix
+                          *ngIf="charterBLRefnCntrl.valid && (charterBLRefnCntrl.value!==null && charterBLRefnCntrl.value)">
+                    check_circle</mat-icon>
+                <mat-error *ngIf="charterBLRefnCntrl.hasError('maxlength')">
+                    More than 20 char not allowed
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

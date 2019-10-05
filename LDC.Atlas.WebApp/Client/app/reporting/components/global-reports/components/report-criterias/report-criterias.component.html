@@ -1,0 +1,85 @@
+<div [formGroup]="reportCriteriaFormGroup"
+     fxLayout="column"
+     fxLayoutGap="1%">
+
+     <div fxLayoutAlign="center center" 
+          *ngIf="isContractLoading || isCharterLoading" 
+          class="loading">
+          <mat-spinner color="accent"></mat-spinner>
+        
+    </div>
+    <div [hidden]="isContractLoading || isCharterLoading">
+    <div fxLayout="row"
+         fxLayoutAlign="left start"
+         fxLayoutGap="5%">        
+            
+        <div fxFlex="50%">
+            <atlas-contextual-search-multiple-autocomplete-select #profitCenterDropdownComponent
+                                                                  [options]="profitCenters"
+                                                                  [selectedOptions]="[]"
+                                                                  [allOptionsElement]="profitCenterAllOptions"
+                                                                  [allSelected]="allProfitCentersSelected"
+                                                                  displayCode="true"
+                                                                  valueProperty="profitCenterId"
+                                                                  codeProperty="profitCenterCode"
+                                                                  displayProperty="description"
+                                                                  placeholder="Profit Centers"
+                                                                  placeholderFilter="Profit Center"
+                                                                  elementName="Profit Center"
+                                                                  (selectionChangedEvent)="onprofitSelectionChanged($event)">
+            </atlas-contextual-search-multiple-autocomplete-select>
+        </div>
+        <div fxFlex="50%">
+            <atlas-contextual-search-multiple-autocomplete-select #charterDropdownComponent
+                                                                  [options]="filteredCharters"
+                                                                  [selectedOptions]="[]"
+                                                                  [allOptionsElement]="charterAllOptions"
+                                                                  [allSelected]="allChartersSelected"
+                                                                  displayCode="true"
+                                                                  valueProperty="charterId"
+                                                                  displayProperty="description"
+                                                                  codeProperty="charterCode"
+                                                                  placeholder="Charters"
+                                                                  placeholderFilter="Charter"
+                                                                  elementName="Charter"
+                                                                  (selectionChangedEvent)="onCharterSelectionChanged($event)">
+            </atlas-contextual-search-multiple-autocomplete-select>
+        </div>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="left start"
+         fxLayoutGap="5%">
+        <div fxFlex="50%">
+            <atlas-contextual-search-multiple-autocomplete-select #departmentDropdownComponent
+                                                                  [options]="filteredDepartments"
+                                                                  [selectedOptions]="[]"
+                                                                  [allOptionsElement]="departmentAllOptions"
+                                                                  [allSelected]="allDepartmentsSelected"
+                                                                  displayCode="true"
+                                                                  valueProperty="departmentId"
+                                                                  codeProperty="departmentCode"
+                                                                  displayProperty="description"
+                                                                  placeholder="Departments"
+                                                                  placeholderFilter="Department"
+                                                                  elementName="Department"
+                                                                  (selectionChangedEvent)="onDepartmentSelectionChanged($event)">
+            </atlas-contextual-search-multiple-autocomplete-select>
+        </div>
+        <div fxFlex="50%">
+            <atlas-contextual-search-multiple-autocomplete-select #contractDropdownComponent
+                                                                  [options]="filteredContracts"
+                                                                  [selectedOptions]="[]"
+                                                                  [allOptionsElement]="contractAllOptions"
+                                                                  [allSelected]="allContractSelected"
+                                                                  displayCode="true"
+                                                                  valueProperty="sectionId"
+                                                                  codeProperty="contractLabel"
+                                                                  placeholder="Contracts"
+                                                                  placeholderFilter="Contract Label"
+                                                                  elementName='Contract'
+                                                                  (selectionChangedEvent)="onContractSelectionChanged($event)">
+            </atlas-contextual-search-multiple-autocomplete-select>
+        </div>
+    </div>
+</div>
+</div>

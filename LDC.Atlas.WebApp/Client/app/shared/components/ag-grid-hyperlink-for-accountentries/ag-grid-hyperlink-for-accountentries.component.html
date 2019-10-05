@@ -1,0 +1,5 @@
+<a (click)='invokeParentMethod()'
+   class="contract-reference-link"
+   *ngIf="hyperLinkRequired; else noHyperLink">{{this.params.value}} </a>
+<ng-template #noHyperLink>
+    <span>{{this.params.value}} </span></ng-template>

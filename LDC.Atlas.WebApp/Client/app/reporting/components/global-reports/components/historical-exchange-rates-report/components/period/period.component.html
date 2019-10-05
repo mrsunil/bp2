@@ -1,0 +1,94 @@
+<form [formGroup]="formGroup">
+    <mat-card>
+        <mat-card-title>
+            <h2>
+                Period
+            </h2>
+        </mat-card-title>
+        <mat-card-content>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between"
+                 fxLayoutGap="2%">
+                <div fxFlex="15%">
+                    <mat-button-toggle-group name="toggleStyle"
+                                             [formControl]='periodCtrl'
+                                             (change)="onPeriodDataChanged()"
+                                             [value]="setPeriodType">
+                        <mat-button-toggle [disabled]="disableDaily"
+                                           [value]="daily">Daily
+                        </mat-button-toggle>
+                        <mat-button-toggle [disabled]="disableMonthly"
+                                           [value]="monthly">Monthly
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                <div class="from-and-to-dates"
+                     fxFlex="40%">
+                    <div fxFlex="50%">
+                        <atlas-date-picker *ngIf="activateDay"
+                                           isEditable=true
+                                           label="From"
+                                           [fieldControl]="fromCtrl"
+                                           (dateChanged)="onFromChanged()">
+                        </atlas-date-picker>
+                        <mat-error class="date-error"
+                                   *ngIf="fromCtrl.hasError('isDateAfterValid') && activateDay">
+                            "From" date cannot be in the future
+                        </mat-error>
+                        <atlas-month-date-picker *ngIf="activateMonth"
+                                                 isEditable=true
+                                                 class="month-date-picker"
+                                                 label="From"
+                                                 [fieldControl]="fromCtrl"
+                                                 (monthChanged)="onFromChanged()">
+                        </atlas-month-date-picker>
+                        <mat-error class="date-error"
+                                   *ngIf="fromCtrl.hasError('isDateAfterValid') && activateMonth">
+                            "From" month cannot be in the future
+                        </mat-error>
+                    </div>
+                    <div fxFlex="50%">
+                        <div fxLayout="column"
+                             fxLayoutGap="1%">
+                            <atlas-date-picker *ngIf="activateDay"
+                                               isEditable=true
+                                               label="To"
+                                               [fieldControl]="toCtrl"
+                                               [errorMap]="dailyErrorMap"
+                                               (dateChanged)="onToChanged()">
+                            </atlas-date-picker>
+                            <mat-error class="date-error"
+                                       *ngIf="toCtrl.hasError('isDateAfterValid') && activateDay">
+                                "To" date cannot be in the future
+                            </mat-error>
+                            <atlas-month-date-picker *ngIf="activateMonth"
+                                                     isEditable=true
+                                                     class="month-date-picker"
+                                                     label="To"
+                                                     [fieldControl]="toCtrl"
+                                                     (monthChanged)="onToChanged()">
+                            </atlas-month-date-picker>
+                            <mat-error class="date-error"
+                                       *ngIf="toCtrl.hasError('isDateAfterValid') && activateMonth">
+                                "To" month cannot be in the future
+                            </mat-error>
+                            <mat-error class="date-error"
+                                       *ngIf="toCtrl.hasError('isBeforeDateValid') && activateDay">
+                                "To" date cannot be before the "from" date
+                            </mat-error>
+                            <mat-error class="date-error"
+                                       *ngIf="toCtrl.hasError('isBeforeDateValid') && activateMonth">
+                                "To" month cannot be before the "from" month
+                            </mat-error>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="45%">
+                    <mat-slide-toggle [formControl]="showAllDatesCtrl"
+                                      [disabled]="disableDaily"
+                                      (change)="onShowAllDatesChanged()">Show All Dates</mat-slide-toggle>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</form>

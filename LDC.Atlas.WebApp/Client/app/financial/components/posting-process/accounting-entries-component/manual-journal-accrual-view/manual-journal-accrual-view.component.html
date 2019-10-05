@@ -1,0 +1,92 @@
+<div class="main-container">
+    <mat-card>
+        <h2>Document Information for {{docReference}}</h2>
+        <div fxLayout="row">
+            <div class="accounting-document-fields"
+                 fxFlex="85%">
+                <div fxLayout="column">
+                    <div fxLayout="row"
+                         fxLayoutGap="5%"
+                         fxLayoutAlign="left start">
+                        <div class="custom-form"
+                             fxFlex="30%">
+                            <mat-form-field>
+                                <input matInput
+                                       [matDatepicker]="frompicker"
+                                       placeholder="Document Date"
+                                       autocomplete="off"
+                                       [formControl]='docDateFormCtrl'>
+                                <mat-datepicker-toggle matSuffix
+                                                       [for]="frompicker"></mat-datepicker-toggle>
+                                <mat-datepicker #frompicker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field fxFlex="30%">
+                            <input matInput
+                                   [matDatepicker]="valueDatePicker"
+                                   placeholder="Value Date"
+                                   autocomplete="off"
+                                   [formControl]='valueDateFormCtrl'>
+                            <mat-datepicker-toggle matSuffix
+                                                   [for]="frompicker"></mat-datepicker-toggle>
+                            <mat-datepicker #valueDatePicker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <br />
+                    <div fxLayout="row"
+                         fxLayoutGap="5%"
+                         fxLayoutAlign="left start">
+                        <div class="custom-form"
+                             fxFlex="30%">
+
+                            <atlas-month-date-picker #monthDatePicker
+                                                     fxFlex="30%"
+                                                     class="month-date-picker"
+                                                     [fieldControl]="accPeriodFormCtrl"
+                                                     [label]="'Accounting Period'"></atlas-month-date-picker>
+                        </div>
+                        <mat-form-field fxFlex="30%">
+                            <input matInput
+                                   placeholder="Currency"
+                                   autocomplete="off"
+                                   [formControl]='currencyCtrl'>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+    <mat-card>
+
+        <ag-grid-angular class="ag-theme-material atr-ag-grid"
+                         [rowData]="accountingDocumentLine"
+                         [columnDefs]="columnDefs"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         [pagination]="true"
+                         [paginationPageSize]="10"
+                         [enableSorting]="true"
+                         [enableColResize]="false"
+                         [rowStyle]="rowStyle"
+                         [enableRangeSelection]="true"
+                         [rowHeight]="atlasAgGridParam.rowHeight">
+        </ag-grid-angular>
+        <div  fxLayout="column"
+              fxLayoutAlign="space-around end">
+            <div fxFlex="33">
+                <mat-card-subtitle class="total-figure ">Amount : <span
+                          class="total-figure-value">{{formatValue(amount)}}
+                    </span></mat-card-subtitle>
+            </div>
+        </div>
+
+    </mat-card>
+    <div fxLayout="row"
+         class='mat-buttons'>
+        <div fxFlex="90">
+            <button mat-button
+                    class='mat-button-discard'
+                    (click)="onDiscardButtonClicked()">DISCARD</button>
+        </div>
+    </div>
+</div>

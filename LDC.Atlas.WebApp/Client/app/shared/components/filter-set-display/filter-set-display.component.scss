@@ -1,0 +1,40 @@
+.filter-card {
+    padding: 16px 0 16px 16px !important;
+}
+
+.chip-list {
+    margin-bottom: 10px;
+    margin-right: 16px;
+}
+
+.filter-actions {
+    border-right: solid #928d8f 1px;
+
+    .mat-icon-button {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+    }
+
+    button:last-child {
+        margin-right: 8px;
+    }
+}
+
+mat-sidenav {
+    width: 75%;
+}
+
+button:disabled,
+button[disabled] {
+    opacity: 0.6;
+}
+
+.mat-sidenav-container,
+.mat-sidenav-content {
+    overflow: visible;
+}
+
+.more-filter {
+    margin-top: 0px;
+}

@@ -1,0 +1,22 @@
+<mat-card style="width: 100%">
+    <mat-card-header>
+        <mat-card-title>
+            <h3>{{translationKeyPrefix + 'TITLE' | translate}}</h3>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="none center">
+            <div>
+                <mat-form-field fxFlex="100%">
+                    <mat-select placeholder="{{translationKeyPrefix + 'PLACEHOLDER' | translate}}"
+                                [formControl]="invoiceStatusCtrl"
+                                [disabled]="!(isEdit && this.editPrivileges.statusEditable)">
+                        <mat-option *ngFor="let status of invoiceStatusOptions"
+                                    [value]="status.code">{{status.description}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

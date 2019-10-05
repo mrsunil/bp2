@@ -1,0 +1,141 @@
+::ng-deep.ag-layout-auto-height.ag-body-container {
+    min-height: 100px !important;
+}
+
+.ag-grid-style {
+    width: 100%;
+    height: 100%
+}
+
+.mat-button-user-margin {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: #53c234;
+    padding: 10px;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+}
+
+.accounting-document-fields {
+    width: 100%;
+}
+
+.accounting-document-buttons {
+    width: 10%;
+}
+
+.value-legs-total-figure {
+    margin-top: 8px;
+    margin-right: 20px;
+}
+
+.button-accounting-doc {
+    margin: 20%
+}
+
+.document-margin {
+    margin-top: 1%;
+    margin-left: 35px;
+    margin-right: 30px;
+}
+
+.month-date-picker {
+    width: 100%;
+    display: inline-flex;
+}
+
+.table-title {
+    background-color: white;
+}
+
+.header-background-creation {
+    background: top/contain url(/assets/img/luke-waves.svg) no-repeat;
+    background-position-x: right;
+    background-color: white;
+    min-height: 130px;
+}
+
+.mat-toolbar {
+    height: 56px !important;
+    background-color: white !important;
+}
+
+
+.menu-bar-button {
+    width: 100% !important;
+}
+
+::ng-deep.mat-slide-toggle-label {
+    flex-direction: row !important;
+}
+
+.value-legs-total-figure {
+    margin-top: 8px;
+}
+
+.mat-button-discard {
+    margin-left: 25px;
+}
+
+.contextual-search-for-currency {
+    width: 100%;
+}
+
+.value-date-warning {
+    color: #ec8d2d;
+}
+
+.value-date-control {
+    width: 200px !important;
+}
+
+.add-line-container {
+    margin-left: 10px;
+}
+
+.mat-error-message-chip {
+    background-color: #DF5A4D !important;
+}
+
+.mat-neutral-message-chip {
+    background-color: #CAE8DC !important;
+}
+
+mat-card.warning-card.mat-card {
+    padding: 0 !important;
+    height: 75px;
+    display: flex;
+    align-items: center;
+
+    mat-card-header.mat-card-header {
+        mat-card-title.mat-card-title {
+            margin: 0;
+            padding: 8px 0;
+        }
+
+        h4 {
+            margin: 0;
+        }
+
+        mat-card-subtitle.mat-card-subtitle {
+            margin: 0;
+        }
+    }
+}
+
+button.remove-button.mat-button {
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+}
+:host ::ng-deep .ag-theme-material .mat-form-field-appearance-legacy .mat-form-field-wrapper
+{
+    padding-bottom: 0px !important;
+}
+:host ::ng-deep .input-newline
+{
+    padding-bottom: 12px;
+}

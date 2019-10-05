@@ -1,0 +1,48 @@
+<div class="section-light-box lightbox-width">
+    <h1>Re-Assignment</h1>
+    <div *ngIf="isTopCardVisible">
+        <div fxLayout="row"
+             fxLayoutGap="2%"
+             fxLayoutAlign="start stretch">
+            <div fxLayout="column"
+                 fxLayoutAlign="center center"
+                 fxFlex="4%">
+                <mat-icon class="icon-padding title-icon">warning</mat-icon>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="center start"
+                 fxFlex="60%">
+                <h2 class="no-margin warning-title"> Some contracts can't be re-assigned </h2>
+            </div>
+        </div>
+        <div class="full-invoiced-contract-list">
+            <p *ngFor="let assigned of fullyInvoiceContract">
+                {{assigned.contractLabel}} : {{assigned.reasonForReassignment}}
+            </p>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+
+    <div *ngIf="isBottomCardVisible">
+        <p>
+            The following contracts will be re-assigned. Unselect the ones for which you want to keep traffic
+            details.
+        </p>
+        <mat-chip-list multiple>
+            <mat-chip *ngFor="let assigned of assignedSections"
+                      [selected]="assigned.removeSectionTrafficInfo"
+                      (click)="onSelectedContractClicked(assigned)">
+                <mat-icon>{{ assigned.removeSectionTrafficInfo ? 'check_circle' : 'panorama_fish_eye'}}</mat-icon>
+                {{assigned.contractLabel}}
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between end">
+        <button mat-button
+                (click)="onDiscardButtonClick()">discard</button>
+        <button mat-button
+                (click)="onReassignButtonClicked()"
+                *ngIf="isBottomCardVisible">reassign contracts</button>
+    </div>
+</div>

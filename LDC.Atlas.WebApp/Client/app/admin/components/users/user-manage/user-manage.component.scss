@@ -1,0 +1,39 @@
+.ag-theme-material .ag-header {
+    color: #928D8F !important;
+    font-family: 12px Roboto !important;
+}
+
+.atlas-user-card-icon-font {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.atlas-user-card-username {
+    font-size: 20px;
+    margin: 8px 0;
+}
+
+.ag-header-row {
+
+    border-top-style: none !important;
+}
+
+.atlas-toggle-span {
+    padding-right: 6px;
+    font-size: 16px;
+}
+
+button {
+    &.mat-button {
+        margin-left: 0 !important;
+    }
+
+    &.mat-raised-button {
+        margin-right: 0 !important;
+    }
+}
+
+.btn-container {
+    margin: 8px 0;
+}

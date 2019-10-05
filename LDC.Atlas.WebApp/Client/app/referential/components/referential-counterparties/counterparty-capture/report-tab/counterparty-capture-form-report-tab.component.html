@@ -1,0 +1,31 @@
+<div class="main-container">
+    <mat-card>
+        <div fxLayout="row"
+             fxLayout.md="column"
+             fxLayoutAlign="start"
+             fxFlex="50%">
+            <div fxLayout="column"
+                 fxLayoutAlign="start start">
+                <div fxLayout="row "
+                     fxLayoutAlign="start start">
+                    <span class="fill-space"></span>
+                    <button mat-raised-button
+                            [disabled]="isCreateMode"
+                            type="button"
+                            (click)="navigateCListReport()">
+                        CLIST REPORTS
+                    </button>
+                </div>
+                <div fxLayout="row "
+                     fxLayoutAlign="start start">
+                    <button mat-raised-button
+                            [disabled]="isCreateMode"
+                            type="button"
+                            (click)="navigateTradeReport()">
+                        TRADE REPORTS
+                    </button>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>

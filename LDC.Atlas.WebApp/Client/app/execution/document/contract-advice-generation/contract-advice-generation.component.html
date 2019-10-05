@@ -1,0 +1,52 @@
+<div class="main-container">
+    <div *ngIf="isLoading">
+        <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h2>Loading</h2>
+                    <div class="custom-line-title"></div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 fxLayoutGap="20px">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+        </mat-expansion-panel>
+    </div>
+    <div fxLayout="column"
+    fxLayoutAlign="none"
+    [ngClass]="{'hidden-during-loading':isLoading}">
+
+        <atlas-contract-advice-generation-selection-form *ngIf="!this.isGap117" #SelectionForm>
+        </atlas-contract-advice-generation-selection-form>
+
+        <atlas-contract-template-selection *ngIf="this.isGap117" #SelectionForm></atlas-contract-template-selection >
+
+        <atlas-document-list-card #DocumentList></atlas-document-list-card>
+        <div class="btn-container">
+            <div fxFlex="50"
+                 fxLayout="row"
+                 fxAlignLayout="start start">
+                <button mat-button
+                        type="button"
+                        (click)="onCancelButtonClicked()">
+                    cancel
+                </button>
+            </div>
+            <div fxLayout="column "
+                 fxFlex="50"
+                 fxLayoutAlign="start end ">
+                <mat-slide-toggle *ngIf="this.selectionForm && this.selectionForm.documentTemplateCtrl.value &&
+                this.selectionForm.documentTemplateCtrl.value.length > 0"
+                                  [formControl]="previewDocumentCtrl">Preview Document </mat-slide-toggle>
+                <button mat-raised-button
+                        type="submit"
+                        (click)="onGenerateDocumentClicked()">
+                    Generate
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,175 @@
+{
+    "TITLE_PAGE": "Titre de la page",
+    "INPUT_LABEL": "Champ d'entrée",
+    "SECTION": "Section",
+    "TOOGLE": "interrupteur",
+    "TOOGLE_SELECTED": "interrupteur sélectionné",
+    "MESSAGE": "Message",
+    "ACTION": "Action",
+    "SELECT": {
+        "FIELD_NAME": "Sélectionner",
+        "OPTION": "Mon champ favori"
+    },
+    "MORE_FILTERS": "+ PLUS DE FILTRES",
+    "APPLY_FILTERS": "Appliquer les filtres",
+    "EMAIL_FIELD": {
+        "FIELD_NAME": "Renseigner votre adresse mail"
+    },
+    "You must enter a value": "Champ obligatoire",
+    "Not a valid email": "Email invalide",
+
+    "COMPLEXE_VALUE_FIELD": "Valeur complexe",
+    "AUTOCOMPLETE_FIELD": "Autocomplétion",
+    "DROPDOWN_FIELD": {
+        "FIELD_NAME": "Menu déroulant",
+        "OPTION": "Option"
+    },
+    "DATE_PICKER_FIELD": "Champ de date",
+    "BUTTONS_BOX": {
+        "TITLE": "Boutons",
+        "BASIC": "Bouton basique",
+        "RAISED": "Bouton en relief"
+    },
+    "FLOATING_ACTION_BUTTON_BOX": {
+        "TITLE": "Bouton d'action flottant",
+        "CUSTOMIZE": "Personaliser l'échange",
+        "CLOSE": "Terminer l'échange",
+        "NEW_CALL_OFF": "Nouveu contrat",
+        "ASSIGN": "Assigner au fret",
+        "SPLIT": "Diviser l'échange",
+        "ALLOCATE": "Localiser l'échange"
+    },
+    "BUTTON_LABEL": "Label du bouton",
+    "TOOLTIP_BOX": {
+        "TITLE": "Outil de tips",
+        "TEST": "Testez l'outil de tips",
+        "FIELD": "Champ avec l'outil",
+        "TOOLTIP": "Ceci est un outil de tips"
+    },
+    "EMPTY_STATE_BOX_1": {
+        "TITLE": "Pas de résultat pour ABC",
+        "MESSAGE": "Essayer une autre recherche"
+    },
+    "EMPTY_STATE_BOX_2": {
+        "TITLE": "Titre de la carte",
+        "MESSAGE": "Message de l'état vide"
+    },
+    "EMPTY_STATE_BOX_3": {
+        "TITLE": "Pas de résultat pour P00003",
+        "MESSAGE": "Essayer une autre recherche"
+    },
+    "STEPPER": {
+        "PERSONAL_INFO": "Informations personnelles",
+        "FILL_OUT_ADDRESS": "Renseigner votre adresse",
+        "DONE": "Terminé",
+        "END_MESSAGE": "Félicitations<br/>Vous avez terminé"
+    },
+    "NAME": "Nom",
+    "USERNAME": "Nom d'utilisateur",
+    "ADDRESS": "Adresse",
+    "CITY": "Ville",
+    "COUNTRY": "Pays",
+    "BACK": "Retour",
+    "NEXT": "Suivant",
+    "RESET": "Réinit",
+    "PROGRESS_BOX": {
+        "TITLE": "Indicateur de progression",
+        "INDETERMINATE": "Chargement indéterminé",
+        "DETERMINATE": "Chargement déterminé"
+    },
+    "CHECKBOX": {
+        "PARENT": "Checkbox Parent",
+        "CHILD1": "Enfant 1",
+        "CHILD2": "Enfant 2",
+        "CHILD3": "Enfant 3",
+        "INDETERMINATE": "Indeterminé",
+        "RADIO_BUTTON": "bouton radio",
+        "SLIDE_TOOGLE": "Interrupteur glissant"
+    },
+    "CARD": {
+        "1": "Carte 1",
+        "2": "Carte 2",
+        "3": "Carte 3",
+        "4": "Carte 4"
+    },
+    "DIALOG_BOX": {
+        "TITLE": "Boîte de dialogue",
+        "FIELD_NAME": "Comment tu t'appelles?",
+        "OPEN_DIALOG": "OUVRIR DIALOGUE",
+        "GREETINGS": "Salut",
+        "QUESTION": "Quel est ton animal favori?",
+        "CHOICE": "Vous avez choisi:"
+    },
+    "DIALOG_CLOSED": "La boîte de dialogue a été fermée",
+
+    "CONTEXTUAL_SEARCH_BOX": {
+        "TITLE": "Recherche contexuelle",
+        "FIELD_NAME": "Nom du navire",
+        "LIGHTBOX": {
+            "TITLE": "Titre de la lightbox",
+            "MAKE": "Marque",
+            "MODEL": "Modèle",
+            "PRICE": "Prix",
+            "DISCARD": "Rejeter"
+        }
+    },
+    "COMMODITY_INPUT_BOX": {
+        "TITLE": "Saisie de marchandise",
+        "INVALID": "Veuillez saisir un nom de marchandise correct",
+        "GRID": {
+            "TITLE": "Grille de recherche contextuelle pour la marchandise",
+            "DISCARD": "Rejeter",
+            "COMMODITY_DESCRIPTION": "Description de la marchandise",
+            "AUTHORISE_COLUMN": "Autoriser cette colonne",
+            "AUTHORISE_ALL_COLUMNS": "Autoriser toutes les colonnes",
+            "FILTER": "Filtre",
+            "CONTAINS": "Contient",
+            "NOT_CONTAINS": "Ne contient pas",
+            "EQUALS": "Egal",
+            "NOT_EQUALS": "Non égal",
+            "START_WITH": "Commence par",
+            "ENDS_WITH": "Termine par"
+        }
+    },
+    "LIST_AND_SEARCH": "Lister & Rechercher",
+    "NO_DEFAULT_SET": "Pas de configuration par défaut",
+    "SAVE": "Enregistrer",
+    "EDIT_CRITERIAS": "EDITER LES CRITERES",
+    "FILTER_SET_NAME": "Nom du filtre",
+    "REQUIRED": "Requis*",
+    "SHARE_WITH_ALL_USERS": "Partager avec tous les utilisateurs",
+    "SHARE WITH ALL COMPANIES": "Partager avec toutes les compagnies",
+    "SAVE_AS_NEW_FILTER_SET": "ENREGISTER EN TANT QUE NOUVEAU FILTRE",
+
+    "QUICK_SUM_MODE": "Mode Somme Rapide",
+    "CLEAR_SELECTION": "NETTOYER LA SELECTION",
+    "make": "Marque",
+    "model": "Modèle",
+    "price": "Prix",
+
+    "Child 1": "Enfant 1",
+    "Child 2": "Enfant 2",
+    "Child 3": "Enfant 3",
+
+    "Ag-Grid Examples": "Exemple d'Ag-grid",
+    "Enable Range Selection": "Autoriser la sélection d'intervalles",
+    "Clear Selection": "Nettoyer la sélection",
+
+    "Bright Tab": "Onglet brillant",
+    "First": "Premier",
+    "Second": "Second",
+    "Third": "Troisième",
+    "Number 1": "Numéro 1",
+    "Number 2": "Numéro 2",
+    "Number 3": "Numéro 3",
+
+    "Dark Tab - for topbar": "Onglet sombre - Pour la barre supérieure",
+    "trade type": "type d'échange",
+    "Label of the button": "Label du bouton",
+    "Content 1": "Contenu 1",
+    "Content 2": "Contenu 2",
+    "Content 3": "Contenu 3",
+
+    "Admin Tab - for topbar": "Onglet Admin - Pour la barre supérieure",
+    "The background image needs to be defined in the css class admin-tab": "L'image de fond doit être définie dans la classe css 'admin-tab'"
+}

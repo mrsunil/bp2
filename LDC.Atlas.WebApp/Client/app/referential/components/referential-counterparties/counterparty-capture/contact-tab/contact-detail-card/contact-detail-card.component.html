@@ -1,0 +1,221 @@
+<mat-card *ngIf="newContactForm || editContact">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>
+                <atlas-dropdown-select fxFlex='20%'
+                                       label="Title"
+                                       [fieldControl]="titleDesignationCtrl"
+                                       isEditable="true"
+                                       [options]="options"
+                                       [displayProperty]="displayProperty"
+                                       [selectProperties]="selectProperties"></atlas-dropdown-select>
+                <span class="fill-space"></span>
+
+                <atlas-form-input fxFlex="50%"
+                                  [fieldControl]="contactNameCtrl"
+                                  [isEditable]="true"
+                                  [required]="contactNameCtrl.isRequired"
+                                  label="Contact Name">
+                </atlas-form-input>
+                <span class="fill-space"></span>
+            </h2>
+
+            <div fxFlex="20%"
+                 fxLayout="row"
+                 fxAlignLayout="start end">
+                <button [disabled]="newContactForm || isDeleteDisabled || isViewMode"
+                        mat-raised-button
+                        (click)='deleteContact()'
+                        type="button">
+                    DELETE
+                </button>
+            </div>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="column">
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <atlas-form-input fxFlex="30%"
+                                  [fieldControl]="surNameCtrl"
+                                  [isEditable]="true"
+                                  label="Sur Name">
+                </atlas-form-input>
+                <span class="fill-space"></span>
+                <atlas-form-input fxFlex="30%"
+                                  [fieldControl]="firstNameCtrl"
+                                  [isEditable]="true"
+                                  label="First Name">
+                </atlas-form-input>
+                <span class="fill-space"></span>
+                <atlas-form-input fxFlex="30%"
+                                  [fieldControl]="extraInitialsCtrl"
+                                  [isEditable]="true"
+                                  label="Extra Initials">
+                </atlas-form-input>
+                <span class="fill-space"></span>
+
+            </div>
+
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <atlas-form-input fxFlex="60%"
+                                  [fieldControl]="jobTitleRelationShipCtrl"
+                                  [isEditable]="true"
+                                  label="Job Title/Relationship"
+                                  [errorMap]="inputErrorMapforJobTitleRelationShip">
+                </atlas-form-input>
+
+                <span class="fill-space"></span>
+                <atlas-form-input fxFlex="40%"
+                                  [fieldControl]="domainCtrl"
+                                  [isEditable]="true"
+                                  label="Domain"
+                                  [errorMap]="inputErrorMapforDomain">
+                </atlas-form-input>
+
+
+            </div>
+            <div fxFlex="100%"
+                 fxLayout="row">Address
+            </div>
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <atlas-form-input fxFlex="100%"
+                                  [fieldControl]="address1Ctrl"
+                                  [isEditable]="true"
+                                  label="Address 1">
+                </atlas-form-input>
+            </div>
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <atlas-form-input fxFlex="100%"
+                                  [fieldControl]="address2Ctrl"
+                                  [isEditable]="true"
+                                  label="Address 2">
+                </atlas-form-input>
+            </div>
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <atlas-form-input fxFlex="30%"
+                                  [fieldControl]="zipCodeCtrl"
+                                  [isEditable]="true"
+                                  style="margin-right: 10px"
+                                  label="Zip Code">
+                </atlas-form-input>
+                <span class="fill-space"></span>
+                <atlas-form-input fxFlex="30%"
+                                  [fieldControl]="cityCtrl"
+                                  [isEditable]="true"
+                                  style="margin-right: 10px"
+                                  label="City">
+                </atlas-form-input>
+                <span class="fill-space"></span>
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Country"
+                           [matAutocomplete]="countryCode"
+                           [formControl]="countryCtrl"
+                           autocomplete="off">
+                    <mat-autocomplete #countryCode="matAutocomplete"
+                                      [panelWidth]="panelSize">
+                        <mat-option *ngFor="let country of filteredCountry"
+                                    [value]="country.description">
+                            {{country.countryId}} | {{country.description}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="countryCtrl.hasError('inDropdownList')">
+                        Value not in list
+                    </mat-error>
+                    <mat-hint *ngIf="countryCtrl.isRequired">
+                        Required *
+                    </mat-hint>
+                    <mat-error *ngIf="countryCtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                </mat-form-field>
+                <span class="fill-space"></span>
+            </div>
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <atlas-form-input fxFlex="100%"
+                                  [fieldControl]="emailAddressCtrl"
+                                  [isEditable]="true"
+                                  label="Email Address">
+                </atlas-form-input>
+            </div>
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <atlas-form-input fxFlex="30%"
+                                  [fieldControl]="phoneNumberCtrl"
+                                  (keypress)="phoneNoValidation($event)"
+                                  [isEditable]="true"
+                                  [errorMap]="inputErrorMapforPhoneNumnber"
+                                  label="Phone No.">
+                </atlas-form-input>
+                <span class="fill-space"></span>
+                <atlas-form-input fxFlex="30%"
+                                  [fieldControl]="mobilePhoneNumberCtrl"
+                                  (keypress)="phoneNoValidation($event)"
+                                  [isEditable]="true"
+                                  [errorMap]="inputErrorMap"
+                                  label="Mobile Phone No.">
+                </atlas-form-input>
+                <span class="fill-space"></span>
+                <atlas-form-input fxFlex="30%"
+                                  [fieldControl]="privatePhoneNumberCtrl"
+                                  (keypress)="phoneNoValidation($event)"
+                                  [isEditable]="true"
+                                  [errorMap]="inputErrorMapforPrivatePhoneNumber"
+                                  label="Private Phone No.">
+                </atlas-form-input>
+                <span class="fill-space"></span>
+
+            </div>
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <mat-form-field>
+                    <textarea matInput
+                              rows="5"
+                              placeholder="Communications"
+                              [formControl]='communicationsCtrl'></textarea>
+                    <mat-error *ngIf="communicationsCtrl.hasError('maxlength')">
+                        Communications memorandum should be at most 2000 Characters long.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100%">
+                <div class="btn-container">
+                    <div fxFlex="50"
+                         fxLayout="row"
+                         fxAlignLayout="start start">
+                        <button mat-raised-button
+                                [disabled]="isViewMode"
+                                type="button"
+                                (click)="onCancelButtonClicked()">
+                            cancel
+                        </button>
+                    </div>
+                    <div fxFlex="50"
+                         fxLayout="row"
+                         fxAlignLayout="start end">
+                        <span class="fill-space"></span>
+
+                        <button mat-raised-button
+                                [disabled]="isViewMode"
+                                type="button"
+                                (click)="onSaveButtonClicked()">
+                            save
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<atlas-empty-state *ngIf="!newContactForm && !editContact"
+                   title="Want to see the Detail of a Contact"
+                   [message]="contactEmptyMessage"></atlas-empty-state>

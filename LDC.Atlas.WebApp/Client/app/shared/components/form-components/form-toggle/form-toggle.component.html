@@ -1,0 +1,15 @@
+<div [class.displayMode]="!isEditable">
+    <mat-hint class="toggleLabel">{{label}}</mat-hint><br>
+    <div *ngIf="isEditable">
+        <mat-button-toggle-group    color="primary"
+                                    [formControl]="fieldControl">
+            <mat-button-toggle *ngFor="let key of getKeys(valueLabelMap)" [value]='key'>
+                {{valueLabelMap.get(key)}}
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+
+    <div *ngIf="!isEditable">
+        <span>{{valueLabelMap.get(fieldControl.value)}}</span>
+	</div>
+</div>

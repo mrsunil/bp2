@@ -1,0 +1,37 @@
+export class CashSummary {
+    cashId: number;
+    cashTypeId: number;
+    currencyCode: string;
+    amount: number;
+    counterPartyCode: string;
+    nominalAccountCode: string;
+    documentDate: Date;
+    valueDate: Date;
+    costTypeCode: string;
+    costDirectionId: number;
+    departmentId: number;
+    narrative: string;
+    charterId: number;
+    companyId: string;
+    createdDateTime: Date;
+    createdBy: string;
+    modifiedDateTime: Date;
+    modifiedBy: string;
+    transactionDocumentId: number;
+    authorizedForPosting: boolean;
+    counterpartyDocumentReference: string;
+    documentReference: string;
+    nominalBankAccountCode: string;
+    ownerName: string;
+    physicalDocumentId: number;
+    transactionDocumentTypeId: number;
+    departmentDescription: string;
+    charterCode: string;
+    matchingAmount: number;
+    traxStatus: number;
+    errorMessage: string;
+    postingStatus: number;
+    matchingCashId: number;
+    paymentCashId: number;
+    cashDocumentType: string
+}

@@ -1,0 +1,27 @@
+<h3 mat-dialog-title> Accounting month for the date selected is already closed.
+    <button mat-icon-button
+            mat-dialog-close
+            class="close-dialog-btn">
+        <mat-icon aria-label="Closing button">clear</mat-icon>
+    </button></h3>
+<mat-dialog-content class="mat-dialog-content">
+    <div fxLayout="row"
+         fxLayoutAlign="none center"
+         fxLayoutWrap
+         fxLayoutGap="10px">
+        <p>{{dialogData.text}}</p>
+    </div>
+</mat-dialog-content>
+<div fxLayout="column">
+    <div fxLayout="row"
+         fxLayoutAlign="left start"
+         fxLayoutGap="10%"
+         class="confirmation-input-container">
+        <div fxLayout="row"
+             fxLayoutAlign="space-between end">
+            <button mat-button
+                    (click)="onCancelButtonClicked()">CANCEL</button>
+            <button mat-button
+                    (click)="onProceedButtonClicked()">OKAY</button>
+        </div>
+    </div>

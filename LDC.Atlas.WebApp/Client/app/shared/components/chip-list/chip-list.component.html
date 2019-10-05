@@ -1,0 +1,13 @@
+<mat-chip-list>
+    <!-- Which color should the chips be? -->
+    <mat-chip *ngFor="let text of textList"
+              color="primary"
+              selected
+              disabled=true
+              (removed)="onRemoveClick($event)">
+        {{text}}
+        <mat-icon matChipRemove
+                  [ngClass]="{'disable':!disabled}"
+                  *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+</mat-chip-list>

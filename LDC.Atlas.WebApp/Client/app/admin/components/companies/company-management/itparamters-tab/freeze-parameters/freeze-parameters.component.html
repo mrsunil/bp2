@@ -1,0 +1,21 @@
+<div class="main-container">
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <h1>
+            Freeze Parameter
+        </h1>
+    </div>
+    <div ag-grid="freezeGridOptions"
+         class="ag-theme-material pointer-cursor">
+        <ag-grid-angular style="height:100%;"
+                         class="ag-theme-material"
+                         [rowData]="freezeRowData"
+                         [columnDefs]="freezeColumnDefs"
+                         [singleClickEdit]="true"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         [rowHeight]=atlasAgGridParam.rowHeight
+                         [frameworkComponents]="gridComponents">
+        </ag-grid-angular>
+    </div>
+</div>

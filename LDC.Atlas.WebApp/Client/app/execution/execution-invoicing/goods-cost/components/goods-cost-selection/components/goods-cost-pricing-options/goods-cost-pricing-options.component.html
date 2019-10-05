@@ -1,0 +1,32 @@
+<mat-card class="invoice-creation-card">
+    <mat-card-title>
+        <h2>Pricing Options</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="20%">
+                <mat-select placeholder="Pricing option"
+                            [matTooltip]="'Pricing option'"
+                            [formControl]="pricingOptionsCtrl"
+                            (selectionChange)='onPricingDecimalOptionSelected()'>
+                    <mat-option *ngFor="let pricing of masterdata.pricingOptions"
+                                [value]="pricing.code">{{pricing.description}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="pricingOptionsCtrl.hasError('required')">
+                    Pricing Option is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="20%">
+                <mat-select placeholder="Decimals"
+                            [matTooltip]="'Decimals'"
+                            [formControl]="decimalOptionsCtrl"
+                            (selectionChange)='onPricingDecimalOptionSelected()'>
+                    <mat-option *ngFor="let decimal of decimalOptions"
+                                [value]="decimal">{{decimal}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

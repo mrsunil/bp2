@@ -1,0 +1,34 @@
+.header-tab {
+    margin-bottom: 40px;
+}
+
+.menu-header {
+    background-color: #53c234;
+    color: white;
+
+    mat-icon {
+        color: white;
+    }
+}
+.menu-header:hover {
+    background-color: #53c234;
+    color: white;
+
+    mat-icon {
+        color: white;
+    }
+}
+
+.floating-menu {
+    top: -1px;
+}
+.toggle-button-counterparty
+{
+margin-left:77px;
+margin-top: 60px;
+}
+
+.mat-button-toggle.mat-button-toggle-checked {
+    background-color: #53c234 !important;
+    color: white !important;
+}

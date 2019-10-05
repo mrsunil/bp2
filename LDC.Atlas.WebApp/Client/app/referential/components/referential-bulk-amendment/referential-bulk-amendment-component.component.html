@@ -1,0 +1,105 @@
+<div class="main-container">
+
+    <h2></h2>
+
+    <mat-horizontal-stepper [linear]
+                            (selectionChange)="onChangeStepAction($event)"
+                            #stepper>
+        <ng-template matStepperIcon="edit">
+            <mat-icon>check</mat-icon>
+        </ng-template>
+        <mat-step>
+            <ng-template matStepLabel>Counterparties</ng-template>
+            <atlas-counterparty-list-component #counterpartyListComponent
+                                               (contractsSelected)="onContractsSelected($event)">
+            </atlas-counterparty-list-component>
+            <div fxLayout="row "
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="column "
+                     fxLayoutAlign="start ">
+                    <button mat-button
+                            (click)="onCounterpartiesSelectionDiscardButtonClicked()">
+                        CANCEL
+                    </button>
+                </div>
+                <div fxLayout="column "
+                     fxLayoutAlign="start ">
+                    <div fxLayout="row "
+                         fxLayoutAlign="end start ">
+                        <button mat-raised-button
+                                (click)="onCounterpartiesSelectionNextButtonClicked()">
+                            NEXT
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+
+        <mat-step>
+            <ng-template matStepLabel>Details</ng-template>
+            <atlas-counterparty-detail-component #counterpartyDetailComponent></atlas-counterparty-detail-component>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="column"
+                     fxLayoutAlign="start center">
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-between start">
+                        <button mat-button
+                                (click)="onCounterpartiesSelectionDiscardButtonClicked()">
+                            CANCEL
+                        </button>
+                        <button mat-raised-button
+                                (click)="onDetailsPreviousButtonClicked()">
+                            Previous
+                        </button>
+
+                    </div>
+                </div>
+                <div fxLayout="column "
+                     fxLayoutAlign="end center">
+                    <div fxLayout="row "
+                         fxLayoutAlign="end start">
+                        <button mat-raised-button
+                                (click)="onDetailSaveButtonClicked()">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+
+            <ng-template matStepLabel>Summary</ng-template>
+            <atlas-counterparty-summary-component #counterpartySummaryComponent></atlas-counterparty-summary-component>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <!-- <div fxLayout="column"
+                     fxLayoutAlign="start center">
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-between start">
+                        <button mat-button
+                                (click)="onDetailsCancelButtonClicked()">
+                            CANCEL
+                        </button>
+                    </div>
+                </div> -->
+                <div fxLayout="column"
+                     fxLayoutAlign="end end">
+                    <div fxLayout="row"
+                         fxLayoutAlign="end end">
+                        <button mat-raised-button
+                                (click)="onSummaryOkButtonClicked()">
+                            FINISH
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>
+<!-- <atlas-lock-interval [resourcesInformation]="resourcesInformation">
+</atlas-lock-interval> -->

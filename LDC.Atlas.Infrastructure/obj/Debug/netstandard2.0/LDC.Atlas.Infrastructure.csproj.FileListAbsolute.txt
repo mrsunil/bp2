@@ -1,0 +1,12 @@
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\bin\Debug\netstandard2.0\LDC.Atlas.Infrastructure.deps.json
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\bin\Debug\netstandard2.0\LDC.Atlas.Infrastructure.dll
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\bin\Debug\netstandard2.0\LDC.Atlas.Infrastructure.pdb
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\bin\Debug\netstandard2.0\LDC.Atlas.Application.Core.dll
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\bin\Debug\netstandard2.0\LDC.Atlas.Application.Core.pdb
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\obj\Debug\netstandard2.0\LDC.Atlas.Infrastructure.csprojAssemblyReference.cache
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\obj\Debug\netstandard2.0\LDC.Atlas.Infrastructure.csproj.CoreCompileInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\obj\Debug\netstandard2.0\LDC.Atlas.Infrastructure.AssemblyInfoInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\obj\Debug\netstandard2.0\LDC.Atlas.Infrastructure.AssemblyInfo.cs
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\obj\Debug\netstandard2.0\LDC.Atlas.Infrastructure.csproj.CopyComplete
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\obj\Debug\netstandard2.0\LDC.Atlas.Infrastructure.dll
+C:\AtlasDev\src\LDC.Atlas.Infrastructure\obj\Debug\netstandard2.0\LDC.Atlas.Infrastructure.pdb

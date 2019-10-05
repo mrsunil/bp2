@@ -1,0 +1,12 @@
+<div #container
+     class="atr-cell-editor">
+    <mat-input-container>
+        <input matInput
+               [(ngModel)]="value"
+               #numericInput
+               [ngClass]="{ 'right-aligned': isRightAligned }"
+               [placeholder]="isRequiredField?'Required*':null"
+               [textMask]="{ mask: displayMask }"
+               type="text" />
+    </mat-input-container>
+</div>

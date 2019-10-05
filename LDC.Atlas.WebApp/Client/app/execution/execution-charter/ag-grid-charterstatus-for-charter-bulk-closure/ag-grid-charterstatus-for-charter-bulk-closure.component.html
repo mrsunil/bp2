@@ -1,0 +1,6 @@
+<i *ngIf="!disabled"
+   class="material-icons">{{this.icon}}</i>
+
+<a class="margin-left-i-5"
+   [ngClass]="classApplied"
+   *ngIf="!disabled">{{this.params.value}}</a>

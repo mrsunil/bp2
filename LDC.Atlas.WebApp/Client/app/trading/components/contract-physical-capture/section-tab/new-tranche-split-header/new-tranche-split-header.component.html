@@ -1,0 +1,43 @@
+<div fxLayout="row"
+     fxLayoutAlign="space-between center">
+    <div fxLayout="column"
+         fxLayoutAlign="start start">
+        <h1>{{title}} Creation</h1>
+    </div>
+    <div *ngIf="isSectionTypeTranche"
+         fxLayout="column"
+         fxLayoutAlign="start end">
+        <div fxLayout="row "
+             fxLayoutAlign="end start ">
+            <div class="toggle">
+                <span class="atlas-toggle-span">Automatically tranche based on shipping delivery</span>
+                <mat-slide-toggle mat-raised-button
+                                  (change)="toggleBasedOnShippingDelivery()">
+                </mat-slide-toggle>
+            </div>
+        </div>
+    </div>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="start center"
+     fxLayoutGap="10px"
+     class="add-line-container">
+    <div fxLayout="column"
+         fxLayoutAlign="start start">
+        <h6 class="no-margin">Add new lines:</h6>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start start"
+         fxFlex="4">
+        <mat-form-field>
+            <input matInput
+                   [formControl]="addNewLineCtrl">
+        </mat-form-field>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start start">
+        <button mat-button
+                [disabled]="!showAddline"
+                (click)="onProceedButtonClicked()">Proceed</button>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div [formGroup]="formGroup">
+    <atlas-contextual-search-multiple-autocomplete-select #documentTypeDropdownComponent
+                                                          [options]="documentType"
+                                                          [selectedOptions]="[]"
+                                                          [allOptionsElement]="allTransDocTypeOption"
+                                                          [allSelected]="allDocumentTypeSelected"
+                                                          displayCode="true"
+                                                          valueProperty="transactionDocumentTypeId"
+                                                          codeProperty="label"
+                                                          placeholder="Document Type"
+                                                          placeholderFilter="Document Type"
+                                                          elementName="Document Type"
+                                                          (selectionChangedEvent)="onDocumentTypeChanged($event)">
+    </atlas-contextual-search-multiple-autocomplete-select>
+</div>

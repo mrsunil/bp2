@@ -1,0 +1,22 @@
+<mat-card class="invoice-creation-card">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Total Amount</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="column"
+             fxLayoutAlign="end end"
+             class="total-amount-content">
+            <h2 class="no-margin total-figure">Invoice Total Without Taxes: <span
+                      class="total-figure-value">{{costDirectionSign}}{{formatAmount(amount)}}
+                    {{currencyCode}}</span> </h2>
+            <h2 class="no-margin total-figure">Total Taxes: <span
+                      class="total-figure-value">{{taxCostDirectionSign}}{{formatAmount(this.taxTotal)}}
+                    {{currencyCode}}</span> </h2>
+            <h2 class="no-margin total-figure">Total Invoice Value: Amount to {{invoiceLabel}} <span
+                      class="total-figure-value">{{totalCostDirectionSign}}{{formatAmount(this.total)}}
+                    {{currencyCode}}</span> </h2>
+        </div>
+    </mat-card-content>
+</mat-card>

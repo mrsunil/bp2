@@ -1,0 +1,62 @@
+<mat-card>
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutAlign="space-between center"
+         fxLayoutWrap
+         fxLayoutGap="20px">
+        <h2 class="no-margin">End of Month Postings</h2>
+        <mat-chip-list class="chip-list">
+            <mat-chip selected
+                      disabled>
+                {{dataVersionMonth}}
+            </mat-chip>
+            <mat-chip selected
+                      disabled>
+                {{reportTypeDescription}}
+            </mat-chip>
+        </mat-chip-list>
+        <div fxLayout="row"
+             fxLayoutAlign="end start">
+            <atlas-ag-grid-user-preferences *ngIf="postingsGridOptions && postingsGridOptions.columnDefs"
+                                            [gridOptions]="postingsGridOptions"
+                                            [company]="company"
+                                            [gridId]="gridId"
+                                            [sharingEnabled]="false"
+                                            [savingEnabled]="false"
+                                            [hasColumnHandling]="false"
+                                            #userPreferences>
+            </atlas-ag-grid-user-preferences>
+            <atlas-grid-enlargement *ngIf="postingsGridOptions && postingsGridOptions.columnDefs"
+                                    [gridOptions]="postingsGridOptions"
+                                    [userPreferencesParameters]="gridPreferencesParameters"
+                                    #gridZoom>
+            </atlas-grid-enlargement>
+        </div>
+
+    </div>
+    <mat-card-content>
+        <div ag-grid="detailsGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular style=" height:100%;"
+                             class="ag-theme-material"
+                             [columnDefs]="postingsGridColumns"
+                             [rowData]="postingsGridRows"
+                             [gridOptions]="postingsGridOptions"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             (firstDataRendered)="autosizeColumns()"
+                             rowSelection="multiple"
+                             [singleClickEdit]="true"
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             [suppressRowClickSelection]="true"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             [animateRows]="true"
+                             [enableRangeSelection]="true"
+                             [rowHeight]="atlasAgGridParam.rowHeight"
+                             enableFilter>
+            </ag-grid-angular>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,46 @@
+<div class="report-container"
+     [hidden]="!displayReport">
+    <form [action]="reportUrl"
+          method="post"
+          target="reportFrame"
+          #ssrsSubmissionForm>
+        <input *ngIf="toBeDownloaded"
+               type="hidden"
+               name="rs:Format"
+               value="excel">
+        <input type="hidden"
+               name="rs:Embed"
+               value="true">
+        <input type="hidden"
+               name="rs:ClearSession"
+               value="true">
+        <input type="hidden"
+               name="rc:Parameters"
+               value="{{showParameters}}">
+        <input type="hidden"
+               name="rs:ParameterLanguage"
+               value="{{language}}">
+        <div *ngFor="let param of parameters">
+            <input type="hidden"
+                   name="{{(param['value'] === null || param['value'] === undefined)? param['name'] + ':isnull' : param['name']}}"
+                   value="{{ (param['value'] === null || param['value'] === undefined)? 'true' : param['value']  }}">
+        </div>
+        <input type="hidden"
+               name="rc:Toolbar"
+               value="{{toolbar}}">
+    </form>
+    <iframe name="reportFrame"
+            class="ssrs-reportviewer"
+            [style.width.%]="width"
+            [style.height.%]="height"
+            scrolling="yes"></iframe>
+</div>
+
+
+<mat-card *ngIf="!displayReport"
+          class="empty-state">
+    <div class="empty-state-content">
+        <h3>We love precise reports too</h3>
+        <p>Please select criterias before generating one</p>
+    </div>
+</mat-card>

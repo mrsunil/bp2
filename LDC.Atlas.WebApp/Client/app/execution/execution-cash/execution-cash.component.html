@@ -1,0 +1,25 @@
+<div matToolbarHighlight
+     class="dark-tab header-tab mat-elevation-z6">
+    <div class="header-tab-container">
+        <mat-tab-group [selectedIndex]="tabIndex"
+                       (selectedIndexChange)=onSelectedIndexChanged($event)>
+            <mat-tab label="CASH PAYMENT">
+            </mat-tab>
+            <mat-tab label="CASH RECEIPT">
+            </mat-tab>
+        </mat-tab-group>
+        <span class="fill-space"></span>
+    </div>
+</div>
+<atlas-floating-action-button [fabTitle]="fabTitle"
+                              [fabType]="fabType"
+                              [fabActions]="fabMenuActions"
+                              [isParentLoaded]="isLoaded"
+                              (fabActionClicked)="onFabActionClicked($event)">
+</atlas-floating-action-button>
+<atlas-execution-cash-payment-list-page [hidden]="!isCashPaymentMode"
+                                        #cashPaymentListComponent>
+</atlas-execution-cash-payment-list-page>
+<atlas-execution-cash-receipt-list-page [hidden]="isCashPaymentMode"
+                                        #cashReceiptListComponent>
+</atlas-execution-cash-receipt-list-page>

@@ -1,0 +1,30 @@
+<div class="section-light-box">
+    <h1 mat-dialog-title>Edit Assigned Sections</h1>
+    <div mat-dialog-content>
+        <div ag-grid="sectionsGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular class="ag-theme-material atr-grid"
+                             [rowData]="model.assignedSections"
+                             [columnDefs]="sectionGridCols"
+                             [enableColResize]="true"
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             [frameworkComponents]="gridComponents"
+                             rowMultiSelectWithClick="true"
+                             [enableSorting]="true"
+                             [singleClickEdit]=true
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             enableFilter
+                             [rowHeight]="atlasAgGridParam.rowHeight">
+            </ag-grid-angular>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <span class="fill-space"></span>
+        <button mat-button
+                (click)="onCancelButtonClick()">Cancel</button>
+        <button mat-raised-button
+                (click)="onEditButtonClick()">Edit</button>
+    </div>
+</div>

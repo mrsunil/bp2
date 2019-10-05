@@ -1,0 +1,101 @@
+<mat-sidenav-container>
+    <mat-sidenav-content>
+        <div *ngIf="isLoading">
+            <mat-card>
+                <h2>Loading</h2>
+                <div class="custom-line-title"></div>
+
+                <div fxLayout="row"
+                     fxLayoutAlign="center center"
+                     fxLayoutWrap
+                     fxLayoutGap="20px">
+                    <mat-spinner color="accent"></mat-spinner>
+                </div>
+            </mat-card>
+        </div>
+        <form [ngClass]="{'hidden-during-loading':isLoading}"
+              [formGroup]="captureCounterpartyFormGroup">
+            <atlas-counterparty-header #headerComponent
+                                       [isCreateMode]="isCreateMode"
+                                       [isEditMode]="isEditMode">
+            </atlas-counterparty-header>
+            <atlas-counterparty-management-menu-bar #menuComponent
+                                                    (localViewMode)="onLocalViewModeCalled($event)"
+                                                    (saveMethod)="OnSaveMethodCalled()"
+                                                    [isCreateMode]="isCreateMode"
+                                                    [isViewMode]="isViewMode">
+            </atlas-counterparty-management-menu-bar>
+
+            <div class="main-container">
+                <main>
+
+                    <mat-tab-group dynamicHeight
+                                   [(selectedIndex)]=selectedTab
+                                   class="bright-tab">
+                        <mat-tab label="MAIN">
+                            <atlas-counterparty-capture-form-main-tab #mainTabComponent
+                                                                      [isViewMode]="isViewMode"
+                                                                      [isEditMode]="isEditMode"
+                                                                      [mappedData]="mappedData">
+                            </atlas-counterparty-capture-form-main-tab>
+                        </mat-tab>
+                        <mat-tab label="ADDRESS">
+                            <atlas-counterparty-capture-form-address-tab #addressTabComponent
+                                                                         [isViewMode]="isViewMode">
+                            </atlas-counterparty-capture-form-address-tab>
+                        </mat-tab>
+                        <mat-tab label="CONTACT">
+                            <atlas-counterparty-capture-form-contact-tab #contactTabComponent
+                                                                         [isViewMode]="isViewMode">
+                            </atlas-counterparty-capture-form-contact-tab>
+                        </mat-tab>
+                        <mat-tab label="BANK ACCOUNTS">
+                            <atlas-counterparty-capture-form-bank-account-tab #bankAccountTabComponent
+                                                                              [isViewMode]="isViewMode">
+                            </atlas-counterparty-capture-form-bank-account-tab>
+                        </mat-tab>
+                        <mat-tab label="TAX INFO">
+                            <atlas-counterparty-capture-form-tax-info-tab #taxInfoTabComponent
+                                                                          [isViewMode]="isViewMode">
+                            </atlas-counterparty-capture-form-tax-info-tab>
+                        </mat-tab>
+                        <mat-tab label="REPORTS">
+                            <atlas-counterparty-capture-form-report-tab #reportTabComponent
+                                                                        [counterPartyId]="counterPartyId"
+                                                                        [isCreateMode]="isCreateMode">
+                            </atlas-counterparty-capture-form-report-tab>
+                        </mat-tab>
+                    </mat-tab-group>
+                </main>
+
+                <mat-divider class="trade-capture-divider"></mat-divider>
+                <div class="btn-container">
+                    <div fxFlex="50"
+                         fxLayout="row"
+                         fxAlignLayout="start start">
+                        <button mat-button
+                                type="button"
+                                [disabled]="isViewMode"
+                                (click)="onCancelButtonClicked()">
+                            cancel
+                        </button>
+                    </div>
+                    <div fxFlex="50"
+                         fxLayout="row"
+                         fxAlignLayout="start end">
+                        <span class="fill-space"></span>
+
+                        <button mat-raised-button
+                                type="button"
+                                (click)="onSaveButtonClicked()"
+                                [disabled]="saveInProgress || isViewMode">
+                            save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </mat-sidenav-content>
+    <atlas-lock-interval [resourcesInformation]="resourcesInformation">
+    </atlas-lock-interval>
+</mat-sidenav-container>

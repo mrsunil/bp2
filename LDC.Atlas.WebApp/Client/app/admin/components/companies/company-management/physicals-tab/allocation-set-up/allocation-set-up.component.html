@@ -1,0 +1,28 @@
+<div class="margin main-container">
+    <h2>
+        Allocation Set-Up
+    </h2>
+    <div ag-grid="allocationGridOptions">
+        <ag-grid-angular class="ag-theme-material"
+                         [rowData]="allocationRowData"
+                         [columnDefs]="allocationColumnDefs"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         rowSelection="multiple"
+                         [rowHeight]=atlasAgGridParam.rowHeight>
+        </ag-grid-angular>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <button mat-button
+                (click)="onDiscardButtonClicked()">
+            DISCARD
+        </button>
+        <button mat-button
+                [disabled]="!checkEdit"
+                (click)="onSaveButtonClicked()">
+            Save
+        </button>
+    </div>
+</div>

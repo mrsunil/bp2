@@ -1,0 +1,40 @@
+<h1 mat-dialog-title
+    style="text-transform: uppercase;">Copy Privileges</h1>
+<mat-dialog-content>
+	<div fxLayout="row"
+	     fxLayoutAlign="none start"
+	     fxLayoutWrap
+	     fxLayoutGap="10px">
+		<div fxFlex="100%"
+		     fxFlex.xs="100%"
+		     fxFlex.sm="100%">
+			<p>Whose privileges do you want to copy ?</p>
+		</div>
+	</div>
+	<div fxLayout="column"
+	     fxLayoutAlign="none center"
+	     fxLayoutWrap
+	     fxLayoutGap="10px">
+		<form [formGroup]="userForm">
+			<input formControlName="userCtrl"
+			       placeholder="Select User"
+			       required
+			       matInput
+			       [matAutocomplete]="User.autocomplete">
+			<atlas-api-collection-autocomplete-dropdown #User="apiCollectionAutocompleteDropdown"
+			                                            [apiCollection]="filteredUsers"
+			                                            displayProperty="displayName">
+			</atlas-api-collection-autocomplete-dropdown>
+			<mat-error *ngIf="userCtrl.hasError('inDropdownList')">
+				Incorrect value
+			</mat-error>
+		</form>
+	</div>
+</mat-dialog-content>
+<mat-dialog-actions style="margin-top:20px; text-align: right; display: block;">
+	<span class="fill-space"></span>
+	<button mat-button
+	        (click)="onCloseCancel()">Cancel</button>
+	<button mat-raised-button
+	        (click)="onCloseConfirm()">Import</button>
+</mat-dialog-actions>

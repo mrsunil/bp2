@@ -1,0 +1,74 @@
+.mat-table {
+    overflow: auto;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 0px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+
+}
+
+.mat-form-field-flex {
+    height: 44px !important;
+    font-size: 14px !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.mat-form-field-infix {
+    padding-top: 5px !important;
+}
+
+.mat-error {
+    margin-top: 15px;
+}
+
+.large-form {
+    width: 100%;
+    border-radius: 5px 5px;
+    background-color: white;
+}
+
+.search-card {
+    margin-bottom: 16px;
+}
+
+.search-bar {
+    border-radius: 5px 5px;
+    background-color: #FFFAFC;
+}
+
+.table-title {
+    background-color: white;
+}
+
+.ag-header-row {
+    border-style: none !important;
+}
+
+.loading {
+    background-color: white;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.menu-header {
+    background-color: #53c234;
+    color: white;
+
+    mat-icon {
+        color: white;
+    }
+}
+
+:host ::ng-deep.ag-menu {
+    overflow-y: hidden !important;
+}
+
+/*/deep/.mat-form-field-appearance-outline .mat-form-field-outline{
+	color:white;
+}*/

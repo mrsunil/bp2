@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.UserIdentity</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.PrivilegesController.GetPrivileges">
+            <summary>
+            Returns the list of privileges.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.ProfilesController.GetProfiles(LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of profiles.
+            </summary>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.ProfilesController.GetProfileById(System.Int32)">
+            <summary>
+            Returns a profile by its identifier.
+            </summary>
+            <param name="profileId">The profile identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.ProfilesController.GetUserProfiles(System.Int64)">
+            <summary>
+            Returns the list of profiles for a user.
+            </summary>
+            <param name="userId">The user identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.ProfilesController.CreateProfile(LDC.Atlas.Services.UserIdentity.Application.Commands.CreateProfileCommand)">
+            <summary>
+            Creates a new profile.
+            </summary>
+            <param name="profile">The profile to create.</param>
+            <response code="201">Profile created.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.ProfilesController.UpdateProfile(System.Int32,LDC.Atlas.Services.UserIdentity.Application.Commands.UpdateProfileCommand)">
+            <summary>
+            Updates an existing profile.
+            </summary>
+            <param name="profileId">The identifier of the profile to update.</param>
+            <param name="profile">The profile to update.</param>
+            <response code="204">Profile updated.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.ProfilesController.DeleteProfile(System.Int32)">
+            <summary>
+            Deletes a profile.
+            </summary>
+            <param name="profileId">The identifier of the profile to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.ProfilesController.GetProfilesByCompanyId(System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns profiles based on company.
+            </summary>
+            <param name="companyId">The Company id.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.GetUsers(LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.String)">
+            <summary>
+            Returns the list of users.
+            </summary>
+            <param name="pagingOptions">The options for pagination.</param>
+            <param name="name">The username searched.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.GetUserById(System.Int64,System.Boolean)">
+            <summary>
+            Returns a user by its identifier.
+            </summary>
+            <param name="userId">The user identifier.</param>
+            <param name="includeDeletedUsers">Option to also return a deleted user.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.GetUserByActiveDirectoryId(System.String)">
+            <summary>
+            Returns a user by its AD identifier (UPN or Azure Object Identifier).
+            </summary>
+            <param name="userId">The user identifier in the AD.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.GetMyPrivileges(System.String)">
+            <summary>
+            Returns the list of privileges for the current user in a company.
+            </summary>
+            <param name="company">The company.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.GetMe">
+            <summary>
+            Returns the current user.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.UpdateMyLastConnectionDate">
+            <summary>
+            Updates the last connection date for the current user with the current date.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.GetDirectoryUsers(LDC.Atlas.Infrastructure.ViewModel.PagingOptions,System.String)">
+            <summary>
+            Search for users in the Active Directory.
+            </summary>
+            <param name="pagingOptions">The paging options.</param>
+            <param name="searchTerm">The search term.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.GetDirectoryUsersById(System.String)">
+            <summary>
+            Returns an Active Directory users by its identifier.
+            </summary>
+            <param name="userId">The user identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.CreateUser(LDC.Atlas.Services.UserIdentity.Application.Commands.CreateUserCommand)">
+            <summary>
+            Creates a new user.
+            </summary>
+            <param name="user">The user to create.</param>
+            <response code="201">User created.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.UpdateUser(System.Int64,LDC.Atlas.Services.UserIdentity.Application.Commands.UpdateUserCommand)">
+            <summary>
+            Updates a user.
+            </summary>
+            <param name="userId">The user identifier.</param>
+            <param name="user">The user information to update.</param>
+            <response code="204">User updated.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.DeleteUser(System.Int64)">
+            <summary>
+            Deletes a user.
+            </summary>
+            <param name="userId">The identifier of the user to delete.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.GetUsersByProfileId(System.String,System.String,LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns users based on profile.
+            </summary>
+            <param name="profileIds">The Profile ids.</param>
+            <param name="companyId">The Company id.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.UserIdentity.Controllers.UsersController.SyncAndSavADStatus">
+            <summary>
+            Save AD data through overnight process.
+            </summary>
+        </member>
+    </members>
+</doc>

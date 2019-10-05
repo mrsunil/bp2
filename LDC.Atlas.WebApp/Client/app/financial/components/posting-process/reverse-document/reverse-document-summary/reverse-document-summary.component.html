@@ -1,0 +1,106 @@
+<div class="main-container">
+    <div fxLayout="row"
+         class="quick-sum-div-height"
+         fxLayoutAlign="space-between center">
+        <div fxLayout="column "
+             fxLayoutAlign="start ">
+            <h3>Original document [{{this.documentReference}}], reversed by Reversal document:
+                [{{this.reversedDocumentReference}}]</h3>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="end">
+            <button mat-icon-button
+                    [matMenuTriggerFor]="menu1">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <mat-menu #menu1="matMenu">
+                <button mat-menu-item
+                        [matMenuTriggerFor]="exportMenu"
+                        (mouseover)="OnExportButton()">
+                    <mat-icon>import_export</mat-icon><span>Export</span>
+                </button>
+            </mat-menu>
+            <mat-menu #exportMenu="matMenu">
+                <button mat-menu-item
+                        (click)="onExportButtonClickedAsExcel()">
+                    <mat-icon>import_export</mat-icon><span>Export as Excel</span>
+                </button>
+                <button mat-menu-item
+                        (click)="onExportButtonClickedAsCSV()">
+                    <mat-icon>import_export</mat-icon><span>Export as CSV</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+    <div fxLayout="row"
+         class="quick-sum-div-height"
+         fxLayoutAlign="space-between center">
+        <div class="create-accounting-document-fields">
+            <div fxLayout="column">
+                <div fxLayout="row"
+                     fxLayoutAlign="left start"
+                     fxLayoutGap="10px">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Document Date"
+                               [formControl]='docDateFromCtrl'
+                               autocomplete="off"
+                               readonly="true">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Value Date"
+                               readonly="true"
+                               autocomplete="off"
+                               [formControl]='valueDateFormCtrl'>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="left start"
+                     fxLayoutGap="10px">
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="Accounting Period"
+                               readonly="true"
+                               autocomplete="off"
+                               [formControl]='accPeriodFormCtrl'>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Currency</mat-label>
+                        <input matInput
+                               [formControl]='currencyCtrl'
+                               autocomplete="off"
+                               readonly="true">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <div fxLayout="column"
+             fxFlex="98.5">
+            <div ag-grid="reverseDocumntSummaryGridOptions">
+                <ag-grid-angular class="ag-theme-material grid-size"
+                                 [rowData]="accountingDocumentLine"
+                                 [columnDefs]="reverseDocumentSummaryGridCols"
+                                 domLayout="autoHeight"
+                                 (gridReady)="onGridReady($event)"
+                                 [pagination]="false"
+                                 [paginationPageSize]="20"
+                                 [enableSorting]="true"
+                                 [enableColResize]="true"
+                                 enableFilter="false"
+                                 [rowHeight]="atlasAgGridParam.rowHeight">
+                </ag-grid-angular>
+            </div>
+            <span class="fill-space"></span>
+            <div fxLayout="column"
+                 fxLayoutAlign="start end"
+                 class="total-amount-content">
+                <mat-card-subtitle class="total-figure">Total Amount:
+                    <span class="total-figure-value">{{totalAmount}}</span> </mat-card-subtitle>
+            </div>
+        </div>
+    </div>
+</div>

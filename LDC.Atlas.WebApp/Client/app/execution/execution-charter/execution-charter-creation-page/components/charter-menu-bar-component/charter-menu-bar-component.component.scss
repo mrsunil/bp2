@@ -1,0 +1,20 @@
+.menu-bar-action-icon {
+    cursor: pointer;
+    background-color: #81cf5c;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+mat-toolbar {
+    height: 40px !important;
+    background-color: white !important;
+}
+
+.white-icon {
+    color: white;
+    height: 24px;
+    width: 24px;
+    vertical-align: bottom;
+}

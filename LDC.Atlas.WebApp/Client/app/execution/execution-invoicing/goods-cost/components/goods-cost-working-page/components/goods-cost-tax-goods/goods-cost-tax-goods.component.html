@@ -1,0 +1,38 @@
+<mat-card class="invoice-creation-card"
+          fxFlex>
+    <mat-card-title>
+        Tax For Goods
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="start center"
+             fxLayoutGap="10px">
+            <div fxFlex="33">
+                <mat-form-field>
+                    <mat-select placeholder="Goods VAT Code"
+                                [formControl]="invoiceGoodsVatCodeCtrl"
+                                matTooltip="VAT Code"
+                                [panelWidth]="panelSize"
+                                (optionSelected)="vatCodeSelected($event.option.value)">
+                        <mat-option *ngFor="let vatCode of filteredVatCodes"
+                                    [value]="vatCode.vatCode">
+                            {{vatCode.vatCode}} | {{vatCode.vatDescription}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxFlex="22">
+                <atlas-form-input [fieldControl]="invoiceVatRateCtrl"
+                                  [isEditable]="isInputField"
+                                  label="VAT Rate">
+                </atlas-form-input>
+            </div>
+            <div fxFlex="33">
+                <atlas-form-input [fieldControl]="invoiceVatAmountCtrl"
+                                  [isEditable]="isInputField"
+                                  label="Vat Amount For Goods">
+                </atlas-form-input>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

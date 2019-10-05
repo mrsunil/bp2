@@ -1,0 +1,22 @@
+<!-- Layout divided by column -->
+<!-- container -->
+<div fxLayout="row"
+     fxLayout.md="column"
+     fxLayoutAlign="space-around start"
+     class="status-tab-main">
+    <!--left-->
+    <div fxLayout="column"
+         fxLayoutAlign="start left"
+         fxFlex="48">
+        <atlas-allocation-info-form-component #AllocationInfoFormComponentComponent></atlas-allocation-info-form-component>
+        <atlas-cash-against-invoice-form-component #CashAgainstInvoiceFormComponentComponent></atlas-cash-against-invoice-form-component>
+        <atlas-document-status-form-component #DocumentStatusFormComponentComponent></atlas-document-status-form-component>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start right"
+         fxFlex="48">
+        <atlas-invoicing-form-component #InvoicingFormComponentComponent></atlas-invoicing-form-component>
+        <atlas-charter-form-component #CharterFormComponentComponent></atlas-charter-form-component>
+        <atlas-amendment-audit-form-component #AmendmentAuditFormComponentComponent></atlas-amendment-audit-form-component>
+    </div>
+</div>

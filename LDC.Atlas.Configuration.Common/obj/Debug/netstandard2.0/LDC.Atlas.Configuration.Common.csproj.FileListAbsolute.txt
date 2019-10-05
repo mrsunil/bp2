@@ -1,0 +1,16 @@
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\bin\Debug\netstandard2.0\LDC.Atlas.Configuration.Common.deps.json
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\bin\Debug\netstandard2.0\LDC.Atlas.Configuration.Common.dll
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\bin\Debug\netstandard2.0\LDC.Atlas.Configuration.Common.pdb
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\bin\Debug\netstandard2.0\LDC.Atlas.Application.Core.dll
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\bin\Debug\netstandard2.0\LDC.Atlas.DataAccess.dll
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\bin\Debug\netstandard2.0\LDC.Atlas.Infrastructure.dll
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\bin\Debug\netstandard2.0\LDC.Atlas.DataAccess.pdb
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\bin\Debug\netstandard2.0\LDC.Atlas.Infrastructure.pdb
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\bin\Debug\netstandard2.0\LDC.Atlas.Application.Core.pdb
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\obj\Debug\netstandard2.0\LDC.Atlas.Configuration.Common.csprojAssemblyReference.cache
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\obj\Debug\netstandard2.0\LDC.Atlas.Configuration.Common.csproj.CoreCompileInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\obj\Debug\netstandard2.0\LDC.Atlas.Configuration.Common.AssemblyInfoInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\obj\Debug\netstandard2.0\LDC.Atlas.Configuration.Common.AssemblyInfo.cs
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\obj\Debug\netstandard2.0\LDC.Atlas.Configuration.Common.csproj.CopyComplete
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\obj\Debug\netstandard2.0\LDC.Atlas.Configuration.Common.dll
+C:\AtlasDev\src\LDC.Atlas.Configuration.Common\obj\Debug\netstandard2.0\LDC.Atlas.Configuration.Common.pdb

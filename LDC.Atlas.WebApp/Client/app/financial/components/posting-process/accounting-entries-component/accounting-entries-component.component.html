@@ -1,0 +1,47 @@
+<atlas-accounting-tab-group></atlas-accounting-tab-group>
+
+<div class="main-container">
+    <mat-slide-toggle [(ngModel)]="dataLoader.includeDocumentMatchingInformation">Include Document Matching Information
+    </mat-slide-toggle>
+    <mat-card>
+        <div fxLayout="row"
+             fxLayoutAlign="start none"
+             class="search">
+            <mat-form-field>
+                <input matInput
+                       [formControl]="documentReferenceCtrl"
+                       placeholder="Document Reference"
+                       autocomplete="off"
+                       (keydown.enter)="onQuickSearchButtonClicked()"
+                       #message>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput
+                       [formControl]="contractNoCtrl"
+                       placeholder="Contract Number"
+                       autocomplete="off"
+                       (keydown.enter)="onQuickSearchButtonClicked()"
+                       #action>
+            </mat-form-field>
+            <button mat-raised-button
+                    (click)="onQuickSearchButtonClicked()"
+                    class="heroGradient">
+                <mat-icon aria-label="Search"
+                          class="search-icon">search</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <atlas-list-and-search class="default-height"
+                           (loadDataStarted)="getAccountingEntriesByMatchFlag(); getAccountingEntriesByDocumentReference();"
+                           [gridCode]="gridCode"
+                           [gridTitle]="'Accounting Entries'"
+                           [company]="company"
+                           [additionalFilters]="additionalFilters"
+                           [dataLoader]="dataLoader"
+                           [pageSize]="100"
+                           [loadOnInit]="loadOnInit"
+                           (dataLoaded)="onDataLoadClicked($event)"
+                           #listAndSearchComponent>
+    </atlas-list-and-search>
+</div>

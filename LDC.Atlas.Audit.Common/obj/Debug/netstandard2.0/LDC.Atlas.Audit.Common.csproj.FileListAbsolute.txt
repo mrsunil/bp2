@@ -1,0 +1,16 @@
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\bin\Debug\netstandard2.0\LDC.Atlas.Audit.Common.deps.json
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\bin\Debug\netstandard2.0\LDC.Atlas.Audit.Common.dll
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\bin\Debug\netstandard2.0\LDC.Atlas.Audit.Common.pdb
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\bin\Debug\netstandard2.0\LDC.Atlas.Application.Core.dll
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\bin\Debug\netstandard2.0\LDC.Atlas.DataAccess.dll
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\bin\Debug\netstandard2.0\LDC.Atlas.Infrastructure.dll
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\bin\Debug\netstandard2.0\LDC.Atlas.Application.Core.pdb
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\bin\Debug\netstandard2.0\LDC.Atlas.DataAccess.pdb
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\bin\Debug\netstandard2.0\LDC.Atlas.Infrastructure.pdb
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\obj\Debug\netstandard2.0\LDC.Atlas.Audit.Common.csprojAssemblyReference.cache
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\obj\Debug\netstandard2.0\LDC.Atlas.Audit.Common.csproj.CoreCompileInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\obj\Debug\netstandard2.0\LDC.Atlas.Audit.Common.AssemblyInfoInputs.cache
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\obj\Debug\netstandard2.0\LDC.Atlas.Audit.Common.AssemblyInfo.cs
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\obj\Debug\netstandard2.0\LDC.Atlas.Audit.Common.csproj.CopyComplete
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\obj\Debug\netstandard2.0\LDC.Atlas.Audit.Common.dll
+C:\AtlasDev\src\LDC.Atlas.Audit.Common\obj\Debug\netstandard2.0\LDC.Atlas.Audit.Common.pdb

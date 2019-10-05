@@ -1,0 +1,114 @@
+<mat-card class="shipment-details">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Shipment Period</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="start"
+             fxLayoutGap="16px">
+            <div class="custom-form"
+                 fxFlex="25%"
+                 [class.displayMode]="!periodTypeCtrl.enabled"
+                 [class.isEmpty]="!periodTypeCtrl.value"
+                 [class.required-field]="periodTypeCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Period Type"
+                           [required]="periodTypeCtrl.isRequired"
+                           [matAutocomplete]="periodTypes"
+                           [formControl]="periodTypeCtrl"
+                           autocomplete="off"
+                           [matTooltip]="'Period Type'">
+                    <mat-autocomplete #periodTypes="matAutocomplete"
+                                      [panelWidth]="panelSize"
+                                      [displayWith]="displayPeriodType.bind(this)">
+                        <mat-option *ngFor="let periodType of filteredPeriodType"
+                                    [value]="periodType.periodTypeId">
+                            {{periodType.periodTypeCode}} | {{periodType.periodTypeDescription}}
+                        </mat-option>
+
+                    </mat-autocomplete>
+                    <mat-error *ngIf="periodTypeCtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                    <mat-error *ngIf="periodTypeCtrl.hasError('inDropdownList')">
+                        Value not in list
+                    </mat-error>
+                    <mat-hint *ngIf="periodTypeCtrl.isRequired && periodTypeCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="custom-form"
+                 fxFlex="20%"
+                 [class.displayMode]="!periodFromCtrl.enabled"
+                 [class.isEmpty]="!periodFromCtrl.value"
+                 [class.required-field]="periodFromCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           [required]="periodFromCtrl.isRequired"
+                           [matDatepicker]="frompicker"
+                           placeholder="From"
+                           value="frompicker"
+                           autocomplete="off"
+                           [formControl]='periodFromCtrl'>
+                    <mat-datepicker-toggle matSuffix
+                                           [for]="frompicker"></mat-datepicker-toggle>
+                    <mat-datepicker #frompicker></mat-datepicker>
+                    <mat-error *ngIf="periodFromCtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                    <mat-error *ngIf="periodToCtrl.hasError('isBeforeDate')">
+                        Cannot be After Period To
+                    </mat-error>
+                    <mat-hint *ngIf="periodFromCtrl.isRequired && periodFromCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="custom-form"
+                 fxFlex="20%"
+                 [class.displayMode]="!periodToCtrl.enabled"
+                 [class.isEmpty]="!periodToCtrl.value"
+                 [class.required-field]="periodToCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           [required]="periodToCtrl.isRequired"
+                           [matDatepicker]="topicker"
+                           placeholder="To"
+                           value="topicker"
+                           autocomplete="off"
+                           [formControl]='periodToCtrl'>
+                    <mat-datepicker-toggle matSuffix
+                                           [for]="topicker"></mat-datepicker-toggle>
+                    <mat-datepicker #topicker></mat-datepicker>
+                    <mat-error *ngIf="periodToCtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                    <mat-error *ngIf="periodToCtrl.hasError('isBeforeDate')">
+                        Cannot be before Period From
+                    </mat-error>
+                    <mat-hint *ngIf="periodToCtrl.isRequired && periodToCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div fxFlex="25%"
+                 [class.displayMode]="!positionTypeCtrl.enabled">
+                <mat-form-field>
+                    <mat-select placeholder="Position Type"
+                                [required]="positionTypeCtrl.isRequired"
+                                [formControl]="positionTypeCtrl">
+                        <mat-option *ngFor="let type of masterdata.positionMonthTypes"
+                                    [value]="type.positionMonthTypeCode">{{type.positionMonthTypeDescription}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

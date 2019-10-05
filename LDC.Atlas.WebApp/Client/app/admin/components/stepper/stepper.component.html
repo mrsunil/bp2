@@ -1,0 +1,43 @@
+<div matToolbarHighlight
+     class="dark-tab header-tab mat-elevation-z6">
+    <div class="header-tab-container">
+        <nav mat-tab-nav-bar
+             matToolbarHighlight>
+            <div *ngFor="let routeLink of routeLinks">
+                <a mat-tab-link
+                   *ifAuthorized="routeLink.privilege, company:this.company"
+                   [routerLink]="routeLink.link"
+                   routerLinkActive
+                   #rla="routerLinkActive"
+                   [active]="isActive(routeLink)">
+                    {{ routeLink.label }}
+                </a>
+            </div>
+            <a mat-tab-link
+               [matMenuTriggerFor]="reports">
+                Reports
+            </a>
+
+            <mat-menu #reports="matMenu"
+                      [overlapTrigger]="false"
+                      xPosition="after">
+                <span *ngFor="let item of filteredTemplates">
+                    <button mat-button
+                            (click)="OnReportClick(item)">
+                        {{item.name}}
+                    </button>
+                </span>
+            </mat-menu>
+        </nav>
+        <span class="fill-space"></span>
+        <!-- Add FAB extanded if needed -->
+        <button *ngIf="hasAddButton"
+                (click)="onAddButtonClicked()"
+                mat-raised-button
+                class="fab-text-button"
+                color="accent">
+            <mat-icon class="mdc-fab__icon material-icons">add</mat-icon>
+            {{ buttonText }}
+        </button>
+    </div>
+</div>

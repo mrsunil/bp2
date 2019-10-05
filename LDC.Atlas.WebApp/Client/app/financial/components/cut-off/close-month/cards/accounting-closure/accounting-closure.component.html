@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Accounting Closure</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div>Last Month Closed: {{accountingLastMonthClosed | date : "MMM y"}}
+                <button mat-button
+                        (click)="onUpdateAccountingSetup(true);"
+                        [disabled]="isLastMonthDisable || buttonEditable">REVERSE</button>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div>Closable Period: {{accountingClosablePeriod | date : "MMM y"}}
+                <button mat-button
+                        (click)="onUpdateAccountingSetup(false);"
+                        [disabled]="isClosableMonthDisable || buttonEditable">CLOSE</button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

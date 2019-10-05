@@ -1,0 +1,17 @@
+<mat-card class="invoice-creation-card"
+          fxFlex="100">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Total Amount</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxFlex
+             class="total-box">
+            <mat-card-subtitle class="total-figure">Total Invoice Value (Amount to {{invoiceLabel}}):
+                <span class="total-figure-value">{{totalCostDirectionSign}}{{formatAmount(amount)}}
+                    {{currencyCode}}</span>
+            </mat-card-subtitle>
+        </div>
+    </mat-card-content>
+</mat-card>

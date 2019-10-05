@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Operations Closure</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div>Last Month Closed: {{operationsLastMonthClosed | date : "MMM y"}}
+                <span matTooltip="A period closed for Accounting, cannot be opened for Operations"
+                      [matTooltipDisabled]="!isLastMonthDisable">
+                    <button mat-button
+                            (click)="onUpdateAccountingSetup(true)"
+                            [disabled]="isLastMonthDisable || buttonReverseEditable">REVERSE</button>
+                </span>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div>Closable Period: {{operationsClosablePeriod | date : "MMM y"}}
+                <button mat-button
+                        (click)="onUpdateAccountingSetup(false)"
+                        [disabled]="isClosableMonthDisable || buttonCloseEditable">CLOSE</button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

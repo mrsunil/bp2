@@ -1,0 +1,19 @@
+.container {
+    height: 100%;
+
+    >div {
+        height: 100%;
+
+    }
+}
+
+.value-field {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.compass-icon {
+    color: #605c5e;
+}

@@ -1,0 +1,29 @@
+ <atlas-execution-invoicing-summary-header #summaryHeaderComponent
+                                           [isCreationMode]=isCreationMode></atlas-execution-invoicing-summary-header>
+ <div fxLayout="row" fxLayout.md="column"
+                     fxLayoutAlign="space-around start"
+                     class="main-container">
+     <div fxLayout="column" fxLayoutAlign="start left"
+                            fxFlex="100%">
+         <atlas-goods-cost-value-of-goods #valueOfGoodsComponent
+                                          (totalAmountCalculated)="ontotalAmountCalculated($event)">
+         </atlas-goods-cost-value-of-goods>
+         <atlas-goods-cost-additional-cost #additionalCostComponent
+                                           [selectedGoodsVat]="selectedGoodsVatCode"
+                                           (totalCostAndVatCode)="onChangeCostContract($event)">
+         </atlas-goods-cost-additional-cost>
+         <div fxLayout="row"
+              fxLayoutGap="16px">
+             <atlas-goods-cost-tax-goods #taxGoodsComponent
+                                         (selectedGoodsTaxCode)="onChangeGoodsTaxCode($event)"
+                                         fxFlex="50%"></atlas-goods-cost-tax-goods>
+             <atlas-goods-cost-payments #paymentsComponent
+                                        fxFlex="50%"></atlas-goods-cost-payments>
+         </div>
+         <atlas-goods-cost-tax-cost #taxCostComponent
+                                    (totalCostTaxCalculated)="onTotalCostTaxCalculated($event)"
+                                    fxFlex="50%"></atlas-goods-cost-tax-cost>
+         <atlas-goods-cost-total class="goods-cost-total"
+                                 #totalComponent></atlas-goods-cost-total>
+     </div>
+ </div>

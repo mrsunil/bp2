@@ -1,0 +1,814 @@
+<div class="screenfullwidth">
+    <div class="main-container ux-component-list">
+        <div layout="row"
+             layout-fill>
+            <header color="accent">
+                <div class="docs-header-section">
+                    <div class="docs-header-headline">
+                        <select #languageSelection
+                                (change)="translateService.use(languageSelection.value)">
+                            <option *ngFor="let language of translateService.getLangs()"
+                                    [value]="language"
+                                    [selected]="language === translateService.currentLang">
+                                {{ language }}
+                            </option>
+                        </select>
+
+                        <h1>{{'TITLE_PAGE'|translate}}</h1>
+                    </div>
+
+                    <div fxLayout="row"
+                         fxLayoutAlign=" none">
+                        <mat-form-field flex="50">
+                            <input matInput
+                                   placeholder="{{'INPUT_LABEL' | translate}}">
+                        </mat-form-field>
+                        <mat-form-field flex="20">
+                            <input matInput
+                                   placeholder="{{'INPUT_LABEL' | translate}}">
+                        </mat-form-field>
+                        <mat-form-field flex="30">
+                            <input matInput
+                                   placeholder="{{'INPUT_LABEL' | translate}}">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <div layout="row"
+             layout-margin>
+            <section>
+                <h2> Section</h2>
+            </section>
+            <section>
+                <mat-button-toggle-group class="toggle-group"
+                                         name="fontStyle"
+                                         aria-label="Font Style">
+                    <mat-button-toggle value=""
+                                       selected>{{'TOOGLE' | translate}}</mat-button-toggle>
+                    <mat-button-toggle value="">{{'TOOGLE' | translate}}</mat-button-toggle>
+                </mat-button-toggle-group>
+            </section>
+            <!-- <mat-divider></mat-divider> -->
+            <mat-list>
+                <!-- search -->
+                <mat-card>
+
+                    <div fxLayout="row"
+                         fxLayoutAlign="start none"
+                         class="search">
+                        <mat-form-field>
+                            <input matInput
+                                   value=""
+                                   placeholder="{{'MESSAGE' | translate}}"
+                                   #message>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput
+                                   value=""
+                                   placeholder="{{'ACTION' | translate}}"
+                                   #action>
+                        </mat-form-field>
+                        <button mat-raised-button
+                                color="accent">ok</button>
+                    </div>
+                </mat-card>
+                <mat-card class="search-filter">
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-between start"
+                         class="head-filter ">
+                        <div>
+                            <mat-form-field>
+                                <mat-select placeholder="{{'SELECT.FIELD_NAME' | translate}}">
+                                    <mat-option value="option">{{'SELECT.OPTION' | translate}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="more-filter">
+                            <button mat-button
+                                    color="pink">{{'MORE_FILTERS' | translate}}</button>
+                        </div>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-between none"
+                         class="mt-1">
+                        <button mat-button>{{'APPLY_FILTERS' | translate}}</button>
+                        <div class="button-row">
+
+                            <button mat-icon-button="">
+                                <span class="mat-button-wrapper">
+                                    <mat-icon _ngcontent-c58=""
+                                              class="mat-icon material-icons"
+                                              role="img"
+                                              aria-hidden="true">delete_outlin</mat-icon>
+                                </span>
+                            </button>
+                            <button mat-icon-button="">
+                                <span class="mat-button-wrapper">
+                                    <mat-icon class="mat-icon material-icons"
+                                              role="img"
+                                              aria-hidden="true">share</mat-icon>
+                                </span>
+                            </button>
+                            <button mat-icon-button="">
+                                <span class="mat-button-wrapper">
+                                    <mat-icon class="mat-icon material-icons"
+                                              role="img"
+                                              aria-hidden="true">save_outlin</mat-icon>
+                                </span>
+                            </button>
+                            <button mat-icon-button="">
+                                <span class="mat-button-wrapper">
+                                    <mat-icon role="img"
+                                              aria-hidden="true">favorite_outlin</mat-icon>
+                                </span>
+                            </button>
+
+                        </div>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="{{'EMAIL_FIELD.FIELD_NAME' | translate}}"
+                               [formControl]="email"
+                               required>
+                        <span *ngIf="email.touched && email.invalid"
+                              matSuffix>
+                            <mat-icon>error</mat-icon>
+                        </span>
+                        <span *ngIf="email.touched && email.valid"
+                              matSuffix>
+                            <mat-icon>check_circle</mat-icon>
+                        </span>
+                        <mat-error *ngIf="email.invalid">{{getErrorMessage() | translate}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput
+                               placeholder="{{'COMPLEXE_VALUE_FIELD' | translate}}">
+                        <mat-icon matSuffix>help</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <input type="text"
+                               placeholder="{{'AUTOCOMPLETE_FIELD' | translate}}"
+                               aria-label="Assignee"
+                               matInput
+                               [formControl]="myControl"
+                               [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete"
+                                          [displayWith]="displayFn">
+                            <mat-option *ngFor="let option of filteredOptions | async"
+                                        [value]="option">
+                                {{option.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select placeholder="{{'DROPDOWN_FIELD.FIELD_NAME' | translate}}">
+                            <mat-option value="option"
+                                        style="padding-top: 10px">{{'DROPDOWN_FIELD.OPTION' | translate}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput
+                               [matDatepicker]="picker"
+                               placeholder="{{'DATE_PICKER_FIELD' | translate}}">
+                        <mat-datepicker-toggle matSuffix
+                                               [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </mat-card>
+            </mat-list>
+
+
+
+            <div fxLayout="row">
+                <div fxFlex="100">
+                    <mat-card>
+                        <mat-chip-list>
+                            <mat-chip>chips</mat-chip>
+                            <mat-chip color="primary"
+                                      selected>Primary fish</mat-chip>
+                            <mat-chip color="accent"
+                                      selected>Accent fish</mat-chip>
+                            <mat-chip color="accent"
+                                      selected>
+                                <mat-icon>help</mat-icon> chips with icon
+                            </mat-chip>
+                            <mat-chip color="lemon"
+                                      selected>Lemon Chip</mat-chip>
+                            <mat-chip color="energy"
+                                      selected>Energy Chip</mat-chip>
+                            <mat-chip color="apricot"
+                                      selected>Apricot</mat-chip>
+                            <mat-chip color="coral"
+                                      selected>Coral</mat-chip>
+                            <mat-chip color="cherry"
+                                      selected>Cherry Pink</mat-chip>
+                            <mat-chip color="violine"
+                                      selected>Violine</mat-chip>
+                            <mat-chip color="royal"
+                                      selected>Royal</mat-chip>
+                            <mat-chip color="grass"
+                                      selected>Grass</mat-chip>
+                            <mat-chip color="aqua"
+                                      selected>Aqua</mat-chip>
+                            <mat-chip color="duck"
+                                      selected>Duck</mat-chip>
+                        </mat-chip-list>
+                    </mat-card>
+                </div>
+            </div>
+
+
+            <!-- chips -->
+            <!-- <mat-grid-list cols="4"
+			               class="docs-component-overview"
+                           gutterSize="24px"> -->
+
+            <div fxLayout="row"
+                 fxLayoutGap="24px">
+                <!-- button -->
+                <div fxFlex="33">
+                    <mat-card>
+                        <mat-card-header>
+                            <h2>{{'BUTTONS_BOX.TITLE'| translate}}</h2>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <!-- star button -->
+                            <button mat-button>{{'BUTTONS_BOX.BASIC'| translate}}</button>
+                            <button mat-raised-button>{{'BUTTONS_BOX.RAISED'| translate}}</button>
+                            <!-- end button -->
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div fxFlex="33">
+                    <mat-card>
+                        <mat-card-header>
+                            <h2>{{'FLOATING_ACTION_BUTTON_BOX.TITLE' | translate}}</h2>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <!-- start floating -->
+                            <button mat-fab
+                                    class="floating-menu"
+                                    color="accent"
+                                    [matMenuTriggerFor]="menu">
+                                <mat-icon class="mdc-fab__icon material-icons">add</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu"
+                                      class="floating-menu">
+                                <h5>
+                                    <mat-icon class="mdc-fab__icon material-icons">edit</mat-icon>
+                                    <span>{{'FLOATING_ACTION_BUTTON_BOX.CUSTOMIZE' | translate}} </span>
+                                </h5>
+                                <button mat-menu-item>
+                                    <mat-icon>lock_outline</mat-icon>
+                                    <span>{{'FLOATING_ACTION_BUTTON_BOX.CLOSE' | translate}}</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <mat-icon>not_interested_outlined</mat-icon>
+                                    <span>{{'FLOATING_ACTION_BUTTON_BOX.NEW_CALL_OFF' | translate}}</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <mat-icon>directions_boat</mat-icon>
+                                    <span>{{'FLOATING_ACTION_BUTTON_BOX.ASSIGN' | translate}}</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <mat-icon>call_split</mat-icon>
+                                    <span>{{'FLOATING_ACTION_BUTTON_BOX.SPLIT' | translate}}</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <mat-icon>placet</mat-icon>
+                                    <span>{{'FLOATING_ACTION_BUTTON_BOX.ALLOCATE' | translate}}</span>
+                                </button>
+                            </mat-menu>
+                            <button mat-fab
+                                    class="fab-menu"
+                                    color="primary">
+                                <mat-icon class="mdc-fab__icon material-icons">add</mat-icon>
+                            </button>
+                            <button mat-raised-button
+                                    class="fab-text-button"
+                                    color="accent">
+                                <mat-icon class="mdc-fab__icon material-icons">add</mat-icon>
+                                {{'BUTTON_LABEL' | translate}}
+                            </button>
+
+                            <!-- end floating -->
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div fxFlex="33">
+                    <mat-card>
+                        <mat-card-header>
+                            <h2>{{'TOOLTIP_BOX.TITLE' | translate}}</h2>
+                        </mat-card-header>
+                        <mat-card-content>
+
+                            <section class="matTooltip">
+                                <span>{{'TOOLTIP_BOX.TEST' | translate}}</span>
+                                <mat-icon matTooltip="{{'TOOLTIP_BOX.TOOLTIP' | translate}}">error</mat-icon>
+                            </section>
+
+                            <section>
+                                <mat-form-field class="mat-form-field">
+                                    <input matInput
+                                           placeholder="{{'TOOLTIP_BOX.FIELD' | translate}} ">
+                                    <mat-icon matSuffix
+                                              matTooltip="{{'TOOLTIP_BOX.TOOLTIP' | translate}}">error</mat-icon>
+                                </mat-form-field>
+                            </section>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+
+
+            <!-- EMPTY STATE -->
+            <div fxLayout="row"
+                 fxLayoutGap="24px">
+                <div fxFlex="50">
+                    <atlas-empty-state title="{{'EMPTY_STATE_BOX_1.TITLE' | translate}}"
+                                       message="{{'EMPTY_STATE_BOX_1.MESSAGE' | translate}}"></atlas-empty-state>
+                </div>
+
+                <div fxFlex="25">
+                    <atlas-empty-state title="{{'EMPTY_STATE_BOX_2.TITLE' | translate}}"
+                                       message="{{'EMPTY_STATE_BOX_2.MESSAGE' | translate}}"></atlas-empty-state>
+                </div>
+                <div fxFlex="25">
+                    <atlas-empty-state title="{{'EMPTY_STATE_BOX_3.TITLE' | translate}}"
+                                       message="{{'EMPTY_STATE_BOX_3.MESSAGE' | translate}}"></atlas-empty-state>
+                </div>
+            </div>
+
+            <div fxLayout="row">
+                <div fxFlex>
+                    <mat-card>
+                        <mat-horizontal-stepper #stepper
+                                                color="accent">
+                            <mat-step>
+                                <ng-template matStepLabel>{{'STEPPER.PERSONAL_INFO' | translate}}</ng-template>
+                                <div fxLayout="row"
+                                     fxLayoutAlign="center center">
+                                    <div fxFlex="30%">
+                                        <form class="form-control">
+                                            <mat-form-field>
+                                                <input type="text"
+                                                       placeholder="{{'NAME' | translate}}"
+                                                       matInput>
+                                            </mat-form-field>
+                                            <mat-form-field>
+                                                <input type="text"
+                                                       placeholder="{{'USERNAME' | translate}}"
+                                                       matInput>
+                                            </mat-form-field>
+                                            <div class="full-width"
+                                                 align="end">
+                                                <button mat-raised-button
+                                                        matStepperNext>{{'NEXT' | translate}}</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            <mat-step>
+                                <ng-template matStepLabel>{{'STEPPER.FILL_OUT_ADDRESS' | translate}}</ng-template>
+                                <div fxLayout="row"
+                                     fxLayoutAlign="center center">
+                                    <div fxFlex="30%">
+                                        <form>
+                                            <mat-form-field style="position: relative !important;">
+                                                <input matInput
+                                                       placeholder="{{'ADDRESS' | translate}}">
+                                            </mat-form-field>
+                                            <mat-form-field>
+                                                <input type="text"
+                                                       placeholder="{{'CITY' | translate}}"
+                                                       matInput>
+                                            </mat-form-field>
+                                            <mat-form-field>
+                                                <input type="text"
+                                                       placeholder="{{'COUNTRY' | translate}}"
+                                                       matInput>
+                                            </mat-form-field>
+                                            <div class="full-width"
+                                                 align="end">
+                                                <button mat-button
+                                                        matStepperPrevious>{{'BACK' | translate}}</button>
+                                                <button mat-raised-button
+                                                        matStepperNext>{{'NEXT' | translate}}</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            <mat-step>
+                                <ng-template matStepLabel>{{'STEPPER.DONE' | translate}}</ng-template>
+                                <div fxLayout="row"
+                                     fxLayoutAlign="center center">
+                                    <div fxFlex="30%">
+                                        <h2 [innerHTML]="'STEPPER.END_MESSAGE' | translate">
+                                        </h2>
+                                        <div class="full-width"
+                                             align="end">
+                                            <button mat-button
+                                                    matStepperPrevious>{{'BACK' | translate}}</button>
+                                            <button mat-raised-button
+                                                    (click)="stepper.reset()">{{'RESET' | translate}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-step>
+                        </mat-horizontal-stepper>
+                    </mat-card>
+                </div>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutap="24px">
+                <!-- progress bar -->
+                <div fxFlex="33">
+                    <mat-card>
+                        <h2>{{'PROGRESS_BOX.TITLE' | translate}}</h2>
+                        <mat-card-content>
+                            <h3>{{'PROGRESS_BOX.INDETERMINATE' | translate}}</h3>
+                            <mat-progress-spinner color="accent"
+                                                  mode="indeterminate"></mat-progress-spinner>
+                            <mat-progress-bar color="accent"
+                                              mode="indeterminate"></mat-progress-bar>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <h3>{{'PROGRESS_BOX.DETERMINATE' | translate}}</h3>
+                            <mat-progress-spinner color="accent"
+                                                  mode="determinate"
+                                                  value="34"></mat-progress-spinner>
+
+                            <mat-progress-bar color="accent"
+                                              mode="determinate"
+                                              value="40"></mat-progress-bar>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div fxFlex="33"
+                     fxLayoutAlign="center center">
+                    <mat-button-toggle-group class="toggle-group"
+                                             name="fontStyle"
+                                             aria-label="Font Style">
+                        <mat-button-toggle value="">{{'TOOGLE' | translate}}</mat-button-toggle>
+                        <mat-button-toggle value="">{{'TOOGLE_SELECTED' | translate}}
+                        </mat-button-toggle>
+                        <mat-button-toggle value="">{{'TOOGLE' | translate}}</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                <!-- Form Controls -->
+                <div fxFlex="33">
+                    <mat-card>
+                        <mat-card-content>
+                            <div class="form-control">
+                                <section>
+                                    <mat-checkbox [(ngModel)]="selectedAll"
+                                                  (change)="selectAll();"
+                                                  [(indeterminate)]="indeterminate">{{'CHECKBOX.PARENT'|translate}}
+                                    </mat-checkbox>
+                                </section>
+                                <mat-divider></mat-divider>
+                                <section>
+                                    <mat-checkbox *ngFor="let n of names"
+                                                  [(ngModel)]="n.selected"
+                                                  (change)="checkIfAllSelected();checkIfOneSelected()">
+                                        {{n.name | translate}}
+                                    </mat-checkbox>
+
+                                    <mat-checkbox class=""
+                                                  [(ngModel)]="indeterminate">{{'CHECKBOX.INDETERMINATE'|translate}}
+                                    </mat-checkbox>
+                                </section>
+
+                                <section>
+                                    <mat-radio-group>
+                                        <mat-radio-button value="radio1">{{'CHECKBOX.RADIO_BUTTON'|translate}}
+                                        </mat-radio-button>
+                                        <mat-radio-button value="radio2">{{'CHECKBOX.RADIO_BUTTON'|translate}}
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </section>
+                                <hr>
+                                <section>
+                                    <mat-slide-toggle>{{'CHECKBOX.SLIDE_TOOGLE'|translate}}</mat-slide-toggle>
+                                </section>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="space-around center"
+                 fxLayoutGap="24px"
+                 fxLayout.xs="column">
+
+                <div flex="30"
+                     fxFlexOrder.xs="2">
+                    <mat-card>
+                        <mat-card-header>
+                            <h2>{{'CARD.1' | translate}}</h2>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>Lorem ipsum dolor sit amet consecte tur adipisicing elit. Earum molestiae aut adipisci
+                                autem est, dicta
+                                excepturi quam alias, sed libero voluptates rerum. Quam distinctio libero est aut
+                                reprehenderit at error? </p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div flex="30">
+                    <mat-card>
+                        <mat-card-header>
+                            <h2>{{'CARD.2' | translate}}</h2>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut ad eius, libero eaque
+                                impedit saepe natus quasi
+                                odio minus sint iste nesciunt. Voluptates, corrupti asperiores numquam dolorem hic
+                                deleniti aut?</p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div flex="30">
+                    <mat-card>
+                        <mat-card-header>
+                            <h2>{{'CARD.3' | translate}}</h2>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem voluptatum, nam,
+                                nesciunt ex quod quam ea
+                                ipsam excepturi, dolorum ducimus quasi impedit perferendis repellat dolores deserunt
+                                minima cum. Consequatur,
+                                cupiditate.
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+            <div fxFill>
+                <mat-card>
+                    <mat-card-header>
+                        <h2>{{'CARD.4' | translate}}</h2>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem voluptatum, nam,
+                            nesciunt ex quod quam ea
+                            ipsam excepturi, dolorum ducimus quasi impedit perferendis repellat dolores deserunt minima
+                            cum. Consequatur,
+                            cupiditate.
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="space-around center">
+            <div fxFlex="33">
+                <mat-card>
+                    <mat-card-header>
+                        <h2>{{'DIALOG_BOX.TITLE' | translate}}</h2>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-form-field>
+                            <input matInput
+                                   [(ngModel)]='fname'
+                                   placeholder="{{'DIALOG_BOX.FIELD_NAME' | translate}}">
+                        </mat-form-field>
+                        <button mat-raised-button
+                                (click)="openAddFileDialog()">{{'DIALOG_BOX.OPEN_DIALOG' | translate}}</button>
+                    </mat-card-content>
+                    <li *ngIf="animal"
+                        class="display_animal">
+                        {{'DIALOG_BOX.CHOICE' | translate}}
+                        <i>{{animal}}</i>
+                    </li>
+                </mat-card>
+            </div>
+            <div fxFlex="33">
+                <!-- Contextual Search -->
+                <mat-card>
+                    <mat-card-header>
+                        <h1>{{'CONTEXTUAL_SEARCH_BOX.TITLE' | translate}}</h1>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="{{'CONTEXTUAL_SEARCH_BOX.FIELD_NAME' | translate}}">
+                            <mat-icon matSuffix
+                                      class="compass-icon"
+                                      (click)="openDialog()">explore</mat-icon>
+                        </mat-form-field>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card>
+                    <mat-card-header>
+                        <h2>{{'COMMODITY_INPUT_BOX.TITLE'|translate}}</h2>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <atlas-commodity-input></atlas-commodity-input>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <!-- List & Search -->
+        <div>
+            <h4>{{'LIST_AND_SEARCH'|translate}}</h4>
+            <atlas-list-and-search class="default-height"></atlas-list-and-search>
+        </div>
+        <div fxLayout="row">
+            <div fxFlex>
+                <mat-card>
+                    <mat-card-header>{{'Ag-Grid Examples'|translate}}</mat-card-header>
+                    <div fxLayout="row"
+                         fxLayout.xs="column"
+                         fxLayoutAlign="space-between right"
+                         fxLayoutWrap
+                         fxLayoutGap="20px">
+                        <div fxFlex="10%"
+                             fxFlex.xs="10%"
+                             fxFlex.sm="10%">
+                            <button mat-icon-button>
+                                <mat-icon>settings_backup_restore</mat-icon>
+                            </button>
+                            <button mat-icon-button
+                                    [matMenuTriggerFor]="menuAggrid">
+                                <mat-icon>reorder</mat-icon>
+                            </button>
+                            <button mat-icon-button>
+                                <mat-icon>
+                                    more_vert</mat-icon>
+                            </button>
+                            <div>
+                                <mat-menu class="no-overflow"
+                                          #menuAggrid="matMenu">
+                                    <div fxLayout="column"
+                                         fxLayoutWrap
+                                         fxLayoutGap="20px">
+                                        <div *ngFor="let col of columnDefs"
+                                             fxFlex="100%"
+                                             fxFlex.xs="100%"
+                                             fxFlex.sm="100%">
+                                            <mat-checkbox [checked]="!col.hide"
+                                                          (click)="showOrHideColum($event, col)"
+                                                          *ngIf="col.headerName != ''">{{col.headerName}}
+                                            </mat-checkbox>
+                                        </div>
+                                    </div>
+                                </mat-menu>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Buttons-->
+                    <div style='padding-bottom: 15px'
+                         fxLayout='row'
+                         fxLayoutAlign="space-between center">
+                        <mat-slide-toggle mat-raised-button
+                                          (change)="toggleQuickSum()">{{'Enable Range Selection'|translate}}
+                        </mat-slide-toggle>
+                        <div fxLayout='row'
+                             fxLayoutAlign="space-around center">
+
+                            <div *ngFor="let column of selectedColumnsArray">
+                                <span style="padding-right: 20px;"
+                                      *ngIf="column.sum!=0 && quickSumModeActivated">{{column.name}} :
+                                    {{column.sum}}</span>
+                            </div>
+                            <button mat-button
+                                    (click)="onClearRange()"
+                                    *ngIf="quickSumModeActivated">{{'Clear Selection'|translate}}</button>
+                        </div>
+                    </div>
+                    <!--Ag grid -->
+                    <ag-grid-angular *ngIf="!quickSumModeActivated"
+                                     class="ag-theme-material"
+                                     style="height: 500px;"
+                                     [enableSorting]="true"
+                                     [rowData]="rowData | async"
+                                     [columnDefs]="columnDefs"
+                                     rowSelection="multiple"
+                                     [rowHeight]="atlasAgGridParam.rowHeight"
+                                     rowMultiSelectWithClick="true"
+                                     (columnVisible)="onAddOrDeleteColumn($event)"
+                                     (gridReady)="onGridReady($event)">
+                    </ag-grid-angular>
+
+                    <ag-grid-angular *ngIf="quickSumModeActivated"
+                                     style="height: 500px;"
+                                     class="ag-theme-material"
+                                     [enableSorting]="true"
+                                     [rowData]="rowData | async"
+                                     [columnDefs]="columnDefs"
+                                     [rowHeight]="atlasAgGridParam.rowHeight"
+                                     rowSelection="multiple"
+                                     [enableRangeSelection]="true"
+                                     (gridReady)="onGridReady($event)"
+                                     (columnVisible)="onAddOrDeleteColumn($event)"
+                                     (rangeSelectionChanged)="onRangeSelectionChanged($event)">
+                    </ag-grid-angular>
+                </mat-card>
+            </div>
+        </div>
+        <!-- TAB STYLING  -->
+        <!-- Tab in the page content is a bright tab -->
+        <h2>{{'Bright Tab'|translate}}</h2>
+        <mat-tab-group class="bright-tab">
+            <mat-tab label="{{'First'|translate}}">
+                {{'Number 1'|translate}}
+            </mat-tab>
+            <mat-tab label="{{'Second'|translate}}">
+                {{'Number 2'|translate}}
+            </mat-tab>
+            <mat-tab label="{{'Third'|translate}}">
+                {{'Number 3'|translate}}
+            </mat-tab>
+        </mat-tab-group>
+        <br>
+        <!-- Tab in the page content is a dark tab -->
+        <h2>{{'Dark Tab - for topbar'|translate}}</h2>
+        <div class="dark-tab header-tab mat-elevation-z6">
+            <div class="header-tab-container">
+                <mat-tab-group [selectedIndex]=selectedIndex
+                               (selectedIndexChange)=onSelectedIndexChanged($event)
+                               backgroundColor="primary">
+                    <mat-tab label="{{'trade type'|translate}}"></mat-tab>
+                    <mat-tab label="{{'trade type'|translate}}"></mat-tab>
+                    <mat-tab label="{{'trade type'|translate}}"></mat-tab>
+                </mat-tab-group>
+                <span class="fill-space"></span>
+                <!-- Add FAB extanded if needed -->
+                <button mat-raised-button
+                        class="fab-text-button"
+                        color="accent">
+                    <mat-icon class="mdc-fab__icon material-icons">add</mat-icon>
+                    {{'Label of the button'|translate}}
+                </button>
+            </div>
+        </div>
+        <div class="content-tab">
+            <mat-tab-group [selectedIndex]=selectedIndex>
+                <mat-tab> {{'Content 1'|translate}}
+                    <mat-card fxFlex="100">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur facilis molestiae quasi fugit
+                        natus iure repellat, ipsa eum explicabo autem modi! Molestias delectus repudiandae dicta
+                        sapiente, et doloremque consequuntur perspiciatis?
+                    </mat-card>
+                </mat-tab>
+                <mat-tab> {{'Content 2'|translate}} </mat-tab>
+                <mat-tab> {{'Content 3'|translate}} </mat-tab>
+            </mat-tab-group>
+        </div>
+        <br>
+        <!-- Tab in the page content is a admin tab -->
+        <h2>{{'Admin Tab - for topbar'|translate}}</h2>
+        <p>{{'The background image needs to be defined in the css class admin-tab'|translate}}</p>
+        <div class="admin-tab header-tab mat-elevation-z6">
+            <div class="header-tab-container">
+                <mat-tab-group [selectedIndex]=selectedIndex
+                               (selectedIndexChange)=onSelectedIndexChanged($event)>
+                    <mat-tab label="{{'trade type'|translate}}"></mat-tab>
+                    <mat-tab label="{{'trade type'|translate}}"></mat-tab>
+                    <mat-tab label="{{'trade type'|translate}}"></mat-tab>
+                </mat-tab-group>
+                <span class="fill-space"></span>
+            </div>
+        </div>
+        <div class="content-tab">
+            <mat-tab-group [selectedIndex]=selectedIndex>
+                <mat-tab> {{'Content 1'|translate}}
+                    <mat-card fxFlex="100">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur facilis molestiae quasi fugit
+                        natus iure repellat, ipsa eum explicabo autem modi! Molestias delectus repudiandae dicta
+                        sapiente, et doloremque consequuntur perspiciatis?
+                    </mat-card>
+                </mat-tab>
+                <mat-tab> {{'Content 2'|translate}} </mat-tab>
+                <mat-tab> {{'Content 3'|translate}} </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div>
+            <atlas-picklist></atlas-picklist>
+        </div>
+
+        <div>
+            <atlas-floating-action-button [fabTitle]="fabTitle"
+                                          [fabType]="fabType"
+                                          [fabActions]="fabMenuActions"
+                                          [isLoaded]="true"
+                                          (fabActionClicked)="onFabActionClicked($event)">
+            </atlas-floating-action-button>
+        </div>
+    </div>
+</div>

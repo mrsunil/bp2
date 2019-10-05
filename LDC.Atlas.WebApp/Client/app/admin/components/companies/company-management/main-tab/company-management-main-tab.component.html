@@ -1,0 +1,24 @@
+<div fxLayout="row wrap"
+     fxLayoutAlign="start"
+     fxLayoutAlign.lt-md="space-around center"
+     fxLayoutGap="16px"
+     [formGroup]="mainTabFormGroup">
+    <atlas-identity #identityComponent
+                    fxFlexOrder.lt-md="1"
+                    fxFlex="49%"></atlas-identity>
+    <atlas-location #locationComponent
+                    fxFlexOrder.lt-md="2"
+                    fxFlex="49%"></atlas-location>
+</div>
+<div fxLayout="row wrap"
+     fxLayoutAlign="start"
+     fxLayoutAlign.lt-md="space-around center"
+     fxLayoutGap="16px"
+     [formGroup]="mainTabFormGroup">
+    <atlas-details #detailsComponent
+                   fxFlexOrder.lt-md="1"
+                   fxFlex="49%"></atlas-details>
+    <atlas-default-broker #defaultBrokerComponent
+                          fxFlexOrder.lt-md="2"
+                          fxFlex="49%"></atlas-default-broker>
+</div>

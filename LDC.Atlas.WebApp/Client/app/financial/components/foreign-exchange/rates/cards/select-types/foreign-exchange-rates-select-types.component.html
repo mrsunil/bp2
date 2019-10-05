@@ -1,0 +1,60 @@
+<mat-card>
+    <mat-card-header>
+        <div fxFlex="50"
+             fxLayout="row"
+             fxAlignLayout="start start">
+            <h2>View Options</h2>
+        </div>
+        <div fxFlex="50"
+             fxLayout="row"
+             fxAlignLayout="start end">
+            <span class="fill-space"></span>
+            <div *ngIf="foreignExchangeTypeCtrl.value === ForeignExchangeRateViewMode.Daily">
+                <atlas-file-upload-dialog-box *ifAuthorized="'Financials.MarketData',company:company, level: PermissionLevels.ReadWrite"
+                                              #fileUploadDialogBoxComponent
+                                              [docType]="selectedDocType"
+                                              (documentSelected)="ondocumentSelected($event)">
+                </atlas-file-upload-dialog-box>
+            </div>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="min-height"
+             fxLayout="row"
+             fxLayoutAlign="start center"
+             fxLayoutGap="5%">
+            <mat-button-toggle-group class="toggle-group"
+                                     [formControl]="foreignExchangeTypeCtrl"
+                                     aria-label="Date / Period rates to be maintained"
+                                     [disabled]="editMode">
+                <mat-button-toggle [value]="ForeignExchangeRateViewMode.Spot"
+                                   [disabled]="editMode">{{ForeignExchangeRateViewMode.Spot}}</mat-button-toggle>
+                <mat-button-toggle [value]="ForeignExchangeRateViewMode.Daily"
+                                   [disabled]="editMode">{{ForeignExchangeRateViewMode.Daily}}</mat-button-toggle>
+                <mat-button-toggle [value]="ForeignExchangeRateViewMode.Monthly"
+                                   [disabled]="editMode">{{ForeignExchangeRateViewMode.Monthly}}</mat-button-toggle>
+            </mat-button-toggle-group>
+            <div class="custom-form"
+                 [class.isEmpty]="!dateCtrl.value"
+                 *ngIf="foreignExchangeTypeCtrl.value === ForeignExchangeRateViewMode.Daily"
+                 [class.required-field]="dateCtrl.isRequired">
+                <atlas-date-picker isEditable=true
+                                   [disabled]="editMode"
+                                   label="Date"
+                                   [fieldControl]="dateCtrl">
+                </atlas-date-picker>
+            </div>
+            <atlas-month-date-picker *ngIf="foreignExchangeTypeCtrl.value === ForeignExchangeRateViewMode.Monthly"
+                                     isEditable=true
+                                     [disabled]="editMode"
+                                     label="Date"
+                                     [fieldControl]="dateCtrl">
+            </atlas-month-date-picker>
+
+            <mat-slide-toggle [formControl]="inactiveCurrenciesCtrl"
+                              [disabled]="editMode"
+                              mat-raised-button>Inactive Currencies
+            </mat-slide-toggle>
+        </div>
+    </mat-card-content>
+</mat-card>

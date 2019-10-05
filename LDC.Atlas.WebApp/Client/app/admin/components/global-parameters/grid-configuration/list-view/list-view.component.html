@@ -1,0 +1,62 @@
+<div fxLayout="column">
+    <mat-card>
+        <div fxLayout="row"
+             fxLayoutAlign="start none"
+             class="search">
+            <form class="large-form"
+                  fxFlex="100%">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="View Name"
+                           (keydown.enter)="onSearchButtonClicked()"
+                           [formControl]="searchedValueCtrl"
+                           autocomplete="off" />
+                </mat-form-field>
+            </form>
+            <button mat-raised-button
+                    (click)="onSearchButtonClicked()"
+                    class="heroGradient"
+                    id="search-button">
+                <mat-icon aria-label="Search"
+                          class="search-icon">search</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <mat-card class="mat-card-height">
+        <mat-card-content>
+            <div fxLayout="column"
+                 fxLayoutAlign="center start">
+                <mat-nav-list *ngFor="let group of groupedData">
+                    <mat-divider></mat-divider>
+                    <h2 class="heading-margin">
+                        {{group.group}}
+                    </h2>
+                    <div *ngFor="let gridView of group.children">
+                        <div fxLayout="column"
+                             fxFlex="100%">
+                            <div fxLayout="row"
+                                 fxLayoutAlign="left start">
+                                <mat-list-item (click)="onOpenGridConfiguration(gridView)">
+                                    <div fxLayout="row"
+                                         fxLayoutAlign="left start">
+                                        {{ gridView.name }}
+                                    </div>
+                                </mat-list-item>
+                                <mat-divider></mat-divider>
+                            </div>
+                        </div>
+                    </div>
+                </mat-nav-list>
+                <mat-nav-list *ngIf="isListEmpty">
+                    <div fxLayout="column"
+                         fxFlex="100%">
+                        <div fxLayout="row"
+                             fxLayoutAlign="left start">
+                            <span>No Rows To Show</span>
+                        </div>
+                    </div>
+                </mat-nav-list>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,20 @@
+.mat-button {
+    margin: 0;
+}
+
+.filter-actions {
+    span {
+        display: inline-flex;
+        max-height: 50px;
+    }
+
+    .mat-icon-button {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+    }
+
+    .filter-action-field-icon {
+        color: #332f30;
+    }
+}

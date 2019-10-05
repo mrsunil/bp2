@@ -1,0 +1,42 @@
+<mat-toolbar class="menu-bar">
+    <div class="toolbar-div">
+        <div fxLayout="row"
+             fxLayoutAlign="start center"
+             fxFlex="80">
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="end center"
+             fxFlex="20"
+             *ngIf="hideAndShowMenuBarButtons"
+             fxLayoutGap="16px">
+            <a matTooltip="Back to Previou Page"
+               (click)="onPrevPageNavigation()"
+               class="menu-bar-action-icon">
+                <mat-icon class="white-icon">keyboard_backspace</mat-icon>
+            </a>
+            <a matTooltip="Save Costmatrix"
+               (click)="onSaveButtonClicked()"
+               class="menu-bar-action-icon">
+                <div class="white-icon outline-save-icon"></div>
+            </a>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="end center"
+             fxFlex="20"
+             *ngIf="!hideAndShowMenuBarButtons"
+             fxLayoutGap="16px">
+            <a matTooltip="New Costmatrix"
+               (click)="onNewCostmatrixButtonClicked()"
+               class="menu-bar-action-icon">
+                <mat-icon class="white-icon">add</mat-icon>
+            </a>
+            <a matTooltip="Edit the Costmatrix"
+               (click)="onCreateButtonClicked()"
+               class="menu-bar-action-icon">
+                <mat-icon class="white-icon">create</mat-icon>
+            </a>
+        </div>
+
+    </div>
+</mat-toolbar>

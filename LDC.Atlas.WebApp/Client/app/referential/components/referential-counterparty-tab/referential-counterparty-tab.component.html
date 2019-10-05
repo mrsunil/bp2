@@ -1,0 +1,65 @@
+<div matToolbarHighlight
+     class="dark-tab header-tab mat-elevation-z6">
+    <div class="header-tab-container"
+         *ngIf="isEditCounterpartyPrivilege">
+        <button mat-raised-button
+                class="fab-text-button"
+                color="accent"
+                [matMenuTriggerFor]="menu">
+            <mat-icon class="material-icons">add</mat-icon>
+            COUNTERPARTY ACTIONS
+        </button>
+        <mat-menu #menu="matMenu"
+                  class="floating-menu has-header">
+            <button mat-menu-item
+                    class="menu-header">
+                <mat-icon class="material-icons">add</mat-icon>
+                <span>COUNTERPARTY ACTIONS</span>
+            </button>
+            <button mat-menu-item
+                    (click)="onCreateCounterpartyButtonClicked()">
+                <mat-icon class="material-icons">add</mat-icon>
+                Create Counterparty
+            </button>
+            <button mat-menu-item
+                    (click)="onCreateBulkCounterpartyButtonClicked()">
+                <mat-icon class="material-icons">add</mat-icon>
+                Bulk Amendment
+            </button>
+        </mat-menu>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="1%">
+        <mat-tab-group (selectedIndexChange)="onSelectModeChanged($event)"
+                       aria-label="Contract Type"
+                       mat-align-tabs="start"
+                       [value]="selectedCounterpartyDisplayVal">
+            <mat-tab value="Global"
+                     [checked]="true"
+                     label="Global View Mode">
+            </mat-tab>
+            <mat-tab value="Local"
+                     label="Local View Mode">
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <label [matMenuTriggerFor]="reports"
+                           (click)="$event.stopPropagation()">
+                        Reports
+                    </label>
+                    <mat-menu #reports="matMenu"
+                              [overlapTrigger]="false"
+                              xPosition="after">
+                        <span *ngFor="let item of filteredTemplates">
+                            <button mat-button
+                                    (click)="OnReportClick(item)">
+                                {{item.name}}
+                            </button>
+                        </span>
+                    </mat-menu>
+                </ng-template>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

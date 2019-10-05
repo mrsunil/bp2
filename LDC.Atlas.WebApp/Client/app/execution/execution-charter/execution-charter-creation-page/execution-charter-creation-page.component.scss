@@ -1,0 +1,78 @@
+.mat-table {
+    overflow: auto;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+
+.summaryTable .mat-row:hover {
+    background: none;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+
+.very-long-field {
+    width: 100%;
+}
+
+.droplist {
+    ::ng-deep .mat-form-field-underline {
+        display: none;
+    }
+
+    mat-select {
+        border-width: 1px;
+        border-style: solid;
+        border-image: initial;
+        border-radius: 1px;
+        border-color: rgb(169, 169, 169);
+        text-rendering: auto;
+        padding: 7px;
+        padding-left: 5px;
+    }
+}
+
+.no-placeholder-animation {
+
+    ::ng-deep md-input-container.md-input-focused {
+        display: none;
+    }
+}
+
+.mat-hint {
+    color: red;
+}
+
+.padding-medium {
+    padding: 20px 40px 20px 20px;
+}
+
+.wrap-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wrapping-div {
+    flex: 1 1 auto;
+}
+
+.charter-creation-margin {
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.circle-icon {
+    background: #53C234;
+    width: 32px;
+    color: white !important;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    padding: 5px;
+    float: right;
+    position: relative;
+    top: -28px;
+}

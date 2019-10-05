@@ -1,0 +1,67 @@
+<form [formGroup]="inverseReversalFormGroup">
+    <div class="main-container">
+        <mat-horizontal-stepper [linear]
+                                (selectionChange)="onChangeStepAction($event)"
+                                #stepper>
+            <ng-template matStepperIcon="edit">
+                <mat-icon>check</mat-icon>
+            </ng-template>
+            <mat-step>
+                <ng-template matStepLabel>Document Selection Screen</ng-template>
+                <div>
+                    <atlas-reversal-selection #reversalSelectionComponent
+                                              (templateSelected)="onDocumentTemplateSelected($event)"
+                                              (rowSelected)="onRowSelected($event)">
+                    </atlas-reversal-selection>
+                    <div fxLayout="row"
+                         fxLayoutAlign="end start">
+                        <mat-slide-toggle [formControl]="previewDocumentCtrl"
+                                          *ngIf="hasTemplate">Preview Document</mat-slide-toggle>
+                    </div>
+                </div>
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <button (click)="onDiscardButtonClicked()"
+                            mat-button>
+                        DISCARD
+                    </button>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start end ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    *ifAuthorized="'Invoices.InvoiceCreation', company:company, level: PermissionLevels.ReadWrite"
+                                    (click)="onOpenDialogOnPreviewAndReverseClicked()"
+                                    [disabled]="isLoading">
+                                {{ previewDocumentCtrl.value ? "Preview and Reverse" : "Reverse" }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Invoice Summary Page</ng-template>
+                <atlas-reversal-summary #reversalSummaryComponent
+                                        [isCreationMode]="isCreationMode"
+                                        [invoiceTypeId]="originalInvoiceType">
+                </atlas-reversal-summary>
+
+                <div class="btn-container">
+                    <div fxLayout="row"
+                         fxAlignLayout="start end">
+                        <span class="fill-space"></span>
+                        <button mat-button
+                                (click)="newSearchButtonClicked()">
+                            New Search
+                        </button>
+                        <button mat-raised-button
+                                (click)="onNextInvoiceButtonClicked()">
+                            Next Invoice
+                        </button>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</form>

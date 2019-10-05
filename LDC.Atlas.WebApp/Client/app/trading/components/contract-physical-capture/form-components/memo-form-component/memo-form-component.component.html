@@ -1,0 +1,29 @@
+<mat-card class="trade-capture-card">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Internal Memorandum</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxFlex="100%"
+             class="custom-form"
+             [class.required-field]="memoCtrl.isRequired"
+             [class.displayMode]="!isInputField">
+            <mat-form-field>
+                <textarea matInput
+                          rows="5"
+                          [maxlength]="2000"
+                          [formControl]='memoCtrl'
+                          [required]="memoCtrl.isRequired"></textarea>
+                <mat-error *ngIf="memoCtrl.hasError('maxlength')"> Internal memorandum should be at most 2000 Characters
+                    long </mat-error>
+                <mat-error *ngIf="memoCtrl.hasError('required')">
+                    This field is required
+                </mat-error>
+                <mat-hint *ngIf="memoCtrl.isRequired && memoCtrl.enabled">
+                    Required *
+                </mat-hint>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

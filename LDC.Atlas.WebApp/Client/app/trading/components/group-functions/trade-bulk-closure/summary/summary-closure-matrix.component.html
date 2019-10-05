@@ -1,0 +1,24 @@
+<div class="main-container"
+     fxLayout="column"
+     fxLayoutAlign="start none">
+    <div ag-grid="bulkClosureGridOptions"
+         class="ag-theme-material pointer-cursor">
+        <ag-grid-angular style="height:100%;"
+                         class="ag-theme-material"
+                         [rowData]="bulkClosureGridRows"
+                         [gridOptions]="bulkClosureGridOptions"
+                         [columnDefs]="bulkClosureGridColumns"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         (columnVisible)="onColumnVisibilityChanged($event)"
+                         [frameworkComponents]="gridComponents"
+                         [pagination]="true"
+                         [paginationPageSize]="10"
+                         [enableSorting]="true"
+                         [enableSorting]="true"
+                         [enableColResize]="true"
+                         enableFilter
+                         [rowHeight]=32>
+        </ag-grid-angular>
+    </div>
+</div>

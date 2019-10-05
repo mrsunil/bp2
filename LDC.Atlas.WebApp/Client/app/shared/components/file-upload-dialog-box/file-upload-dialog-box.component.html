@@ -1,0 +1,11 @@
+<div class="fileUpload">
+    <input class="hidden-during-loading" type="file" accept="docType"
+                                                     (change)="onFileSelected($event)"
+                                                     #fileUpload>
+
+    <button mat-raised-button class="fab-text-button" (click)="fileUpload.click()"
+                                                      color="accent">
+        <mat-icon class="mdc-fab__icon material-icons">add</mat-icon>
+        Import Exchange Rates
+    </button>
+</div>

@@ -1,0 +1,82 @@
+<form [formGroup]="bulkAllocationForm">
+    <div class="main-container">
+        <mat-horizontal-stepper [linear]
+                                (selectionChange)="onChangeStepAction($event)"
+                                #stepper>
+            <ng-template matStepperIcon="edit">
+                <mat-icon>check</mat-icon>
+            </ng-template>
+            <mat-step>
+                <ng-template matStepLabel>Selection</ng-template>
+                <atlas-group-function-warning #groupFunctionWarning></atlas-group-function-warning>
+                <atlas-group-function-contracts #contractSelection
+                                                (resetAllocationGrids)="resetAllocationGrids($event)"
+                                                (contractSelected)="isContractSelected($event)">
+                </atlas-group-function-contracts>
+
+                <div fxLayout="row "
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <button (click)="onContractSelectionDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-raised-button
+                                    (click)="onContractSelectionNextButtonClicked()"
+                                    [disabled]="isContractsNextDisabled">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Allocation</ng-template>
+                <atlas-allocation-grids #allocationGridsComponent
+                                        (isSaveDisabled)="isSaveDisabled($event)"></atlas-allocation-grids>
+
+                <div fxLayout="row"
+                     fxLayoutAlign="center center"
+                     fxLayoutWrap
+                     *ngIf="isLoading"
+                     class="loading">
+                    <mat-spinner color="accent"></mat-spinner>
+                </div>
+                <div fxLayout="row "
+                     *ngIf="!isLoading"
+                     fxLayoutAlign="space-between start"
+                     class="button-details">
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <button (click)="onContractSelectionDiscardButtonClicked()"
+                                mat-button>
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column "
+                         fxLayoutAlign="start ">
+                        <div fxLayout="row "
+                             fxLayoutAlign="end start ">
+                            <button mat-button
+                                    (click)="onNoMoreAllocationClicked()">
+                                No more Allocation
+                            </button>
+                            <button mat-raised-button
+                                    [disabled]="disableSave"
+                                    (click)="onAllocateButtonClicked()">
+                                Allocate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</form>

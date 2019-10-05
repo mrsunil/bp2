@@ -1,0 +1,7 @@
+<div fxLayout="row" *ngIf="statusLabel != null">
+	<span class="contract-status-pipe">|</span>
+	<span class="contract-status"
+		  [ngClass]="{'unapproved' : statusLabel == 'Unapproved', 'approved' : statusLabel == 'Approved'}">
+		{{statusLabel}}
+	</span>
+</div>

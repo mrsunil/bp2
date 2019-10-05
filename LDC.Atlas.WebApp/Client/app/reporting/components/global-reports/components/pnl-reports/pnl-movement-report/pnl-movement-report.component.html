@@ -1,0 +1,105 @@
+<div class='main-container'>
+    <div fxLayout="row wrap"
+         fxLayoutAlign="space-between stretch"
+         fxLayoutAlign.lt-md="space-around center"
+         fxLayoutGap="16px">
+        <mat-card fxFlex="38%">
+            <mat-card-header>
+                <mat-card-title>
+                    <h2>Database Selection</h2>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayoutGap="5px">
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between start"
+                     fxLayoutGap="15%">
+                    <atlas-dropdown-select fxFlex='40%'
+                                           [label]="'Snapshot'"
+                                           [fieldControl]="pnlSnapshotCtrl"
+                                           isEditable=true
+                                           [options]="snapshotList"
+                                           displayProperty="freezeDate"
+                                           [selectProperties]="['freezeDate']"
+                                           (optionSelected)="selectionChanged($event) "></atlas-dropdown-select>
+
+                    <atlas-dropdown-select fxFlex='40%'
+                                           label="Comparison"
+                                           [fieldControl]="pnlComparisonSnapshotCtrl"
+                                           isEditable=true
+                                           [options]="comparisonSnapshotList"
+                                           displayProperty="freezeDate"
+                                           [selectProperties]="['freezeDate']"></atlas-dropdown-select>
+
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between end"
+                     fxLayoutGap="15%">
+                    <div class="view-realized-physicals-font"
+                         fxFlex='40%'>View for Realized physicals </div>
+                    <atlas-dropdown-select-list fxFlex='40%'
+                                                [label]="'Company'"
+                                                [fieldControl]="pnlcompanyCtrl"
+                                                [(options)]="filteredCompany"
+                                                [selectProperties]="companySelect"
+                                                isEditable=true
+                                                (optionSelected)="companyOptionSelected($event)"
+                                                multiselect=true>
+                    </atlas-dropdown-select-list>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between end"
+                     fxLayoutGap="15%">
+                    <div class="charterToggle"
+                         fxFlex='40%'
+                         fxLayoutAlign="start start">
+                        <mat-slide-toggle mat-raised-button
+                                          (change)="onToggleViewRealizedPhysicals()">Charter
+                        </mat-slide-toggle>
+                    </div>
+                    <atlas-dropdown-select fxFlex='40%'
+                                           [label]="'Columns to be selected'"
+                                           [options]="columnsList"
+                                           [fieldControl]="columnstoSelectCtrl"
+                                           isEditable=true
+                                           [selectProperties]="columnsListDisplayProperty"
+                                           multiselect=true></atlas-dropdown-select>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="start end"
+                     class="view-realized-physicals-pnl">
+                    <mat-slide-toggle fxFlex='40%'
+                                      mat-raised-button
+                                      (change)="onToggleIncludeDifferences()">Include differences only
+                    </mat-slide-toggle>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card fxFlex="60">
+            <mat-card-header>
+                <mat-card-title>
+                    <h2>Report Criterias</h2>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayoutGap="5px">
+                <atlas-report-criterias #reportCriterias></atlas-report-criterias>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="end center">
+        <button mat-raised-button
+                (click)="onGenerateReportButtonClicked()">GENERATE REPORT</button>
+
+        <button mat-raised-button
+                class="generate-report-button"
+                (click)="onGenerateExcelButtonClicked()">Detailed Excel View</button>
+    </div>
+    <div class="report-container">
+        <atlas-ssrsreport-viewer [reportServer]="reportServerUrl"
+                                 [reportUrl]="reportPath"
+                                 [parameters]="parameters"
+                                 [toBeDownloaded]="toBeDownloaded"
+                                 #ssrsReportViewer></atlas-ssrsreport-viewer>
+    </div>
+</div>

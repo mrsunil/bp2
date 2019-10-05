@@ -1,0 +1,65 @@
+<mat-card>
+    <mat-card-header>
+        <div fxLayout="row"
+             fxLayoutAlign="start center"
+             fxLayoutGap="5%"
+             fxFlex>
+            <h2 class="no-margin">Display freezes</h2>
+            <mat-button-toggle-group class="toggle-group"
+                                     [formControl]="freezeTypeCtrl"
+                                     aria-label="Date"
+                                     (change)="onDataVersionTypeChanged($event.value)">
+                <mat-button-toggle [value]="FreezeType.Daily">Day Freeze</mat-button-toggle>
+                <mat-button-toggle [value]="FreezeType.Monthly">Month Freeze</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="formGroup">
+            <div class="min-height"
+                 fxLayout="row"
+                 fxLayoutAlign="space-between center"
+                 fxLayoutGap="5%">
+                <div fxLayout="row"
+                     fxLayoutAlign="start center"
+                     fxLayoutGap="5%">
+                    <atlas-date-picker *ngIf="freezeTypeCtrl.value === FreezeType.Daily"
+                                       isEditable=true
+                                       [errorMap]="dailyErrorMap"
+                                       label="From"
+                                       [fieldControl]="dateFromCtrl">
+                    </atlas-date-picker>
+                    <atlas-month-date-picker *ngIf="freezeTypeCtrl.value === FreezeType.Monthly"
+                                             isEditable=true
+                                             label="From"
+                                             [errorMap]="monthlyErrorMap"
+                                             [fieldControl]="dateFromCtrl">
+                    </atlas-month-date-picker>
+
+                    <atlas-date-picker *ngIf="freezeTypeCtrl.value === FreezeType.Daily"
+                                       isEditable=true
+                                       [errorMap]="dailyErrorMap"
+                                       label="To"
+                                       [fieldControl]="dateToCtrl">
+                    </atlas-date-picker>
+                    <atlas-month-date-picker *ngIf="freezeTypeCtrl.value === FreezeType.Monthly"
+                                             isEditable=true
+                                             label="To"
+                                             [errorMap]="monthlyErrorMap"
+                                             [fieldControl]="dateToCtrl">
+                    </atlas-month-date-picker>
+                    <mat-slide-toggle *ngIf="toogleText"
+                                      [formControl]="toggleFormControl"
+                                      mat-raised-button>{{ toogleText }}
+                    </mat-slide-toggle>
+                </div>
+
+                <button type="submit"
+                        (click)="onDisplayButtonClicked()"
+                        mat-raised-button>
+                    Display
+                </button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,233 @@
+<mat-card class="trade-capture-card">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Price</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div class="custom-form"
+                 fxFlex="30%"
+                 [class.displayMode]="!currencyCtrl.enabled"
+                 [class.isEmpty]="!currencyCtrl.value"
+                 [class.required-field]="currencyCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Currency"
+                           [matAutocomplete]="currencies"
+                           [formControl]="currencyCtrl"
+                           [matTooltip]="'Currency'"
+                           autocomplete="off"
+                           [required]="currencyCtrl.isRequired">
+                    <mat-icon *ngIf="isEdit"
+                              class="bookmark-icon"
+                              matSuffix>bookmark</mat-icon>
+                    <mat-autocomplete #currencies="matAutocomplete"
+                                      [panelWidth]="panelSize">
+                        <mat-option *ngFor="let currency of filteredCurrencyList"
+                                    [value]="currency.currencyCode">{{currency.currencyCode}} |
+                            {{currency.description}}</mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="currencyCtrl.hasError('required')">
+                        Currency is required
+                    </mat-error>
+                    <mat-error *ngIf="currencyCtrl.hasError('inDropdownList')">
+                        Value not in list
+                    </mat-error>
+                    <mat-hint *ngIf="currencyCtrl.isRequired && currencyCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="custom-form"
+                 fxFlex="30%"
+                 [class.displayMode]="!priceUnitIdCtrl.enabled"
+                 [class.isEmpty]="!priceUnitIdCtrl.value"
+                 [class.required-field]="priceUnitIdCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Price Code"
+                           [matAutocomplete]="priceUnits"
+                           [formControl]="priceUnitIdCtrl"
+                           [matTooltip]="'Price Code'"
+                           autocomplete="off"
+                           [required]="priceUnitIdCtrl.isRequired">
+                    <mat-icon *ngIf="isEdit"
+                              class="bookmark-icon"
+                              matSuffix>bookmark</mat-icon>
+                    <mat-autocomplete #priceUnits="matAutocomplete"
+                                      [panelWidth]="panelSize"
+                                      [displayWith]="displayPriceUnit.bind(this)">
+                        <mat-option *ngFor="let priceCode of filteredPriceCodeList"
+                                    [value]="priceCode.priceUnitId">{{priceCode.priceCode}} |
+                            {{priceCode.description}}</mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="priceUnitIdCtrl.hasError('required')">
+                        Price Code is required
+                    </mat-error>
+                    <mat-error *ngIf="priceUnitIdCtrl.hasError('inDropdownList')">
+                        Value not in list
+                    </mat-error>
+                    <mat-hint *ngIf="priceUnitIdCtrl.isRequired && priceUnitIdCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="custom-form"
+                 fxFlex="30%"
+                 [class.displayMode]="!contractPriceCtrl.enabled"
+                 [class.isEmpty]="!contractPriceCtrl.value"
+                 [class.required-field]="contractPriceCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           [textMask]="{mask:mask}"
+                           placeholder="Contract Price"
+                           [formControl]="contractPriceCtrl"
+                           [title]="priceToolTip"
+                           [required]="contractPriceCtrl.isRequired"
+                           autocomplete="off">
+                    <mat-error *ngIf="contractPriceCtrl.hasError('required')">
+                        Contract Price is required
+                    </mat-error>
+                    <mat-error *ngIf="contractPriceCtrl.hasError('isPositiveError')">
+                        Price must be positive.
+                    </mat-error>
+                    <mat-hint *ngIf="contractPriceCtrl.isRequired && contractPriceCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%"
+             class="displayMode">
+            <mat-form-field fxFlex="30%">
+                <input matInput
+                       [formControl]="contractValueCtrl"
+                       placeholder="Contract Value"
+                       [title]="contractValueToolTip"
+                       autocomplete="off">
+            </mat-form-field>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <div fxFlex="35%">
+                <atlas-masterdata-user-preferences-input fxFlex="90%"
+                                                         [isEditable]="paymentTermsCtrl.enabled"
+                                                         [fieldControl]="paymentTermsCtrl"
+                                                         [options]="filteredPaymentTermsList"
+                                                         label="Payment Terms"
+                                                         displayProperty="paymentTermCode"
+                                                         [selectProperties]="['paymentTermCode','description']"
+                                                         [errorMap]="paymentTermsErrorMap"
+                                                         lightBoxTitle="Results for Payment Terms"
+                                                         gridId="paymentTermsGrid"
+                                                         (optionSelected)="onPaymentTermSelected($event)"
+                                                         [dataLoader]="paymentTermsDataLoader">
+                </atlas-masterdata-user-preferences-input>
+
+            </div>
+            <atlas-form-input fxFlex="45%"
+                              [fieldControl]="paymentTermsDescriptionCtrl"
+                              [isEditable]="isInputField"
+                              [label]="'Payment Term Description'">
+            </atlas-form-input>
+
+        </div>
+        <mat-accordion class="price-accordion">
+            <mat-expansion-panel [expanded]="isExpanded">
+                <mat-expansion-panel-header (click)="onPanelClicked()"
+                                            collapsedHeight='25px'
+                                            expandedHeight='25px'>
+                </mat-expansion-panel-header>
+                <div fxLayout="row"
+                     fxLayoutAlign="left start"
+                     fxLayoutGap="5%"
+                     class="price-expansion-section">
+                    <mat-button-toggle-group class="toggle-group"
+                                             name="toggleStyle"
+                                             [formControl]="discountPremiumCtrl">
+                        <mat-button-toggle [value]="DiscountType.Discount"
+                                           (change)="onDiscPremToggleClicked($event)">
+                            {{DiscountType[DiscountType.Discount]}}</mat-button-toggle>
+                        <mat-button-toggle [value]="DiscountType.Premium"
+                                           (change)="onDiscPremToggleClicked($event)">
+                            {{DiscountType[DiscountType.Premium]}}</mat-button-toggle>
+                    </mat-button-toggle-group>
+                    <div fxFlex="15%"
+                         [class.displayMode]="isShow">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="D/P Ccy"
+                                   [matAutocomplete]="dpCurrencies"
+                                   [formControl]="discountPremiumCurrencyCtrl"
+                                   [matTooltip]="'D/P Currency'"
+                                   autocomplete="off"
+                                   [required]="discountPremiumCurrencyCtrl.isRequired">
+                            <mat-autocomplete #dpCurrencies="matAutocomplete"
+                                              [panelWidth]="panelSize">
+                                <mat-option *ngFor="let dpcurrency of filteredCurrencyList"
+                                            [value]="dpcurrency.currencyCode">
+                                    {{dpcurrency.currencyCode}} | {{dpcurrency.description}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <mat-error *ngIf="discountPremiumCurrencyCtrl.hasError('inDropdownList')">
+                                Value not in list
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="15%"
+                         [class.displayMode]="isShow">
+                        <mat-form-field>
+                            <mat-select placeholder="D/P Type"
+                                        [formControl]="discountPremiumTypeCtrl"
+                                        [matTooltip]="'D/P Type'"
+                                        [required]="discountPremiumTypeCtrl.isRequired">
+                                <mat-option [value]="DiscountBasis.Rate">{{DiscountBasis[DiscountBasis.Rate]}}
+                                </mat-option>
+                                <mat-option [value]="DiscountBasis.Percent">{{DiscountBasis[DiscountBasis.Percent]}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="15%"
+                         [class.displayMode]="isShow">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="D/P value"
+                                   [value]="0"
+                                   [formControl]="discountPremiumValueCtrl"
+                                   [matTooltip]="'D/P Value'"
+                                   autocomplete="off"
+                                   type="number"
+                                   [required]="discountPremiumValueCtrl.isRequired">
+                            <mat-error *ngIf="discountPremiumValueCtrl.hasError('min')">
+                                Value must be positive.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="left start">
+                    <div fxFlex="30%"
+                         [class.displayMode]="isShow">
+                        <mat-form-field>
+                            <input matInput
+                                   [matDatepicker]="empicker"
+                                   [formControl]="estimatedMaturityDateCtrl"
+                                   autocomplete="off"
+                                   placeholder="Estimated Maturity">
+                            <mat-datepicker-toggle matSuffix
+                                                   [for]="empicker"></mat-datepicker-toggle>
+                            <mat-datepicker #empicker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-content>
+</mat-card>

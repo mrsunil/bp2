@@ -1,0 +1,29 @@
+export interface TradeSearchResult {
+    contractLabel: string;
+    type: string;
+    pricingMethodId: number;
+    status: string;
+    commodityCode: string;
+    quantity: number;
+    weightCode: string;
+    contractDate: Date;
+    sectionId: number;
+    allocatedTo: string;
+    price: number;
+    currencyCode: string;
+    paymentTermCode: string;
+    charterCode: string;
+    invoicedQuantity: number;
+    invoicedQuantityUnit: string;
+    invoiceValue: number;
+    invoiceCurrency: string;
+    blDate: Date;
+    departmentCode: string;
+    contractValue: number;
+    parentRef: string;
+    valuationPrice: number;
+    createdBy: string;
+    creationDateTime: Date;
+    modifiedDateTime?: Date;
+    modifiedBy: string;
+}

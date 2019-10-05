@@ -1,0 +1,35 @@
+<atlas-execution-invoicing-summary-header #summaryHeaderComponent
+                                          [isCreationMode]=isCreationMode></atlas-execution-invoicing-summary-header>
+<div class="main-container">
+
+    <atlas-value-of-goods-component #valueOfGoodsComponent></atlas-value-of-goods-component>
+    <atlas-add-cost #summaryAddCostComponent
+                    (onCostContractChanged)="onChangedCostContract($event)">
+    </atlas-add-cost>
+    <atlas-taxes-component #taxesComponent></atlas-taxes-component>
+
+    <div fxLayout="row wrap"
+         fxLayoutAlign="space-between"
+         fxLayoutAlign.lt-md="space-around center"
+         class="payment-total-amount-section">
+        <div fxLayout="column"
+             fxLayoutAlign="start"
+             fxFlex="49">
+            <atlas-payments-component #paymentComponent
+                                      fxFlex="100"
+                                      fxFlex.lt-md="92">
+            </atlas-payments-component>
+        </div>
+        <atlas-tax-costs fxFlex="50%"
+                         (totalCostTaxCalculated)="onTotalCostTaxCalculated($event)"
+                         #summaryTaxCostsComponent>
+        </atlas-tax-costs>
+        <div fxLayout="column"
+             fxLayoutAlign="start"
+             fxFlex="100">
+            <atlas-add-cost-total #summaryCostTotalAmountComponent
+                                  fxFlex="100"
+                                  fxFlex.lt-md="92"></atlas-add-cost-total>
+        </div>
+    </div>
+</div>

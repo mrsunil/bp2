@@ -1,0 +1,36 @@
+<!-- Layout divided by column -->
+<!-- container -->
+<div class="cards-fxLayout">
+    <div fxLayout="row"
+         fxLayout.lt-sm="column"
+         fxLayoutAlign="space-between stretch">
+        <atlas-shipment-info-form-component class="flex-item"
+                                            fxFlex="50"
+                                            #ShipmentInfoComponent
+                                            (shipmentStatusUpdate)="checkShipmentStatusChange($event)"></atlas-shipment-info-form-component>
+
+        <atlas-bl-info-form-component class="flex-item"
+                                      fxFlex="50"
+                                      #BlInfoComponent
+                                      (blDateChanged)="onBlDateChanged($event)"></atlas-bl-info-form-component>
+    </div>
+    <div fxLayout="row wrap"
+         fxLayout.lt-sm="column"
+         fxLayoutAlign="space-between stretch">
+        <atlas-adjust-weight-form-component class="flex-item"
+                                            fxFlex="33"
+                                            #AdjustWeightComponent
+                                            (checkQuantityChange)="checkQuantityChange($event)">
+        </atlas-adjust-weight-form-component>
+        <atlas-current-trade-form-component class="flex-item"
+                                            fxFlex="34"
+                                            #CurrentTradeComponent
+                                            (checkAllocatedResidualSplitChange)="checkAllocatedResidualSplitChange($event)">
+        </atlas-current-trade-form-component>
+        <atlas-allocation-form-component fxFlex="33"
+                                         class="flex-item"
+                                         #AllocationComponent
+                                         (checkLeaveStatusChange)="checkLeaveStatusChange($event)">
+        </atlas-allocation-form-component>
+    </div>
+</div>

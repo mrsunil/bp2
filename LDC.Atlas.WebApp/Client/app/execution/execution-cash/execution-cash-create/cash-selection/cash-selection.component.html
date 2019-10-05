@@ -1,0 +1,58 @@
+<mat-card *ngIf="cashTypeId==CashType.CashPayment">
+    <mat-card-title>
+        <h2>Cash Payments</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="column"
+             fxLayoutAlign="start left"
+             fxFlex="50">
+            <atlas-simple-cash-payment *ifAuthorized="'Cash.CashPayment.CPSIMPLE',company:this.company"
+                                       #simpleCashPayment
+                                       (simpleCashPaymentOptionChecked)="onSimpleCashPaymentOptionChecked($event)">
+            </atlas-simple-cash-payment>
+            <atlas-payment-full-transaction *ifAuthorized="'Cash.CashPayment.CPPICKTX',company:this.company"
+                                            #paymentFullTransaction
+                                            (paymentFullTransactionOptionChecked)="onPaymentFullTransactionOptionChecked($event)">
+            </atlas-payment-full-transaction>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start right"
+             fxFlex="50">
+            <atlas-payment-different-client *ifAuthorized="'Cash.CashPayment.CPDIFFCLI',company:this.company"
+                                            #paymentDifferentClient
+                                            (paymentDifferentClientOptionChecked)="onPaymentDifferentClientOptionChecked($event)">
+            </atlas-payment-different-client>
+            <atlas-payment-different-currency *ifAuthorized="'Cash.CashPayment.CPDIFFCCY',company:this.company"
+                                              #paymentDifferentCurrency
+                                              (paymentDifferentCurrencyOptionChecked)="onPaymentDifferentCurrencyOptionChecked($event)">
+            </atlas-payment-different-currency>
+        </div>
+    </mat-card-content>
+</mat-card>
+<mat-card *ngIf="cashTypeId==CashType.CashReceipt">
+    <mat-card-title>
+        <h2>Cash Receipts</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="column"
+             fxLayoutAlign="start left"
+             fxFlex="50">
+            <atlas-simple-cash-receipt *ifAuthorized="'Cash.CashReceipt.CRSIMPLE',company:this.company"
+                                       #simpleCashReceipt
+                                       (simpleCashReceiptOptionChecked)="onSimpleCashReceiptOptionChecked($event)">
+            </atlas-simple-cash-receipt>
+            <atlas-receipt-full-transaction *ifAuthorized="'Cash.CashReceipt.CRPICKTX',company:this.company"
+                                            #receiptFullTransaction
+                                            (receiptFullTransactionOptionChecked)="onReceiptFullTransactionOptionChecked($event)">
+            </atlas-receipt-full-transaction>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start right"
+             fxFlex="50">
+            <atlas-receipt-different-currency *ifAuthorized="'Cash.CashReceipt.CRDIFFCCY',company:this.company"
+                                              #receiptDifferentCurrency
+                                              (receiptDifferentCurrencyOptionChecked)="onReceiptDifferentCurrencyOptionChecked($event)">
+            </atlas-receipt-different-currency>
+        </div>
+    </mat-card-content>
+</mat-card>

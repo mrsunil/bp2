@@ -1,0 +1,36 @@
+<div class="main-container">
+    <div fxLayout="row"
+         fxLayout.md="column"
+         fxLayoutAlign="space-between start">
+        <div fxLayout="column"
+             fxLayoutAlign="start left"
+             fxFlex="100">
+            <atlas-end-of-month-selection #endOfMonthSelectionComponent
+                                          (snapshotTypeSelected)="onsnapshotTypeChange($event)"
+                                          (snapshotDate)="onsnapshotDate($event)"
+                                          (snapshotMonth)="onsnapshotMonth($event)"
+                                          (reportTypeSelected)="onReportTypeSelected($event)"
+                                          (reportTypeDescriptionSelected)="onReportTypeDescriptionSelected($event)">
+            </atlas-end-of-month-selection>
+        </div>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start"
+         class="button-details">
+        <div fxLayout="column"
+             fxLayoutAlign="start">
+            <button (click)="onDiscardButtonClicked()"
+                    mat-button>
+                DISCARD
+            </button>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start">
+            <button mat-raised-button
+                    (click)="onNextButtonClicked()"
+                    [disabled]="isCompanyFrozen">
+                NEXT
+            </button>
+        </div>
+    </div>
+</div>

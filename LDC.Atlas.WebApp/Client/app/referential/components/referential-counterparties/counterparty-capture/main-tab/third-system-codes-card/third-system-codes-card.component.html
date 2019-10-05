@@ -1,0 +1,41 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3>Third System Party Codes</h3>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="column">
+            <div fxFlex="100%"
+                 fxLayout="row">
+                <atlas-form-input fxFlex="30%"
+                                  [fieldControl]="mdmIdCtrl"
+                                  (keypress)="mdmIdValidation($event)"
+                                  [errorMap]="numberErrorMap"
+                                  (blur)="onBlur()"
+                                  [isEditable]="true"
+                                  label="Mdm Id">
+                </atlas-form-input>
+                <span class="fill-space"></span>
+                <atlas-dropdown-select-list fxFlex='100%'
+                                            label="Mdm Category Code"
+                                            [fieldControl]="mdmCategoryCodeCtrl"
+                                            [readonly]="true"
+                                            [options]="mdmCategories"
+                                            isEditable="true"
+                                            (optionSelected)="optionSelected($event)"
+                                            [selectProperties]="mdmCategoriesSelect"
+                                            [defaultSelected]="checkedMdmCategories"
+                                            multiselect="true">
+                </atlas-dropdown-select-list>
+                <span class="fill-space"></span>
+                <atlas-form-input fxFlex="30%"
+                                  [fieldControl]="c2cCodeCtrl"
+                                  [isEditable]="true"
+                                  [errorMap]="inputErrorMap"
+                                  label="C2C Code">
+                </atlas-form-input>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

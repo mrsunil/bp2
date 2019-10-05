@@ -1,0 +1,35 @@
+<form [formGroup]="charterForm">
+    <div class="main-container">
+        <main>
+            <div fxLayout="row"
+                 fxLayout.md="column"
+                 fxLayoutAlign="space-around start"
+                 class='charter-creation-margin'>
+                <div fxLayout="column"
+                     fxLayoutAlign="start left"
+                     fxFlex="48">
+                    <atlas-main-information-form-component #mainInfoComponent
+                                                           [isCreateOrEdit]=true>
+                    </atlas-main-information-form-component>
+                    <atlas-shipment-form-component #shipmentComponent
+                                                   [isCreateOrEdit]=true></atlas-shipment-form-component>
+                </div>
+                <div fxLayout="column"
+                     fxLayoutAlign="start right"
+                     fxFlex="49">
+                    <atlas-additional-information-form-component #additionalInfoComponent
+                                                                 [isCreateOrEdit]=true>
+                    </atlas-additional-information-form-component>
+                    <atlas-memo-form-component #memoComponent
+                                               [isCreateOrEdit]=true></atlas-memo-form-component>
+                </div>
+            </div>
+        </main>
+        <atlas-floating-action-button [fabTitle]="fabTitle"
+                                      [fabType]="fabType"
+                                      [fabActions]="fabMenuActions"
+                                      [isParentLoaded]="isLoaded"
+                                      (fabActionClicked)="onFabActionClicked($event)">
+        </atlas-floating-action-button>
+    </div>
+</form>

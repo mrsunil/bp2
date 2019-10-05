@@ -1,0 +1,13 @@
+<div class="margin main-container">
+    <div ag-grid="interfaceGridOptions"
+         class="ag-theme-material pointer-cursor">
+        <ag-grid-angular style="height:100%;"
+                         class="ag-theme-material"
+                         [rowData]="interfaceRowData"
+                         [columnDefs]="interfaceColumnDefs"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         [rowHeight]=atlasAgGridParam.rowHeight>
+        </ag-grid-angular>
+    </div>
+</div>

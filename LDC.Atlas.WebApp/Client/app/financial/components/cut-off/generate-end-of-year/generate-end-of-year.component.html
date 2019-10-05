@@ -1,0 +1,74 @@
+<div class="main-container">
+    <div fxLayout="column"
+         class="margin-top">
+        <div fxLayout="row"
+             fxLayoutGap="6px"
+             fxLayoutAlign="left start"
+             class="margin-yep">
+            <div fxFlex="18%">
+                <h5>
+                    Run Year End Process for
+                </h5>
+            </div>
+            <div class="custom-form"
+                 fxLayout="column"
+                 fxLayoutAlign="end start"
+                 fxLayoutGap="10px">
+                <atlas-year-picker [isEditable]="true"
+                                   label="Year"
+                                   [max]="maxYear"
+                                   [errorMap]="yearErrorMap"
+                                   [fieldControl]="yearCtrl">
+                </atlas-year-picker>
+            </div>
+            <div fxFlex="10%"
+                 class="margin-fn">
+                <mat-slide-toggle (click)="onFinalRunButtonClicked()"
+                                  [formControl]="
+                              finalRunCtrl">Final Run</mat-slide-toggle>
+            </div>
+            <div fxFlex="15%">
+                <atlas-masterdata-user-preferences-input class="contextual-search-for-control"
+                                                         isEditable="true"
+                                                         [fieldControl]="reserveAccountCtrl"
+                                                         label="B/S Reserve Account"
+                                                         [options]="filteredReserveAccounts"
+                                                         displayProperty="accountNumber"
+                                                         [errorMap]="reserveAccountErrorMap"
+                                                         [selectProperties]="['accountNumber','mainAccountTitle']"
+                                                         lightBoxTitle="Results for DealNominal Account"
+                                                         gridId="nominalAccountsGrid">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+            <div>
+                <button mat-raised-button
+                        (click)="onDisplayPLClearanceButtonClicked()">
+                    Display P&L Clearance
+                </button>
+            </div>
+            <div>
+                <button mat-raised-button
+                        [disabled]="!isDisplayButtonClicked"
+                        (click)="onPostingButtonClicked()">
+                    Generate Posting
+                </button>
+            </div>
+        </div>
+
+        <div ag-grid="yearEndGridOptions"
+             class="ag-theme-material pointer-cursor"
+             class="margin-top">
+            <ag-grid-angular class="ag-theme-material grid-size"
+                             [rowData]="yearEndGridRows"
+                             [columnDefs]="yearEndGridColumns"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             [pagination]="true"
+                             [paginationPageSize]="20"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             enableFilter
+                             [rowHeight]="atlasAgGridParam.rowHeight">
+            </ag-grid-angular>
+        </div>
+    </div>

@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start">
+            <atlas-form-input fxFlex="30%"
+                              class="side-nav-footer-components"
+                              [fieldControl]="parentContractNumberCtrl"
+                              [isEditable]="isInputField"
+                              label='Parent Contract Number:'>
+            </atlas-form-input>
+            <atlas-form-input fxFlex="30%"
+                              class="side-nav-footer-components"
+                              [fieldControl]="quantityConsumedCtrl"
+                              [isEditable]="isInputField"
+                              label={{quantityConsumedLabel}}>
+            </atlas-form-input>
+            <atlas-form-input fxFlex="30%"
+                              class="side-nav-footer-components"
+                              [fieldControl]="quantityAvailableCtrl"
+                              [isEditable]="isInputField"
+                              label='Quantity Available:'>
+            </atlas-form-input>
+        </div>
+    </mat-card-content>
+</mat-card>

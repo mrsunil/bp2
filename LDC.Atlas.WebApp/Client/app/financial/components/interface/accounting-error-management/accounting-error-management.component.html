@@ -1,0 +1,22 @@
+<div matToolbarHighlight
+     class="dark-tab header-tab mat-elevation-z6">
+    <div class="header-tab-container">
+        <div>
+            <mat-tab-group [selectedIndex]="tabIndex"
+                           (selectedIndexChange)=onSelectedIndexChanged($event)>
+                <mat-tab label="Functional Errors"></mat-tab>
+                <mat-tab label="Technical Errors"></mat-tab>
+            </mat-tab-group>
+        </div>
+        <div class="content-tab">
+            <mat-tab-group [selectedIndex]="tabIndex">
+                <mat-tab>
+                    <atlas-functional-errors #functionalErrorsComponent></atlas-functional-errors>
+                </mat-tab>
+                <mat-tab>
+                    <atlas-technical-errors #technicalErrorsComponent></atlas-technical-errors>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

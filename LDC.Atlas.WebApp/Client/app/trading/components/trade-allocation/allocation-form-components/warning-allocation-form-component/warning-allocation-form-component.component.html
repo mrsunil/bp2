@@ -1,0 +1,52 @@
+<div class="trade-allocation-messages">
+    <mat-card class="trade-allocation-warning-card"
+              *ngIf="showRestrictedDescriptionCard">
+        <div class="error-circle-icon">
+            <mat-icon>remove_circle</mat-icon>
+        </div>
+        <mat-card-header>
+            <mat-card-title>
+                Allocation cannot be completed
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{restrictedWarningMessage}}
+            </mat-card-subtitle>
+            <button class="remove-button"
+                    mat-button
+                    (click)="onRestrictRemoveclicked()">REMOVE
+            </button>
+        </mat-card-header>
+    </mat-card>
+
+    <mat-card class="trade-allocation-warning-card"
+              *ngIf="showWarningDescriptionCard">
+        <div class="warning-circle-icon">
+            <mat-icon>warning_outline</mat-icon>
+        </div>
+        <mat-card-header>
+            <mat-card-title>
+                Allocation can be completed
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{WarningMessage}}
+            </mat-card-subtitle>
+            <button class="remove-button"
+                    mat-button
+                    (click)="onWarningRemoveButtonClicked()">REMOVE
+            </button>
+
+        </mat-card-header>
+    </mat-card>
+
+    <mat-card class="trade-allocation-warning-card"
+              *ngIf="showAllowDescriptionCard">
+        <div class="success-circle-icon">
+            <mat-icon>check</mat-icon>
+        </div>
+        <mat-card-header>
+            <mat-card-title>
+                Allocation is allowed
+            </mat-card-title>
+        </mat-card-header>
+    </mat-card>
+</div>

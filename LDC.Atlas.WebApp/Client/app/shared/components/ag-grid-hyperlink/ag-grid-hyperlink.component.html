@@ -1,0 +1,5 @@
+<mat-icon matSuffix
+          *ngIf="isImageCellRendererLoaded()"
+          [ngClass]="classAppliedIcon">{{this.icon}}</mat-icon>
+<a (click)='invokeParentMethod($event)'
+   [ngClass]="classApplied">{{this.params.value}} </a>

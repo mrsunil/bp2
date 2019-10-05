@@ -1,0 +1,69 @@
+<div class="main-container"
+     fxLayout="column"
+     fxLayoutAlign="start none">
+    <mat-card>
+        <mat-card-content>
+            <h2 class="atlas-grid-card-title">{{interfaceName}} {{ businessObject }} detail</h2>
+            <div ag-grid="interfaceMonitoringDetailsGridOptions"
+                 class="ag-theme-material pointer-cursor"
+                 style="width: 100%; height:100%">
+                <ag-grid-angular style=" height:100%;"
+                                 class="ag-theme-material"
+                                 [rowData]="interfaceMonitoringDetailsRowData"
+                                 [gridOptions]="interfaceMonitoringDetailsGridOptions"
+                                 [columnDefs]="interfaceMonitoringDetailsColumnDefs"
+                                 domLayout="autoHeight"
+                                 [pagination]="true"
+                                 (gridReady)="onGridReady($event)"
+                                 [paginationPageSize]="10"
+                                 [enableSorting]="true"
+                                 [enableFilter]="true"
+                                 [enableColResize]="false"
+                                 [headerHeight]="atlasAgGridParam.headerHeight"
+                                 [rowHeight]="atlasAgGridParam.rowHeight">
+                </ag-grid-angular>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div fxLayout="column">
+        <mat-sidenav-container>
+            <mat-sidenav #sidenav
+            class="side-nav-screen side-nav-reassignscreen"
+            position="end"
+            disableClose
+            mode="over"
+            [fixedTopGap]="56"
+            [fixedInViewport]="true"
+            [(opened)]="sideNavOpened">
+           
+            <div class="atr-sidenav-margin">
+                <h1>Error Message</h1>
+                <p>{{message}}</p>
+                <div fxLayout="row"
+                        fxLayoutAlign="space-between center">
+                    <div fxLayout="column"
+                            fxLayoutAlign="start start">
+                        <button mat-button
+                                type="button"
+                                (click)="onDiscardButtonClick()">
+                            DISCARD
+                        </button>
+                    </div>
+                    <div fxLayout="column"
+                            fxLayoutAlign="start end">
+                        <div fxLayout="row"
+                                fxLayoutAlign="end start">
+                            <button mat-raised-button
+                                    type="button"
+                                    (click)="onSideNavSaveButtonClick()">
+                                SAVE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-sidenav>
+        </mat-sidenav-container>
+    </div>
+</div>

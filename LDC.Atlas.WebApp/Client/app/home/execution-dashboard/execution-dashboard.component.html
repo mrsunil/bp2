@@ -1,0 +1,264 @@
+<div class="container container-custom">
+	<div fxLayout="row"
+	     fxLayout.xs="column"
+	     fxFlexFill
+	     fxLayoutGap="1rem"
+	     fxLayoutAlign="start"
+	     class="container">
+
+		<mat-card class="dashboard-card elevated-container"
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title (click)="goToMissingInvoices()">Missing invoices</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="barChartData"
+				        [labels]="barChartLabels"
+				        [options]="barChartOptions"
+				        [legend]="barChartLegend"
+				        [chartType]="barChartType"
+				        [colors]="chartColors"
+				        (chartHover)="chartHovered($event)"
+				        (chartClick)="missingInvoicesChartClicked($event)"></canvas>
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="70%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Select View"
+							            class="dashboardInput">
+								<mat-option value="317">Grains, A8, Sales, Carlos</mat-option>
+								<mat-option value="751">Oilseeds, A8, Sales, Mathilde</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/execution/invoicing/missinginvoices">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+		<mat-card class="dashboard-card elevated-container"
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title>Washouts</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="washoutsBarChartData"
+				        [labels]="washoutsBarChartLabels"
+				        [options]="washoutsBarChartOptions"
+				        [legend]="washoutsBarChartLegend"
+				        [chartType]="washoutsBarChartType"
+				        [colors]="chartColors"
+				        (chartHover)="chartHovered($event)"
+				        (chartClick)="chartClicked($event)"></canvas>
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="70%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Select View"
+							            class="dashboardInput">
+								<mat-option value="317">Grains, A8, Sales, Carlos</mat-option>
+								<mat-option value="751">Oilseeds, A8, Sales, Mathilde</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+
+		<mat-card class="dashboard-card elevated-container"
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title>Open Positions and Stock</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="openPositionsBarChartData"
+				        [labels]="openPositionsBarChartLabels"
+				        [options]="openPositionsBarChartOptions"
+				        [legend]="openPositionsBarChartLegend"
+				        [chartType]="openPositionsBarChartType"
+				        (chartHover)="chartHovered($event)"
+				        [colors]="chartColors"
+				        (chartClick)="chartClicked($event)"></canvas>
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="70%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Select View"
+							            class="dashboardInput">
+								<mat-option value="317">Grains, A8, Sales, Carlos</mat-option>
+								<mat-option value="751">Oilseeds, A8, Sales, Mathilde</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+
+	</div>
+
+	<div fxLayout="row"
+	     fxLayout.xs="column"
+	     fxFlexFill
+	     fxLayoutGap="1rem"
+	     fxLayoutAlign="start"
+	     class="container">
+
+		<mat-card class="dashboard-card elevated-container"
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title>Trades to Fix</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="tradeToFixChartData"
+				        [labels]="tradeToFixChartLabels"
+				        [options]="tradeToFixChartOptions"
+				        [legend]="tradeToFixChartLegend"
+				        [chartType]="tradeToFixChartType"
+				        [colors]="violetColor"
+				        (chartHover)="chartHovered($event)"
+				        (chartClick)="chartClicked($event)"></canvas>
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="70%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Select View"
+							            class="dashboardInput">
+								<mat-option value="317">Grains, A8, Sales, Carlos</mat-option>
+								<mat-option value="751">Oilseeds, A8, Sales, Mathilde</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+		<mat-card class="dashboard-card elevated-container"
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title>Charters</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="chartersBarChartData"
+				        [labels]="chartersBarChartLabels"
+				        [options]="chartersBarChartOptions"
+				        [legend]="chartersBarChartLegend"
+				        [chartType]="chartersBarChartType"
+				        [colors]="chartFlashColors"
+				        (chartHover)="chartHovered($event)"
+				        (chartClick)="chartClicked($event)"></canvas>
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="70%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Select View"
+							            class="dashboardInput">
+								<mat-option value="317">Grains, A8, Sales, Carlos</mat-option>
+								<mat-option value="751">Oilseeds, A8, Sales, Mathilde</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+
+		<mat-card class="dashboard-card elevated-container"
+		          fxFlex>
+			<mat-card-header>
+				<mat-card-title>Contract management</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="contractManagementBarChartData"
+				        [labels]="contractManagementBarChartLabels"
+				        [options]="contractManagementBarChartOptions"
+				        [legend]="contractManagementBarChartLegend"
+				        [chartType]="contractManagementBarChartType"
+				        (chartHover)="chartHovered($event)"
+				        [colors]="whiteColors"
+				        (chartClick)="chartClicked($event)"></canvas>
+			</mat-card-content>
+			<mat-card-actions>
+				<div fxLayout
+				     fxLayout.xs="row"
+				     fxLayoutAlign="center"
+				     fxLayoutGap="10px"
+				     fxLayoutGap.xs="0">
+					<div fxFlex="70%">
+						<mat-form-field class="dashboardInput">
+							<mat-select placeholder="Select View"
+							            class="dashboardInput">
+								<mat-option value="317">Grains, A8, Sales, Carlos</mat-option>
+								<mat-option value="751">Oilseeds, A8, Sales, Mathilde</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div fxFlex="25%"
+					     class="dashboardLinkContainer">
+						<mat-button class="dashboardLink"
+						            routerLink="/{{company}}/">Overview ></mat-button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+
+
+	</div>
+
+</div>

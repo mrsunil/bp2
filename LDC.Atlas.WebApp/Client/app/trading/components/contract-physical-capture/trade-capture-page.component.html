@@ -1,0 +1,175 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav
+                 class="side-nav-screen"
+                 position="end"
+                 mode="over"
+                 [(opened)]="sideNavOpened"
+                 (openedChange)="onSplitTranchesSideNavOpenedChanged($event)">
+        <div class="atr-sidenav-margin">
+            <atlas-new-tranche-split-header #newTrancheSplitHeaderComponent
+                                            (addSplitOrTranchesEvent)="addSplitOrTranchesCalled($event)"
+                                            (newTrancheShippingEvent)="newTrancheShippingCalled($event)">
+            </atlas-new-tranche-split-header>
+            <atlas-new-tranche-split-ag-grid #newTrancheSplitAgGridComponent
+                                             [childSections]="childSectionsSearchResult"
+                                             (childQuantityConsumedEvent)="childQuantityConsumedCalled($event)"
+                                             (enableProceedButton)="enableProceedButtonCalled($event)">
+            </atlas-new-tranche-split-ag-grid>
+            <atlas-new-tranche-split-footer #newTrancheSplitFooterComponent></atlas-new-tranche-split-footer>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between center">
+                <div fxLayout="column"
+                     fxLayoutAlign="start start">
+                    <button mat-button
+                            type="button"
+                            (click)="onDiscardButtonClick()">
+                        DISCARD
+                    </button>
+                </div>
+                <div fxLayout="column"
+                     fxLayoutAlign="start end">
+                    <div fxLayout="row"
+                         fxLayoutAlign="end start">
+                        <button mat-raised-button
+                                type="button"
+                                (click)="onSideNavSaveButtonClick()">
+                            SAVE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div *ngIf="isLoading">
+
+            <mat-card>
+                <h2>Loading</h2>
+                <div class="custom-line-title"></div>
+
+                <div fxLayout="row"
+                     fxLayoutAlign="center center"
+                     fxLayoutWrap
+                     fxLayoutGap="20px">
+                    <mat-spinner color="accent"></mat-spinner>
+                </div>
+            </mat-card>
+        </div>
+        <form [ngClass]="{'hidden-during-loading':isLoading}"
+              [formGroup]="captureFormGroup">
+            <atlas-header-form-component (contractTypeSelected)="contractTypeSelected($event)"
+                                         (contractDateSelected)="contractDateSelected($event)"
+                                         #headerComponent></atlas-header-form-component>
+
+            <atlas-trade-management-menu-bar *ngIf="isShow"
+                                             [currentSection]="sectionModel"
+                                             [menuDisable]="isEdit || !editAllowed"
+                                             [(index)]="selectedTab"
+                                             #tradeManagementMenuBarComponent
+                                             (showDiscard)="onShowDiscard()"
+                                             (showSave)="onShowSave()"
+                                             [isIntercoCounterparty]="isValidIntercoCounterparty"
+                                             [companiesForInterco]="counterpartyCompaniesForManaulInterco"
+                                             (manualIntercoCreation)="onManualIntercoCreation($event)">
+            </atlas-trade-management-menu-bar>
+            <atlas-floating-action-button [fabTitle]="fabTitle"
+                                          [fabType]="fabType"
+                                          [fabActions]="fabMenuActions"
+                                          [isParentLoaded]="!isLoading"
+                                          [fabActionsDisabled]="saveInProgress"
+                                          (fabActionClicked)="onFabActionClicked($event)">
+            </atlas-floating-action-button>
+
+            <div class="main-container">
+                <main>
+                    <div *ifAuthorized="'Trades.Physicals.AllocateDeallocate',company:company">
+                        <mat-card *ngIf="isApprovalBannerDisplayed"
+                                  class="trade-approval-success-banner information-banner-card"
+                                  fxLayoutAlign="start center">
+                            <div class="success-circle-icon">
+                                <mat-icon>check</mat-icon>
+                            </div>
+                            <mat-card-header fxFlex="fill">
+                                <mat-card-title>
+                                    Your contract has been approved
+                                </mat-card-title>
+                                <mat-card-subtitle
+                                                   *ifAuthorized="'Trades.Physicals.GenerateContractAdvice',company:company">
+                                    Do you want to generate a contract advice ?
+                                </mat-card-subtitle>
+                            </mat-card-header>
+                            <div class="button-container"
+                                 fxFlex="280px"
+                                 fxLayoutGap="8px"
+                                 *ifAuthorized="'Trades.Physicals.GenerateContractAdvice',company:company">
+                                <button mat-button
+                                        type="button"
+                                        (click)="onGenerateButtonClicked()">generate</button>
+                                <button mat-button
+                                        type="button"
+                                        (click)="onCloseApprovalBannerClicked()">no thanks</button>
+                            </div>
+                        </mat-card>
+                    </div>
+
+                    <mat-tab-group dynamicHeight
+                                   (selectedTabChange)="getPosition($event)"
+                                   [(selectedIndex)]=selectedTab
+                                   class="bright-tab">
+                        <mat-tab label="MAIN"
+                                 [disabled]="(isClosed && isEdit) || (isSectionCancelled  && isEdit)">
+                            <atlas-physical-contract-capture-form-main-tab #mainTabComponent
+                                                                           (updateTrafficTabQuantity)="updateTrafficTabQuantity($event)"
+                                                                           (commodityBlockOrWarnMessage)="commodityBlockOrWarnMessage($event)"
+                                                                           (portWarningMessage)="portWarningMessage($event)"
+                                                                           (shipmentWarningMessageEvent)="shipmentWarningMessage($event)"
+                                                                           [tradeImageDetails]="tradeImageDetails">
+                            </atlas-physical-contract-capture-form-main-tab>
+                        </mat-tab>
+                        <mat-tab label="COSTS"
+                                 [disabled]="(isClosed && isEdit)">
+                            <atlas-physical-contract-capture-form-costs-tab #costsTabComponent
+                                                                            (noOfZeroCostRow)="zeroCosRowWarning($event)"
+                                                                            [commodityFormGroup]="captureFormGroup"
+                                                                            (costInvoiced)="invoicePercentOfCost($event)">
+                            </atlas-physical-contract-capture-form-costs-tab>
+                        </mat-tab>
+                        <mat-tab label="STATUS"
+                                 [disabled]="(!isShow && !isEdit)|| isTradeImage || (isClosed && isEdit) || (isSectionCancelled  && isEdit)">
+                            <atlas-physical-contract-capture-form-status-tab #statusTabComponent>
+                            </atlas-physical-contract-capture-form-status-tab>
+                        </mat-tab>
+                        <mat-tab label="TRAFFIC"
+                                 [disabled]="(!isShow && !isEdit) || isTradeImage || (isClosed && isEdit) || (isSectionCancelled  && isEdit)">
+                            <atlas-physical-contract-capture-form-traffic-tab #trafficTabComponent
+                                                                              (quantityValueUpdate)="quantityValueUpdate($event)"
+                                                                              (blDateUpdate)="onBlDateUpdated($event)"
+                                                                              (shipmentStatusUpdate)="onShipmentStatusUpdate($event)">
+                            </atlas-physical-contract-capture-form-traffic-tab>
+                        </mat-tab>
+                        <mat-tab label="SECTION"
+                                 [disabled]="(!isShow && !isEdit)  || isTradeImage || (isClosed && isEdit) || (isSectionCancelled  && isEdit)">
+                            <atlas-physical-contract-capture-form-section-tab #sectionTabComponent
+                                                                              (newSplitTrancheSideNavEvent)="sideNavChangeCalled($event)"
+                                                                              [childSectionsSearchResult]="childSectionsSearchResult">
+                            </atlas-physical-contract-capture-form-section-tab>
+                        </mat-tab>
+                        <mat-tab label="INVOICE MARKING"
+                                 [disabled]="(!isShow && !isEdit) ||isTradeImage || (isClosed && isEdit) || (isSectionCancelled  && isEdit)">
+                            <atlas-physical-contract-capture-form-invoice-marking-tab #invoiceMarkingTabComponent
+                                                                                      (setCashMatchDate)="setCashMatchDate($event)"
+                                                                                      (totalValuesCalculated)="onTotalValuesCalculated($event)"
+                                                                                      (totalInvoicePercent)="onTotalInvoiceValue($event)">
+                            </atlas-physical-contract-capture-form-invoice-marking-tab>
+                        </mat-tab>
+                    </mat-tab-group>
+                </main>
+
+            </div>
+        </form>
+    </mat-sidenav-content>
+    <atlas-lock-interval [resourcesInformation]="resourcesInformation">
+    </atlas-lock-interval>
+</mat-sidenav-container>

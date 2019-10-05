@@ -1,0 +1,71 @@
+<div *ngIf="gridPreferencesParameters"
+     fxLayout="row"
+     fxLayoutAlign="end end">
+
+    <button *ngFor="let action of additionalActions"
+            mat-button
+            (click)="onActionButtonClicked(action.action)"
+            matTooltip="{{action.text}}"
+            [disabled]="action.isDisabled()">
+        {{action.text}}
+    </button>
+
+    <atlas-ag-grid-user-preferences [gridOptions]="enlargedGridOptions"
+                                    [company]="gridPreferencesParameters.company"
+                                    [gridId]="gridPreferencesParameters.gridId"
+                                    [savingEnabled]="gridPreferencesParameters.savingEnabled"
+                                    [favouriteMenuEnabled]="gridPreferencesParameters.isFavouriteMenuEnabled"
+                                    [isAutosize]="gridPreferencesParameters.isAutosize"
+                                    [showExport]="gridPreferencesParameters.showExport"
+                                    [sharingEnabled]="gridPreferencesParameters.sharingEnabled"
+                                    [hasDeleteViewPrivilege]="gridPreferencesParameters.canDeleteView"
+                                    [loadOnInit]="loadUserPreferences"
+                                    [isCustomExportEnabled]="gridPreferencesParameters.hasCustomExport"
+                                    [hasColumnHandling]="gridPreferencesParameters.hasColumnHandling"
+                                    (exportClicked)="onCustomExportButtonClicked($event, '.xlsx')"
+                                    #userPreferences>
+
+    </atlas-ag-grid-user-preferences>
+</div>
+<div *ngIf='hasRangeSelectionOption'
+     class='quick-sum-div'
+     fxLayout="row"
+     fxLayoutAlign="space-between center">
+    <mat-slide-toggle (change)="onQuickSumToggleChange($event)">Quick Sum Mode</mat-slide-toggle>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center"
+         *ngIf="isQuickSumActivated">
+        <div *ngFor="let column of selectedColumnsArray">
+            <span *ngIf="column.sum !== 0 ">{{column.name}} : {{column.sum | number }} &nbsp; &nbsp; </span>
+        </div>
+    </div>
+    <div *ngIf="isQuickSumActivated">
+        <button mat-button
+                (click)="onClearSelectionButtonClicked()">
+            Clear Selection
+        </button>
+    </div>
+</div>
+
+<div [ngClass]="{
+    'enlarged-grid-without-grid-view': gridPreferencesParameters && !gridPreferencesParameters.savingEnabled, 
+    'enlarged-grid-with-grid-view': gridPreferencesParameters && gridPreferencesParameters.savingEnabled,
+    'enlarged-grid': !gridPreferencesParameters}">
+    <div ag-grid="enlargedGridOptions"
+         style="height:100%"
+         [ngClass]='appliedSelectionClass'>
+        <ag-grid-angular class="ag-theme-material"
+                         style="height:100%"
+                         [gridOptions]="enlargedGridOptions"
+                         (cellClicked)="onCellClicked($event)"
+                         (cellValueChanged)="onCellValueChanged($event)"
+                         (columnRowGroupChanged)="onColumnRowGroupChanged($event)"
+                         (columnVisible)="onColumnVisibilityChanged($event)"
+                         (rowClicked)="onRowClicked($event)"
+                         (rowSelected)="onRowSelected($event)"
+                         (rowDataChanged)="onRowDataChanged($event)"
+                         (rangeSelectionChanged)="onRangeSelectionChanged($event)"
+                         (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+    </div>
+</div>

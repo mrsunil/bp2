@@ -1,0 +1,17 @@
+.fxdeal-settlement-card
+{
+    color:#0000EE ;
+    text-decoration: underline;
+     cursor: pointer;
+ }
+:host ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    height: 0px !important;
+}
+
+.reversal-by {
+    margin-bottom: 15px !important;
+    margin-right: 10px !important;
+}
+.min-wid-65{
+    min-width: 65px;
+}

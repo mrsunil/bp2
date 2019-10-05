@@ -1,0 +1,32 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:7011",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": false,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    // dotnet run --launch-profile "LDC.Atlas.Services.Processor" --server.urls "http://localhost:7030" --BackgroundTask:ProcessType=AtlasPostingProcessor
+    // dotnet run --launch-profile "LDC.Atlas.Services.Processor" --server.urls "http://localhost:7031" --BackgroundTask:ProcessType=AtlasAccountingDocumentProcessor
+    // dotnet run --launch-profile "LDC.Atlas.Services.Processor" --server.urls "http://localhost:7032" --BackgroundTask:ProcessType=AtlasAccountingInterfaceProcessor
+    // dotnet run --launch-profile "LDC.Atlas.Services.Processor" --server.urls "http://localhost:7033" --BackgroundTask:ProcessType=AtlasPaymentRequestInterfaceProcessor
+    "LDC.Atlas.Services.Processor": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      //"applicationUrl": "http://localhost:7030",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

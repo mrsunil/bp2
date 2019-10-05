@@ -1,0 +1,227 @@
+<atlas-cash-matching-home></atlas-cash-matching-home>
+<div class="main-container">
+    <mat-card *ngIf="isDialogClosed"
+              class="information-card information-banner-card"
+              fxLayoutAlign="start center">
+        <div class="success-circle-icon">
+            <mat-icon>check</mat-icon>
+        </div>
+        <mat-card-header fxFlex>
+            <mat-card-title *ngIf="!journalFieldShow">
+                Documents matched with code
+                <span class="total-figure-value">{{matchCodeSelected}}
+                </span>
+            </mat-card-title>
+            <mat-card-title *ngIf="journalFieldShow">
+                Documents matched with match flag
+                <span class="total-figure-value">{{matchCodeSelected}}
+                </span>
+                Revaluation Journal Generated is :
+                <span class="total-figure-value">{{journalDocumentId}}</span>
+            </mat-card-title>
+        </mat-card-header>
+        <div class="button-container"
+             fxLayoutAlign="end end"
+             fxLayoutGap="8px">
+            <button mat-button
+                    (click)="onCloseButtonClicked()">
+                CLOSE </button>
+            <button mat-button
+                    (click)="onAccountingEntriesButtonClicked()">
+                GO TO ACC. ENTRIES
+            </button>
+
+        </div>
+    </mat-card>
+
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                Documents to match
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%"
+                 fxFlex="15%">
+                <div fxFlex="98%">
+                    <atlas-masterdata-user-preferences-input isEditable="true"
+                                                             [fieldControl]="counterpartyCtrl"
+                                                             [options]="filteredCounterPartyList"
+                                                             label="Client Account"
+                                                             displayProperty="counterpartyCode"
+                                                             [selectProperties]="['counterpartyCode', 'description']"
+                                                             [errorMap]="counterpartyErrorMap"
+                                                             lightBoxTitle="Results for Counterparty"
+                                                             gridId="counterpartiesGrid"
+                                                             (optionSelected)="onCounterpartyIdSelected($event)">
+                    </atlas-masterdata-user-preferences-input>
+                </div>
+            </div>
+            <mat-form-field fxFlex="16%">
+                <input matInput
+                       placeholder="Client Name"
+                       [formControl]="clientNameCtrl"
+                       label="Client Name"
+                       autocomplete="off"
+                       matTooltip="Client Name">
+            </mat-form-field>
+            <div class="custom-form"
+                 fxFlex="12%"
+                 [class.isEmpty]="!departmentCtrl.value"
+                 [class.required-field]="departmentCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Department"
+                           [required]="departmentCtrl.isRequired"
+                           [matAutocomplete]="departments"
+                           [formControl]="departmentCtrl"
+                           autocomplete="off"
+                           matTooltip="Department Code">
+                    <mat-autocomplete #departments="matAutocomplete"
+                                      [panelWidth]="panelSize"
+                                      (optionSelected)="onDepartmentCodeSelected($event.option.value)">
+                        <mat-option *ngFor="let department of filteredDepartment"
+                                    [value]="department.departmentCode">
+                            {{department.departmentCode}} | {{department.description}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="departmentCtrl.hasError('required')"> Required
+                    </mat-error>
+                    <mat-hint *ngIf="departmentCtrl.isRequired">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="custom-form"
+                 fxFlex="12%"
+                 [class.isEmpty]="!currencyCtrl.value"
+                 [class.required-field]="currencyCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Currency"
+                           [required]="currencyCtrl.isRequired"
+                           [matAutocomplete]="currencies"
+                           [formControl]="currencyCtrl"
+                           autocomplete="off"
+                           matTooltip="Currency">
+                    <mat-autocomplete #currencies="matAutocomplete"
+                                      [panelWidth]="panelSize">
+                        <mat-option *ngFor="let currency of filteredCurrencyList"
+                                    [value]="currency.currencyCode">{{currency.currencyCode}} |
+                            {{currency.description}}</mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="currencyCtrl.hasError('required')"> Required
+                    </mat-error>
+                    <mat-hint *ngIf="currencyCtrl.isRequired">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <mat-form-field fxFlex=12%>
+                <input matInput
+                       placeholder="DocumentReference"
+                       [matAutocomplete]="documentReferences"
+                       [formControl]="docReferenceCtrl"
+                       autocomplete="off"
+                       matTooltip="DocumentReference">
+                <mat-autocomplete #documentReferences="matAutocomplete"
+                                  [panelWidth]="panelSize"
+                                  (optionSelected)="onDocumentReferenceOptionSelected($event.option.value)">
+                    <mat-option *ngFor="let docReference of filteredDocReferenceList"
+                                [value]="docReference.documentReference">
+                        {{docReference.documentReference}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="docReferenceCtrl.hasError('inDropdownList')">
+                    Document Reference doesn't exist
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex=14%>
+                <input matInput
+                       placeholder="Second Document Reference"
+                       [formControl]="secDocReferenceCtrl"
+                       autocomplete="off"
+                       matTooltip="Second Document Reference">
+            </mat-form-field>
+            <button mat-icon-button
+                    [disabled]="isSearchDisabled"
+                    (click)="onCreateMatchSearchButtonClicked()">
+                <mat-icon aria-label="Search">search</mat-icon>
+            </button>
+        </mat-card-content>
+    </mat-card>
+
+    <div fxLayout="row"
+         fxLayoutAlign="start none"
+         *ngIf="isDataAvailable">
+        <mat-card fxFlex="100%">
+            <div ag-grid="documentMatchingGridOptions"
+                 class="ag-theme-material pointer-cursor">
+                <ag-grid-angular style=" height:100%;"
+                                 class="ag-theme-material"
+                                 [columnDefs]="documentMatchingGridColumns"
+                                 [rowData]="documentMatchingGridRows"
+                                 [gridOptions]="documentMatchingGridOptions"
+                                 domLayout="autoHeight"
+                                 (gridReady)="onGridReady($event)"
+                                 (rowSelected)="onCreateMatchRowSelected($event)"
+                                 (cellValueChanged)="onCellValueChanged($event)"
+                                 [frameworkComponents]="gridComponents"
+                                 rowSelection="multiple"
+                                 [singleClickEdit]="true"
+                                 [suppressRowClickSelection]="true"
+                                 [suppressNoRowsOverlay]="true"
+                                 [pagination]="true"
+                                 [paginationPageSize]="20"
+                                 domLayout=autoHeight
+                                 [enableSorting]="true"
+                                 [enableColResize]="true"
+                                 enableFilter
+                                 [rowHeight]="atlasAgGridParam.rowHeight">
+                </ag-grid-angular>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="end center">
+                <mat-card-subtitle class="total-figure">Balance : <span class="total-figure-value">{{formattedInput}}
+                    </span></mat-card-subtitle>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 *ngIf="isLoading"
+                 class="loading">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+        </mat-card>
+    </div>
+    <atlas-empty-state *ngIf="!isDataAvailable"
+                       title="No Entries to display"
+                       message="Edit the filters and generate the table again"
+                       #emptyStateComponent></atlas-empty-state>
+    <div fxLayout="row "
+         fxLayoutAlign="space-between start"
+         class="button-details">
+        <div fxLayout="column "
+             fxLayoutAlign="start ">
+            <button (click)="onDiscardButtonClicked()"
+                    mat-button>
+                DISCARD
+            </button>
+        </div>
+        <div fxLayout="column "
+             fxLayoutAlign="start "
+             *ngIf="isDataAvailable">
+            <div fxLayout="row "
+                 fxLayoutAlign="end start ">
+                <button mat-raised-button
+                        (click)="onMatchSelectedButtonClicked()"
+                        [disabled]="isCompanyFrozen">
+                    MATCH SELECTED
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

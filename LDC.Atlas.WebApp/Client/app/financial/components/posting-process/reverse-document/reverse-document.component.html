@@ -1,0 +1,156 @@
+<div class="main-container">
+
+    <h2>Accounting document reversal</h2>
+
+    <mat-horizontal-stepper [linear]
+                            (selectionChange)="onChangeStepAction($event)"
+                            #stepper>
+        <ng-template matStepperIcon="edit">
+            <mat-icon>check</mat-icon>
+        </ng-template>
+        <mat-step>
+            <ng-template matStepLabel>Selection</ng-template>
+            <atlas-cash-selection-form-component #selectionFormComponent>
+            </atlas-cash-selection-form-component>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-card fxFlex="100%">
+                    <div fxLayout="row"
+                         fxLayoutAlign="start none"
+                         class="search">
+                        <atlas-masterdata-user-preferences-input fxFlex="100%"
+                                                                 class="contextual-search-for-currency"
+                                                                 isEditable="true"
+                                                                 [fieldControl]="documentCtrl"
+                                                                 label="Document"
+                                                                 [options]="filteredDocumentReferences"
+                                                                 displayProperty="documentReference"
+                                                                 [selectProperties]="['documentReference']"
+                                                                 lightBoxTitle="Results for Document"
+                                                                 gridId="documentReferenceGrid"
+                                                                 (valueChange)='valueChanged($event)'
+                                                                 (optionSelected)="valueChanged($event)"
+                                                                 (keyup.enter)="OnChangeValue($event)"
+                                                                 isSearchBar="true">
+                        </atlas-masterdata-user-preferences-input>
+                    </div>
+                </mat-card>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="start">
+                <mat-card fxFlex="100">
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-between"
+                         class="atlas-grid-card-header">
+                        <span class="fill-space"> </span>
+                    </div>
+                    <h2 class="header-accounting-entries">{{noOfAccountingEntries}} Accounting Entries Found</h2>
+                    <div ag-grid="reverseDocumntGridOptions">
+                        <ag-grid-angular class="ag-theme-material grid-size"
+                                         [rowData]="accountingDocumentLine"
+                                         [columnDefs]="reverseDocumentGridCols"
+                                         domLayout="autoHeight"
+                                         (gridReady)="onGridReady($event)"
+                                         [pagination]="false"
+                                         [paginationPageSize]="20"
+                                         [enableSorting]="true"
+                                         [enableColResize]="true"
+                                         enableFilter="false"
+                                         [rowHeight]="atlasAgGridParam.rowHeight">
+                        </ag-grid-angular>
+                    </div>
+                </mat-card>
+            </div>
+            <div fxLayout="row "
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="column "
+                     fxLayoutAlign="start ">
+                    <button mat-button
+                            (click)="onSelectionDiscardButtonClicked()">
+                        CANCEL
+                    </button>
+                </div>
+                <div fxLayout="column "
+                     fxLayoutAlign="start ">
+                    <div fxLayout="row "
+                         fxLayoutAlign="end start ">
+                        <button mat-raised-button
+                                [disabled]="this.accountingDocumentLine == null || this.accountingDocumentLine.length == 0 || this.disableNextButton"
+                                (click)="onSelectionNextButtonClicked()">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Create</ng-template>
+            <atlas-reverse-document-create #reverseDocumentCreateComponent
+                                           (notifyParentForDisableNextButton)="getDisabledState($event)"
+                                           [accountingId]='accountingId'
+                                           [transactionDocumentId]='transactionDocumentId'
+                                           [transactionDocumentTypeId]='transactionDocumentTypeId'
+                                           [documentReference]='documentReference'>
+            </atlas-reverse-document-create>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="column"
+                     fxLayoutAlign="start center">
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-between start">
+                        <button mat-button
+                                (click)="onCreateCancelButtonClicked()">
+                            CANCEL
+                        </button>
+                        <button mat-raised-button
+                                (click)="onCreatePreviousButtonClicked()">
+                            Previous
+                        </button>
+                    </div>
+                </div>
+                <div fxLayout="column "
+                     fxLayoutAlign="end center">
+                    <div fxLayout="row "
+                         fxLayoutAlign="end start">
+                        <button mat-raised-button
+                                [disabled]="disableButton"
+                                (click)="onCreateNextButtonClicked()">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Summary</ng-template>
+            <atlas-reverse-document-summary #revervseDocumentSummaryComponent
+                                            [accountingId]='accountingId'
+                                            [transactionDocumentTypeId]='transactionDocumentTypeId'
+                                            [documentReferenceId]='transactionDocumentId'
+                                            [documentReference]='documentReference'
+                                            [reversedDocumentReference]='reversedDocumentReference'>
+            </atlas-reverse-document-summary>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between start"
+                 class="button-details">
+                <div fxLayout="column"
+                     fxLayoutAlign="start center">
+                </div>
+                <div fxLayout="column "
+                     fxLayoutAlign="end center">
+                    <div fxLayout="row "
+                         fxLayoutAlign="end start">
+                        <button mat-raised-button
+                                (click)="onSummaryFinishButtonClicked()">
+                            Finish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>
+<atlas-lock-interval [resourcesInformation]="resourcesInformation">
+</atlas-lock-interval>

@@ -1,0 +1,20 @@
+.header-tab {
+    margin-bottom: 40px;
+}
+
+.menu-header {
+    background-color: #53c234;
+    color: white;
+
+    mat-icon {
+        color: white;
+    }
+}
+
+.floating-menu {
+    top: -1px;
+}
+
+.has-header .mat-menu-content {
+    padding: 0 !important;
+}

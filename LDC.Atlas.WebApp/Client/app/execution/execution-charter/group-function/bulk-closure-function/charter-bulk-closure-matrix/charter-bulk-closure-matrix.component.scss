@@ -1,0 +1,28 @@
+::ng-deep .ag-row-group-indent-0{
+    font-weight: bold;
+}
+::ng-deep .status-background-color{
+    color:rgb(99, 94, 94) !important;
+}
+::ng-deep .disabled-checkbox .ag-icon.ag-icon-checkbox-unchecked{
+    background: #a5a1aa4d;
+    border: 1px solid #8d7f7f;
+}
+
+::ng-deep .risky-for-closure{
+    background-color: red !important;
+}
+::ng-deep .cat-red{
+    background: #ffcccc;
+    color: #ff3e3e;
+}
+
+::ng-deep .cat-grn{
+    background: #ccefdc;
+    color: #35bf71;
+}
+
+::ng-deep .cat-org{
+    background: #fdefe6;
+    color: #df9768;
+}

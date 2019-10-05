@@ -1,0 +1,67 @@
+<mat-card *ngIf="!hasEmptyState"
+          class="trade-capture-card">
+    <mat-card-header>
+        <mat-card-title>
+            BL Information
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center"
+             fxLayoutGap="5%">
+            <div fxFlex="33%"
+                 [class.displayMode]="!blDateCtrl.enabled">
+                <mat-form-field>
+                    <div matTooltip="BL Date cannot be added to an unallocated sale"
+                         [matTooltipDisabled]="isDisabled">
+                        <input matInput
+                               [matDatepicker]="bldatepicker"
+                               placeholder="Bl Date"
+                               [formControl]='blDateCtrl'
+                               autocomplete="off"
+                               (dateChange)="onBlDateChanged()">
+                    </div>
+                    <mat-hint class="bl-date-error"
+                              *ngIf="isFormEdit && isBLDateBeforeContractDate()">BL date is before the contract date
+                    </mat-hint>
+                    <mat-datepicker-toggle matSuffix
+                                           [for]="bldatepicker">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #bldatepicker></mat-datepicker>
+                    <mat-error *ngIf="blDateCtrl.hasError('isDateAfterValid')">
+                        The BL date cannot be in the future
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="33%"
+                 [class.displayMode]="!blReferenceCtrl.enabled">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Bl Reference"
+                           [formControl]="blReferenceCtrl"
+                           autocomplete="off"
+                           [matTooltip]="'Bl Reference'">
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="33%"
+                 [class.displayMode]="!groupingNumberCtrl.enabled">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Grouping Number"
+                           [formControl]="groupingNumberCtrl"
+                           autocomplete="off"
+                           readonly
+                           type="number">
+                </mat-form-field>
+            </div>
+        </div>
+
+    </mat-card-content>
+</mat-card>
+
+<atlas-empty-state *ngIf="hasEmptyState"
+                   title="No BL Date"
+                   [message]="blDateEmptyMessage"
+                   fxFlex="100"></atlas-empty-state>

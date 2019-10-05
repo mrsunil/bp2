@@ -1,0 +1,62 @@
+<atlas-admin-stepper hasAddButton=true
+                     (buttonClicked)="onNewProfileButtonClicked()"
+                     [buttonText]="'New Profile'"></atlas-admin-stepper>
+
+<div class="main-container">
+    <mat-card>
+        <div fxLayout="row">
+            <div>
+                <mat-card-title class="atlas-grid-card-title">
+                    <h2>Profiles</h2>
+                </mat-card-title>
+            </div>
+            <span class="space"></span>
+            <div>
+                <button mat-icon-button
+                        [matMenuTriggerFor]="menu1">
+                    <i class="material-icons">more_vert</i>
+                </button>
+                <mat-menu #menu1="matMenu">
+                    <button mat-menu-item
+                            [matMenuTriggerFor]="exportMenu"
+                            (mouseover)="OnExportButton()">
+                        <mat-icon>import_export</mat-icon><span>Export</span>
+                    </button>
+                </mat-menu>
+                <mat-menu #exportMenu="matMenu">
+                    <button mat-menu-item
+                            (click)="onExportButtonClickedAsExcel()">
+                        <mat-icon>import_export</mat-icon><span>Export as Excel</span>
+                    </button>
+                    <button mat-menu-item
+                            (click)="onExportButtonClickedAsCSV()">
+                        <mat-icon>import_export</mat-icon><span>Export as CSV</span>
+                    </button>
+                </mat-menu>
+            </div>
+        </div>
+
+        <mat-card-content>
+            <div ag-grid="profilesGridOptions"
+                 class="ag-theme-material pointer-cursor"
+                 style="width: 100%; height: 100%">
+                <ag-grid-angular style=" height: 100%;"
+                                 class="ag-theme-material"
+                                 [rowData]="profilesGridRows"
+                                 [columnDefs]="profilesGridCols"
+                                 [enableColResize]="true"
+                                 [pagination]="true"
+                                 [paginationPageSize]="10"
+                                 [enableSorting]="true"
+                                 domLayout="autoHeight"
+                                 (gridReady)="onGridReady($event)"
+                                 (cellClicked)="onProfileCellClicked($event)"
+                                 enableFilter
+                                 [rowHeight]="atlasAgGridParam.rowHeight">
+                </ag-grid-angular>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <atlas-lock-interval [resourcesInformation]="resourcesInformation">
+    </atlas-lock-interval>
+</div>

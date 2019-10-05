@@ -1,0 +1,56 @@
+<div class="fab-bottom-right"
+     [style.top]="fabCssHeight"
+     *ngIf="isDisplayed">
+
+    <!-- Extended Menu -->
+    <div *ngIf="fabType === FABType.ExtendedMenu">
+        <button mat-raised-button
+                class="fab-text-button"
+                color="accent"
+                [matMenuTriggerFor]="FABMenu">
+            <mat-icon class="material-icons">arrow_drop_up</mat-icon>
+            {{fabTitle}}
+        </button>
+        <mat-menu #FABMenu
+                  yPosition="above"
+                  xPosition="before"
+                  class="floating-menu has-header fab-menu">
+            <button mat-menu-item
+                    *ngFor="let action of fabActions"
+                    (click)="onActionButtonClicked(action.action)"
+                    [disabled]="action.disabled || fabActionsDisabled">
+                <mat-icon class="material-icons">{{action.icon}}</mat-icon>
+                {{action.text}}
+            </button>
+            <button mat-menu-item
+                    class="menu-header uppercase">
+                <mat-icon class="material-icons">arrow_drop_down</mat-icon>
+                {{fabTitle}}
+            </button>
+        </mat-menu>
+    </div>
+    <!-- SINGLE EXTENDED BUTTON -->
+    <div *ngIf="fabType === FABType.ExtendedSingleButton">
+        <button mat-raised-button
+                class="fab-text-button"
+                color="accent"
+                [disabled]="fabActionsDisabled"
+                (click)="onActionButtonClicked(fabActions[0].action)">
+            <mat-icon class="material-icons">add</mat-icon>
+            {{fabActions[0].text}}
+        </button>
+    </div>
+
+    <!-- MINI FABS -->
+    <div *ngIf="fabType === FABType.MiniFAB">
+        <button *ngFor="let action of fabActions"
+                (click)="onActionButtonClicked(action.action)"
+                matTooltip="{{action.text}}"
+                matTooltipPosition="before"
+                class="mat-mini-fab mat-accent"
+                color="accent"
+                [disabled]="action.disabled || fabActionsDisabled">
+            <mat-icon class="mat-button-wrapper">{{action.icon}}</mat-icon>
+        </button>
+    </div>
+</div>

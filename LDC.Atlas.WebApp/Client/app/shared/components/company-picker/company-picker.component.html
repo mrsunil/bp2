@@ -1,0 +1,22 @@
+<form [formGroup]="companySelectionForm">
+    <div class="static">
+        <mat-expansion-panel [ngClass]='foreGroundClass'
+                             (mouseleave)="closePanel()"
+                             [expanded]="isPanelOpen"
+                             (opened)="isPanelOpen = true"
+                             [ngClass]="{'company-chip': isPanelOpen}">
+            <mat-expansion-panel-header expandedHeight="35px"
+                                        collapsedHeight="35px">
+                <mat-panel-title>
+                    Company : {{ this.company }}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div mat-menu-item
+                 *ngFor="let comp of companies"
+                 (click)="selectedCompanyChanged(comp)"
+                 class="company-list">
+                {{ comp.companyId }} - {{ comp.description }}
+            </div>
+        </mat-expansion-panel>
+    </div>
+</form>

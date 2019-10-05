@@ -1,0 +1,179 @@
+<atlas-admin-stepper></atlas-admin-stepper>
+<form (ngSubmit)="onValidateButtonClicked()"
+      (keydown.enter)="$event.preventDefault()"
+      [formGroup]="profileForm">
+    <header class="header-background">
+        <div class="header-content">
+            <h2 class="no-margin"
+                [class.header-title]="!isCreation">
+                {{title}}
+            </h2>
+            <div fxLayout="row"
+                 fxLayoutAlign="start center"
+                 fxLayoutGap="16px">
+                <div fxLayout="row"
+                     fxFlex="100"
+                     fxLayoutAlign="none center"
+                     fxLayoutGap="10px"
+                     class="profile-card-general-info">
+                    <div fxFlex="25"
+                         fxFlex.xs="100"
+                         fxFlex.sm="100"
+                         class="custom-form"
+                         [class.isEmpty]="!profileNameCtrl.value"
+                         [class.required-field]="true">
+                        <mat-form-field>
+                            <input required
+                                   matInput
+                                   placeholder="Profile Name"
+                                   aria-label="Profile Name"
+                                   formControlName="profileNameCtrl">
+                            <mat-error *ngIf="profileNameCtrl.hasError('required')">
+                                Profile Name <strong>required</strong>
+                            </mat-error>
+                            <mat-hint>
+                                Required *
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50"
+                         fxFlex.xs="100"
+                         fxFlex.sm="100"
+                         class="custom-form"
+                         [class.isEmpty]="!profileDescriptionCtrl.value"
+                         [class.required-field]="true">
+                        <mat-form-field>
+                            <input required
+                                   matInput
+                                   placeholder="Profile Description"
+                                   aria-label="Profile Description"
+                                   formControlName="profileDescriptionCtrl">
+                            <mat-error *ngIf="profileDescriptionCtrl.hasError('required')">
+                                Profile Description <strong>required</strong>
+                            </mat-error>
+                            <mat-hint>
+                                Required *
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="metadata-text">
+                <div fxLayout="column"
+                     fxLayoutAlign="none start">
+                    <div fxFlex="20%"
+                         fxFlex.xs="100%"
+                         fxFlex.sm="100%"
+                         *ngIf="model.createdBy || model.createdDateTime">
+                        Created by {{ model.createdBy }} on
+                        <atr-date-label [date]="model.createdDateTime"></atr-date-label>
+                    </div>
+                    <div fxFlex="100%"
+                         fxFlex.xs="100%"
+                         fxFlex.sm="100%"
+                         *ngIf="model.modifiedDateTime || model.modifiedBy">
+                        Last Updated by {{ model.modifiedBy }} on
+                        <atr-date-label [date]="model.modifiedDateTime"></atr-date-label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <mat-toolbar class="menu-bar">
+        <div class="toolbar-div">
+            <div fxLayout="row"
+                 fxLayoutAlign="start center"
+                 fxFlex="40">
+                <button mat-button
+                        type="button"
+                        (click)="onCopyProfileButtonClicked()"
+                        *ngIf="!isCopy">
+                    Copy Profile
+                </button>
+                <button mat-button
+                        type="button"
+                        (click)="onDeleteButtonClicked()"
+                        *ngIf="!isCreation">
+                    Delete
+                </button>
+            </div>
+
+            <span class="fill-space"></span>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="end center"
+                 fxFlex="20"
+                 fxLayoutGap="16px">
+
+                <a (click)="onValidateButtonClicked()"
+                   matTooltip="Save the profile"
+                   class="menu-bar-action-icon">
+                    <div class="white-icon outline-save-icon"></div>
+                </a>
+            </div>
+        </div>
+    </mat-toolbar>
+
+    <div class="main-container">
+        <mat-card class="authorized-area-card">
+            <mat-card-title>
+                <h2>Authorized Areas</h2>
+            </mat-card-title>
+            <mat-card-content>
+                <mat-form-field>
+                    <mat-chip-list multiple>
+                        <mat-chip *ngFor="let priv of privilegeTree"
+                                  [selectable]="true"
+                                  [selected]="isSelected(priv)"
+                                  (click)="selectPrivilege(priv)">
+                            <atlas-privilege-level1-icon matListIcon
+                                                         [privilegeLevel1Name]="priv.privilege.name">
+                            </atlas-privilege-level1-icon>
+                            {{priv.privilege.displayName}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </mat-form-field>
+
+                <div *ngFor="let priv of privilegeTree">
+                    <div *ngIf="isSelected(priv)">
+                        <div *ngFor="let child of priv.children">
+                            <atr-privilege-tree [form]="profileForm"
+                                                [privilege]="child"></atr-privilege-tree>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <div class="btn-container">
+            <!--<button type="button" *ngIf="isCreation" (click)="revert()" mat-button [disabled]="userForm.pristine">Cancel</button>-->
+
+            <div fxFlex="50"
+                 fxLayout="row"
+                 fxAlignLayout="start start">
+                <button type="button"
+                        *ngIf="!isCreation"
+                        (click)="onDeleteButtonClicked()"
+                        mat-button>
+                    Delete
+                </button>
+            </div>
+            <div fxFlex="50"
+                 fxLayout="row"
+                 fxAlignLayout="start end">
+                <span class="fill-space"></span>
+                <button type="button"
+                        (click)="onCancelButtonClicked()"
+                        mat-button>
+                    Cancel
+                </button>
+                <button type="submit"
+                        mat-raised-button>
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+    <atlas-lock-interval [resourcesInformation]="resourcesInformation">
+    </atlas-lock-interval>
+</form>

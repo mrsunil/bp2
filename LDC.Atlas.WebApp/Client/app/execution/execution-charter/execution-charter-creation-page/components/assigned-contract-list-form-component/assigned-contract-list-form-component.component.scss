@@ -1,0 +1,59 @@
+.h2-title {
+    padding-left: 10px;
+}
+
+.atr-ag-grid {
+    height: 100%;
+}
+
+.ag-theme-material .ag-header-select-all {
+    width: 100% !important;
+    text-align: center !important;
+}
+
+.atr-grid-left-margin {
+    left: 20px;
+}
+
+:host ::ng-deep.ag-layout-auto-height.ag-body-container {
+    min-height: 300px !important;
+}
+
+.quick-sum-span {
+    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+    margin-right: 4px;
+}
+
+button.mat-button-user-margin.mat-button.ng-star-inserted {
+    margin: 0px !important;
+    line-height: 0px !important;
+}
+
+.mat-card-header button.mat-button {
+    margin: 0 8px !important;
+}
+
+.quick-sum-div-height {
+    height: 25px !important;
+}
+
+.side-nav-reassignscreen {
+    width: 1200px;
+    height: calc(100vh - 53px);
+    top: 56px;
+    z-index: 10px;
+}
+
+.atr-sidenav-margin {
+    margin: 16px;
+}
+
+.isLoading {
+    width: 0;
+    height: 0;
+}
+
+h2 {
+
+    margin-top: 20px !important;
+}

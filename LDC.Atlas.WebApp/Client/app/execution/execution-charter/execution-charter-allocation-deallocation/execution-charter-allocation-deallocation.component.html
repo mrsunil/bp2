@@ -1,0 +1,90 @@
+<div class="main-container">
+    <form [formGroup]="allocationCharterFormGroup">
+        <div fxLayout="row"
+             fxLayout.md="column"
+             fxLayoutAlign="space-around start">
+            <div fxLayout="column"
+                 fxFlex="49">
+                <atlas-purchase-allocation-component #purchaseAllocationComponent
+                                                     (purchaseRowSelected)="validateContract()"
+                                                     (purchaseRowUnChecked)="validateContract()"
+                                                     (onPurchaseRowSelectedChange)="purchaseRowSelectedChange($event)"
+                                                     (isPurchaseRowDataUpdated)="rowDataUpdated($event)">
+                </atlas-purchase-allocation-component>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="start right"
+                 fxFlex="49">
+                <atlas-sale-allocation-component #saleAllocationComponent
+                                                 (saleRowSelected)="validateContract()"
+                                                 (saleRowUnChecked)="validateContract()"
+                                                 (onSaleRowSelectedChange)="saleRowSelectedChange($event)"
+                                                 (isSaleRowDataUpdated)="rowDataUpdated($event)">
+                </atlas-sale-allocation-component>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxLayoutWrap
+             *ngIf="isLoadingassign"
+             class="loading">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+        <div fxLayout="row"
+             fxLayout.md="column"
+             fxLayoutAlign="space-around start">
+            <div fxLayout="column"
+                 fxFlex="98.5">
+                <atlas-quantity-allocation-component #quantityAllocationComponent
+                                                     (isQuantityFormInvalid)="disableAllocationButton($event)">
+                </atlas-quantity-allocation-component>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="end"
+             class="button-details"
+             [ngClass]="{'hidden-during-loading':isLoadingassign}">
+            <div fxLayout="column"
+                 fxLayoutAlign="start">
+                <button mat-raised-button
+                        (click)="onAllocateButtonClicked()"
+                        [disabled]="isDisabled"
+                        mat-button>
+                    ALLOCATE
+                </button>
+            </div>
+        </div>
+    </form>
+    <div fxLayout="row"
+         fxLayoutAlign="space-around start">
+        <div fxLayout="column"
+             fxFlex="98.5">
+            <atlas-deallocation-component #deallocationComponent
+                                          (deallocationRowSelected)="validateDeallocationContract()"
+                                          (onDeallocationRowSelected)="deallocationRowSelectedChange($event)">
+            </atlas-deallocation-component>
+        </div>
+    </div>
+    <div class="btn-container">
+        <div fxFlex="50"
+             fxLayout="row"
+             fxAlignLayout="start start">
+            <button mat-button
+                    (click)="onDiscardButtonClicked()">
+                DISCARD
+            </button>
+        </div>
+        <div fxFlex="50"
+             fxLayout="row"
+             fxAlignLayout="start end">
+            <span class="fill-space"></span>
+            <button mat-raised-button
+                    (click)="onDeallocateButtonClicked()"
+                    [disabled]="isDeallocationDisabled">
+                Deallocate
+            </button>
+        </div>
+    </div>
+</div>
+<atlas-lock-interval [resourcesInformation]="resourcesInformation">
+</atlas-lock-interval>

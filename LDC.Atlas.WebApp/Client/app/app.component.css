@@ -1,0 +1,44 @@
+html,
+body,
+atlas-root,
+mat-sidenav-container,
+.my-content {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.mat-toolbar .mat-icon {
+    cursor: pointer;
+}
+
+/* /deep/ .mat-placeholder-required {
+	color: red !important;
+} */
+
+/deep/ .mat-header-row {
+    font-size: 14px;
+}
+
+.mat-sidenav.closedSidenav {
+    width: 64px;
+    transition: width .2s !important;
+}
+
+.mat-sidenav.openSidenav {
+    width: 210px;
+    transition: width .2s !important;
+}
+
+.closedSidenavContent {
+    margin-left: 64px !important;
+    transition: margin-left .2s !important;
+}
+
+.openSidenavContent {
+    margin-left: 185px !important;
+    transition: margin-left .2s !important;
+}

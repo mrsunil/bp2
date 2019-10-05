@@ -1,0 +1,41 @@
+<mat-card>
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutAlign="space-between left"
+         fxLayoutWrap
+         fxLayoutGap="20px">
+        <span class="fill-space">
+            <h3>Possible Sale Allocations</h3>
+        </span>
+        <div>
+            <mat-menu class="no-overflow"
+                      #menu="matMenu">
+
+                <div *ngFor="let col of saleAllocationGridCols">
+                    <mat-checkbox [checked]="!col.hide">{{col.headerName}}</mat-checkbox>
+                </div>
+
+            </mat-menu>
+        </div>
+    </div>
+    <div ag-grid="saleAllocationGridOptions"
+         class="ag-theme-material pointer-cursor"
+         style="width: 100%; height: 100%">
+        <ag-grid-angular style=" height: 100%;"
+                         class="ag-theme-material"
+                         [gridOptions]="saleAllocationGridOptions"
+                         [rowData]="saleAllocationGridRows"
+                         [columnDefs]="saleAllocationGridCols"
+                         [enableColResize]="true"
+                         [pagination]="true"
+                         [paginationPageSize]="10"
+                         [suppressRowClickSelection]="true"
+                         [enableSorting]="true"
+                         (gridReady)="onGridReady($event)"
+                         (rowSelected)="onRowSelected($event)"
+                         domLayout=autoHeight
+                         domLayout="autoHeight"
+                         [rowHeight]="atlasAgGridParam.rowHeight">
+        </ag-grid-angular>
+    </div>
+</mat-card>

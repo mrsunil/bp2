@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup">
+    <mat-card>
+        <mat-card-title>
+            <h2>
+                Sort By
+            </h2>
+        </mat-card-title>
+        <mat-card-content>
+            <div fxFlex="50%">
+                <mat-button-toggle-group class="sort-by"
+                                         name="toggleStyle"
+                                         [formControl]='sortByCtrl'
+                                         [value]="ReportSortType.Currency"
+                                         (change)="onChanges()">
+                    <mat-button-toggle [value]="ReportSortType.Currency">{{ReportSortType[ReportSortType.Currency]}}
+                    </mat-button-toggle>
+                    <mat-button-toggle [value]="ReportSortType.Date">{{ReportSortType[ReportSortType.Date]}}
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</form>

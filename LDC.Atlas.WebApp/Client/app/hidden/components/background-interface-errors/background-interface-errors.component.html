@@ -1,0 +1,97 @@
+<div class="main-container ux-component-list">
+    <div layout="row" layout-fill>
+        <header color="accent">
+            <div class="docs-header-section">
+                <div class="docs-header-headline">
+                    <h1> Background Process </h1>
+                </div>
+                <mat-card>
+                    <div>
+                        Filter options
+                    </div>
+                    <div fxLayout="row"
+                         fxLayout.md="column"
+                         fxLayoutAlign="space-around start"
+                         class="top-section">
+                        <!-- Left -->
+                        <div fxLayout="column"
+                             fxLayoutAlign="start left"
+                             fxFlex="40">
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="pickerDateBegin"
+                                       placeholder="Choose a begining date"
+                                       (dateInput)="addDateBegin('input', $event)">
+                                <mat-datepicker-toggle matSuffix [for]="pickerDateBegin"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerDateBegin></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <!-- Right -->
+                        <div fxLayout="column"
+                             fxLayoutAlign="start right"
+                             fxFlex="40">
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="pickerDateEnd"
+                                       placeholder="Choose an ending date"
+                                       (dateInput)="addDateEnd('input', $event)">
+                                <mat-datepicker-toggle matSuffix [for]="pickerDateEnd"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerDateEnd></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxLayout="row"
+                         fxLayout.md="column"
+                         fxLayoutAlign="space-around start"
+                         class="top-section">
+                        <!-- Left -->
+                        <div fxLayout="column"
+                             fxLayoutAlign="start left"
+                             fxFlex="40">
+                            <mat-form-field color="accent">
+                                <mat-select [multiple]="true"
+                                            placeholder="Choose the process name for filtering"
+                                            [formControl]="formCtrlName">
+                                    <mat-option *ngFor="let name of allProcessName"
+                                                [value]="name">
+                                        <span style="color:black">{{ name }}</span>
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <!-- Right -->
+                        <div fxLayout="column"
+                             fxLayoutAlign="start right"
+                             fxFlex="40">
+                            <mat-form-field color="accent" *ngIf="loadingStatus">
+                                <mat-select [multiple]="true"
+                                            placeholder="Choose the status for filtering"
+                                            [formControl]="formCtrlStatus">
+                                    <mat-option *ngFor="let option of allStatus"
+                                                [value]="option">
+                                        <span style="color:black">{{ option.enumEntityValue }}</span>
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </mat-card>             
+                <button mat-button (click)="onFilterButtonClicked()" style="left:1030px">
+                        Apply Filter
+                </button>
+                <div ag-grid="displayErrorMessage" class="ag-theme-material pointer-cursor" *ngIf="isFiltered">
+                    <ag-grid-angular class="ag-theme-material"
+                                         [rowData]="processMessageGridRows"
+                                         [columnDefs]="processMessageGridColumns"
+                                         domLayout=autoHeight
+                                         [pagination]="true"
+                                         [paginationPageSize]="10"
+                                         [enableSorting]="true"
+                                         [enableColResize]="true"
+                                         [context]="gridContext"
+                                         enableFilter
+                                         [rowHeight]="atlasAgGridParam.rowHeight">
+                    </ag-grid-angular>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>

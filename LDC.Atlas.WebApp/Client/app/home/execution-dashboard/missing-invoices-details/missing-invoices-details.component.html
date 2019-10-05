@@ -1,0 +1,223 @@
+<div class="elevated-container mat-elevation-z1 container-custom">
+    <form [formGroup]="missingInvoicesForm">
+        <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h2>Missing invoices</h2>
+                    <div class="custom-line-title"></div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="row"
+                 fxLayoutAlign="none left"
+                 fxLayoutWrap
+                 fxLayoutGap="10px">
+                <div fxFlex="15%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <mat-form-field>
+                        <mat-select placeholder="Platform"
+                                    formControlName="platformFilterCtrl"
+                                    multiple>
+                            <mat-option value="1">Grains</mat-option>
+                            <mat-option value="2">Oilseeds</mat-option>
+                            <mat-option value="3">Coffee</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="8%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <button mat-icon-button
+                            aria-label="View 1"
+                            matTooltip="View 1">
+                        <mat-icon>grade</mat-icon>&nbsp;View 1
+                    </button>
+                </div>
+                <div fxFlex="8%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <button mat-icon-button
+                            aria-label="View 2"
+                            matTooltip="View 2">
+                        <mat-icon style="color:Gainsboro;">grade</mat-icon>&nbsp;View 2
+                    </button>
+                </div>
+                <div fxFlex="8%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <button mat-icon-button
+                            aria-label="View 3"
+                            matTooltip="View 3">
+                        <mat-icon style="color:Gainsboro;">grade</mat-icon>&nbsp;View 3
+                    </button>
+                </div>
+            </div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="none left"
+                 fxLayoutWrap
+                 fxLayoutGap="10px">
+                <div fxFlex="15%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <mat-form-field>
+                        <mat-select placeholder="Entity"
+                                    formControlName="entityFilterCtrl"
+                                    (selectionChange)="entityFilterChange()"
+                                    multiple>
+                            <mat-option value="A1">A1</mat-option>
+                            <mat-option value="A8">A8</mat-option>
+                            <mat-option value="R3">R3</mat-option>
+                            <mat-option value="S4">S4</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="15%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <mat-form-field>
+                        <mat-select placeholder="Ageing BL Date"
+                                    formControlName="blDateFilterCtrl"
+                                    multiple>
+                            <mat-option value=1>0-1 months</mat-option>
+                            <mat-option value=2>03-06 months</mat-option>
+                            <mat-option value=3>12-24 months</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="15%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <mat-form-field>
+                        <mat-select placeholder="Transport type"
+                                    formControlName="transportFilterCtrl"
+                                    multiple>
+                            <mat-option value="Bulk">Bulk</mat-option>
+                            <mat-option value="Others">Others</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="15%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <mat-form-field>
+                        <mat-select placeholder="Contract type"
+                                    formControlName="contractTypeFilterCtrl"
+                                    (selectionChange)="contractTypeFilterChange()"
+                                    multiple>
+                            <mat-option value="Purchases">Purchases</mat-option>
+                            <mat-option value="Sales">Sales</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="15%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <mat-form-field>
+                        <mat-select placeholder="User"
+                                    formControlName="userFilterCtrl"
+                                    multiple>
+                            <mat-option value="1">User 1</mat-option>
+                            <mat-option value="2">User 2</mat-option>
+                            <mat-option value="2">User 3</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="15%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <button mat-icon-button
+                            matTooltip="View">
+                        <mat-icon>remove_red_eye</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <mat-table #table
+                       [dataSource]="selectionDataSource">
+                <ng-container matColumnDef="contractRef">
+                    <mat-header-cell *matHeaderCellDef>Contract</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.contractRef }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="entityFilter">
+                    <mat-header-cell *matHeaderCellDef>Entity</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.entityFilter }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="department">
+                    <mat-header-cell *matHeaderCellDef>Department</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.department }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="counterparty">
+                    <mat-header-cell *matHeaderCellDef>Counterparty</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.counterparty }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="vessel">
+                    <mat-header-cell *matHeaderCellDef>Vessel</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.vessel }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="transportFilter">
+                    <mat-header-cell *matHeaderCellDef>Transport Type</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.transportFilter }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="blDate">
+                    <mat-header-cell *matHeaderCellDef>BL Date</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <atr-date-label [date]="element.blDate"></atr-date-label>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="period">
+                    <mat-header-cell *matHeaderCellDef>Period</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.period }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="commodity">
+                    <mat-header-cell *matHeaderCellDef>Commodity</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.commodity }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="quantity">
+                    <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.quantity }} MT</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="total">
+                    <mat-header-cell *matHeaderCellDef>Total %</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.total }} %</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="price">
+                    <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+                    <mat-cell class="mat-cell-right"
+                              *matCellDef="let element"> {{ element.price }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="priceDiff">
+                    <mat-header-cell *matHeaderCellDef>Price Diff</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.priceDiff }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="lots">
+                    <mat-header-cell *matHeaderCellDef>Lots</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.lots }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="user">
+                    <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.user }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="selection">
+                    <mat-header-cell *matHeaderCellDef> Selection </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <mat-checkbox (change)="contractSelected(row)"
+                                      [checked]="selectionManager.isSelected(row)"></mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="selectionDisplayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: selectionDisplayedColumns;"></mat-row>
+            </mat-table>
+            <div>
+                <div class="custom-line-footer"></div>
+                <div style="margin:20px; text-align:right">
+                    <span class="fill-space"></span>
+                    <button mat-raised-button
+                            (click)="proceedButtonClicked()"
+                            [disabled]="selectedRowReference == ''">Proceed</button>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </form>
+</div>

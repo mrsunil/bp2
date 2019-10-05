@@ -1,0 +1,50 @@
+<mat-card class="invoice-creation-card">
+    <mat-card-title>
+        <h2>
+            Reverse Settings
+        </h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="30%">
+                <mat-select [panelWidth]="panelSize"
+                            placeholder="Document Type"
+                            [formControl]="documentTypeCtrl"
+                            matTooltip="Document Type">
+
+                    <mat-option *ngFor="let info of masterDataDocumentType"
+                                [value]="info.physicalDocumentTypeId">
+                        {{info.physicalDocumentTypeLabel}}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+            <mat-form-field fxFlex="30%"
+                            class="mandatory">
+                <input matInput
+                       placeholder="Document Date"
+                       [formControl]="documentDateCtrl"
+                       [matDatepicker]="documentDatePicker"
+                       matTooltip="Document Date"
+                       autocomplete="off"
+                       (dateChange)='onDocumentDateSelected()'>
+                <mat-datepicker-toggle matSuffix
+                                       [for]="documentDatePicker"></mat-datepicker-toggle>
+                <mat-error *ngIf="documentDateCtrl.hasError('isDateAfterValid')">
+                    Document Date cannot be after Today’s Date
+                </mat-error>
+                <mat-datepicker #documentDatePicker></mat-datepicker>
+                <mat-error *ngIf="documentDateCtrl.hasError('isDateBeforeValid')">
+                    Document Date cannot be before Invoice Date
+                </mat-error>
+                <mat-hint *ngIf="!documentDateCtrl.hasError('isDateBeforeValid' || 'required') && !documentDateCtrl.disabled"
+                          class="invoice-creation-required-fields">Required*</mat-hint>
+                <mat-error *ngIf="documentDateCtrl.hasError('required')">
+                    Required*
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

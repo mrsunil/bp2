@@ -1,0 +1,102 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Location</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="16px">
+            <div fxFlex="25%">
+                <atlas-masterdata-user-preferences-input [isEditable]="portOfOriginCtrl.enabled"
+                                                         [fieldControl]="portOfOriginCtrl"
+                                                         [options]="filteredOriginPorts"
+                                                         label="Port Of Origin"
+                                                         displayProperty="portCode"
+                                                         [selectProperties]="['portCode', 'description']"
+                                                         [errorMap]="originportErrorMap"
+                                                         lightBoxTitle="Results for Counterparty"
+                                                         gridId="portsGrid"
+                                                         (optionSelected)="portofOriginSelected($event)"
+                                                         [dataLoader]="portDataLoader">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+
+            <atlas-form-input fxFlex="60%"
+                              [fieldControl]="portOfOriginDescriptionCtrl"
+                              [isEditable]="isInputField"
+                              [label]="'Description'">
+            </atlas-form-input>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="16px">
+            <div fxFlex="25%">
+                <atlas-masterdata-user-preferences-input [isEditable]="portOfDestinationCtrl.enabled"
+                                                         [fieldControl]="portOfDestinationCtrl"
+                                                         [options]="filteredDestinationPorts"
+                                                         label="Port Of Destination"
+                                                         displayProperty="portCode"
+                                                         [selectProperties]="['portCode', 'description']"
+                                                         [errorMap]="destinationportErrorMap"
+                                                         lightBoxTitle="Results for Port"
+                                                         gridId="portsGrid"
+                                                         (optionSelected)="portofDestinationselected($event)"
+                                                         [dataLoader]="portDataLoader">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+            <atlas-form-input fxFlex="60%"
+                              [fieldControl]="portOfDestinationDescCtrl"
+                              [isEditable]="isInputField"
+                              [label]="'Description'">
+            </atlas-form-input>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="16px"
+             *ngIf="businessSectorFieldShow">
+            <div fxFlex="25%"
+                 class="custom-form"
+                 [class.required-field]="businessSectorCtrl.isRequired"
+                 [class.displayMode]="!businessSectorCtrl.enabled">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Business Sector"
+                           [matAutocomplete]="businessSectorAutoComplete"
+                           [formControl]="businessSectorCtrl"
+                           [required]="businessSectorCtrl.isRequired"
+                           matTooltip="Business Sector">
+                    <mat-icon *ngIf="isEdit"
+                              class="bookmark-icon"
+                              matSuffix>bookmark</mat-icon>
+                    <mat-autocomplete #businessSectorAutoComplete="matAutocomplete"
+                                      [panelWidth]="panelSize"
+                                      (closed)="clearDescription()"
+                                      (optionSelected)="businessSectorSelected($event.option.value)"
+                                      [displayWith]="displayBusinessSector">
+                        <mat-option *ngFor="let businessSector of filteredBusinessSector"
+                                    [value]="businessSector">
+                            {{businessSector.sectorCode}} |
+                            {{businessSector.description}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="businessSectorCtrl.hasError('required')">
+                        This field is required
+                    </mat-error>
+                    <mat-hint *ngIf="businessSectorCtrl.isRequired && businessSectorCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                    <mat-error *ngIf="businessSectorCtrl.hasError('inDropdownList')">
+                        Value not in list
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <atlas-form-input fxFlex="60%"
+                              [fieldControl]="businessSectorDescriptionCtrl"
+                              [isEditable]="isInputField"
+                              [label]="'Description'">
+            </atlas-form-input>
+        </div>
+    </mat-card-content>
+</mat-card>

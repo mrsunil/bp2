@@ -1,0 +1,16 @@
+    <div class="agGrid" *ngIf="!isLoading">
+    <atlas-multiple-autocomplete-dropdown #multipleAutocompleteDropdownComponent
+                                          [options]="options"
+                                          [selectedOptions]="selectedOptions"
+                                          [allOptionsElement]="allOptionsElement"
+                                          [allSelected]="allSelected"
+                                          [displayCode]="displayCode"
+                                          [codeProperty]="codeProperty"
+                                          [displayProperty]="displayProperty"
+                                          [placeholder]="placeholder"
+                                          [placeholderFilter]="placeholderFilter"
+                                          [elementName]="elementName"
+                                          [fieldCtrl]="formControl"
+                                          (selectionChangedEvent)="onValueChanged($event)">
+    </atlas-multiple-autocomplete-dropdown>
+</div>

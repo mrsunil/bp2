@@ -1,0 +1,43 @@
+<div fxLayoutAlign="space-between center">
+    <h1>COST INVOICE MARKING</h1>
+    <button mat-button>
+        <mat-icon (click)="onCloseButtonClicked()">close</mat-icon>
+    </button>
+</div>
+<mat-dialog-content>
+    <div fxLayout="row">
+        <div class="costToggle">
+            <mat-slide-toggle (change)="onChange($event)"
+                              [disabled]="!editPrivileges.buttonEditable">
+                Edit mode is {{toggleText}}
+            </mat-slide-toggle>
+        </div>
+    </div>
+    <div ag-grid="invoiceMarkingGridOptions"
+         class="ag-theme-material pointer-cursor">
+        <ag-grid-angular class="ag-theme-material"
+                         [gridOptions]="invoiceMarkingGridOptions"
+                         [rowData]="invoiceMarkingGridRows"
+                         [columnDefs]="invoicemarkingcolumnDefs"
+                         domLayout=autoHeight
+                         [pagination]="true"
+                         (gridReady)="onGridReady($event)"
+                         (cellValueChanged)="onCellValueChanged($event)"
+                         [paginationPageSize]="10"
+                         [enableSorting]="true"
+                         [enableFilter]="true"
+                         [enableColResize]="false"
+                         [frameworkComponents]="gridComponents"
+                         (rowClicked)="onCostInvoiceMarkingRowClicked($event)"
+                         [rowHeight]=atlasAgGridParam.rowHeight>
+        </ag-grid-angular>
+    </div>
+
+    <button mat-raised-button
+            type="button"
+            (click)="onSaveAsInvoieMarkingDialogButtonClicked()"
+            [disabled]="saveDisable">
+        SAVE
+    </button>
+
+</mat-dialog-content>

@@ -1,0 +1,16 @@
+.atlas-homepage {
+    background: url('assets/img/Illustration.svg') bottom right;
+    background-size: auto calc(100vh - 81px); //height of the viewport - (topbar + 25px) as UX requirement
+    background-repeat: no-repeat;
+    width: 100%;
+    height: calc(100vh - 56px); //height of the viewport - (topbar)
+}
+
+.display-3 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 0;
+    position: absolute;
+    left: 160px;
+    top: 196px;
+}

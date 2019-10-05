@@ -1,0 +1,97 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Main Information</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="column"
+                      fxLayoutGap="15px">
+        <div fxLayout="row"
+             fxLayoutAlign="space-between start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="29%">
+                <input matInput
+                       placeholder="Charter Reference"
+                       [formControl]="charterRefCntrl"
+                       class="charter-input-fields"
+                       autocomplete="off">
+                <mat-hint class="charter-required-fields"
+                          *ngIf=isCreateOrEdit>Required*</mat-hint>
+                <mat-icon class="validIcon"
+                          matSuffix
+                          *ngIf="charterRefCntrl.valid">check_circle </mat-icon>
+                <mat-icon class="errorIcon"
+                          matSuffix
+                          *ngIf="charterRefCntrl.hasError('required') && (charterRefCntrl.touched  || showErrorIcon)">
+                    error
+                </mat-icon>
+                <mat-error *ngIf="charterRefCntrl.hasError('required')">
+                    Required*
+                </mat-error>
+                <mat-error *ngIf="charterRefCntrl.hasError('pattern')">
+                    No special character except "."
+                </mat-error>
+                <mat-error *ngIf="charterRefCntrl.hasError('maxlength')">
+                    More than 15 char not allowed
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="59%">
+                <input matInput
+                       placeholder="Charter Description"
+                       [formControl]="charterDescCntrl"
+                       class="charter-input-fields"
+                       autocomplete="off">
+                <mat-icon class="validIcon"
+                          matSuffix
+                          *ngIf="charterDescCntrl.valid && charterDescCntrl.value">check_circle</mat-icon>
+                <mat-error *ngIf="charterDescCntrl.hasError('maxlength')">
+                    More than 60 char not allowed
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="space-between start"
+             fxLayoutGap="5%">
+            <atlas-masterdata-user-preferences-input fxFlex="30%"
+                                                     class="contextual-search-for-control"
+                                                     isEditable="true"
+                                                     [fieldControl]="charterMgrCntrl"
+                                                     [options]="filteredCharterManagers"
+                                                     label="Charter Manager"
+                                                     displayProperty="displayName"
+                                                     [selectProperties]="['userId','displayName']"
+                                                     lightBoxTitle="Results for Manager"
+                                                     gridId="charterManagerGrid"
+                                                     [dataLoader]="charterManagerDataLoader">
+            </atlas-masterdata-user-preferences-input>
+
+            <atlas-masterdata-user-preferences-input fxFlex="60%"
+                                                     class="contextual-search-for-vessel"
+                                                     isEditable="true"
+                                                     [fieldControl]="charterVesselCtrl"
+                                                     [options]="filteredVessels"
+                                                     label="Vessel"
+                                                     displayProperty="vesselName"
+                                                     [selectProperties]="['vesselName','flag','built']"
+                                                     lightBoxTitle="Results for Vessel"
+                                                     gridId="vesselsGrid">
+            </atlas-masterdata-user-preferences-input>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="start start"
+             fxLayoutGap="5%">
+            <atlas-masterdata-user-preferences-input fxFlex="30%"
+                                                     class="contextual-search-for-control"
+                                                     isEditable="true"
+                                                     [fieldControl]="charterTransportCntrl"
+                                                     [options]="filteredTransports"
+                                                     label="KPI Transport Type"
+                                                     displayProperty="transportTypeCode"
+                                                     [selectProperties]="['transportTypeCode']"
+                                                     lightBoxTitle="Results for Transport"
+                                                     gridId="transportTypeGrid">
+            </atlas-masterdata-user-preferences-input>
+        </div>
+    </mat-card-content>
+</mat-card>

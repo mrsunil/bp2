@@ -1,0 +1,52 @@
+<div fxLayout="row"
+     fxLayoutAlign="left start">
+    <div class='vessel-contextual-search '
+         fxFlex="33%">
+        <atlas-dropdown-select [isEditable]="isEditable"
+                               label="Vessel Code"
+                               [fieldControl]="vesselPart1Ctrl"
+                               [options]="vesselPart1FilteredList"
+                               [isAutocompleteActivated]="isAutocompleteActivated">
+        </atlas-dropdown-select>
+        <mat-error *ngIf="vesselPart1Ctrl.hasError('inDropdownList')">
+            Not in list
+        </mat-error>
+    </div>
+
+    <div class='vessel-contextual-search '
+         fxFlex="33%">
+        <atlas-dropdown-select [isEditable]="isEditable"
+                               label="Flag"
+                               [fieldControl]="vesselPart2Ctrl"
+                               [options]="vesselPart2FilteredList"
+                               [isAutocompleteActivated]="isAutocompleteActivated">
+        </atlas-dropdown-select>
+        <mat-error *ngIf="vesselPart2Ctrl.hasError('inDropdownList')">
+
+        </mat-error>
+    </div>
+
+    <div class='vessel-contextual-search '
+         fxFlex="33%">
+        <atlas-dropdown-select [isEditable]="isEditable"
+                               label="Built"
+                               [fieldControl]="vesselPart3Ctrl"
+                               [options]="vesselPart3FilteredList"
+                               [isAutocompleteActivated]="isAutocompleteActivated">
+        </atlas-dropdown-select>
+        <mat-error *ngIf="vesselPart3Ctrl.hasError('inDropdownList')">
+            Not in list
+        </mat-error>
+    </div>
+
+
+
+    <mat-icon matSuffix
+              *ngIf="selectedVesselCtrl.enabled"
+              class="compass-icon"
+              (click)="onExploreClicked($event)">
+        explore
+    </mat-icon>
+
+    <mat-hint *ngIf="!selectedVesselCtrl.value && !required">Please enter a valid Vessel</mat-hint>
+    <mat-hint *ngIf="selectedVesselCtrl.value">{{selectedVesselCtrl.value.description}}</mat-hint>

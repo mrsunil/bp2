@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-title class="no-margin">
+        Tax For Cost
+    </mat-card-title>
+    <mat-card-content>
+        <ag-grid-angular class="ag-theme-material"
+                         [rowData]="taxesGridRows"
+                         [columnDefs]="taxesGridColumns"
+                         domLayout="autoHeight"
+                         (gridReady)="onGridReady($event)"
+                         [pagination]="false"
+                         [paginationPageSize]="10"
+                         [enableSorting]="true"
+                         [enableColResize]="true"
+                         enableFilter
+                         [rowHeight]=atlasAgGridParam.rowHeight>
+        </ag-grid-angular>
+        <div fxLayout="row"
+             fxLayoutAlign="end"
+             class="cost-tax-total">
+            <mat-card-subtitle class="total-figure">Total Tax for Costs Amount: <span
+                      class="total-figure-value">{{defaultTaxDirectionSign}}{{formatQuantityAndTotal(this.taxTotal)}}
+                    {{currencyCode}} </span>
+            </mat-card-subtitle>
+        </div>
+    </mat-card-content>
+</mat-card>

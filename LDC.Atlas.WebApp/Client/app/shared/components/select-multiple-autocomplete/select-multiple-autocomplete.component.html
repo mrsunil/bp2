@@ -1,0 +1,21 @@
+<div [formGroup]="formGroup">
+    <mat-form-field>
+        <input #input
+               matInput
+               [matAutocomplete]="autocomplete"
+               [placeholder]="placeholder"
+               formControlName="formCtrl"
+               (focus)="clearValueEvent()"
+               (focusout)="setValueEvent($event, autocomplete)"
+               (click)="openAutocompletePanel()">
+        <mat-autocomplete #autocomplete="matAutocomplete"
+                          (optionSelected)="selectionChanged($event); input.value=''; input.blur()">
+            <mat-option *ngFor="let object of filteredObjects"
+                        [value]="object">
+                <mat-checkbox [checked]="isSelected(object)">
+                    <span>{{ getDisplayValue(object) }}</span>
+                </mat-checkbox>
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</div>

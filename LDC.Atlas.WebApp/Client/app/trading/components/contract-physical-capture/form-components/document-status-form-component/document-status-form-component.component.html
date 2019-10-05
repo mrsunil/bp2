@@ -1,0 +1,63 @@
+<mat-card *ngIf="!hasEmptyState"
+          class="trade-capture-card">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Contract & Document Status</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="right start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="40%">
+                <input matInput
+                       [matDatepicker]="lastDocumentIssuedDatePicker"
+                       placeholder="Contract issued"
+                       autocomplete="off"
+                       [formControl]='lastDocumentIssuedDateCtrl'>
+                <mat-datepicker-toggle matSuffix
+                                       [for]="lastDocumentIssuedDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #lastDocumentIssuedDatePicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="40%">
+                <input matInput
+                       [matDatepicker]="contractSentDatePicker"
+                       placeholder="Contract sent"
+                       autocomplete="off"
+                       [formControl]='contractSentDateCtrl'>
+                <mat-datepicker-toggle matSuffix
+                                       [for]="contractSentDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #contractSentDatePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="right start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="40%">
+                <input matInput
+                       [matDatepicker]="lastEmailReceivedDatePicker"
+                       placeholder="Email received"
+                       autocomplete="off"
+                       [formControl]='lastEmailReceivedDateCtrl'>
+                <mat-datepicker-toggle matSuffix
+                                       [for]="lastEmailReceivedDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #lastEmailReceivedDatePicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field fxFlex="40%">
+                <input matInput
+                       [matDatepicker]="contractReturnedDatePicker"
+                       placeholder="Contract returned"
+                       autocomplete="off"
+                       [formControl]='contractReturnedDateCtrl'>
+                <mat-datepicker-toggle matSuffix
+                                       [for]="contractReturnedDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #contractReturnedDatePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>
+<atlas-empty-state *ngIf="hasEmptyState"
+                   title="No Document Status"
+                   [message]="documentEmptyMessage"></atlas-empty-state>

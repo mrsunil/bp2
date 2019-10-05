@@ -1,0 +1,43 @@
+<div [formGroup]="formGroup">
+    <div class="custom-form"
+         [class.isEmpty]="!formCtrl.value"
+         [class.required-field]="true">
+        <mat-form-field>
+            <input #input
+                   required
+                   matInput
+                   [matAutocomplete]="autocomplete"
+                   [placeholder]="placeholder"
+                   formControlName="formCtrl"
+                   (focus)="clearValueEvent()"
+                   (focusout)="setValueEvent($event, autocomplete)"
+                   (click)="openAutocompletePanel()">
+            <mat-icon class="bookmark-icon"
+                      matSuffix>bookmark</mat-icon>
+            <mat-autocomplete #autocomplete="matAutocomplete"
+                              (optionSelected)="selectionChanged($event); input.value=''">
+                <mat-option *ngIf="allDepartmentsOption.departmentId.toString().startsWith(input.value)"
+                            [value]="allDepartmentsOption">
+                    <mat-checkbox [checked]="allSelected">
+                        All
+                    </mat-checkbox>
+                </mat-option>
+                <mat-option *ngFor="let object of filteredObjects"
+                            [value]="object">
+
+                    <mat-checkbox [checked]="allSelected ? true : isSelected(object)">
+                        <span *ngIf="displayCode">{{ object[codeProperty] }}</span>
+                        <span *ngIf="object[codeProperty] !== null && displayCode"> | </span>
+                        <span>{{ object[displayProperty] }}</span>
+                    </mat-checkbox>
+                </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="formCtrl.hasError('required')">
+                Department is required
+            </mat-error>
+            <mat-hint>
+                Required *
+            </mat-hint>
+        </mat-form-field>
+    </div>
+</div>

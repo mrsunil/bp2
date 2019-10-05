@@ -1,0 +1,2204 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="da8c2829-7613-4da8-ab8a-f4dfaf7d15fb" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>LDC Proto</ID>
+  <Name>LDC Proto</Name>
+  <CreatedTimestamp>2018-01-09T13:16:49.346667Z</CreatedTimestamp>
+  <LastSchemaUpdate>2018-01-17T19:43:30.353333Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="157" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-14331" scrolltop="-1530" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="22886" y="10610" backcolor="16119285" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="78" controlid="1" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="79" controlid="2" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="80" controlid="3" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="81" controlid="4" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="82" controlid="5" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="83" controlid="6" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="84" controlid="7" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="85" controlid="8" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="86" controlid="9" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="87" controlid="10" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="88" controlid="11" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="89" controlid="12" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="90" controlid="13" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="91" controlid="14" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="92" controlid="15" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="93" controlid="16" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_PNLStatus" left="-6901" top="2083" logicalid="94" controlid="17" masterid="0" hint1="0" hint2="0" width="3369" height="1464" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000290d0000b8050000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_PNLType" left="-3533" top="4151" logicalid="95" controlid="18" masterid="0" hint1="0" hint2="0" width="3369" height="1799" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000290d000007070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="-2328" logicalid="96" controlid="19" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_Counterparties" left="6196" top="494" logicalid="97" controlid="20" masterid="0" hint1="0" hint2="0" width="4621" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00000d12000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="1518" top="6278" logicalid="98" controlid="21" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="5098" top="4795" logicalid="99" controlid="22" masterid="0" hint1="0" hint2="0" width="1398" height="2083" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[v_Position-nq_Counterparties]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="20" destid="21" sourceattachpoint="34" destattachpoint="15" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="6196" y="5194" />
+              <point x="5796" y="5194" />
+              <point x="5796" y="6578" />
+              <point x="5398" y="6578" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="100" controlid="23" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="101" controlid="24" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="102" controlid="25" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="103" controlid="26" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="104" controlid="27" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="105" controlid="28" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="106" controlid="29" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="107" controlid="30" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="108" controlid="31" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="109" controlid="32" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="110" controlid="33" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="111" controlid="34" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="112" controlid="35" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="113" controlid="36" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="114" controlid="37" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="0" top="0" logicalid="115" controlid="38" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="1536" top="-8573" logicalid="116" controlid="39" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="117" controlid="40" masterid="0" hint1="0" hint2="0" width="3880" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000280f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="-4410" top="-8097" logicalid="118" controlid="41" masterid="0" hint1="0" hint2="0" width="4515" height="5547" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000a3110000ab150000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="13054" top="-5856" logicalid="119" controlid="42" masterid="0" hint1="0" hint2="0" width="4180" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00005410000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="M_Department" left="5707" top="-1680" logicalid="120" controlid="43" masterid="0" hint1="0" hint2="0" width="4128" height="2469" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c000020100000a5090000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="4276" top="-3873" logicalid="121" controlid="44" masterid="0" hint1="0" hint2="0" width="1731" height="2727" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[TradeContract-M_Department]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="43" destid="39" sourceattachpoint="14" destattachpoint="11" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="5707" y="-1546" />
+              <point x="4576" y="-1546" />
+              <point x="4576" y="-3573" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_Commodities" left="12261" top="3449" logicalid="122" controlid="45" masterid="0" hint1="0" hint2="0" width="6173" height="4480" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00001d18000080110000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="5116" top="-4173" logicalid="123" controlid="46" masterid="0" hint1="0" hint2="0" width="7445" height="8612" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[TradeContract-M_Commodities]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="45" destid="39" sourceattachpoint="22" destattachpoint="31" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="12261" y="4039" />
+              <point x="8839" y="4039" />
+              <point x="8839" y="-3873" />
+              <point x="5416" y="-3873" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="-9331" top="1241" logicalid="124" controlid="47" masterid="0" hint1="0" hint2="0" width="4180" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00005410000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_ContType" left="6271" top="10589" logicalid="125" controlid="48" masterid="0" hint1="0" hint2="0" width="3000" height="1464" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000b80b0000b8050000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_ContStatus" left="-6889" top="-842" logicalid="126" controlid="49" masterid="0" hint1="0" hint2="0" width="3000" height="1464" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000b80b0000b8050000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="-6991" top="123" logicalid="127" controlid="50" masterid="0" hint1="0" hint2="0" width="902" height="1418" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[TradeContract-nq_ContStatus]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="49" destid="47" sourceattachpoint="1" destattachpoint="8" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="-6489" y="622" />
+              <point x="-6489" y="1022" />
+              <point x="-6590" y="1022" />
+              <point x="-6590" y="841" />
+              <point x="-6691" y="841" />
+              <point x="-6691" y="1241" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_PositionStatus" left="-7056" top="10422" logicalid="128" controlid="51" masterid="0" hint1="0" hint2="0" width="3333" height="1799" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000050d000007070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="-7541" top="5941" logicalid="129" controlid="52" masterid="0" hint1="0" hint2="0" width="2551" height="4981" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[v_Position-nq_PositionStatus]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="51" destid="47" sourceattachpoint="4" destattachpoint="7" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="-5390" y="10422" />
+              <point x="-5390" y="8332" />
+              <point x="-7241" y="8332" />
+              <point x="-7241" y="6241" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="V_TradeContractSections" left="-899" top="3022" logicalid="130" controlid="53" masterid="0" hint1="0" hint2="0" width="4180" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00005410000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_PNLType" left="5841" top="-7479" logicalid="132" controlid="55" masterid="0" hint1="0" hint2="0" width="3369" height="1799" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000290d000007070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_PNLStatus" left="-528" top="-7479" logicalid="133" controlid="56" masterid="0" hint1="0" hint2="0" width="3369" height="1464" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000290d0000b8050000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_Counterparties" left="-7479" top="-7479" logicalid="134" controlid="57" masterid="0" hint1="0" hint2="0" width="3951" height="1464" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00006f0f0000b8050000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" left="6058" top="23800" logicalid="135" controlid="58" masterid="0" hint1="0" hint2="0" width="4128" height="2469" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c000020100000a5090000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_M_Department" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_Commodities" left="0" top="16660" logicalid="136" controlid="59" masterid="0" hint1="0" hint2="0" width="6173" height="4480" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00001d18000080110000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_M_Commodities" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_Position" left="12702" top="0" logicalid="137" controlid="60" masterid="0" hint1="0" hint2="0" width="4180" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00005410000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_TradeContract" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" left="12586" top="23800" logicalid="138" controlid="61" masterid="0" hint1="0" hint2="0" width="3000" height="1464" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000b80b0000b8050000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ContType" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_ContStatus" left="15470" top="18168" logicalid="139" controlid="62" masterid="0" hint1="0" hint2="0" width="3000" height="1464" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000b80b0000b8050000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="nq_ConStatus" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_PositionStatus" left="6369" top="0" logicalid="140" controlid="63" masterid="0" hint1="0" hint2="0" width="3333" height="1799" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000050d000007070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="nq_PositionStatus" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="V_TradeContractSections" left="8731" top="9000" logicalid="141" controlid="64" masterid="0" hint1="0" hint2="0" width="4180" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00005410000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_V_TradeContractSections" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" left="8573" top="16400" logicalid="142" controlid="65" masterid="0" hint1="0" hint2="0" width="4497" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00009111000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="11071" top="21100" logicalid="143" controlid="66" masterid="0" hint1="0" hint2="0" width="3415" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[v_PNL-nq_ContType]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="61" destid="65" sourceattachpoint="4" destattachpoint="9" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="14086" y="23800" />
+              <point x="14086" y="22600" />
+              <point x="11371" y="22600" />
+              <point x="11371" y="21400" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="5873" top="18501" logicalid="144" controlid="67" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[v_PNL-M_Commodities]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="59" destid="65" sourceattachpoint="29" destattachpoint="22" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="6173" y="18900" />
+              <point x="8573" y="18900" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="7723" top="21100" logicalid="145" controlid="68" masterid="0" hint1="0" hint2="0" width="2298" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[v_PNL-M_Department]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="58" destid="65" sourceattachpoint="6" destattachpoint="3" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="8122" y="23800" />
+              <point x="8122" y="22600" />
+              <point x="9721" y="22600" />
+              <point x="9721" y="21400" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="12770" top="18501" logicalid="146" controlid="69" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[v_PNL-nq_ContStatus]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="62" destid="65" sourceattachpoint="12" destattachpoint="23" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="15470" y="18900" />
+              <point x="13070" y="18900" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="6026" top="-6179" logicalid="147" controlid="70" masterid="0" hint1="0" hint2="0" width="6195" height="22879" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[v_PNL-nq_PNLType]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="55" destid="65" sourceattachpoint="1" destattachpoint="10" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="6425" y="-5680" />
+              <point x="6425" y="5360" />
+              <point x="11921" y="5360" />
+              <point x="11921" y="16400" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="207" top="-6514" logicalid="148" controlid="71" masterid="0" hint1="0" hint2="0" width="9814" height="23214" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[v_PNL-nq_PNLStatus]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="56" destid="65" sourceattachpoint="3" destattachpoint="2" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="606" y="-6015" />
+              <point x="606" y="5192" />
+              <point x="9721" y="5192" />
+              <point x="9721" y="16400" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="-4253" top="-6514" logicalid="149" controlid="72" masterid="0" hint1="0" hint2="0" width="14824" height="23214" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[v_PNL-M_Counterparties]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="57" destid="65" sourceattachpoint="13" destattachpoint="4" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="-3854" y="-6015" />
+              <point x="-3854" y="5192" />
+              <point x="10271" y="5192" />
+              <point x="10271" y="16400" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_PNLType" left="19882" top="0" logicalid="150" controlid="73" masterid="0" hint1="0" hint2="0" width="3369" height="1799" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000290d000007070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="nq_PNLType" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="nq_PNLStatus" left="0" top="0" logicalid="151" controlid="74" masterid="0" hint1="0" hint2="0" width="3369" height="1464" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000290d0000b8050000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="nq_PNLStatus" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" left="26251" top="0" logicalid="152" controlid="75" masterid="0" hint1="0" hint2="0" width="3951" height="1464" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00006f0f0000b8050000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_M_Counterparties" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="153" controlid="76" masterid="0" hint1="0" hint2="0" width="4497" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00009111000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj />
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FT_PNL" left="0" top="0" logicalid="154" controlid="77" masterid="0" hint1="0" hint2="0" width="4497" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00009111000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_v_PNL" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="12072" top="4700" logicalid="156" controlid="79" masterid="0" hint1="0" hint2="0" width="1370" height="4800" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="1973790" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[v_Position-V_TradeContractSections1]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="64" destid="60" sourceattachpoint="12" destattachpoint="1" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="12471" y="9000" />
+              <point x="12471" y="7000" />
+              <point x="13142" y="7000" />
+              <point x="13142" y="5000" />
+            </connector>
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-14331</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-1530</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-9331</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-8573</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>75</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>2018-01-17T19:54:30.93Z</LastProcessed>
+  <State>Processed</State>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <Dimensions>
+    <Dimension dwd:design-time-name="21b79b66-510c-4c00-a8ff-5b8b435f6884">
+      <ID>Departments</ID>
+      <Name>Departments</Name>
+      <DimensionID>M Department</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="e5b02ebf-d2cf-4f19-aa80-32a05dbc017b">
+          <AttributeID>Department Code</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="f8210031-2a89-4ab9-bb6c-fe9263a48a1c">
+          <AttributeID>Department Description</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="0608bd88-9608-4bfd-9a76-1efd15089b31">
+          <AttributeID>Cmy102 Category</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="e3a72f44-94b2-440d-8dab-f7aa208dfc84">
+          <AttributeID>Cmy102 Altcode</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="7ea2bc0c-e32c-4b68-82a2-978d1070d5ca">
+          <AttributeID>Nc Dept Long Description</AttributeID>
+        </Attribute>
+      </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="b8d92cb3-e310-4685-b535-ed86b1ee3543">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
+    </Dimension>
+    <Dimension dwd:design-time-name="c6b68fd6-6232-482d-9873-bf2ce59de26c">
+      <ID>Commodities</ID>
+      <Name>Commodities</Name>
+      <DimensionID>Commodities</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="d3b6b94d-8991-4594-8af0-51fe641ff039">
+          <AttributeID>Commodity Code</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="5302b121-0313-4a87-a4a0-aa0b2a90c692">
+          <AttributeID>Commodity Type</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="323521ee-4767-48db-a111-c0f05549e5e1">
+          <AttributeID>Commodity Origin</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="3ea6258e-b1c2-4ac1-9762-29fa470b3754">
+          <AttributeID>Commodity Grade</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="64b2db61-f618-4c69-8157-c7dd51dc5fd4">
+          <AttributeID>Commodity Lvl4</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="ed42ec20-93b6-4fc8-9d06-f46bd50e17b0">
+          <AttributeID>Commodity Lvl5</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="0a69cbc4-1ac0-4254-b219-c905ea203195">
+          <AttributeID>Commodity Description</AttributeID>
+        </Attribute>
+      </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="95c6285a-762a-4bab-9f43-bd9a141f7ed5">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
+    </Dimension>
+    <Dimension dwd:design-time-name="8c59602c-6343-4831-a350-f718603ee2bc">
+      <ID>Contract Type</ID>
+      <Name>Contract Type</Name>
+      <DimensionID>Contract Type</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="24abaed7-f4c5-416a-b195-c60f81918402">
+          <AttributeID>Contract Type</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="4cf390ce-7f97-4f20-afd7-dcf27d135674">
+      <ID>Contract Status</ID>
+      <Name>Contract Status</Name>
+      <DimensionID>Contract Status</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="c0ef71e4-0827-49df-9198-e2d8772d489a">
+          <AttributeID>Contract Status Id</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="8329f0d3-a7eb-4e64-bd3d-25211ef74dfb">
+      <ID>Position Status</ID>
+      <Name>Position Status</Name>
+      <DimensionID>Position Status</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="5de89e9a-1c47-4ec4-ad91-f58793ab1165">
+          <AttributeID>Position Status</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="ecb1175a-c827-42ae-98ca-6a85a2fef4c5">
+          <AttributeID>Position Status Id</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="58918389-4369-45f7-8bfd-037cc11edb92">
+          <AttributeID>Position Status 1</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="dec41fec-8b07-40b4-837c-ac90c9a535f0">
+      <ID>Contracts</ID>
+      <Name>Contracts</Name>
+      <DimensionID>Contracts</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="181553ef-c0ed-4628-b9c7-a3b1152603ae">
+          <AttributeID>I Trade Contract</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="b18891c9-f62b-4fe7-a31a-75e35aa9c2f5">
+          <AttributeID>Contract Date</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="e9bed6f8-8f29-4943-9adc-397e8af51cba">
+          <AttributeID>M Quantity Unit</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="3423d6e6-9a78-4b7e-a6dd-6f64896af857">
+          <AttributeID>Delivery Period Start</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="ca396389-4cb0-4021-ab73-4ea7e5019306">
+          <AttributeID>Delivery Period End</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="bee89921-c0e2-4a35-88c3-e47815af9393">
+          <AttributeID>M Market Zone</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="ee1c765c-9818-47b1-8316-fe0b2e3f915f">
+          <AttributeID>Contract Quantity</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="af7ec78a-0eb5-4e93-a4bf-ac86e48104fd">
+          <AttributeID>M Currency</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="ba0baec4-3083-4902-bdde-4bd53a970225">
+          <AttributeID>M Contract Terms</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="6563573f-fcb7-4da5-8998-d7848de93ddb">
+          <AttributeID>R Charter</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="93c15ed7-4abe-4aa5-9ace-b1da457ac9ab">
+          <AttributeID>Nc Crop Year</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="0778ba9d-2f44-4f25-ada7-f6de65f1f54c">
+          <AttributeID>M Price Code</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="f84509ab-ff16-4010-8d34-013533b14b66">
+      <ID>PNL Status</ID>
+      <Name>PNL Status</Name>
+      <DimensionID>PNL Status</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="f99c08ab-576b-47db-ba57-f8419c62ed1b">
+          <AttributeID>PNL Complete Status</AttributeID>
+          <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+        </Attribute>
+        <Attribute dwd:design-time-name="a6ac9dbc-6434-4895-a828-202bec7ddd6b">
+          <AttributeID>PNL Status</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="2551d392-6292-4801-b440-837320433b82">
+      <ID>PNL Type</ID>
+      <Name>PNL Type</Name>
+      <DimensionID>PNL Type</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="5c2cf30d-da26-41b0-bae7-854d9aaef798">
+          <AttributeID>PNL Complete Status</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="6f44fed5-d636-4f20-a0c1-cdcf9a6d0b33">
+          <AttributeID>PNL Type Id</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="b0879754-030b-434f-bd51-073539ef52c7">
+          <AttributeID>PNL Type Label</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="c5472559-54a5-4454-a84f-7af5acf76dd5">
+      <ID>Counter Parties</ID>
+      <Name>Counter Parties</Name>
+      <DimensionID>Counter Parties</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="0bce85c8-c637-405f-81df-2e2aab5a2d9f">
+          <AttributeID>Counter Party Code</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="8b2038eb-ae3c-4f79-b45f-0595c07e0b01">
+          <AttributeID>Counter Party Description</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+  </Dimensions>
+  <MeasureGroups>
+    <MeasureGroup dwd:design-time-name="0a681350-1589-4b16-bb47-45d79453f63e">
+      <ID>FT PNL</ID>
+      <Name>PNL</Name>
+      <CreatedTimestamp>2018-01-09T13:16:49.403333Z</CreatedTimestamp>
+      <LastSchemaUpdate>2018-01-17T19:43:30.46Z</LastSchemaUpdate>
+      <LastProcessed>2018-01-17T19:54:30.87Z</LastProcessed>
+      <State>Processed</State>
+      <Measures>
+        <Measure dwd:design-time-name="494ee27b-2472-4f85-a640-19ebe6f0bfb6">
+          <ID>Quantity - FT PNL</ID>
+          <Name>Quantity Absolute</Name>
+          <DataType>Double</DataType>
+          <Source dwd:design-time-name="9b9c75cb-00dc-492e-a3b8-7f51a6212679">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="54d42588-e37a-4c1a-bd6c-0f52dc49e89d">
+              <TableID>dbo_v_PNL</TableID>
+              <ColumnID>Quantity</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="70946f65-96d7-43ed-b9a0-7c07cb86dc3e">
+          <ID>Price</ID>
+          <Name>Price</Name>
+          <DataType>Double</DataType>
+          <Source dwd:design-time-name="f9910cf2-899f-41fb-ae39-58554a6be1d4">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="6630474a-bc7a-40ca-b626-a53106af5907">
+              <TableID>dbo_v_PNL</TableID>
+              <ColumnID>nc_Price</ColumnID>
+            </Source>
+          </Source>
+          <FormatString>Currency</FormatString>
+        </Measure>
+        <Measure dwd:design-time-name="e3297884-26ae-44b4-8ec4-417874b2bb29">
+          <ID>Marketprice</ID>
+          <Name>Market Price</Name>
+          <DataType>Double</DataType>
+          <Source dwd:design-time-name="503f41fa-1b0c-4d61-a973-f4f408543757">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="311956f8-5e43-4ce8-90f0-6643e6511349">
+              <TableID>dbo_v_PNL</TableID>
+              <ColumnID>nc_MarketPrice</ColumnID>
+            </Source>
+          </Source>
+          <FormatString>Currency</FormatString>
+        </Measure>
+        <Measure dwd:design-time-name="a9b87bb2-aba8-402f-b52e-944d73559c4f">
+          <ID>Nc MTM</ID>
+          <Name>MTM</Name>
+          <DataType>Double</DataType>
+          <Source dwd:design-time-name="d56776f3-9506-4af8-932e-10a75c5bfc1c">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="9b5296f9-98de-4278-bcf8-a459fb67fab3">
+              <TableID>dbo_v_PNL</TableID>
+              <ColumnID>nc_MTM</ColumnID>
+            </Source>
+          </Source>
+          <FormatString>Currency</FormatString>
+        </Measure>
+        <Measure dwd:design-time-name="4c57d002-45a1-44cf-ae9f-7edeea7f0daf">
+          <ID>Nc Adjusted Price</ID>
+          <Name>Adjusted Price</Name>
+          <DataType>Double</DataType>
+          <Source dwd:design-time-name="82385e7a-7795-4cae-84ed-b482c074a256">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="6d8488bf-59b9-42fd-b5a8-8bd748b43c2c">
+              <TableID>dbo_v_PNL</TableID>
+              <ColumnID>nc_Adjusted_Price_Absolute</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="137e1e72-7b3f-4cad-ac4e-5442d895f0bd">
+          <ID>Nc Qty Balance</ID>
+          <Name>PNL Quantity</Name>
+          <DataType>Double</DataType>
+          <Source dwd:design-time-name="6690ba63-a003-4553-a760-6f491fd28c51">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="1c7011a6-af18-466f-bdf7-d9901b256dcd">
+              <TableID>dbo_v_PNL</TableID>
+              <ColumnID>nc_QtyBalance</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="17025e47-b7b9-4411-816c-9a824b768a10">
+          <ID>Price - PNL</ID>
+          <Name>Price Absolute</Name>
+          <DataType>Double</DataType>
+          <Source dwd:design-time-name="69d2a703-2296-41e2-b678-fa883a1b640c">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="b15bf829-5c8e-4702-a648-27a06e23bd67">
+              <TableID>dbo_v_PNL</TableID>
+              <ColumnID>Price</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="6a03614f-290e-4d1c-8d82-bfc112b537d3">
+          <ID>Marketprice 1</ID>
+          <Name>Marketprice Absolute</Name>
+          <DataType>Currency</DataType>
+          <Source dwd:design-time-name="a7165fa1-51f8-4cb5-8a02-1917d593207f">
+            <DataType>Currency</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="24f75fb0-9d8c-46ad-9472-b52db3ca6860">
+              <TableID>dbo_v_PNL</TableID>
+              <ColumnID>Marketprice</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="0113142d-5c7d-40be-b796-016578e6cebd">
+          <ID>Nc Adjusted Price Absolute</ID>
+          <Name>Adjusted Price Absolute</Name>
+          <DataType>Double</DataType>
+          <Source dwd:design-time-name="a99accc0-2fc1-4556-8f74-838f5e04a215">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="9fd3216d-9984-4aa3-b848-209812bca5d7">
+              <TableID>dbo_v_PNL</TableID>
+              <ColumnID>nc_AdjustedPrice</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="deabc0b4-ae54-4def-b468-0c53a3a35264">
+          <ID>Costs</ID>
+          <Name>Costs</Name>
+          <DataType>Double</DataType>
+          <Source dwd:design-time-name="5cec21af-a2eb-4ddc-b35b-e576722b928c">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="aba660ab-b494-463e-bedb-8984e30a6b14">
+              <TableID>dbo_v_PNL</TableID>
+              <ColumnID>Costs</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="3bc3173e-3040-4799-88de-9d1fbc68b3d9">
+          <CubeDimensionID>Contract Type</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="40d1a548-cdb4-44a4-9bda-1176e98febf6">
+              <AttributeID>Contract Type</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="59b2e942-a8ae-4284-a2e1-8836c1d2739c">
+                  <DataType>UnsignedTinyInt</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="d2e6356d-e3d8-491b-bc52-a0a2226bb498">
+                    <TableID>dbo_v_PNL</TableID>
+                    <ColumnID>E_Type</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="ede336ad-785e-4347-b5d8-d101ac1e199d">
+          <CubeDimensionID>Commodities</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="1bdac4ca-8501-4394-aa23-3db523b3a348">
+              <AttributeID>Commodity Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="9c7a11d1-b3d3-4a8b-bfbd-a2ea884b8090">
+                  <DataType>WChar</DataType>
+                  <DataSize>27</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="2213a253-e250-4f44-8df6-ca0558762849">
+                    <TableID>dbo_v_PNL</TableID>
+                    <ColumnID>M_CommodityCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+            <Attribute dwd:design-time-name="9c652f71-256e-47ae-9632-a6f2d7e59e48">
+              <AttributeID>Commodity Type</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="87b4e16d-592a-4727-96d4-bacd8ea47dd3">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="a10ac102-496f-44d0-9d10-c1edea4d50ea">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityType</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="fca875a1-051d-41a2-9caf-d0d0bbb909ee">
+              <AttributeID>Commodity Origin</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="c0691cdd-9a40-453d-98b9-971a574df960">
+                  <DataType>WChar</DataType>
+                  <DataSize>101</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="73893774-13c8-426c-a131-289c21b4ea17">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityTypeOriginCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="e02e1609-294d-4d06-bd7f-b82bd16248b4">
+              <AttributeID>Commodity Grade</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="a0369446-9251-4200-9798-fce190579d1f">
+                  <DataType>WChar</DataType>
+                  <DataSize>152</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="9059baf2-4fba-4a04-9347-9214decfe1be">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityTypeOriginGradeCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="14ba0e14-da32-4474-90fe-ef82f4c241a9">
+              <AttributeID>Commodity Lvl4</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="d016a7b3-35d6-4064-ae45-e4a45ac3ec03">
+                  <DataType>WChar</DataType>
+                  <DataSize>203</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="b6cdd8e9-4485-409c-8398-476a49046df2">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityTypeOriginGradeLvl4Code</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="dabd1043-adcd-4341-b6e3-d77c42ebfd07">
+              <AttributeID>Commodity Lvl5</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="1a980e71-4484-4914-bd44-0c0bbf912feb">
+                  <DataType>WChar</DataType>
+                  <DataSize>27</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="23409c9c-24c2-469b-ae6a-cc81b8a5aa57">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="ad17b118-9ee0-4a2f-814a-5b435eb8e120">
+              <AttributeID>Commodity Description</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="3f472241-4316-46b1-b11c-82d5868f7ca0">
+                  <DataType>WChar</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="be19d1af-7202-40d5-b694-1d0d872fec4a">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityDescription</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="b98515e2-8a58-456a-bef0-31308a8123db">
+          <CubeDimensionID>Departments</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="e3b411bd-89c7-4cda-b2b1-45064a397682">
+              <AttributeID>Department Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="7b138478-0a63-41a1-89f8-46e1d703c74d">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="bb12fd3c-e755-4ebe-8df5-41f9f9681039">
+                    <TableID>dbo_v_PNL</TableID>
+                    <ColumnID>nc_DepartmentCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+            <Attribute dwd:design-time-name="946f9ef3-c0e0-45f9-8ee0-d82d2d7f8330">
+              <AttributeID>Department Description</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="1f2d3ebd-9b25-4962-a740-b032d2325b92">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="8a31bbab-4435-4123-a063-bb4af25fe3ee">
+                    <TableID>dbo_M_Department</TableID>
+                    <ColumnID>DepartmentDescription</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="65c78119-7568-495a-8032-df1490548b28">
+              <AttributeID>Cmy102 Category</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="df0cc047-8d1a-41c0-872c-100ff852773a">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="30fc9780-58bd-46a3-8b4c-0cabedc79ee5">
+                    <TableID>dbo_M_Department</TableID>
+                    <ColumnID>cmy102_category</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="01fe6fe8-0ee1-45fd-8831-5cac59854be0">
+              <AttributeID>Cmy102 Altcode</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="67b72cd9-07fc-4459-b574-e7916bc17422">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="2b0c689e-d70a-4922-a988-fc3904a23a5c">
+                    <TableID>dbo_M_Department</TableID>
+                    <ColumnID>cmy102_altcode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="3376476b-606c-4a24-b793-43b297c858b6">
+              <AttributeID>Nc Dept Long Description</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="38a636eb-682e-4fb3-9e81-e3572ac7b255">
+                  <DataType>WChar</DataType>
+                  <DataSize>103</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="0459ea94-87d6-49a7-99fb-a1966842ee64">
+                    <TableID>dbo_M_Department</TableID>
+                    <ColumnID>nc_Dept_LongDescription</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="5f3ebb16-ccc8-46e5-8083-07045e7ee376">
+          <CubeDimensionID>Contract Status</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="484d7418-50e3-4bf0-9e15-fd50155b079e">
+              <AttributeID>Contract Status Id</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="fc054426-6876-4eac-834e-0ab87e77a437">
+                  <DataType>UnsignedTinyInt</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="c8c63595-4e42-4d9e-a52a-996093013d46">
+                    <TableID>dbo_v_PNL</TableID>
+                    <ColumnID>E_Status</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="43d68ba5-f64a-4e0e-b3bc-032018d040c4">
+          <CubeDimensionID>PNL Status</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="22a854b4-714a-4a77-97e3-ef42b1ba8fc8">
+              <AttributeID>PNL Complete Status</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="adc44501-8343-4a86-90c1-153cd30a978d">
+                  <DataType>WChar</DataType>
+                  <DataSize>22</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="2dce57e5-b8f3-4221-85d7-4710e79c019b">
+                    <TableID>dbo_v_PNL</TableID>
+                    <ColumnID>PNLCompleteStatus</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+            <Attribute dwd:design-time-name="1f55ebdb-b54e-440d-9612-2a557f758b81">
+              <AttributeID>PNL Status</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="ae72ff74-e78b-4ee3-bee4-7becb928301f">
+                  <DataType>WChar</DataType>
+                  <DataSize>8</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="122f88fc-f485-48b6-8cd5-f06e1e500786">
+                    <TableID>nq_PNLStatus</TableID>
+                    <ColumnID>PNLStatus</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="f7b6e2a0-e12a-41ae-aeae-3e01f0af3a0b">
+          <CubeDimensionID>PNL Type</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="9ebe72fb-6fe0-4205-bc38-1b386f39a4e3">
+              <AttributeID>PNL Complete Status</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="d061b970-43f9-4f9d-85df-f1fdca473f6b">
+                  <DataType>WChar</DataType>
+                  <DataSize>22</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="7fc04f45-0fa9-431c-994c-8f2438efe5b5">
+                    <TableID>dbo_v_PNL</TableID>
+                    <ColumnID>PNLCompleteStatus</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+            <Attribute dwd:design-time-name="02ccac00-6586-4a22-bdfd-6252cde0b04c">
+              <AttributeID>PNL Type Id</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="41374f60-2a55-407f-b9a8-8cd66979572e">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="8da334d1-b859-42c4-9ad1-5bab7c634c14">
+                    <TableID>nq_PNLType</TableID>
+                    <ColumnID>PNLTypeId</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="4d7abddd-12ef-4da6-97ab-e1b09c6c77b1">
+              <AttributeID>PNL Type Label</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="9b7e25fe-d173-4258-8ba3-ce61d6f6dbb2">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="5fb5a61d-bc0e-4437-965f-e25fbd315e22">
+                    <TableID>nq_PNLType</TableID>
+                    <ColumnID>PNLTypeId</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="0f41d922-6904-46af-877d-72b1b239b61b">
+          <CubeDimensionID>Contracts</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="c66f8d9d-1ff9-4699-8796-a2df225a8b67">
+              <AttributeID>I Trade Contract</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="75513fff-991e-4f5f-8031-9994de277eb1">
+                  <DataType>BigInt</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="23c7c5e1-9358-401e-967a-5717363980ce">
+                    <TableID>dbo_v_PNL</TableID>
+                    <ColumnID>I_TradeContract</ColumnID>
+                  </Source>
+                </KeyColumn>
+                <KeyColumn dwd:design-time-name="64826a48-e33c-4bbe-b9c4-ad0b9761851f">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="787c01eb-f55a-4b40-83dc-9585760dd66c">
+                    <TableID>dbo_v_PNL</TableID>
+                    <ColumnID>I_SectionNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+            <Attribute dwd:design-time-name="defac68a-9eb3-4605-87b5-43561758fb62">
+              <AttributeID>Contract Date</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="73a80e93-ee16-4e89-bf27-2d9181c03583">
+                  <DataType>Date</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="c96390d4-2956-405b-b19a-8268ea1dcc79">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>ContractDate</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="2e79be88-ee2a-46a6-bf7a-2ce63204bd47">
+              <AttributeID>M Quantity Unit</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="e07185ae-633d-4330-a533-50728cc5b7a9">
+                  <DataType>WChar</DataType>
+                  <DataSize>4</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="55146991-d0e8-42b3-bedb-7930125e9fd4">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>M_QuantityUnit</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="f18c7972-5b14-47fa-95c0-5e3656fff1eb">
+              <AttributeID>Delivery Period Start</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="1bedc129-6d16-4d66-b7ef-dc721b6a420a">
+                  <DataType>Date</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="d0048677-9237-41da-96f8-30bc2460d710">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>DeliveryPeriodStart</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="8ff5f09f-8ca6-460f-94cb-35b217397ba4">
+              <AttributeID>Delivery Period End</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="80633a52-5a53-449f-b334-0e529f086fcd">
+                  <DataType>Date</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="0140b7d9-023c-41fb-81b1-d63b4ac43270">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>DeliveryPeriodEnd</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="e9d9a02d-4d15-4fb6-aa14-66ac220f18c2">
+              <AttributeID>M Market Zone</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="4064e390-3f1c-47cb-96f8-8fca827cf396">
+                  <DataType>WChar</DataType>
+                  <DataSize>2</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="16352935-9b29-4106-816b-da4bd3222493">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>M_MarketZone</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="7f8bf24a-5294-4d7a-8024-8d3007b342d0">
+              <AttributeID>Contract Quantity</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="ec552000-26a1-48bd-b7db-c1c43b9b2c95">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="b457eb82-1e0c-4cfb-9dac-5007fbe7e140">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>Quantity</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="14f22eac-4c49-48ae-8e5b-db56efd21a36">
+              <AttributeID>M Currency</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="f2280f29-f84a-4b0d-9de5-2f40ca0c227b">
+                  <DataType>WChar</DataType>
+                  <DataSize>3</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="400fc7b4-39d8-424e-9893-1afc942183c9">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>M_Currency</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="d43bf601-efc6-4c52-b94c-fc0d458f81d8">
+              <AttributeID>M Contract Terms</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="140a1edc-cf9f-4612-843f-9f93f5321de8">
+                  <DataType>WChar</DataType>
+                  <DataSize>8</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="f4682bb7-46ae-4aca-b34c-85621d357fca">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>M_ContractTerms</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="67fb13e8-6e35-44ec-9ffd-6302375a2302">
+              <AttributeID>R Charter</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="dadcf2dd-97fd-47eb-90b3-faf7c113f4a7">
+                  <DataType>WChar</DataType>
+                  <DataSize>20</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="451585a2-2984-4d82-ba7c-30a14fe5b5ac">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>R_Charter</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="2e48f6e7-5d2c-4591-a56c-db803f20718b">
+              <AttributeID>Nc Crop Year</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="e5fdddff-d599-499d-80c6-1bf1d39806f3">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="27578125-564b-4c14-aa16-5e8b0ea79221">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>CropYear</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="7580e14e-617f-4433-aa76-cad7a2f43135">
+              <AttributeID>M Price Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="c0641589-e03a-4b04-85fd-55bb28fef49e">
+                  <DataType>WChar</DataType>
+                  <DataSize>4</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="c4f02e16-c2fb-48f5-8999-ffd03be03c5e">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>M_PriceCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="24fd2722-d4d4-413e-b3fc-caf513788927">
+          <CubeDimensionID>Counter Parties</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="239b03a0-4622-4920-a298-1b808fe4a66f">
+              <AttributeID>Counter Party Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="32a92aaa-e6cf-4528-b373-c4e02416a71e">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="c74ce03d-f106-4972-9d3b-2fac7e11e8e2">
+                    <TableID>dbo_v_PNL</TableID>
+                    <ColumnID>nc_CounterPartyCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+            <Attribute dwd:design-time-name="821fbfd0-e6e9-42d4-88bf-41fe52c5347b">
+              <AttributeID>Counter Party Description</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="b7ffacef-5e26-45eb-8f9b-500c4bd5dcc4">
+                  <DataType>WChar</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="0d3423f2-081a-4907-9ab2-84e8f6738570">
+                    <TableID>dbo_M_Counterparties</TableID>
+                    <ColumnID>CounterPartyDescription</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+      <ProactiveCaching dwd:design-time-name="523cdb2f-bc58-48d9-9d40-e80433e68ebf">
+        <SilenceInterval>-PT1S</SilenceInterval>
+        <Latency>-PT1S</Latency>
+        <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+        <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+        <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="60890b79-b281-45dc-983f-e54575b3751e" />
+      </ProactiveCaching>
+    </MeasureGroup>
+    <MeasureGroup dwd:design-time-name="6e4a5f71-cabc-443c-b759-a3e068961e3a">
+      <ID>FT Position</ID>
+      <Name>Position</Name>
+      <CreatedTimestamp>2018-01-09T13:16:49.523333Z</CreatedTimestamp>
+      <LastSchemaUpdate>2018-01-17T19:43:30.663333Z</LastSchemaUpdate>
+      <LastProcessed>2018-01-17T19:54:30.883333Z</LastProcessed>
+      <State>Processed</State>
+      <Measures>
+        <Measure dwd:design-time-name="2a4ed117-f26a-439b-8eb4-5dc522a44c9b">
+          <ID>Quantity</ID>
+          <Name>Pos Quantity</Name>
+          <DataType>Double</DataType>
+          <Source dwd:design-time-name="53a67b93-85f4-4cc6-a87a-caaafb5af09b">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="702d7012-24c9-409b-a6e6-b54528e7ddbc">
+              <TableID>dbo_TradeContract</TableID>
+              <ColumnID>Quantity</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="b60458c3-edb7-496b-8bbe-58575f0046a4">
+          <ID>Nc Qty Balance 1</ID>
+          <Name>Position</Name>
+          <DataType>Double</DataType>
+          <Source dwd:design-time-name="0f2edb8e-5c1e-4ab7-b48a-9ec89f5807d0">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="9708cae8-116a-4f51-b340-c2ad1d146eaa">
+              <TableID>dbo_TradeContract</TableID>
+              <ColumnID>nc_QtyBalance</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="1cc89695-2a8b-49b5-b1d0-8b53f4ac78dd">
+          <CubeDimensionID>Departments</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="2b385d4b-2bae-4137-9d3f-3ebd9524f38f">
+              <AttributeID>Department Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="6f665ed9-2cfa-454a-9afd-9f45ab8a3c52">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="a6c9eac5-e90e-4d7b-9f6d-6406bc494f39">
+                    <TableID>dbo_TradeContract</TableID>
+                    <ColumnID>nc_DepartmentCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+            <Attribute dwd:design-time-name="cb7e3116-943d-4b9e-a3f7-c0a8a742b8e7">
+              <AttributeID>Department Description</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="064bb191-f7dd-4c06-b11e-fa3727f8fabc">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="2e45d27e-13d6-42b2-978c-acedc17eda13">
+                    <TableID>dbo_M_Department</TableID>
+                    <ColumnID>DepartmentDescription</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="79899426-dabb-4e1e-81af-81e3745e3752">
+              <AttributeID>Cmy102 Category</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="453300c2-9d11-45ea-9e06-6e56db302ff2">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="3fe508c7-1c03-4f02-80a9-9a11436866c1">
+                    <TableID>dbo_M_Department</TableID>
+                    <ColumnID>cmy102_category</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="b78b334a-6e2c-41e7-a2c6-1fa6fd1c444d">
+              <AttributeID>Cmy102 Altcode</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="641e5f22-d0d7-4a38-b3c7-b77e9ba7d881">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="d6687ed8-b1e7-4afe-8adc-4dc240ac8d9c">
+                    <TableID>dbo_M_Department</TableID>
+                    <ColumnID>cmy102_altcode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="de7bda61-7e5c-46e1-ae4b-1b32e8a41265">
+              <AttributeID>Nc Dept Long Description</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="704f20d9-8f98-4eec-aecb-6046f8950822">
+                  <DataType>WChar</DataType>
+                  <DataSize>103</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="7046ee1a-a8fb-4b0c-bb88-d2c2c3084f24">
+                    <TableID>dbo_M_Department</TableID>
+                    <ColumnID>nc_Dept_LongDescription</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="cd771b15-32aa-456b-b663-a769b754d83b">
+          <CubeDimensionID>Commodities</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="82488a1f-12d5-4f8b-9a7e-de676a6c11eb">
+              <AttributeID>Commodity Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="b715cd50-eaac-4b36-b877-6602fa6f01ef">
+                  <DataType>WChar</DataType>
+                  <DataSize>27</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="e5ce02e2-53db-4d2a-98f8-2700f903247c">
+                    <TableID>dbo_TradeContract</TableID>
+                    <ColumnID>M_CommodityCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+            <Attribute dwd:design-time-name="5448581d-d784-4192-8cf0-cdd6fb8b2bbf">
+              <AttributeID>Commodity Type</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="88458d8b-e387-49a7-92bf-1c71c451e09e">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="11855b7a-4d30-4cae-bd8d-d06b3d174bc4">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityType</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="8e9f5b23-074d-4c91-a590-8b93f2932f94">
+              <AttributeID>Commodity Origin</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="3dd84f53-0da4-49df-8123-97eebd15a449">
+                  <DataType>WChar</DataType>
+                  <DataSize>101</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="6665fc10-7097-4a7f-8ec5-84820ff6d441">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityTypeOriginCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="2f9b34a6-be20-4265-852b-d34ac9734e00">
+              <AttributeID>Commodity Grade</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="408b8d5c-f4f2-4402-a3a1-8450422c6e6a">
+                  <DataType>WChar</DataType>
+                  <DataSize>152</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="5a573c00-3e20-4532-b400-906b001ef2a9">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityTypeOriginGradeCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="3b0d76ad-8ed9-4ce4-84cc-531c3dd5d362">
+              <AttributeID>Commodity Lvl4</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="a79b4d71-3087-4e94-be64-bd1d1ba65381">
+                  <DataType>WChar</DataType>
+                  <DataSize>203</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="a5566ab4-f47b-4d89-9906-d3274cf451ee">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityTypeOriginGradeLvl4Code</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="d2af666c-7392-42e9-9f44-12f269aa784f">
+              <AttributeID>Commodity Lvl5</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="38450e76-7fa9-487c-b6e8-abdccb14aff2">
+                  <DataType>WChar</DataType>
+                  <DataSize>27</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="e61baafe-e3db-4c04-b4a3-7a02fe4d5bb2">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="364293e2-0865-47d5-80a3-5a572c748ad7">
+              <AttributeID>Commodity Description</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="45277f43-9636-4cd9-99c7-4d0569f40b8e">
+                  <DataType>WChar</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="ea1e44ed-0445-42b1-b24d-ce8323ca2b89">
+                    <TableID>dbo_M_Commodities</TableID>
+                    <ColumnID>CommodityDescription</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="aa134014-88f8-4577-90c6-c5fd9566071d">
+          <CubeDimensionID>Contract Status</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="146e2ece-a287-4e5c-9b11-1bc45995c73e">
+              <AttributeID>Contract Status Id</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="871449d5-66a7-49d9-a55d-20c62cf67ebb">
+                  <DataType>UnsignedTinyInt</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="dc2db1ee-4ea2-45ec-a4a4-98535fc4a3b0">
+                    <TableID>dbo_TradeContract</TableID>
+                    <ColumnID>E_Status</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="02527f70-4a55-4883-832a-a582ece7a94e">
+          <CubeDimensionID>Contracts</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="81e00552-c227-426d-b487-b273d895d395">
+              <AttributeID>I Trade Contract</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="7fe47965-38ef-4724-836d-c00131860cc4">
+                  <DataType>BigInt</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="4f008b38-70f2-4f06-b6bb-e03cfab3be44">
+                    <TableID>dbo_TradeContract</TableID>
+                    <ColumnID>I_TradeContract</ColumnID>
+                  </Source>
+                </KeyColumn>
+                <KeyColumn dwd:design-time-name="496f5643-9f7f-44ff-9f5c-31beb180bdea">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="bd315900-efa6-44e9-a2ff-7d41d61b08f6">
+                    <TableID>dbo_TradeContract</TableID>
+                    <ColumnID>I_SectionNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+            <Attribute dwd:design-time-name="6c4a374b-fd8d-4184-82b4-b49ab36b05c4">
+              <AttributeID>Contract Date</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="44d2b254-7df5-40ff-b20c-e926cd39e90c">
+                  <DataType>Date</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="adb0a607-4429-47be-9021-8194f13f878a">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>ContractDate</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="0836f7a6-574a-44ad-8cf8-114afb7516ad">
+              <AttributeID>M Quantity Unit</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="9224cfa9-a18c-4a16-bf5e-3d1149ca262b">
+                  <DataType>WChar</DataType>
+                  <DataSize>4</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="f3cf7646-a2f6-4dfe-b9c7-2d4f5d0b38f7">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>M_QuantityUnit</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="82edddd2-692f-4ce9-97b1-c28f9ce7ebf0">
+              <AttributeID>Delivery Period Start</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="86c11675-230f-4f91-9063-06cf3e354c2a">
+                  <DataType>Date</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="fe94ec9a-e562-4923-95a6-b4072d6ad049">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>DeliveryPeriodStart</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="4ec3b502-b5eb-48e9-9917-5d542ed7c325">
+              <AttributeID>Delivery Period End</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="464c336b-2470-4fcb-9b2f-33e9b42b8029">
+                  <DataType>Date</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="1b9fe6d5-8cde-410f-8517-292d0fe90bbf">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>DeliveryPeriodEnd</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="8390e5b4-9230-492e-b4a0-0e92c697ac7f">
+              <AttributeID>M Market Zone</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="6174b1d1-2b9a-4cdf-abe2-18bf5fcb6f00">
+                  <DataType>WChar</DataType>
+                  <DataSize>2</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="e48bb3a4-7200-4253-8f09-105586ebac84">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>M_MarketZone</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="2a3617ad-7ac3-4b5d-8daa-3b9711f89719">
+              <AttributeID>Contract Quantity</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="609ae342-7ad0-42e9-a754-d611d8a5c071">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="b12d99ff-989d-4032-825a-651856899b17">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>Quantity</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="b067a6e4-f9f3-4bb7-97b5-a9489f25b2b8">
+              <AttributeID>M Currency</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="c8d876ae-1ae7-4ff8-85dc-68ede901e866">
+                  <DataType>WChar</DataType>
+                  <DataSize>3</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="31a23e78-8da0-40cf-92f3-7251e60d7be0">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>M_Currency</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="e583cffe-6210-48bc-80d9-a476a4b448dc">
+              <AttributeID>M Contract Terms</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="c85e6524-7a73-4e44-9122-5ee3fe3ab6fc">
+                  <DataType>WChar</DataType>
+                  <DataSize>8</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="7ae8f33b-e1af-49e6-9048-3ca4156e45f2">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>M_ContractTerms</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="19380868-f50e-4c7b-a59d-f09426f4927c">
+              <AttributeID>R Charter</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="1ccf7dc0-bece-4e1e-948a-1357421ce940">
+                  <DataType>WChar</DataType>
+                  <DataSize>20</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="ab4a7548-fb94-4559-a6ad-907de7d34f6f">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>R_Charter</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="0118b379-279d-4213-80ef-f42d09f6b6f3">
+              <AttributeID>Nc Crop Year</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="dd9f7ef7-f93a-416a-830e-ab996e046204">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="9faf7025-7a7d-47f5-9aed-ad4b1fec9345">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>CropYear</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="149ada12-9a8f-40d8-bf64-670c1a90825e">
+              <AttributeID>M Price Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="701553fa-a2fe-47e7-92e9-76659a8cf819">
+                  <DataType>WChar</DataType>
+                  <DataSize>4</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="a7e1bd1a-9150-499f-9fc2-1cde815eba21">
+                    <TableID>dbo_V_TradeContractSections</TableID>
+                    <ColumnID>M_PriceCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="3efec762-5380-445d-a1b7-bd1fa32851cd">
+          <CubeDimensionID>Position Status</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="7e68cbfd-2136-4479-928f-76163741f90a">
+              <AttributeID>Position Status</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="2f6eddd1-fb13-4528-8f67-73807415f3bf">
+                  <DataType>WChar</DataType>
+                  <DataSize>24</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="9b4a0d2a-2386-4ba6-9a0a-7d8d1d6d4744">
+                    <TableID>dbo_TradeContract</TableID>
+                    <ColumnID>PositionStatus</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+            <Attribute dwd:design-time-name="0c129d3c-6894-4991-ac15-44917196b987">
+              <AttributeID>Position Status Id</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="e781407a-7002-4ffd-bdee-8e11a2e199ad">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="cdcbe0bd-29b9-4606-a2ad-4076abb630cd">
+                    <TableID>nq_PositionStatus</TableID>
+                    <ColumnID>PositionStatusId</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+            <Attribute dwd:design-time-name="6070c6ed-987e-49d8-baf0-4d0d5754dca2">
+              <AttributeID>Position Status 1</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="bbe9458f-e59b-4d47-89c7-f2314e244a90">
+                  <DataType>WChar</DataType>
+                  <DataSize>22</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="59e1c56e-98e8-404c-9faf-7f9bf0f2188b">
+                    <TableID>nq_PositionStatus</TableID>
+                    <ColumnID>PositionStatus</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="819257ea-61d8-4ca2-9dbb-aa496a5a135f">
+          <CubeDimensionID>Counter Parties</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="5060fccd-9f98-484f-9abc-2b61580816c5">
+              <AttributeID>Counter Party Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="ff48c80d-88bb-4481-accd-49622ccf86f9">
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="1802992d-0f2c-45f3-a626-ce3a08173e94">
+                    <TableID>dbo_TradeContract</TableID>
+                    <ColumnID>nc_CounterPartyCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+            <Attribute dwd:design-time-name="63073630-a473-45e7-b8e8-c2b0897f65a8">
+              <AttributeID>Counter Party Description</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="6519a33a-3043-424b-9ef9-36af0136eff8">
+                  <DataType>WChar</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="5d4faac1-6202-4bc9-8c83-d53634b18849">
+                    <TableID>dbo_M_Counterparties</TableID>
+                    <ColumnID>CounterPartyDescription</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+      <ProactiveCaching dwd:design-time-name="5b49efc3-f837-40b7-a45b-acf1fe833f42">
+        <SilenceInterval>-PT1S</SilenceInterval>
+        <Latency>-PT1S</Latency>
+        <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+        <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+        <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="d0c71ce9-84f4-47b8-a3a2-7ded54be15f9" />
+      </ProactiveCaching>
+    </MeasureGroup>
+  </MeasureGroups>
+  <Source dwd:design-time-name="a8149a12-1c81-451d-b593-b87d2aba2dc6">
+    <DataSourceViewID>ATR CDM1DATRSQLF01</DataSourceViewID>
+  </Source>
+  <ErrorConfiguration dwd:design-time-name="6e6afa83-386c-4d67-b75a-1160ffc95f19">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <NullKeyConvertedToUnknown>ReportAndStop</NullKeyConvertedToUnknown>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <ProactiveCaching dwd:design-time-name="b8d76f71-4306-4a9f-bc7a-88fe8fcc49c3">
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="03a3da59-eb1b-4c2a-92a2-072a87bf47c5" />
+  </ProactiveCaching>
+</Cube>

@@ -1,0 +1,20 @@
+.editor-container {
+    padding-right: 20px; // to avoid scroll bar
+}
+
+ag-grid-angular.ag-theme-material {
+    height: calc(100vh - 170px);
+    margin: auto auto -16px auto;
+}
+
+.atlas-grid-card-title {
+    margin-left: 16px;
+}
+
+.mat-divider {
+    margin-top: 16px;
+}
+
+button.mat-button {
+    margin: 8px 8px auto 8px;
+}

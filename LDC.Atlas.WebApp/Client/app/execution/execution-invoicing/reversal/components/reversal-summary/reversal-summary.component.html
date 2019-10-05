@@ -1,0 +1,28 @@
+<div class="main-container"
+     [ngSwitch]="invoiceTypeId">
+    <atlas-commercial-summary #commercialSummaryComponent
+                              [defaultVATCode]="defaultVATCode"
+                              *ngSwitchDefault
+                              [isCreationMode]=isCreationMode></atlas-commercial-summary>
+    <atlas-cost-summary #costSummaryComponent
+                        [defaultVATCode]="defaultVATCode"
+                        *ngSwitchCase=InvoiceTypes.Cost></atlas-cost-summary>
+    <atlas-cost-summary #costSummaryComponent
+                        [defaultVATCode]="defaultVATCode"
+                        *ngSwitchCase=InvoiceTypes.CostReceivable></atlas-cost-summary>
+    <atlas-cost-summary #costSummaryComponent
+                        [defaultVATCode]="defaultVATCode"
+                        *ngSwitchCase=InvoiceTypes.CostDebitNote></atlas-cost-summary>
+    <atlas-cost-summary #costSummaryComponent
+                        [defaultVATCode]="defaultVATCode"
+                        *ngSwitchCase=InvoiceTypes.CostCreditNote></atlas-cost-summary>
+    <atlas-goods-cost-summary #goodsCostSummaryComponent
+                              [defaultVATCode]="defaultVATCode"
+                              *ngSwitchCase=InvoiceTypes.GoodsCostPurchase></atlas-goods-cost-summary>
+    <atlas-goods-cost-summary #goodsCostSummaryComponent
+                              [defaultVATCode]="defaultVATCode"
+                              *ngSwitchCase=InvoiceTypes.GoodsCostSales></atlas-goods-cost-summary>
+    <atlas-washout-summary #washoutSummaryComponent
+                           [defaultVATCode]="defaultVATCode"
+                           *ngSwitchCase=InvoiceTypes.Washout></atlas-washout-summary>
+</div>

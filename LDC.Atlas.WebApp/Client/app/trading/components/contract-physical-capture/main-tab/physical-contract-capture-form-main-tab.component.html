@@ -1,0 +1,33 @@
+<!-- container -->
+<div fxLayout="column wrap"
+     fxLayoutAlign="start"
+     class="container-flex">
+
+    <atlas-counterparty-form-component #CounterpartyComponent
+                                       class="flex-item"></atlas-counterparty-form-component>
+    <atlas-commodity-form-component #CommodityComponent
+                                    (commodityCodeSelected)="commodityCodeSelected($event)"
+                                    (commBlockWarnMessage)="commBlockWarnMessage($event)"
+                                    class="flex-item"></atlas-commodity-form-component>
+    <atlas-custom-quantity-form-component #QuantityFormComponent
+                                          (quantitySelected)="quantitySelected($event)"
+                                          (quantityCodeSelected)="quantityCodeSelected($event)"
+                                          class="flex-item"></atlas-custom-quantity-form-component>
+    <atlas-terms-form-component #TermsFormComponent
+                                class="flex-item"></atlas-terms-form-component>
+    <atlas-price-form-component #PriceFormComponent
+                                class="flex-item"></atlas-price-form-component>
+
+    <div class="shipment-location-section"
+         fxLayout="column"
+         class="flex-item">
+        <atlas-shipment-period-form #ShipmentPeriodFormComponent
+                                    (shipmentWarningMessage)="shipmentWarningMessage($event)">
+        </atlas-shipment-period-form>
+        <atlas-location-form-component #LocationFormComponent
+                                       (portsWarningMessage)="portsWarningMessage($event)">
+        </atlas-location-form-component>
+    </div>
+    <atlas-memo-form-component #MemoComponent
+                               class="flex-item"></atlas-memo-form-component>
+</div>

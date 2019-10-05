@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.PaymentRequestInterface</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.PaymentRequestInterface.Controllers.PaymentRequestController.ProcessPaymentRequestdatachangelog(LDC.Atlas.Services.PaymentRequestInterface.Application.Commands.ProcessInterfaceDataChangeLogsRequest)">
+            <summary>
+            Process PaymentRequest message logs
+            </summary>
+            <param name="processInterfaceDataChangeLogsRequest">The identifier of the data change log to process.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PaymentRequestInterface.Controllers.PaymentRequestController.ProcessESBResponse(LDC.Atlas.Services.PaymentRequestInterface.Application.Commands.ProcessESBResponse)">
+            <summary>
+            Process the response for the PaymentRequest from generic back interface
+            </summary>
+            <param name="esbResponse">The identifier of the data response.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.PaymentRequestInterface.Controllers.PaymentRequestController.UpdateAccountingErrorStatus(System.String,LDC.Atlas.Services.PaymentRequestInterface.Application.Commands.UpdateInterfaceStatusCommand)">
+            <summary>
+            Update the Flag "Ready to transmit" for given DocRefs
+            </summary>
+            <param name="company">The company code</param>
+            <param name="errorLines">Doc Refs of the Documents to be updated the interface status for</param>
+        </member>
+        <member name="T:ESBPaymentRequestClient.soapFaultDoc">
+            <remarks/>
+        </member>
+        <member name="P:ESBPaymentRequestClient.soapFaultDoc.message">
+            <remarks/>
+        </member>
+        <member name="P:ESBPaymentRequestClient.soapFaultDoc.category">
+            <remarks/>
+        </member>
+        <member name="P:ESBPaymentRequestClient.soapFaultDoc.code">
+            <remarks/>
+        </member>
+        <member name="P:ESBPaymentRequestClient.soapFaultDoc.errorType">
+            <remarks/>
+        </member>
+        <member name="P:ESBPaymentRequestClient.soapFaultDoc.errors">
+            <remarks/>
+        </member>
+        <member name="T:ESBPaymentRequestClient.errors">
+            <remarks/>
+        </member>
+    </members>
+</doc>

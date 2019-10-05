@@ -1,0 +1,29 @@
+.elevated-container {
+    height: 100%;
+}
+
+.profile-card-general-info {
+    font-size: 14px;
+}
+
+.btn-container {
+    margin: 8px 0;
+}
+
+button {
+    &.mat-button {
+        margin-left: 0 !important;
+    }
+
+    &.mat-raised-button {
+        margin-right: 0 !important;
+    }
+}
+
+.header-title {
+    padding-top: 14px;
+}
+
+atlas-privilege-level1-icon {
+    line-height: initial;
+}

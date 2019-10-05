@@ -1,0 +1,82 @@
+<mat-accordion *ngIf="showGrid"
+               class="cash-accordion">
+    <mat-expansion-panel [expanded]="isPanelExpanded">
+        <mat-expansion-panel-header [collapsedHeight]="'35px'"
+                                    [expandedHeight]="'35px'"
+                                    class="expansion-header">
+            <mat-panel-title>
+                Additional Costs
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center"
+             class="add-line-container">
+            <div>
+                <div *ngIf="isAddorEdit"
+                     fxLayout="row"
+                     fxLayoutAlign="start center"
+                     fxLayoutGap="10px">
+                    <div fxLayout="column"
+                         fxLayoutAlign="start start">
+                        <h6 class="no-margin">Add new lines:</h6>
+                    </div>
+                    <div fxLayout="column"
+                         fxLayoutAlign="start start"
+                         fxFlex="4">
+                        <mat-form-field>
+                            <input matInput
+                                   [formControl]="addNewLineCtrl">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column"
+                         fxLayoutAlign="start start">
+                        <button mat-button
+                                (click)="onProceedButtonClicked()">PROCEED</button>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="end start">
+                <atlas-ag-grid-user-preferences *ngIf="additionalCostsGridOptions && additionalCostsGridOptions.columnDefs"
+                                                [gridOptions]="additionalCostsGridOptions"
+                                                [company]="company"
+                                                [gridId]="gridCode"
+                                                [sharingEnabled]="false"
+                                                [savingEnabled]="false"
+                                                [hasColumnHandling]="false"
+                                                #userPreferences>
+                </atlas-ag-grid-user-preferences>
+                <atlas-grid-enlargement *ngIf="additionalCostsGridOptions && additionalCostsGridOptions.columnDefs"
+                                        [gridOptions]="additionalCostsGridOptions "
+                                        [userPreferencesParameters]="gridPreferencesParameters"
+                                        (cellValueChanged)="onCellValueChanged($event)"
+                                        #gridZoom>
+                </atlas-grid-enlargement>
+            </div>
+
+        </div>
+        <div ag-grid="additionalCostsGridOptions"
+             class="ag-theme-material pointer-cursor"
+             style="width: 100%; height: 100%">
+            <ag-grid-angular style=" height: 100%;"
+                             class="ag-theme-material"
+                             [rowData]="additionalCostsGridRows"
+                             [columnDefs]="additionalCostsGridCols"
+                             [enableColResize]="true"
+                             [pagination]="false"
+                             [enableSorting]="true"
+                             domLayout=autoHeight
+                             (gridReady)="onGridReady($event)"
+                             (cellValueChanged)="onCellValueChanged($event)"
+                             [frameworkComponents]="gridComponents"
+                             enableFilter
+                             [singleClickEdit]=true
+                             [gridOptions]="additionalCostsGridOptions"
+                             [rowHeight]="atlasAgGridParam.rowHeight">
+            </ag-grid-angular>
+        </div>
+
+
+    </mat-expansion-panel>
+</mat-accordion>

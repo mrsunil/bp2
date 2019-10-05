@@ -1,0 +1,32 @@
+<div matToolbarHighlight
+     class="dark-tab header-tab mat-elevation-z6">
+    <div class="header-tab-container">
+        <div>
+            <mat-tab-group [selectedIndex]="tabIndex"
+                           (selectedIndexChange)=onSelectedIndexChanged($event)>
+                <mat-tab label="Physical Trades"></mat-tab>
+                <div *ifAuthorized="'Trades.CostMatrices', company:company">
+                    <mat-tab *ngIf="!dataVersionId"
+                             label="Cost Matrices"></mat-tab>
+                    <mat-tab label="FX DEALS"></mat-tab>
+                </div>
+            </mat-tab-group>
+        </div>
+
+        <div class="content-tab">
+            <mat-tab-group [selectedIndex]="tabIndex"
+                           (selectedIndexChange)="onSelectedTabChanged($event)">
+                <mat-tab>
+                    <atlas-trades [sideNavOpened]="sideNavOpened"
+                                  #tradesComponent></atlas-trades>
+                </mat-tab>
+                <mat-tab>
+                    <atlas-costmatrices #costmatricesComponent></atlas-costmatrices>
+                </mat-tab>
+                <mat-tab>
+                    <atlas-fx-deals #fxDealsComponent></atlas-fx-deals>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

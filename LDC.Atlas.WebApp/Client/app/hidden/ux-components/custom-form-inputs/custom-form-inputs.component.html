@@ -1,0 +1,182 @@
+<mat-card class="margin-12">
+    <h2>Custom input components</h2>
+</mat-card>
+
+<form [formGroup]="componentsFormTest">
+
+    <!-- INPUT -->
+    <mat-card class="margin-12">
+        <h3>Input Component</h3>
+        <!-- Input settings -->
+        <mat-form-field class="medium-field">
+            <input [formControl]="inputControl"
+                   matInput>
+            <mat-placeholder>Set value</mat-placeholder>
+        </mat-form-field>
+        <mat-form-field class="medium-field">
+            <input [formControl]="inputLabel"
+                   matInput>
+            <mat-placeholder>Set label</mat-placeholder>
+        </mat-form-field>
+        <mat-checkbox #inputCheck
+                      [checked]="isInputChecked"
+                      (change)="changeInputToRequired($event)">Required
+        </mat-checkbox>
+        <mat-checkbox #inputWarningCheck
+                      (change)="changeInputToWarning($event)">Warning
+        </mat-checkbox>
+        <div style="margin:20px; text-align:right">
+            <span class="fill-space"></span>
+            <button mat-raised-button
+                    (click)="changeModeInput()">{{inputMode}}</button>
+        </div>
+        <div class="custom-line-footer"></div>
+        <br>
+        <!-- Custom Input component -->
+        <atlas-form-input [fieldControl]="inputControl"
+                          [isEditable]="isInputEditable"
+                          [label]="inputLabel.value"
+                          [errorMap]="inputErrorMap "
+                          [hint]="customHint"
+                          [hasWarning]="isInputWarning"
+                          [warningMessage]="'This is a warning !'">
+        </atlas-form-input>
+    </mat-card>
+
+
+    <!-- TOGGLE BUTTONS -->
+    <mat-card class="margin-12">
+        <!--Toggle settings -->
+        <h3>Toggle Component</h3>
+        <mat-form-field class="medium-field">
+            <input [formControl]="inputLabelForGroup"
+                   matInput>
+            <mat-placeholder>Group Label</mat-placeholder>
+        </mat-form-field>
+        <mat-form-field class="medium-field">
+            <input [formControl]="inputLabelForButton"
+                   matInput>
+            <mat-placeholder>New button label</mat-placeholder>
+        </mat-form-field>
+        <button mat-button
+                (click)="addToggleButton($event)">Add button</button>
+
+        <div style="margin:20px; text-align:right">
+            <span class="fill-space"></span>
+            <button mat-raised-button
+                    (click)="changeModeToggle()">{{toggleMode}}</button>
+        </div>
+        <div class="custom-line-footer"></div>
+        <br>
+        <!-- Custom Toggle component -->
+        <atlas-form-toggle [fieldControl]="toggleControl"
+                           [label]="inputLabelForGroup.value"
+                           [isEditable]="isToggleEditable"
+                           [valueLabelMap]="valueLabelForButtons">
+        </atlas-form-toggle>
+    </mat-card>
+
+
+    <!-- DATE PICKER -->
+    <mat-card class="margin-12">
+        <h3>Date Picker Component</h3>
+        <!--Date picker settings -->
+        <mat-form-field class="medium-field">
+            <input [formControl]="dateLabel"
+                   matInput>
+            <mat-placeholder>Set label</mat-placeholder>
+        </mat-form-field>
+        <mat-form-field class="medium-field">
+            <input matInput
+                   [matDatepicker]="picker"
+                   autocomplete="off"
+                   [formControl]="dateControl">
+            <mat-placeholder>Set date</mat-placeholder>
+            <mat-datepicker-toggle matSuffix
+                                   [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-checkbox #dateCheck
+                      [checked]="isDateChecked"
+                      (change)="changeDatePickerToRequired($event)">Required
+        </mat-checkbox>
+        <div style="margin:20px; text-align:right">
+            <span class="fill-space"></span>
+            <button mat-raised-button
+                    (click)="changeModeDate()">{{dateMode}}</button>
+        </div>
+        <div class="custom-line-footer"></div>
+        <br>
+        <!-- Custom Date Picker component -->
+        <atlas-date-picker [isEditable]="isDateEditable"
+                           [label]="dateLabel.value"
+                           [fieldControl]="dateControl"
+                           [errorMap]="dateErrorMap">
+        </atlas-date-picker>
+    </mat-card>
+
+
+    <!-- SELECT AUTOCOMPLETE -->
+    <mat-card class="margin-12">
+        <h3>Select Autocomplete Component</h3>
+        <!-- Select/Autocomplete settings -->
+        Change mode: <button mat-button
+                (click)="changeModeAutocompleteDropdown()">
+            {{autocompleteDropdownMode}}
+        </button><br>
+        <mat-form-field class="medium-field">
+            <input [formControl]="selectLabel"
+                   matInput>
+            <mat-placeholder>Set label</mat-placeholder>
+        </mat-form-field>
+        <mat-checkbox #selectCheck
+                      [checked]="isSelectChecked"
+                      (change)="changeSelectToRequired($event)">Required
+        </mat-checkbox>
+        <div style="margin:20px; text-align:right">
+            <span class="fill-space"></span>
+            <button mat-raised-button
+                    (click)="changeModeSelect()">{{selectMode}}</button>
+        </div>
+        <div class="custom-line-footer"></div>
+        <br>
+        <!-- List select custom component -->
+        <atlas-dropdown-select [isEditable]="isSelectEditable"
+                               [label]="selectLabel.value"
+                               [fieldControl]="selectControl"
+                               [options]="selectOptions"
+                               [displayProperty]="displayProperty"
+                               [selectProperties]="selectProperties"
+                               [isAutocompleteActivated]="isAutocompleteActivated"
+                               [errorMap]="selectErrorMap"
+                               [hint]="customHint">
+        </atlas-dropdown-select>
+    </mat-card>
+
+    <!-- MASTERDATA AUTOCOMPLETE + CONTEXTUAL SEARCH -->
+    <mat-card class="margin-12">
+        <h3>Masterdata Autocomplete with Contextual Search Component</h3>
+
+        <atlas-masterdata-input isEditable="true"
+                                [fieldControl]="masterdataControl"
+                                [options]="filteredMasterdata"
+                                label="Vessel"
+                                displayProperty="vesselName"
+                                [selectProperties]="['vesselName', 'description']"
+                                [errorMap]="vesselErrorMap"
+                                lightBoxTitle="Results for vessels"
+                                gridId="charterVesselGrid">
+        </atlas-masterdata-input>
+    </mat-card>
+
+    <div>
+        <div class="custom-line-footer"></div>
+        <div style="margin:20px; text-align:right">
+            <span class="fill-space"></span>
+            <button type="submit"
+                    mat-raised-button
+                    color="accent"
+                    [disabled]="!componentsFormTest.valid">VALIDATED</button>
+        </div>
+    </div>
+</form>

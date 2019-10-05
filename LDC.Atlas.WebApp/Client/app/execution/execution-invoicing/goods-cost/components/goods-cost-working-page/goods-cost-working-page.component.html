@@ -1,0 +1,39 @@
+<div fxLayout="column">
+    <div fxLayout="row"
+         fxLayoutGap="16px">
+        <atlas-goods-cost-details #detailsComponent
+                                  fxFlex="60%"
+                                  (invoiceDateSelected)="onInvoiceDateSelected($event)">
+
+        </atlas-goods-cost-details>
+        <atlas-document-template #documentComponent
+                                 (templateSelected)="onDocumentTemplateSelected($event)"
+                                 fxFlex="40%"
+                                 [documentType]="DocumentTypes.InvoiceGoodsCostInvoice">
+        </atlas-document-template>
+    </div>
+    <atlas-goods-cost-value-of-goods #valueOfGoodsComponent
+                                     (totalAmountCalculated)="ontotalAmountCalculated($event)">
+    </atlas-goods-cost-value-of-goods>
+    <atlas-goods-cost-additional-cost #additionalCostComponent
+                                      [selectedGoodsVat]="selectedGoodsVatCode"
+                                      [valueOfGoodsCurrency]="valueOfGoodsCurrency"
+                                      (totalCostAndVatCode)="onChangeCostContract($event)"
+                                      (narrativeLength)="onNarrativeValueChange($event)">
+    </atlas-goods-cost-additional-cost>
+
+    <div fxLayout="row"
+         fxLayoutAlign="none stretch"
+         fxLayoutGap="16px">
+        <atlas-goods-cost-tax-goods #taxGoodsComponent
+                                    (selectedGoodsTaxCode)="onChangeGoodsTaxCode($event)"
+                                    fxFlex="50%"></atlas-goods-cost-tax-goods>
+        <atlas-goods-cost-payments #paymentsComponent
+                                   fxFlex="50%"></atlas-goods-cost-payments>
+    </div>
+    <atlas-goods-cost-tax-cost #taxCostComponent
+                               (totalCostTaxCalculated)="onTotalCostTaxCalculated($event)"
+                               fxFlex="50%"></atlas-goods-cost-tax-cost>
+    <atlas-goods-cost-total class="goods-cost-total"
+                            #totalComponent></atlas-goods-cost-total>
+</div>

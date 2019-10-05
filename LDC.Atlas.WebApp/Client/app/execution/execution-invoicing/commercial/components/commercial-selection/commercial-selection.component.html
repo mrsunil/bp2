@@ -1,0 +1,15 @@
+<div>
+    <atlas-invoice-selection-form-component #InvoiceSelectionFormComponent>
+    </atlas-invoice-selection-form-component>
+
+    <atlas-contract-selection-form-component #contractSelectionComponent
+                                             [defaultWeightCode]="companyWeightCode"
+                                             (contractsSelected)="onContractsSelected($event)"
+                                             (commoditySelected)="onDifferentCommoditySelected($event)">
+    </atlas-contract-selection-form-component>
+
+    <atlas-pricing-options #pricingOptionsComponent
+                           (pricingAndDecimalOptionSelected)="onPricingAndDecimalOptionSelected($event)">
+    </atlas-pricing-options>
+
+</div>

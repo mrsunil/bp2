@@ -1,0 +1,33 @@
+.optionAll {
+    border-bottom-color: black;
+}
+
+.fixedHeader {
+    position: sticky;
+    top: -2px; //without the minus 2, we see the options scrolling below
+    margin-top: -2px; //to keep the input fixed
+    padding-top: 12px; //12
+    padding-left: 10px;
+    z-index: 500;
+    padding-bottom: 20px;
+    background-color: white;
+}
+
+.autocomplete-option-with-action {
+    text-align: right;
+
+    a {
+        font-size: 12px;
+        cursor: pointer;
+        color: #5788ce;
+        text-decoration: underline;
+    }
+
+    ::ng-deep .mat-pseudo-checkbox-disabled {
+        display: none;
+    }
+}
+
+mat-form-field {
+    margin-top: 12px;
+}

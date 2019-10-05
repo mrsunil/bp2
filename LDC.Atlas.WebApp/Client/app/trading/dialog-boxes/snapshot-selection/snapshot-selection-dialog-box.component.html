@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Amend Snapshot</h1>
+<mat-dialog-content>
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         *ngIf="isLoading"
+         class="loading">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+    <div fxLayout="column"
+         *ngIf="!isLoading">
+        <mat-form-field>
+            <input matInput
+                   placeholder="Which frozen database do you want to update?"
+                   [formControl]="snapshotCtrl"
+                   [matAutocomplete]="snapshots">
+            <mat-autocomplete #snapshots="matAutocomplete"
+                              [panelWidth]="panelSize"
+                              [displayWith]="getSnapshotDate.bind(this)">
+                <mat-option *ngFor="let snapshot of filteredSnapshots"
+                            [value]="snapshot">
+                    {{ getSnapshotDate(snapshot) }}
+                </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="snapshotCtrl.hasError('inDropdownList')">
+                This freeze does not exists
+            </mat-error>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+
+    <button mat-button
+            (click)="onCancelButtonClicked()">Cancel</button>
+    <span class="fill-space"></span>
+    <button mat-button
+            (click)="onConfirmButtonClicked()">Confirm</button>
+
+</mat-dialog-actions>

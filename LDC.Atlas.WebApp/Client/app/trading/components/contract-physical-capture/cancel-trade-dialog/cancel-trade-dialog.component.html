@@ -1,0 +1,206 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+
+            <h3><b>Cancellation at Settlement Price
+                    [<label>{{contractLabel}}
+                    </label>]
+                </b></h3>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div class='mat-toggle-height'>
+            <mat-slide-toggle mat-raised-button
+                              [checked]="isSectionClosed"
+                              [fieldControl]="isSectionClosedCtrl"
+                              (change)="onToggleClosedTrade($event.checked)">
+                Close Contract
+            </mat-slide-toggle>
+        </div>
+        <div fixLayout="row"
+             fixLayoutGap="5%">
+            <div fxLayout="column"
+                 fxLayoutAlign="start left"
+                 fxLayoutGap="2%">
+                <div fxFlex="140%">
+                    <atlas-form-input fxFlex="20%"
+                                      fxLayoutGap="4%"
+                                      [fieldControl]="counterPartyCtrl"
+                                      [isEditable]="true"
+                                      label="Counterparty Code">
+                    </atlas-form-input>
+                    <div class="custom-form"
+                         fxLayoutGap="4%"
+                         fxFlex="20%"
+                         [class.isEmpty]="!cancellationDateCtrl.value"
+                         [class.required-field]="cancellationDateCtrl.isRequired">
+                        <mat-form-field>
+                            <input matInput
+                                   [max]="filterDate"
+                                   [required]="cancellationDateCtrl.isRequired"
+                                   [matDatepicker]="cancelPicker"
+                                   placeholder="Cancellation date"
+                                   (blur)="onValueChange()"
+                                   autocomplete="off"
+                                   [formControl]='cancellationDateCtrl'>
+                            <mat-datepicker-toggle matSuffix
+                                                   [for]="cancelPicker"></mat-datepicker-toggle>
+                            <mat-datepicker #cancelPicker></mat-datepicker>
+                            <mat-error *ngIf="cancellationDateCtrl.hasError('required')">
+                                This field is required
+                            </mat-error>
+                            <mat-hint *ngIf="cancellationDateCtrl.isRequired">
+                                Required *
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="custom-form"
+                         fxFlex="20%"
+                         [class.isEmpty]="!dueDateCtrl.value"
+                         [class.required-field]="dueDateCtrl.isRequired">
+                        <mat-form-field>
+                            <input matInput
+                                   [required]="dueDateCtrl.isRequired"
+                                   [matDatepicker]="valuePicker"
+                                   placeholder="Due Date"
+                                   (blur)="onValueChange()"
+                                   autocomplete="off"
+                                   [formControl]='dueDateCtrl'>
+                            <mat-datepicker-toggle matSuffix
+                                                   [for]="valuePicker"></mat-datepicker-toggle>
+                            <mat-datepicker #valuePicker></mat-datepicker>
+                            <mat-error *ngIf="dueDateCtrl.hasError('required')">
+                                This field is required
+                            </mat-error>
+                            <mat-hint *ngIf="dueDateCtrl.isRequired">
+                                Required *
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="140%"
+                     fxLayout="row">
+                    <atlas-form-input fxFlex="20%"
+                                      [fieldControl]="contractPriceCtrl"
+                                      [isEditable]="true"
+                                      label="Contract Price">
+                    </atlas-form-input>
+                    <atlas-form-input fxFlex="20%"
+                                      [fieldControl]="currencyCtrl"
+                                      [isEditable]="true"
+                                      label="Currency">
+                    </atlas-form-input>
+                    <atlas-form-input fxFlex="20%"
+                                      [fieldControl]="priceCodeCtrl"
+                                      [isEditable]="true"
+                                      label="Price Code">
+                    </atlas-form-input>
+                    <atlas-form-input fxFlex="20%"
+                                      [fieldControl]="settlementPriceCtrl"
+                                      [isEditable]="true"
+                                      label="Settlement Price"
+                                      (blur)="onValueChange()"
+                                      [required]="settlementPriceCtrl.isRequired"
+                                      [errorMap]="settlementPriceErrorMap">
+                    </atlas-form-input>
+                    <atlas-form-input fxFlex="20%"
+                                      [fieldControl]="settlementValueCtrl"
+                                      [isEditable]="true"
+                                      [title]="settlementValueToolTip"
+                                      label="Settlement Value">
+                    </atlas-form-input>
+                </div>
+                <div fxFlex="140%"
+                     fxLayout="row">
+                    <atlas-form-input fxFlex="20%"
+                                      [fieldControl]="quantityCtrl"
+                                      [isEditable]="true"
+                                      label="Quantity">
+                    </atlas-form-input>
+                    <atlas-form-input fxFlex="20%"
+                                      [fieldControl]="quantityCodeCtrl"
+                                      [isEditable]="true"
+                                      label="Quantity code">
+                    </atlas-form-input>
+                </div>
+                <div fxFlex="140%"
+                     fxLayout="row">
+                    <atlas-form-input fxFlex="20%"
+                                      [fieldControl]="nominalAccountCtrl"
+                                      [isEditable]="true"
+                                      label="Nominal account">
+                    </atlas-form-input>
+                    <atlas-form-input fxFlex="20%"
+                                      [fieldControl]="costTypeCtrl"
+                                      [isEditable]="true"
+                                      label="Cost Type">
+                    </atlas-form-input>
+                    <atlas-form-input fxFlex="20%"
+                                      [fieldControl]="narrativeCtrl"
+                                      [isEditable]="true"
+                                      label="Narrative">
+                    </atlas-form-input>
+                </div>
+                <div fxFlex="140%"
+                     fxLayout="row">
+                    <mat-form-field fxFlex="19.5%">
+                        <mat-select [required]="externalInternalCtrl.isRequired"
+                                    [panelWidth]="panelSize"
+                                    placeholder="External/InHouse"
+                                    (blur)="onValueChange()"
+                                    [formControl]="externalInternalCtrl"
+                                    [matTooltip]="'External/InHouse'">
+
+                            <mat-option *ngFor="let info of invoiceSourceType"
+                                        [value]="info.viewValue">
+                                {{info.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="externalInternalCtrl.hasError('required')">
+                            This field is required
+                        </mat-error>
+                        <mat-hint *ngIf="externalInternalCtrl.isRequired">
+                            Required *
+                        </mat-hint>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="19.5%">
+                        <mat-select [panelWidth]="panelSize"
+                                    placeholder="Template"
+                                    [formControl]="templateCtrl"
+                                    (blur)="onValueChange()"
+                                    matTooltip="Template">
+                            <mat-option></mat-option>
+                            <mat-option *ngFor="let template of filteredTemplates"
+                                        [value]="template">
+                                {{template.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="isTemplateRequired">
+                            This field is required
+                        </mat-error>
+                        <mat-hint *ngIf="isTemplateRequired">
+                            Required *
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between center">
+                    <button mat-button
+                            type="button"
+                            (click)="onDiscardButtonClicked()"
+                            class="btn-primary">
+                        Discard
+                    </button>
+                    <button mat-button
+                            type="button"
+                            (click)="onConfirmButtonClicked()"
+                            class="btn-primary"
+                            [disabled]="!isConfirmCancellationEdit">
+                        Confirm Cancellation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

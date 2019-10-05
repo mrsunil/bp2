@@ -1,0 +1,1580 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.Document</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.OperationsController.GetOperations(LDC.Atlas.Infrastructure.ViewModel.PagingOptions)">
+            <summary>
+            Returns the list of operations.
+            </summary>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.OperationsController.GetOperationById(System.Int64)">
+            <summary>
+            Returns an operation by its identifier.
+            </summary>
+            <param name="operationId">The operation identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.PhysicalDocumentsController.GetGeneratedDocuments(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Returns the list of generated documents.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="recordId">The entity identifier.</param>
+            <param name="tableId">The entity name.</param>
+            <param name="documentType">The type of document.</param>
+            <param name="pagingOptions">The options for pagination.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.PhysicalDocumentsController.SearchPhysicalContracts(System.String,LDC.Atlas.Infrastructure.ViewModel.EntitySearchRequest)">
+            <summary>
+            Searches in the list of sections.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="searchRequest">The search request.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.PhysicalDocumentsController.GetGeneratedDocumentById(System.Int64,System.String)">
+            <summary>
+            Returns a generated document by its identifier.
+            </summary>
+            <param name="physicalDocumentId">The generated document identifier.</param>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.PhysicalDocumentsController.GetGeneratedDocumentContent(System.Int64,System.String)">
+            <summary>
+            Download the contents of the primary stream (file) of a generated document.
+            </summary>
+            <param name="physicalDocumentId">The generated document identifier.</param>
+            <param name="company">The company code.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.PhysicalDocumentsController.GetDraftDocumentContent(System.Int64)">
+            <summary>
+            Download the contents of the primary stream (file) of a generated document.
+            </summary>
+            <param name="physicalDocumentId">The generated document identifier.</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.PhysicalDocumentsController.GenerateContractAdvice(System.String,LDC.Atlas.Services.Document.Application.Commands.GenerateContractAdviceCommand)">
+            <summary>
+            Generate a new contract advice document.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="contractAdviceParameters">Parameters to generate contract advice document.</param>
+            <response code="201">Document created.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.PhysicalDocumentsController.UploadDocument(System.String,LDC.Atlas.Services.Document.Application.Commands.UploadDocumentCommand,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload a document.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">Parameters to identify resource associated with document.</param>
+            <param name="file">The file object.</param>
+            <response code="201">Document uploaded.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.PhysicalDocumentsController.UploadDraftDocument(System.String,LDC.Atlas.Services.Document.Application.Commands.UploadDocumentCommand,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload a draft document.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="request">Parameters to identify resource associated with document.</param>
+            <param name="file">The file object.</param>
+            <response code="201">Document uploaded.</response>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.PhysicalDocumentsController.GetTemplatesByTags(System.String,System.Int32,System.Collections.Generic.IEnumerable{LDC.Atlas.Application.Common.Tags.Dto.TagDto})">
+            <summary>
+            Get a list of document templates by tags, ordered by BestMatch.
+            </summary>
+            <param name="company"></param>
+            <param name="physicalDocumentTypeId"></param>
+            <param name="request"></param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> representing the result of the asynchronous operation.</returns>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.PhysicalDocumentTypesController.GetDocumentTypes">
+            <summary>
+            Returns the list of document types.
+            </summary>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Controllers.PhysicalDocumentTypesController.GetTemplates(System.String,System.Int64,System.String)">
+            <summary>
+            Returns the list of templates for a document type.
+            </summary>
+            <param name="company">The company code.</param>
+            <param name="documentTypeId">The identifier of the document type.</param>
+            <param name="module">To find specific to module</param>
+        </member>
+        <member name="M:LDC.Atlas.Services.Document.Services.TagService.ListDocumentTemplatesByTagsAsync(System.String,System.Collections.Generic.IEnumerable{LDC.Atlas.Application.Common.Tags.Dto.TagDto})">
+            <summary>
+            Return the dicocument search with best match based on the tags included.
+            </summary>
+            <param name="companyId"></param>
+            <param name="listCostMatricesByTags"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ReportExecution2005.TrustedUserHeader">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.TrustedUserHeader.UserName">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.TrustedUserHeader.UserToken">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.Extension">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.Extension.ExtensionType">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.Extension.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.Extension.LocalizedName">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.Extension.Visible">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.Extension.IsModelGenerationSupported">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ExtensionTypeEnum">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ExtensionTypeEnum.Delivery">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ExtensionTypeEnum.Render">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ExtensionTypeEnum.Data">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ExtensionTypeEnum.All">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.DocumentMapNode">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.DocumentMapNode.Label">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.DocumentMapNode.UniqueName">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.DocumentMapNode.Children">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ExtensionSettings">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExtensionSettings.Extension">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExtensionSettings.ParameterValues">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ParameterFieldReference">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ParameterFieldReference.ParameterName">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ParameterFieldReference.FieldAlias">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ParameterValueOrFieldReference">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ParameterValue">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ParameterValue.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ParameterValue.Value">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ParameterValue.Label">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.DataSourceCredentials">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.DataSourceCredentials.DataSourceName">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.DataSourceCredentials.UserName">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.DataSourceCredentials.Password">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.Warning">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.Warning.Code">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.Warning.Severity">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.Warning.ObjectName">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.Warning.ObjectType">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.Warning.Message">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ExecutionHeader">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionHeader.ExecutionID">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ParametersGridCellDefinition">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ParametersGridCellDefinition.RowIndex">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ParametersGridCellDefinition.ColumnsIndex">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ParametersGridCellDefinition.ParameterName">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ParametersGridLayoutDefinition">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ParametersGridLayoutDefinition.NumberOfColumns">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ParametersGridLayoutDefinition.NumberOfRows">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ParametersGridLayoutDefinition.CellDefinitions">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ReportMargins">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportMargins.Top">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportMargins.Bottom">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportMargins.Left">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportMargins.Right">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ReportPaperSize">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportPaperSize.Height">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportPaperSize.Width">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.PageSettings">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.PageSettings.PaperSize">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.PageSettings.Margins">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.DataSourcePrompt">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.DataSourcePrompt.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.DataSourcePrompt.DataSourceID">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.DataSourcePrompt.Prompt">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ValidValue">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ValidValue.Label">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ValidValue.Value">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ReportParameter">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.Type">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.TypeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.Nullable">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.NullableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.AllowBlank">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.AllowBlankSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.MultiValue">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.MultiValueSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.QueryParameter">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.QueryParameterSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.Prompt">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.PromptUser">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.PromptUserSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.Dependencies">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.ValidValuesQueryBased">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.ValidValuesQueryBasedSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.ValidValues">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.DefaultValuesQueryBased">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.DefaultValuesQueryBasedSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.DefaultValues">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.State">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.StateSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ReportParameter.ErrorMessage">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ParameterTypeEnum">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ParameterTypeEnum.Boolean">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ParameterTypeEnum.DateTime">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ParameterTypeEnum.Integer">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ParameterTypeEnum.Float">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ParameterTypeEnum.String">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ParameterStateEnum">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ParameterStateEnum.HasValidValue">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ParameterStateEnum.MissingValidValue">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ParameterStateEnum.HasOutstandingDependencies">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.ParameterStateEnum.DynamicValuesUnavailable">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ExecutionInfo">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.HasSnapshot">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.NeedsProcessing">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.AllowQueryExecution">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.CredentialsRequired">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.ParametersRequired">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.ExpirationDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.ExecutionDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.NumPages">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.Parameters">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.DataSourcePrompts">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.HasDocumentMap">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.ExecutionID">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.ReportPath">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.HistoryID">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.ReportPageSettings">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo.AutoRefreshInterval">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ExecutionInfo2">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo2.PageCountMode">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.PageCountMode">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.PageCountMode.Actual">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.PageCountMode.Estimate">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ExecutionInfo3">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ExecutionInfo3.ParametersLayout">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.ServerInfoHeader">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ServerInfoHeader.ReportServerVersionNumber">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ServerInfoHeader.ReportServerEdition">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ServerInfoHeader.ReportServerVersion">
+            <remarks/>
+        </member>
+        <member name="P:ReportExecution2005.ServerInfoHeader.ReportServerDateTime">
+            <remarks/>
+        </member>
+        <member name="T:ReportExecution2005.SortDirectionEnum">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.SortDirectionEnum.None">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.SortDirectionEnum.Ascending">
+            <remarks/>
+        </member>
+        <member name="F:ReportExecution2005.SortDirectionEnum.Descending">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.TrustedUserHeader">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.TrustedUserHeader.UserName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.TrustedUserHeader.UserToken">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.CacheRefreshPlan">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlan.CacheRefreshPlanID">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlan.ItemPath">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlan.Description">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlan.State">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlan.LastExecuted">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlan.ModifiedDate">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlan.ModifiedBy">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlan.LastRunStatus">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.CacheRefreshPlanState">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlanState.MissingParameterValue">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlanState.InvalidParameterValue">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlanState.UnknownItemParameter">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CacheRefreshPlanState.CachingNotEnabledOnItem">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.Job">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Job.JobID">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Job.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Job.Path">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Job.Description">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Job.Machine">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Job.User">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Job.StartDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Job.JobActionName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Job.JobTypeName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Job.JobStatusName">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.Event">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Event.Type">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.Extension">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Extension.ExtensionTypeName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Extension.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Extension.LocalizedName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Extension.Visible">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Extension.IsModelGenerationSupported">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ExpirationDefinition">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ScheduleExpiration">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ScheduleExpiration.Item">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ScheduleDefinition">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ScheduleDefinition.StartDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ScheduleDefinition.EndDate">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ScheduleDefinition.EndDateSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ScheduleDefinition.Item">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.DailyRecurrence">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DailyRecurrence.DaysInterval">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.RecurrencePattern">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.WeeklyRecurrence">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.WeeklyRecurrence.WeeksInterval">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.WeeklyRecurrence.WeeksIntervalSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.WeeklyRecurrence.DaysOfWeek">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.DaysOfWeekSelector">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DaysOfWeekSelector.Sunday">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DaysOfWeekSelector.Monday">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DaysOfWeekSelector.Tuesday">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DaysOfWeekSelector.Wednesday">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DaysOfWeekSelector.Thursday">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DaysOfWeekSelector.Friday">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DaysOfWeekSelector.Saturday">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.MonthlyRecurrence">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthlyRecurrence.Days">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthlyRecurrence.MonthsOfYear">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.MonthsOfYearSelector">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.January">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.February">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.March">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.April">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.May">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.June">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.July">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.August">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.September">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.October">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.November">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthsOfYearSelector.December">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.MonthlyDOWRecurrence">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthlyDOWRecurrence.WhichWeek">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthlyDOWRecurrence.WhichWeekSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthlyDOWRecurrence.DaysOfWeek">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MonthlyDOWRecurrence.MonthsOfYear">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.WeekNumberEnum">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.WeekNumberEnum.FirstWeek">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.WeekNumberEnum.SecondWeek">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.WeekNumberEnum.ThirdWeek">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.WeekNumberEnum.FourthWeek">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.WeekNumberEnum.LastWeek">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.MinuteRecurrence">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.MinuteRecurrence.MinutesInterval">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ScheduleDefinitionOrReference">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.NoSchedule">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ScheduleReference">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ScheduleReference.ScheduleID">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ScheduleReference.Definition">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.TimeExpiration">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.TimeExpiration.Minutes">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.DataSourceCredentials">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceCredentials.DataSourceName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceCredentials.UserName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceCredentials.Password">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ItemParameter">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.ParameterTypeName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.Nullable">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.NullableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.AllowBlank">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.AllowBlankSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.MultiValue">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.MultiValueSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.QueryParameter">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.QueryParameterSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.Prompt">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.PromptUser">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.PromptUserSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.Dependencies">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.ValidValuesQueryBased">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.ValidValuesQueryBasedSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.ValidValues">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.DefaultValuesQueryBased">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.DefaultValuesQueryBasedSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.DefaultValues">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.ParameterStateName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemParameter.ErrorMessage">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ValidValue">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ValidValue.Label">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ValidValue.Value">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.Schedule">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Schedule.ScheduleID">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Schedule.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Schedule.Definition">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Schedule.Description">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Schedule.Creator">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Schedule.NextRunTime">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Schedule.NextRunTimeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Schedule.LastRunTime">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Schedule.LastRunTimeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Schedule.ReferencesPresent">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Schedule.ScheduleStateName">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ModelPerspective">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelPerspective.ID">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelPerspective.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelPerspective.Description">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ModelCatalogItem">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelCatalogItem.Model">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelCatalogItem.Description">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelCatalogItem.Perspectives">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ModelItem">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelItem.ID">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelItem.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelItem.ModelItemTypeName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelItem.Description">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelItem.ModelItems">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ModelDrillthroughReport">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelDrillthroughReport.Path">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ModelDrillthroughReport.Type">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.DrillthroughType">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.DrillthroughType.Detail">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.DrillthroughType.List">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.DataSourcePrompt">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourcePrompt.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourcePrompt.DataSourceID">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourcePrompt.Prompt">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.Policy">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Policy.GroupUserName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Policy.Roles">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.Role">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Role.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Role.Description">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.Task">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Task.TaskID">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Task.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Task.Description">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.DataSource">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSource.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSource.Item">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.DataSourceDefinition">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.Extension">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.ConnectString">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.UseOriginalConnectString">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.OriginalConnectStringExpressionBased">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.CredentialRetrieval">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.WindowsCredentials">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.ImpersonateUser">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.ImpersonateUserSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.Prompt">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.UserName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.Password">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.Enabled">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceDefinition.EnabledSpecified">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.CredentialRetrievalEnum">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.CredentialRetrievalEnum.Prompt">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.CredentialRetrievalEnum.Store">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.CredentialRetrievalEnum.Integrated">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.CredentialRetrievalEnum.None">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.DataSourceDefinitionOrReference">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.DataSourceReference">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSourceReference.Reference">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.InvalidDataSourceReference">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.Subscription">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.SubscriptionID">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.Owner">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.Path">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.VirtualPath">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.Report">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.DeliverySettings">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.Description">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.Status">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.Active">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.LastExecuted">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.LastExecutedSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.ModifiedBy">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.ModifiedDate">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.EventType">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Subscription.IsDataDriven">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ExtensionSettings">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionSettings.Extension">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionSettings.ParameterValues">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ParameterFieldReference">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ParameterFieldReference.ParameterName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ParameterFieldReference.FieldAlias">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ParameterValueOrFieldReference">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ParameterValue">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ParameterValue.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ParameterValue.Value">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ParameterValue.Label">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ActiveState">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.DeliveryExtensionRemoved">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.DeliveryExtensionRemovedSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.SharedDataSourceRemoved">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.SharedDataSourceRemovedSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.MissingParameterValue">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.MissingParameterValueSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.InvalidParameterValue">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.InvalidParameterValueSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.UnknownReportParameter">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.UnknownReportParameterSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.DisabledByUser">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ActiveState.DisabledByUserSpecified">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ExtensionParameter">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionParameter.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionParameter.DisplayName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionParameter.Required">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionParameter.RequiredSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionParameter.ReadOnly">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionParameter.Value">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionParameter.Error">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionParameter.Encrypted">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionParameter.IsPassword">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ExtensionParameter.ValidValues">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.QueryDefinition">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.QueryDefinition.CommandType">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.QueryDefinition.CommandText">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.QueryDefinition.Timeout">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.QueryDefinition.TimeoutSpecified">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.Field">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Field.Alias">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Field.Name">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.DataSetDefinition">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.Fields">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.Query">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.CaseSensitivity">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.CaseSensitivitySpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.Collation">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.AccentSensitivity">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.AccentSensitivitySpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.KanatypeSensitivity">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.KanatypeSensitivitySpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.WidthSensitivity">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.WidthSensitivitySpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataSetDefinition.Name">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.SensitivityEnum">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.SensitivityEnum.True">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.SensitivityEnum.False">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.SensitivityEnum.Auto">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.DataRetrievalPlan">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataRetrievalPlan.Item">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.DataRetrievalPlan.DataSet">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ItemReferenceData">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemReferenceData.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemReferenceData.Reference">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemReferenceData.ReferenceType">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ItemReference">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemReference.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemReference.Reference">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ItemNamespaceHeader">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemNamespaceHeader.ItemNamespace">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ItemNamespaceEnum">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.ItemNamespaceEnum.PathBased">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.ItemNamespaceEnum.GUIDBased">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.SearchCondition">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SearchCondition.Condition">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SearchCondition.ConditionSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SearchCondition.Values">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SearchCondition.Name">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ConditionEnum">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.ConditionEnum.Contains">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.ConditionEnum.Equals">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.ConditionEnum.In">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.ConditionEnum.Between">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ItemHistorySnapshot">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemHistorySnapshot.HistoryID">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemHistorySnapshot.CreationDate">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ItemHistorySnapshot.Size">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.SYSTEMTIME">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SYSTEMTIME.year">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SYSTEMTIME.month">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SYSTEMTIME.dayOfWeek">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SYSTEMTIME.day">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SYSTEMTIME.hour">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SYSTEMTIME.minute">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SYSTEMTIME.second">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.SYSTEMTIME.milliseconds">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.TimeZoneInformation">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.TimeZoneInformation.Bias">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.TimeZoneInformation.StandardBias">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.TimeZoneInformation.StandardDate">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.TimeZoneInformation.DaylightBias">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.TimeZoneInformation.DaylightDate">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.ServerInfoHeader">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ServerInfoHeader.ReportServerVersionNumber">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ServerInfoHeader.ReportServerEdition">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ServerInfoHeader.ReportServerVersion">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ServerInfoHeader.ReportServerDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.ServerInfoHeader.ReportServerTimeZoneInfo">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.Warning">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Warning.Code">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Warning.Severity">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Warning.ObjectName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Warning.ObjectType">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Warning.Message">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.CatalogItem">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.ID">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.Path">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.VirtualPath">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.TypeName">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.Size">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.SizeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.Description">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.Hidden">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.HiddenSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.CreationDate">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.CreationDateSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.ModifiedDate">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.ModifiedDateSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.CreatedBy">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.ModifiedBy">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.CatalogItem.ItemMetadata">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.Property">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Property.Name">
+            <remarks/>
+        </member>
+        <member name="P:ReportService2010.Property.Value">
+            <remarks/>
+        </member>
+        <member name="T:ReportService2010.BooleanOperatorEnum">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.BooleanOperatorEnum.And">
+            <remarks/>
+        </member>
+        <member name="F:ReportService2010.BooleanOperatorEnum.Or">
+            <remarks/>
+        </member>
+    </members>
+</doc>

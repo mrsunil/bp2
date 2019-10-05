@@ -1,0 +1,38 @@
+<mat-card class="trade-capture-card current-trade-form">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Current Trade</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-slide-toggle value="false"
+                              [formControl]="adjustWeightToggleCtrl"
+                              (change)="toggleAdjustWeight()">Adjust Contract</mat-slide-toggle>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-slide-toggle [formControl]="allocatedResidualSplitCtrl"
+                              (change)="toggleAllocatedResidualSplit()">Create Allocated Residual Split</mat-slide-toggle>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%"
+             class="created-allocated-residual-split-dropdown">
+            <mat-form-field fxFlex="30%">
+                <mat-select [formControl]="allocatedResidualSplitDropDownCtrl">
+                    <mat-option value="Leave status as is">Leave status as is</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-slide-toggle [formControl]="unallocatedResidualSplitCtrl"
+                              (change)="toggleUnallocatedResidualSplit()">Create Unallocated Residual Split</mat-slide-toggle>
+        </div>
+    </mat-card-content>
+</mat-card>

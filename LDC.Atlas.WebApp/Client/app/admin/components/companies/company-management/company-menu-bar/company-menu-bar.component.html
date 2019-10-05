@@ -1,0 +1,15 @@
+<mat-toolbar class="menu-bar mat-elevation-z6">
+    <div class="toolbar-div">
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center"
+             fxFlex="4">
+            <button mat-button
+                    *ifAuthorized="'Administration.CompanyConfRead.CompanyConfFreeze',company:currentCompany,level: PermissionLevels.ReadWrite"
+                    (click)="onFreezeUnfreezeButtonClicked($event)">{{freezeValue}}</button>
+            <button mat-button
+                    *ifAuthorized="'Administration.CompanyConfRead.CompanyConfDelete',company:currentCompany,level: PermissionLevels.ReadWrite"
+                    (click)="onDeleteCompanyButtonClicked()"
+                    [disabled]="isDeleteButtonDisabled">Delete</button>
+        </div>
+    </div>
+</mat-toolbar>

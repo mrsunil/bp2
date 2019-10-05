@@ -1,0 +1,62 @@
+<h1>Bulk Approval
+    <button mat-icon-button
+            mat-dialog-close
+            class="close-dialog-btn">
+        <mat-icon aria-label="Closing button">clear</mat-icon>
+    </button>
+</h1>
+
+<mat-dialog-content class="mat-dialog-content">
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="150px">
+        <div *ngIf=" lockedTrades.length> 0 || interCoList.length > 0">
+            <h6 class="blocking">Blocking message [Interco contracts/Lock rule]</h6>
+            <div *ngFor="let trade of lockedTrades">
+                <h6>Trade : {{trade.lockMessage}} </h6>
+            </div>
+            <div *ngFor="let trade of interCoList">
+                <h6>Trade : {{trade.contractLabel}} is interCo </h6>
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="150px">
+        <div *ngIf="(selectedTrade.length > 0) else noTrades">
+            <h6 class="approved">These trades will be approved</h6>
+            <div *ngFor="let trade of selectedTrade">
+                <h6>Trade : {{trade.contractLabel}}</h6>
+            </div>
+        </div>
+
+        <ng-template #noTrades>
+            <div>
+                <h6> No Trades are there for approval</h6>
+            </div>
+        </ng-template>
+    </div>
+</mat-dialog-content>
+
+<div fxLayout="row"
+     fxLayoutAlign="space-between center">
+    <div fxLayout="column"
+         fxLayoutAlign="start start">
+        <button mat-button
+                (click)="onDiscardButtonClick()">
+            DISCARD
+        </button>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start end">
+        <div fxLayout="row"
+             fxLayoutAlign="end start">
+            <button mat-button
+                    (click)="onSaveButtonClicked()"
+                    [disabled]="!isApprovalEnabled">
+                Approve
+            </button>
+        </div>
+    </div>
+</div>

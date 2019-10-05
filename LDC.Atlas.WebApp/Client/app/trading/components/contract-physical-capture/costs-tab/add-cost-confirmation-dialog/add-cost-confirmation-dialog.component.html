@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Use a new cost matrix</h2>
+<p>Do you want to keep all the costs ? or keep only actualized cost?</p>
+<div fxLayout="row"
+     mat-dialog-actions>
+    <button mat-button
+            mat-dialog-close>discard</button>
+    <span class="fill-space"></span>
+    <button mat-button
+            (click)="onAllCostsButtonClicked()">Keep All</button>
+
+    <button mat-button
+            (click)="onActualizedCostsButtonClicked()">Keep Actualized</button>
+</div>

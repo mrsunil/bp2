@@ -1,0 +1,61 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Counterparty Addresses</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="column"
+             fxLayoutAlign="center end">
+            <mat-nav-list *ngFor="let counterpartyAddress of counterpartyAddresses">
+                <div *ngIf="!counterpartyAddress.isDeleted">
+                    <div fxLayout="column"
+                         fxFlex="100%">
+                        <div fxLayout="row"
+                             fxLayoutAlign="left start">
+                            <mat-list-item style="min-width: 450px;"
+                                           (click)='onRowClicked(counterpartyAddress)'>
+                                <div fxLayout="column">
+                                    <div fxLayout="row">
+                                        <b>AddressType Code</b>
+                                    </div>
+                                    <div fxLayout="row">
+                                        {{  counterpartyAddress.addressTypeCode}}
+                                    </div>
+                                </div>
+                                <span class="fill-space"></span>
+                                <div fxLayout="column">
+                                    <div fxLayout="row">
+                                        <b>Address Type Name</b>
+                                    </div>
+                                    <div fxLayout="row">
+                                        {{ counterpartyAddress.addresTypeName }}
+                                    </div>
+                                </div>
+                                <mat-divider class="charter-creation-divider"></mat-divider>
+                            </mat-list-item>
+                            <mat-list-item (click)="onSetAddressFavorite(counterpartyAddress)">
+                                <div fxLayout="column">
+                                    <mat-icon [ngClass]="counterpartyAddress.main ? 'heart-saved' : 'heart-not-saved'">
+                                        {{ counterpartyAddress.main ? 'favorite' : 'favorite_border' }}
+                                    </mat-icon>
+                                </div>
+                            </mat-list-item>
+                        </div>
+                    </div>
+                </div>
+            </mat-nav-list>
+            <div class="btn-container"></div>
+            <div fxFlex="50"
+                 fxAlignLayout="start end">
+                <span class="fill-space"></span>
+                <button mat-raised-button
+                        [disabled]="isAddressListDataClicked || isViewMode"
+                        (click)='onNewAddressButtonClicked()'
+                        type="button">
+                    ADD NEW ADDRESS
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

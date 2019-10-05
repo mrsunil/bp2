@@ -1,0 +1,41 @@
+<mat-card>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center"
+         fxFlex="70">
+        <h3>Allocation</h3>
+    </div>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="end center"
+             fxFlex="100">
+            <mat-form-field fxFlex="50">
+                <input matInput
+                       [textMask]="{mask:mask}"
+                       [formControl]="quantityCtrl"
+                       (blur)="checkQuantityValue()"
+                       placeholder="Quantity to allocate"
+                       [required]="quantityCtrl.isRequired"
+                       autocomplete="off">
+                <mat-error *ngIf="quantityCtrl.hasError('required')">
+                    Quantity to allocate is required
+                </mat-error>
+                <mat-error *ngIf="quantityCtrl.hasError('isPositiveError')">
+                    Quantity to allocate must be positive.
+                </mat-error>
+                <mat-error *ngIf="quantityCtrl.hasError('max')">
+                    Cannot be greater than quantity available.
+                </mat-error>
+                <mat-error *ngIf="quantityCtrl.hasError('min')">
+                    Quantity cannot be zero.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="50">
+                <input matInput
+                       [formControl]="quantityCodeCtrl"
+                       placeholder="Quantity Code"
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

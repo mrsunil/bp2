@@ -1,0 +1,33 @@
+mat-card.trade-allocation-warning-card.mat-card {
+    padding: 0 !important;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+    button {
+        margin: 0px 15px 0 10px;
+        box-shadow: none;
+    }
+
+    mat-card-header.mat-card-header {
+        mat-card-title.mat-card-title {
+            margin: 0;
+            padding: 0;
+        }
+
+        mat-card-subtitle.mat-card-subtitle {
+            margin: 0;
+        }
+    }
+}
+
+button.remove-button.mat-button {
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+}
+
+.mat-card-header-text {
+    display: flex;
+    align-items: center;
+}

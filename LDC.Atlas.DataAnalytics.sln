@@ -1,0 +1,137 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "LDC.Atlas.DocumentGeneration", "LDC.Atlas.DocumentGeneration\LDC.Atlas.DocumentGeneration.rptproj", "{FF5C7D80-1E25-413B-9593-705A5595EE78}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "LDC.Atlas.Reporting", "LDC.Atlas.Reporting\LDC.Atlas.Reporting.rptproj", "{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ATR_Prototype", "LDC.Atlas.Database\ATR_Prototype\ATR_Prototype.sqlproj", "{016462D0-6E7D-4624-ADDA-E2130B41C9AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LDC.Atlas.PowerBI", "LDC.Atlas.PowerBI", "{811C729B-1939-487A-ABB9-6D033AD21662}"
+	ProjectSection(SolutionItems) = preProject
+		LDC.Atlas.PowerBI\Daily PNL Details.pbix = LDC.Atlas.PowerBI\Daily PNL Details.pbix
+		LDC.Atlas.PowerBI\Daily PNL.pbix = LDC.Atlas.PowerBI\Daily PNL.pbix
+		LDC.Atlas.PowerBI\Daily Position Details.pbix = LDC.Atlas.PowerBI\Daily Position Details.pbix
+		LDC.Atlas.PowerBI\Daily Position.pbix = LDC.Atlas.PowerBI\Daily Position.pbix
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{3CD11211-AAB0-4147-AFA5-37FD4CFF7490}"
+	ProjectSection(SolutionItems) = preProject
+		..\deploy\Db\Create_Login_DocumentGenerationUser.sql = ..\deploy\Db\Create_Login_DocumentGenerationUser.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDC.Atlas.Database.Test", "..\tests\database\LDC.Atlas.Database.Test\LDC.Atlas.Database.Test.csproj", "{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ssrs", "ssrs", "{F6FC4447-FE62-4127-9023-1CF7F79F5B9A}"
+	ProjectSection(SolutionItems) = preProject
+		..\deploy\Ssrs\ReportBuilderDeploy.json = ..\deploy\Ssrs\ReportBuilderDeploy.json
+		..\deploy\Ssrs\ReportBuilderFolderStructure.json = ..\deploy\Ssrs\ReportBuilderFolderStructure.json
+		..\deploy\Ssrs\ReportDeploy.json = ..\deploy\Ssrs\ReportDeploy.json
+		..\deploy\Ssrs\ReportFolderStructure.json = ..\deploy\Ssrs\ReportFolderStructure.json
+		..\deploy\Ssrs\ssrs-documentgeneration-build-folders.ps1 = ..\deploy\Ssrs\ssrs-documentgeneration-build-folders.ps1
+		..\deploy\Ssrs\SSRSReportArtifactsDeployment.ps1 = ..\deploy\Ssrs\SSRSReportArtifactsDeployment.ps1
+		..\deploy\Ssrs\SSRSReportBuilderArtifactsDeployment.ps1 = ..\deploy\Ssrs\SSRSReportBuilderArtifactsDeployment.ps1
+		..\deploy\Ssrs\SSRSTemplatesArtifactsDeployment.ps1 = ..\deploy\Ssrs\SSRSTemplatesArtifactsDeployment.ps1
+		..\deploy\Ssrs\TemplateDeploy.json = ..\deploy\Ssrs\TemplateDeploy.json
+		..\deploy\Ssrs\TemplateFolderStructure.json = ..\deploy\Ssrs\TemplateFolderStructure.json
+	EndProjectSection
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ATR_SampleTestDataInitialisation", "LDC.Atlas.Database\ATR_DataInitialisation\ATR_SampleTestDataInitialisation.sqlproj", "{91C13FEE-E35C-41AE-8D56-6D0735F91D87}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LDC.Atlas.IntegrationTest", "..\tests\integration\LDC.Atlas.IntegrationTest\LDC.Atlas.IntegrationTest.csproj", "{E7A82CD7-4470-47E9-87CD-8A8C52E70B11}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "LDC.Atlas.ReportBuilder", "LDC.Atlas.ReportBuilder\LDC.Atlas.ReportBuilder.rptproj", "{3471E68E-608D-454B-B812-482579DC243C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		DebugLocal|Any CPU = DebugLocal|Any CPU
+		Development|Any CPU = Development|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF5C7D80-1E25-413B-9593-705A5595EE78}.Debug|Any CPU.ActiveCfg = Debug
+		{FF5C7D80-1E25-413B-9593-705A5595EE78}.Debug|Any CPU.Build.0 = Debug
+		{FF5C7D80-1E25-413B-9593-705A5595EE78}.Debug|Any CPU.Deploy.0 = Debug
+		{FF5C7D80-1E25-413B-9593-705A5595EE78}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
+		{FF5C7D80-1E25-413B-9593-705A5595EE78}.DebugLocal|Any CPU.Build.0 = DebugLocal
+		{FF5C7D80-1E25-413B-9593-705A5595EE78}.Development|Any CPU.ActiveCfg = DebugLocal
+		{FF5C7D80-1E25-413B-9593-705A5595EE78}.Development|Any CPU.Build.0 = DebugLocal
+		{FF5C7D80-1E25-413B-9593-705A5595EE78}.Release|Any CPU.ActiveCfg = Release
+		{FF5C7D80-1E25-413B-9593-705A5595EE78}.Release|Any CPU.Build.0 = Release
+		{FF5C7D80-1E25-413B-9593-705A5595EE78}.Release|Any CPU.Deploy.0 = Release
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.Debug|Any CPU.ActiveCfg = Debug
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.Debug|Any CPU.Build.0 = Debug
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.Debug|Any CPU.Deploy.0 = Debug
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.DebugLocal|Any CPU.Build.0 = DebugLocal
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.DebugLocal|Any CPU.Deploy.0 = DebugLocal
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.Development|Any CPU.ActiveCfg = 
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.Development|Any CPU.Build.0 = 
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.Development|Any CPU.Deploy.0 = 
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.Release|Any CPU.ActiveCfg = Release
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.Release|Any CPU.Build.0 = Release
+		{6E6C33C7-DE41-4B05-84D5-15D8568AADAD}.Release|Any CPU.Deploy.0 = Release
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.DebugLocal|Any CPU.Deploy.0 = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Development|Any CPU.Deploy.0 = Debug|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{016462D0-6E7D-4624-ADDA-E2130B41C9AF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1CFBD0D-FCDB-475B-BB8A-64B25E65D82A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.DebugLocal|Any CPU.Deploy.0 = Debug|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Development|Any CPU.Deploy.0 = Debug|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C13FEE-E35C-41AE-8D56-6D0735F91D87}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E7A82CD7-4470-47E9-87CD-8A8C52E70B11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A82CD7-4470-47E9-87CD-8A8C52E70B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A82CD7-4470-47E9-87CD-8A8C52E70B11}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A82CD7-4470-47E9-87CD-8A8C52E70B11}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{E7A82CD7-4470-47E9-87CD-8A8C52E70B11}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A82CD7-4470-47E9-87CD-8A8C52E70B11}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{E7A82CD7-4470-47E9-87CD-8A8C52E70B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A82CD7-4470-47E9-87CD-8A8C52E70B11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3471E68E-608D-454B-B812-482579DC243C}.Debug|Any CPU.ActiveCfg = Debug
+		{3471E68E-608D-454B-B812-482579DC243C}.Debug|Any CPU.Build.0 = Debug
+		{3471E68E-608D-454B-B812-482579DC243C}.Debug|Any CPU.Deploy.0 = Debug
+		{3471E68E-608D-454B-B812-482579DC243C}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
+		{3471E68E-608D-454B-B812-482579DC243C}.DebugLocal|Any CPU.Build.0 = DebugLocal
+		{3471E68E-608D-454B-B812-482579DC243C}.Development|Any CPU.ActiveCfg = DebugLocal
+		{3471E68E-608D-454B-B812-482579DC243C}.Development|Any CPU.Build.0 = DebugLocal
+		{3471E68E-608D-454B-B812-482579DC243C}.Release|Any CPU.ActiveCfg = Release
+		{3471E68E-608D-454B-B812-482579DC243C}.Release|Any CPU.Build.0 = Release
+		{3471E68E-608D-454B-B812-482579DC243C}.Release|Any CPU.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F6FC4447-FE62-4127-9023-1CF7F79F5B9A} = {3CD11211-AAB0-4147-AFA5-37FD4CFF7490}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DCEE2DA-9124-4ABB-9E09-71E71C7C2671}
+	EndGlobalSection
+EndGlobal

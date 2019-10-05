@@ -1,0 +1,21 @@
+<div [ngSwitch]="bulkActionTypeId">
+    <atlas-trade-bulk-edit #tradeBulkEdition
+                           *ngSwitchDefault>
+    </atlas-trade-bulk-edit>
+    <atlas-trade-bulk-approval #tradeBulkApproval
+                               *ngSwitchCase=GroupFunctionTypes.TradeBulkApproval>
+    </atlas-trade-bulk-approval>
+    <atlas-trade-cost-bulk-update #costBulkUpdate
+                                  *ngSwitchCase=GroupFunctionTypes.Costs>
+
+    </atlas-trade-cost-bulk-update>
+    <atlas-trade-bulk-closure #tradeBulkClosure
+                              *ngSwitchCase=GroupFunctionTypes.TradeBulkClosure>
+    </atlas-trade-bulk-closure>
+    <atlas-trade-bulk-allocation #tradeBulkAllocation
+                                 *ngSwitchCase=GroupFunctionTypes.TradeBulkAllocation>
+    </atlas-trade-bulk-allocation>
+    <atlas-trade-bulk-deallocation #tradeBulkDeAllocation
+                                   *ngSwitchCase=GroupFunctionTypes.TradeBulkDeAllocation>
+    </atlas-trade-bulk-deallocation>
+</div>

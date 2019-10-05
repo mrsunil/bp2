@@ -1,0 +1,25 @@
+::ng-deep ul,ol  {
+    list-style-type: none !important;
+    padding-bottom:5px;
+ }
+ ::ng-deep.scrollonFo {
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+ ::ng-deep.managelinespace{
+    margin: 4px !important;
+    padding: 3px;
+  }
+::ng-deep.fill-divider{
+    border: 1px solid lightgray !important;
+    }
+::ng-deep.set-min-height{
+    min-height: 500px !important;
+    padding: 2 px !important;
+  }
+::ng-deep.left-space{
+    margin-left: 15px !important;
+}
+.selectedField{
+    background-color: #0000000d;
+}

@@ -1,0 +1,88 @@
+<div class='main-container trade-cost-movement-report'>
+    <div fxLayout="row wrap"
+         fxLayoutAlign="space-between stretch"
+         fxLayoutAlign.lt-md="space-around center">
+        <mat-card fxFlex="45">
+            <mat-card-header>
+                <mat-card-title>
+                    <h2>Criterias</h2>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayoutGap="10px">
+                <div fxLayout="row"
+                     fxLayoutAlign="left stretch"
+                     fxLayoutGap="5%">
+
+
+                    <atlas-dropdown-select fxFlex='30%'
+                                           [label]="'Database'"
+                                           [fieldControl]="snapshotsCtrl"
+                                           isEditable=true
+                                           [options]="snapshotList"
+                                           [errorMap]="snapshotErrorMap"
+                                           displayProperty="freezeDate"
+                                           [selectProperties]="['freezeDate']"
+                                           (optionSelected)="selectionChanged($event) "></atlas-dropdown-select>
+                    <atlas-dropdown-select fxFlex='30%'
+                                           [label]="'Trade Status'"
+                                           [options]="constractStatusList"
+                                           [fieldControl]="contractStatusCtrl"
+                                           [errorMap]="contractStatusErrorMap"
+                                           isEditable=true
+                                           [selectProperties]="contractStatusDisplayProperty"
+                                           multiselect=true></atlas-dropdown-select>
+
+                    <span fxLayoutAlign="left center">
+                        <mat-checkbox [checked]="includeGoods"
+                                      (change)="onIncludeGoodsChanged($event)">Include Goods</mat-checkbox>
+                    </span>
+
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="left stretch"
+                     fxLayoutGap="5%">
+                    <atlas-dropdown-select fxFlex='30%'
+                                           [label]="'Comparison Database'"
+                                           [fieldControl]="comparisondbCtrl"
+                                           isEditable=true
+                                           [options]="comparisondbList"
+                                           [errorMap]="comparisondbErrorMap"
+                                           displayProperty="freezeDate"
+                                           [selectProperties]="['freezeDate']"></atlas-dropdown-select>
+                    <atlas-dropdown-select-list fxFlex='30%'
+                                                [label]="'Company'"
+                                                [fieldControl]="tradeCostcompanyCtrl"
+                                                [(options)]="filteredCompany"
+                                                [selectProperties]="companySelect"
+                                                isEditable=true
+                                                multiselect=true
+                                                (optionSelected)="companyOptionSelected($event)">
+                    </atlas-dropdown-select-list>
+                    <span fxLayoutAlign="right center">
+                        <mat-checkbox [checked]="excludeNoMovement"
+                                      (change)="onNoCostMovementChanged($event)">No Cost Movement</mat-checkbox>
+                    </span>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+        <atlas-filter-set-display fxFlex="50"
+                                  (filtersChanged)=onFilterSetChanged($event)
+                                  [columnConfiguration]="columnConfiguration"
+                                  [gridCode]="gridCode"
+                                  [company]="company">
+        </atlas-filter-set-display>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="end center">
+        <button mat-raised-button
+                class="generate-report-button"
+                (click)="onGenerateReportButtonClicked()">GENERATE REPORT</button>
+    </div>
+    <div class="report-container">
+        <atlas-ssrsreport-viewer [reportServer]="reportServerUrl"
+                                 [reportUrl]="reportPath"
+                                 [parameters]="parameters"
+                                 #ssrsReportViewer></atlas-ssrsreport-viewer>
+    </div>
+</div>

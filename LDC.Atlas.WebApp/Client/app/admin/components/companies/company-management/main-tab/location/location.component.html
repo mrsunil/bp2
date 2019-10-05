@@ -1,0 +1,98 @@
+<mat-card class="trade-capture-card commodity-details">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Location</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="start"
+             fxLayoutGap="8px">
+            <div fxFlex="22%">
+                <atlas-masterdata-user-preferences-input isEditable="true"
+                                                         [fieldControl]="countryCtrl"
+                                                         [options]="filteredCountries"
+                                                         label="Country"
+                                                         displayProperty="countryCode"
+                                                         [selectProperties]="['countryCode', 'description']"
+                                                         [errorMap]="CountryErrorMap"
+                                                         lightBoxTitle="Results for Country"
+                                                         gridId="countriesGrid"
+                                                         (optionSelected)="countryCodeSelected($event)">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+            <atlas-form-input fxFlex="20%"
+                              [fieldControl]="countryNameCtrl"
+                              [required]="countryNameCtrl.isRequired"
+                              [isEditable]="isInputField"
+                              [label]="'Country Name'">
+                <mat-error *ngIf="countryNameCtrl.hasError('required')">
+                    Required *
+                </mat-error>
+            </atlas-form-input>
+
+            <div class="custom-form"
+                 fxFlex="20%">
+                <div [class.isEmpty]="!timeZoneCtrl.value"
+                     [class.required-field]="timeZoneCtrl.isRequired">
+
+                    <atlas-dropdown-select [isEditable]="timeZoneCtrl.enabled"
+                                           label="Time Zone"
+                                           [fieldControl]="timeZoneCtrl"
+                                           [options]="filteredTimeZoneList"
+                                           displayProperty="timeZoneName"
+                                           [selectProperties]="['timeZoneName','currentOffset']"
+                                           isAutocompleteActivated="true"
+                                           [errorMap]="timeZoneErrorMap">
+                    </atlas-dropdown-select>
+
+                </div>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="8px">
+            <div fxFlex="22%">
+                <atlas-masterdata-user-preferences-input isEditable="true"
+                                                         [fieldControl]="ldcRegionsCtrl"
+                                                         [options]="filteredLDCRegions"
+                                                         label="LDC Regions"
+                                                         displayProperty="ldcRegionCode"
+                                                         [selectProperties]="['ldcRegionCode', 'description']"
+                                                         [errorMap]="ldcRegionErrorMap"
+                                                         lightBoxTitle="Results for LDC Region"
+                                                         gridId="ldcRegionsGrid"
+                                                         (optionSelected)="ldcRegionCodeSelected($event)">
+                </atlas-masterdata-user-preferences-input>
+            </div>
+            <div class="custom-form"
+                 fxFlex="22%">
+                <div [class.isEmpty]="!endOfWeekCtrl.value"
+                     [class.required-field]="endOfWeekCtrl.isRequired">
+                    <atlas-dropdown-select [isEditable]="endOfWeekCtrl.enabled"
+                                           label="End of Week"
+                                           [fieldControl]="endOfWeekCtrl"
+                                           [options]="filteredWeekDaysList"
+                                           displayProperty="enumEntityValue"
+                                           [selectProperties]="['enumEntityValue']"
+                                           isAutocompleteActivated="true"
+                                           [errorMap]="endOfWeekErrorMap">
+                    </atlas-dropdown-select>
+                </div>
+            </div>
+            <div class="custom-form"
+                 fxFlex="30%">
+                <mat-form-field>
+                    <input matInput
+                           [matDatepicker]="companydatepicker"
+                           placeholder="Date of the company"
+                           [formControl]='companyDateCtrl'
+                           autocomplete="off">
+                    <mat-datepicker-toggle matSuffix
+                                           [for]="companydatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #companydatepicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

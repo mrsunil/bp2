@@ -1,0 +1,71 @@
+<mat-card *ngIf="isLoading">
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         class="loading">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+</mat-card>
+<div class="main-container"
+     [ngClass]="{'hidden-during-loading':isLoading}">
+    <mat-card class="custom-report-mat-card">
+        <div fxLayout="row"
+             fxLayoutAlign="start none"
+             class="search">
+            <form fxFlex="100%">
+                <mat-form-field>
+                    <input specialIsAlphaNumeric
+                           matInput
+                           placeholder="Search report name"
+                           (keydown.enter)="onSearchButtonClicked()"
+                           [formControl]="searchedValueCtrl" />
+                </mat-form-field>
+            </form>
+            <button mat-raised-button
+                    (click)="onSearchButtonClicked()"
+                    class="heroGradient"
+                    id="search-button">
+                <mat-icon aria-label="Search"
+                          class="search-icon">search</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <mat-card>
+        <div fxLayout="row"
+             fxLayout.xs="column"
+             fxLayoutAlign="space-between left"
+             fxLayoutWrap
+             fxLayoutGap="20px"
+             class="atlas-grid-card-header">
+            <h2 class="atlas-grid-card-title">Reports</h2>
+            <atlas-ag-grid-user-preferences *ngIf="customReportGridOptions && customReportGridOptions.columnDefs"
+                                            [gridOptions]="customReportGridOptions"
+                                            [company]="company"
+                                            [gridId]="gridCode"
+                                            [showExport]="true"
+                                            [sharingEnabled]="hasGridSharing"
+                                            #userPreferences>
+            </atlas-ag-grid-user-preferences>
+        </div>
+        <div ag-grid="customReportGridOptions"
+             class="ag-theme-material pointer-cursor"
+             style="width: 100%; height: 100%">
+            <ag-grid-angular style=" height: 100%;"
+                             class="ag-theme-material"
+                             [rowData]="customReportGridRows"
+                             [columnDefs]="customReportGridCols"
+                             [enableColResize]="true"
+                             [suppressSizeToFit]=false
+                             [pagination]="true"
+                             [paginationPageSize]="10"
+                             [enableSorting]="true"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             (rowClicked)="onCustomReportRowClicked($event)"
+                             enableFilter
+                             [rowHeight]="atlasAgGridParam.rowHeight"
+                             (columnVisible)="onColumnVisibilityChanged($event)">
+            </ag-grid-angular>
+        </div>
+    </mat-card>
+</div>

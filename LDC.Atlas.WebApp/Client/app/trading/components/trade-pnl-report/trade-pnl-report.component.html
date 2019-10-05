@@ -1,0 +1,11 @@
+<div fxLayoutAlign="space-between center">
+    <h2>Trade P&L Report</h2>
+    <button mat-button>
+        <mat-icon (click)="onCloseButtonClicked()">close</mat-icon>
+    </button>
+</div>
+<div class="report-container-full-content">
+    <atlas-ssrsreport-viewer [reportServer]="reportServerUrl" [reportUrl]="reportPath"
+                                                              [parameters]="parameters"
+                                                              #ssrsReportViewer></atlas-ssrsreport-viewer>
+</div>

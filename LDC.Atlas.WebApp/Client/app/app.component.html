@@ -1,0 +1,62 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--<h1 >Redirecting to authentication page...</h1>-->
+<div *ngIf="!isAuthorizationLoaded"
+     id="loader">
+    <div id="loaderContent"></div>
+</div>
+
+<ng-progress [thick]="true"
+             [spinner]="false"
+             [color]="'#52C234'"></ng-progress>
+<mat-sidenav-container autosize
+                       *ngIf="isAuthorizationLoaded && isUserAuthorized"
+                       fullscreen>
+
+    <mat-sidenav #sidenav
+                 mode="side"
+                 class="sidenav"
+                 [class.openSidenav]="isExpanded"
+                 [class.closedSidenav]="!isExpanded"
+                 opened="true">
+        <mat-nav-list>
+            <nav>
+                <div class="atlas-logo-title">
+                    <div class="atlas-logo"
+                         (click)="toggleSideBar()"
+                         matTooltip="Toggle Menu"> <img src="./assets/Atlas-logo.svg"
+                             alt="atlas logo">
+                    </div>
+                    <div class="atlas-title"
+                         [hidden]="!isExpanded"> <img src="./assets/Atlas-text.svg"
+                             alt="atlas company name"> </div>
+                </div>
+                <atlas-side-nav></atlas-side-nav>
+            </nav>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content cdkScrollable
+                         [class.closedSidenavContent]="!isExpanded"
+                         [class.openSidenavContent]="isExpanded">
+        <mat-progress-bar *ngIf="loading"
+                          color="accent"
+                          mode="indeterminate">
+        </mat-progress-bar>
+        <mat-toolbar color="red">
+            <atr-top-nav></atr-top-nav>
+        </mat-toolbar>
+        <div [@routerTransition]="getRouteAnimation(route)">
+            <router-outlet #route="outlet"></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<mat-sidenav-container *ngIf="isAuthorizationLoaded && !isUserAuthorized"
+                       fullscreen>
+    <mat-progress-bar *ngIf="loading"
+                      color="accent"
+                      mode="indeterminate">
+    </mat-progress-bar>
+    <div [@routerTransition]="getRouteAnimation(route)">
+        <router-outlet #route="outlet"></router-outlet>
+    </div>
+</mat-sidenav-container>

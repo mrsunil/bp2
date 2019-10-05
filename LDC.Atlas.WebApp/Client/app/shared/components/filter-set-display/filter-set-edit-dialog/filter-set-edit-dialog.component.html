@@ -1,0 +1,74 @@
+<div *ngIf="isLoading">
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutWrap
+         fxLayoutGap="20px"
+         class="loading">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+</div>
+<div fxLayout="column"
+     [ngClass]="{'hidden-during-loading':isLoading}"
+     *ngIf="!onlyShareOptions"
+     fxLayoutGap="20px">
+    <div>
+        <div fxLayout="row"
+             fxLayoutAlign="start start">
+            <mat-form-field fxFlex="50%">
+                <input type="text"
+                       placeholder="Filter Set Name"
+                       matInput
+                       maxlength=30
+                       [formControl]="filterSetNameCtrl"
+                       (change)="onNameOrSharingOptionChanged()">
+                <mat-error *ngIf="filterSetNameCtrl.hasError('required')">
+                    Required*
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <mat-hint class="reduced-space-before"
+                  *ngIf="filterSet.isDefault">
+            This filter set is the one by default, editing it will affect all users.
+        </mat-hint>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between start">
+        <div class="chip-list">
+            <atlas-chip-list [textList]='chipStringList'></atlas-chip-list>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+</div>
+<div fxLayout="column"
+     [ngClass]="{'hidden-during-loading':isLoading, 'padding-top':!onlyShareOptions}"
+     fxLayoutGap="10px">
+    <h2 *ngIf="onlyShareOptions">Share "{{ this.filterSetNameCtrl.value }}"</h2>
+    <mat-hint *ngIf="filterSet.isDefault && onlyShareOptions">
+        This filter set is the one by default, editing it will affect all users.
+    </mat-hint>
+
+    <mat-slide-toggle [formControl]="shareWithCompanyCtrl"
+                      (change)="onShareAllUsersChanged()">Share with all users</mat-slide-toggle>
+    <mat-hint *ngIf="warningMessageAllUsers">{{ warningMessageAllUsers }}</mat-hint>
+    <mat-hint *ngIf="unsharedForUsers && !shareWithCompanyCtrl.value">Other users won't see the set anymore</mat-hint>
+
+    <mat-slide-toggle [formControl]="shareWithAllCompaniesCtrl"
+                      (change)="onShareAllCompaniesChanged()">Share with all companies</mat-slide-toggle>
+    <mat-hint *ngIf="warningMessageAllCompanies">{{ warningMessageAllCompanies }}</mat-hint>
+    <mat-hint *ngIf="warningMessageGeneric">{{ warningMessageGeneric }}</mat-hint>
+    <mat-hint *ngIf="unsharedForCompanies && !shareWithAllCompaniesCtrl.value">This set of filters won't be available
+        on other companies</mat-hint>
+
+    <div fxFlex="50"
+         fxLayout="row"
+         fxAlignLayout="start end">
+        <span class="fill-space"></span>
+        <button (click)="onSaveButtonClicked()"
+                *ngIf="filterSet.filterSetId && !filterSet.isDefault"
+                mat-button>Save</button>
+        <button (click)="onSaveAsNewButtonClicked()"
+                *ngIf="filterSet.name !== filterSetNameCtrl.value"
+                mat-button>Save as new Filter Set</button>
+    </div>
+</div>

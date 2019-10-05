@@ -1,0 +1,209 @@
+// Check recommended rules here: https://github.com/Microsoft/tslint-microsoft-contrib/blob/master/recommended_ruleset.js
+{
+    "extends": [
+        "tslint:latest",
+        "codelyzer"
+    ],
+    "rulesDirectory": [
+        "node_modules/tslint-microsoft-contrib",
+        "node_modules/codelyzer"
+    ],
+    "rules": {
+        // Customization for the Angular project
+        "prefer-for-of": false,
+        "underscore-consistent-invocation": false,
+        "no-stateless-class": false,
+        "missing-jsdoc": false,
+        "export-name": false,
+        "no-default-export": false,
+        "no-any": false,
+        "no-relative-imports": false,
+        "no-increment-decrement": false, // ++ or --
+        //can be commented after few checks
+        "no-backbone-get-set-outside-model": false,
+        "no-parameter-properties": false,
+        "no-require-imports": false, // Prefer the newer ES6-style imports over require().
+        "linebreak-style": false, // "linebreak-style": [true, "CRLF"] for windows
+        "import-name": false, // https://github.com/Microsoft/tslint-microsoft-contrib/issues/429
+        "no-import-side-effect": false,
+        "align": [
+            true,
+            "arguments",
+            "statements"
+        ], // https://palantir.github.io/tslint/rules/align/
+        // end Customization for the Angular project
+        "arrow-return-shorthand": true,
+        "callable-types": true,
+        "class-name": true,
+        "comment-format": [
+            true,
+            "check-space"
+        ],
+        "curly": true,
+        "deprecation": {
+            "severity": "warn"
+        },
+        "eofline": true,
+        "forin": true,
+        "import-blacklist": [
+            true,
+            "rxjs/Rx"
+        ],
+        "import-spacing": true,
+        "indent": [
+            true,
+            "spaces",
+            4
+        ],
+        "interface-over-type-literal": true,
+        "interface-name": [
+            true,
+            "never-prefix"
+        ],
+        "label-position": true,
+        "max-line-length": [
+            true,
+            {
+                "limit": 140,
+                "ignore-pattern": "^import"
+            }
+        ],
+        "member-access": false,
+        "member-ordering": [
+            true,
+            {
+                "order": [
+                    "static-field",
+                    "instance-field",
+                    "static-method",
+                    "instance-method"
+                ]
+            }
+        ],
+        "no-arg": true,
+        "no-bitwise": true,
+        "no-console": [
+            true,
+            "debug",
+            "info",
+            "time",
+            "timeEnd",
+            "trace"
+        ],
+        "no-construct": true,
+        "no-debugger": true,
+        "no-duplicate-super": true,
+        "no-empty": false,
+        "no-empty-interface": true,
+        "no-eval": true,
+        "no-inferrable-types": [
+            false,
+            "ignore-params"
+        ],
+        "no-misused-new": true,
+        "no-non-null-assertion": true,
+        "no-shadowed-variable": true,
+        "no-string-literal": false,
+        "no-string-throw": true,
+        "no-submodule-imports": [
+            true,
+            "rxjs",
+            "@angular/platform-browser",
+            "@angular/core/testing",
+            "@angular/router/testing",
+            "@angular/common/http"
+        ],
+        "no-switch-case-fall-through": true,
+        "no-trailing-whitespace": true,
+        "no-unnecessary-initializer": true,
+        "no-unused-expression": true,
+        "no-use-before-declare": true,
+        "no-var-keyword": true,
+        "object-literal-sort-keys": false,
+        "one-line": [
+            true,
+            "check-open-brace",
+            "check-catch",
+            "check-else",
+            "check-whitespace"
+        ],
+        "prefer-const": true,
+        "quotemark": [
+            true,
+            "single"
+        ],
+        "radix": true,
+        "semicolon": [
+            true,
+            "always"
+        ],
+        "triple-equals": [
+            true,
+            "allow-null-check"
+        ],
+        "typedef-whitespace": [
+            true,
+            {
+                "call-signature": "nospace",
+                "index-signature": "nospace",
+                "parameter": "nospace",
+                "property-declaration": "nospace",
+                "variable-declaration": "nospace"
+            }
+        ],
+        "unified-signatures": true,
+        "variable-name": false,
+        "whitespace": [
+            true,
+            "check-branch",
+            "check-decl",
+            "check-operator",
+            "check-separator",
+            "check-type"
+        ],
+        //Codelyzer rules - Angular styleguide
+        "no-output-on-prefix": true,
+        "use-input-property-decorator": true,
+        "use-output-property-decorator": true,
+        "use-host-property-decorator": true,
+        "no-input-rename": true,
+        "no-output-rename": true,
+        "use-life-cycle-interface": true,
+        "use-pipe-transform-interface": true,
+        "component-class-suffix": [
+            true,
+            "Component"
+        ],
+        "directive-class-suffix": [
+            true,
+            "Directive"
+        ],
+        "directive-selector": [
+            true,
+            "attribute",
+            "atlas",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "atlas",
+            "kebab-case"
+        ],
+        "angular-whitespace": [
+            true,
+            "check-semicolon"
+        ],
+        "no-attribute-parameter-decorator": true,
+        "no-forward-ref": true,
+        "no-output-named-after-standard-event": true,
+        "max-inline-declarations": true,
+        "no-life-cycle-call": true,
+        "prefer-output-readonly": true,
+        "no-conflicting-life-cycle-hooks": true,
+        "enforce-component-selector": true,
+        "no-queries-parameter": true,
+        "prefer-inline-decorator": true,
+        "contextual-life-cycle": true
+    }
+}

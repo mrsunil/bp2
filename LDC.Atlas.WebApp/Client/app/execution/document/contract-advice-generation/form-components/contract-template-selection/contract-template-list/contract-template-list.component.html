@@ -1,0 +1,47 @@
+<div class="atr-sidenav-margin">
+    <div class="main-container margin-adjustment title-margin-fit">
+        <h2>Contract Template</h2>
+    </div>
+    <div class="template-grid-height">
+        <ag-grid-angular *ngIf="gridOptions.columnDefs"
+                         class="ag-theme-material grid-fit"
+                         [rowData]="templatesGridRows"
+                         [columnDefs]="colDefinition"
+                         [gridOptions]="gridOptions"
+                         [enableColResize]="true"
+                         [pagination]="true"
+                         [paginationPageSize]="10"
+                         [enableSorting]="true"
+                         [rowHeight]="atlasAgGridParam.rowHeight"
+                         [singleClickEdit]=true
+                         [frameworkComponents]="gridComponents"
+                         (gridReady)="onGridReady($event)"
+                         domLayout=autoHeight
+                         enableFilter>
+        </ag-grid-angular>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center">
+        <div fxLayout="column"
+             fxLayoutAlign="start start">
+            <button mat-button
+                    type="button"
+                    (click)="onDiscardButtonClick()">
+                DISCARD
+            </button>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="start end">
+            <div fxLayout="row"
+                 fxLayoutAlign="end start">
+                <button mat-raised-button
+                        [disabled]=isSaveDisabled
+                        type="button"
+                        (click)="onSideNavSaveButtonClick()">
+                    SAVE
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

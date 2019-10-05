@@ -1,0 +1,48 @@
+<mat-card class="trade-capture-card commodity-details">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Commodity</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <atlas-commodity-input [required]="commodityInputRequired.isRequired"
+                               (optionSelected)="onCommodityIdSelected($event)"
+                               #commodityInput></atlas-commodity-input>
+        <div id="crpyear"
+             fxLayout="row"
+             fxLayoutAlign="left start"
+             class="cropyear-vatcode-details">
+            <div fxFlex="50%"
+                 [class.displayMode]="!cropYearCtrl.enabled"
+                 [class.isEmpty]="!cropYearCtrl.value"
+                 [class.required-field]="cropYearCtrl.isRequired">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Crop Year"
+                           [required]="cropYearCtrl.isRequired"
+                           [formControl]='cropYearCtrl'
+                           autocomplete="off">
+                    <mat-hint *ngIf="!cropYearCtrl.hasError('pattern') && cropYearCtrl.enabled ">Only format YYYY or
+                        YYYY/YYYY allowed
+
+                    </mat-hint>
+                    <mat-error *ngIf="cropYearCtrl.hasError('pattern')">
+                        Only format YYYY or YYYY/YYYY allowed
+                    </mat-error>
+                    <mat-error *ngIf="cropYearCtrl.hasError('isYearOutOfRange')">
+                        Crop year should be within +/- 5 years from the contract date
+                    </mat-error>
+                    <mat-error *ngIf="cropYearCtrl.hasError('isFirstYearGreater')">
+                        Second year entered after the “/” should always be “greater than” the first year entered before
+                        the
+                        “/”
+                    </mat-error>
+                    <mat-hint align="end"
+                              *ngIf="cropYearCtrl.isRequired && cropYearCtrl.enabled">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

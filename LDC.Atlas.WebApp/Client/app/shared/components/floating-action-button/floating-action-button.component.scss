@@ -1,0 +1,31 @@
+.fab-bottom-right {
+    position: fixed;
+    right: 24px;
+    z-index: 6;
+}
+
+.fab-action-item .mat-icon {
+    vertical-align: bottom;
+}
+
+.mat-fab .mat-button-wrapper {
+    padding: 0px !important;
+}
+
+.fab-bottom-right button {
+    position: static;
+}
+
+button.mat-mini-fab {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.menu-header {
+    background-color: #52C234 !important;
+    color: #fff !important;
+}
+
+.has-header .mat-menu-content {
+    padding: 0 !important;
+}

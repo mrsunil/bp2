@@ -1,0 +1,123 @@
+<div fxLayoutAlign="space-between center">
+    <h1 class="no-margin">Image {{dialogData.title}}</h1>
+    <button mat-button>
+        <mat-icon (click)="onCloseButtonClicked()">close</mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content>
+    <div fxLayout="row"
+         fxLayoutAlign="left start"
+         fxLayoutGap="5%">
+        <h2>Details</h2>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="left start"
+         fxLayoutGap="5%">
+        <div fxFlex="30%">
+            <mat-form-field>
+                <input matInput
+                       placeholder="Number of contracts required"
+                       [formControl]='contractNumberCtrl'
+                       required>
+            </mat-form-field>
+        </div>
+        <div class="warning"
+             *ngIf="showError">
+            Number of contracts should be a positive integer number
+        </div>
+        <mat-error *ngIf="showTrancheError">
+            Number of contracts cannot be more than 1, If Image Tranches/Splits is selected
+        </mat-error>
+
+        <!-- button toggle for purchase and sale-->
+        <div fxFlex="70%">
+            <mat-button-toggle-group class="toggle-group"
+                                     name="toggleStyle"
+                                     aria-label="Contract Type"
+                                     [formControl]='contractTypeCtrl'
+                                     (change)='contractTypeChanged()'>
+                <mat-button-toggle [value]="ContractType.Purchase">Purchase</mat-button-toggle>
+                <mat-button-toggle [value]="ContractType.Sale">Sale</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+    </div>
+
+    <!-- Cost details -->
+    <div fxLayout="row"
+         fxLayoutAlign="left start"
+         fxLayoutGap="5%">
+        <h3>Costs</h3>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="5%">
+        <div fxFlex="30%">
+            <mat-slide-toggle [formControl]='imageEstimatesCtrl'
+                              (change)="onImageEstimatesChange($event)"
+                              [disabled]=setToggle>
+                Image Estimates
+            </mat-slide-toggle>
+        </div>
+        <div fxFlex="30%">
+            <atlas-masterdata-user-preferences-input class="contextual-search-for-costmatrix"
+                                                     [fieldControl]="costMatrixCtrl"
+                                                     [options]="filteredCostMatrixList"
+                                                     label="CostMatrix"
+                                                     displayProperty="name"
+                                                     (valueChange)="onCostMatrixChange($event)"
+                                                     (optionSelected)="onCostMatrixChange($event)"
+                                                     tooltip="description"
+                                                     [selectProperties]="['name', 'description']"
+                                                     [errorMap]="costmatrixErrorMap"
+                                                     lightBoxTitle="Results for CostMatrix"
+                                                     gridId="costMatrixGrid">
+            </atlas-masterdata-user-preferences-input>
+        </div>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="left start"
+         fxLayoutGap="5%">
+        <h3>Options</h3>
+    </div>
+
+    <!-- --Tranch and Split -->
+    <div fxLayout="row"
+         fxLayoutAlign="left start"
+         fxLayoutGap="5%"
+         class="costToggle">
+        <div fxFlex="50%"
+             class="costToggle">
+            <mat-slide-toggle (change)="onImageTranchesChange($event)"
+                              [disabled]="isSplit">
+                Image Tranches/Splits
+            </mat-slide-toggle>
+        </div>
+    </div>
+    <div class="costToggle">
+        <mat-slide-toggle *ifAuthorized="'Trades.Physicals.AllocateDeallocate',company:company"
+                          (change)="onAllocateContractsChange($event)"
+                          [disabled]="isAllocateContractDisabled || dialogData.isCancelledTrade">
+            Allocate Contracts
+        </mat-slide-toggle>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div fxFlex="50"
+         fxLayout="row"
+         fxAlignLayout="start start">
+        <button mat-button
+                (click)="onCloseButtonClicked()">DISCARD</button>
+    </div>
+    <div fxFlex="50"
+         fxLayout="row"
+         fxAlignLayout="start end">
+        <span class="fill-space"></span>
+        <button mat-button
+                *ifAuthorized="'Trades.Physicals.CreateTrade',company:this.company"
+                (click)="onImageButtonClicked()">IMAGE</button>
+    </div>
+</mat-dialog-actions>

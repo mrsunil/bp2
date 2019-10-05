@@ -1,0 +1,79 @@
+<ng-template #headerContent>
+    <div fxLayout="row"
+         fxLayoutAlign="start end"
+         fxLayoutGap="1%">
+        <h2 class="summary-header-title"
+            *ngIf="this.invoiceTypeId!= this.reversalInvoiceTypeId">Invoice Reference Number:
+            {{invoiceLabel}}</h2>
+        <h2 class="summary-header-title"
+            *ngIf="this.newInvoiceReference && this.invoiceTypeId=== this.reversalInvoiceTypeId">{{newInvoiceReference}}
+        </h2>
+        <h2 class="summary-header-title"
+            *ngIf="this.invoiceTypeId=== this.reversalInvoiceTypeId">Reversal Of : {{invoiceLabel}}</h2>
+        <mat-chip-list class="chip-list">
+            <mat-chip selected
+                      disabled>{{invoiceType}}</mat-chip>
+            <mat-chip selected
+                      disabled>{{externalHouse}}</mat-chip>
+            <mat-chip selected
+                      disabled>{{quantityToInvoice}}</mat-chip>
+        </mat-chip-list>
+    </div>
+    <div class="summary-details"
+         fxLayout="row">
+        <div fxLayoutAlign="left start"
+             fxLayoutGap="5%"
+             fxFlex="70%">
+            <div fxLayout="row">
+
+                <mat-form-field fxFlex="25%">
+                    <input matInput
+                           [matDatepicker]="invoiceDatePicker"
+                           placeholder="Invoice date"
+                           [matTooltip]="'Invoice date'"
+                           [formControl]='invoiceDateCtrl'
+                           autocomplete="off">
+                    <mat-datepicker-toggle matSuffix
+                                           [for]="invoiceDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #invoiceDatePicker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="mat-read-only-field"
+                                fxFlex="25%">
+                    <input matInput
+                           placeholder="Counterparty"
+                           [matTooltip]="'Counterparty'"
+                           [formControl]="counterpartyCtrl"
+                           autocomplete="off">
+                </mat-form-field>
+                <mat-form-field fxFlex="25%"
+                                [hidden]="!invoiceExtRefCtrl.value">
+                    <input matInput
+                           placeholder="External Invoice Reference"
+                           [formControl]="invoiceExtRefCtrl"
+                           autocomplete="off">
+                </mat-form-field>
+                <mat-form-field class="mat-read-only-field"
+                                fxFlex="25%"
+                                [hidden]="!bankingInformationCtrl.value">
+                    <input matInput
+                           placeholder="Banking Information"
+                           [formControl]="bankingInformationCtrl"
+                           autocomplete="off">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<mat-card *ngIf="isCreationMode"
+          class="card-header-luke">
+    <ng-container *ngTemplateOutlet="headerContent"></ng-container>
+</mat-card>
+
+<header *ngIf="!isCreationMode"
+        class="header-background mat-elevation-z2">
+    <div class="header-content displayMode">
+        <ng-container *ngTemplateOutlet="headerContent"></ng-container>
+    </div>
+</header>

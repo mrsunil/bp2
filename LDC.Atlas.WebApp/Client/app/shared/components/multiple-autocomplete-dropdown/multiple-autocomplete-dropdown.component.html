@@ -1,0 +1,50 @@
+<div class="custom-form"
+     [class.isEmpty]="!fieldCtrl.value"
+     [class.required-field]="true">
+    <mat-form-field color="accent">
+        <mat-select [multiple]="true"
+                    [formControl]="fieldCtrl"
+                    [placeholder]="placeholder">
+            <mat-select-trigger>
+                {{ displayFn() }}
+            </mat-select-trigger>
+            <div id="myHeader"
+                 class="fixedHeader">
+                <mat-select-header #stickyHeader>
+                    <input matInput
+                           type="search"
+                           [placeholder]="placeholderFilter"
+                           [formControl]="formCtrl"
+                           autocomplete="off"
+                           (keydown)="$event.stopPropagation()"
+                           (input)="onSearchChange($event.target.value)">
+                </mat-select-header>
+            </div>
+            <div id="options">
+                <mat-option (click)="toggleAll()"
+                            *ngIf="displayAll"
+                            style="color:black"
+                            [value]="allOptionsElement">
+                    All
+                </mat-option>
+                <mat-option *ngFor="let option of filteredOptions"
+                            [value]="option.element"
+                            (click)="selectionChanged($event)"
+                            [ngClass]="{'hidden-during-loading':option.hide}">
+                    <span *ngIf="displayCode"
+                          style="color:black">{{ option.element[codeProperty] }}</span>
+                    <span *ngIf="option.element[codeProperty] !== null && displayCode && displayProperty"
+                          style="color:black">|</span>
+                    <span *ngIf="displayProperty"
+                          style="color:black">{{ option.element[displayProperty] }}</span>
+                </mat-option>
+            </div>
+        </mat-select>
+        <mat-error *ngIf="fieldCtrl.hasError('required')">
+            {{elementName}} is required
+        </mat-error>
+        <mat-hint>
+            Required *
+        </mat-hint>
+    </mat-form-field>
+</div>

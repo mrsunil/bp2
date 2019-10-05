@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-title>
+        <h2> Reversal</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div *ngFor="let invoiceType of invoiceTypeMenuItems">
+            <mat-checkbox #reversalsCtrl
+                          [formControl]="reversalCtrl"
+                          [checked]="invoiceType.checked"
+                          [value]="invoiceType.invoiceTypeId"
+                          (change)="onInvoiceTypeChecked($event,reversalsCtrl.checked,invoiceType)">{{invoiceType.name}}</mat-checkbox>
+        </div>
+    </mat-card-content>
+</mat-card>

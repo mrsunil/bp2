@@ -1,0 +1,68 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Counterparty Contacts</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="column"
+             fxLayoutAlign="center end">
+            <mat-nav-list *ngFor="let contact of contactData">
+                <div *ngIf="!contact.isDeleted">
+                    <div fxLayout="column"
+                         fxFlex="100%">
+                        <div fxLayout="row"
+                             fxLayoutAlign="left start">
+                            <mat-list-item style="min-width: 450px;"
+                                           (click)="onOpenContact(contact)">
+                                <div fxLayout="column"
+                                     fxFlex="100">
+                                    <div fxLayout="row"
+                                         fxLayoutAlign="left start"
+                                         fxLayoutGap="35px">
+                                        <div fxLayout="column">
+                                            <div fxLayout="row">
+                                                <b>Title</b>
+                                            </div>
+                                            <div fxLayout="row">
+                                                {{ contact.titleValue }}
+                                            </div>
+                                        </div>
+                                        <div fxLayout="column">
+                                            <div fxLayout="row">
+                                                <b>First Name</b>
+                                            </div>
+                                            <div fxLayout="row">
+                                                {{ contact.firstName }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <mat-divider class="charter-creation-divider"></mat-divider>
+                            </mat-list-item>
+                            <mat-list-item (click)="onSetContactFavorite(contact)">
+                                <div fxLayout="column">
+                                    <mat-icon [ngClass]="contact.isFavorite ? 'heart-saved' : 'heart-not-saved'">
+                                        {{ contact.isFavorite ? 'favorite' : 'favorite_border' }}
+                                    </mat-icon>
+                                </div>
+                            </mat-list-item>
+                        </div>
+                    </div>
+
+                </div>
+            </mat-nav-list>
+            <div class="btn-container"></div>
+            <div fxFlex="50"
+                 fxAlignLayout="start end">
+                <span class="fill-space"></span>
+                <button mat-raised-button
+                        type="button"
+                        [disabled]="isContactListDataClicked || isViewMode"
+                        (click)="onAddNewContact()">
+                    ADD NEW Contact
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

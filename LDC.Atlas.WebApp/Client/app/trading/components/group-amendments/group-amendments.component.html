@@ -1,0 +1,78 @@
+<form>
+    <div class="main-container">
+        <div fxLayout="row wrap"
+             fxLayoutAlign="space-around start">
+            <div fxLayout="column"
+                 fxLayoutAlign="start left"
+                 fxFlex="48">
+                <atlas-bulk-edition #bulkEditionComponent
+                                    (bulkEditOptionChecked)="onBulkEditionOptionChecked($event)">
+                </atlas-bulk-edition>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="start right"
+                 fxFlex="50">
+                <atlas-bulk-approval #bulkApprovalComponent
+                                     (bulkApprovalOptionChecked)="onBulkApprovalOptionChecked($event)">
+                </atlas-bulk-approval>
+            </div>
+
+            <div fxLayout="column"
+                 fxLayoutAlign="start left"
+                 fxFlex="48">
+                <atlas-bulk-update-costs #bulkUpdateCostsComponent
+                                         (bulkCostsUpdateOptionChecked)="onBulkCostsUpdateOptionChecked($event)">
+
+                </atlas-bulk-update-costs>
+            </div>
+
+            <div fxLayout="column"
+                 fxLayoutAlign="start right"
+                 fxFlex="50">
+                <atlas-bulk-closure #bulkClosureComponent
+                                    (bulkClosureOptionChecked)="onBulkClosureOptionChecked($event)">
+                </atlas-bulk-closure>
+            </div>
+
+            <div fxLayout="column"
+                 fxLayoutAlign="start left"
+                 fxFlex="48">
+                <atlas-bulk-allocation #bulkAllocationComponent
+                                       (bulkAllocationOptionChecked)="onBulkAllocationOptionChecked($event)">
+
+                </atlas-bulk-allocation>
+            </div>
+
+
+            <div fxLayout="column"
+                 fxLayoutAlign="start right"
+                 fxFlex="50">
+                <atlas-bulk-deallocation #bulkDeAllocationComponent
+                                         (bulkDeAllocationOptionChecked)="onBulkDeAllocationOptionChecked($event)">
+
+                </atlas-bulk-deallocation>
+            </div>
+
+        </div>
+        <div class="btn-container">
+            <div fxFlex="50"
+                 fxLayout="row"
+                 fxAlignLayout="start start">
+                <button mat-button
+                        (click)="onDiscardButtonClicked()">
+                    Discard
+                </button>
+            </div>
+            <div fxFlex="50"
+                 fxLayout="row"
+                 fxAlignLayout="start end">
+                <span class="fill-space"></span>
+                <button mat-raised-button
+                        (click)="onNextButtonClicked(bulkActionTypeId)"
+                        [disabled]="isDisabled">
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

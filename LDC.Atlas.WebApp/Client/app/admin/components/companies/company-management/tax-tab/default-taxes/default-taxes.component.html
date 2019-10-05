@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Default Taxes</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="start"
+             fxLayoutGap="16px">
+            <div class="custom-form"
+                 fxFlex="75%">
+                <mat-form-field fxFlex="50%">
+                    <mat-select placeholder="Default Tax for costs Invoicing"
+                                [formControl]="taxCostInvoicingCtrl">
+                        <mat-option *ngFor="let type of this.taxCosts "
+                                    [value]="type.vatCode">{{type.vatCode}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="taxCostInvoicingCtrl.hasError('required')">
+                        Required *
+                    </mat-error>
+                    <mat-hint *ngIf="taxCostInvoicingCtrl.isRequired">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+                <mat-form-field fxFlex="50%">
+                    <mat-select placeholder="Default Tax for goods Invoicing"
+                                [formControl]="taxGoodsInvoicingCtrl">
+                        <mat-option *ngFor="let type of this.taxGoods "
+                                    [value]="type.vatCode">{{type.vatCode}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="taxGoodsInvoicingCtrl.hasError('required')">
+                        Required *
+                    </mat-error>
+                    <mat-hint *ngIf="taxGoodsInvoicingCtrl.isRequired">
+                        Required *
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

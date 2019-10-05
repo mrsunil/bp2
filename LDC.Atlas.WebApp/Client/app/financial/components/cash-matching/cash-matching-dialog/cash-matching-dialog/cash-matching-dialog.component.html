@@ -1,0 +1,50 @@
+<h1 mat-dialog-title> System will match the transactions. please provide the data to proceed
+    <button mat-icon-button
+            mat-dialog-close
+            class="close-dialog-btn">
+        <mat-icon aria-label="Closing button">clear</mat-icon>
+    </button></h1>
+<mat-dialog-content class="mat-dialog-content">
+    <div fxLayout="row"
+         fxLayoutAlign="none center"
+         fxLayoutWrap
+         fxLayoutGap="10px">
+        <p>{{dialogData.text}}</p>
+    </div>
+</mat-dialog-content>
+<div fxLayout="column">
+    <div fxLayout="row"
+         fxLayoutAlign="left start"
+         fxLayoutGap="10%"
+         class="confirmation-input-container">
+        <mat-form-field fxFlex="40%">
+            <input matInput
+                   [matDatepicker]="documentDatePicker"
+                   placeholder="Payment Document Date"
+                   matTooltip="Payment Document Date"
+                   [required]="paymentDocDateCtrl.isRequired"
+                   autocomplete="off"
+                   [formControl]='paymentDocDateCtrl'>
+            <mat-datepicker-toggle matSuffix
+                                   [for]="documentDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #documentDatePicker></mat-datepicker>
+            <mat-error *ngIf="paymentDocDateCtrl.hasError('required')">
+                This field is required
+            </mat-error>
+            <mat-error *ngIf="paymentDocDateCtrl.hasError('isBeforeDateValid')">
+                Date cannot be before the document date
+            </mat-error>
+            <mat-error *ngIf="paymentDocDateCtrl.hasError('isDateAfterValid')">
+                Date cannot be greater than the system date
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between end">
+        <button mat-button
+                (click)="onCancelButtonClicked()">CANCEL</button>
+
+        <button mat-button
+                (click)="onProceedButtonClicked()">PROCEED</button>
+    </div>
+</div>

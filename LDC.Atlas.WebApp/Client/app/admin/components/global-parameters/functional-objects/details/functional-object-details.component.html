@@ -1,0 +1,136 @@
+<div>
+    <header class="header-background charter-detail">
+        <div class="header-content">
+            <div fxLayout="row"
+                 fxLayoutAlign="start center"
+                 fxLayoutGap="16px">
+                <h2><b>{{functionalObjectName}}</b></h2>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutAlign="start center"
+                 fxLayoutGap="16px"
+                 class="charter-global-info">
+                <mat-form-field fxFlex="14"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="Created By"
+                           disabled
+                           value="{{createdBy}}"
+                           autocomplete="off">
+                </mat-form-field>
+
+                <mat-form-field fxFlex="14"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="On"
+                           disabled
+                           value="{{creationDate}}"
+                           autocomplete="off">
+                </mat-form-field>
+                <mat-form-field *ngIf="modifiedBy"
+                                fxFlex="14"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="Modified By"
+                           disabled
+                           value="{{modifiedBy ? modifiedBy : ' '}}"
+                           autocomplete="off">
+                </mat-form-field>
+                <mat-form-field *ngIf="modifiedDate"
+                                fxFlex="14"
+                                class="mat-disabled-field">
+                    <input matInput
+                           placeholder="On"
+                           disabled
+                           value="{{modifiedDate ? modifiedDate : ' '}}"
+                           autocomplete="off">
+                </mat-form-field>
+            </div>
+        </div>
+    </header>
+</div>
+<mat-toolbar class="menu-bar">
+    <div class="toolbar-div">
+        <span class="fill-space"></span>
+        <div *ifAuthorized="'Administration.GlobalParameters.CreateFunctionalObject',company:this.company"
+             fxLayout="row"
+             fxLayoutAlign="end center"
+             fxFlex="20"
+             fxLayoutGap="16px">
+            <a (click)="onNewFunctionalClicked()"
+               matTooltip="New Functional Object"
+               class="menu-bar-action-icon">
+                <mat-icon class="white-icon">add</mat-icon>
+            </a>
+            <a (click)="onEditFunctionalClicked()"
+               matTooltip="Edit the Functional Object"
+               class="menu-bar-action-icon">
+                <mat-icon class="white-icon">create</mat-icon>
+            </a>
+        </div>
+    </div>
+</mat-toolbar>
+<div class="main-container">
+    <main>
+        <div fxLayout="row">
+            <div fxLayout="row"
+                 fxFlex="50%">
+                <div fxLayout="column"
+                     fxLayoutAlign="start left"
+                     fxFlex="95"
+                     class="">
+                    <mat-card class="set-min-height">
+                        <mat-card-header>
+                            <mat-card-title>
+                                <h3><b>Tables</b></h3>
+                                <h3 class="left-space"><b>Selected Tables</b></h3>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-divider class="fill-divider"></mat-divider>
+                        <mat-card-content>
+                            <div *ngFor="let fo of functionalObjects"
+                                 class="selectedField">
+                                <p class="managelinespace">{{fo.tableName}}</p>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+            <div fxLayout="row"
+                 fxFlex="50%">
+                <div fxLayout="column"
+                     fxLayoutAlign="start left"
+                     fxFlex="95"
+                     class="">
+                    <mat-card class="set-min-height">
+                        <mat-card-header>
+                            <mat-card-title>
+                                <h3><b>Predefined Keys</b></h3>
+                                <h3 class="left-space"><b>Selected Keys</b> </h3>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-divider class="fill-divider"></mat-divider>
+                        <mat-card-content>
+                            <ul class="widgets">
+                                <li *ngFor="let item of functionalObjects"
+                                    class="managelinespace">
+                                    <b>{{item.tableName}}</b>
+                                    <ol class="selectedField">
+                                        <li *ngFor="let data of item.fields">{{data.friendlyName }}</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div>
+        <button type="button"
+                (click)="onCancelButtonClicked()"
+                mat-button>
+            Cancel
+        </button>
+    </div>
+</div>

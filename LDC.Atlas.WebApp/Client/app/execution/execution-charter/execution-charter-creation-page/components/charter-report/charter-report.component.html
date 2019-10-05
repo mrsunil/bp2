@@ -1,0 +1,53 @@
+<div fxLayoutAlign="space-between center">
+    <h2>Charter Report</h2>
+    <button mat-button>
+        <mat-icon (click)="onCloseButtonClicked()">close</mat-icon>
+    </button>
+</div>
+<div fxLayout="row wrap"
+     fxLayoutAlign="space-between stretch"
+     fxLayoutAlign.lt-md="space-around center">
+    <mat-card class="database-selection"
+              fxFlex="45">
+        <mat-card-header>
+            <mat-card-title>
+                <h2>Database Selection</h2>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxLayoutGap="5px">
+            <div fxLayout="row"
+                 fxLayoutAlign="left start"
+                 fxLayoutGap="5%">
+                <atlas-dropdown-select fxFlex='30%'
+                                       label="Snapshot"
+                                       [fieldControl]="charterSnapshotCtrl"
+                                       isEditable=true
+                                       [options]="snapshotList"
+                                       displayProperty="freezeDate"
+                                       [selectProperties]="['freezeDate']">
+                </atlas-dropdown-select>
+                <div fxLayout="row"
+                     class="include-closed-trades">
+                    <span fxFlex='50%'></span>
+                    <span fxLayoutAlign="right center">
+                        <mat-checkbox [formControl]="includeClosedTradesCtrl"
+                                      (change)="onIncludeClosedTradesChanged($event)">Include closed trades
+                        </mat-checkbox>
+                    </span>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="end center">
+    <button mat-raised-button
+            class="generate-report-button"
+            (click)="onGenerateReportButtonClicked()">GENERATE REPORT</button>
+</div>
+<div class="report-container">
+    <atlas-ssrsreport-viewer [reportServer]="reportServerUrl"
+                             [reportUrl]="reportPath"
+                             [parameters]="parameters"
+                             #ssrsReportViewer></atlas-ssrsreport-viewer>
+</div>

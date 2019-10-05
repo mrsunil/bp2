@@ -1,0 +1,13 @@
+{
+    "tslint.autoFixOnSave": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.detectIndentation": false,
+    "html.format.wrapAttributes": "force-aligned",
+    "html.format.indentInnerHtml": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.tslint": true
+    },
+    "javascript.preferences.importModuleSpecifier": "relative",
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "vsicons.presets.angular": true
+}

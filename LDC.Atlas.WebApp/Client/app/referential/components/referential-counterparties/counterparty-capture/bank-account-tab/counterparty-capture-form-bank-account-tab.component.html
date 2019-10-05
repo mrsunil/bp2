@@ -1,0 +1,31 @@
+<div class="main-container">
+    <main>
+        <div fxLayout="row"
+             fxLayout.md="column"
+             fxLayoutAlign="space-around start"
+             class='charter-creation-margin'>
+            <div fxLayout="column"
+                 fxLayoutAlign="start left"
+                 fxFlex="48">
+                <atlas-counterparty-bank-account-list #bankAccountListComponent
+                                                      (addNewflag)="addNewBankAccount($event)"
+                                                      (setBankData)="setBankAccount($event)"
+                                                      (cancelBankAccountData)="onCancelBankAccountData()"
+                                                      [isViewMode]="isViewMode">
+
+                </atlas-counterparty-bank-account-list>
+            </div>
+            <div fxLayout="column"
+                 fxLayoutAlign="start right"
+                 fxFlex="49">
+                <atlas-counterparty-bank-account-details #bankAccountDetailsComponent
+                                                         (setBankAccountData)="onSetBankAccountData($event)"
+                                                         (deleteBankAccountData)="onBankAccountDeleted($event)"
+                                                         (cancelBankAccountData)="onCancelBankAccountData()"
+                                                         [bankAccountListLength]="bankAccountListLength"
+                                                         [isViewMode]="isViewMode">
+                </atlas-counterparty-bank-account-details>
+            </div>
+        </div>
+    </main>
+</div>

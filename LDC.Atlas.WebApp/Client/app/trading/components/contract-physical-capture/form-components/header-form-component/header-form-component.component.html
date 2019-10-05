@@ -1,0 +1,184 @@
+<header class="header-background trade "
+        [class.trade-capture]="!isShow">
+    <div class="header-container">
+        <div class="header-content">
+            <div fxLayout="column"
+                 fxLayoutAlign="space-between stretch"
+                 class="header-height">
+                <div fxLayout="row"
+                     fxLayoutAlign="start stretch"
+                     fxLayoutGap="1%">
+                    <mat-button-toggle-group class="toggle-group"
+                                             name="toggleStyle"
+                                             aria-label="Contract Type"
+                                             [formControl]='contractTypeCtrl'
+                                             (change)='contractTypeChanged()'
+                                             *ngIf="!isShow">
+                        <mat-button-toggle [value]="ContractType.Purchase">Purchase</mat-button-toggle>
+                        <mat-button-toggle [value]="ContractType.Sale">Sale</mat-button-toggle>
+                    </mat-button-toggle-group>
+                    <h2 *ngIf="isShow"
+                        class="trade-view-title">
+                        Trade
+                        <label>{{contractReference}}</label>
+                    </h2>
+                    <div fxFlex="50%"
+                     class="custom-form"
+                     [class.required-field]="contractReferenceCtrl.isRequired">
+                    <mat-form-field *ngIf="!isShow || isEditContract"
+                                    fxFlex="140px">
+                        <input matInput
+                               placeholder="Contract Reference"
+                               [required]="contractReferenceCtrl.isRequired"
+                               [formControl]='contractReferenceCtrl'
+                               autocomplete="off">
+                        <mat-error *ngIf="contractReferenceCtrl.hasError('pattern')">
+                            Special characters are not allowed
+                        </mat-error>
+                        <mat-error *ngIf="contractReferenceCtrl.hasError('maxlength')">
+                            Contract Ref should be at most 7 characters long
+                        </mat-error>
+                        <mat-error *ngIf="contractReferenceCtrl.hasError('notUnique')">
+                            Contract Ref already exists
+                        </mat-error>
+                        <mat-error *ngIf="contractReferenceCtrl.hasError('required')">
+                            This field is required
+                        </mat-error>
+                        <mat-hint *ngIf="contractReferenceCtrl.isRequired &&  contractReferenceCtrl.enabled">
+                            Required *
+                        </mat-hint>
+                    </mat-form-field>
+                        </div>
+                    <mat-chip-list *ngIf="isShow"
+                                   class="chip-list"
+                                   fxFlex>
+                        <mat-chip selected
+                                  disabled>
+                            {{contractType}}
+                        </mat-chip>
+                        <mat-chip selected
+                                  disabled
+                                  [ngClass]="contractStatus == 'Approved' ? 'mat-approved': 'mat-error'">
+                            {{contractStatus}}
+                        </mat-chip>
+                        <mat-chip selected
+                                  disabled
+                                  [ngClass]="status == 'Realized' ? 'mat-approved': 'mat-error'">
+                            {{status}}
+                        </mat-chip>
+                        <mat-chip selected
+                                  disabled
+                                  [ngClass]="openCloseStatus != 'Open' ? 'mat-error' : 'mat-approved'">
+                            {{openCloseStatus}}
+                        </mat-chip>
+                        <mat-chip *ngIf="isCancelled"
+                                  selected
+                                  disabled
+                                  class="mat-error">
+                            {{tradeCancelledStatus}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="start end"
+                     fxLayoutGap="1%"
+                     class="header-meta">
+                    <mat-form-field fxFlex="10%">
+                        <input matInput
+                               [required]="contractDateCtrl.isRequired"
+                               [matDatepicker]="contractDatePicker"
+                               placeholder="Contract Date"
+                               [formControl]='contractDateCtrl'
+                               (dateChange)='ifContractDateSelected()'
+                               autocomplete="off">
+                        <mat-datepicker-toggle matSuffix
+                                               [for]="contractDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #contractDatePicker></mat-datepicker>
+                        <mat-error *ngIf="contractDateCtrl.hasError('required')">
+                            This field is required
+                        </mat-error>
+                        <mat-error *ngIf="contractDateCtrl.hasError('isDateValid')">
+                            Date cannot be in the future
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="custom-form"
+                         fxFlex="10%"
+                         [class.displayMode]="!traderCtrl.enabled"
+                         [class.isEmpty]="!traderCtrl.value"
+                         [class.required-field]="traderCtrl.isRequired">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="Trader"
+                                   [required]="traderCtrl.isRequired"
+                                   [matAutocomplete]="traders"
+                                   [formControl]="traderCtrl"
+                                   [matTooltip]="'Trade Owners'"
+                                   autocomplete="off">
+                            <mat-autocomplete #traders="matAutocomplete"
+                                              [panelWidth]="panelSize"
+                                              [displayWith]="displayTrader.bind(this)">
+                                <mat-option *ngFor="let trader of filteredTradeOwners"
+                                            [value]="trader.userId">
+                                    {{ trader.samAccountName }} | {{trader.displayName}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <mat-error *ngIf="traderCtrl.hasError('required')">
+                                This field is required
+                            </mat-error>
+                            <mat-error *ngIf="traderCtrl.hasError('inDropdownList')">
+                                {{ getTraderErrorMessageInDropdownList() }}
+                            </mat-error>
+                            <mat-hint *ngIf="traderCtrl.isRequired &&  traderCtrl.enabled">
+                                Required *
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="10%">
+                        <atlas-masterdata-user-preferences-input [isEditable]="!isShow || isEditable"
+                                                                 [fieldControl]="departmentCodeCtrl"
+                                                                 [options]="filteredDepartments"
+                                                                 label="Department Code"
+                                                                 displayProperty="departmentCode"
+                                                                 [selectProperties]="['departmentCode', 'description']"
+                                                                 [errorMap]="departmentErrorMap"
+                                                                 lightBoxTitle="Results for Department"
+                                                                 gridId="departmentsGrid"
+                                                                 (optionSelected)="departmentCodeSelected($event)"
+                                                                 [dataLoader]="departmentDataLoader">
+                        </atlas-masterdata-user-preferences-input>
+                    </div>
+
+                    <atlas-form-input fxFlex="10%"
+                                      [fieldControl]="departmentDescriptionCtrl"
+                                      [isEditable]="isInputField"
+                                      [label]="'Department Description'">
+                    </atlas-form-input>
+
+                    <!--------Creator-->
+                    <mat-form-field fxFlex="10%"
+                                    *ngIf="isShow">
+                        <input matInput
+                               placeholder="Creator"
+                               disabled=true
+                               [formControl]="creatorCtrl"
+                               autocomplete="off"
+                               value={{createdBy}}>
+                    </mat-form-field>
+
+                    <!-------Created On-->
+                    <mat-form-field fxFlex="10%"
+                                    *ngIf="isShow">
+                        <input matInput
+                               [matDatepicker]="createdOnPicker"
+                               placeholder="Created On"
+                               autocomplete="off"
+                               [formControl]='createdOnCtrl'>
+                        <mat-datepicker-toggle matSuffix
+                                               [for]="createdOnPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #createdOnPicker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

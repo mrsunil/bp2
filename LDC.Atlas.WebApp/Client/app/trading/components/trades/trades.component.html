@@ -1,0 +1,97 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav
+                 class="side-nav-screen side-nav-reassignscreen"
+                 position="end"
+                 disableClose
+                 mode="over"
+                 [fixedTopGap]="56"
+                 [fixedInViewport]="true"
+                 [(opened)]="sideNavOpened">
+        <div class="atr-sidenav-margin">
+            <atlas-favourites-list-display #favouritesListDisplayComponent></atlas-favourites-list-display>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between center">
+                <div fxLayout="column"
+                     fxLayoutAlign="start start">
+                    <button mat-button
+                            type="button"
+                            (click)="onDiscardButtonClick()">
+                        DISCARD
+                    </button>
+                </div>
+                <div fxLayout="column"
+                     fxLayoutAlign="start end">
+                    <div fxLayout="row"
+                         fxLayoutAlign="end start">
+                        <button mat-raised-button
+                                type="button"
+                                (click)="onSideNavSaveButtonClick()">
+                            SAVE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div class="main-container margin-adjustment">
+            <mat-card>
+                <div fxLayout="row"
+                     fxLayoutAlign="start none"
+                     class="search">
+                    <mat-form-field>
+                        <input matInput
+                               fxFlex="45%"
+                               [formControl]="contractLabelCtrl"
+                               placeholder="Contract N°"
+                               autocomplete="off"
+                               (keydown.enter)="onQuickSearchButtonClicked()"
+                               #message>
+                    </mat-form-field>
+                    <atlas-masterdata-user-preferences-input fxFlex="45%"
+                                                             isEditable="true"
+                                                             [fieldControl]="counterPartyCtrl"
+                                                             [options]="filteredCounterPartyList"
+                                                             label="Counter Party"
+                                                             (keydown.enter)="onQuickSearchButtonClicked()"
+                                                             displayProperty="counterpartyCode"
+                                                             [selectProperties]="['counterpartyCode', 'description']"
+                                                             lightBoxTitle="Results for Counterparty"
+                                                             gridId="counterpartiesGrid"
+                                                             [dataLoader]="counterpartyDataLoader">
+                    </atlas-masterdata-user-preferences-input>
+                    <button mat-raised-button
+                            (click)="onQuickSearchButtonClicked()"
+                            class="heroGradient">
+                        <mat-icon aria-label="Search"
+                                  class="search-icon">search</mat-icon>
+                    </button>
+                </div>
+            </mat-card>
+            <atlas-list-and-search class="default-height"
+                                   *ifAuthorized="'Trades.Physicals',company:this.company"
+                                   [gridCode]="gridCode"
+                                   [gridTitle]="'Physical Trades'"
+                                   (rowClicked)="onTradeRowClicked($event)"
+                                   (quickNavigate)="onQuickNavigate($event)"
+                                   [additionalFilters]="additionalFilters"
+                                   [company]="company"
+                                   [dataVersionId]="dataVersionId"
+                                   [dataLoader]="dataLoader"
+                                   [gridContextualMenuActions]="gridContextualMenuActions"
+                                   [exportAdapter]="exportAdapter"
+                                   (menuActionClicked)="onMenuActionClicked($event)"
+                                   [loadOnInit]="loadOnInit"
+                                   #listAndSearchComponent>
+            </atlas-list-and-search>
+        </div>
+        <atlas-floating-action-button [fabTitle]="fabTitle"
+                              [fabType]="fabType"
+                              [fabActions]="fabMenuActions"
+                              [isParentLoaded]="isLoaded"
+                              (fabActionClicked)="onFabActionClicked($event)">
+        </atlas-floating-action-button>
+    </mat-sidenav-content>
+</mat-sidenav-container>

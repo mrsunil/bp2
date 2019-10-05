@@ -1,0 +1,25 @@
+mat-dialog-actions{
+    margin-top:20px;
+    text-align: right;
+    display: block;
+}
+
+invoiceMarkingGrid{
+    width:100%;
+    height:100%;
+}
+
+.mat-dialog-content{
+    overflow: inherit;
+}
+.costToggle{
+    margin-top: 19px;
+}
+.costButtons{
+    margin-bottom:20px;
+    margin-left: auto;
+}
+
+button.mat-raised-button{
+    float:right;
+}

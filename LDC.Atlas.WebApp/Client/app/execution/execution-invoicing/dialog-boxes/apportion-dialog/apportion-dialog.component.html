@@ -1,0 +1,73 @@
+<div fxLayoutAlign="space-between center">
+    <h1 class="no-margin">APPORTION</h1>
+    <button mat-button>
+        <mat-icon (click)="onCloseButtonClicked()">close</mat-icon>
+    </button>
+</div>
+<mat-dialog-content>
+    <div fxLayout="row"
+         fxLayoutAlign="left start">
+        <mat-form-field fxFlex="32%">
+            <input matInput
+                   placeholder="Quantity[MT]"
+                   [formControl]="quantityCtrl"
+                   autocomplete="off"
+                   (change)="quantityOnChange()"
+                   [readonly]="isReadOnly">
+        </mat-form-field>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="left start">
+        <mat-form-field fxFlex="32%">
+            <input matInput
+                   placeholder="Total Value"
+                   [formControl]="totalValueCtrl">
+        </mat-form-field>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="left start">
+        <mat-form-field fxFlex="32%">
+            <input matInput
+                   placeholder="%Invoiced"
+                   [formControl]="invoicePercentageCtrl">
+        </mat-form-field>
+        <mat-form-field fxFlex="40%"
+                        class="mat-read-only-field">
+            <span matTooltip={{apportionBasisToolTip}}>
+                <input matInput
+                       placeholder="(Basis Updated Total Value)"
+                       [formControl]="totalValueBasisCtrl"
+                       readonly>
+            </span>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="left start">
+        <mat-form-field fxFlex="32%">
+            <mat-select placeholder="Apportion Basis"
+                        [formControl]="apportionBasisCtrl"
+                        (selectionChange)='onApportionBasisChanged()'>
+                <mat-option *ngFor="let basis of apportionBasisType"
+                            [value]="basis.viewValue">
+                    {{basis.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div fxFlex="50"
+         fxLayout="row"
+         fxAlignLayout="start start">
+        <button mat-button
+                (click)="onCloseButtonClicked()">DISCARD</button>
+    </div>
+    <div fxFlex="50"
+         fxLayout="row"
+         fxAlignLayout="start end">
+        <span class="fill-space"></span>
+        <button mat-button
+                (click)="onDoneButtonClicked()">DONE</button>
+    </div>
+</mat-dialog-actions>

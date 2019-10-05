@@ -1,0 +1,273 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+	  <ProjectGuid>{ECD5CE6A-E052-4A91-935B-8CB3132588CC}</ProjectGuid>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <ApplicationInsightsResourceId>/subscriptions/fb25bdfb-9077-4e51-a21e-f6a29340caf8/resourcegroups/CDM1KATRRSGF02/providers/microsoft.insights/components/CDM1KATRAPIF01</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/fb25bdfb-9077-4e51-a21e-f6a29340caf8/resourcegroups/CDM1KATRRSGF02/providers/microsoft.insights/components/CDM1KATRAPIF01</ApplicationInsightsAnnotationResourceId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Client\app\execution\execution-charter-assignment\**" />
+    <Compile Remove="Client\app\execution\execution-invoicing\components\**" />
+    <Compile Remove="dist\**" />
+    <Compile Remove="TestResults\**" />
+    <Content Remove="Client\app\execution\execution-charter-assignment\**" />
+    <Content Remove="Client\app\execution\execution-invoicing\components\**" />
+    <Content Remove="dist\**" />
+    <Content Remove="TestResults\**" />
+    <EmbeddedResource Remove="Client\app\execution\execution-charter-assignment\**" />
+    <EmbeddedResource Remove="Client\app\execution\execution-invoicing\components\**" />
+    <EmbeddedResource Remove="dist\**" />
+    <EmbeddedResource Remove="TestResults\**" />
+    <None Remove="Client\app\execution\execution-charter-assignment\**" />
+    <None Remove="Client\app\execution\execution-invoicing\components\**" />
+    <None Remove="dist\**" />
+    <None Remove="TestResults\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove=".angular-cli.json" />
+    <Content Remove="Client\tsconfig.app.json" />
+    <Content Remove="Client\tsconfig.spec.json" />
+    <Content Remove="e2e\tsconfig.e2e.json" />
+    <Content Remove="package-lock.json" />
+    <Content Remove="package.json" />
+    <Content Remove="tsconfig.json" />
+    <Content Remove="tslint.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="build.txt" />
+    <None Remove="Client\app\shared\dtos\cost-contract-search-result.ts" />
+    <None Remove="Client\app\shared\dtos\invoice-search-result.ts" />
+    <None Remove="Client\app\shared\dtos\invoice-setup-result.ts" />
+    <None Remove="Client\app\shared\dtos\section-search-result.ts" />
+    <None Remove="Client\app\shared\entities\company-bankaccounts.entity.ts" />
+    <None Remove="Client\app\shared\entities\document-record.ts" />
+    <None Remove="Client\app\shared\entities\event.entity.ts" />
+    <None Remove="Client\app\shared\entities\fix-priced-section.ts" />
+    <None Remove="Client\app\shared\entities\fixing-family.ts" />
+    <None Remove="Client\app\shared\entities\futures-options-priced-section.ts" />
+    <None Remove="Client\app\shared\entities\invoice-line-record.ts" />
+    <None Remove="Client\app\shared\entities\invoice-status.entity.ts" />
+    <None Remove="Client\app\shared\entities\invoice-type.entity.ts" />
+    <None Remove="Client\app\shared\entities\is-locked.entity.ts" />
+    <None Remove="Client\app\shared\entities\floating-action-buttons-actions.entity.ts" />
+    <None Remove="Client\app\shared\entities\lock-functional-context.entity.ts" />
+    <None Remove="Client\app\shared\entities\lock-resource-information.entity.ts" />
+    <None Remove="Client\app\shared\entities\pricing-options.entity.ts" />
+    <None Remove="Client\app\shared\entities\problem-detail.ts" />
+    <None Remove="Client\app\shared\entities\product-variation.ts" />
+    <None Remove="Client\app\shared\entities\start-stop-interface-process.entity.ts" />
+    <None Remove="Client\app\shared\entities\statusOptions.entity.ts" />
+    <None Remove="Client\app\shared\entities\trade-allocation.ts" />
+    <None Remove="Client\app\shared\enums\cost-direction-type.enum.ts" />
+    <None Remove="Client\app\shared\enums\interface-object-type.enum.ts" />
+    <None Remove="Client\app\shared\enums\interface-status.enum.ts" />
+    <None Remove="Client\app\shared\enums\interface-type.enum.ts" />
+    <None Remove="Client\app\shared\enums\permission-level.enumts" />
+    <None Remove="Client\app\shared\enums\privilege-type.enum.ts" />
+    <None Remove="Client\app\shared\models\error-display-view.ts" />
+    <None Remove="Client\app\shared\models\missing-invoices-display-view.ts" />
+    <None Remove="Client\app\shared\models\sumary-invoice-view-model.ts" />
+    <None Remove="Client\app\shared\services\authorization\dtos\user-company-privilege.ts" />
+    <None Remove="Client\app\shared\services\execution\cost.ts" />
+    <None Remove="Client\app\shared\services\execution\dtos\contracts-to-cost-invoice.ts" />
+    <None Remove="Client\app\shared\services\execution\dtos\invoice-marking.ts" />
+    <None Remove="Client\app\shared\services\execution\dtos\invoice-search.ts" />
+    <None Remove="Client\app\shared\services\execution\dtos\invoice-summary-line-record.ts" />
+    <None Remove="Client\app\shared\services\execution\dtos\invoice-summary-record.ts" />
+    <None Remove="Client\app\shared\services\execution\invoice.ts" />
+    <None Remove="Client\app\shared\services\execution\trade.ts" />
+    <None Remove="Client\app\shared\services\http-services\audit.service.ts" />
+    <None Remove="Client\app\shared\services\http-services\interface.service.ts" />
+    <None Remove="Client\app\shared\services\list-and-search\cost-search-data-loader.ts" />
+    <None Remove="Client\app\shared\services\lock\dtos\delete-locks-command.ts" />
+    <None Remove="Client\app\shared\services\lock\dtos\refresh-lock-ownership-command.ts" />
+    <None Remove="Client\app\shared\services\lock\dtos\unlock-resource-command.ts" />
+    <None Remove="Client\app\shared\services\preaccounting\invoiceDocument.ts" />
+    <None Remove="Client\app\shared\dtos\trade.ts" />
+    <None Remove="Client\app\shared\services\title.service.ts" />
+    <None Remove="Client\app\shared\services\trading\sectionRequest.ts" />
+    <None Remove="Client\app\shared\dtos\updateSectionRequest.ts" />
+    <None Remove="Client\app\shared\entities\charter.ts" />
+    <None Remove="Client\app\shared\entities\company.ts" />
+    <None Remove="Client\app\shared\entities\cost-direction.ts" />
+    <None Remove="Client\app\shared\entities\cost.ts" />
+    <None Remove="Client\app\shared\directives\number-validators.directive.ts" />
+    <None Remove="Client\app\shared\entities\document-type.ts" />
+    <None Remove="Client\app\shared\entities\filter.ts" />
+    <None Remove="Client\app\shared\entities\invoice-source-type.ts" />
+    <None Remove="Client\app\shared\entities\InvoiceHomeSearch.ts" />
+    <None Remove="Client\app\shared\entities\ldeomPostingResult.ts" />
+    <None Remove="Client\app\shared\entities\masterdata.ts" />
+    <None Remove="Client\app\shared\entities\paymentOrder.ts" />
+    <None Remove="Client\app\shared\entities\price-code.ts" />
+    <None Remove="Client\app\shared\entities\privilege.ts" />
+    <None Remove="Client\app\shared\entities\rate-type.ts" />
+    <None Remove="Client\app\shared\entities\section.ts" />
+    <None Remove="Client\app\shared\entities\splitCreationResult.ts" />
+    <None Remove="Client\app\shared\entities\trade.ts" />
+    <None Remove="Client\app\shared\entities\tradeCreationResult.ts" />
+    <None Remove="Client\app\shared\entities\user.ts" />
+    <None Remove="Client\app\shared\errorsHandler.ts" />
+    <None Remove="Client\app\shared\http-interceptors\date-interceptor.ts" />
+    <None Remove="Client\app\shared\http-interceptors\index.ts" />
+    <None Remove="Client\app\shared\models\CharterDisplayViewModel.ts" />
+    <None Remove="Client\app\shared\number-decimals.directive.spec.ts" />
+    <None Remove="Client\app\shared\number-decimals.directive.ts" />
+    <None Remove="Client\app\shared\services\common\models.ts" />
+    <None Remove="Client\app\trading\validators\external-invoice-reference-async-validator.validator.ts" />
+    <None Remove="healthchecksdb" />
+    <None Remove="healthchecksdb-journal" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Client\app\admin\profiles\" />
+    <Folder Include="Client\app\execution\execution-invoicing\cost\invoicing-cost-selection\components\" />
+    <Folder Include="Client\app\financial\enums\" />
+    <Folder Include="Client\app\referential\components\referential-component\" />
+    <Folder Include="Client\app\shared\components\contextual-search\" />
+    <Folder Include="Client\assets\fonts\" />
+    <Folder Include="Client\assets\img\" />
+    <Folder Include="Server\Controllers\" />
+    <Folder Include="Server\Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="2.2.27" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="2.2.3" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.6.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.Kubernetes" Version="1.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.1" PrivateAssets="All" />
+	<PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
+	<PackageReference Include="Serilog.Settings.Configuration" Version="3.0.1" />
+	<PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="2.6.4" />
+	<PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Client\tsconfig.app.json" />
+    <None Include="Client\tsconfig.spec.json" />
+    <None Include="e2e\tsconfig.e2e.json" />
+    <None Include="package-lock.json" />
+    <None Include="package.json" />
+    <None Include="tsconfig.json" />
+    <None Include="tslint.json" />
+    <None Include="wwwroot\assets\ATLAS_Logo.svg" />
+    <None Include="wwwroot\ATLAS_Logo.908b2ca8880947757de8.svg" />
+    <None Include="wwwroot\inline.bundle.js" />
+    <None Include="wwwroot\inline.bundle.js.map" />
+    <None Include="wwwroot\main.bundle.js" />
+    <None Include="wwwroot\main.bundle.js.map" />
+    <None Include="wwwroot\polyfills.bundle.js" />
+    <None Include="wwwroot\polyfills.bundle.js.map" />
+    <None Include="wwwroot\styles.bundle.js" />
+    <None Include="wwwroot\styles.bundle.js.map" />
+    <None Include="wwwroot\vendor.bundle.js" />
+    <None Include="wwwroot\vendor.bundle.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LDC.Atlas.Infrastructure\LDC.Atlas.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Client\app\shared\dtos\cost-contract-search-result.ts" />
+    <TypeScriptCompile Include="Client\app\shared\dtos\invoice-search-result.ts" />
+    <TypeScriptCompile Include="Client\app\shared\dtos\invoice-setup-result.ts" />
+    <TypeScriptCompile Include="Client\app\shared\dtos\section-search-result.ts" />
+    <TypeScriptCompile Include="Client\app\shared\entities\company-bankaccounts.entity.ts" />
+    <TypeScriptCompile Include="Client\app\shared\entities\event.entity.ts" />
+    <TypeScriptCompile Include="Client\app\shared\entities\invoice-type.entity.ts" />
+    <TypeScriptCompile Include="Client\app\shared\entities\is-locked.entity.ts" />
+    <TypeScriptCompile Include="Client\app\shared\entities\lock-functional-context.entity.ts" />
+    <TypeScriptCompile Include="Client\app\shared\entities\lock-resource-information.entity.ts" />
+    <TypeScriptCompile Include="Client\app\shared\entities\pricing-options.entity.ts" />
+    <TypeScriptCompile Include="Client\app\shared\entities\invoice-status.entity.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\Interface\dto\start-stop-interface-process.entity.ts" />
+    <TypeScriptCompile Include="Client\app\shared\entities\statusOptions.entity.ts" />
+    <TypeScriptCompile Include="Client\app\shared\enums\cost-direction-type.enum.ts" />
+    <TypeScriptCompile Include="Client\app\shared\enums\interface-object-type.enum.ts" />
+    <TypeScriptCompile Include="Client\app\shared\enums\interface-status.enum.ts" />
+    <TypeScriptCompile Include="Client\app\shared\enums\interface-type.enum.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\authorization\dtos\user-company-privilege.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\execution\dtos\contracts-to-cost-invoice.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\execution\dtos\cost.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\execution\dtos\invoice-marking.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\execution\dtos\invoice-search.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\execution\dtos\invoice-summary-line-record.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\execution\dtos\invoice-summary-record.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\execution\dtos\invoice.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\execution\dtos\trade.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\execution\dtos\section.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\http-services\audit.service.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\http-services\interface.service.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\list-and-search\cost-search-data-loader.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\lock\dtos\delete-locks-command.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\lock\dtos\refresh-lock-ownership-command.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\lock\dtos\unlock-resource-command.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\preaccounting\dtos\invoice-document.ts" />
+    <TypeScriptCompile Include="Client\app\shared\dtos\trade.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\controlling\dtos\ldeom-posting.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\execution\dtos\payment-order.ts" />
+    <TypeScriptCompile Include="Client\app\shared\directives\number-validators.directive.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\title.service.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\trading\dtos\section.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\trading\dtos\trade.ts" />
+    <TypeScriptCompile Include="Client\app\shared\http-interceptors\date-interceptor.ts" />
+    <TypeScriptCompile Include="Client\app\shared\http-interceptors\index.ts" />
+    <TypeScriptCompile Include="Client\app\shared\models\error-display-view.ts" />
+    <TypeScriptCompile Include="Client\app\shared\models\missing-invoices-display-view.ts" />
+    <TypeScriptCompile Include="Client\app\shared\models\sumary-invoice-view-model.ts" />
+    <TypeScriptCompile Include="Client\app\shared\services\common\models.ts" />
+    <TypeScriptCompile Include="Client\app\execution\execution-invoicing\validators\external-invoice-reference-async-validator.validator.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<CodeAnalysisRuleSet>LDC.Atlas.WebApp.ruleset</CodeAnalysisRuleSet>
+		<AssemblyName>LDC.Atlas.WebApp</AssemblyName>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <NoWarn>1701;1702</NoWarn>
+	</PropertyGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="..\_stylecop\stylecop.json" Link="stylecop.json" />
+	</ItemGroup>
+	<ProjectExtensions><VisualStudio><UserProperties Properties_4launchSettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
+</Project>

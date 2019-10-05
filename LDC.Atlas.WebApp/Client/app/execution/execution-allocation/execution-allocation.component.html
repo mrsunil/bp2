@@ -1,0 +1,146 @@
+<div class="main-container">
+    <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h2>Search contract</h2>
+                <div class="custom-line-title"></div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form ng-submit="onSearchTrade()"
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxLayoutWrap>
+            <div fxFlex="100%"
+                 fxLayout="row"
+                 fxLayout.xs="column"
+                 fxLayoutAlign="none left"
+                 fxLayoutGap="20px">
+                <div fxFlex="20%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <mat-form-field>
+                        <input [(ngModel)]="model.searchContractReference"
+                               required
+                               matInput
+                               placeholder="Search contract to allocate"
+                               [formControl]="searchContractReferenceCtrl">
+                        <mat-error *ngIf="searchContractReferenceCtrl.hasError('required')">
+                            Contract is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="25%"
+                     fxFlex.xs="100%"
+                     fxFlex.sm="100%">
+                    <button mat-icon-button
+                            (click)="onSearchTrade()">
+                        <mat-icon aria-label="Search">search</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center"
+             fxLayoutWrap>
+            <!-- Contract date -->
+            <div fxFlex="100%"
+                 fxFlex.xs="100%"
+                 fxFlex.sm="100%">
+                <mat-table #table
+                           [dataSource]="dataSource"
+                           matSort>
+
+                    <ng-container matColumnDef="contractLabel">
+                        <mat-header-cell *matHeaderCellDef
+                                         mat-sort-header> Reference </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.contractLabel}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="type">
+                        <mat-header-cell *matHeaderCellDef
+                                         mat-sort-header> Type </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="status">
+                        <mat-header-cell *matHeaderCellDef
+                                         mat-sort-header
+                                         fxFlex
+                                         fxShow="false"
+                                         fxShow.gt-sm> Status </mat-header-cell>
+                        <mat-cell *matCellDef="let row"
+                                  [style.color]="row.color"
+                                  fxFlex
+                                  fxShow="false"
+                                  fxShow.gt-sm> {{row.status}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="commodityCode">
+                        <mat-header-cell *matHeaderCellDef
+                                         mat-sort-header
+                                         fxFlex
+                                         fxShow="false"
+                                         fxShow.gt-sm> Commodity Code </mat-header-cell>
+                        <mat-cell *matCellDef="let row"
+                                  [style.color]="row.color"
+                                  fxFlex
+                                  fxShow="false"
+                                  fxShow.gt-sm> {{row.commodityCode}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="quantity">
+                        <mat-header-cell *matHeaderCellDef
+                                         mat-sort-header
+                                         fxFlex
+                                         fxShow="false"
+                                         fxShow.gt-sm> Quantity </mat-header-cell>
+                        <mat-cell *matCellDef="let row"
+                                  [style.color]="row.color"
+                                  fxFlex
+                                  fxShow="false"
+                                  fxShow.gt-sm> {{row.quantity}} {{row.quantityUnit}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="lastModifiedDate">
+                        <mat-header-cell *matHeaderCellDef
+                                         mat-sort-header> Last amendment Date </mat-header-cell>
+                        <mat-cell *matCellDef="let row"
+                                  [style.color]="row.color">
+                            <atr-date-label [date]="row.lastModifiedDate"></atr-date-label>
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="lastModifiedBy">
+                        <mat-header-cell *matHeaderCellDef
+                                         mat-sort-header> Last amendment User </mat-header-cell>
+                        <mat-cell *matCellDef="let row"
+                                  [style.color]="row.color"> {{row.lastModifiedBy}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="selection">
+                        <mat-header-cell *matHeaderCellDef
+                                         mat-sort-header
+                                         fxFlex="4%"></mat-header-cell>
+                        <mat-cell *matCellDef="let row"
+                                  fxFlex="4%">
+                            <mat-checkbox (click)="doNothing()"
+                                          [checked]="selectionManager.isSelected(row)"></mat-checkbox>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row (click)="onRowClicked(row)"
+                             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+                <mat-paginator #paginator
+                               [pageIndex]="0"
+                               [pageSize]="10"
+                               [pageSizeOptions]="[5, 10, 25, 100]">
+                </mat-paginator>
+            </div>
+
+        </div>
+        <div>
+            <div class="custom-line-footer"></div>
+
+        </div>
+    </mat-expansion-panel>
+</div>

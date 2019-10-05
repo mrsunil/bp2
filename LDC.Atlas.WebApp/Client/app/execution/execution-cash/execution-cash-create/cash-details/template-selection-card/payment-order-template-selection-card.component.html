@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-title>
+        <h2>Payment Order Document</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="left start"
+             fxLayoutGap="5%">
+            <mat-form-field>
+                <mat-select placeholder="Template"
+                            [formControl]="templatesCtrl"
+                            (selectionChange)="onTemplateSelected()"
+                            matTooltip="Template">
+                    <mat-option></mat-option>
+                    <mat-option *ngFor="let template of filteredTemplates"
+                                [value]="template">
+                        {{template.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>Select a template if you want to generate a physical document</mat-hint>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>

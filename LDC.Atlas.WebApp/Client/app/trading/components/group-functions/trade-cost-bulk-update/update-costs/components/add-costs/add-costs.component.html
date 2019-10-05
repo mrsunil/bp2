@@ -1,0 +1,60 @@
+<div fxLayout="row"
+     fxLayoutAlign="start center"
+     fxLayoutGap="10px"
+     class="add-line-container add-line-container-add-costs">
+    <div fxLayout="column"
+         fxLayoutAlign="start start">
+        <h6>Add new lines:</h6>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start start"
+         fxFlex="2">
+        <mat-form-field>
+            <input matInput
+                   [formControl]="addNewLineCtrl">
+        </mat-form-field>
+    </div>
+    <div fxLayout="column"
+         fxLayoutAlign="start start"
+         class="add-button-container">
+        <button mat-button
+                (click)="onAddRowButtonClicked(addNewLineCtrl.value)">ADD</button>
+    </div>
+
+    <div fxLayout="column"
+         fxLayoutAlign="start start">
+        <button mat-button
+                (click)="onAddCostMatrixClicked()">ADD COST MATRIX</button>
+    </div>
+</div>
+<mat-card>
+    <h2 class="atlas-grid-card-title">Costs to add in Bulk</h2>
+    <mat-card-content>
+        <div ag-grid="costsGridOptions"
+             class="ag-theme-material pointer-cursor costContractsBulkEdit"
+             style="width: 100%; height: 100%">
+            <ag-grid-angular style=" height: 100%;"
+                             class="ag-theme-material"
+                             [rowData]="costsGridRows"
+                             [columnDefs]="costsGridCols"
+                             [gridOptions]="costGridOptions"
+                             [enableColResize]="true"
+                             [enableSorting]="true"
+                             domLayout=autoHeight
+                             (gridReady)="onGridReady($event)"
+                             (cellValueChanged)="onCellValueChanged($event)"
+                             [frameworkComponents]="gridComponents"
+                             enableFilter
+                             [rowHeight]="atlasAgGridParam.rowHeight"
+                             [singleClickEdit]=true>
+            </ag-grid-angular>
+        </div>
+        <div fxLayout="column"
+             fxLayoutAlign="end end"
+             fxLayoutGap="10px">
+            <span class="fill-space"></span>
+            <button mat-button
+                    (click)="onProceedButtonClicked()">PROCEED</button>
+        </div>
+    </mat-card-content>
+</mat-card>

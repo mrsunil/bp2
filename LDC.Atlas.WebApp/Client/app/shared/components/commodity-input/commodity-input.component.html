@@ -1,0 +1,77 @@
+<div fxFlex="75"
+     fxLayout="column">
+    <div fxLayout="row">
+        <div class='commodity-input-field '>
+            <atlas-dropdown-select [isEditable]="isEditable"
+                                   label="Cmy 1"
+                                   [fieldControl]="commodityPart1Ctrl"
+                                   [options]="commodityPart1FilteredList"
+                                   [isAutocompleteActivated]="isAutocompleteActivated"
+                                   [errorMap]="commodityErrorMap"
+                                   [ngClass]="{'required-field': isRequired()}">
+            </atlas-dropdown-select>
+        </div>
+        <div class='commodity-input-field '>
+            <atlas-dropdown-select [isEditable]="isEditable"
+                                   [label]="labelCmy2"
+                                   [fieldControl]="commodityPart2Ctrl"
+                                   [options]="commodityPart2FilteredList"
+                                   [isAutocompleteActivated]="isAutocompleteActivated"
+                                   [errorMap]="commodityErrorMap"
+                                   [ngClass]="{'required-field': isRequired()}">
+            </atlas-dropdown-select>
+        </div>
+
+        <div class='commodity-input-field '>
+            <atlas-dropdown-select [isEditable]="isEditable"
+                                   [label]="labelCmy3"
+                                   [fieldControl]="commodityPart3Ctrl"
+                                   [options]="commodityPart3FilteredList"
+                                   [isAutocompleteActivated]="isAutocompleteActivated"
+                                   [errorMap]="commodityErrorMap"
+                                   [ngClass]="{'required-field': isRequired()}">
+            </atlas-dropdown-select>
+        </div>
+
+        <div class='commodity-input-field '>
+            <atlas-dropdown-select [isEditable]="isEditable"
+                                   [label]="labelCmy4"
+                                   [fieldControl]="commodityPart4Ctrl"
+                                   [options]="commodityPart4FilteredList"
+                                   [isAutocompleteActivated]="isAutocompleteActivated"
+                                   [errorMap]="commodityErrorMap"
+                                   [ngClass]="{'required-field': isRequired()}">
+            </atlas-dropdown-select>
+        </div>
+        <div class='commodity-input-field '>
+            <atlas-dropdown-select [isEditable]="isEditable"
+                                   [label]="labelCmy5"
+                                   [fieldControl]="commodityPart5Ctrl"
+                                   [options]="commodityPart5FilteredList"
+                                   [isAutocompleteActivated]="isAutocompleteActivated"
+                                   [errorMap]="commodityErrorMap"
+                                   [ngClass]="{'required-field': isRequired()}">
+            </atlas-dropdown-select>
+        </div>
+        <div fxFlex="0 3 fill">
+            <mat-icon matSuffix
+                      *ngIf="selectedCommodityCtrl.enabled"
+                      class="compass-icon"
+                      (click)="onExploreClicked($event)">
+                explore
+            </mat-icon>
+        </div>
+        <div *ngIf="isRequired()"
+             class="custom-form"
+             [class.required-field]="required">
+            <mat-hint>Required*</mat-hint>
+        </div>
+    </div>
+</div>
+<div fxFlex="25"
+     fxLayout="column">
+    <mat-error *ngIf="!selectedCommodityCtrl.valid  && !commodityPart1Ctrl.hasError('inDropdownList')">
+        {{ getErrorMessage() }}</mat-error>
+    <mat-hint *ngIf="selectedCommodityCtrl.value"
+              class="hint-commodity-description">{{selectedCommodityCtrl.value.description}}</mat-hint>
+</div>

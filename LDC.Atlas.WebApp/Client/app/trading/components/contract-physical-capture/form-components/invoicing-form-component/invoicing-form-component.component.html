@@ -1,0 +1,86 @@
+<mat-card *ngIf="!hasEmptyState && !isLoading"
+          class="trade-capture-card">
+    <mat-card-header>
+        <mat-card-title>
+            Invoicing
+        </mat-card-title>
+        <mat-card-subtitle>
+            Invoiced on {{invoiceDateFormat}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row"
+             fxLayoutAlign="right start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="40%">
+                <input matInput
+                       placeholder="MAIN invoice reference number"
+                       [formControl]="invoiceReferenceCtrl"
+                       type="text"
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+            <mat-form-field fxFlex="40%">
+                <input matInput
+                       placeholder="Percentage (%) invoiced"
+                       [formControl]="salesPercentageCtrl"
+                       type="number"
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="right start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="40%">
+                <input matInput
+                       placeholder="Quantity invoiced (Quantity)"
+                       [formControl]="quantityInvoicedCtrl"
+                       type="number"
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+            <mat-form-field fxFlex="40%">
+                <input matInput
+                       placeholder="Quantity invoiced (Code)"
+                       [formControl]="quantityCodeCtrl"
+                       type="text"
+                       autocomplete="off"
+                       readonly>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="right start"
+             fxLayoutGap="5%">
+            <mat-form-field fxFlex="40%">
+                <input matInput
+                       placeholder="Invoice Type"
+                       [matTooltip]="'Invoice Type'"
+                       [matAutocomplete]="invoiceType"
+                       [formControl]="invoiceTypeCtrl">
+                <mat-autocomplete #invoiceType="matAutocomplete">
+                    <mat-option *ngFor="let invoice of filteredInvoiceTypeArray"
+                                [value]="invoice.contractInvoiceType">
+                        {{invoice.contractInvoiceType}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="invoiceTypeCtrl.hasError('inDropdownList')">
+                    Value not in list.
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>
+<atlas-empty-state *ngIf="hasEmptyState && !isLoading"
+                   title="No Invoicing"
+                   [message]="invoicingEmptyMessage"></atlas-empty-state>
+<mat-card *ngIf="isLoading">
+    <mat-card-content>
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 fxLayoutWrap
+                 fxLayoutGap="20px">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+    </mat-card-content>
+</mat-card>

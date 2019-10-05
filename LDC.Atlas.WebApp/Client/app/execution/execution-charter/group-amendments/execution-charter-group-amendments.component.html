@@ -1,0 +1,38 @@
+<form>
+    <div class="main-container">
+        <div fxLayout="row wrap"
+             fxLayoutAlign="space-around start">
+
+            <div fxLayout="column"
+                 fxLayoutAlign="start left"
+                 fxFlex="48">
+                <atlas-charter-bulk-closure #charterBulkClosure
+                                            (charterBulkClosureOptionChecked)="onCharterBulkClosureOptionChecked($event)">
+                </atlas-charter-bulk-closure>
+            </div>
+
+        </div>
+        <div fxLayout="row "
+             fxLayoutAlign="space-between start"
+             class="button-details">
+            <div fxLayout="column "
+                 fxLayoutAlign="start ">
+                <button (click)="onDiscardButtonClicked()"
+                        mat-button>
+                    DISCARD
+                </button>
+            </div>
+            <div fxLayout="column "
+                 fxLayoutAlign="start ">
+                <div fxLayout="row "
+                     fxLayoutAlign="end start ">
+                    <button mat-raised-button
+                            (click)="onNextButtonClicked(charterBulkActionTypeId)"
+                            [disabled]="isDisabled">
+                        NEXT
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

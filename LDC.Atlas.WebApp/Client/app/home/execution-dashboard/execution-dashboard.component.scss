@@ -1,0 +1,45 @@
+.dashboardInput {
+	font-size: 12px;
+	width: 95%;
+}
+
+.dashboardLink {
+	font-size: 12px;
+	font-weight: bold;
+	color: #2196f3;
+	cursor: pointer;
+}
+
+.dashboardLinkContainer {
+	padding-top: 10px;
+	text-align: inherit;
+}
+
+.mat-card-title {
+	font-weight: 400;
+	font-size: 18px;
+	color: #305670;
+	cursor: pointer;
+}
+
+.mat-card-content {
+	align-content: center;
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+.mat-card {
+	padding: 12px;
+}
+
+.mat-card-actions {
+	margin-left: 0px;
+}
+
+canvas {
+	width: 100% !important;
+	height: 100% !important;
+	align-content: center;
+	text-align: center;
+	cursor: pointer;
+}

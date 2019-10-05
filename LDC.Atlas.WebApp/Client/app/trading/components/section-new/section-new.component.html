@@ -1,0 +1,60 @@
+<div>
+	<h2 mat-dialog-title>CREATE A SPLIT</h2>
+	<mat-dialog-content>
+		<form [formGroup]="splitForm">
+			<div fxLayout="row" fxLayoutAlign="none center" fxLayoutWrap fxLayoutGap="10px">
+				<div fxFlex="45%" fxFlex.xs="50%" fxFlex.sm="100%">
+					<mat-form-field>
+						<input atlas-number-decimals maxdecimals="4"
+							   autocomplete="off"
+							   required
+							   matInput
+							   type="number"
+							   min="0"
+							   placeholder="Available Quantity"
+							   formControlName="availableQuantityCtrl">
+					</mat-form-field>
+				</div>
+				<div fxFlex="50%" fxFlex.xs="50%" fxFlex.sm="100%">
+					<mat-form-field>
+						<input atlas-number-decimals maxdecimals="4"
+							   autocomplete="off"
+							   required
+							   matInput
+							   type="number"
+							   min="0"
+							   placeholder="Split Quantity"
+							   formControlName="splitQuantityCtrl">
+						<mat-error *ngIf="splitForm.get('splitQuantityCtrl').hasError('isPositiveError')">
+							Number should not be negative
+						</mat-error>
+						<mat-error *ngIf="splitForm.get('splitQuantityCtrl').hasError('isDifferencePositiveError')">
+							There are not enough remaining quantity
+						</mat-error>
+					</mat-form-field>
+				</div>
+				<div fxFlex="45%" fxFlex.xs="50%" fxFlex.sm="100%">
+					<mat-form-field>
+						<input atlas-number-decimals maxdecimals="4"
+							   autocomplete="off"
+							   required
+							   matInput
+							   type="number"
+							   min="0"
+							   placeholder="Remaining Quantity"
+							   formControlName="remainingQuantityCtrl">
+					</mat-form-field>
+				</div>
+			</div>
+			<div>
+				<div style="margin:20px; text-align:right">
+					<div style="margin:20px; text-align:right">
+						<span class="fill-space"></span>
+						<button mat-raised-button color="primary" (click)="onCloseConfirm()" [disabled]="!splitForm.valid">CREATE</button>&nbsp;
+						<button mat-raised-button color="accent" (click)="onCloseCancel()" [disabled]="savingInProgress">CANCEL</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</mat-dialog-content>
+</div>

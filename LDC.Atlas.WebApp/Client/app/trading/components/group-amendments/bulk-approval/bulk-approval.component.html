@@ -1,0 +1,15 @@
+<mat-card *ifAuthorized="'Trades.GroupFunctions.BulkApproval',company:this.company">
+    <mat-card-title>
+        <h2>Bulk Approval</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div *ngFor="let groupFunctionType of groupFunctionTypeMenu">
+            <mat-checkbox #bulkApproveCtrl
+                          [formControl]="bulkApprovalCtrl"
+                          [value]="groupFunctionType.functionTypeCode"
+                          (change)="onSelectionChange($event,bulkApproveCtrl.checked, groupFunctionType)">
+                {{groupFunctionType.name}}
+            </mat-checkbox>
+        </div>
+    </mat-card-content>
+</mat-card>

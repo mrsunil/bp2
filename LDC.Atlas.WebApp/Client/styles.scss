@@ -1,0 +1,2843 @@
+@import "theme.scss";
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'), url('assets/fonts/Roboto-Regular.woff') format('woff'), url('assets/fonts/Roboto-Regular.ttf') format('truetype'), url('assets/fonts/Roboto-Regular.svg#Avenir-Medium') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Khula';
+    src: url('assets/fonts/Khula-Regular.eot?#iefix') format('embedded-opentype'), url('assets/fonts/Khula-Regular.woff') format('woff'), url('assets/fonts/Khula-Regular.ttf') format('truetype'), url('assets/fonts/Khula-Regular.svg#Avenir-Medium') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Khula';
+    src: url('assets/fonts/Khula-SemiBold.eot?#iefix') format('embedded-opentype'), url('assets/fonts/Khula-SemiBold.woff') format('woff'), url('assets/fonts/Khula-SemiBold.ttf') format('truetype'), url('assets/fonts/Khula-SemiBold.svg#Avenir-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Khula';
+    src: url('assets/fonts/Khula-Bold.eot?#iefix') format('embedded-opentype'), url('assets/fonts/Khula-Bold.woff') format('woff'), url('assets/fonts/Khula-Bold.ttf') format('truetype'), url('assets/fonts/Khula-Bold.svg#Avenir-Light') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Khula';
+    src: url('assets/fonts/Khula-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+* {
+    outline: none;
+}
+
+html,
+body {
+    margin: 0px;
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 0.8em;
+    font-weight: 100;
+}
+
+body,
+.mat-drawer-content {
+    background-color: $background-white;
+    color: $dark-text;
+}
+
+// for convertion PX / EM ===> 14px = 1em
+
+h1 {
+    font-size: 1.5em;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300;
+    letter-spacing: 0.15px;
+    font-family: 'Khula bold', sans-serif;
+    letter-spacing: 0.14px;
+
+    //Reset user agent style margin
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+h2 {
+    font-size: 1.3em;
+}
+
+h3 {
+    font-size: 1.25em;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
+h5 {
+    font-size: .9em;
+}
+
+h6 {
+    font-size: .8em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Khula bold', sans-serif !important;
+    font-weight: bold;
+    color: $dark-text;
+}
+
+.metadata-text {
+    font-family: 'Khula', sans-serif !important;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.mat-slide-toggle-content {
+    font-size: 12px !important;
+    line-height: 18px !important;
+}
+
+.main-container {
+    width: auto;
+    margin: 8px 30px 0px 30px;
+
+    main {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 1590px) {
+    .main-container {
+        margin: 8px 20px 0 20px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .main-container {
+        margin: 8px 10px 0 10px;
+    }
+}
+
+/** General card **/
+
+.mat-card {
+    border-radius: 3px !important;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+    margin: 8px 0;
+    padding: 16px !important;
+
+    h1,
+    h2,
+    h3 {
+        font-family: 'Khula', sans-serif !important;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: 0.15px;
+        color: $dark-text;
+        margin-top: 0;
+
+    }
+
+    .mat-card-header-text {
+        margin: 0;
+    }
+
+    .mat-card-title {
+        font-family: 'Khula', sans-serif !important;
+        font-weight: bold;
+        font-size: 16px !important;
+        line-height: 22px;
+        letter-spacing: 0.15px;
+        color: $dark-text;
+
+        h1,
+        h2 {
+            font-family: 'Khula', sans-serif !important;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 22px;
+            letter-spacing: 0.15px;
+            color: $dark-text;
+        }
+
+        h2,
+        h3 {
+            margin-block-start: 0px !important;
+            margin-block-end: 0px !important;
+            margin-inline-start: 0px !important;
+            margin-inline-end: 0px !important;
+            margin-block-end: 0px !important;
+            margin-right: 10px !important;
+        }
+    }
+
+    .mat-card-content {
+        margin-bottom: 4px;
+        font-size: 12px;
+    }
+
+    .mat-form-field-infix {
+        border-top: 0px;
+    }
+
+    .mat-card-image {
+        width: calc(100% + 32px);
+        margin: 0 -16px 16px -16px;
+
+        &:first-child {
+            margin-top: -16px;
+        }
+    }
+
+    .total-box {
+        text-align: right;
+    }
+
+    .total-figure {
+        color: $dark-text;
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 0;
+        margin-top: 2px !important;
+    }
+
+    .total-figure-value {
+        font-weight: 600;
+    }
+
+    &.no-assigned-state {
+        border: 1px dashed $border2;
+        min-height: 160px;
+        letter-spacing: 0.5px;
+        line-height: 19px;
+        font-size: 16px;
+        text-align: center;
+
+        button {
+            margin-top: 2rem;
+        }
+
+        h3 {
+            margin: auto;
+            margin-top: 4%;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+    }
+}
+
+.fill-space {
+    flex: 1 1 auto;
+}
+
+.cards-fxLayout {
+    .flex-item {
+        display: flex;
+    }
+
+    .mat-card {
+        margin: 8px !important;
+    }
+
+    .flex-item .mat-card {
+        width: 100%;
+    }
+}
+
+.privilege-icon {
+    .mat-icon {
+        display: table;
+    }
+}
+
+atlas-company-picker {
+
+    .mat-expansion-panel-header-description,
+    .mat-expansion-indicator::after {
+        color: $white;
+    }
+
+    .mat-expansion-panel-content {
+        background-color: $white;
+        border-radius: 0 0 3px 3px;
+    }
+}
+
+/*General Table Style*/
+
+.mat-header-cell {
+    font-weight: 800 !important;
+    font-size: 16px !important;
+    color: #24333e !important;
+}
+
+.mat-horizontal-stepper-header {
+    pointer-events: none !important;
+}
+
+
+/*Margin and Padding*/
+
+.margin-12 {
+    margin-left: 8.3%;
+    margin-right: 8.3%;
+    margin-bottom: 2%;
+}
+
+.padding-small {
+    padding: 10px 10px 10px 10px;
+}
+
+.heroGradient {
+    background: rgb(24, 91, 157) linear-gradient(110deg, rgba(24, 91, 157, 1) 0%, rgba(83, 194, 52, 1) 100%) !important;
+    color: $white !important;
+}
+
+.mat-form-field {
+    width: 100% !important;
+    margin: 0 8px 0 0;
+}
+
+.mat-form-field-label-wrapper,
+.label.mat-form-field-label {
+    font-size: 14px !important;
+}
+
+.mat-paginator-page-size-select {
+    width: 56px !important;
+}
+
+.no-padding-fields {
+    .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        padding-bottom: 0px;
+    }
+}
+
+// field margin
+atlas-trade-capture-page {
+
+    atlas-counterparty-form-component,
+    atlas-price-form-component,
+    atlas-terms-form-component {
+        .mat-form-field {
+            margin-bottom: 16px;
+        }
+    }
+
+    .commodity-input-field {
+        .mat-form-field {
+            margin-bottom: 0;
+        }
+    }
+}
+
+mat-form-field.margin-bottom {
+    margin-bottom: 16px !important;
+}
+
+/* duplicate without HOVER*/
+
+.mat-expansion-panel-header-title {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.mat-card .mat-expansion-panel-header-title,
+atlas-additional-details .mat-expansion-panel-header-title {
+    font-family: 'Khula', sans-serif !important;
+    font-weight: 700;
+    font-size: 16px !important;
+    line-height: 22px;
+    letter-spacing: 0.15px;
+    color: #332f30;
+}
+
+.medium-field {
+    width: 100%;
+    max-width: 200px;
+}
+
+.autocompletedropdown {
+    width: fit-content;
+}
+
+.custom-line-title {
+    width: 95%;
+    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.custom-line-footer {
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.mat-expansion-panel-body {
+    overflow: inherit !important;
+}
+
+.mat-header-number {
+    text-align: right;
+    padding-right: 5em;
+}
+
+.mat-cell-number {
+    text-align: right;
+    padding-right: 5em;
+}
+
+.elevated-container {
+    min-width: 300px;
+    background-color: $white;
+}
+
+.container-custom {
+    margin-top: 20px;
+}
+
+.mat-header-row {
+    border-bottom-color: rgba(0, 0, 0, 0.12);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-top-color: rgba(0, 0, 0, 0.12);
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.mat-header-cell {
+    font-size: 14px !important;
+}
+
+.hidden-during-loading {
+    display: none !important;
+    height: 0;
+}
+
+
+/* AG GRID CUSTOM THEME*/
+ag-grid-angular {
+    width: auto;
+    margin: auto -16px -16px -16px;
+}
+
+.ag-theme-material {
+    font-size: 12px !important;
+}
+
+.ag-theme-material .ag-header {
+    font-weight: 800 !important;
+    font-size: 14px !important;
+}
+
+.ag-theme-material .ReadOnlyCell {
+    color: RGBA(0, 0, 0, 0.5);
+    cursor: not-allowed;
+}
+
+.ag-theme-material .ag-header-cell,
+.ag-theme-material .ag-header-group-cell {
+    line-height: 46px !important;
+    height: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+}
+
+.ag-theme-material .ag-cell {
+    line-height: 27px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    // overflow: visible; DO NOT PUT OVERFLOW VISIBLE, this created overlapping in grids
+}
+
+.ag-theme-material .ag-header-cell-menu-button .ag-icon-menu {
+    height: 46px !important;
+}
+
+.ag-theme-material .ag-header-row {
+    height: 48px !important;
+}
+
+.ag-theme-material .ag-paging-panel {
+    justify-content: center !important;
+}
+
+.ag-theme-material button[ref="btFirst"],
+.ag-theme-material button[ref="btPrevious"],
+.ag-theme-material button[ref="btNext"],
+.ag-theme-material button[ref="btLast"] {
+    line-height: initial;
+}
+
+.ag-icon {
+    &.ag-icon-checkbox-indeterminate {
+        background-image: url('assets/checkbox_indeterminate.svg') !important;
+        background-size: 25px 25px !important;
+    }
+
+    &.ag-icon-checkbox-checked {
+        background-image: url("assets/checkbox.svg") !important;
+    }
+}
+
+.ag-header-row {
+    padding-right: 24px;
+    padding-left: 24px;
+}
+
+.ag-header-cell {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.ag-row {
+    border: none !important;
+}
+
+.ag-header-row {
+    border-bottom-color: rgba(0, 0, 0, 0.12);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-top-color: rgba(0, 0, 0, 0.12);
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.ag-ltr {
+
+    .ag-body,
+    .ag-header {
+        overflow: hidden;
+    }
+}
+
+.ag-pinned-right-header,
+.ag-pinned-right-cols-viewport-wrapper {
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); //value from mat-elevation-z2
+}
+
+.mat-checkbox-inner-container {
+    height: 19px !important;
+    width: 19px !important;
+}
+
+
+//Grouping alignment in Generate End of Month
+.ag-row-group-indent-0,
+.ag-row-group-indent-1,
+.ag-row-group-indent-2,
+.ag-row-group-indent-3 {
+    padding-left: 0px !important;
+}
+
+.ag-group-expanded span,
+.ag-group-contracted span {
+    margin-right: 0px !important;
+}
+
+.ag-cell-focus,
+.ag-cell-no-focus {
+    border: none !important;
+}
+
+.ag-cell:focus {
+    border: none !important;
+    outline: none;
+}
+
+.ag-header-row {
+    border-top-style: none !important;
+}
+
+.atr-grid div.ag-row-hover .atr-editable-cell {
+    cursor: url("assets/cursor_edit.svg"), e-resize;
+}
+
+.atr-grid .ag-header-cell {
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.atr-grid .ag-header-icon {
+    position: absolute !important;
+    right: 4px;
+    margin-left: 0px !important;
+}
+
+.atr-grid .atr-money-cell .ag-header-icon {
+    position: absolute !important;
+    left: 4px;
+    text-align: left !important;
+    margin-left: 0px !important;
+}
+
+.atr-grid .ag-cell {
+    text-align: center !important;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.atr-grid .ag-header-cell-label {
+    width: 100% !important;
+}
+
+.atr-grid .ag-header-cell-text {
+    width: 100%;
+    text-align: center !important;
+}
+
+.atr-grid .atr-currency-cell,
+.atr-grid .atr-currency-cell .ag-header-cell-text {
+    text-align: right !important;
+}
+
+.ag-header-cell-label {
+    text-overflow: clip;
+    overflow: visible;
+    white-space: normal;
+    color: $border2;
+    font-size: 12px;
+}
+
+.ag-theme-material.atr-grid .ag-cell-inline-editing .atr-cell-editor input,
+.ag-theme-material.atr-grid .ag-cell-inline-editing .atr-cell-editor input[type='tel'],
+.ag-theme-material.atr-grid .ag-cell-inline-editing .atr-cell-editor input[type='date'],
+.ag-theme-material.atr-grid .ag-cell-inline-editing .atr-cell-editor input[type='datetime-local'],
+.ag-theme-material.atr-grid .ag-cell-inline-editing .atr-cell-editor input:focus,
+.ag-theme-material.atr-grid .ag-cell-inline-editing .atr-cell-editor input[type='tel']:focus,
+.ag-theme-material.atr-grid .ag-cell-inline-editing .atr-cell-editor input[type='date']:focus,
+.ag-theme-material.atr-grid .ag-cell-inline-editing .atr-cell-editor input[type='datetime-local']:focus {
+    border: none !important;
+}
+
+.ag-theme-material {
+
+    .ag-root-wrapper {
+        width: 100%;
+    }
+
+    .mat-icon-button {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .material-icons {
+        font-size: 16px;
+    }
+
+    .mat-icon-button .mat-icon,
+    .mat-icon-button i {
+        line-height: 22px;
+    }
+
+    .ag-column-drop-cell {
+        background: $duck !important;
+        color: $white;
+
+        .ag-column-drop-cell-button {
+            background-image: url('./assets/close-cross-chip.svg') !important;
+        }
+
+        .ag-column-drag {
+            background-image: url('./assets/drag-chip.svg') !important;
+        }
+    }
+
+    .ag-popup-editor {
+        z-index: 2 !important;
+    }
+}
+
+.atr-grid .atr-cell-editor {
+    margin-top: -20px;
+    padding-bottom: 7px;
+    padding-right: 10px;
+    padding-left: 10px;
+    cursor: default;
+}
+
+.atr-grid .atr-cell-editor input {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+.ag-grid-invalid-mandatory-field {
+    color: $white;
+    background-color: $ag-grid-input-error;
+}
+
+.ag-grid-warning-field {
+    color: $white;
+    background-color: $energy;
+}
+
+.ag-grid-valid-mandatory-field {
+    color: $dark-text;
+    background-color: transparent;
+}
+
+.ag-grid-disable-field {
+    color: $white;
+    background-color: $border1;
+}
+
+.ag-grid-row-gray-background,
+.ag-row-odd {
+    background-color: rgba($border1, .3);
+}
+
+.ag-grid-bold-quantity-field {
+    font-weight: bold;
+}
+
+.ag-rich-select-list {
+    height: auto !important;
+}
+
+.ag-popup-editor {
+    max-height: 640px;
+}
+
+.ag-theme-material .ag-header {
+    color: black !important;
+}
+
+.ag-theme-material .ag-cell-range-selected:not(.ag-cell-focus) {
+    background-color: transparent !important;
+}
+
+.ag-theme-material .ag-row-focus,
+.ag-theme-material .ag-row-selected {
+    background-color: rgba($secondary, 0.1) !important;
+}
+
+.cell-selection {
+
+    .ag-theme-material .ag-ltr .ag-cell-focus,
+    .ag-theme-material .ag-cell-range-selected:not(.ag-cell-focus) {
+        background-color: rgba($secondary, 0.1) !important;
+    }
+
+    .ag-theme-material .ag-row-focus,
+    .ag-theme-material .ag-row-selected {
+        background-color: transparent !important;
+    }
+}
+
+.ag-contextual-menu {
+    text-align: right;
+}
+
+/** LOADING PAGE LOGO **/
+#loader {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: $blue-dark;
+}
+
+#loaderContent {
+    height: 50%;
+    width: 50%;
+    margin: auto;
+    background: center/contain url("assets/Atlas-logo.svg") no-repeat;
+    animation: breathing 0.7s 0s infinite ease-in-out alternate;
+}
+
+@keyframes breathing {
+    from {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+
+/** SIDE NAV MENU **/
+.atlas-logo-title {
+    display: flex;
+    padding: 0 16px;
+
+    .atlas-title {
+        display: flex;
+        margin-left: 16px;
+
+        img {
+            width: 80px;
+            height: 48px;
+        }
+    }
+
+    .atlas-logo {
+        display: inline-block;
+        cursor: pointer;
+
+        img {
+            width: 32px;
+            height: 48px;
+        }
+    }
+}
+
+/** LIST & SEARCH **/
+atlas-list-and-search {
+    &.default-height {
+        height: calc(100vh - 56px - 40px - 56px - 120px - 120px);
+
+        .list-and-search-grid-card {
+            height: inherit;
+            min-height: 230px;
+            max-height: calc(100vh - 120px);
+
+            .ag-grid-div-container {
+                height: calc(100% - 60px);
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+atlas-filter-set-display {
+    .mat-drawer-container {
+        z-index: 9 !important;
+    }
+}
+
+.filter-name {
+    .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        padding-bottom: 0;
+    }
+
+    .mat-select-value,
+    input.mat-input-element {
+        color: $dark-text;
+        font-family: 'Khula', sans-serif !important;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .mat-icon {
+        color: $dark-text;
+        cursor: pointer;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+        display: none;
+    }
+
+    .mat-form-field-infix {
+        border-top: none;
+    }
+}
+
+.filter-actions {
+    .mat-form-field-suffix {
+        z-index: 6;
+    }
+}
+
+atlas-client-report,
+atlas-nominal-report {
+    .filter-card-flex-column-direction {
+        flex-direction: column !important;
+    }
+
+    .filter-name {
+        width: 100%;
+    }
+
+    .filter-actions {
+        margin-bottom: 16px;
+    }
+}
+
+
+.no-search-results {
+    font-style: italic;
+    font-size: 16px;
+    background-color: white;
+    padding-left: 2%;
+}
+
+.cursor-default {
+    cursor: default !important;
+}
+
+/** DIALOG BOX **/
+.mat-dialog-container {
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+
+    .mat-divider {
+        border-top-color: $border2;
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+
+    .close-dialog-btn {
+        float: right;
+    }
+
+    .mat-dialog-title {
+        font-family: 'Khula', sans-serif !important;
+        font-weight: 600;
+        font-size: 1.2em;
+    }
+}
+
+//Dialog overriding - reduce padding/margin (based on 24px, reduced on 16px)
+.mat-dialog-container {
+    padding: 16px !important;
+}
+
+.mat-dialog-content {
+    margin: 0px -16px !important;
+    padding: 0 16px !important;
+}
+
+.mat-dialog-actions {
+    margin: auto -8px -16px -8px !important;
+}
+
+
+.has-header {
+    .mat-menu-content {
+        padding: 0px !important;
+        width: fit-content !important;
+        min-width: 230px;
+    }
+
+    top: -1px !important;
+    width: fit-content;
+    min-width: 230px;
+}
+
+.menu-header .mat-icon {
+    color: $white !important;
+}
+
+/*** BUTTONS **/
+.btn-container {
+    margin: 8px;
+}
+
+.mat-button,
+.mat-raised-button {
+    text-transform: uppercase;
+    min-width: auto !important;
+}
+
+button {
+    height: 32px;
+    line-height: 32px;
+
+    &.mat-button {
+        padding-left: 8px;
+        padding-right: 8px;
+        margin: 16px 8px auto 8px;
+
+        span {
+            display: block;
+            line-height: 32px;
+        }
+    }
+
+    &.mat-raised-button {
+        border-radius: 3px;
+        background: $shadow;
+        box-shadow: none;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.75px;
+        color: white;
+        margin: 16px;
+        padding: 0 16px;
+
+        span {
+            display: block;
+            line-height: 32px;
+        }
+    }
+}
+
+.ux-component-list {
+    button {
+
+        &.mat-raised-button,
+        &.mat-fab {
+            margin: 16px;
+        }
+
+        &.mat-button {
+            margin: 16px 8px;
+        }
+    }
+}
+
+/** SNACKBAR **/
+
+.mat-snack-bar-container {
+    margin: 16px !important;
+    border-radius: 4px !important;
+}
+
+.mat-simple-snackbar-action {
+    .mat-button {
+        cursor: pointer !important;
+        margin: 0;
+    }
+}
+
+.no-overflow {
+    overflow-y: hidden !important;
+}
+
+.pointer-cursor .ag-row-hover {
+    cursor: pointer !important;
+}
+
+/* Following UX Guidelines*/
+
+.atr-user-card {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.atr-user-card>.user-avatar {
+    font-size: 18px;
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    color: $primary;
+}
+
+.atr-user-card-username {
+    font-weight: bold;
+}
+
+.atr-card-header {
+    color: $white !important;
+    border-radius: 2px 2px 0 0 !important;
+    box-shadow: none !important;
+}
+
+/*added by souhir*/
+
+.mat-expansion-panel-header[_ngcontent-c11],
+.mat-expansion-panel-header[_ngcontent-c11]:focus {
+    margin-top: 0px !important;
+}
+
+.mat-expansion-panel-header-title h2 {
+    white-space: nowrap;
+    font-size: 1em;
+}
+
+.mat-expansion-panel-header-description {
+    align-items: center;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple,
+.mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+    opacity: 1 !important;
+    transform: scaleX(1);
+    transition: transform .3s cubic-bezier(.25, .8, .25, 1), opacity .1s cubic-bezier(.25, .8, .25, 1), background-color .3s cubic-bezier(.25, .8, .25, 1)
+}
+
+.mat-form-field-infix {
+    border-bottom: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+/** SIDE NAV CONTENT **/
+.sidenav-container {
+    height: 100%;
+}
+
+.mat-sidenav-content .mat-toolbar.mat-elevation-z6 {
+    box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2) !important;
+}
+
+.mat-sidenav-content .mat-toolbar {
+    transition: all 0.5s;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+.mat-sidenav-content {
+
+    &.openSidenavContent[_ngcontent-c0],
+    &.openSidenavContent {
+        margin-left: 210px !important;
+    }
+}
+
+.ng-tns-c0-0.ng-trigger .ng-trigger-routerTransition {
+    height: 100% !important;
+}
+
+.mat-drawer-container {
+    z-index: 5 !important;
+}
+
+.sidenav {
+    box-shadow: 5px 1px 11px -3px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 5px 1px 11px -3px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 5px 1px 11px -3px rgba(0, 0, 0, 0.2);
+}
+
+.mat-drawer-content {
+    .screenfullwidth {
+        padding: .33333333rem;
+    }
+}
+
+.mat-drawer:not(.mat-drawer-side) {
+    position: fixed;
+}
+
+.mat-drawer-backdrop {
+    position: fixed !important;
+}
+
+.custom-line-footer {
+    border-top: 1px solid mat-color($mat-green, 600) !important;
+}
+
+
+.highlighted-row {
+    background: rgba($blue-light, .8); // #A7C5E2;
+}
+
+
+/** ICON **/
+.outline-save-icon {
+    background-image: url("/assets/outline-save.svg") !important;
+    margin: 8px;
+}
+
+.bookmark-icon {
+    color: $shadow !important;
+}
+
+.heart-saved {
+    color: $cherry;
+}
+
+.heart-not-saved {
+    color: $shadow;
+}
+
+.mat-icon-button {
+    color: $shadow !important;
+}
+
+.mat-icon-button:not([disabled]):hover {
+    color: mat-color($mat-blue, 600);
+}
+
+.mat-icon-disabled {
+    color: mat-color($mat-blue-grey, A400) !important;
+    cursor: default !important;
+}
+
+
+/** TOGGLE BUTTON **/
+
+.mat-button-toggle {
+    color: white;
+    background-color: $primary; // #708EB4
+}
+
+.mat-button-toggle-checked {
+    background-color: mat-color($mat-blue, 500) !important;
+    color: white;
+}
+
+.mat-button-toggle-checked {
+    background-color: mat-color($mat-blue, 500) !important;
+    color: white;
+}
+
+.mat-button-toggle.mat-button-toggle-disabled {
+    color: $white;
+    background-color: #cccccc;
+}
+
+.mat-list-item .mat-list-icon {
+    color: $dark-text;
+    fill: currentColor;
+}
+
+.mat-list-item {
+    color: $dark-text;
+}
+
+.mat-list-item-focus,
+.mat-list-item.active {
+    background: lighten($primary, 60.1);
+}
+
+.mat-list-item-focus a,
+.mat-list-item.active a,
+.mat-list-item-focus .mat-list-icon,
+.mat-list-item.active .mat-list-icon {
+    color: $primary;
+}
+
+
+/** Toolbar theming **/
+.mat-toolbar .ng-tns-c0-0 {
+    width: 100% !important;
+}
+
+mat-toolbar {
+    &.mat-toolbar {
+        height: 56px;
+        color: $secondary;
+        background-color: $primary;
+
+        .mat-icon {
+            color: white;
+        }
+
+        .title-icon {
+            color: mat-color($mat-blue, 900);
+        }
+
+        .mat-toolbar:not(:last-child) {
+            background-color: $primary;
+        }
+
+        &.fixedNavSubMenu {
+            box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2) !important;
+            z-index: 8 !important;
+        }
+
+        h1 {
+            color: $white;
+        }
+    }
+
+    .mat-icon-button {
+        height: 54px;
+        width: 50px;
+        text-align: center;
+        line-height: 54px;
+    }
+
+    .mat-expansion-panel-header {
+        height: 20px;
+    }
+
+    .toolbar-content {
+        width: 1140px;
+        margin: auto;
+    }
+}
+
+/** CHIPS **/
+.mat-chip {
+    .mat-icon {
+        margin-right: 5px !important;
+        margin-left: 0 !important;
+    }
+
+    &.mat-standard-chip.mat-chip-selected.mat-chip.mat-standard-chip {
+        .mat-icon {
+            margin-right: 5px !important;
+            margin-left: 0 !important;
+        }
+    }
+}
+
+mat-basic-chip,
+mat-chip {
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    padding: 0px 12px;
+    height: 26px;
+    line-height: 26px !important;
+    border-radius: 24px;
+    margin: 4px;
+
+    &.flat {
+        background-color: mat-color($mat-green, 50);
+        cursor: not-allowed;
+    }
+}
+
+.matTooltip {
+    position: relative;
+    line-height: 24px;
+
+    span {
+        line-height: 24px;
+        float: left;
+        margin-right: 5px;
+    }
+
+    mat-icon {
+        line-height: 24px;
+    }
+}
+
+.mat-progress-bar.mat-accent .mat-progress-bar-buffer {
+    background: mat-color($mat-green, A700);
+}
+
+.floating-menu {
+    position: relative;
+
+    .mat-menu-content {
+        width: 220px;
+    }
+
+    h5 {
+        margin: 0 auto;
+        width: 100%;
+        line-height: 56px;
+        background-color: $secondary;
+        color: lighten($secondary, 80);
+        text-align: center;
+
+        mat-icon {
+            line-height: 46px;
+            height: 56px;
+            float: left;
+            padding: 0 0px 0 10px;
+        }
+
+        span {
+            line-height: 56px;
+            height: 56px;
+            display: inline-block;
+        }
+    }
+
+    .mat-menu-content {
+        padding-top: 0;
+        width: 220px;
+    }
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+
+    mat-checkbox,
+    mat-radio-button {
+        margin: 6px 0;
+        display: inline-block;
+        margin-right: 6px;
+    }
+}
+
+mat-button-toggle-group {
+    mat-button-toggle {
+        &.mat-button-toggle {
+            background: white;
+            color: black;
+            font-weight: 400;
+
+            &.mat-button-toggle-checked {
+                background-color: $primary !important;
+                color: white !important;
+            }
+
+            .mat-button-toggle-label-content {
+                line-height: 32px;
+            }
+        }
+    }
+}
+
+mat-horizontal-stepper {
+    width: 100%;
+
+    .mat-step-header .mat-step-icon {
+        background-color: $secondary;
+
+        .mat-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+input:-webkit-autofill {
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+.screen {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+    margin-top: 15px;
+}
+
+.shadow {
+    border: 1px solid rgba(0, 0, 0, .03);
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.mat-form-field-appearance-legacy.mat-form-field-invalid:not(.mat-focused) .mat-form-field-ripple {
+    height: 3px !important;
+}
+
+.margin {
+    margin: 8px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+mat-form-field,
+atlas-commodity-input {
+    &.ng-invalid {
+        mat-icon {
+            color: $error;
+        }
+    }
+
+    &.ng-valid {
+        mat-icon {
+            color: $secondary;
+        }
+    }
+
+    .compass-icon {
+        cursor: pointer;
+        color: $shadow !important;
+        font-size: 18px;
+        vertical-align: sub;
+    }
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.search-filter {
+    padding: 5px 24px 24px 24px;
+
+    .head-filter {
+        .button-row {
+            a {
+                color: $border2;
+            }
+        }
+
+        button {
+            padding: 0 3px;
+        }
+
+        .mat-form-field-ripple {
+            opacity: 0 !important;
+            display: none !important;
+        }
+    }
+}
+
+/** SEARCH BAR **/
+.search {
+    display: flex;
+    margin: -16px !important;
+    height: 40px;
+
+    form {
+        height: 40px;
+    }
+
+    .mat-form-field {
+        height: 100%;
+        margin-bottom: 0;
+        margin-top: 14px;
+    }
+
+    .mat-form-field-ripple {
+        opacity: 0 !important;
+        display: none !important;
+    }
+
+    .mat-form-field-wrapper {
+        height: 100%;
+        padding: 0;
+        margin: 0 !important;
+    }
+
+    .mat-form-field-flex,
+    div>div>div>div {
+        padding-left: 5px;
+        border-left: 1px solid #eee;
+    }
+
+    button {
+        line-height: 40px;
+        height: 40px;
+        width: 56px !important;
+        min-width: 56px;
+        margin: 0 !important;
+        -webkit-border-radius: 3px;
+        -webkit-border-top-left-radius: 1px;
+        -webkit-border-bottom-left-radius: 1px;
+        -moz-border-radius: 3px;
+        -moz-border-radius-topleft: 1px;
+        -moz-border-radius-bottomleft: 1px;
+        border-radius: 3px;
+        border-top-left-radius: 1px;
+        border-bottom-left-radius: 1px;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+        background-color: transparent !important;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        padding-bottom: 0
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline,
+    .mat-form-field-appearance-outline .mat-form-field-outline-thick,
+    .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick,
+    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+        color: transparent;
+    }
+
+    .mat-form-field .compass-icon {
+        margin-top: 0px;
+    }
+}
+
+main {
+    margin: 50px;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.data-label {
+    color: $border2; // to be replaced
+}
+
+//FAB position
+.fab-menu {
+    top: 4px !important;
+    padding-top: 16px;
+}
+
+// Shadow for FAB open panel
+.mat-menu-panel.floating-menu {
+    box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2), 0px 16px 24px 2px rgba(0, 0, 0, 0.14), 0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+}
+
+.mat-raised-button {
+    &.fab-text-button {
+        height: 50px;
+        border-radius: 40px;
+        position: relative;
+        margin: 0;
+        top: 28px;
+        float: right;
+    }
+}
+
+//custom form components
+.displayMode {
+    .mat-form-field-ripple {
+        opacity: 0 !important;
+        display: none !important;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+        background-color: transparent !important;
+    }
+
+    .mat-form-field.mat-form-field-invalid .mat-form-field-ripple,
+    .mat-form-field.mat-form-field-invalid .mat-form-field-ripple.mat-accent {
+        opacity: 0 !important;
+        display: none !important;
+    }
+
+    .mat-input-element:disabled {
+        color: $dark-text;
+    }
+
+    .mat-select-value-text {
+        color: $dark-text;
+    }
+
+    .mat-form-field {
+        .mat-select.mat-select-disabled {
+            .mat-select-arrow {
+                color: white; //note : display:none; hide entire select
+            }
+        }
+    }
+
+    .mat-form-field-appearance-legacy.mat-form-field-disabled {
+        .mat-form-field-underline {
+            background-image: none !important;
+        }
+    }
+
+    .mat-form-field-disabled {
+        .mat-datepicker-toggle {
+            display: none;
+        }
+    }
+
+}
+
+.agGrid {
+
+    //custom component for Autocomplete AgGrid
+    //centered in height
+    .mat-form-field-appearance-legacy .mat-form-field-infix {
+        padding: 0px;
+        border-top: 0px;
+    }
+
+    //text in the middle
+    .mat-form-field-infix {
+        text-align: center;
+    }
+
+    //reduce hint-spacer
+    .mat-form-field-hint-spacer {
+        width: 0px;
+        height: 0px;
+    }
+
+    //text of error centered
+    .mat-error {
+        text-align: center;
+    }
+
+    .custom-form.required-field .mat-hint {
+        text-align: center;
+        width: 180px
+    }
+
+    //clean line
+    .mat-form-field-underline {
+        opacity: 0;
+    }
+}
+
+.custom-form {
+    display: flex;
+
+    input {
+        text-overflow: ellipsis;
+    }
+
+    .mat-form-field {
+        &.ng-valid {
+            .mat-form-field-ripple {
+                background-color: $valid;
+                opacity: 1 !important;
+                transform: scaleX(1);
+                transition: transform .3s cubic-bezier(.25, .8, .25, 1), opacity .1s cubic-bezier(.25, .8, .25, 1), background-color .3s cubic-bezier(.25, .8, .25, 1);
+            }
+
+            .mat-select-arrow {
+                color: $valid;
+            }
+        }
+
+        &.mat-focused {
+            .mat-form-field-ripple {
+                background-color: $primary;
+            }
+        }
+    }
+
+    &.isEmpty {
+        .mat-form-field.ng-valid {
+            .mat-form-field-ripple {
+                opacity: 0;
+                display: none;
+            }
+
+            .mat-select-arrow {
+                color: $border1;
+            }
+        }
+    }
+
+    .validIcon {
+        font-size: 18px;
+        color: $valid
+    }
+
+    .notValidIcon {
+        color: $error
+    }
+
+    &.required-field {
+        .mat-form-field-underline {
+            background-color: $info-blue;
+        }
+
+        .mat-form-field-appearance-legacy .mat-hint {
+            color: $info-blue;
+        }
+
+        .mat-hint {
+            color: $info-blue;
+        }
+
+        .ng-valid {
+            .mat-hint {
+                color: $valid;
+            }
+        }
+    }
+
+    &.warning-field {
+        .mat-form-field {
+            &.ng-valid {
+                .mat-form-field-ripple {
+                    background-color: $warning;
+                }
+            }
+        }
+
+        .mat-form-field-underline {
+            background-color: $warning;
+        }
+
+        .mat-form-field-appearance-legacy .mat-hint {
+            color: $warning;
+        }
+    }
+}
+
+.commodity-input-field {
+    .required-field {
+        .mat-form-field-underline {
+            background-color: $info-blue;
+        }
+
+        .mat-form-field-appearance-legacy .mat-hint {
+            color: $info-blue;
+        }
+
+        .mat-hint {
+            color: $info-blue;
+        }
+
+        .ng-valid {
+            .mat-hint {
+                color: $valid;
+            }
+        }
+    }
+}
+
+atlas-user-search,
+.atr-card-header {
+    .mat-card-title {
+        color: white;
+    }
+
+    mat-form-field.ng-valid .mat-form-field-ripple,
+    .mat-form-field.mat-focused .mat-form-field-ripple {
+        background-color: $white;
+    }
+
+    .mat-form-field-appearance-legacy {
+        .mat-form-field-underline {
+            background-color: $white;
+        }
+
+        .mat-form-field-label,
+        &.mat-focused .mat-form-field-label {
+            color: rgba($white, .6);
+        }
+    }
+
+    .mat-focused .mat-form-field-required-marker {
+        color: rgba($white, .6);
+    }
+}
+
+// Header component text color
+.header-background {
+
+    .trade-capture.header-container,
+    .trade-allocation.header-container {
+        position: relative;
+
+        h1 {
+            color: black;
+        }
+
+        .mat-form-field-infix {
+            color: black;
+        }
+
+        label {
+            color: black;
+        }
+
+        span {
+            color: black;
+        }
+
+        .waves {
+            position: absolute;
+            bottom: 0px;
+            width: auto;
+            min-width: 100%;
+            height: 60%;
+            z-index: -1;
+        }
+
+        .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+            padding-bottom: 0;
+        }
+    }
+}
+
+// Price Component
+.price-accordion {
+    mat-expansion-panel.mat-expansion-panel.mat-expanded.mat-expansion-panel-spacing {
+        box-shadow: unset;
+    }
+}
+
+.price-accordion {
+    mat-expansion-panel.mat-expansion-panel {
+        box-shadow: unset !important;
+        background: #fff;
+
+        &:hover {
+            box-shadow: unset !important;
+            background: #fff;
+        }
+
+        &:focus {
+            box-shadow: unset !important;
+            background: #fff;
+        }
+    }
+
+    .mat-expansion-panel-body {
+        padding: 16px 0 0 0;
+    }
+
+    .mat-expansion-panel {
+        &:not(.mat-expanded) {
+            .mat-expansion-panel-header {
+                &:not([aria-disabled='true']) {
+                    &:hover {
+                        box-shadow: unset !important;
+                        background: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.price-accordion.mat-accordion {
+    mat-expansion-panel-header {
+        margin: 0 -16px;
+        padding: 0 16px;
+    }
+}
+
+//traffic tab
+.adjust-weight-title {
+    margin-left: 15px;
+}
+
+.adjust-weight-section {
+    margin-bottom: 15px;
+}
+
+.created-allocation-residual-split-dropdown {
+    margin-left: 45px;
+}
+
+//Current Trade Component
+.mat-card.trade-capture-card {
+    mat-slide-toggle {
+        padding: 10px 0px;
+    }
+}
+
+// Menu Panel
+.mat-menu-panel {
+    position: relative;
+    top: 31px;
+
+    &.mat-menu-below {
+        top: 1px;
+    }
+}
+
+// Menu Content
+// Be careful ! These classes affect : ag-grid user preferences, contextual menu, menu bar
+.mat-menu-content {
+    overflow: auto;
+    max-height: 250px;
+    min-width: 160px;
+    padding: 16px 0 !important;
+
+    .mat-menu-item {
+        padding: 0 16px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+    }
+}
+
+.fab-menu .mat-menu-content {
+    max-height: none !important;
+}
+
+button {
+    &.mat-menu-item {
+        padding: 0 16px;
+        height: 40px;
+        line-height: 40px;
+    }
+}
+
+// Contract status card
+contract-status-details .mat-card {
+    margin: 3px auto;
+}
+
+.margin-edit-user .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #069100 !important;
+}
+
+.margin-edit-user .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #52C234 !important;
+}
+
+.margin-edit-user .ag-theme-material .ag-header {
+    color: #928D8F !important;
+}
+
+.margin-edit-user .mat-expansion-panel-body {
+    padding-bottom: 1px !important;
+}
+
+.margin-edit-user .mat-expansion-panel-body {
+    padding-bottom: 1px !important;
+}
+
+.mat-form-field-prefix,
+.mat-form-field-suffix {
+    z-index: 9;
+}
+
+.mat-autocomplete-panel {
+    width: auto !important;
+}
+
+// Dialog Box
+.trade-approval-dialog-background-class.cdk-overlay-backdrop-showing {
+    opacity: 0;
+}
+
+.cdk-global-overlay-wrapper {
+    height: 85px;
+    top: 6%;
+}
+
+.cdk-overlay-container {
+    .cdk-overlay-pane.trade-approval-dialog-class {
+        max-width: none !important;
+        width: 92% !important;
+        top: 8%;
+        left: 6%;
+        position: absolute !important;
+    }
+}
+
+.trade-approval-dialog-class {
+    .mat-dialog-container {
+        padding: 12px;
+        height: 65px;
+    }
+
+    .mat-dialog-title {
+        margin: 0;
+        float: left;
+    }
+
+    .mat-dialog-actions {
+        padding: 0;
+        float: right;
+    }
+}
+
+.user-creation-result {
+    padding: 16px;
+}
+
+.authorized-area-card {
+
+    .mat-form-field-ripple,
+    .mat-form-field.mat-focused .mat-form-field-ripple {
+        display: none;
+    }
+
+    .mat-form-field-appearance-legacy {
+        .mat-form-field-underline {
+            display: none;
+        }
+
+    }
+}
+
+/* TABULATION */
+
+.mat-tab-label,
+.mat-tab-link {
+    min-width: 90px !important;
+    padding: 0 16px !important;
+    font-weight: 600 !important;
+
+    &.mat-tab-label-active {
+        opacity: 1,
+    }
+}
+
+
+
+.mat-tab-group-dynamic-height .mat-tab-body-content,
+.mat-tab-body-content {
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
+.bright-tab {
+    .mat-tab-label .mat-tab-label-content {
+        text-transform: uppercase;
+    }
+
+    &.mat-tab-group.mat-primary,
+    &.mat-tab-nav-bar.mat-primary {
+        .mat-ink-bar {
+            background-color: $primary;
+        }
+    }
+}
+
+.dark-tab {
+    &.header-tab {
+        background-color: $primary;
+        height: 40px;
+    }
+
+    .header-tab-container {
+        width: 100%;
+        margin: auto;
+    }
+
+    .mat-tab-group,
+    .mat-tab-nav-bar {
+        width: 60%;
+        margin-top: 0px;
+        display: inline-block;
+    }
+
+    &.mat-tab-nav-bar.mat-primary,
+    .mat-tab-link,
+    .mat-tab-label .mat-tab-label-content {
+        text-transform: uppercase;
+        color: $white;
+    }
+
+    .mat-tab-link,
+    .mat-tab-label {
+        height: 40px;
+    }
+
+    .fab-text-button {
+        right: 0;
+        float: right;
+    }
+
+    .mat-tab-group.mat-primary,
+    .mat-tab-nav-bar.mat-primary {
+        .mat-ink-bar {
+            background-color: $white;
+        }
+    }
+}
+
+.admin-tab {
+    background-image: url('./assets/img/pattern-small.jpg'); // image to be defined
+
+    &.header-tab {
+        background-color: transparent;
+        height: 56px;
+    }
+
+    .header-tab-container {
+        width: 100%;
+        max-width: 1140px;
+        margin: auto;
+    }
+
+    .mat-tab-group,
+    .mat-tab-nav-bar {
+        width: 60%;
+        margin-top: 8px;
+        display: inline-block;
+    }
+
+    &.mat-tab-nav-bar.mat-primary,
+    .mat-tab-link,
+    .mat-tab-label .mat-tab-label-content {
+        text-transform: uppercase;
+        color: $white;
+    }
+
+    .mat-tab-group.mat-primary,
+    .mat-tab-nav-bar.mat-primary {
+        .mat-ink-bar {
+            background-color: $white;
+        }
+    }
+}
+
+.mat-tab-group.mat-background-primary .mat-tab-header,
+.mat-tab-group.mat-background-primary .mat-tab-links,
+.mat-tab-nav-bar.mat-background-primary .mat-tab-header,
+.mat-tab-nav-bar.mat-background-primary .mat-tab-links {
+    background-color: $primary !important;
+}
+
+.content-tab {
+    .mat-tab-group {
+        width: 100%;
+
+        .mat-tab-header {
+            display: none;
+        }
+    }
+}
+
+
+
+// Invoice Selection, Invoice Document, Payment, Total Amount
+
+.payment-total-amount-section {
+    width: 100%;
+}
+
+/* Fields */
+.mat-disabled-field {
+
+    .mat-input-element {
+        &:disabled {
+            color: $shadow !important;
+        }
+    }
+
+    &.mat-form-field-appearance-legacy.mat-form-field-disabled {
+        .mat-form-field-underline {
+            display: none;
+        }
+    }
+}
+
+.mat-read-only-field {
+    &.mat-form-field-appearance-legacy .mat-form-field-ripple {
+        display: none;
+    }
+}
+
+/* TRADE HEADERS */
+.header-background.trade {
+    &.trade-capture {
+        .mat-form-field-appearance-legacy {
+            .mat-form-field-label {
+                color: rgba(black, .54);
+            }
+
+            .mat-form-field-underline {
+                background-color: rgba(black, 0.42);
+            }
+        }
+
+        .custom-form.required-field .mat-form-field-underline {
+            background-color: $duck;
+        }
+
+        .mat-form-field-appearance-legacy .mat-form-field-prefix .mat-datepicker-toggle-default-icon,
+        .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+            display: block;
+        }
+
+        .displayMode,
+        .displayMode .mat-input-element:disabled,
+        atlas-masterdata-user-preferences-input .mat-form-field {
+            color: $dark-text;
+        }
+
+        .mat-icon-button,
+        mat-form-field .compass-icon {
+            color: $shadow !important;
+        }
+    }
+
+    .mat-form-field-appearance-legacy {
+        .mat-form-field-label {
+            color: rgba($white, .8);
+        }
+
+        .mat-form-field-underline {
+            background-color: rgba($white, 0.42);
+        }
+
+        &.mat-form-field-disabled .mat-form-field-underline {
+            display: none;
+        }
+    }
+
+    .mat-form-field-disabled.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-datepicker-toggle-default-icon,
+    .mat-form-field-disabled.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+        display: none;
+    }
+
+    .displayMode,
+    .displayMode .mat-input-element:disabled,
+    atlas-masterdata-user-preferences-input .mat-form-field {
+        color: $white;
+    }
+
+    .mat-icon-button,
+    mat-form-field .compass-icon {
+        color: white !important;
+    }
+}
+
+.header-background.invoice .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline,
+.summary-details .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
+    display: none !important;
+}
+
+.header-background.invoice .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-suffix .mat-datepicker-toggle-default-icon,
+.summary-details .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+    display: none !important;
+}
+
+.header-background.invoice {
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+.header-background.invoice .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline,
+.summary-details .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
+    display: none !important;
+}
+
+.header-background.invoice .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-suffix .mat-datepicker-toggle-default-icon,
+.summary-details .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+    display: none !important;
+}
+
+.header-container {
+    .mat-form-field {
+        font-size: 16px !important;
+    }
+
+    .mat-form-field input.mat-input-element {
+        font-size: 14px;
+    }
+
+    span.mat-form-field-label-wrapper {
+        font-size: 14px;
+    }
+
+    .mat-form-field-infix {
+        padding: 3px 0 !important;
+        border-top: none !important;
+    }
+}
+
+/* Luke header */
+.header-background {
+    background: top/contain url("/assets/img/luke-waves.svg") no-repeat;
+    background-position-x: right;
+    background-color: white;
+    min-height: 130px;
+}
+
+/** Dark Header **/
+
+.header-background-creation {
+    width: 100%;
+    background: top/contain url("/assets/img/luke-waves-gray.svg") no-repeat;
+    background-position-x: right;
+    background-color: $white;
+}
+
+.header-main {
+    margin-left: 50px;
+}
+
+.header-content {
+    margin: auto;
+    padding: 16px 30px 14px;
+
+    .mat-form-field-suffix .mat-icon {
+        font-size: 18px;
+    }
+}
+
+/* Luke header for a card */
+.mat-card.card-header-luke {
+    background: url("/assets/img/luke-waves.svg") top right;
+    background-size: contain;
+    background-color: white;
+    min-height: 116px;
+    background-repeat: no-repeat;
+    padding-bottom: 0;
+
+    .mat-form-field:read-only {
+        &.mat-form-field-appearance-legacy {
+            .mat-form-field-underline {
+                display: none;
+            }
+        }
+    }
+}
+
+.atr-charter-header {
+    margin-top: 25px;
+    margin-left: 50px;
+    font-family: 'Khula', sans-serif !important;
+    font-weight: 300;
+    font-size: 1.25em;
+}
+
+.charter-global-info {
+    .label {
+        font-size: 14px;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+/* MENU BAR */
+.menu-bar {
+
+    &.mat-toolbar.mat-toolbar {
+        color: $shadow;
+        background-color: $white;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.20) !important;
+    }
+
+    .mat-button {
+        border-radius: 0px;
+        font-size: 14px;
+        margin: 0;
+        height: 100%;
+        text-transform: none;
+    }
+
+    .toolbar-div {
+
+        margin: 0 0 0 30px;
+        width: 100%;
+        height: 100%;
+    }
+
+    mat-icon.validIcon.mat-icon.material-icons.ng-star-inserted {
+        float: right !important;
+    }
+
+    mat-icon.errorIcon.mat-icon.material-icons.ng-star-inserted {
+        float: right !important;
+    }
+
+    mat-icon.errorIcon.mat-icon.material-icons.ng-star-inserted {
+        float: right !important;
+    }
+
+    .menu-bar-action-icon {
+        cursor: pointer;
+        background-color: #81cf5c;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+    }
+
+    .white-icon {
+        color: $white;
+        height: 24px;
+        width: 24px;
+        vertical-align: bottom;
+    }
+}
+
+//For Add Cost Cell Required Field
+.cost-cell-value-required {
+    color: $info-blue;
+}
+
+//For Create Document Cell Required Field
+.document-cell-value-required {
+    color: $info-blue;
+}
+
+// For BulkEdit Grid Required Field
+.bulk-edit-cell-value-required {
+    color: $info-blue;
+}
+
+.invoice-creation-card {
+
+    // Needs to be removed when the custom fields will be implemented in invoice
+    //start
+    mat-form-field.ng-valid .mat-form-field-ripple {
+        background-color: gray;
+    }
+
+    .mat-form-field.ng-valid.mandatory {
+        .mat-form-field-ripple {
+            background-color: $info-blue;
+        }
+    }
+
+    .invoice-creation-required-fields {
+        color: $info-blue !important;
+    }
+
+    //end
+}
+
+
+//Invoice Marking Section
+.invoice-marking-section {
+    padding: 0 1px;
+}
+
+.total-status-section {
+    display: flex;
+    width: 100%;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+// Circle with icon for warning, error, info
+.trade-allocation-messages,
+.information-banner-card,
+.warning-banner-card,
+.authorize-posting-dialog,
+.group-function-warning-banner,
+.manual-import-warning,
+.trade-merge-validations-messages {
+    .error-circle-icon {
+        background-color: $error !important;
+    }
+
+    .success-circle-icon {
+        background-color: $secondary !important;
+    }
+
+    .warning-circle-icon {
+        background-color: $warning !important;
+    }
+
+    .info-circle-icon,
+    .question-circle-icon {
+        background-color: $info-blue !important;
+    }
+
+    .info-circle-green-icon {
+        background-color: $valid !important;
+    }
+
+    .error-circle-icon,
+    .warning-circle-icon,
+    .info-circle-icon,
+    .question-circle-icon,
+    .success-circle-icon,
+    .info-circle-green-icon {
+        color: $white !important;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-left: 1%;
+        margin-right: 1%;
+        text-align: center;
+
+        .mat-icon {
+            font-size: 20px;
+            height: 20px;
+            width: 20px;
+            padding: 10px;
+        }
+    }
+}
+
+/** HUB MENU **/
+.hub-menu {
+    .hub-menu-panel {
+        max-height: 296px !important;
+    }
+
+    h1 {
+        font-size: 1.714em;
+    }
+
+    .mat-card {
+        min-width: 100px;
+        width: 270px;
+
+        .mat-card-title {
+            margin-bottom: 6px;
+        }
+    }
+
+    .inactive-card {
+        cursor: default;
+    }
+
+    .overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.4);
+        width: 100%;
+        height: 100%;
+        border-radius: 3px !important;
+    }
+
+    .active-card {
+        cursor: pointer;
+    }
+
+    .mat-card-image {
+        min-width: 100px;
+        width: calc(100% + 32px);
+        height: 144px;
+        margin: -16px -16px 16px -16px;
+    }
+}
+
+
+
+@media screen and (max-width: 1090px) {
+    .hub-menu {
+        .hub-menu-panel {
+            max-height: 100% !important;
+        }
+    }
+}
+
+// for Cash module
+
+.cash-accordion {
+    mat-expansion-panel.mat-expansion-panel.mat-expanded.mat-expansion-panel-spacing {
+        box-shadow: silver;
+    }
+}
+
+.cash-accordion {
+    mat-expansion-panel.mat-expansion-panel {
+        box-shadow: silver !important;
+        background: $white;
+
+        &:hover {
+            box-shadow: silver !important;
+            background: $white;
+        }
+
+        &:focus {
+            box-shadow: silver !important;
+            background: $white;
+        }
+    }
+
+    .mat-expansion-panel {
+        &:not(.mat-expanded) {
+            .mat-expansion-panel-header {
+                &:not([aria-disabled='true']) {
+                    &:hover {
+                        box-shadow: unset !important;
+                        background: $white;
+                    }
+                }
+            }
+        }
+    }
+
+    .mat-expansion-panel-header {
+        margin: 0;
+    }
+}
+
+.cash-accordion.mat-accordion {
+    mat-expansion-panel-header {
+        margin: 0;
+        padding: 16px;
+    }
+}
+
+atlas-execution-cash-create atlas-cash-summary-form-component {
+    .mat-card.card-header-luke {
+        min-height: 85px !important;
+    }
+
+    .main-container {
+        margin: 0px;
+    }
+}
+
+atlas-execution-invoicing atlas-commercial-summary {
+    .mat-card.card-header-luke {
+        min-height: 85px !important;
+    }
+
+    .main-container {
+        margin: 0px;
+    }
+}
+
+atlas-execution-invoicing atlas-goods-cost-summary,
+atlas-cost atlas-cost-summary {
+    .main-container {
+        margin: 0px;
+    }
+}
+
+mat-checkbox {
+    &.picklist-header {
+        .mat-checkbox-layout {
+            .mat-checkbox-label {
+                font-size: 14px;
+                font-weight: bold !important;
+                padding-left: 8px;
+            }
+        }
+    }
+}
+
+mat-list-option {
+    &.picklist-option {
+        height: 32px !important;
+
+        .mat-list-item-content {
+            padding-left: 0px !important;
+        }
+    }
+}
+
+.granted-privileges-card {
+
+    .ag-body-container,
+    .ag-header-row {
+        width: 100% !important;
+    }
+}
+
+.add-line-container {
+    button.mat-button {
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    .mat-form-field {
+        text-align: center;
+    }
+}
+
+.counterparty-card {
+    height: 100% !important;
+
+    .mat-card {
+        height: 87.1%;
+    }
+}
+
+.charterToggle {
+    margin-top: 10px;
+}
+
+.view-realized-physicals-pnl {
+    margin-top: 25px;
+}
+
+.view-realized-physicals-font {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+atlas-commercial {
+    atlas-commercial-summary {
+        .main-container {
+            margin-top: 8px;
+        }
+    }
+}
+
+.report-container-full-content {
+    height: 90%;
+}
+
+.fileUpload .mat-raised-button.fab-text-button {
+    top: 0 !important;
+    height: 36px;
+}
+
+.custom-form.contextual {
+    width: 125px;
+}
+
+.status-flag-chip {
+    background-color: #81cf5c;
+    text-align: center;
+    color: white;
+    display: inline-block;
+    width: 16px;
+    height: 28px;
+    font-size: 18px;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+.status-flag-chip-bulk-edit {
+    background-color: #81cf5c;
+    text-align: center;
+    color: white;
+    display: inline-block;
+    width: 12px;
+    height: 20px;
+    font-size: 14px;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+.status-flag-chip-bm {
+    background-color: #029CB9;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.costContractsBulkEdit .ag-pinned-right-header,
+.costContractsBulkEdit .ag-pinned-right-cols-viewport-wrapper {
+    box-shadow: none !important;
+}
+
+//For Bulk Edit Master Row
+.pinnedRow {
+    color: $atlas-title;
+    background-color: white;
+    border-bottom: 2px solid blue !important;
+}
+
+.updateCosts {
+    margin-top: 0px !important;
+}
+
+.ag-theme-material.favourites-list-grid .ag-header-row {
+    width: 100% !important;
+}
+
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+    background-color: transparent !important;
+}
+
+.add-line-container.add-line-container-add-costs .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+}
+
+.add-line-container.add-line-container-add-costs .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding-top: 0 !important;
+    padding-bottom: 16px !important;
+}
+
+.edit-costs-dialog .close-button {
+    margin-top: 0px !important;
+}
+
+.interface-message span.mat-button-wrapper,
+button.mat-raised-button span {
+    line-height: 23px !important;
+}

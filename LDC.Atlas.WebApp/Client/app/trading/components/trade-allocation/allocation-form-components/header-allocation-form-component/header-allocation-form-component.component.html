@@ -1,0 +1,100 @@
+<mat-card class="card-header-luke">
+
+    <mat-content class="content-size">
+        <mat-card-title>
+            Main Information
+        </mat-card-title>
+        <div fxLayout="row">
+            <div fxFlex="35"
+                 fxFlex.lt-md="40">
+                <div fxLayout="column"
+                     fxLayoutAlign="start">
+                    <div fxLayout="row">
+                        <mat-form-field class="mat-read-only-field"
+                                        fxFlex="35%">
+                            <input matInput
+                                   placeholder="Contract Reference Number"
+                                   readonly
+                                   autocomplete="off"
+                                   [formControl]="counterReferenceNumberCtrl">
+                        </mat-form-field>
+                        <mat-form-field class="mat-read-only-field"
+                                        fxFlex="55%">
+                            <input matInput
+                                   placeholder="Shipping period"
+                                   readonly
+                                   [formControl]="shippingPeriodCtrl"
+                                   autocomplete="off">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row">
+                        <mat-form-field class="mat-read-only-field"
+                                        fxFlex="35%">
+                            <input matInput
+                                   placeholder="Counter Party"
+                                   readonly
+                                   autocomplete="off"
+                                   [formControl]="counterpartyCtrl">
+                        </mat-form-field>
+                        <mat-form-field class="mat-read-only-field"
+                                        fxFlex="55%">
+                            <input matInput
+                                   placeholder="Description"
+                                   readonly
+                                   [formControl]="descriptionCtrl"
+                                   autocomplete="off">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex="45"
+                 fxFlex.lt-md="60">
+                <div fxLayout="column">
+                    <div fxLayout="row">
+                        <atlas-commodity-input #commodityInput
+                                               isFromAllocationPage=true
+                                               fxFlex=100></atlas-commodity-input>
+                    </div>
+                    <div fxLayout="row">
+                        <div fxFlex="65">
+                            <mat-form-field class="mat-read-only-field"
+                                            fxFlex="21%">
+                                <input matInput
+                                       placeholder="Currency"
+                                       readonly
+                                       [formControl]="currencyValueCtrl"
+                                       autocomplete="off">
+                            </mat-form-field>
+                            <mat-form-field class="mat-read-only-field"
+                                            fxFlex="21%">
+                                <input matInput
+                                       placeholder="Price Code"
+                                       readonly
+                                       [formControl]="priceCodeCtrl"
+                                       autocomplete="off">
+                            </mat-form-field>
+                            <mat-form-field class="mat-read-only-field"
+                                            fxFlex="21%">
+                                <input matInput
+                                       placeholder="Quantity Code"
+                                       readonly
+                                       [formControl]="quantityCodeCtrl"
+                                       autocomplete="off">
+                            </mat-form-field>
+                            <mat-form-field class="mat-read-only-field"
+                                            fxFlex="24%">
+                                <input matInput
+                                       placeholder="Quantity"
+                                       readonly
+                                       [formControl]="quantityValueCtrl"
+                                       autocomplete="off">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex="fill"></div>
+        </div>
+    </mat-content>
+
+</mat-card>

@@ -1,0 +1,105 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Counterparty Information
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="column">
+            <div fxLayout="row"
+                 fxLayoutAlign="start start"
+                 fxLayoutGap="16px">
+                <atlas-masterdata-user-preferences-input fxFlex="40%"
+                                                         isEditable="true"
+                                                         [fieldControl]="counterpartyCtrl"
+                                                         [options]="filteredCounterPartyList"
+                                                         label="Counterparty"
+                                                         displayProperty="counterpartyCode"
+                                                         [selectProperties]="['counterpartyCode', 'description']"
+                                                         [errorMap]="counterpartyErrorMap"
+                                                         lightBoxTitle="Results for Counterparty"
+                                                         gridId="counterpartiesGrid"
+                                                         (optionSelected)="onCounterpartyIdSelected($event)">
+                </atlas-masterdata-user-preferences-input>
+                <div class="custom-form"
+                     fxFlex="100%"
+                     [class.isEmpty]="!payerCtrl.value"
+                     [class.required-field]="payerCtrl.isRequired">
+                    <mat-form-field *ngIf="cashTypeId==CashType.CashPayment">
+                        <input matInput
+                               placeholder="Payee"
+                               [formControl]="payeeCtrl"
+                               label="Payee"
+                               matTooltip="Payee"
+                               [required]="payeeCtrl.isRequired"
+                               autocomplete="off">
+                        <mat-error *ngIf="payeeCtrl.hasError('required')">
+                            Required *
+                        </mat-error>
+                        <mat-hint *ngIf="payeeCtrl.isRequired">
+                            Required *
+                        </mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="100%"
+                                    *ngIf="cashTypeId==CashType.CashReceipt">
+                        <input matInput
+                               placeholder="Payer"
+                               [formControl]="payerCtrl"
+                               label="payer"
+                               matTooltip="payer"
+                               [required]="payerCtrl.isRequired"
+                               autocomplete="off">
+                        <mat-error *ngIf="payerCtrl.hasError('required')">
+                            Required *
+                        </mat-error>
+                        <mat-hint *ngIf="payerCtrl.isRequired">
+                            Required *
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <div class="custom-form"
+                     [class.isEmpty]="!clientBankCtrl.value"
+                     [class.required-field]="clientBankCtrl.isRequired">
+                    <mat-form-field>
+                        <!--The Bank Account is hardcoded as per the suggestion given by sergio due to
+    dependency with counterparty and currency a new PBI will be there to handle this.-->
+
+                        <input matInput
+                               placeholder="Client Bank"
+                               [matAutocomplete]="clientBank"
+                               [formControl]="clientBankCtrl"
+                               matTooltip="Client Bank"
+                               [required]="clientBankCtrl.isRequired"
+                               (blur)="onClientBankRemoval()">
+                        <mat-autocomplete #clientBank="matAutocomplete"
+                                          [panelWidth]="panelSize"
+                                          (optionSelected)="onclientBankSelected($event.option.value)">
+                            <mat-option *ngFor="let clientBanks of filteredCounterPartyBankAccounts"
+                                        [value]="clientBanks.bankAccountId">
+                                {{clientBanks.accountNo}} |
+                                {{clientBanks.bankName}}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <mat-error *ngIf="showHintForClientBank && cashTypeId==CashType.CashPayment">
+                            Client Bank Account is required
+                        </mat-error>
+                        <mat-error *ngIf="clientBankCtrl.hasError('inDropdownList')">
+                            Value not in list
+                        </mat-error>
+                        <mat-hint *ngIf="showHintForClientBank && !showHintForNoClientBankAccount">
+                            Required *
+                        </mat-hint>
+                        <mat-hint *ngIf="showHintForNoClientBankAccount"
+                                  class="warning-message">
+                            No Client Bank for selected conterparty & currency OR Client Bank is deactivated
+                        </mat-hint>
+
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

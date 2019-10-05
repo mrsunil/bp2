@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LDC.Atlas.Services.Controlling</name>
+    </assembly>
+    <members>
+        <member name="M:LDC.Atlas.Services.Controlling.Controllers.FreezeRecalculationController.ProcessFreezeRecalculation(LDC.Atlas.Services.Controlling.Application.Commands.ProcessFreezeRecalculationCommand)">
+            <summary>
+            Process data change logs
+            </summary>
+            <param name="processDataChangeLogsRequest">The identifier of the data change log to process.</param>
+        </member>
+    </members>
+</doc>

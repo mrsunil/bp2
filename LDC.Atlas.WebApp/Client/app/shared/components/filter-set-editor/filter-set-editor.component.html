@@ -1,0 +1,49 @@
+<div class="editor-container">
+    <div fxLayout="column"
+         fxFlexLayoutAlign="space-between stretch"
+         fxFlex>
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center">
+            <h3 class="atlas-grid-card-title">Edit Filters</h3>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="start">
+            <div fxFlexOffset="24px">
+                <mat-slide-toggle mat-raised-button
+                                  (change)="onHideEmptyFilters()">Hide empty filters</mat-slide-toggle>
+            </div>
+        </div>
+        <div ag-grid="gridOptions"
+             class="ag-theme-material"
+             fxFlex="fill">
+            <ag-grid-angular class="ag-theme-material"
+                             [rowData]="rowData"
+                             [columnDefs]="columnDefs"
+                             (gridReady)="onGridReady($event)"
+                             (cellValueChanged)="onCellValueChanged($event)"
+                             [frameworkComponents]="frameworkComponents"
+                             [enableColResize]="true"
+                             [paginationPageSize]="100"
+                             [enableSorting]="true"
+                             enableFilter
+                             [rowHeight]="atlasAgGridParam.rowHeight"
+                             [autoGroupColumnDef]="autoGroupColumnDef"
+                             [groupDefaultExpanded]="groupDefaultExpanded">
+            </ag-grid-angular>
+        </div>
+
+        <mat-divider></mat-divider>
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center">
+            <button mat-button
+                    (click)=onDiscardButtonClicked()>
+                DISCARD
+            </button>
+            <button mat-button
+                    [disabled]=!areFiltersValid()
+                    (click)=onApplyFiltersButtonClicked()>
+                APPLY FILTERS
+            </button>
+        </div>
+    </div>
+</div>

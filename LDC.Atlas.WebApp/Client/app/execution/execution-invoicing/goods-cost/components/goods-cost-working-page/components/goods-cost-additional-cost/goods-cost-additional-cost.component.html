@@ -1,0 +1,68 @@
+<mat-card>
+    <mat-card-content>
+        <mat-card-title class="no-margin">Cost</mat-card-title>
+
+        <div fxLayout="row"
+             fxLayoutAlign="start center"
+             [hidden]="isAdditionalCostForSummary">
+            <mat-card-subtitle class="addline-margin">Add new lines:</mat-card-subtitle>
+            <mat-form-field fxFlex="3">
+                <input matInput
+                       [formControl]="addNewLineCtrl"
+                       autocomplete="off">
+            </mat-form-field>
+            <button mat-button
+                    (click)="onAddRowButtonClicked(addNewLineCtrl.value)"
+                    class="no-margin">
+                Add
+            </button>
+
+            <span class="fill-space"></span>
+            <div class="use-goods-tax-toggle">
+                <mat-slide-toggle [formControl]="useGoodsTaxCodeCtrl"> Use Goods Tax Code</mat-slide-toggle>
+            </div>
+
+            <mat-form-field fxFlex="8%">
+                <mat-select placeholder="Cost VAT Code"
+                            [formControl]="costVatCodeCtrl"
+                            matTooltip="Cost VAT Code"
+                            (selectionChange)='onCostVatCodeSelected()'>
+                    <mat-option *ngFor="let code of costVatCodeOptions"
+                                [value]="code.vatCode">
+                        {{code.vatCode}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div ag-grid="selectedCostGridOptions"
+             class="ag-theme-material pointer-cursor">
+            <ag-grid-angular class="ag-theme-material"
+                             [rowData]="selectedCostGridRows"
+                             [columnDefs]="selectedCostGridColumns"
+                             [gridOptions]="selectedCostGridOptions"
+                             domLayout="autoHeight"
+                             (gridReady)="onGridReady($event)"
+                             [pagination]="false"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             [enableFilter]="true"
+                             [rowSelection]="rowSelection"
+                             [frameworkComponents]="gridComponents"
+                             enableFilter
+                             [rowHeight]=atlasAgGridParam.rowHeight
+                             [singleClickEdit]=true>
+            </ag-grid-angular>
+        </div>
+        <div fxLayout="row"
+             class="cost-total"
+             fxLayoutAlign="end">
+            <mat-card-subtitle class="total-figure">
+                Total Cost:
+                <span class="total-figure-value">
+                    {{this.totalCostDirectionSign}}{{formatQuantityAndTotal(this.total)}}
+                    {{this.currencyCodeSelected}}</span>
+            </mat-card-subtitle>
+        </div>
+    </mat-card-content>
+</mat-card>

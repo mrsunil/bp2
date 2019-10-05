@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Lightbox Title
+    <button mat-icon-button
+            mat-dialog-close
+            class="close-dialog-btn">
+        <mat-icon aria-label="Closing button">clear</mat-icon>
+    </button></h1>
+
+<mat-dialog-content>
+    <ag-grid-angular style="height: 500px;"
+                     class="ag-theme-material"
+                     [rowData]="rowData"
+                     [columnDefs]="columnDefs"
+                     [rowHeight]="24">
+    </ag-grid-angular>
+</mat-dialog-content>
+
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions>
+    <button mat-button
+            mat-dialog-close>discard</button>
+</mat-dialog-actions>
